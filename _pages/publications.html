@@ -34,11 +34,8 @@ author_profile: true
   margin-bottom: 0;
 }
 
-.pub-link {
-  margin-left: 0.35em;
-  font-weight: 500;
-  text-decoration: none !important;
-  white-space: nowrap;
+.publication-extra {
+  margin-top: 0.05em;
 }
 
 </style>
@@ -54,100 +51,83 @@ author_profile: true
 
     <!-- TÍTULO -->
     <div class="publication-title">
-      {{ pub.title }}
+      {% if pub.paperurl and pub.paperurl != "" %}
+        <a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title | strip }}</a>
+      {% else %}
+        {{ pub.title | strip }}
+      {% endif %}
     </div>
 
 
     <!-- AUTORES -->
     <div class="publication-authors">
+      {%- for author in pub.authors -%}
 
-      {% for author in pub.authors %}
+        {%- assign clean_author = author | strip -%}
 
-        {% if author contains "Pateiro" %}
-          <strong>{{ author }}</strong>
-        {% else %}
-          {{ author }}
-        {% endif %}
+        {%- if clean_author contains "Pateiro" -%}
+          <strong>{{ clean_author }}</strong>
+        {%- else -%}
+          {{ clean_author }}
+        {%- endif -%}
 
-        {% unless forloop.last %}
+        {%- unless forloop.last -%}
+          {%- if forloop.rindex == 2 %} and {% else %}, {% endif -%}
+        {%- endunless -%}
 
-          {% if forloop.rindex == 2 %}
-            and
-          {% else %}
-            ,
-          {% endif %}
-
-        {% endunless %}
-
-      {% endfor %}
-
-      ({{ pub.date | date: "%Y" }}).
-
+      {%- endfor %} ({{ pub.date | date: "%Y" }}).
     </div>
 
 
-    <!-- INFORMACIÓN DE LA PUBLICACIÓN -->
+    <!-- REVISTA, VOLUMEN Y PÁGINAS -->
     <div class="publication-details">
+      {%- if pub.venue and pub.venue != "" -%}
+        <em>{{ pub.venue | strip }}</em>
+      {%- endif -%}
 
-      {% if pub.publication_type and pub.publication_type != "" %}
-        <strong>{{ pub.publication_type }}</strong>
-      {% else %}
-        <strong>Journal paper</strong>
-      {% endif %}
+      {%- if pub.volume and pub.volume != "" -%}
+        , {{ pub.volume | strip }}
+      {%- endif -%}
 
-
-      {% if pub.venue and pub.venue != "" %}
-        <em>{{ pub.venue }}</em>
-      {% endif %}
-
-
-      {% if pub.volume and pub.volume != "" %}
-        , {{ pub.volume }}
-      {% endif %}
-
-
-      {% if pub.pages and pub.pages != "" %}
-        :{{ pub.pages }}
-      {% endif %}.
-
-
-      <!-- ENLACE -->
-      {% if pub.paperurl and pub.paperurl != "" %}
-
-        {% assign url_lower = pub.paperurl | downcase %}
-
-        {% if url_lower contains "doi.org" %}
-
-          <a
-            class="pub-link"
-            href="{{ pub.paperurl }}"
-            target="_blank"
-            rel="noopener"
-          >[DOI]</a>
-
-        {% elsif url_lower contains "arxiv.org" %}
-
-          <a
-            class="pub-link"
-            href="{{ pub.paperurl }}"
-            target="_blank"
-            rel="noopener"
-          >[arXiv]</a>
-
-        {% else %}
-
-          <a
-            class="pub-link"
-            href="{{ pub.paperurl }}"
-            target="_blank"
-            rel="noopener"
-          >[Link]</a>
-
-        {% endif %}
-
-      {% endif %}
-
+      {%- if pub.pages and pub.pages != "" -%}
+        :{{ pub.pages | strip }}
+      {%- endif -%}.
     </div>
+
+
+    <!-- DOI O ARXIV -->
+    {% if pub.paperurl and pub.paperurl != "" %}
+
+      {% assign url_lower = pub.paperurl | downcase %}
+
+      {% if url_lower contains "doi.org" %}
+
+        {% assign doi = pub.paperurl
+          | replace: "https://doi.org/", ""
+          | replace: "http://doi.org/", ""
+          | replace: "https://dx.doi.org/", ""
+          | replace: "http://dx.doi.org/", ""
+          | strip
+        %}
+
+        <div class="publication-extra">doi:{{ doi }}</div>
+
+      {% elsif url_lower contains "arxiv.org" %}
+
+        {% assign arxiv = pub.paperurl
+          | replace: "https://arxiv.org/abs/", ""
+          | replace: "http://arxiv.org/abs/", ""
+          | replace: "https://arxiv.org/pdf/", ""
+          | replace: "http://arxiv.org/pdf/", ""
+          | replace: ".pdf", ""
+          | strip
+        %}
+
+        <div class="publication-extra">arXiv:{{ arxiv }}</div>
+
+      {% endif %}
+
+    {% endif %}
 
   </div>
 
