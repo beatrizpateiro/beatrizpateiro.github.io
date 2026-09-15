@@ -5,32 +5,138 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+<style>
 
-{% include base_path %}
+.pub-year {
+  margin-top: 2.3em;
+  margin-bottom: 1em;
+  font-size: 1.8em;
+  font-weight: 600;
+}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
+.pub-item {
+  margin-bottom: 1.8em;
+  padding-left: 1.2em;
+  border-left: 3px solid;
+  border-left-color: rgba(127,127,127,.35);
+}
+
+.pub-title {
+  margin: 0 0 .25em 0;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.pub-title a {
+  text-decoration: none;
+}
+
+.pub-authors {
+  margin-bottom: .25em;
+}
+
+.pub-journal {
+  opacity: .78;
+  font-style: italic;
+}
+
+.pub-links {
+  margin-top: .45em;
+}
+
+.pub-link {
+  display: inline-block;
+  padding: .15em .55em;
+  margin-right: .35em;
+  border: 1px solid rgba(127,127,127,.45);
+  border-radius: 4px;
+  font-size: .78em;
+  text-decoration: none !important;
+}
+
+</style>
+
+
+{% assign publications = site.publications | sort: "date" | reverse %}
+
+{% assign current_year = "" %}
+
+{% for pub in publications %}
+
+  {% assign year = pub.date | date: "%Y" %}
+
+  {% if year != current_year %}
+
+    <h2 class="pub-year">{{ year }}</h2>
+
+    {% assign current_year = year %}
+
+  {% endif %}
+
+
+  <div class="pub-item">
+
+    <div class="pub-title">
+
+      {% if pub.paperurl and pub.paperurl != "" %}
+
+        <a href="{{ pub.paperurl }}" target="_blank">
+          {{ pub.title }}
+        </a>
+
+      {% else %}
+
+        {{ pub.title }}
+
       {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+
+    </div>
 
 
+    <div class="pub-authors">
 
+      {% for author in pub.authors %}
+
+        {% if author contains "Pateiro" %}
+          <strong>{{ author }}</strong>
+        {% else %}
+          {{ author }}
+        {% endif %}
+
+        {% unless forloop.last %}, {% endunless %}
+
+      {% endfor %}
+
+    </div>
+
+
+    <div class="pub-journal">
+
+      {{ pub.venue }}
+
+      {% if pub.volume and pub.volume != "" %}
+        {{ pub.volume }}
+      {% endif %}
+
+      {% if pub.pages and pub.pages != "" %}
+        , {{ pub.pages }}
+      {% endif %}
+
+    </div>
+
+
+    <div class="pub-links">
+
+      {% if pub.paperurl and pub.paperurl != "" %}
+        <a class="pub-link"
+           href="{{ pub.paperurl }}"
+           target="_blank">
+           Article
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+{% endfor %}
