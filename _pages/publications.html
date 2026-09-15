@@ -8,7 +8,7 @@ author_profile: true
 <style>
 
 .publication-list {
-  font-size: 0.86em;
+  font-size: 0.84em;
 }
 
 .publication-item {
@@ -27,11 +27,18 @@ author_profile: true
 }
 
 .publication-authors {
-  margin-bottom: 0.1em;
+  margin-bottom: 0.10em;
 }
 
 .publication-details {
   margin-bottom: 0;
+}
+
+.pub-link {
+  margin-left: 0.35em;
+  font-weight: 500;
+  text-decoration: none !important;
+  white-space: nowrap;
 }
 
 </style>
@@ -45,17 +52,13 @@ author_profile: true
 
   <div class="publication-item">
 
+    <!-- TÍTULO -->
     <div class="publication-title">
-      {% if pub.paperurl and pub.paperurl != "" %}
-        <a href="{{ pub.paperurl }}" target="_blank">
-          {{ pub.title }}
-        </a>
-      {% else %}
-        {{ pub.title }}
-      {% endif %}
+      {{ pub.title }}
     </div>
 
 
+    <!-- AUTORES -->
     <div class="publication-authors">
 
       {% for author in pub.authors %}
@@ -67,11 +70,13 @@ author_profile: true
         {% endif %}
 
         {% unless forloop.last %}
+
           {% if forloop.rindex == 2 %}
             and
           {% else %}
             ,
           {% endif %}
+
         {% endunless %}
 
       {% endfor %}
@@ -81,37 +86,64 @@ author_profile: true
     </div>
 
 
+    <!-- INFORMACIÓN DE LA PUBLICACIÓN -->
     <div class="publication-details">
 
-      <strong>
-        {% if pub.publication_type %}
-          {{ pub.publication_type }}
-        {% else %}
-          Journal paper
-        {% endif %}
-      </strong>
+      {% if pub.publication_type and pub.publication_type != "" %}
+        <strong>{{ pub.publication_type }}</strong>
+      {% else %}
+        <strong>Journal paper</strong>
+      {% endif %}
+
 
       {% if pub.venue and pub.venue != "" %}
         <em>{{ pub.venue }}</em>
       {% endif %}
 
+
       {% if pub.volume and pub.volume != "" %}
         , {{ pub.volume }}
       {% endif %}
+
 
       {% if pub.pages and pub.pages != "" %}
         :{{ pub.pages }}
       {% endif %}.
 
-      {% if pub.paperurl and pub.paperurl contains "doi.org" %}
 
-        {% assign doi = pub.paperurl
-          | replace: "https://doi.org/", ""
-          | replace: "http://doi.org/", ""
-          | replace: "https://dx.doi.org/", ""
-        %}
+      <!-- ENLACE -->
+      {% if pub.paperurl and pub.paperurl != "" %}
 
-        doi:<a href="{{ pub.paperurl }}" target="_blank">{{ doi }}</a>.
+        {% assign url_lower = pub.paperurl | downcase %}
+
+        {% if url_lower contains "doi.org" %}
+
+          <a
+            class="pub-link"
+            href="{{ pub.paperurl }}"
+            target="_blank"
+            rel="noopener"
+          >[DOI]</a>
+
+        {% elsif url_lower contains "arxiv.org" %}
+
+          <a
+            class="pub-link"
+            href="{{ pub.paperurl }}"
+            target="_blank"
+            rel="noopener"
+          >[arXiv]</a>
+
+        {% else %}
+
+          <a
+            class="pub-link"
+            href="{{ pub.paperurl }}"
+            target="_blank"
+            rel="noopener"
+          >[Link]</a>
+
+        {% endif %}
 
       {% endif %}
 
