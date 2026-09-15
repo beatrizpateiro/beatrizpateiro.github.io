@@ -34,10 +34,6 @@ author_profile: true
   margin-bottom: 0;
 }
 
-.publication-extra {
-  margin-top: 0.05em;
-}
-
 </style>
 
 
@@ -52,7 +48,9 @@ author_profile: true
     <!-- TÍTULO -->
     <div class="publication-title">
       {% if pub.paperurl and pub.paperurl != "" %}
-        <a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title | strip }}</a>
+        <a href="{{ pub.paperurl }}"
+           target="_blank"
+           rel="noopener">{{ pub.title | strip }}</a>
       {% else %}
         {{ pub.title | strip }}
       {% endif %}
@@ -63,13 +61,7 @@ author_profile: true
     <div class="publication-authors">
       {%- for author in pub.authors -%}
 
-        {%- assign clean_author = author | strip -%}
-
-        {%- if clean_author contains "Pateiro" -%}
-          <strong>{{ clean_author }}</strong>
-        {%- else -%}
-          {{ clean_author }}
-        {%- endif -%}
+        {{- author | strip -}}
 
         {%- unless forloop.last -%}
           {%- if forloop.rindex == 2 %} and {% else %}, {% endif -%}
@@ -80,56 +72,22 @@ author_profile: true
 
 
     <!-- REVISTA, VOLUMEN Y PÁGINAS -->
-<div class="publication-details">
-  {%- if pub.venue and pub.venue != "" -%}
-    <em>{{ pub.venue | strip }}</em>
-  {%- endif -%}
+    <div class="publication-details">
+      {%- if pub.venue and pub.venue != "" -%}
+        <em>{{ pub.venue | strip }}</em>
+      {%- endif -%}
 
-  {%- if pub.volume and pub.volume != "" -%}
-    , {{ pub.volume | strip }}
-    {%- if pub.pages and pub.pages != "" -%}
-      :{{ pub.pages | strip }}
-    {%- endif -%}
+      {%- if pub.volume and pub.volume != "" -%}
+        , {{ pub.volume | strip }}
 
-  {%- elsif pub.pages and pub.pages != "" -%}
-    , {{ pub.pages | strip }}
-  {%- endif -%}.
-</div>
+        {%- if pub.pages and pub.pages != "" -%}
+          :{{ pub.pages | strip }}
+        {%- endif -%}
 
-
-    <!-- DOI O ARXIV -->
-    {% if pub.paperurl and pub.paperurl != "" %}
-
-      {% assign url_lower = pub.paperurl | downcase %}
-
-      {% if url_lower contains "doi.org" %}
-
-        {% assign doi = pub.paperurl
-          | replace: "https://doi.org/", ""
-          | replace: "http://doi.org/", ""
-          | replace: "https://dx.doi.org/", ""
-          | replace: "http://dx.doi.org/", ""
-          | strip
-        %}
-
-        <div class="publication-extra">doi:{{ doi }}</div>
-
-      {% elsif url_lower contains "arxiv.org" %}
-
-        {% assign arxiv = pub.paperurl
-          | replace: "https://arxiv.org/abs/", ""
-          | replace: "http://arxiv.org/abs/", ""
-          | replace: "https://arxiv.org/pdf/", ""
-          | replace: "http://arxiv.org/pdf/", ""
-          | replace: ".pdf", ""
-          | strip
-        %}
-
-        <div class="publication-extra">arXiv:{{ arxiv }}</div>
-
-      {% endif %}
-
-    {% endif %}
+      {%- elsif pub.pages and pub.pages != "" -%}
+        , {{ pub.pages | strip }}
+      {%- endif -%}.
+    </div>
 
   </div>
 
