@@ -80,19 +80,21 @@ author_profile: true
 
 
     <!-- REVISTA, VOLUMEN Y PÁGINAS -->
-    <div class="publication-details">
-      {%- if pub.venue and pub.venue != "" -%}
-        <em>{{ pub.venue | strip }}</em>
-      {%- endif -%}
+<div class="publication-details">
+  {%- if pub.venue and pub.venue != "" -%}
+    <em>{{ pub.venue | strip }}</em>
+  {%- endif -%}
 
-      {%- if pub.volume and pub.volume != "" -%}
-        , {{ pub.volume | strip }}
-      {%- endif -%}
+  {%- if pub.volume and pub.volume != "" -%}
+    , {{ pub.volume | strip }}
+    {%- if pub.pages and pub.pages != "" -%}
+      :{{ pub.pages | strip }}
+    {%- endif -%}
 
-      {%- if pub.pages and pub.pages != "" -%}
-        :{{ pub.pages | strip }}
-      {%- endif -%}.
-    </div>
+  {%- elsif pub.pages and pub.pages != "" -%}
+    , {{ pub.pages | strip }}
+  {%- endif -%}.
+</div>
 
 
     <!-- DOI O ARXIV -->
