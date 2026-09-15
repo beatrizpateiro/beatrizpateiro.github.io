@@ -7,51 +7,31 @@ author_profile: true
 
 <style>
 
-.pub-year {
-  margin-top: 2.3em;
-  margin-bottom: 1em;
+.publication-list {
+  font-size: 0.86em;
+}
+
+.publication-item {
+  margin-bottom: 1.35em;
+  line-height: 1.45;
+}
+
+.publication-title {
   font-size: 1em;
   font-weight: 600;
+  margin-bottom: 0.12em;
 }
 
-.pub-item {
-  margin-bottom: 1.8em;
-  padding-left: 1.2em;
-  border-left: 3px solid;
-  border-left-color: rgba(127,127,127,.35);
-}
-
-.pub-title {
-  margin: 0 0 .25em 0;
-  font-size: 1.05em;
-  font-weight: 600;
-}
-
-.pub-title a {
+.publication-title a {
   text-decoration: none;
 }
 
-.pub-authors {
-  margin-bottom: .25em;
+.publication-authors {
+  margin-bottom: 0.1em;
 }
 
-.pub-journal {
-  opacity: .78;
-  font-style: italic;
-}
-
-.pub-links {
-  margin-top: .45em;
-}
-
-.pub-link {
-  display: inline-block;
-  padding: .15em .55em;
-  margin-right: .35em;
-  border: 1px solid rgba(127,127,127,.45);
-  border-radius: 4px;
-  font-size: .78em;
-  text-decoration: none !important;
+.publication-details {
+  margin-bottom: 0;
 }
 
 </style>
@@ -59,41 +39,24 @@ author_profile: true
 
 {% assign publications = site.publications | sort: "date" | reverse %}
 
-{% assign current_year = "" %}
+<div class="publication-list">
 
 {% for pub in publications %}
 
-  {% assign year = pub.date | date: "%Y" %}
+  <div class="publication-item">
 
-  {% if year != current_year %}
-
-    <h2 class="pub-year">{{ year }}</h2>
-
-    {% assign current_year = year %}
-
-  {% endif %}
-
-
-  <div class="pub-item">
-
-    <div class="pub-title">
-
+    <div class="publication-title">
       {% if pub.paperurl and pub.paperurl != "" %}
-
         <a href="{{ pub.paperurl }}" target="_blank">
           {{ pub.title }}
         </a>
-
       {% else %}
-
         {{ pub.title }}
-
       {% endif %}
-
     </div>
 
 
-    <div class="pub-authors">
+    <div class="publication-authors">
 
       {% for author in pub.authors %}
 
@@ -103,40 +66,61 @@ author_profile: true
           {{ author }}
         {% endif %}
 
-        {% unless forloop.last %}, {% endunless %}
+        {% unless forloop.last %}
+          {% if forloop.rindex == 2 %}
+            and
+          {% else %}
+            ,
+          {% endif %}
+        {% endunless %}
 
       {% endfor %}
 
+      ({{ pub.date | date: "%Y" }}).
+
     </div>
 
 
-    <div class="pub-journal">
+    <div class="publication-details">
 
-      {{ pub.venue }}
+      <strong>
+        {% if pub.publication_type %}
+          {{ pub.publication_type }}
+        {% else %}
+          Journal paper
+        {% endif %}
+      </strong>
+
+      {% if pub.venue and pub.venue != "" %}
+        <em>{{ pub.venue }}</em>
+      {% endif %}
 
       {% if pub.volume and pub.volume != "" %}
-        {{ pub.volume }}
+        , {{ pub.volume }}
       {% endif %}
 
       {% if pub.pages and pub.pages != "" %}
-        , {{ pub.pages }}
-      {% endif %}
+        :{{ pub.pages }}
+      {% endif %}.
 
-    </div>
+      {% if pub.paperurl and pub.paperurl contains "doi.org" %}
 
+        {% assign doi = pub.paperurl
+          | replace: "https://doi.org/", ""
+          | replace: "http://doi.org/", ""
+          | replace: "https://dx.doi.org/", ""
+        %}
 
-    <div class="pub-links">
+        doi:<a href="{{ pub.paperurl }}" target="_blank">{{ doi }}</a>.
 
-      {% if pub.paperurl and pub.paperurl != "" %}
-        <a class="pub-link"
-           href="{{ pub.paperurl }}"
-           target="_blank">
-           Article
-        </a>
       {% endif %}
 
     </div>
 
   </div>
+
+{% endfor %}
+
+</div>
 
 {% endfor %}
