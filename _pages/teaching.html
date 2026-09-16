@@ -5,8 +5,420 @@ permalink: /teaching/
 author_profile: true
 ---
 
-{% include base_path %}
+<style>
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+.teaching-section {
+  margin-bottom: 2.5em;
+}
+
+.teaching-section h2 {
+  margin-bottom: 0.8em;
+}
+
+.course-list {
+  font-size: 0.88em;
+  line-height: 1.6;
+  margin-bottom: 2em;
+}
+
+.course-item {
+  margin-bottom: 0.45em;
+}
+
+.course-name {
+  font-weight: 600;
+}
+
+.course-program {
+  opacity: 0.8;
+}
+
+
+/* Teaching materials */
+
+.material-card {
+  display: flex;
+  gap: 1.4em;
+  margin-bottom: 2.2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgba(127,127,127,0.25);
+}
+
+.material-image {
+  flex: 0 0 110px;
+}
+
+.material-image img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.material-content {
+  flex: 1;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.material-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0.35em;
+}
+
+.material-description {
+  margin-bottom: 0.65em;
+}
+
+.material-authors {
+  margin-bottom: 0.5em;
+  opacity: 0.8;
+}
+
+.material-links a {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  margin-right: 0.4em;
+  margin-bottom: 0.35em;
+  border: 1px solid rgba(127,127,127,0.4);
+  border-radius: 4px;
+  font-size: 0.88em;
+  text-decoration: none !important;
+}
+
+.material-note {
+  font-size: 0.82em;
+  opacity: 0.75;
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 600px) {
+
+  .material-card {
+    display: block;
+  }
+
+  .material-image {
+    margin-bottom: 1em;
+  }
+
+  .material-image img {
+    width: 90px;
+    height: 90px;
+  }
+
+}
+
+</style>
+
+
+<!-- CURRENT TEACHING -->
+
+<div class="teaching-section">
+
+<h2>Current courses</h2>
+
+<div class="course-list">
+
+  <div class="course-item">
+    <span class="course-name">Análisis multivariante</span>
+    <span class="course-program"> · Máster en Técnicas Estadísticas</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Elementos de probabilidad y estadística</span>
+    <span class="course-program"> · Grado en Matemáticas</span>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<!-- PAST COURSES -->
+
+<div class="teaching-section">
+
+<h2>Past courses</h2>
+
+<div class="course-list">
+
+  <div class="course-item">
+    <span class="course-name">Análisis multivariante</span>
+    <span class="course-program"> · Licenciatura en Matemáticas</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Análisis multivariante</span>
+    <span class="course-program"> · Máster en Técnicas Estadísticas</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Aprendizaje estadístico</span>
+    <span class="course-program"> · Máster en Tecnologías de Análisis de Datos Masivos: Big Data</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Bioestadística</span>
+    <span class="course-program"> · Grado en Medicina</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Elementos de probabilidad y estadística</span>
+    <span class="course-program"> · Grado en Matemáticas</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Estadística</span>
+    <span class="course-program"> · Grado en Inteligencia Artificial</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Estadística</span>
+    <span class="course-program"> · Ingeniería Química</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Estadística</span>
+    <span class="course-program"> · Ingeniería Técnica en Informática de Sistemas</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Estadística aplicada e informática para químicos</span>
+    <span class="course-program"> · Grado en Química</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Estadística y metodología de la investigación</span>
+    <span class="course-program"> · Grado en Enfermería</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Fundamentos de biología aplicada</span>
+    <span class="course-program"> · Licenciatura en Biología</span>
+  </div>
+
+  <div class="course-item">
+    <span class="course-name">Técnicas estadísticas en la biología</span>
+    <span class="course-program"> · Licenciatura en Biología</span>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<!-- TEACHING MATERIALS -->
+
+<div class="teaching-section">
+
+<h2>Teaching materials</h2>
+
+<div class="material-note">
+  Not all contents are original. Whenever possible, explicit reference is made to the original source.
+</div>
+
+
+<!-- MULTIVARIATE ANALYSIS -->
+
+<div class="material-card">
+
+  <div class="material-image">
+    <img src="/images/teaching/cover.png"
+         alt="Multivariate Analysis">
+  </div>
+
+  <div class="material-content">
+
+    <div class="material-title">
+      Análisis Multivariante
+    </div>
+
+    <div class="material-description">
+      Material for students of the Master's in Statistical Techniques,
+      developed for an introductory course in Multivariate Analysis.
+    </div>
+
+    <div class="material-links">
+      <a href="https://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
+         target="_blank"
+         rel="noopener">
+         Book
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- R -->
+
+<div class="material-card">
+
+  <div class="material-image">
+    <img src="/images/teaching/RStudio3.png"
+         alt="Basics on R">
+  </div>
+
+  <div class="material-content">
+
+    <div class="material-title">
+      Basics on R
+    </div>
+
+    <div class="material-description">
+      Lecture slides for an introductory course to the R programming language.
+    </div>
+
+    <div class="material-links">
+      <a href="https://eamo.usc.es/pub/pateiro/files/RCourse.pdf"
+         target="_blank"
+         rel="noopener">
+         Slides
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- BIOSTATISTICS -->
+
+<div class="material-card">
+
+  <div class="material-image">
+    <img src="/images/teaching/bio.jpg"
+         alt="Biostatistics">
+  </div>
+
+  <div class="material-content">
+
+    <div class="material-title">
+      Bioestadística · Grado en Medicina
+    </div>
+
+    <div class="material-description">
+      Material for an introductory statistics course for medical students.
+    </div>
+
+    <div class="material-links">
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Theory.pdf"
+         target="_blank"
+         rel="noopener">
+         Theory
+      </a>
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Slides.pdf"
+         target="_blank"
+         rel="noopener">
+         Slides
+      </a>
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Exercises.pdf"
+         target="_blank"
+         rel="noopener">
+         Exercises
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- CHEMICAL ENGINEERING -->
+
+<div class="material-card">
+
+  <div class="material-image">
+    <img src="/images/teaching/iq.jpg"
+         alt="Statistics for Chemical Engineering">
+  </div>
+
+  <div class="material-content">
+
+    <div class="material-title">
+      Estadística · Ingeniería Química
+    </div>
+
+    <div class="material-description">
+      Material for a first course in statistics for Chemical Engineering,
+      including theory, exercises and practical laboratories using MATLAB.
+    </div>
+
+    <div class="material-links">
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/IQ0809Pateiro.pdf"
+         target="_blank"
+         rel="noopener">
+         Course material
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- COMPUTER SCIENCE -->
+
+<div class="material-card">
+
+  <div class="material-image">
+    <img src="/images/teaching/EI.png"
+         alt="Statistics for Computer Science">
+  </div>
+
+  <div class="material-content">
+
+    <div class="material-title">
+      Estadística · Ingeniería Técnica en Informática de Sistemas
+    </div>
+
+    <div class="material-authors">
+      M. Febrero-Bande, P. Galeano, J. González-Díaz and B. Pateiro-López (2008)
+    </div>
+
+    <div class="material-description">
+      Teaching material covering statistical theory and practical laboratories using R.
+    </div>
+
+    <div class="material-links">
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/PubDocenteTeoriaEstadistica.pdf"
+         target="_blank"
+         rel="noopener">
+         Theory
+      </a>
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/PubDocentePracticasEstadistica.pdf"
+         target="_blank"
+         rel="noopener">
+         R laboratories
+      </a>
+
+      <a href="https://eamo.usc.es/pub/pateiro/files/datasets.zip"
+         target="_blank"
+         rel="noopener">
+         Datasets
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
