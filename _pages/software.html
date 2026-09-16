@@ -4,3 +4,212 @@ title: "Software"
 permalink: /software/
 author_profile: true
 ---
+
+<style>
+
+.software-intro {
+  margin-bottom: 2em;
+}
+
+.software-card {
+  display: flex;
+  gap: 1.4em;
+  margin-bottom: 2.2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.software-image {
+  flex: 0 0 110px;
+}
+
+.software-image img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.software-content {
+  flex: 1;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.software-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin-bottom: 0.25em;
+}
+
+.software-title a {
+  text-decoration: none;
+}
+
+.software-authors {
+  margin-bottom: 0.55em;
+  opacity: 0.85;
+}
+
+.software-description {
+  margin-bottom: 0.65em;
+}
+
+.software-links a {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  margin-right: 0.4em;
+  border: 1px solid rgba(127,127,127,0.4);
+  border-radius: 4px;
+  font-size: 0.88em;
+  text-decoration: none !important;
+}
+
+@media (max-width: 600px) {
+
+  .software-card {
+    display: block;
+  }
+
+  .software-image {
+    margin-bottom: 1em;
+  }
+
+  .software-image img {
+    width: 90px;
+    height: 90px;
+  }
+
+}
+
+</style>
+
+
+<div class="software-intro">
+  R packages and software developed or co-developed as part of my research.
+</div>
+
+
+<div class="software-card">
+
+  <div class="software-image">
+    <img src="/images/software/alphahull.jpg"
+         alt="alphahull R package">
+  </div>
+
+  <div class="software-content">
+
+    <div class="software-title">
+      <a href="https://cran.r-project.org/package=alphahull"
+         target="_blank"
+         rel="noopener">
+        alphahull
+      </a>
+    </div>
+
+    <div class="software-authors">
+      Beatriz Pateiro-López and Alberto Rodríguez-Casal
+    </div>
+
+    <div class="software-description">
+      Generalization of the convex hull of a sample of points in the plane.
+      The package computes alpha-shapes and alpha-convex hulls and includes
+      tools for Delaunay triangulations and Voronoi diagrams.
+    </div>
+
+    <div class="software-links">
+      <a href="https://cran.r-project.org/package=alphahull"
+         target="_blank"
+         rel="noopener">
+        CRAN
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="software-card">
+
+  <div class="software-image">
+    <img src="/images/software/alphashape3d.jpg"
+         alt="alphashape3d R package">
+  </div>
+
+  <div class="software-content">
+
+    <div class="software-title">
+      <a href="https://cran.r-project.org/package=alphashape3d"
+         target="_blank"
+         rel="noopener">
+        alphashape3d
+      </a>
+    </div>
+
+    <div class="software-authors">
+      Thomas Lafarge and Beatriz Pateiro-López
+    </div>
+
+    <div class="software-description">
+      Implementation of the alpha-shape of a finite set of points in
+      three-dimensional space. The package provides tools for reconstructing
+      non-convex and disconnected 3D sets, computing volumes, identifying
+      connected components, and visualizing alpha-shapes.
+    </div>
+
+    <div class="software-links">
+      <a href="https://cran.r-project.org/package=alphashape3d"
+         target="_blank"
+         rel="noopener">
+        CRAN
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="software-card">
+
+  <div class="software-image">
+    <img src="/images/software/ASML.jpg"
+         alt="ASML R package">
+  </div>
+
+  <div class="software-content">
+
+    <div class="software-title">
+      <a href="https://cran.r-project.org/package=ASML"
+         target="_blank"
+         rel="noopener">
+        ASML
+      </a>
+    </div>
+
+    <div class="software-authors">
+      Brais González-Rodríguez, Ignacio Gómez-Casares,
+      Beatriz Pateiro-López and Julio González-Díaz
+    </div>
+
+    <div class="software-description">
+      Algorithm Portfolio Selection with Machine Learning. The package
+      provides methods for selecting among a portfolio of algorithms using
+      machine-learning models trained to predict a key performance indicator
+      for each candidate algorithm.
+    </div>
+
+    <div class="software-links">
+      <a href="https://cran.r-project.org/package=ASML"
+         target="_blank"
+         rel="noopener">
+        CRAN
+      </a>
+    </div>
+
+  </div>
+
+</div>
