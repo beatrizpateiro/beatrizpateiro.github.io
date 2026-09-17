@@ -4,3 +4,99 @@ title: "Projects"
 permalink: /projects/
 author_profile: true
 ---
+
+<style>
+
+.project-list {
+  font-size: 0.84em;
+}
+
+.project-item {
+  margin-bottom: 1.55em;
+  line-height: 1.45;
+}
+
+.project-title {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 0.12em;
+}
+
+.project-entity {
+  margin-bottom: 0.08em;
+  font-style: italic;
+}
+
+.project-info {
+  margin-bottom: 0.08em;
+}
+
+.project-dates {
+  opacity: 0.80;
+}
+
+</style>
+
+
+{% assign projects = site.projects | sort: "end_date" | reverse %}
+
+<div class="project-list">
+
+{% for project in projects %}
+
+  <div class="project-item">
+
+    <div class="project-title">
+      {{ project.title | strip }}
+    </div>
+
+
+    {% if project.funding_entity and project.funding_entity != "" %}
+      <div class="project-entity">
+        {{ project.funding_entity | strip }}
+      </div>
+    {% endif %}
+
+
+    {% if project.reference and project.reference != "" or project.project_type and project.project_type != "" %}
+      <div class="project-info">
+
+        {%- if project.reference and project.reference != "" -%}
+          {{ project.reference | strip }}
+        {%- endif -%}
+
+        {%- if project.reference and project.reference != "" and project.project_type and project.project_type != "" -%}
+          ·
+        {%- endif -%}
+
+        {%- if project.project_type and project.project_type != "" -%}
+          {{ project.project_type | strip }}
+        {%- endif -%}
+
+      </div>
+    {% endif %}
+
+
+    {% if project.from and project.from != "" or project.until and project.until != "" %}
+      <div class="project-dates">
+
+        {%- if project.from and project.from != "" -%}
+          {{ project.from | strip }}
+        {%- endif -%}
+
+        {%- if project.from and project.from != "" and project.until and project.until != "" -%}
+          &nbsp;–&nbsp;
+        {%- endif -%}
+
+        {%- if project.until and project.until != "" -%}
+          {{ project.until | strip }}
+        {%- endif -%}
+
+      </div>
+    {% endif %}
+
+  </div>
+
+{% endfor %}
+
+</div>
