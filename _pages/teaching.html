@@ -7,22 +7,33 @@ author_profile: true
 
 <style>
 
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
 .teaching-section {
-  margin-bottom: 2.5em;
+  margin-bottom: 1.8em;
 }
 
-.teaching-section h2 {
+.teaching-section h2,
+.teaching-section h3 {
+  margin-top: 0;
+  margin-bottom: 0.55em;
+}
+
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+.course-list {
+  font-size: 0.86em;
+  line-height: 1.4;
   margin-bottom: 0.8em;
 }
 
-.course-list {
-  font-size: 0.88em;
-  line-height: 1.6;
-  margin-bottom: 2em;
-}
-
 .course-item {
-  margin-bottom: 0.45em;
+  margin-bottom: 0.22em;
 }
 
 .course-name {
@@ -34,78 +45,144 @@ author_profile: true
 }
 
 
-/* Teaching materials */
+/* Past courses desplegable */
+
+.past-courses {
+  margin-top: 0.8em;
+}
+
+.past-courses summary {
+  cursor: pointer;
+  font-size: 1.05em;
+  font-weight: 600;
+  list-style: none;
+  margin-bottom: 0.5em;
+}
+
+.past-courses summary::-webkit-details-marker {
+  display: none;
+}
+
+.past-courses summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.45em;
+  transition: transform 0.15s ease;
+}
+
+.past-courses[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.past-courses .course-list {
+  margin-left: 1.25em;
+  margin-top: 0.5em;
+}
+
+
+/* =========================================================
+   TEACHING MATERIALS
+   ========================================================= */
+
+.material-note {
+  font-size: 0.78em;
+  opacity: 0.7;
+  margin-bottom: 1em;
+}
 
 .material-card {
   display: flex;
-  gap: 1.4em;
-  margin-bottom: 2.2em;
-  padding-bottom: 2em;
-  border-bottom: 1px solid rgba(127,127,127,0.25);
+  align-items: flex-start;
+  gap: 1em;
+  margin-bottom: 1.2em;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid rgba(127,127,127,0.20);
 }
 
 .material-image {
-  flex: 0 0 110px;
+  flex: 0 0 82px;
 }
 
 .material-image img {
-  width: 110px;
-  height: 110px;
+  width: 82px;
+  height: 82px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
+  display: block;
 }
 
 .material-content {
   flex: 1;
-  font-size: 0.88em;
-  line-height: 1.5;
+  min-width: 0;
+  font-size: 0.84em;
+  line-height: 1.4;
 }
 
 .material-title {
-  font-size: 1.1em;
+  font-size: 1.05em;
   font-weight: 600;
-  margin-bottom: 0.35em;
+  margin-bottom: 0.18em;
 }
 
 .material-description {
-  margin-bottom: 0.65em;
+  margin-bottom: 0.4em;
 }
 
 .material-authors {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
   opacity: 0.8;
+}
+
+.material-links {
+  margin-top: 0.25em;
 }
 
 .material-links a {
   display: inline-block;
-  padding: 0.2em 0.65em;
-  margin-right: 0.4em;
-  margin-bottom: 0.35em;
-  border: 1px solid rgba(127,127,127,0.4);
+  padding: 0.14em 0.55em;
+  margin-right: 0.3em;
+  margin-bottom: 0.2em;
+  border: 1px solid rgba(127,127,127,0.35);
   border-radius: 4px;
-  font-size: 0.88em;
+  font-size: 0.86em;
   text-decoration: none !important;
 }
 
-.material-note {
-  font-size: 0.82em;
-  opacity: 0.75;
-  margin-bottom: 1.5em;
-}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
+  .teaching-section {
+    margin-bottom: 1.4em;
+  }
+
   .material-card {
-    display: block;
+    display: flex;
+    gap: 0.75em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
   }
 
   .material-image {
-    margin-bottom: 1em;
+    flex: 0 0 62px;
   }
 
   .material-image img {
-    width: 90px;
-    height: 90px;
+    width: 62px;
+    height: 62px;
+    border-radius: 5px;
+  }
+
+  .material-content {
+    font-size: 0.82em;
+    line-height: 1.35;
+  }
+
+  .material-title {
+    font-size: 1em;
   }
 
 }
@@ -113,7 +190,9 @@ author_profile: true
 </style>
 
 
-<!-- CURRENT TEACHING -->
+<!-- =====================================================
+     CURRENT COURSES
+     ===================================================== -->
 
 <div class="teaching-section">
 
@@ -121,102 +200,103 @@ author_profile: true
 
 <div class="course-list">
 
-  
-<div class="course-item">
+  <div class="course-item">
     <span class="course-name">Análisis multivariante</span>
     <span class="course-program"> · Máster en Técnicas Estadísticas</span>
   </div>
+
   <div class="course-item">
     <span class="course-name">Elementos de probabilidad y estadística</span>
     <span class="course-program"> · Grado en Matemáticas</span>
   </div>
- <div class="course-item">
+
+  <div class="course-item">
     <span class="course-name">Estadística</span>
     <span class="course-program"> · Grado en Inteligencia Artificial</span>
   </div>
-  
 
 </div>
-
-</div>
-
 
 
 <!-- PAST COURSES -->
 
-<div class="teaching-section">
+<details class="past-courses">
 
-<h3>Past courses</h3>
+  <summary>Past courses</summary>
 
-<div class="course-list">
+  <div class="course-list">
 
-  <div class="course-item">
-    <span class="course-name">Análisis multivariante</span>
-    <span class="course-program"> · Licenciatura en Matemáticas</span>
+    <div class="course-item">
+      <span class="course-name">Análisis multivariante</span>
+      <span class="course-program"> · Licenciatura en Matemáticas</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Análisis multivariante</span>
+      <span class="course-program"> · Máster en Técnicas Estadísticas</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Aprendizaje estadístico</span>
+      <span class="course-program"> · Máster en Tecnologías de Análisis de Datos Masivos: Big Data</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Bioestadística</span>
+      <span class="course-program"> · Grado en Medicina</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Elementos de probabilidad y estadística</span>
+      <span class="course-program"> · Grado en Matemáticas</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Estadística</span>
+      <span class="course-program"> · Grado en Inteligencia Artificial</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Estadística</span>
+      <span class="course-program"> · Ingeniería Química</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Estadística</span>
+      <span class="course-program"> · Ingeniería Técnica en Informática de Sistemas</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Estadística aplicada e informática para químicos</span>
+      <span class="course-program"> · Grado en Química</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Estadística y metodología de la investigación</span>
+      <span class="course-program"> · Grado en Enfermería</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Fundamentos de biología aplicada</span>
+      <span class="course-program"> · Licenciatura en Biología</span>
+    </div>
+
+    <div class="course-item">
+      <span class="course-name">Técnicas estadísticas en la biología</span>
+      <span class="course-program"> · Licenciatura en Biología</span>
+    </div>
+
   </div>
 
-  <div class="course-item">
-    <span class="course-name">Análisis multivariante</span>
-    <span class="course-program"> · Máster en Técnicas Estadísticas</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Aprendizaje estadístico</span>
-    <span class="course-program"> · Máster en Tecnologías de Análisis de Datos Masivos: Big Data</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Bioestadística</span>
-    <span class="course-program"> · Grado en Medicina</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Elementos de probabilidad y estadística</span>
-    <span class="course-program"> · Grado en Matemáticas</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Estadística</span>
-    <span class="course-program"> · Grado en Inteligencia Artificial</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Estadística</span>
-    <span class="course-program"> · Ingeniería Química</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Estadística</span>
-    <span class="course-program"> · Ingeniería Técnica en Informática de Sistemas</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Estadística aplicada e informática para químicos</span>
-    <span class="course-program"> · Grado en Química</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Estadística y metodología de la investigación</span>
-    <span class="course-program"> · Grado en Enfermería</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Fundamentos de biología aplicada</span>
-    <span class="course-program"> · Licenciatura en Biología</span>
-  </div>
-
-  <div class="course-item">
-    <span class="course-name">Técnicas estadísticas en la biología</span>
-    <span class="course-program"> · Licenciatura en Biología</span>
-  </div>
+</details>
 
 </div>
 
-</div>
 
 
-
-<!-- TEACHING MATERIALS -->
+<!-- =====================================================
+     TEACHING MATERIALS
+     ===================================================== -->
 
 <div class="teaching-section">
 
@@ -251,14 +331,13 @@ author_profile: true
       <a href="https://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
          target="_blank"
          rel="noopener">
-         Book
+        Book
       </a>
     </div>
 
   </div>
 
 </div>
-
 
 
 <!-- R -->
@@ -284,14 +363,13 @@ author_profile: true
       <a href="https://eamo.usc.es/pub/pateiro/files/RCourse.pdf"
          target="_blank"
          rel="noopener">
-         Slides
+        Slides
       </a>
     </div>
 
   </div>
 
 </div>
-
 
 
 <!-- BIOSTATISTICS -->
@@ -318,19 +396,19 @@ author_profile: true
       <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Theory.pdf"
          target="_blank"
          rel="noopener">
-         Theory
+        Theory
       </a>
 
       <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Slides.pdf"
          target="_blank"
          rel="noopener">
-         Slides
+        Slides
       </a>
 
       <a href="https://eamo.usc.es/pub/pateiro/files/Bioestadistica_Exercises.pdf"
          target="_blank"
          rel="noopener">
-         Exercises
+        Exercises
       </a>
 
     </div>
@@ -338,7 +416,6 @@ author_profile: true
   </div>
 
 </div>
-
 
 
 <!-- CHEMICAL ENGINEERING -->
@@ -366,7 +443,7 @@ author_profile: true
       <a href="https://eamo.usc.es/pub/pateiro/files/IQ0809Pateiro.pdf"
          target="_blank"
          rel="noopener">
-         Course material
+        Course material
       </a>
 
     </div>
@@ -374,7 +451,6 @@ author_profile: true
   </div>
 
 </div>
-
 
 
 <!-- COMPUTER SCIENCE -->
@@ -405,19 +481,19 @@ author_profile: true
       <a href="https://eamo.usc.es/pub/pateiro/files/PubDocenteTeoriaEstadistica.pdf"
          target="_blank"
          rel="noopener">
-         Theory
+        Theory
       </a>
 
       <a href="https://eamo.usc.es/pub/pateiro/files/PubDocentePracticasEstadistica.pdf"
          target="_blank"
          rel="noopener">
-         R laboratories
+        R laboratories
       </a>
 
       <a href="https://eamo.usc.es/pub/pateiro/files/datasets.zip"
          target="_blank"
          rel="noopener">
-         Datasets
+        Datasets
       </a>
 
     </div>
