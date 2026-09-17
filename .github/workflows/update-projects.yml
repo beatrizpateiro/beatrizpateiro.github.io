@@ -1,0 +1,53 @@
+name: Update projects
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "27 5 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+
+  update-projects:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+
+      - name: Generate projects
+        env:
+          PROJECTS_URL: "https://eamo.usc.es/pub/pateiro/files/proyectos_json.php"
+        run: python scripts/update_projects.py
+
+
+      - name: Commit changes
+        run: |
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add _projects
+
+          if git diff --cached --quiet; then
+
+            echo "No hay cambios en los proyectos"
+
+          else
+
+            git commit -m "Update projects"
+            git push
+
+          fi
