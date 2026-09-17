@@ -12,13 +12,12 @@ author_profile: true
    ========================================================= */
 
 .teaching-section {
-  margin-bottom: 1.8em;
+  margin-bottom: 2.2em;
 }
 
-.teaching-section h2,
-.teaching-section h3 {
+.teaching-section h2 {
   margin-top: 0;
-  margin-bottom: 0.55em;
+  margin-bottom: 0.7em;
 }
 
 
@@ -26,14 +25,42 @@ author_profile: true
    COURSES
    ========================================================= */
 
+.courses-block {
+  margin-bottom: 1.15em;
+}
+
+/* Quitamos completamente la flecha nativa */
+.courses-block summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 0.55em;
+}
+
+.courses-block summary::-webkit-details-marker {
+  display: none;
+}
+
+.courses-block summary::marker {
+  display: none;
+  content: "";
+}
+
+/* Ligero efecto al pasar el ratón */
+.courses-block summary:hover {
+  opacity: 0.75;
+}
+
 .course-list {
-  font-size: 0.86em;
-  line-height: 1.4;
-  margin-bottom: 0.8em;
+  font-size: 0.87em;
+  line-height: 1.5;
+  margin-left: 0.15em;
+  margin-bottom: 0.5em;
 }
 
 .course-item {
-  margin-bottom: 0.22em;
+  margin-bottom: 0.38em;
 }
 
 .course-name {
@@ -45,57 +72,24 @@ author_profile: true
 }
 
 
-/* Past courses desplegable */
-
-.past-courses {
-  margin-top: 0.8em;
-}
-
-.past-courses summary {
-  cursor: pointer;
-  font-size: 1.05em;
-  font-weight: 600;
-  list-style: none;
-  margin-bottom: 0.5em;
-}
-
-.past-courses summary::-webkit-details-marker {
-  display: none;
-}
-
-.past-courses summary::before {
-  content: "▸";
-  display: inline-block;
-  margin-right: 0.45em;
-  transition: transform 0.15s ease;
-}
-
-.past-courses[open] summary::before {
-  transform: rotate(90deg);
-}
-
-.past-courses .course-list {
-  margin-left: 1.25em;
-  margin-top: 0.5em;
-}
-
-
 /* =========================================================
    TEACHING MATERIALS
    ========================================================= */
 
 .material-note {
-  font-size: 0.78em;
+  font-size: 0.8em;
   opacity: 0.7;
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .material-card {
   display: flex;
   align-items: flex-start;
-  gap: 1em;
-  margin-bottom: 1.2em;
-  padding-bottom: 1.2em;
+  gap: 1.05em;
+
+  margin-bottom: 1.45em;
+  padding-bottom: 1.45em;
+
   border-bottom: 1px solid rgba(127,127,127,0.20);
 }
 
@@ -104,46 +98,51 @@ author_profile: true
 }
 
 .material-image img {
+  display: block;
   width: 82px;
   height: 82px;
+
   object-fit: cover;
   border-radius: 6px;
-  display: block;
 }
 
 .material-content {
   flex: 1;
   min-width: 0;
-  font-size: 0.84em;
-  line-height: 1.4;
+
+  font-size: 0.86em;
+  line-height: 1.45;
 }
 
 .material-title {
-  font-size: 1.05em;
+  font-size: 1.07em;
   font-weight: 600;
-  margin-bottom: 0.18em;
+  margin-bottom: 0.25em;
 }
 
 .material-description {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.5em;
 }
 
 .material-authors {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.4em;
   opacity: 0.8;
 }
 
 .material-links {
-  margin-top: 0.25em;
+  margin-top: 0.3em;
 }
 
 .material-links a {
   display: inline-block;
-  padding: 0.14em 0.55em;
-  margin-right: 0.3em;
-  margin-bottom: 0.2em;
+
+  padding: 0.17em 0.6em;
+  margin-right: 0.35em;
+  margin-bottom: 0.25em;
+
   border: 1px solid rgba(127,127,127,0.35);
   border-radius: 4px;
+
   font-size: 0.86em;
   text-decoration: none !important;
 }
@@ -156,33 +155,48 @@ author_profile: true
 @media (max-width: 600px) {
 
   .teaching-section {
-    margin-bottom: 1.4em;
+    margin-bottom: 1.8em;
   }
 
+  .courses-block {
+    margin-bottom: 1em;
+  }
+
+  .course-list {
+    font-size: 0.84em;
+    line-height: 1.45;
+  }
+
+  /*
+    En móvil seguimos dejando imagen y texto en paralelo,
+    pero hacemos la imagen más pequeña.
+  */
   .material-card {
     display: flex;
+    align-items: flex-start;
+
     gap: 0.75em;
-    margin-bottom: 1em;
-    padding-bottom: 1em;
+    margin-bottom: 1.15em;
+    padding-bottom: 1.15em;
   }
 
   .material-image {
-    flex: 0 0 62px;
+    flex: 0 0 58px;
   }
 
   .material-image img {
-    width: 62px;
-    height: 62px;
+    width: 58px;
+    height: 58px;
     border-radius: 5px;
   }
 
   .material-content {
-    font-size: 0.82em;
-    line-height: 1.35;
+    font-size: 0.83em;
+    line-height: 1.4;
   }
 
   .material-title {
-    font-size: 1em;
+    font-size: 1.03em;
   }
 
 }
@@ -191,8 +205,11 @@ author_profile: true
 
 
 <!-- =====================================================
-     CURRENT COURSES
+     COURSES
      ===================================================== -->
+
+<div class="teaching-section">
+
 
 <!-- CURRENT COURSES -->
 
@@ -293,6 +310,9 @@ author_profile: true
   </div>
 
 </details>
+
+</div>
+
 
 
 <!-- =====================================================
