@@ -46,13 +46,31 @@ author_profile: true
   font-weight: 600;
 }
 
+.project-status {
+  display: inline-block;
+  margin-left: 0.55em;
+  padding: 0.08em 0.5em;
+  border-radius: 10px;
+  font-size: 0.72em;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.project-status-ongoing {
+  border: 1px solid rgba(80, 150, 90, 0.55);
+}
+
+.project-status-completed {
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  opacity: 0.7;
+}
+
 .project-entity {
   margin-top: 0.15em;
   margin-left: 1.2em;
-  font-style: italic;
 }
 
-.project-dates {
+.project-until {
   margin-top: 0.05em;
   margin-left: 1.2em;
   opacity: 0.8;
@@ -74,10 +92,17 @@ author_profile: true
 
 
 {% assign projects = site.projects | sort: "end_date" | reverse %}
+{% assign today = site.time | date: "%Y-%m-%d" %}
 
 <div class="project-list">
 
 {% for project in projects %}
+
+  {% if project.end_date >= today %}
+    {% assign status = "ongoing" %}
+  {% else %}
+    {% assign status = "completed" %}
+  {% endif %}
 
   <div class="project-item">
 
@@ -89,27 +114,25 @@ author_profile: true
           {{ project.title | strip }}
         </span>
 
+        {% if status == "ongoing" %}
+          <span class="project-status project-status-ongoing">
+            Ongoing
+          </span>
+        {% else %}
+          <span class="project-status project-status-completed">
+            Completed
+          </span>
+        {% endif %}
+
         {% if project.funding_entity and project.funding_entity != "" %}
           <div class="project-entity">
-            {{ project.funding_entity | strip }}
+            Funding entity: {{ project.funding_entity | strip }}
           </div>
         {% endif %}
 
-        {% if project.from and project.from != "" or project.until and project.until != "" %}
-          <div class="project-dates">
-
-            {%- if project.from and project.from != "" -%}
-              {{ project.from | strip }}
-            {%- endif -%}
-
-            {%- if project.from and project.from != "" and project.until and project.until != "" -%}
-              &nbsp;–&nbsp;
-            {%- endif -%}
-
-            {%- if project.until and project.until != "" -%}
-              {{ project.until | strip }}
-            {%- endif -%}
-
+        {% if project.end_date and project.end_date != "" %}
+          <div class="project-until">
+            Until {{ project.end_date }}
           </div>
         {% endif %}
 
@@ -118,17 +141,21 @@ author_profile: true
 
       <div class="project-expanded">
 
+        {% if project.start_date and project.start_date != "" and project.end_date and project.end_date != "" %}
+          <div>
+            From {{ project.start_date }} to {{ project.end_date }}
+          </div>
+        {% endif %}
+
         {% if project.reference and project.reference != "" %}
           <div>
-            <strong>Reference:</strong>
-            {{ project.reference | strip }}
+            Code: {{ project.reference | strip }}
           </div>
         {% endif %}
 
         {% if project.project_type and project.project_type != "" %}
           <div>
-            <strong>Type:</strong>
-            {{ project.project_type | strip }}
+            Type: {{ project.project_type | strip }}
           </div>
         {% endif %}
 
