@@ -23,7 +23,7 @@ repository               : "beatrizpateiro/beatrizpateiro.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "bpl.png"
   name             : "Beatriz Pateiro-López"
   pronouns         : # example: "she/her"  
   bio              : "Profesora Titular de Universidad"
