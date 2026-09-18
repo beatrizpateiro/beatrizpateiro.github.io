@@ -28,9 +28,7 @@ You can find me at the [Department of Statistics, Mathematical Analysis and Opti
 
 **Office:** 562
 
-**Contact details:**
-
-- **Email:** [beatriz.pateiro@usc.es](mailto:beatriz.pateiro@usc.es)
+**Email:** [beatriz.pateiro@usc.es](mailto:beatriz.pateiro@usc.es)
 
 **Address:**
 
