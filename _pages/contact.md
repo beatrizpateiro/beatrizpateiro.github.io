@@ -37,7 +37,6 @@ You can find me at the [Department of Statistics, Mathematical Analysis and Opti
 
 **Address:**  
 Beatriz Pateiro-López  
-Department of Statistics, Mathematical Analysis and Optimisation  
 Faculty of Mathematics, University of Santiago de Compostela  
 Rúa Lope Gómez de Marzoa, s/n  
 15782 Santiago de Compostela, Spain
