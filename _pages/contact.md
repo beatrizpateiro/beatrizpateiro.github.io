@@ -22,9 +22,11 @@ author_profile: true
 }
 </style>
 
-<div class="contact-info">
+<div class="contact-info" markdown="1">
 
-You can find me at the [Department of Statistics, Mathematical Analysis and Optimisation](https://investigacion.usc.gal/unidades/1921?lang=en), [Faculty of Mathematics](https://www.usc.gal/en/center/faculty-mathematics), University of Santiago de Compostela. Despacho 562
+You can find me at the [Department of Statistics, Mathematical Analysis and Optimisation](https://investigacion.usc.gal/unidades/1921?lang=en), [Faculty of Mathematics](https://www.usc.gal/en/center/faculty-mathematics), University of Santiago de Compostela.
+
+**Office:** 562
 
 **Contact details:**
 
