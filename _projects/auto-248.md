@@ -1,5 +1,5 @@
 ---
-title: "Rede Tecnol&oacute;xica de Matem&aacute;tica Industrial (Rede ITMATI)"
+title: "Rede Tecnolóxica de Matemática Industrial (Rede ITMATI)"
 collection: projects
 project_id: "248"
 reference: "CN 2012/316 (Red de investigación)"

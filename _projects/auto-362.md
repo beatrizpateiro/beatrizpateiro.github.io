@@ -1,5 +1,5 @@
 ---
-title: "Realizaci&oacute;n de trabajos de investigaci&oacute;n para el proyecto Heisenberg, MECO y BIOS (cont 1)"
+title: "Realización de trabajos de investigación para el proyecto Heisenberg, MECO y BIOS (cont 1)"
 collection: projects
 project_id: "362"
 reference: "CITMAga-C112-2023"

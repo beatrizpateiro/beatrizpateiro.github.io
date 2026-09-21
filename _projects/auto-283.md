@@ -1,5 +1,5 @@
 ---
-title: "Rede Tecnol&oacute;xica de Matem&aacute;tica Industrial (Rede TMATI)"
+title: "Rede Tecnolóxica de Matemática Industrial (Rede TMATI)"
 collection: projects
 project_id: "283"
 reference: "R2014/014 (Red de investigación)"

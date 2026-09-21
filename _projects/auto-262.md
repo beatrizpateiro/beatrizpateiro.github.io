@@ -1,5 +1,5 @@
 ---
-title: "Plataforma independente operativa para equipos de electr&oacute;nica de consumo (Platino)"
+title: "Plataforma independente operativa para equipos de electrónica de consumo (Platino)"
 collection: projects
 project_id: "262"
 reference: "ITC-20113001"

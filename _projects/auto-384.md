@@ -1,5 +1,5 @@
 ---
-title: "Metodolog&iacute;a estad&iacute;stica para la valoraci&oacute;n de stock"
+title: "Metodología estadística para la valoración de stock"
 collection: projects
 project_id: "384"
 reference: "CITMAga-C164 (2026-CE059) "

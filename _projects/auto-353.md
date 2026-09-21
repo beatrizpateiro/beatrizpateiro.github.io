@@ -1,5 +1,5 @@
 ---
-title: "Din&aacute;mica compleja e inferencia no param&eacute;trica"
+title: "Dinámica compleja e inferencia no paramétrica"
 collection: projects
 project_id: "353"
 reference: "PID2020-116587GB-I00"

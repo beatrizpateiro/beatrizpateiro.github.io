@@ -1,5 +1,5 @@
 ---
-title: "Tecnolox&iacute;as e an&aacute;lise dos datos ling&uuml;&iacute;sticos"
+title: "Tecnoloxías e análise dos datos lingüísticos"
 collection: projects
 project_id: "282"
 reference: "R2014/007 (Red de investigación)"

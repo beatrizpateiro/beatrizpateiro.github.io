@@ -1,5 +1,5 @@
 ---
-title: "Realizaci&oacute;n de trabajos de investigaci&oacute;n para la continuidad de los trabajos de investigaci&oacute;n  de desarrollo del producto &ldquo;Heisenberg: Sistema experto, ayuda al usuario y mejora de soluciones&rdquo;"
+title: "Realización de trabajos de investigación para la continuidad de los trabajos de investigación  de desarrollo del producto &ldquo;Heisenberg: Sistema experto, ayuda al usuario y mejora de soluciones&rdquo;"
 collection: projects
 project_id: "341"
 reference: "ITMATI-C86-2020"

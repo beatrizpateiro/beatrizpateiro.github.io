@@ -1,5 +1,5 @@
 ---
-title: "Tecnolox&iacute;as e an&aacute;lise dos datos ling&uuml;&iacute;sticos"
+title: "Tecnoloxías e análise dos datos lingüísticos"
 collection: projects
 project_id: "247"
 reference: "CN 2012/179 (Red de investigación)"

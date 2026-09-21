@@ -1,5 +1,5 @@
 ---
-title: "Realizaci&oacute;n de traballos de investigaci&oacute;n para o proxecto Heisenberg, MECO, BIOS e Pricing Qu&iacute;mica"
+title: "Realización de traballos de investigación para o proxecto Heisenberg, MECO, BIOS e Pricing Química"
 collection: projects
 project_id: "368"
 reference: "CITMAga-C123-2023"

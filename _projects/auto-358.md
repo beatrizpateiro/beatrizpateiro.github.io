@@ -1,5 +1,5 @@
 ---
-title: "Realizaci&oacute;n de trabajos de investigaci&oacute;n para el proyecto Heisenberg, MECO y BIOS"
+title: "Realización de trabajos de investigación para el proyecto Heisenberg, MECO y BIOS"
 collection: projects
 project_id: "358"
 reference: "CITMAga-C92-2021"

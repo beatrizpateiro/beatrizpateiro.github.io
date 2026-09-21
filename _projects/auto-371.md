@@ -1,5 +1,5 @@
 ---
-title: "Desarrollo de una herramienta digital de alerta temprana para el an&aacute;lisis de fatiga basada en datos hidro-termo-mec&aacute;nicos (DiAlFa)"
+title: "Desarrollo de una herramienta digital de alerta temprana para el análisis de fatiga basada en datos hidro-termo-mecánicos (DiAlFa)"
 collection: projects
 project_id: "371"
 reference: "-"

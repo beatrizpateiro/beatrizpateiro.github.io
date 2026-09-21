@@ -1,5 +1,5 @@
 ---
-title: "Asesor&iacute;a acad&eacute;mica na metodolox&iacute;a matem&aacute;tica para a simulaci&oacute;n e optimizaci&oacute;n de sistemas enerx&eacute;ticos en condici&oacute;ns de incertidume"
+title: "Asesoría académica na metodoloxía matemática para a simulación e optimización de sistemas enerxéticos en condicións de incertidume"
 collection: projects
 project_id: "375"
 reference: "CITMAga-C148-2025"

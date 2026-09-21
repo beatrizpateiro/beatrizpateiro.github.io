@@ -1,5 +1,5 @@
 ---
-title: "Modelizaci&oacute;n no param&eacute;trica de din&aacute;micas y dependencias en sistemas complejos"
+title: "Modelización no paramétrica de dinámicas y dependencias en sistemas complejos"
 collection: projects
 project_id: "301"
 reference: "MTM2016-76969-P"

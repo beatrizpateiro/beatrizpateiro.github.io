@@ -1,5 +1,5 @@
 ---
-title: "Misiones cr&iacute;ticas de emergencias con medios a&eacute;reos tripulados y no tripulados en vuelo cooperativo (ENJAMBRE)"
+title: "Misiones críticas de emergencias con medios aéreos tripulados y no tripulados en vuelo cooperativo (ENJAMBRE)"
 collection: projects
 project_id: "286"
 reference: "ITMATI-C27-2014"
