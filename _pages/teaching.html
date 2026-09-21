@@ -147,11 +147,42 @@ author_profile: true
   line-height: 1.45;
 }
 
+
+/* Título + idioma */
+
+.material-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45em;
+
+  margin-bottom: 0.25em;
+}
+
 .material-title {
   font-size: 1.07em;
   font-weight: 600;
-  margin-bottom: 0.25em;
+  margin-bottom: 0;
 }
+
+.material-lang {
+  display: inline-block;
+
+  padding: 0.13em 0.5em;
+
+  border: 1px solid rgba(127,127,127,0.25);
+  border-radius: 999px;
+
+  background: rgba(127,127,127,0.07);
+
+  font-size: 0.72em;
+  font-weight: 500;
+  line-height: 1.2;
+
+  opacity: 0.72;
+  white-space: nowrap;
+}
+
 
 .material-description {
   margin-bottom: 0.5em;
@@ -200,10 +231,6 @@ author_profile: true
     line-height: 1.45;
   }
 
-  /*
-    En móvil seguimos dejando imagen y texto en paralelo,
-    pero hacemos la imagen más pequeña.
-  */
   .material-card {
     display: flex;
     align-items: flex-start;
@@ -230,6 +257,11 @@ author_profile: true
 
   .material-title {
     font-size: 1.03em;
+  }
+
+  .material-lang {
+    font-size: 0.70em;
+    padding: 0.11em 0.45em;
   }
 
 }
@@ -360,19 +392,25 @@ author_profile: true
   Not all contents are original. Whenever possible, explicit reference is made to the original source.
 </div>
 
+
 <!-- =====================================================
      STATISTICS · ARTIFICIAL INTELLIGENCE
      ===================================================== -->
 
 <div class="material-card">
+
   <div class="material-image">
     <img src="/images/teaching/ai_statistics.png"
          alt="Statistics. AI">
   </div>
+
   <div class="material-content">
 
-    <div class="material-title">
-      Estatística · Grado en Inteligencia Artificial
+    <div class="material-title-row">
+      <div class="material-title">
+        Estatística · Grado en Inteligencia Artificial
+      </div>
+      <span class="material-lang">Galego</span>
     </div>
 
     <div class="material-description">
@@ -399,7 +437,11 @@ author_profile: true
   </div>
 
 </div>
-<!-- MULTIVARIATE ANALYSIS -->
+
+
+<!-- =====================================================
+     MULTIVARIATE ANALYSIS
+     ===================================================== -->
 
 <div class="material-card">
 
@@ -410,8 +452,11 @@ author_profile: true
 
   <div class="material-content">
 
-    <div class="material-title">
-      Análisis Multivariante
+    <div class="material-title-row">
+      <div class="material-title">
+        Análisis Multivariante
+      </div>
+      <span class="material-lang">Castellano</span>
     </div>
 
     <div class="material-description">
@@ -420,11 +465,13 @@ author_profile: true
     </div>
 
     <div class="material-links">
+
       <a href="https://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
          target="_blank"
          rel="noopener">
-        Online Book
+        Online book
       </a>
+
     </div>
 
   </div>
@@ -432,7 +479,9 @@ author_profile: true
 </div>
 
 
-<!-- R -->
+<!-- =====================================================
+     R
+     ===================================================== -->
 
 <div class="material-card">
 
@@ -443,8 +492,11 @@ author_profile: true
 
   <div class="material-content">
 
-    <div class="material-title">
-      Basics on R
+    <div class="material-title-row">
+      <div class="material-title">
+        Basics on R
+      </div>
+      <span class="material-lang">English</span>
     </div>
 
     <div class="material-description">
@@ -452,11 +504,13 @@ author_profile: true
     </div>
 
     <div class="material-links">
+
       <a href="https://eamo.usc.es/pub/pateiro/files/RCourse.pdf"
          target="_blank"
          rel="noopener">
         Slides
       </a>
+
     </div>
 
   </div>
@@ -464,7 +518,9 @@ author_profile: true
 </div>
 
 
-<!-- BIOSTATISTICS -->
+<!-- =====================================================
+     BIOSTATISTICS
+     ===================================================== -->
 
 <div class="material-card">
 
@@ -475,8 +531,11 @@ author_profile: true
 
   <div class="material-content">
 
-    <div class="material-title">
-      Bioestadística · Grado en Medicina
+    <div class="material-title-row">
+      <div class="material-title">
+        Bioestadística · Grado en Medicina
+      </div>
+      <span class="material-lang">Castellano</span>
     </div>
 
     <div class="material-description">
@@ -510,7 +569,9 @@ author_profile: true
 </div>
 
 
-<!-- CHEMICAL ENGINEERING -->
+<!-- =====================================================
+     CHEMICAL ENGINEERING
+     ===================================================== -->
 
 <div class="material-card">
 
@@ -521,8 +582,11 @@ author_profile: true
 
   <div class="material-content">
 
-    <div class="material-title">
-      Estadística · Ingeniería Química
+    <div class="material-title-row">
+      <div class="material-title">
+        Estadística · Ingeniería Química
+      </div>
+      <span class="material-lang">Castellano</span>
     </div>
 
     <div class="material-description">
@@ -545,7 +609,9 @@ author_profile: true
 </div>
 
 
-<!-- COMPUTER SCIENCE -->
+<!-- =====================================================
+     COMPUTER SCIENCE
+     ===================================================== -->
 
 <div class="material-card">
 
@@ -556,8 +622,11 @@ author_profile: true
 
   <div class="material-content">
 
-    <div class="material-title">
-      Estadística · Ingeniería Técnica en Informática de Sistemas
+    <div class="material-title-row">
+      <div class="material-title">
+        Estadística · Ingeniería Técnica en Informática de Sistemas
+      </div>
+      <span class="material-lang">Castellano</span>
     </div>
 
     <div class="material-authors">
