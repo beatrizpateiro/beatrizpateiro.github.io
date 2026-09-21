@@ -136,13 +136,14 @@ if not raw_content.strip():
 # ---------------------------------------------------------
 
 try:
-    content = raw_content.decode("utf-8-sig")
-
+    content = raw_content.decode("utf-8")
 except UnicodeDecodeError as error:
-
     raise RuntimeError(
         "La respuesta del servidor no está codificada en UTF-8."
     ) from error
+
+# Eliminar BOM y posibles espacios/saltos de línea al principio
+content = content.lstrip("\ufeff \t\r\n")
 
 
 # ---------------------------------------------------------
