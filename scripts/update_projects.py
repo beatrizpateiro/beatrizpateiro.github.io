@@ -3,6 +3,7 @@ import os
 import re
 import unicodedata
 import urllib.request
+import urllib.error
 from pathlib import Path
 from datetime import datetime
 
@@ -60,21 +61,114 @@ def normalize_date(value):
         return ""
 
 
+# =========================================================
+# LEER JSON
+# =========================================================
+
+print(f"Leyendo proyectos desde: {PROJECTS_URL}")
+
+request = urllib.request.Request(
+    PROJECTS_URL,
+    headers={
+        "User-Agent": (
+            "Mozilla/5.0 "
+            "(compatible; BeatrizPateiroProjects/1.0)"
+        ),
+        "Accept": "application/json,text/plain,*/*",
+    },
+)
+
+
+try:
+
+    with urllib.request.urlopen(request, timeout=30) as response:
+
+        status = response.status
+        final_url = response.geturl()
+        content_type = response.headers.get("Content-Type", "")
+
+        raw_content = response.read()
+
+except urllib.error.HTTPError as error:
+
+    raise RuntimeError(
+        f"Error HTTP al descargar los proyectos: "
+        f"{error.code} {error.reason}"
+    ) from error
+
+except urllib.error.URLError as error:
+
+    raise RuntimeError(
+        f"No se pudo conectar con {PROJECTS_URL}: "
+        f"{error.reason}"
+    ) from error
+
+
+print(f"HTTP status: {status}")
+print(f"URL final: {final_url}")
+print(f"Content-Type: {content_type}")
+print(f"Bytes recibidos: {len(raw_content)}")
+
+
 # ---------------------------------------------------------
-# Leer JSON
+# Comprobar que la respuesta no está vacía
 # ---------------------------------------------------------
 
-with urllib.request.urlopen(PROJECTS_URL) as response:
-    proyectos = json.load(response)
+if not raw_content.strip():
+    raise RuntimeError(
+        "El servidor ha devuelto una respuesta vacía."
+    )
+
+
+# ---------------------------------------------------------
+# Convertir respuesta a texto
+# ---------------------------------------------------------
+
+try:
+    content = raw_content.decode("utf-8")
+
+except UnicodeDecodeError as error:
+
+    raise RuntimeError(
+        "La respuesta del servidor no está codificada en UTF-8."
+    ) from error
+
+
+# Eliminar BOM y posibles espacios/saltos al principio
+content = content.lstrip("\ufeff \t\r\n")
+
+
+# ---------------------------------------------------------
+# Interpretar JSON
+# ---------------------------------------------------------
+
+try:
+    proyectos = json.loads(content)
+
+except json.JSONDecodeError as error:
+
+    preview = content[:500].replace("\n", " ")
+
+    raise RuntimeError(
+        "La respuesta recibida no es JSON válido.\n"
+        f"URL final: {final_url}\n"
+        f"Content-Type: {content_type}\n"
+        f"Primeros caracteres recibidos:\n{preview}"
+    ) from error
 
 
 if not isinstance(proyectos, list):
-    raise ValueError("El JSON debe contener una lista de proyectos.")
+    raise ValueError(
+        "El JSON debe contener una lista de proyectos."
+    )
 
 
-# ---------------------------------------------------------
-# Preparar carpeta
-# ---------------------------------------------------------
+print(f"Proyectos recibidos: {len(proyectos)}")
+
+
+# =========================================================
+# PREPARAR CARPETA
+# =========================================================
 
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -83,9 +177,9 @@ for file in OUTPUT_DIR.glob("auto-*.md"):
     file.unlink()
 
 
-# ---------------------------------------------------------
-# Generar proyectos
-# ---------------------------------------------------------
+# =========================================================
+# GENERAR PROYECTOS
+# =========================================================
 
 for proyecto in proyectos:
 
