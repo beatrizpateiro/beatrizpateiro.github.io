@@ -1,9 +1,9 @@
 import json
 import os
 import re
-import shutil
 import unicodedata
 import urllib.request
+import urllib.error
 from pathlib import Path
 from datetime import datetime
 
@@ -41,7 +41,8 @@ def normalize_date(value):
 
 
 def slugify(value):
-    value = str(value)
+    """Convierte un valor en una cadena adecuada para usar en URLs."""
+    value = str(value or "")
 
     value = unicodedata.normalize("NFKD", value)
     value = value.encode("ascii", "ignore").decode("ascii")
@@ -52,7 +53,7 @@ def slugify(value):
 
 def publication_category(tipo):
     """
-    Adapta esto a los valores reales de tipopubli de tu BBDD.
+    Clasifica la publicación según el campo 'tipo'.
     """
     tipo = str(tipo or "").lower()
 
@@ -69,21 +70,112 @@ def publication_category(tipo):
     return "manuscripts"
 
 
+# =========================================================
+# LEER JSON
+# =========================================================
+
+print(f"Leyendo publicaciones desde: {PUBLICATIONS_URL}")
+
+request = urllib.request.Request(
+    PUBLICATIONS_URL,
+    headers={
+        "User-Agent": (
+            "Mozilla/5.0 "
+            "(compatible; BeatrizPateiroPublications/1.0)"
+        ),
+        "Accept": "application/json,text/plain,*/*",
+    },
+)
+
+
+try:
+
+    with urllib.request.urlopen(request, timeout=30) as response:
+
+        status = response.status
+        final_url = response.geturl()
+        content_type = response.headers.get("Content-Type", "")
+
+        raw_content = response.read()
+
+except urllib.error.HTTPError as error:
+
+    raise RuntimeError(
+        f"Error HTTP al descargar las publicaciones: "
+        f"{error.code} {error.reason}"
+    ) from error
+
+except urllib.error.URLError as error:
+
+    raise RuntimeError(
+        f"No se pudo conectar con {PUBLICATIONS_URL}: "
+        f"{error.reason}"
+    ) from error
+
+
+print(f"HTTP status: {status}")
+print(f"URL final: {final_url}")
+print(f"Content-Type: {content_type}")
+print(f"Bytes recibidos: {len(raw_content)}")
+
+
 # ---------------------------------------------------------
-# Leer JSON
+# Comprobar que la respuesta no está vacía
 # ---------------------------------------------------------
 
-with urllib.request.urlopen(PUBLICATIONS_URL) as response:
-    publicaciones = json.load(response)
+if not raw_content.strip():
+    raise RuntimeError(
+        "El servidor ha devuelto una respuesta vacía."
+    )
+
+
+# ---------------------------------------------------------
+# Convertir respuesta a texto
+#
+# utf-8-sig elimina automáticamente un posible BOM UTF-8
+# ---------------------------------------------------------
+
+try:
+    content = raw_content.decode("utf-8-sig")
+
+except UnicodeDecodeError as error:
+
+    raise RuntimeError(
+        "La respuesta del servidor no está codificada en UTF-8."
+    ) from error
+
+
+# ---------------------------------------------------------
+# Interpretar JSON
+# ---------------------------------------------------------
+
+try:
+    publicaciones = json.loads(content)
+
+except json.JSONDecodeError as error:
+
+    preview = content[:500].replace("\n", " ")
+
+    raise RuntimeError(
+        "La respuesta recibida no es JSON válido.\n"
+        f"URL final: {final_url}\n"
+        f"Content-Type: {content_type}\n"
+        f"Primeros caracteres recibidos:\n{preview}"
+    ) from error
 
 
 if not isinstance(publicaciones, list):
-    raise ValueError("El JSON debe contener una lista de publicaciones.")
+    raise ValueError(
+        "El JSON debe contener una lista de publicaciones."
+    )
 
 
-# ---------------------------------------------------------
-# Preparar carpeta
-# ---------------------------------------------------------
+print(f"Publicaciones recibidas: {len(publicaciones)}")
+
+
+# =========================================================
+# PREPARAR CARPETA
+# =========================================================
 
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -92,9 +184,9 @@ for file in OUTPUT_DIR.glob("auto-*.md"):
     file.unlink()
 
 
-# ---------------------------------------------------------
-# Generar publicaciones
-# ---------------------------------------------------------
+# =========================================================
+# GENERAR PUBLICACIONES
+# =========================================================
 
 for pub in publicaciones:
 
@@ -136,20 +228,28 @@ for pub in publicaciones:
         f"paperurl: {yaml_string(enlace)}",
         f"issn: {yaml_string(issn)}",
         f"publication_type: {yaml_string(tipo)}",
-        "authors:"
+        "authors:",
     ]
 
-    for autor in autores:
-        lines.append(f"  - {yaml_string(autor)}")
+    if isinstance(autores, list):
+
+        for autor in autores:
+            lines.append(f"  - {yaml_string(autor)}")
+
+    else:
+
+        # Por si algún registro devuelve autores como texto
+        lines.append(f"  - {yaml_string(autores)}")
 
     lines += [
         "---",
-        ""
+        "",
     ]
 
     filename.write_text(
         "\n".join(lines),
-        encoding="utf-8"
+        encoding="utf-8",
     )
+
 
 print(f"Generadas {len(publicaciones)} publicaciones.")
