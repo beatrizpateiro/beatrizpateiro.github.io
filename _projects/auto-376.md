@@ -1,5 +1,5 @@
 ---
-title: "Consolidaci&oacute;n e estruturaci&oacute;n de unidades de investigaci&oacute;n (grupos competitivos)"
+title: "Consolidación e estruturación de unidades de investigación (grupos competitivos)"
 collection: projects
 project_id: "376"
 reference: "ED431C 2025/03"
