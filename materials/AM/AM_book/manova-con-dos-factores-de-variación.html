@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 MANOVA con dos factores de variación | bookdown_AM.knit</title>
   <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 MANOVA con dos factores de variación | bookdown_AM.knit" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -126,7 +127,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -166,34 +166,34 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="autores.html"><a href="autores.html"><i class="fa fa-check"></i>Autores</a></li>
 <li class="chapter" data-level="" data-path="prerrequisitos.html"><a href="prerrequisitos.html"><i class="fa fa-check"></i>Prerrequisitos</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introducción-al-análisis-multivariante.html"><a href="introducción-al-análisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<li class="chapter" data-level="1" data-path="03-manova.html"><a href="#introducci%C3%B3n-al-an%C3%A1lisis-multivariante"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="notación-de-vectores-y-matrices.html"><a href="notación-de-vectores-y-matrices.html"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.1" data-path="03-manova.html"><a href="#notaci%C3%B3n-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
 <li class="chapter" data-level="1.2" data-path="vectores-aleatorios.html"><a href="vectores-aleatorios.html"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
-<li class="chapter" data-level="1.3" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<li class="chapter" data-level="1.3" data-path="03-manova.html"><a href="#representaci%C3%B3n-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#visualización-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
-<li class="chapter" data-level="1.3.2" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+<li class="chapter" data-level="1.3.1" data-path="03-manova.html"><a href="#visualizaci%C3%B3n-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<li class="chapter" data-level="1.5" data-path="03-manova.html"><a href="#distancias-estad%C3%ADsticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
-<li class="chapter" data-level="1.5.2" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
-<li class="chapter" data-level="1.5.3" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
-<li class="chapter" data-level="1.5.4" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#estandarización"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+<li class="chapter" data-level="1.5.1" data-path="03-manova.html"><a href="#distancia-eucl%C3%ADdea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="03-manova.html"><a href="#distancia-eucl%C3%ADdea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="03-manova.html"><a href="#estandarizaci%C3%B3n"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<li class="chapter" data-level="2.1" data-path="03-manova.html"><a href="#estimaci%C3%B3n-en-la-distribuci%C3%B3n-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
-<li class="chapter" data-level="2.1.2" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#estimadores-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
-<li class="chapter" data-level="2.1.3" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#distribución-de-overlinebmx-y-bms"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+<li class="chapter" data-level="2.1.1" data-path="03-manova.html"><a href="#la-distribuci%C3%B3n-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="03-manova.html"><a href="#estimadores-de-m%C3%A1xima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="03-manova.html"><a href="#distribuci%C3%B3n-de-overlinebmx-y-bms"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="contrastes-multivariantes-versus-contrastes-univariantes.html"><a href="contrastes-multivariantes-versus-contrastes-univariantes.html"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
 <li class="chapter" data-level="2.3" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
@@ -201,31 +201,31 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
 <li class="chapter" data-level="2.3.2" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<li class="chapter" data-level="2.4" data-path="03-manova.html"><a href="#regiones-de-confianza-y-comparaciones-simult%C3%A1neas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.1" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
 <li class="chapter" data-level="2.4.2" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
-<li class="chapter" data-level="2.4.3" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-scheffé"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
-<li class="chapter" data-level="2.4.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+<li class="chapter" data-level="2.4.3" data-path="03-manova.html"><a href="#intervalos-de-confianza-simult%C3%A1neos-por-el-m%C3%A9todo-de-scheff%C3%A9"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="03-manova.html"><a href="#intervalos-de-confianza-simult%C3%A1neos-por-el-m%C3%A9todo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<li class="chapter" data-level="2.5" data-path="03-manova.html"><a href="#generalizaci%C3%B3n-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.1" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
 <li class="chapter" data-level="2.5.2" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
 <ul>
 <li class="chapter" data-level="2.6.1" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html#contraste-h_0-bmsigmabmsigma_0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<li class="chapter" data-level="2.7" data-path="03-manova.html"><a href="#generalizaci%C3%B3n-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-la-hipótesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
-<li class="chapter" data-level="2.7.2" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-dos-subvectores-h_0-bmsigma_12bm0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.1" data-path="03-manova.html"><a href="#contraste-de-la-hip%C3%B3tesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
 <li class="chapter" data-level="2.7.3" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-todas-las-variables-h_0bmsigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<li class="chapter" data-level="2.8" data-path="03-manova.html"><a href="#comparaci%C3%B3n-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.1" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
 <li class="chapter" data-level="2.8.2" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="secnorm.html"><a href="secnorm.html"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
@@ -234,98 +234,98 @@ div.csl-indent {
 <li class="chapter" data-level="2.9.2" data-path="secnorm.html"><a href="secnorm.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="análisis-multivariante-de-la-varianza.html"><a href="análisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<li class="chapter" data-level="3" data-path="03-manova.html"><a href="#an%C3%A1lisis-multivariante-de-la-varianza"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><a href="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
-<li class="chapter" data-level="3.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<li class="chapter" data-level="3.1" data-path="03-manova.html"><a href="#revisi%C3%B3n-del-modelo-de-an%C3%A1lisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="03-manova.html"><a href="#manova-con-un-factor-de-variaci%C3%B3n"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#descomposición-de-la-variabilidad.-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
-<li class="chapter" data-level="3.2.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#el-estadístico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
-<li class="chapter" data-level="3.2.3" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.1" data-path="03-manova.html"><a href="#descomposici%C3%B3n-de-la-variabilidad.-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-manova.html"><a href="#el-estad%C3%ADstico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
 <li class="chapter" data-level="3.2.4" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="manova-con-dos-factores-de-variación.html"><a href="manova-con-dos-factores-de-variación.html"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+<li class="chapter" data-level="3.3" data-path="03-manova.html"><a href="#manova-con-dos-factores-de-variaci%C3%B3n"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<li class="chapter" data-level="4" data-path="03-manova.html"><a href="#an%C3%A1lisis-de-componentes-principales"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><a href="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
-<li class="chapter" data-level="4.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<li class="chapter" data-level="4.1" data-path="03-manova.html"><a href="#descomposici%C3%B3n-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="03-manova.html"><a href="#propiedades-geom%C3%A9tricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-mínimo-cuadráticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
-<li class="chapter" data-level="4.2.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#posición-en-el-plano-de-la-1ª-componente-principal-respecto-a-las-rectas-de-regresión"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+<li class="chapter" data-level="4.2.1" data-path="03-manova.html"><a href="#las-componentes-principales-como-mejores-aproximaciones-m%C3%ADnimo-cuadr%C3%A1ticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="03-manova.html"><a href="#posici%C3%B3n-en-el-plano-de-la-1%C2%AA-componente-principal-respecto-a-las-rectas-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><a href="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.3" data-path="03-manova.html"><a href="#descomposici%C3%B3n-de-la-variabilidad-proporci%C3%B3n-de-varianza-explicada-y-criterios-para-la-reducci%C3%B3n-de-dimensi%C3%B3n"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
 <li class="chapter" data-level="4.4" data-path="las-componentes-principales-y-los-cambios-de-escala.html"><a href="las-componentes-principales-y-los-cambios-de-escala.html"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
-<li class="chapter" data-level="4.5" data-path="interpretación-de-las-componentes-principales.html"><a href="interpretación-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+<li class="chapter" data-level="4.5" data-path="03-manova.html"><a href="#interpretaci%C3%B3n-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="análisis-de-correspondencias.html"><a href="análisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<li class="chapter" data-level="5" data-path="03-manova.html"><a href="#an%C3%A1lisis-de-correspondencias"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><a href="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
-<li class="chapter" data-level="5.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<li class="chapter" data-level="5.2" data-path="03-manova.html"><a href="#representaci%C3%B3n-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
-<li class="chapter" data-level="5.2.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.1" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="03-manova.html"><a href="#an%C3%A1lisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
 <li class="chapter" data-level="5.2.3" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<li class="chapter" data-level="5.3" data-path="03-manova.html"><a href="#representaci%C3%B3n-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados-1"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
-<li class="chapter" data-level="5.3.2" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#contribuciones-1"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+<li class="chapter" data-level="5.3.1" data-path="03-manova.html"><a href="#an%C3%A1lisis-de-componentes-principales-de-los-perfiles-estandarizados-1"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><a href="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+<li class="chapter" data-level="5.4" data-path="03-manova.html"><a href="#representaci%C3%B3n-simult%C3%A1nea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="análisis-discriminante.html"><a href="análisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<li class="chapter" data-level="6" data-path="03-manova.html"><a href="#an%C3%A1lisis-discriminante"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="dos-grupos-con-distribuciones-conocidas.html"><a href="dos-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
 <li class="chapter" data-level="6.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-la-probabilidad-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
-<li class="chapter" data-level="6.2.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#razón-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
-<li class="chapter" data-level="6.2.3" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-el-coste-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.1" data-path="03-manova.html"><a href="#minimizar-la-probabilidad-total-de-clasificaci%C3%B3n-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="03-manova.html"><a href="#raz%C3%B3n-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="03-manova.html"><a href="#minimizar-el-coste-total-de-clasificaci%C3%B3n-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
 <li class="chapter" data-level="6.2.4" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
 <li class="chapter" data-level="6.2.5" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<li class="chapter" data-level="6.3" data-path="03-manova.html"><a href="#estimaci%C3%B3n-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
-<li class="chapter" data-level="6.3.2" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#estimación-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+<li class="chapter" data-level="6.3.1" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="03-manova.html"><a href="#estimaci%C3%B3n-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html#clasificación-óptima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+<li class="chapter" data-level="6.4.1" data-path="03-manova.html"><a href="#clasificaci%C3%B3n-%C3%B3ptima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="técnicas-de-formación-de-grupos.html"><a href="técnicas-de-formación-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<li class="chapter" data-level="7" data-path="03-manova.html"><a href="#t%C3%A9cnicas-de-formaci%C3%B3n-de-grupos"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="métodos-jerárquicos..html"><a href="métodos-jerárquicos..html"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
-<li class="chapter" data-level="7.2" data-path="métodos-de-particionamiento..html"><a href="métodos-de-particionamiento..html"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+<li class="chapter" data-level="7.1" data-path="03-manova.html"><a href="#m%C3%A9todos-jer%C3%A1rquicos."><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="03-manova.html"><a href="#m%C3%A9todos-de-particionamiento."><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
 </ul></li>
 <li class="appendix"><span><b>Apéndice</b></span></li>
 <li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<li class="chapter" data-level="A.1" data-path="03-manova.html"><a href="#distribuci%C3%B3n-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html#propiedades-de-la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+<li class="chapter" data-level="A.1.1" data-path="03-manova.html"><a href="#propiedades-de-la-distribuci%C3%B3n-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<li class="chapter" data-level="A.2" data-path="03-manova.html"><a href="#distribuci%C3%B3n-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#definición-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
-<li class="chapter" data-level="A.2.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+<li class="chapter" data-level="A.2.1" data-path="03-manova.html"><a href="#definici%C3%B3n-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="03-manova.html"><a href="#formas-cuadr%C3%A1ticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<li class="chapter" data-level="A.3" data-path="03-manova.html"><a href="#distribuci%C3%B3n-gamma2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#definición-y-propiedades-1"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
-<li class="chapter" data-level="A.3.2" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#el-estadístico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+<li class="chapter" data-level="A.3.1" data-path="03-manova.html"><a href="#definici%C3%B3n-y-propiedades-1"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="03-manova.html"><a href="#el-estad%C3%ADstico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<li class="chapter" data-level="A.4" data-path="03-manova.html"><a href="#distribuci%C3%B3n-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
 <ul>
-<li class="chapter" data-level="A.4.1" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#introducción"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
-<li class="chapter" data-level="A.4.2" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#definición-y-propiedades-2"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.4.1" data-path="03-manova.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="03-manova.html"><a href="#definici%C3%B3n-y-propiedades-2"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
 <ul>
-<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
-<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
@@ -363,7 +363,7 @@ div.csl-indent {
 \newcommand{\textnormal}[1]{\textrm{#1}}
 \)
 <div id="manova-con-dos-factores-de-variación" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> MANOVA con dos factores de variación<a href="manova-con-dos-factores-de-variación.html#manova-con-dos-factores-de-variación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">3.3</span> MANOVA con dos factores de variación<a href="#manova-con-dos-factores-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En esta sección suponemos que hay dos factores: A y B. Del factor A
 podemos distinguir <span class="math inline">\(a\)</span> niveles, mientras que en el factor B podemos
 encontrar <span class="math inline">\(b\)</span> niveles. En cada una de las <span class="math inline">\(a\cdot b\)</span> posibilidades
@@ -450,144 +450,144 @@ y_3&amp;=\mbox{El peso fresco de las hojas (medido en gramos)}\end{aligned}\]</s
 Los datos se encuentran en el fichero <code>hongos.txt</code>. Vamos a contrastar
 el efecto del tratamiento con hongos, el efecto de la temperatura y la
 posible interacción entre ambos efectos.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="manova-con-dos-factores-de-variación.html#cb115-1" tabindex="-1"></a><span class="sc">&gt;</span> hongos <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;data/hongos.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb115-2"><a href="manova-con-dos-factores-de-variación.html#cb115-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(hongos)</span>
-<span id="cb115-3"><a href="manova-con-dos-factores-de-variación.html#cb115-3" tabindex="-1"></a>  tratamiento temperatura  y1   y2  y3</span>
-<span id="cb115-4"><a href="manova-con-dos-factores-de-variación.html#cb115-4" tabindex="-1"></a><span class="dv">1</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">23.5</span> <span class="fl">1.7</span></span>
-<span id="cb115-5"><a href="manova-con-dos-factores-de-variación.html#cb115-5" tabindex="-1"></a><span class="dv">2</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.0</span> <span class="fl">27.0</span> <span class="fl">2.3</span></span>
-<span id="cb115-6"><a href="manova-con-dos-factores-de-variación.html#cb115-6" tabindex="-1"></a><span class="dv">3</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.3</span> <span class="fl">24.5</span> <span class="fl">3.2</span></span>
-<span id="cb115-7"><a href="manova-con-dos-factores-de-variación.html#cb115-7" tabindex="-1"></a><span class="dv">4</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">20.5</span> <span class="fl">1.5</span></span>
-<span id="cb115-8"><a href="manova-con-dos-factores-de-variación.html#cb115-8" tabindex="-1"></a><span class="dv">5</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.0</span> <span class="fl">19.0</span> <span class="fl">2.0</span></span>
-<span id="cb115-9"><a href="manova-con-dos-factores-de-variación.html#cb115-9" tabindex="-1"></a><span class="dv">6</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.5</span> <span class="fl">23.5</span> <span class="fl">2.9</span></span></code></pre></div>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="manova-con-dos-factores-de-variación.html#cb116-1" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(hongos<span class="sc">$</span>y1, hongos<span class="sc">$</span>y2, hongos<span class="sc">$</span>y3)</span>
-<span id="cb116-2"><a href="manova-con-dos-factores-de-variación.html#cb116-2" tabindex="-1"></a><span class="sc">&gt;</span> tratamiento <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>tratamiento)</span>
-<span id="cb116-3"><a href="manova-con-dos-factores-de-variación.html#cb116-3" tabindex="-1"></a><span class="sc">&gt;</span> temperatura <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>temperatura)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="manova-con-dos-factores-de-variación.html#cb66-1" tabindex="-1"></a><span class="sc">&gt;</span> hongos <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;data/hongos.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-2"><a href="manova-con-dos-factores-de-variación.html#cb66-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(hongos)</span>
+<span id="cb66-3"><a href="manova-con-dos-factores-de-variación.html#cb66-3" tabindex="-1"></a>  tratamiento temperatura  y1   y2  y3</span>
+<span id="cb66-4"><a href="manova-con-dos-factores-de-variación.html#cb66-4" tabindex="-1"></a><span class="dv">1</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">23.5</span> <span class="fl">1.7</span></span>
+<span id="cb66-5"><a href="manova-con-dos-factores-de-variación.html#cb66-5" tabindex="-1"></a><span class="dv">2</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.0</span> <span class="fl">27.0</span> <span class="fl">2.3</span></span>
+<span id="cb66-6"><a href="manova-con-dos-factores-de-variación.html#cb66-6" tabindex="-1"></a><span class="dv">3</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.3</span> <span class="fl">24.5</span> <span class="fl">3.2</span></span>
+<span id="cb66-7"><a href="manova-con-dos-factores-de-variación.html#cb66-7" tabindex="-1"></a><span class="dv">4</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">20.5</span> <span class="fl">1.5</span></span>
+<span id="cb66-8"><a href="manova-con-dos-factores-de-variación.html#cb66-8" tabindex="-1"></a><span class="dv">5</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.0</span> <span class="fl">19.0</span> <span class="fl">2.0</span></span>
+<span id="cb66-9"><a href="manova-con-dos-factores-de-variación.html#cb66-9" tabindex="-1"></a><span class="dv">6</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.5</span> <span class="fl">23.5</span> <span class="fl">2.9</span></span>
+<span id="cb66-10"><a href="manova-con-dos-factores-de-variación.html#cb66-10" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(hongos<span class="sc">$</span>y1, hongos<span class="sc">$</span>y2, hongos<span class="sc">$</span>y3)</span>
+<span id="cb66-11"><a href="manova-con-dos-factores-de-variación.html#cb66-11" tabindex="-1"></a><span class="sc">&gt;</span> tratamiento <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>tratamiento)</span>
+<span id="cb66-12"><a href="manova-con-dos-factores-de-variación.html#cb66-12" tabindex="-1"></a><span class="sc">&gt;</span> temperatura <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>temperatura)</span></code></pre></div>
 <p>Empezando por el modelo más general, con ambos efectos principales y la
 interacción, si se contrasta la interacción resulta:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="manova-con-dos-factores-de-variación.html#cb117-1" tabindex="-1"></a><span class="sc">&gt;</span> m12i <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura)</span>
-<span id="cb117-2"><a href="manova-con-dos-factores-de-variación.html#cb117-2" tabindex="-1"></a><span class="sc">&gt;</span> m12 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura)</span>
-<span id="cb117-3"><a href="manova-con-dos-factores-de-variación.html#cb117-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
-<span id="cb117-4"><a href="manova-con-dos-factores-de-variación.html#cb117-4" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb117-5"><a href="manova-con-dos-factores-de-variación.html#cb117-5" tabindex="-1"></a></span>
-<span id="cb117-6"><a href="manova-con-dos-factores-de-variación.html#cb117-6" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb117-7"><a href="manova-con-dos-factores-de-variación.html#cb117-7" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
-<span id="cb117-8"><a href="manova-con-dos-factores-de-variación.html#cb117-8" tabindex="-1"></a>  Res.Df Df Gen.var.   Wilks approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
-<span id="cb117-9"><a href="manova-con-dos-factores-de-variación.html#cb117-9" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
-<span id="cb117-10"><a href="manova-con-dos-factores-de-variación.html#cb117-10" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.70548</span>   <span class="fl">1.5864</span>      <span class="dv">9</span> <span class="fl">92.633</span> <span class="fl">0.1307</span></span></code></pre></div>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="manova-con-dos-factores-de-variación.html#cb118-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
-<span id="cb118-2"><a href="manova-con-dos-factores-de-variación.html#cb118-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb118-3"><a href="manova-con-dos-factores-de-variación.html#cb118-3" tabindex="-1"></a></span>
-<span id="cb118-4"><a href="manova-con-dos-factores-de-variación.html#cb118-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb118-5"><a href="manova-con-dos-factores-de-variación.html#cb118-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
-<span id="cb118-6"><a href="manova-con-dos-factores-de-variación.html#cb118-6" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
-<span id="cb118-7"><a href="manova-con-dos-factores-de-variación.html#cb118-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                         </span>
-<span id="cb118-8"><a href="manova-con-dos-factores-de-variación.html#cb118-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.25155</span>   <span class="fl">3.3541</span>      <span class="dv">3</span>     <span class="dv">40</span> <span class="fl">0.02819</span> <span class="sc">*</span></span>
-<span id="cb118-9"><a href="manova-con-dos-factores-de-variación.html#cb118-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb118-10"><a href="manova-con-dos-factores-de-variación.html#cb118-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="manova-con-dos-factores-de-variación.html#cb119-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
-<span id="cb119-2"><a href="manova-con-dos-factores-de-variación.html#cb119-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb119-3"><a href="manova-con-dos-factores-de-variación.html#cb119-3" tabindex="-1"></a></span>
-<span id="cb119-4"><a href="manova-con-dos-factores-de-variación.html#cb119-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb119-5"><a href="manova-con-dos-factores-de-variación.html#cb119-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
-<span id="cb119-6"><a href="manova-con-dos-factores-de-variación.html#cb119-6" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
-<span id="cb119-7"><a href="manova-con-dos-factores-de-variación.html#cb119-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                               </span>
-<span id="cb119-8"><a href="manova-con-dos-factores-de-variación.html#cb119-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span>          <span class="fl">0.38126</span>   <span class="fl">1.5533</span>      <span class="dv">9</span>    <span class="dv">110</span> <span class="fl">0.1384</span></span></code></pre></div>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="manova-con-dos-factores-de-variación.html#cb120-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
-<span id="cb120-2"><a href="manova-con-dos-factores-de-variación.html#cb120-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb120-3"><a href="manova-con-dos-factores-de-variación.html#cb120-3" tabindex="-1"></a></span>
-<span id="cb120-4"><a href="manova-con-dos-factores-de-variación.html#cb120-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb120-5"><a href="manova-con-dos-factores-de-variación.html#cb120-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
-<span id="cb120-6"><a href="manova-con-dos-factores-de-variación.html#cb120-6" tabindex="-1"></a>  Res.Df Df Gen.var.  Pillai approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
-<span id="cb120-7"><a href="manova-con-dos-factores-de-variación.html#cb120-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
-<span id="cb120-8"><a href="manova-con-dos-factores-de-variación.html#cb120-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.32058</span>   <span class="fl">1.5953</span>      <span class="dv">9</span>    <span class="dv">120</span> <span class="fl">0.1241</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="manova-con-dos-factores-de-variación.html#cb67-1" tabindex="-1"></a><span class="sc">&gt;</span> m12i <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura)</span>
+<span id="cb67-2"><a href="manova-con-dos-factores-de-variación.html#cb67-2" tabindex="-1"></a><span class="sc">&gt;</span> m12 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura)</span>
+<span id="cb67-3"><a href="manova-con-dos-factores-de-variación.html#cb67-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb67-4"><a href="manova-con-dos-factores-de-variación.html#cb67-4" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-5"><a href="manova-con-dos-factores-de-variación.html#cb67-5" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="manova-con-dos-factores-de-variación.html#cb67-6" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-7"><a href="manova-con-dos-factores-de-variación.html#cb67-7" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-8"><a href="manova-con-dos-factores-de-variación.html#cb67-8" tabindex="-1"></a>  Res.Df Df Gen.var.   Wilks approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-9"><a href="manova-con-dos-factores-de-variación.html#cb67-9" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
+<span id="cb67-10"><a href="manova-con-dos-factores-de-variación.html#cb67-10" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.70548</span>   <span class="fl">1.5864</span>      <span class="dv">9</span> <span class="fl">92.633</span> <span class="fl">0.1307</span></span>
+<span id="cb67-11"><a href="manova-con-dos-factores-de-variación.html#cb67-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb67-12"><a href="manova-con-dos-factores-de-variación.html#cb67-12" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-13"><a href="manova-con-dos-factores-de-variación.html#cb67-13" tabindex="-1"></a></span>
+<span id="cb67-14"><a href="manova-con-dos-factores-de-variación.html#cb67-14" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-15"><a href="manova-con-dos-factores-de-variación.html#cb67-15" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-16"><a href="manova-con-dos-factores-de-variación.html#cb67-16" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb67-17"><a href="manova-con-dos-factores-de-variación.html#cb67-17" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                         </span>
+<span id="cb67-18"><a href="manova-con-dos-factores-de-variación.html#cb67-18" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.25155</span>   <span class="fl">3.3541</span>      <span class="dv">3</span>     <span class="dv">40</span> <span class="fl">0.02819</span> <span class="sc">*</span></span>
+<span id="cb67-19"><a href="manova-con-dos-factores-de-variación.html#cb67-19" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb67-20"><a href="manova-con-dos-factores-de-variación.html#cb67-20" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb67-21"><a href="manova-con-dos-factores-de-variación.html#cb67-21" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb67-22"><a href="manova-con-dos-factores-de-variación.html#cb67-22" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-23"><a href="manova-con-dos-factores-de-variación.html#cb67-23" tabindex="-1"></a></span>
+<span id="cb67-24"><a href="manova-con-dos-factores-de-variación.html#cb67-24" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-25"><a href="manova-con-dos-factores-de-variación.html#cb67-25" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-26"><a href="manova-con-dos-factores-de-variación.html#cb67-26" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-27"><a href="manova-con-dos-factores-de-variación.html#cb67-27" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                               </span>
+<span id="cb67-28"><a href="manova-con-dos-factores-de-variación.html#cb67-28" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span>          <span class="fl">0.38126</span>   <span class="fl">1.5533</span>      <span class="dv">9</span>    <span class="dv">110</span> <span class="fl">0.1384</span></span>
+<span id="cb67-29"><a href="manova-con-dos-factores-de-variación.html#cb67-29" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb67-30"><a href="manova-con-dos-factores-de-variación.html#cb67-30" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-31"><a href="manova-con-dos-factores-de-variación.html#cb67-31" tabindex="-1"></a></span>
+<span id="cb67-32"><a href="manova-con-dos-factores-de-variación.html#cb67-32" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-33"><a href="manova-con-dos-factores-de-variación.html#cb67-33" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-34"><a href="manova-con-dos-factores-de-variación.html#cb67-34" tabindex="-1"></a>  Res.Df Df Gen.var.  Pillai approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-35"><a href="manova-con-dos-factores-de-variación.html#cb67-35" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
+<span id="cb67-36"><a href="manova-con-dos-factores-de-variación.html#cb67-36" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.32058</span>   <span class="fl">1.5953</span>      <span class="dv">9</span>    <span class="dv">120</span> <span class="fl">0.1241</span></span></code></pre></div>
 <p>Únicamente el test de Roy produce un nivel crítico algo pequeño,
 mientras que los otros tests no muestran significación. En consecuencia,
 se suprime la interacción del modelo. En el modelo sin interacción y con
 los dos efectos principales, se contrasta la significación de cada uno
 de los efectos, con los resultados siguientes. Para el tratamiento:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="manova-con-dos-factores-de-variación.html#cb121-1" tabindex="-1"></a><span class="sc">&gt;</span> m1 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento)</span>
-<span id="cb121-2"><a href="manova-con-dos-factores-de-variación.html#cb121-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
-<span id="cb121-3"><a href="manova-con-dos-factores-de-variación.html#cb121-3" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb121-4"><a href="manova-con-dos-factores-de-variación.html#cb121-4" tabindex="-1"></a></span>
-<span id="cb121-5"><a href="manova-con-dos-factores-de-variación.html#cb121-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
-<span id="cb121-6"><a href="manova-con-dos-factores-de-variación.html#cb121-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb121-7"><a href="manova-con-dos-factores-de-variación.html#cb121-7" tabindex="-1"></a>  Res.Df Df Gen.var.    Wilks approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
-<span id="cb121-8"><a href="manova-con-dos-factores-de-variación.html#cb121-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                              </span>
-<span id="cb121-9"><a href="manova-con-dos-factores-de-variación.html#cb121-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">0.064601</span>    <span class="fl">23.12</span>      <span class="dv">9</span> <span class="fl">99.934</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
-<span id="cb121-10"><a href="manova-con-dos-factores-de-variación.html#cb121-10" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb121-11"><a href="manova-con-dos-factores-de-variación.html#cb121-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="manova-con-dos-factores-de-variación.html#cb122-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
-<span id="cb122-2"><a href="manova-con-dos-factores-de-variación.html#cb122-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb122-3"><a href="manova-con-dos-factores-de-variación.html#cb122-3" tabindex="-1"></a></span>
-<span id="cb122-4"><a href="manova-con-dos-factores-de-variación.html#cb122-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
-<span id="cb122-5"><a href="manova-con-dos-factores-de-variación.html#cb122-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb122-6"><a href="manova-con-dos-factores-de-variación.html#cb122-6" tabindex="-1"></a>  Res.Df Df Gen.var.    Roy approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
-<span id="cb122-7"><a href="manova-con-dos-factores-de-variación.html#cb122-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                            </span>
-<span id="cb122-8"><a href="manova-con-dos-factores-de-variación.html#cb122-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">5.1828</span>   <span class="fl">74.287</span>      <span class="dv">3</span>     <span class="dv">43</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
-<span id="cb122-9"><a href="manova-con-dos-factores-de-variación.html#cb122-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb122-10"><a href="manova-con-dos-factores-de-variación.html#cb122-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="manova-con-dos-factores-de-variación.html#cb123-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
-<span id="cb123-2"><a href="manova-con-dos-factores-de-variación.html#cb123-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb123-3"><a href="manova-con-dos-factores-de-variación.html#cb123-3" tabindex="-1"></a></span>
-<span id="cb123-4"><a href="manova-con-dos-factores-de-variación.html#cb123-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
-<span id="cb123-5"><a href="manova-con-dos-factores-de-variación.html#cb123-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb123-6"><a href="manova-con-dos-factores-de-variación.html#cb123-6" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
-<span id="cb123-7"><a href="manova-con-dos-factores-de-variación.html#cb123-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                                      </span>
-<span id="cb123-8"><a href="manova-con-dos-factores-de-variación.html#cb123-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span>           <span class="fl">6.6858</span>   <span class="fl">29.467</span>      <span class="dv">9</span>    <span class="dv">119</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
-<span id="cb123-9"><a href="manova-con-dos-factores-de-variación.html#cb123-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb123-10"><a href="manova-con-dos-factores-de-variación.html#cb123-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="manova-con-dos-factores-de-variación.html#cb124-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
-<span id="cb124-2"><a href="manova-con-dos-factores-de-variación.html#cb124-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb124-3"><a href="manova-con-dos-factores-de-variación.html#cb124-3" tabindex="-1"></a></span>
-<span id="cb124-4"><a href="manova-con-dos-factores-de-variación.html#cb124-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
-<span id="cb124-5"><a href="manova-con-dos-factores-de-variación.html#cb124-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb124-6"><a href="manova-con-dos-factores-de-variación.html#cb124-6" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df   <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
-<span id="cb124-7"><a href="manova-con-dos-factores-de-variación.html#cb124-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                           </span>
-<span id="cb124-8"><a href="manova-con-dos-factores-de-variación.html#cb124-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">1.4391</span>   <span class="fl">13.215</span>      <span class="dv">9</span>    <span class="dv">129</span> <span class="fl">8.45e-15</span> <span class="sc">**</span><span class="er">*</span></span>
-<span id="cb124-9"><a href="manova-con-dos-factores-de-variación.html#cb124-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb124-10"><a href="manova-con-dos-factores-de-variación.html#cb124-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="manova-con-dos-factores-de-variación.html#cb68-1" tabindex="-1"></a><span class="sc">&gt;</span> m1 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento)</span>
+<span id="cb68-2"><a href="manova-con-dos-factores-de-variación.html#cb68-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb68-3"><a href="manova-con-dos-factores-de-variación.html#cb68-3" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-4"><a href="manova-con-dos-factores-de-variación.html#cb68-4" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="manova-con-dos-factores-de-variación.html#cb68-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-6"><a href="manova-con-dos-factores-de-variación.html#cb68-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-7"><a href="manova-con-dos-factores-de-variación.html#cb68-7" tabindex="-1"></a>  Res.Df Df Gen.var.    Wilks approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-8"><a href="manova-con-dos-factores-de-variación.html#cb68-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                              </span>
+<span id="cb68-9"><a href="manova-con-dos-factores-de-variación.html#cb68-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">0.064601</span>    <span class="fl">23.12</span>      <span class="dv">9</span> <span class="fl">99.934</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-10"><a href="manova-con-dos-factores-de-variación.html#cb68-10" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-11"><a href="manova-con-dos-factores-de-variación.html#cb68-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-12"><a href="manova-con-dos-factores-de-variación.html#cb68-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb68-13"><a href="manova-con-dos-factores-de-variación.html#cb68-13" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-14"><a href="manova-con-dos-factores-de-variación.html#cb68-14" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="manova-con-dos-factores-de-variación.html#cb68-15" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-16"><a href="manova-con-dos-factores-de-variación.html#cb68-16" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-17"><a href="manova-con-dos-factores-de-variación.html#cb68-17" tabindex="-1"></a>  Res.Df Df Gen.var.    Roy approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-18"><a href="manova-con-dos-factores-de-variación.html#cb68-18" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                            </span>
+<span id="cb68-19"><a href="manova-con-dos-factores-de-variación.html#cb68-19" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">5.1828</span>   <span class="fl">74.287</span>      <span class="dv">3</span>     <span class="dv">43</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-20"><a href="manova-con-dos-factores-de-variación.html#cb68-20" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-21"><a href="manova-con-dos-factores-de-variación.html#cb68-21" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-22"><a href="manova-con-dos-factores-de-variación.html#cb68-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb68-23"><a href="manova-con-dos-factores-de-variación.html#cb68-23" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-24"><a href="manova-con-dos-factores-de-variación.html#cb68-24" tabindex="-1"></a></span>
+<span id="cb68-25"><a href="manova-con-dos-factores-de-variación.html#cb68-25" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-26"><a href="manova-con-dos-factores-de-variación.html#cb68-26" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-27"><a href="manova-con-dos-factores-de-variación.html#cb68-27" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-28"><a href="manova-con-dos-factores-de-variación.html#cb68-28" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                                      </span>
+<span id="cb68-29"><a href="manova-con-dos-factores-de-variación.html#cb68-29" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span>           <span class="fl">6.6858</span>   <span class="fl">29.467</span>      <span class="dv">9</span>    <span class="dv">119</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-30"><a href="manova-con-dos-factores-de-variación.html#cb68-30" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-31"><a href="manova-con-dos-factores-de-variación.html#cb68-31" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-32"><a href="manova-con-dos-factores-de-variación.html#cb68-32" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb68-33"><a href="manova-con-dos-factores-de-variación.html#cb68-33" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-34"><a href="manova-con-dos-factores-de-variación.html#cb68-34" tabindex="-1"></a></span>
+<span id="cb68-35"><a href="manova-con-dos-factores-de-variación.html#cb68-35" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-36"><a href="manova-con-dos-factores-de-variación.html#cb68-36" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-37"><a href="manova-con-dos-factores-de-variación.html#cb68-37" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df   <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-38"><a href="manova-con-dos-factores-de-variación.html#cb68-38" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                           </span>
+<span id="cb68-39"><a href="manova-con-dos-factores-de-variación.html#cb68-39" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">1.4391</span>   <span class="fl">13.215</span>      <span class="dv">9</span>    <span class="dv">129</span> <span class="fl">8.45e-15</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-40"><a href="manova-con-dos-factores-de-variación.html#cb68-40" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-41"><a href="manova-con-dos-factores-de-variación.html#cb68-41" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
 <p>Para la temperatura:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="manova-con-dos-factores-de-variación.html#cb125-1" tabindex="-1"></a><span class="sc">&gt;</span> m2 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> temperatura)</span>
-<span id="cb125-2"><a href="manova-con-dos-factores-de-variación.html#cb125-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
-<span id="cb125-3"><a href="manova-con-dos-factores-de-variación.html#cb125-3" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb125-4"><a href="manova-con-dos-factores-de-variación.html#cb125-4" tabindex="-1"></a></span>
-<span id="cb125-5"><a href="manova-con-dos-factores-de-variación.html#cb125-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
-<span id="cb125-6"><a href="manova-con-dos-factores-de-variación.html#cb125-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb125-7"><a href="manova-con-dos-factores-de-variación.html#cb125-7" tabindex="-1"></a>  Res.Df Df Gen.var.  Wilks approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
-<span id="cb125-8"><a href="manova-con-dos-factores-de-variación.html#cb125-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
-<span id="cb125-9"><a href="manova-con-dos-factores-de-variación.html#cb125-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.8163</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
-<span id="cb125-10"><a href="manova-con-dos-factores-de-variación.html#cb125-10" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb125-11"><a href="manova-con-dos-factores-de-variación.html#cb125-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="manova-con-dos-factores-de-variación.html#cb126-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
-<span id="cb126-2"><a href="manova-con-dos-factores-de-variación.html#cb126-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb126-3"><a href="manova-con-dos-factores-de-variación.html#cb126-3" tabindex="-1"></a></span>
-<span id="cb126-4"><a href="manova-con-dos-factores-de-variación.html#cb126-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
-<span id="cb126-5"><a href="manova-con-dos-factores-de-variación.html#cb126-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb126-6"><a href="manova-con-dos-factores-de-variación.html#cb126-6" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
-<span id="cb126-7"><a href="manova-con-dos-factores-de-variación.html#cb126-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                         </span>
-<span id="cb126-8"><a href="manova-con-dos-factores-de-variación.html#cb126-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
-<span id="cb126-9"><a href="manova-con-dos-factores-de-variación.html#cb126-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb126-10"><a href="manova-con-dos-factores-de-variación.html#cb126-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="manova-con-dos-factores-de-variación.html#cb127-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
-<span id="cb127-2"><a href="manova-con-dos-factores-de-variación.html#cb127-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb127-3"><a href="manova-con-dos-factores-de-variación.html#cb127-3" tabindex="-1"></a></span>
-<span id="cb127-4"><a href="manova-con-dos-factores-de-variación.html#cb127-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
-<span id="cb127-5"><a href="manova-con-dos-factores-de-variación.html#cb127-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb127-6"><a href="manova-con-dos-factores-de-variación.html#cb127-6" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
-<span id="cb127-7"><a href="manova-con-dos-factores-de-variación.html#cb127-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                                  </span>
-<span id="cb127-8"><a href="manova-con-dos-factores-de-variación.html#cb127-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span>          <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
-<span id="cb127-9"><a href="manova-con-dos-factores-de-variación.html#cb127-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb127-10"><a href="manova-con-dos-factores-de-variación.html#cb127-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="manova-con-dos-factores-de-variación.html#cb128-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
-<span id="cb128-2"><a href="manova-con-dos-factores-de-variación.html#cb128-2" tabindex="-1"></a>Analysis of Variance Table</span>
-<span id="cb128-3"><a href="manova-con-dos-factores-de-variación.html#cb128-3" tabindex="-1"></a></span>
-<span id="cb128-4"><a href="manova-con-dos-factores-de-variación.html#cb128-4" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
-<span id="cb128-5"><a href="manova-con-dos-factores-de-variación.html#cb128-5" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
-<span id="cb128-6"><a href="manova-con-dos-factores-de-variación.html#cb128-6" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
-<span id="cb128-7"><a href="manova-con-dos-factores-de-variación.html#cb128-7" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
-<span id="cb128-8"><a href="manova-con-dos-factores-de-variación.html#cb128-8" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.1837</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
-<span id="cb128-9"><a href="manova-con-dos-factores-de-variación.html#cb128-9" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb128-10"><a href="manova-con-dos-factores-de-variación.html#cb128-10" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="manova-con-dos-factores-de-variación.html#cb69-1" tabindex="-1"></a><span class="sc">&gt;</span> m2 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> temperatura)</span>
+<span id="cb69-2"><a href="manova-con-dos-factores-de-variación.html#cb69-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb69-3"><a href="manova-con-dos-factores-de-variación.html#cb69-3" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-4"><a href="manova-con-dos-factores-de-variación.html#cb69-4" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="manova-con-dos-factores-de-variación.html#cb69-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-6"><a href="manova-con-dos-factores-de-variación.html#cb69-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-7"><a href="manova-con-dos-factores-de-variación.html#cb69-7" tabindex="-1"></a>  Res.Df Df Gen.var.  Wilks approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-8"><a href="manova-con-dos-factores-de-variación.html#cb69-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
+<span id="cb69-9"><a href="manova-con-dos-factores-de-variación.html#cb69-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.8163</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-10"><a href="manova-con-dos-factores-de-variación.html#cb69-10" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-11"><a href="manova-con-dos-factores-de-variación.html#cb69-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-12"><a href="manova-con-dos-factores-de-variación.html#cb69-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb69-13"><a href="manova-con-dos-factores-de-variación.html#cb69-13" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-14"><a href="manova-con-dos-factores-de-variación.html#cb69-14" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="manova-con-dos-factores-de-variación.html#cb69-15" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-16"><a href="manova-con-dos-factores-de-variación.html#cb69-16" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-17"><a href="manova-con-dos-factores-de-variación.html#cb69-17" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-18"><a href="manova-con-dos-factores-de-variación.html#cb69-18" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                         </span>
+<span id="cb69-19"><a href="manova-con-dos-factores-de-variación.html#cb69-19" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-20"><a href="manova-con-dos-factores-de-variación.html#cb69-20" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-21"><a href="manova-con-dos-factores-de-variación.html#cb69-21" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-22"><a href="manova-con-dos-factores-de-variación.html#cb69-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb69-23"><a href="manova-con-dos-factores-de-variación.html#cb69-23" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-24"><a href="manova-con-dos-factores-de-variación.html#cb69-24" tabindex="-1"></a></span>
+<span id="cb69-25"><a href="manova-con-dos-factores-de-variación.html#cb69-25" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-26"><a href="manova-con-dos-factores-de-variación.html#cb69-26" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-27"><a href="manova-con-dos-factores-de-variación.html#cb69-27" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-28"><a href="manova-con-dos-factores-de-variación.html#cb69-28" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                                  </span>
+<span id="cb69-29"><a href="manova-con-dos-factores-de-variación.html#cb69-29" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span>          <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-30"><a href="manova-con-dos-factores-de-variación.html#cb69-30" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-31"><a href="manova-con-dos-factores-de-variación.html#cb69-31" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-32"><a href="manova-con-dos-factores-de-variación.html#cb69-32" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb69-33"><a href="manova-con-dos-factores-de-variación.html#cb69-33" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-34"><a href="manova-con-dos-factores-de-variación.html#cb69-34" tabindex="-1"></a></span>
+<span id="cb69-35"><a href="manova-con-dos-factores-de-variación.html#cb69-35" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-36"><a href="manova-con-dos-factores-de-variación.html#cb69-36" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-37"><a href="manova-con-dos-factores-de-variación.html#cb69-37" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-38"><a href="manova-con-dos-factores-de-variación.html#cb69-38" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
+<span id="cb69-39"><a href="manova-con-dos-factores-de-variación.html#cb69-39" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.1837</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-40"><a href="manova-con-dos-factores-de-variación.html#cb69-40" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-41"><a href="manova-con-dos-factores-de-variación.html#cb69-41" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
 <p>Por tanto, la temperatura tiene un efecto muy significativo sobre las
 variables que se están midiendo. El tratamiento también resulta
 significativo, aunque no es tan notorio. Los niveles críticos de los
@@ -617,33 +617,33 @@ asociada al contraste tiene rango uno.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": false,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown_AM.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"url": "http\://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/index.html"
 });
 });
 </script>

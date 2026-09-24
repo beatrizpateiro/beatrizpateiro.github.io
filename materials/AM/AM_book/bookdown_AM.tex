@@ -1,11 +1,12 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   a4paper,
   oneside]{scrbook}
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -36,7 +37,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -78,6 +78,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -89,21 +90,24 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
 \usepackage{fancyhdr}
 \usepackage{fancyvrb}
 \usepackage{bm}
@@ -269,21 +273,19 @@ keepaspectratio]{images/coverAM.jpg}%
 
 
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage[]{natbib}
-\bibliographystyle{apalike}
-\nocite{*}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \author{}
-\date{\vspace{-2.5em}Last compiled on 17 julio, 2024}
+\date{\vspace{-2.5em}Last compiled on 24 septiembre, 2026}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -346,7 +348,7 @@ En la Bibliografía se incluye una lista de referencias con libros y artículos 
 Agradecemos que nos ayudes a mejorar este documento. Si encuentras erratas, errores, o tienes alguna sugerencia para explicar mejor alguna sección, por favor escribe a \href{mailto:beatriz.pateiro@usc.es}{\nolinkurl{beatriz.pateiro@usc.es}}.
 
 \begin{flushright}
-Última actualización: 17 julio, 2024
+Última actualización: 24 septiembre, 2026
 
 \end{flushright}
 \end{quote}
@@ -366,7 +368,7 @@ Con nuestro agradecimiento a Wenceslao González Manteiga, Catedrático de Estad
 
 \hfill\break
 
-\includegraphics{images/by-nc-nd.png}\\
+\pandocbounded{\includegraphics[keepaspectratio,alt={Creative Commons License}]{images/by-nc-nd.png}}\\
 Esta obra está bajo una \href{http://creativecommons.org/licenses/by-nc-nd/4.0}{Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional}
 
 \section*{Prerrequisitos}\label{prerrequisitos}
@@ -387,18 +389,18 @@ A lo largo del documento se incluyen ejemplos de aplicación de los distintos m�
 
 \normalsize
 
-Los conjuntos de datos utilizados en los ejemplos se encuentran disponibles en el siguiente enlace: \url{http://eamo.usc.es/pub/pateiro/files/AM_book/data/}.
+Los conjuntos de datos utilizados en los ejemplos se encuentran disponibles en el siguiente enlace: \url{https://beatrizpateiro.github.io/materials/AM/data.zip}.
 
 \chapter{Introducción al análisis multivariante}\label{introducciuxf3n-al-anuxe1lisis-multivariante}
 
 Son muchas las situaciones reales en las que necesitamos tener en cuenta varias variables de forma simultánea. Podemos pensar en problemas sencillos en todas las disciplinas en los que necesitemos analizar datos de distintas variables o características medidas sobre los individuos de una muestra.
 En algunas ocasiones puede resultar adecuado estudiar cada una de las variables de interés de forma individual. Sin embargo, en general las variables están relacionadas entre sí de tal manera que los análisis individuales proporcionan poca información sobre la estructura del conjunto de datos.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio pretende analizar diferentes medidas corporales del gorrión pantanero carileonado (\emph{Ammodramus caudacutus}), una especie de ave que habita en humedales de Norteamérica. Se seleccionan como variables del estudio el sexo, el tamaño de las alas, la longitud del tarso, el tamaño de la cabeza y el peso.
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio pretende analizar diferentes medidas corporales del gorrión pantanero carileonado (\emph{Ammodramus caudacutus}), una especie de ave que habita en humedales de Norteamérica. Se seleccionan como variables del estudio el sexo, el tamaño de las alas, la longitud del tarso, el tamaño de la cabeza y el peso.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Para llevar a cabo un estudio sobre lateralidad y aprendizaje se realizó un cuestionario a 237 estudiantes de Estadística de la Universidad de Adelaida. Entre las variables recogidas hay variables cualitativas (como el sexo, mano con la que escribe, etc.) y variables cuantitativas (anchura de la mano con la que escribe, anchura de la mano con la que no escribe, etc.).
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Para llevar a cabo un estudio sobre lateralidad y aprendizaje se realizó un cuestionario a 237 estudiantes de Estadística de la Universidad de Adelaida. Entre las variables recogidas hay variables cualitativas (como el sexo, mano con la que escribe, etc.) y variables cuantitativas (anchura de la mano con la que escribe, anchura de la mano con la que no escribe, etc.).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} El conjunto de datos de iris de Fisher's es un conjunto de datos clásico que recoge la medida en cm. de las variables longitud y
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} El conjunto de datos de iris de Fisher's es un conjunto de datos clásico que recoge la medida en cm. de las variables longitud y
 anchura de sépalo y longitud y anchura de pétalo para flores de tres especies diferentes de iris (iris setosa, versicolor y virginica).
 
 Se puede definir el \textbf{análisis multivariante} como el conjunto de métodos estadísticos que permiten analizar datos que surgen cuando se miden distintas variables en cada uno de los individuos de una o varias muestras.
@@ -460,7 +462,7 @@ Un vector aleatorio \(d\)-dimensional \(\bm{x}\in\mathbb{R}^d\) es una
 colección de variables aleatorias \(\bm{x}=(x_1,\ldots,x_d)^\prime{}\)
 medidas simultáneamente sobre el mismo individuo.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el estudio del gorrión pantanero carileonado
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el estudio del gorrión pantanero carileonado
 (\emph{Ammodramus caudacutus}), podemos considerar el vector aleatorio
 \(5\)-dimensional \(\bm{x}=(x_1,\ldots,x_5)^\prime{}\) , siendo:
 
@@ -575,7 +577,7 @@ x_{21}&x_{22}&\ldots&x_{2d}\\
 \vdots&\vdots&\ddots&\vdots\\
 x_{n1}&x_{n2}&\ldots&x_{nd}\end{array}\right)=\left(\begin{array}{c}\bm{x_1}^\prime{}\\ \bm{x_2}^\prime{}\\ \vdots \\ \bm{x_n}^\prime{} \end{array}\right).\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Se analizaron las variables del estudio del gorrión
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Se analizaron las variables del estudio del gorrión
 pantanero carileonado en una muestra de 979 gorriones de dicha especie.
 
 Los datos se encuentran recogidos en el fichero \texttt{gorrion.txt} y se
@@ -608,11 +610,6 @@ variables).
 \begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{class}\NormalTok{(gorrion)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"data.frame"}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{dim}\NormalTok{(gorrion)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{979}   \DecValTok{5}
 \end{Highlighting}
@@ -628,7 +625,7 @@ A continuación se muestra parte de uno de los muchos conjuntos de datos
 multivariantes que puedes encontrar en R. Se trata del conjunto de datos
 \texttt{survey} (librería MASS).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} El conjunto de datos \texttt{survey} (librería MASS) corresponde a
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} El conjunto de datos \texttt{survey} (librería MASS) corresponde a
 un cuestionario que se realizó a 237 estudiantes de Estadística de la
 Universidad de Adelaida. Entre las variables recogidas hay variables
 cualitativas (como el sexo, mano con la que escribe, etc.) y variables
@@ -669,7 +666,7 @@ interpretar gráficos de dispersión en tres dimensiones. Sin embargo,
 cuando la dimensión es mayor necesitamos otros procedimientos para
 visualizar los datos.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Diagrama de dispersión para los datos de tamaño del ala
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Diagrama de dispersión para los datos de tamaño del ala
 (Wingcrd), longitud de tarso (Tarsus) y tamaño de la cabeza (Head) de
 gorrión. La función \texttt{scatterplot3d} de la librería \texttt{scatterplot3d} R
 permite hacer un gráfico como el que se muestra en la Figura \ref{fig:scat3d}
@@ -716,7 +713,7 @@ gráfico informa por lo tanto de cómo son las relaciones entre variables,
 pero sólo dos a dos. En la Figura \ref{fig:scat} se muestran matrices de diagramas de dispersión
 para los datos de gorrión.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Matrices de diagramas de dispersión para los datos de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Matrices de diagramas de dispersión para los datos de
 gorrión. La función \texttt{pairs} de R permite hacer un gráfico como el que se
 muestra en la izquierda.
 
@@ -755,7 +752,7 @@ Podemos en este caso representar \textbf{gráficos de dispersión
 condicionales} como el que se muestra en la Figura \ref{fig:con} para
 los datos \texttt{survey}.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráfico de dispersión condicional para los datos \texttt{survey}.
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráfico de dispersión condicional para los datos \texttt{survey}.
 La función \texttt{coplot} nos permite visualizar la relación entre el ancho de
 la mano con la que se escribe (variable \texttt{Wr.Hnd}) y el ancho de la mano
 con la que no se escribe (variable \texttt{NW.Hnd}), en función del sexo
@@ -790,7 +787,7 @@ iris, representadas a su vez con distintos colores. Como conclusión,
 parece que las medidas consideradas (longitud y anchura de pétalo y
 sépalo) nos servirían para distinguir unas especies de otras.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráfico de estrellas para los datos \texttt{iris} obtenido con la
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráfico de estrellas para los datos \texttt{iris} obtenido con la
 función \texttt{stars} de R. Cada estrella representa una flor.
 
 \footnotesize
@@ -822,7 +819,7 @@ anchura de ojos, ...). En la Figura
 representa el gráfico de caras de Chernoff para un subconjunto de los
 datos de iris.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráficos de caras de Chernoff para un subconjunto de los
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Gráficos de caras de Chernoff para un subconjunto de los
 datos \texttt{iris} obtenido con la función \texttt{faces} de la librería \texttt{aplpack} de
 R. Cada cara representa una flor. Elegimos 4 flores de cada una de las
 especies (setosa, versicolor, virginica).
@@ -874,7 +871,7 @@ Recuerda que, según la notación establecida,
 \(\bm{x_i}=(x_{i1},\ldots,x_{id})^\prime{}\) y \(\bm{X}\) es la matriz de
 datos.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Trabajaremos ahora con variables numéricas del estudio del
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Trabajaremos ahora con variables numéricas del estudio del
 gorrión pantanero carileonado.
 
 \footnotesize
@@ -985,7 +982,7 @@ principal las desviaciones típicas muestrales de las variables. Equivalentement
 
 \[\bm{S}=\bm{D_S}\bm{R}\bm{D_S}.\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al conjunto de datos de iris. Calculamos, para la
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al conjunto de datos de iris. Calculamos, para la
 especie setosa, el vector de medias muestral, la matriz de covarianzas
 muestral y la matriz de correlaciones muestral. Debemos tener en cuenta
 que R calcula la matriz de covarianzas muestral corregida
@@ -999,22 +996,12 @@ que R calcula la matriz de covarianzas muestral corregida
 \SpecialCharTok{\textgreater{}} \FunctionTok{colMeans}\NormalTok{(setosa)}
 \NormalTok{Sepal.Length  Sepal.Width Petal.Length  Petal.Width }
        \FloatTok{5.006}        \FloatTok{3.428}        \FloatTok{1.462}        \FloatTok{0.246} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{cov}\NormalTok{(setosa)  }\CommentTok{\# Matriz de covarianzas muestral corregida}
 \NormalTok{             Sepal.Length Sepal.Width Petal.Length Petal.Width}
 \NormalTok{Sepal.Length   }\FloatTok{0.12424898} \FloatTok{0.099216327}  \FloatTok{0.016355102} \FloatTok{0.010330612}
 \NormalTok{Sepal.Width    }\FloatTok{0.09921633} \FloatTok{0.143689796}  \FloatTok{0.011697959} \FloatTok{0.009297959}
 \NormalTok{Petal.Length   }\FloatTok{0.01635510} \FloatTok{0.011697959}  \FloatTok{0.030159184} \FloatTok{0.006069388}
 \NormalTok{Petal.Width    }\FloatTok{0.01033061} \FloatTok{0.009297959}  \FloatTok{0.006069388} \FloatTok{0.011106122}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{cor}\NormalTok{(setosa)}
 \NormalTok{             Sepal.Length Sepal.Width Petal.Length Petal.Width}
 \NormalTok{Sepal.Length    }\FloatTok{1.0000000}   \FloatTok{0.7425467}    \FloatTok{0.2671758}   \FloatTok{0.2780984}
@@ -1055,7 +1042,7 @@ multidimensional y bajo la hipótesis de normalidad.
 En algunas ocasiones podemos estar interesados en dos o más subconjuntos
 de variables medidas sobre las mismas unidades muestrales.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio sobre diabetes analiza diferentes variables de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio sobre diabetes analiza diferentes variables de
 interés sobre pacientes que no presentan la enfermedad. Las variables de
 mayor relevancia para el estudio son:
 
@@ -1115,7 +1102,7 @@ matriz de covarianzas muestrales tendrán el siguiente aspecto:
 Lo visto hasta ahora se puede generalizar de forma natural al caso en
 que tengamos el vector original dividido en más de dos subvectores.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Los datos del estudio sobre diabetes se encuentran en el
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Los datos del estudio sobre diabetes se encuentran en el
 fichero \texttt{diabetes.txt}.
 
 \footnotesize
@@ -1131,19 +1118,9 @@ fichero \texttt{diabetes.txt}.
 \DecValTok{4} \FloatTok{1.04}  \DecValTok{90} \DecValTok{356} \DecValTok{199} \DecValTok{108}
 \DecValTok{5} \FloatTok{1.00}  \DecValTok{90} \DecValTok{323} \DecValTok{240} \DecValTok{143}
 \DecValTok{6} \FloatTok{0.76}  \DecValTok{86} \DecValTok{381} \DecValTok{157} \DecValTok{165}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{colMeans}\NormalTok{(diab)}
 \NormalTok{         y1          y2          x1          x2          x3 }
   \FloatTok{0.9178261}  \FloatTok{90.4130435} \FloatTok{340.8260870} \FloatTok{171.3695652}  \FloatTok{97.7826087} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{cov}\NormalTok{(diab)}
 \NormalTok{            y1         y2           x1           x2          x3}
 \NormalTok{y1  }\FloatTok{0.01618184}   \FloatTok{0.216029}    \FloatTok{0.7871691}   \SpecialCharTok{{-}}\FloatTok{0.2138454}    \FloatTok{2.189072}
@@ -1184,7 +1161,7 @@ todos los elementos de la muestra, es decir, si hacemos
 \(\overline{\bm{z}}=\bm{A} \overline{\bm{x}}+\bm{b}\) y
 \(\bm{S_z}=\bm{A}\bm{S}\bm{A}^\prime\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Para el ejemplo del estudio sobre diabetes consideramos las
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Para el ejemplo del estudio sobre diabetes consideramos las
 siguientes transformaciones lineales:
 
 \begin{itemize}
@@ -1207,32 +1184,12 @@ transformados
 \SpecialCharTok{\textgreater{}}\NormalTok{ z2 }\OtherTok{\textless{}{-}}\NormalTok{ y1 }\SpecialCharTok{+} \DecValTok{4} \SpecialCharTok{*}\NormalTok{ y2}
 \SpecialCharTok{\textgreater{}} \FunctionTok{mean}\NormalTok{(z1)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{585.7826}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{mean}\NormalTok{(z2)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{362.57}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{var}\NormalTok{(z1)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{9569.952}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{var}\NormalTok{(z2)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1130.687}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{cov}\NormalTok{(z1, z2)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{{-}}\FloatTok{5.195778}
 \end{Highlighting}
@@ -1256,11 +1213,6 @@ discutidas anteriormente, se tiene también:
 \NormalTok{         [,}\DecValTok{1}\NormalTok{]}
 \NormalTok{[}\DecValTok{1}\NormalTok{,] }\FloatTok{585.7826}
 \NormalTok{[}\DecValTok{2}\NormalTok{,] }\FloatTok{362.5700}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ A }\SpecialCharTok{\%*\%} \FunctionTok{cov}\NormalTok{(diab) }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(A)}
 \NormalTok{            [,}\DecValTok{1}\NormalTok{]        [,}\DecValTok{2}\NormalTok{]}
 \NormalTok{[}\DecValTok{1}\NormalTok{,] }\FloatTok{9569.951691}   \SpecialCharTok{{-}}\FloatTok{5.195778}
@@ -1295,7 +1247,7 @@ Se define la distancia euclídea entre \(\bm{x_i}\) y \(\bm{x_k}\) como
 La distancia euclídea es la más utilizada pero tiene como inconvenientes
 que depende de las unidades de medida de las variables (no es invariante ante cambios de escala) y presupone que las variables son incorrelacionadas y de varianza unidad.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos que disponemos de los datos de peso y estatura
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos que disponemos de los datos de peso y estatura
 de 300 mujeres con edades comprendidas entre 30 y 40 años. Queremos
 determinar la posición con respecto a la media de tres nuevas mujeres a
 partir de sus respectivos pesos y estaturas. Supongamos que la mujer \(A\)
@@ -1336,7 +1288,7 @@ pondera inversamente proporcional a la varianza.
 
 Tiene como inconvenientes que presupone que las variables son incorrelacionadas.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior de los datos de peso y estatura de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior de los datos de peso y estatura de
 300 mujeres, la distancia euclídea estandarizada por columnas de la
 mujer \(A\) a la media es mayor que la distancia euclídea estandarizada
 por columnas de las mujeres \(B\) y \(C\) a la media. Aun así, la distancia
@@ -1368,7 +1320,7 @@ En caso de que la matriz de covarianzas sea desconocida se calcula
 
 \[d_M(\bm{x_i},\bm{x_k})=\sqrt{(\bm{x_i}-\bm{x_k})^\prime{}\bm{S}^{-1}(\bm{x_i}-\bm{x_k})}.\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior de los datos de peso y estatura de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior de los datos de peso y estatura de
 300 mujeres, la distancia de Mahalanobis de la mujer \(A\) a la media es
 mayor que la distancia de Mahalanobis de la mujer \(B\) a la media, que a
 su vez es mayor que la distancia de Mahalanobis de la mujer \(C\) a la
@@ -1389,7 +1341,7 @@ cuyas componentes tienen todas media cero y desviación típica uno. Sin
 embargo, puede haber correlación entre las variables que componen el
 vector.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En la Figura \ref{fig:estandarizacion} se muestran dos diagramas de dispersión para
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En la Figura \ref{fig:estandarizacion} se muestran dos diagramas de dispersión para
 los datos de peso y estatura de mujeres. El primero de ellos representa
 los datos tras haber estandarizado de manera univariante las dos
 variables. Esto hace que se hayan contraído los ejes. Se mantiene la
@@ -1750,7 +1702,7 @@ multivariantes en lugar de (o junto con) contrastes univariantes.
 Consideremos como ejemplo un contraste acerca del vector de medias
 \(\bm\mu=(\mu_1,\ldots,\mu_d)^\prime{}\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio sobre Psicología educativa pretende analizar si
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Un estudio sobre Psicología educativa pretende analizar si
 las notas medias obtenidas por estudiantes universitarios en dos tests
 de inteligencia diferentes fueron iguales a 100. El primer test está
 orientado fundamentalmente a la valoración de habilidades aritméticas y
@@ -1880,7 +1832,7 @@ siendo \(\chi_{d,\alpha}^2\) el cuantil \(1-\alpha\) de la distribución
 \(\chi_d^2\). La región de rechazo se corresponde con el exterior de un
 elipsoide en \(\mathbb{R}^d\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al estudio sobre Psicología educativa. Se le han
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al estudio sobre Psicología educativa. Se le han
 realizado los dos tests de inteligencia a 20 alumnos de un centro
 universitario. La nota media obtenida por los 20 alumnos en el test de
 valoración de habilidades aritméticas fue de \(102\) puntos. La nota media
@@ -1938,11 +1890,6 @@ estadístico y razonar a partir de él (como el \(p\)-valor es menor que
 \SpecialCharTok{\textgreater{}}\NormalTok{ alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qchisq}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ alpha, }\DecValTok{2}\NormalTok{)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{5.991465}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalue }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, }\DecValTok{2}\NormalTok{)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalue}
 \NormalTok{            [,}\DecValTok{1}\NormalTok{]}
@@ -2173,7 +2120,7 @@ si
 siendo \(f_{d,n-d,\alpha}\) el cuantil \(1-\alpha\) de
 la distribución \(F_{d,n-d}\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} El fichero \texttt{notas.txt} contiene las puntuaciones obtenidas
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} El fichero \texttt{notas.txt} contiene las puntuaciones obtenidas
 por los 20 alumnos que han realizado los tests de inteligencia citados
 en los ejemplos previos. Asumamos ahora que las notas obtenidas
 provienen de una distribución normal bivariante
@@ -2192,21 +2139,11 @@ contrastar la hipótesis nula \(H_0:\bm{\mu}=\bm{\mu_0}\), siendo
 \SpecialCharTok{\textgreater{}}\NormalTok{ xbar}
 \NormalTok{Test1 Test2 }
   \DecValTok{102}    \DecValTok{98} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ S }\OtherTok{\textless{}{-}}\NormalTok{ (n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n }\SpecialCharTok{*} \FunctionTok{cov}\NormalTok{(tests)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ S}
 \NormalTok{      Test1 Test2}
 \NormalTok{Test1  }\FloatTok{84.1}  \FloatTok{38.3}
 \NormalTok{Test2  }\FloatTok{38.3}  \FloatTok{32.6}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ mu0 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{100}\NormalTok{)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}}\NormalTok{ (n }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{d }\SpecialCharTok{*}\NormalTok{ (xbar }\SpecialCharTok{{-}}\NormalTok{ mu0) }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(S) }\SpecialCharTok{\%*\%}\NormalTok{ (xbar }\SpecialCharTok{{-}}\NormalTok{ mu0)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
@@ -2230,11 +2167,6 @@ estadístico y razonar a partir de él (como el \(p\)-valor es menor que
 \SpecialCharTok{\textgreater{}}\NormalTok{ alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qf}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ alpha, d, n }\SpecialCharTok{{-}}\NormalTok{ d)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{3.554557}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalue }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pf}\NormalTok{(estad, d, n }\SpecialCharTok{{-}}\NormalTok{ d)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalue}
 \NormalTok{          [,}\DecValTok{1}\NormalTok{]}
@@ -2374,6 +2306,7 @@ La tabla siguiente permite comparar los valores de \(c\) para el cálculo
 de los intervalos de confianza, extraídos de la \(t\) de Student frente a
 los que se obtienen mediante el método de Scheffé.
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}llcl@{}}
 \toprule\noalign{}
 \endhead
@@ -2387,6 +2320,7 @@ los que se obtienen mediante el método de Scheffé.
 100 & 1.970 & 3.19 & 4.61 \\
 \(\infty\) & 1.960 & 3.08 & 4.28 \\
 \end{longtable}
+}
 
 \subsection{Intervalos de confianza simultáneos por el método de Bonferroni}\label{intervalos-de-confianza-simultuxe1neos-por-el-muxe9todo-de-bonferroni}
 
@@ -2417,6 +2351,7 @@ La tabla siguiente muestra el cociente de longitudes (para
 {\mbox{Longitud del intervalo de Scheffé}}
 =\frac{t_{n-1,\alpha/(2m)}}{\sqrt{\frac{d(n-1)}{n-d}f_{d,n-d,\alpha}}}.\]
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}llrl@{}}
 \toprule\noalign{}
 \endhead
@@ -2430,8 +2365,9 @@ La tabla siguiente muestra el cociente de longitudes (para
 100 & 0.91 & 0.80 & 0.62 \\
 \(\infty\) & 0.91 & 0.81 & 0.66 \\
 \end{longtable}
+}
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Sobre el ejemplo de las puntuaciones de tests de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Sobre el ejemplo de las puntuaciones de tests de
 inteligencia, vamos a calcular los intervalos de confianza para la
 calificación media del test 1 y del test 2, al nivel de confianza del
 95\%, obtenidos de manera individual, y simultáneos por el método de
@@ -2629,7 +2565,7 @@ entre las medias por comparación con la primera de ellas. Si se emplea
 otro tipo de matriz, se obtendrían las posibles discrepancias entre las
 medias en una presentación diferente.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En \citet{mkb79}, página 12, se pueden
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En \citet{mkb79}, página 12, se pueden
 encontrar los datos de depósitos de corcho obtenidos en 28 árboles y
 extraídos en las cuatro direcciones: Norte, Sur, Este y Oeste. Se está
 estudiando si la cantidad media de corcho que se llega a recoger, es
@@ -2647,11 +2583,6 @@ hipótesis usando el test propuesto en esta sección.
 \SpecialCharTok{\textgreater{}}\NormalTok{ xbar}
 \NormalTok{       N        E        S        W }
 \FloatTok{50.53571} \FloatTok{46.17857} \FloatTok{49.67857} \FloatTok{45.17857} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ Sc }\OtherTok{\textless{}{-}} \FunctionTok{cov}\NormalTok{(corcho)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ S }\OtherTok{\textless{}{-}}\NormalTok{ (n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n }\SpecialCharTok{*}\NormalTok{ Sc}
 \SpecialCharTok{\textgreater{}}\NormalTok{ S}
@@ -2699,19 +2630,9 @@ direcciones en cuanto al depósito medio de corcho.
 \SpecialCharTok{\textgreater{}}\NormalTok{ estadF}
 \NormalTok{         [,}\DecValTok{1}\NormalTok{]}
 \NormalTok{[}\DecValTok{1}\NormalTok{,] }\FloatTok{6.401857}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qf}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ alpha, q, n }\SpecialCharTok{{-}}\NormalTok{ q)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{2.991241}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalor }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pf}\NormalTok{(estadF, q, n }\SpecialCharTok{{-}}\NormalTok{ q)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pvalor}
 \NormalTok{            [,}\DecValTok{1}\NormalTok{]}
@@ -2805,7 +2726,7 @@ cuantil \((1-\alpha)\) de la distribución \(\chi_m^2\), denotado por
 \(\chi_{m,\alpha}^2\), siendo \(\alpha\) el nivel de significación fijado de
 antemano.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Recordemos el ejemplo sobre Psicología educativa en el que
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Recordemos el ejemplo sobre Psicología educativa en el que
 se analizaba si las notas medias obtenidas por estudiantes
 universitarios en dos tests de inteligencia fueron iguales a 100. Cuando
 planteamos por primera vez el contraste sobre el vector de medias,
@@ -2977,7 +2898,7 @@ particular del test anterior. Para verlo basta con tomar
 los autovalores de la matriz \(\bm{\Sigma_0}^{-1}\bm{S}=\bm{S}\), y
 \(m=\frac{1}{2}(d-1)(d+2)\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a contrastar la esfericidad de datos generados de distintas
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a contrastar la esfericidad de datos generados de distintas
 normales multivariantes. Para ello utilizaremos la función \texttt{rmvnorm} de
 la librería \texttt{mvtnorm}. En primer lugar generamos una muestra de tamaño
 \(n=100\) de una normal \(N_3(\bm{0},\bm{I_3})\).
@@ -3032,11 +2953,6 @@ valor crítico del estadístico es considerablemente grande.
 \SpecialCharTok{\textgreater{}}\NormalTok{ m }\OtherTok{\textless{}{-}} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ (d }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (d }\SpecialCharTok{+} \DecValTok{2}\NormalTok{)}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{, m)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{11.0705}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, m)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.4821273}
@@ -3073,18 +2989,8 @@ hipótesis nula.
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*}\NormalTok{ d }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(a0}\SpecialCharTok{/}\NormalTok{g0)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{3.251188}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{, m)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{11.0705}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, m)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.6613227}
@@ -3123,18 +3029,8 @@ resultados.
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*}\NormalTok{ d }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(a0}\SpecialCharTok{/}\NormalTok{g0)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{69.92047}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{, m)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{11.0705}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, m)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1.064704e{-}13}
@@ -3246,7 +3142,7 @@ decrecientes, se rechazará la hipótesis nula
 \(H_0: \bm{\Sigma_{12}}=\bm{0}\) cuando su transformación en una \(F\) de
 Snédecor sea grande.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el primer capítulo habíamos presentado un estudio sobre diabetes en el
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el primer capítulo habíamos presentado un estudio sobre diabetes en el
 que se analizaban diferentes variables de interés sobre pacientes que no
 presentan la enfermedad. Las variables de mayor relevancia para el
 estudio eran:
@@ -3292,11 +3188,6 @@ definir a partir de ella las submatrices \(\bm{S_{11}}\), \(\bm{S_{22}}\),
 \NormalTok{x1  }\FloatTok{0.77005671}  \FloatTok{25.6587902} \FloatTok{1082.3610586}  \FloatTok{388.1077505}  \FloatTok{106.027410}
 \NormalTok{x2 }\SpecialCharTok{{-}}\FloatTok{0.20919660} \SpecialCharTok{{-}}\FloatTok{23.4352552}  \FloatTok{388.1077505} \FloatTok{2330.1025520} \FloatTok{1117.797732}
 \NormalTok{x3  }\FloatTok{2.14148393} \SpecialCharTok{{-}}\FloatTok{20.3884688}  \FloatTok{106.0274102} \FloatTok{1117.7977316} \FloatTok{2089.952741}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ S11 }\OtherTok{\textless{}{-}}\NormalTok{ S[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ S12 }\OtherTok{\textless{}{-}}\NormalTok{ S[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{3}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ S21 }\OtherTok{\textless{}{-}}\NormalTok{ S[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
@@ -3316,11 +3207,6 @@ podemos hacer de dos formas:
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{det}\NormalTok{(S)}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{det}\NormalTok{(S11) }\SpecialCharTok{*} \FunctionTok{det}\NormalTok{(S22))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.7240096}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{det}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\DecValTok{3}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{solve}\NormalTok{(S22) }\SpecialCharTok{\%*\%}\NormalTok{ S21 }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(S11) }\SpecialCharTok{\%*\%}\NormalTok{ S12)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.7240096}
@@ -3360,21 +3246,11 @@ siendo \(f_{6,82,\alpha}\) el cuantil \(1-\alpha\) de la distribución
 \ErrorTok{\textgreater{}}\NormalTok{ estadF }\OtherTok{\textless{}{-}}\NormalTok{ (mE }\SpecialCharTok{{-}}\NormalTok{ d }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{d }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{sqrt}\NormalTok{(estad))}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(estad)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estadF}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{2.394993}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \CommentTok{\# Grados de libertad F de Snedecor}
 \ErrorTok{\textgreater{}}\NormalTok{ glF1 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ d}
 \SpecialCharTok{\textgreater{}}\NormalTok{ glF2 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (mE }\SpecialCharTok{{-}}\NormalTok{ d }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qf}\NormalTok{(}\FloatTok{0.95}\NormalTok{, glF1, glF2)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{2.211303}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pf}\NormalTok{(estadF, glF1, glF2)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.03499556}
@@ -3447,7 +3323,7 @@ grados de libertad resulta de la diferencia del número de parámetros
 independientes bajo la hipótesis nula y bajo la alternativa:
 \(d+\frac{1}{2}d(d+1)-(d+d)=\frac{1}{2}d(d-1)\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Para ilustrar los contrastes de esfericidad habíamos generado, entre
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Para ilustrar los contrastes de esfericidad habíamos generado, entre
 otros, datos de un vector normal multivariante con matriz de covarianzas
 diagonal y tal que no todas las variables tenían la misma varianza. En
 concreto, habíamos ejecutado el siguiente código para generar la muestra.
@@ -3483,19 +3359,9 @@ estadístico nos lleva a aceptar sin lugar a dudas la hipotesis nula.
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{n }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\FunctionTok{det}\NormalTok{(R))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.6970712}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ m }\OtherTok{\textless{}{-}} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ d }\SpecialCharTok{*}\NormalTok{ (d }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
 \SpecialCharTok{\textgreater{}} \FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{, m)}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{7.814728}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, m)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.8738926}
@@ -3634,7 +3500,7 @@ utilizando que
 
 \[\frac{n_1+n_2-d-1}{(n_1+n_2-2)d}T^2=F_{d,n_1+n_2-d-1}\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha medido la longitud, la anchura y la altura del caparazón de 48
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha medido la longitud, la anchura y la altura del caparazón de 48
 tortugas, 24 hembras y 24 machos. Los vectores de medias y matrices de
 covarianzas respectivos son:
 
@@ -3691,20 +3557,10 @@ Por último calculamos el valor del estadístico y su transformación a una
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{         [,}\DecValTok{1}\NormalTok{]}
 \NormalTok{[}\DecValTok{1}\NormalTok{,] }\FloatTok{66.85048}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ f }\OtherTok{\textless{}{-}}\NormalTok{ (n1 }\SpecialCharTok{+}\NormalTok{ n2 }\SpecialCharTok{{-}}\NormalTok{ d }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{((n1 }\SpecialCharTok{+}\NormalTok{ n2 }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d) }\SpecialCharTok{*}\NormalTok{ estad}
 \SpecialCharTok{\textgreater{}}\NormalTok{ f}
 \NormalTok{         [,}\DecValTok{1}\NormalTok{]}
 \NormalTok{[}\DecValTok{1}\NormalTok{,] }\FloatTok{21.31464}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pf}\NormalTok{(f, d, n1 }\SpecialCharTok{+}\NormalTok{ n2 }\SpecialCharTok{{-}}\NormalTok{ d }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{             [,}\DecValTok{1}\NormalTok{]}
@@ -3785,7 +3641,7 @@ hemos aproximado por una ji-cuadrado cuyos grados de libertad resultan
 de la diferencia de parámetros independientes entre la hipótesis nula y
 la alternativa.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Para el ejemplo anterior de las tortugas, vamos a contrastar que las
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Para el ejemplo anterior de las tortugas, vamos a contrastar que las
 matrices de covarianzas son iguales en ambos sexos, suponiendo que en
 cada sexo las observaciones son normales.
 
@@ -3813,11 +3669,6 @@ correspondiente.
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}}\NormalTok{ n1 }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\FunctionTok{det}\NormalTok{(Qn }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(S1))) }\SpecialCharTok{+}\NormalTok{ n2 }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\FunctionTok{det}\NormalTok{(Qn }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(S2)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{26.98611}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ k }\OtherTok{\textless{}{-}} \DecValTok{2}
 \SpecialCharTok{\textgreater{}}\NormalTok{ gl }\OtherTok{\textless{}{-}} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ d }\SpecialCharTok{*}\NormalTok{ (d }\SpecialCharTok{+} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (k }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(estad, gl)}
@@ -3920,7 +3771,7 @@ Se rechazará la normalidad, en base al coeficiente de asimetría, cuando
 el estadístico anterior sea muy grande (en positivo o negativo), en
 comparación con los cuantiles de la \(N(0,1)\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a presentar los resultados del contraste de normalidad basado en
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a presentar los resultados del contraste de normalidad basado en
 asimetría aplicado a datos simulados de distintas distribuciones.
 Mostramos en primer lugar los valores del coeficiente de asimetría, el
 estadístico de contraste y nivel crítico para datos simulados de la
@@ -3936,19 +3787,9 @@ distribución normal.
 \SpecialCharTok{\textgreater{}}\NormalTok{ A }\OtherTok{\textless{}{-}} \FunctionTok{skewness}\NormalTok{(x)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ A}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{{-}}\FloatTok{0.09408815}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{/}\DecValTok{6}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ A}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{{-}}\FloatTok{0.2103875}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(estad)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.8333653}
@@ -3969,19 +3810,9 @@ datos de una distribución asimétrica como la exponencial.
 \SpecialCharTok{\textgreater{}}\NormalTok{ A }\OtherTok{\textless{}{-}} \FunctionTok{skewness}\NormalTok{(x)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ A}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1.754585}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{/}\DecValTok{6}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ A}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{3.923371}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(estad)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{8.73186e{-}05}
@@ -4060,7 +3891,7 @@ Se rechazará la normalidad, en
 base a la kurtosis, cuando el estadístico anterior sea muy grande (en
 positivo o negativo), en comparación con los cuantiles de la \(N(0,1)\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a extraer muestras simuladas de tamaño 100 de cada una de las tres
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a extraer muestras simuladas de tamaño 100 de cada una de las tres
 distribuciones que se han comentado en esta sección, y cuyas densidades
 se representan en la Figura \hyperref[fig:qq]{2}: \(t_5\) de Student, normal y uniforme. Aplicamos a
 continuación el contraste de normalidad basado en la kurtosis. En primer
@@ -4076,19 +3907,9 @@ lugar, generamos datos de una normal con varianza \(5/3\):
 \SpecialCharTok{\textgreater{}}\NormalTok{ K }\OtherTok{\textless{}{-}} \FunctionTok{kurtosis}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{3}
 \SpecialCharTok{\textgreater{}}\NormalTok{ K}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.6656975}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{/}\DecValTok{24}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ K}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1.358849}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(estad)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.1741943}
@@ -4108,19 +3929,9 @@ Aplicamos ahora el contraste a una muestra generada a partir de una
 \SpecialCharTok{\textgreater{}}\NormalTok{ K }\OtherTok{\textless{}{-}} \FunctionTok{kurtosis}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{3}
 \SpecialCharTok{\textgreater{}}\NormalTok{ K}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1.095394}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{/}\DecValTok{24}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ K}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{2.235964}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(estad)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.02535411}
@@ -4140,19 +3951,9 @@ distribución uniforme en el intervalo \(\left[-\sqrt{5},\sqrt{5}\right]\).
 \SpecialCharTok{\textgreater{}}\NormalTok{ K }\OtherTok{\textless{}{-}} \FunctionTok{kurtosis}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{3}
 \SpecialCharTok{\textgreater{}}\NormalTok{ K}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{{-}}\FloatTok{1.031331}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{/}\DecValTok{24}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ K}
 \SpecialCharTok{\textgreater{}}\NormalTok{ estad}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{{-}}\FloatTok{2.105195}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(estad)))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ pval}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{0.03527432}
@@ -4194,7 +3995,7 @@ que habría en una muestra de observaciones normales. Podremos llevar a
 cabo el test de Shapiro~-Wilk en R mediante la función \texttt{shapiro.test},
 como se muestra en el siguiente ejemplo.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a extraer muestras simuladas de tamaño 100 de cada una
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Vamos a extraer muestras simuladas de tamaño 100 de cada una
 de las distribuciones vistas en las secciones anteriores: normal,
 \(\chi^2\), uniforme y \(t\) de Student, ver Figura \ref{fig:qq}. Los resultados
 del test de Shapiro-Wilk se muestran a continuación:
@@ -4214,33 +4015,18 @@ del test de Shapiro-Wilk se muestran a continuación:
 
 \NormalTok{data}\SpecialCharTok{:}\NormalTok{  x1}
 \NormalTok{W }\OtherTok{=} \FloatTok{0.9515}\NormalTok{, p}\SpecialCharTok{{-}}\NormalTok{value }\OtherTok{=} \FloatTok{0.1854}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{shapiro.test}\NormalTok{(x2)}
 
 \NormalTok{    Shapiro}\SpecialCharTok{{-}}\NormalTok{Wilk normality test}
 
 \NormalTok{data}\SpecialCharTok{:}\NormalTok{  x2}
 \NormalTok{W }\OtherTok{=} \FloatTok{0.88543}\NormalTok{, p}\SpecialCharTok{{-}}\NormalTok{value }\OtherTok{=} \FloatTok{0.003765}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{shapiro.test}\NormalTok{(x3)}
 
 \NormalTok{    Shapiro}\SpecialCharTok{{-}}\NormalTok{Wilk normality test}
 
 \NormalTok{data}\SpecialCharTok{:}\NormalTok{  x3}
 \NormalTok{W }\OtherTok{=} \FloatTok{0.90155}\NormalTok{, p}\SpecialCharTok{{-}}\NormalTok{value }\OtherTok{=} \FloatTok{0.009167}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{shapiro.test}\NormalTok{(x4)}
 
 \NormalTok{    Shapiro}\SpecialCharTok{{-}}\NormalTok{Wilk normality test}
@@ -4508,7 +4294,7 @@ las medias son iguales. Planteamos así el contraste:
 
 \[H_0: \mu_1=\mu_2=\cdots=\mu_k.\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el trabajo clásico de \citet{andrews1985collection}, se
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el trabajo clásico de \citet{andrews1985collection}, se
 comparan manzanos sobre seis tipos de portainjertos. En concreto, se
 analizan ocho manzanos sobre cada tipo de portainjerto. Para cada
 manzano se determina la circunferencia del tronco (mm \(\times\) 100) a
@@ -4527,11 +4313,6 @@ los 4 años. Los datos se encuentran en el fichero \texttt{tronco.txt}.
 \DecValTok{4}            \DecValTok{1} \FloatTok{1.25}
 \DecValTok{5}            \DecValTok{1} \FloatTok{1.11}
 \DecValTok{6}            \DecValTok{1} \FloatTok{1.08}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{table}\NormalTok{(tronco[, }\DecValTok{1}\NormalTok{])}
 
 \DecValTok{1} \DecValTok{2} \DecValTok{3} \DecValTok{4} \DecValTok{5} \DecValTok{6} 
@@ -4589,10 +4370,11 @@ datos a la media global, admite la siguiente descomposición:
 Al igual que en regresión, lo representamos mediante la \textbf{tabla de
 análisis de la varianza}.
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2941}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4118}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2941}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2941}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4118}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2941}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Fuente de variación
@@ -4609,6 +4391,7 @@ Entre poblaciones (VE) & \({\sum_{i=1}^k {n_i} \left(\bar y_{i\bullet}-\bar y_{\
 Error (VNE) & \({\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij}-\bar y_{i\bullet}\right)^2}\) & \(n-k\) \\
 Total (VT) & \({\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij}-\bar y_{\bullet\bullet}\right)^2}\) & \(n-1\) \\
 \end{longtable}
+}
 
 Nos fijamos en que VE representa las desviaciones de las medias
 muestrales de cada población respecto a la media global. Sirve por lo
@@ -4629,7 +4412,7 @@ Si la hipótesis nula \(H_0: \mu_1=\mu_2=\cdots=\mu_k\) es cierta, \(F\)
 presenta una distribución \(F\) de Snédecor \(F\in F_{(k-1),(n-k)}\).
 Rechazaremos \(H_0\) cuando para valores grandes de \(F\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos sobre el ejemplo de manzanos sobre diferentes
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos sobre el ejemplo de manzanos sobre diferentes
 tipos de portainjertos. Existen distintas formas de realizar un ANOVA en
 R. Esta es una de ellas:
 
@@ -4661,7 +4444,7 @@ En general, cuando disponemos de una muestra, no medimos una única
 variable. Lo más habitual es realizar mediciones de diversas variables
 dependientes sobre cada unidad muestral.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el trabajo clásico de \citet{andrews1985collection}, se
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el trabajo clásico de \citet{andrews1985collection}, se
 comparan manzanos sobre seis tipos de portainjertos. En concreto, se
 analizan ocho manzanos sobre cada tipo de portainjerto. Para cada
 manzano se determina \(\bm{y}=(y_1,\ldots,y_4)^\prime\), siendo \(y_1\) la
@@ -4764,10 +4547,11 @@ y
 Se muestra a continuación la \textbf{tabla del análisis multivariante de la
 varianza} o tabla MANOVA:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2667}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2667}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4667}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2667}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Fuente de variación
@@ -4784,6 +4568,7 @@ Entre poblaciones & \({ \bm{H}=\sum_{i=1}^kn_i(\bm{\overline{y}_{i\bullet}}-\bm{
 Error & \({\bm{E} = \sum_{i=1}^k \sum_{j=1}^{n_i}\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)^\prime{}}\) & \({\sum_{i=1}^k \left(n_i-1\right)}\) \\
 Total & \({\bm{E_H} = \sum_{i=1}^k \sum_{j=1}^{n_i}\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)^\prime{}}\) & \({\sum_{i=1}^k n_i-1}\) \\
 \end{longtable}
+}
 
 Observamos que esta tabla no es más que una extensión de la tabla ANOVA
 al caso multivariante. El sentido común nos invita a rechazar la
@@ -4819,7 +4604,7 @@ de la distribución \(\Lambda(d,k-1,n-k)\), siendo \(\alpha\) el nivel de
 significación fijado de antemano. El estadístico se puede aproximar por
 una distribución \(F\) de Snédecor.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al ejemplo sobre manzanos. Se trata de contrastar
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Volvemos al ejemplo sobre manzanos. Se trata de contrastar
 \(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_6}\), donde para cada \(i\) el
 vector \(\bm{\mu_i}=(\mu_{i1},\ldots,\mu{i4})^\prime\) representa el
 vector de medias de \(\bm{y}=(y_1,\ldots,y_4)^\prime{}\) para el tipo \(i\)
@@ -4835,11 +4620,6 @@ de portainjerto. Los datos son:
 \SpecialCharTok{\textgreater{}}\NormalTok{ d }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(y)[}\DecValTok{2}\NormalTok{]}
 \SpecialCharTok{\textgreater{}}\NormalTok{ n}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{48}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ d}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{4}
 \end{Highlighting}
@@ -4859,11 +4639,6 @@ Calculamos a continuación la media global de la muestra
 \SpecialCharTok{\textgreater{}}\NormalTok{ medy}
 \NormalTok{    cir4    crec4    cir15   peso15 }
 \FloatTok{1.102708} \FloatTok{2.758854} \FloatTok{4.087292} \FloatTok{1.083000} 
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ medyi }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(}\FunctionTok{apply}\NormalTok{(y, }\DecValTok{2}\NormalTok{, tapply, x, mean))}
 \SpecialCharTok{\textgreater{}}\NormalTok{ medyi}
               \DecValTok{1}        \DecValTok{2}        \DecValTok{3}       \DecValTok{4}       \DecValTok{5}        \DecValTok{6}
@@ -4973,7 +4748,7 @@ rechazaremos la hipótesis nula para valores grandes de \(\lambda_1\). De
 nuevo, se utilizarán aproximaciones de este estadístico a la \(F\) de
 Snédecor.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Calculamos, para el ejemplo sobre manzanos, el estadístico
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Calculamos, para el ejemplo sobre manzanos, el estadístico
 de Roy:
 
 \footnotesize
@@ -5028,7 +4803,7 @@ El estadístico de Lawley-Hotelling se define como
 donde \(\lambda_1,\ldots,\lambda_d\) son los autovalores de
 \(\bm{H}\bm{E}^{-1}\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Calculamos, para el ejemplo sobre manzanos, los
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Calculamos, para el ejemplo sobre manzanos, los
 estadísticos de Pillai y Lawley-Hotelling y comprobamos los valores
 obtenidos:
 
@@ -5042,11 +4817,6 @@ obtenidos:
 \NormalTok{Residuals }\DecValTok{42}                                            
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(z), }\AttributeTok{test =} \FunctionTok{c}\NormalTok{(}\StringTok{"Hotelling{-}Lawley"}\NormalTok{))}
 \NormalTok{          Df Hotelling}\SpecialCharTok{{-}}\NormalTok{Lawley approx F num Df den Df    }\FunctionTok{Pr}\NormalTok{(}\SpecialCharTok{\textgreater{}}\NormalTok{F)    }
 \NormalTok{x          }\DecValTok{5}           \FloatTok{2.9214}   \FloatTok{5.4776}     \DecValTok{20}    \DecValTok{150} \FloatTok{2.568e{-}10} \SpecialCharTok{**}\ErrorTok{*}
@@ -5067,11 +4837,6 @@ igualdad de medias. Comprobamos el valor del estadístico de Pillai y de Lawley-
 \begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{sum}\NormalTok{(lambda}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ lambda))  }\CommentTok{\# estadístico de Pillai}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1.305472}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{sum}\NormalTok{(lambda)  }\CommentTok{\# estadístico de Lawley{-}Hotelling}
 \NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{2.921368}
 \end{Highlighting}
@@ -5105,10 +4870,11 @@ lineal general multivariante. Las labores de inferencia sobre el modelo
 se realizan en base a la siguiente descomposición de la variabilidad,
 mediante lo que llamaremos tabla MANOVA II:
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1765}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4706}}
-  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3529}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1765}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4706}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3529}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Fuente de variación
@@ -5128,6 +4894,7 @@ Interacción & \({ \bm{H_{AB}} = n\sum_{i=1}^a\sum_{j=1}^b\left(\bm{\overline{y}
 Error & \({ \bm{E} = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n\left( \bm{y_{ijk}}-\bm{\overline y_{ij\bullet}}\right)\left( \bm{y_{ijk}}-\bm{\overline y_{ij\bullet}}\right)^\prime{}}\) & \(ab(n-1)\) \\
 Total & \({\sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n\left( \bm{y_{ijk}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)\left(  \bm{y_{ijk}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)^\prime{}}\) & \(abn-1\) \\
 \end{longtable}
+}
 
 La hipótesis relativa a la interacción
 \(H_{AB}:\bm{\gamma_{ij}}=\bm{0}\ \forall i,j\) se contrasta en base al
@@ -5140,7 +4907,7 @@ modelo sin interacción, sobre el cual se pueden cuestionar los efectos
 principales. Esto sería el proceder habitual dentro de un planteamiento
 jerárquico, cuestión que ya surgía en los modelos univariantes.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En una especie de césped, denominada Paspalum, se está
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En una especie de césped, denominada Paspalum, se está
 investigando el efecto que experimenta al ser infectada con un hongo. Al
 mismo tiempo se tiene en cuenta la temperatura, dentro de un diseño con
 cuatro valores diferentes: \(14, 18, 22, 26^oC\). En cada realización del
@@ -5167,11 +4934,6 @@ posible interacción entre ambos efectos.
 \DecValTok{4}           \DecValTok{1}           \DecValTok{1} \FloatTok{2.2} \FloatTok{20.5} \FloatTok{1.5}
 \DecValTok{5}           \DecValTok{1}           \DecValTok{1} \FloatTok{2.0} \FloatTok{19.0} \FloatTok{2.0}
 \DecValTok{6}           \DecValTok{1}           \DecValTok{1} \FloatTok{3.5} \FloatTok{23.5} \FloatTok{2.9}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ y }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(hongos}\SpecialCharTok{$}\NormalTok{y1, hongos}\SpecialCharTok{$}\NormalTok{y2, hongos}\SpecialCharTok{$}\NormalTok{y3)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ tratamiento }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(hongos}\SpecialCharTok{$}\NormalTok{tratamiento)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ temperatura }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(hongos}\SpecialCharTok{$}\NormalTok{temperatura)}
@@ -5197,11 +4959,6 @@ interacción, si se contrasta la interacción resulta:
 \NormalTok{  Res.Df Df Gen.var.   Wilks approx F num Df den Df }\FunctionTok{Pr}\NormalTok{(}\SpecialCharTok{\textgreater{}}\NormalTok{F)}
 \DecValTok{1}     \DecValTok{43}      \FloatTok{12.852}                                      
 \DecValTok{2}     \DecValTok{40} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.299} \FloatTok{0.70548}   \FloatTok{1.5864}      \DecValTok{9} \FloatTok{92.633} \FloatTok{0.1307}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m12, m12i, }\AttributeTok{test =} \StringTok{"Roy"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5212,11 +4969,6 @@ interacción, si se contrasta la interacción resulta:
 \DecValTok{2}     \DecValTok{40} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.299} \FloatTok{0.25155}   \FloatTok{3.3541}      \DecValTok{3}     \DecValTok{40} \FloatTok{0.02819} \SpecialCharTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m12, m12i, }\AttributeTok{test =} \StringTok{"Hotelling{-}Lawley"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5225,11 +4977,6 @@ interacción, si se contrasta la interacción resulta:
 \NormalTok{  Res.Df Df Gen.var. Hotelling}\SpecialCharTok{{-}}\NormalTok{Lawley approx F num Df den Df }\FunctionTok{Pr}\NormalTok{(}\SpecialCharTok{\textgreater{}}\NormalTok{F)}
 \DecValTok{1}     \DecValTok{43}      \FloatTok{12.852}                                               
 \DecValTok{2}     \DecValTok{40} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.299}          \FloatTok{0.38126}   \FloatTok{1.5533}      \DecValTok{9}    \DecValTok{110} \FloatTok{0.1384}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m12, m12i, }\AttributeTok{test =} \StringTok{"Pillai"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5264,11 +5011,6 @@ de los efectos, con los resultados siguientes. Para el tratamiento:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.852} \FloatTok{0.064601}    \FloatTok{23.12}      \DecValTok{9} \FloatTok{99.934} \SpecialCharTok{\textless{}} \FloatTok{2.2e{-}16} \SpecialCharTok{**}\ErrorTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m1, m12, }\AttributeTok{test =} \StringTok{"Roy"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5279,11 +5021,6 @@ de los efectos, con los resultados siguientes. Para el tratamiento:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.852} \FloatTok{5.1828}   \FloatTok{74.287}      \DecValTok{3}     \DecValTok{43} \SpecialCharTok{\textless{}} \FloatTok{2.2e{-}16} \SpecialCharTok{**}\ErrorTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m1, m12, }\AttributeTok{test =} \StringTok{"Hotelling{-}Lawley"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5294,11 +5031,6 @@ de los efectos, con los resultados siguientes. Para el tratamiento:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{3}   \FloatTok{12.852}           \FloatTok{6.6858}   \FloatTok{29.467}      \DecValTok{9}    \DecValTok{119} \SpecialCharTok{\textless{}} \FloatTok{2.2e{-}16} \SpecialCharTok{**}\ErrorTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m1, m12, }\AttributeTok{test =} \StringTok{"Pillai"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5331,11 +5063,6 @@ Para la temperatura:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{1}   \FloatTok{12.852} \FloatTok{0.8163}   \FloatTok{3.0756}      \DecValTok{3}     \DecValTok{41} \FloatTok{0.03807} \SpecialCharTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m2, m12, }\AttributeTok{test =} \StringTok{"Roy"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5346,11 +5073,6 @@ Para la temperatura:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{1}   \FloatTok{12.852} \FloatTok{0.22504}   \FloatTok{3.0756}      \DecValTok{3}     \DecValTok{41} \FloatTok{0.03807} \SpecialCharTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m2, m12, }\AttributeTok{test =} \StringTok{"Hotelling{-}Lawley"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5361,11 +5083,6 @@ Para la temperatura:
 \DecValTok{2}     \DecValTok{43} \SpecialCharTok{{-}}\DecValTok{1}   \FloatTok{12.852}          \FloatTok{0.22504}   \FloatTok{3.0756}      \DecValTok{3}     \DecValTok{41} \FloatTok{0.03807} \SpecialCharTok{*}
 \SpecialCharTok{{-}{-}{-}}
 \NormalTok{Signif. codes}\SpecialCharTok{:}  \DecValTok{0} \StringTok{\textquotesingle{}***\textquotesingle{}} \FloatTok{0.001} \StringTok{\textquotesingle{}**\textquotesingle{}} \FloatTok{0.01} \StringTok{\textquotesingle{}*\textquotesingle{}} \FloatTok{0.05} \StringTok{\textquotesingle{}.\textquotesingle{}} \FloatTok{0.1} \StringTok{\textquotesingle{} \textquotesingle{}} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}} \FunctionTok{anova}\NormalTok{(m2, m12, }\AttributeTok{test =} \StringTok{"Pillai"}\NormalTok{)}
 \NormalTok{Analysis of Variance Table}
 
@@ -5634,7 +5351,7 @@ covarianzas
 Obtener la descomposición del vector \(\bm{x}\) en sus componentes
 principales.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha examinado a 25 alumnos, aspirantes a ingresar en la
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha examinado a 25 alumnos, aspirantes a ingresar en la
 Facultad de Matemáticas, de 5 materias diferentes: Geometría Diferencial
 (cuyo resultado se almacena en la variable \emph{geodif}), Análisis Complejo
 (\emph{ancompl}), Álgebra (\emph{alg}), Análisis Real (\emph{anreal}) y Estadística
@@ -5711,11 +5428,6 @@ acumulados.
 \NormalTok{Standard deviation     }\FloatTok{28.4896795} \FloatTok{9.03547104} \FloatTok{6.60095491} \FloatTok{6.13358179} \FloatTok{3.72335754}
 \NormalTok{Proportion of Variance  }\FloatTok{0.8212222} \FloatTok{0.08260135} \FloatTok{0.04408584} \FloatTok{0.03806395} \FloatTok{0.01402668}
 \NormalTok{Cumulative Proportion   }\FloatTok{0.8212222} \FloatTok{0.90382353} \FloatTok{0.94790936} \FloatTok{0.98597332} \FloatTok{1.00000000}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \SpecialCharTok{\textgreater{}}\NormalTok{ test.pca}\SpecialCharTok{$}\NormalTok{sdev}\SpecialCharTok{\^{}}\DecValTok{2}
 \NormalTok{   Comp}\FloatTok{.1}\NormalTok{    Comp}\FloatTok{.2}\NormalTok{    Comp}\FloatTok{.3}\NormalTok{    Comp}\FloatTok{.4}\NormalTok{    Comp}\FloatTok{.5} 
 \FloatTok{811.66184}  \FloatTok{81.63974}  \FloatTok{43.57261}  \FloatTok{37.62083}  \FloatTok{13.86339} 
@@ -5919,7 +5631,7 @@ componente principal forma una recta ``menos horizontal'' que la recta de
 regresión de \(y\) sobre \(x\), pero "más horizontal" que la recta de
 regresión de \(x\) sobre \(y\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha obtenido la muestra siguiente de un vector aleatorio
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Se ha obtenido la muestra siguiente de un vector aleatorio
 \((x,y)\): (-3,7), (1,4), (0,6), (3,5), (1,9), (7,7), (6,9), (8,10),
 (7,12), (10,11). Representamos en la Figura \ref{fig:reg} el diagrama de dispersión, junto con la primera
 componente principal y las dos rectas de regresión.
@@ -6102,7 +5814,7 @@ El Análisis de Correspondencias estudia la relación entre dos variables
 discretas a través de su distribución conjunta de frecuencias. Nos
 apoyaremos en el siguiente ejemplo.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} \emph{Encuesta de Población Activa (EPA, 2010). Datos de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} \emph{Encuesta de Población Activa (EPA, 2010). Datos de
 actividad y ocupación}. La Encuesta de Población Activa, comúnmente
 conocida como EPA, es una encuesta que realiza el Instituto Nacional de
 Estadística (INE) y que recoge información sobre el empleo en España.
@@ -6125,7 +5837,7 @@ parado o inactivo).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\SpecialCharTok{\textgreater{}}\NormalTok{ dat }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/epa2010.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{)}
+\SpecialCharTok{\textgreater{}}\NormalTok{ dat }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/epa2010.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{, }\AttributeTok{fileEncoding =} \StringTok{"latin1"}\NormalTok{)}
 \SpecialCharTok{\textgreater{}}\NormalTok{ dat}
 \NormalTok{            Comunidad.Autónoma Ocupados Parados Inactivos}
 \DecValTok{1}\NormalTok{                    Andalucía   }\FloatTok{2849.1}  \FloatTok{1127.4}    \FloatTok{2794.2}
@@ -6689,7 +6401,7 @@ coordenada de la categoría \(j\) de la variable \(y\). De igual modo, se puede 
 
 \[\bm{A}=\bm{D_r}^{-1}\bm{F}\bm{B}^{\prime}\bm{D_{\lambda}}^{-1/2}.\]
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo sobre los datos de la EPA (2010), vamos a
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo sobre los datos de la EPA (2010), vamos a
 representar en un mismo gráfico bidimensional los perfiles de fila y
 columna.
 
@@ -7066,7 +6778,7 @@ el vector \(\bm{x}\) es continuo y se cumple alguna otra condición más,
 \(P(f_1(\bm{x})/f_2(\bm{x})=\pi_2/\pi_1)=0\), por lo que serían reglas
 equivalentes.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos que \(f_i\) es la densidad de
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos que \(f_i\) es la densidad de
 \(N_d(\bm{\mu_i}, \bm{\Sigma_i})\), con
 \(\bm{\Sigma_1}=\bm{\Sigma_2}=\bm{\Sigma}\). Vamos a calcular la regla de
 clasificación óptima con el criterio anterior y las correspondientes
@@ -7132,7 +6844,7 @@ esto es, si \(\bm\lambda^{\prime} \bm{x}\) está más próximo a
 \(\bm\lambda^{\prime}\bm{\mu_1}\) que a \(\bm\lambda^{\prime}\bm{\mu_2}\). A
 esto se le conoce como regla discriminante lineal de Fisher (1936).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior, supongamos que
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} En el ejemplo anterior, supongamos que
 \(\bm{\Sigma_1}\neq \bm{\Sigma_2}\). Entonces
 
 \[\begin{aligned}
@@ -7228,7 +6940,7 @@ En consecuencia, la regla minimax será la que clasifica en el grupo
 \(G_1\) si \(f_1(\bm{x})/f_2(\bm{x})>c\), siendo \(c\) tal que
 \(P_c(2/1)=P_c(1/2)\).
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Si las dos distribuciones condicionadas a cada grupo son
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Si las dos distribuciones condicionadas a cada grupo son
 normales con la misma matriz de covarianzas, la regla de clasificación
 minimax asigna al grupo \(G_1\) si
 
@@ -7239,7 +6951,7 @@ minimax asigna al grupo \(G_1\) si
 tiene solución \(\log c=0\), o lo que es lo mismo, \(c=1\), lo cual coincide
 con el criterio de la razón de verosimilitudes.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Una población se encuentra dividida en dos grupos \(G_1\) y
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Una población se encuentra dividida en dos grupos \(G_1\) y
 \(G_2\). Se realiza una observación de una variable que tiene distribución
 exponencial, cuyo parámetro depende del grupo. Si procede del grupo
 \(G_1\) el parámetro es 1, y si procede del grupo \(G_2\) el parámetro es 2.
@@ -7251,7 +6963,7 @@ incorrecta?
 
 b. Calcula la regla de clasificación óptima con el criterio minimax.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Consideremos una población dividida en dos grupos. A cada
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Consideremos una población dividida en dos grupos. A cada
 individuo de la población le podemos observar una variable aleatoria
 discreta que toma valores 1,2,3,4 y 5, con probabilidades respectivas
 \(0.05\), \(0.15\), \(0.5\), \(0.25\), \(0.05\) para el primer grupo y \(0.3\), \(0.1\), \(0.1\), \(0.1\),
@@ -7412,7 +7124,7 @@ proporciones \(n_1/(n_1+n_2)\) y \(n_2/(n_1+n_2)\), suponiendo que las dos
 muestras han sido extraídas al azar de la población formada al juntar
 los dos grupos.
 
-\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-ead87092f1ee45c68360e07f2a5b1042.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos dos muestras de entrenamiento
+\textbf{\includegraphics[width=1em,height=1em]{bookdown_AM_files/figure-latex/fa-icon-00ef1bb1d064b635425d49f06b331298.pdf} ~\textcolor{excolor}{Ejemplo.}} Supongamos dos muestras de entrenamiento
 
 \[\bm{x_{11}},\ldots,\bm{x_{1n_1}}\in N_d(\bm{\mu_1},\bm\Sigma) \ \mbox{del grupo}\ G_1.\]
 
@@ -8589,8 +8301,7 @@ positiva.
 \end{enumerate}
 
 \nocite{*}
-
-  \bibliography{book.bib,packages.bib}
+\bibliography{book.bib,packages.bib}
 
 \printindex
 
