@@ -3,8 +3,8 @@ name: Update projects
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: "27 5 * * *"
+  #schedule:
+  #  - cron: "27 5 * * *"
 
 permissions:
   contents: write
