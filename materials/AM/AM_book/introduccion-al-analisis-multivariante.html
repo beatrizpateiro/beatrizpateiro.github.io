@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo1 Introducción al análisis multivariante | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo1 Introducción al análisis multivariante | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo1 Introducción al análisis multivariante | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="inferencia-en-poblaciones-normales.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autores"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerrequisitos"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#estandarizacion"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimacion-en-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimadores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#distribucion-de-overline-bm-x-y-bm-s"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-multivariantes-versus-contrastes-univariantes"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza-y-comparaciones-simultaneas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#inferencia-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-h-0-bm-sigma-bm-sigma-0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#comparacion-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secnorm"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones-2"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#razon-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="anexoDist.html"><a href="anexoDist.html#propiedades-de-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="anexoDist.html"><a href="anexoDist.html#formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-gamma-2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-2"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="anexoDist.html"><a href="anexoDist.html#el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="anexoDist.html"><a href="anexoDist.html#introduccion"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-3"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="anexoAlg.html"><a href="anexoAlg.html#autovalores"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-semidefinidas-positivas"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-definidas-positivas"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References {-}</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="introduccion-al-analisis-multivariante" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo1</span> Introducción al análisis multivariante<a href="introduccion-al-analisis-multivariante.html#introduccion-al-analisis-multivariante" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Son muchas las situaciones reales en las que necesitamos tener en cuenta varias variables de forma simultánea. Podemos pensar en problemas sencillos en todas las disciplinas en los que necesitemos analizar datos de distintas variables o características medidas sobre los individuos de una muestra.
+En algunas ocasiones puede resultar adecuado estudiar cada una de las variables de interés de forma individual. Sin embargo, en general las variables están relacionadas entre sí de tal manera que los análisis individuales proporcionan poca información sobre la estructura del conjunto de datos.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Un estudio pretende analizar diferentes medidas corporales del gorrión pantanero carileonado (<em>Ammodramus caudacutus</em>), una especie de ave que habita en humedales de Norteamérica. Se seleccionan como variables del estudio el sexo, el tamaño de las alas, la longitud del tarso, el tamaño de la cabeza y el peso.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Para llevar a cabo un estudio sobre lateralidad y aprendizaje se realizó un cuestionario a 237 estudiantes de Estadística de la Universidad de Adelaida. Entre las variables recogidas hay variables cualitativas (como el sexo, mano con la que escribe, etc.) y variables cuantitativas (anchura de la mano con la que escribe, anchura de la mano con la que no escribe, etc.).</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> El conjunto de datos de iris de Fisher’s es un conjunto de datos clásico que recoge la medida en cm. de las variables longitud y
+anchura de sépalo y longitud y anchura de pétalo para flores de tres especies diferentes de iris (iris setosa, versicolor y virginica).</p>
+<p>Se puede definir el <strong>análisis multivariante</strong> como el conjunto de métodos estadísticos que permiten analizar datos que surgen cuando se miden distintas variables en cada uno de los individuos de una o varias muestras.
+Los avances en informática y en el procesamiento de grandes bancos de
+datos ha favorecido el desarrollo del análisis multivariante en muchas disciplinas. Si bien tradicionalmente el análisis multivariante se aplicaba fundamentalmente en Biología, en la actualidad son muchos los campos de aplicación.
+Las técnicas de análisis multivariante incluyen tanto métodos puramente descriptivos que tienen por objetivo extraer información de los datos disponibles, como métodos de inferencia que, a través de la construcción de modelos, pretenden obtener conclusiones sobre la población que ha generado los datos. A continuación describimos algunos de los métodos de análisis multivariante que podemos llevar a cabo cuando disponemos de medidas de un conjunto de variables.</p>
+<ul>
+<li>Contrastar la hipótesis de que las medias de las variables analizadas tienen un valor específico (inferencia sobre la media en poblaciones multivariantes).</li>
+<li>Contrastar la hipótesis de que las variables son incorreladas y tienen varianza común (inferencia sobre la matriz de covarianzas).</li>
+<li>Representar la información mediante un número menor de variables construidas como combinaciones lineales de las originales y que expliquen la mayor parte de la variabilidad original (análisis de componentes principales).</li>
+<li>Encontrar un modelo que nos permita predecir un grupo de variables del conjunto original a partir de otro grupo de variables (modelos de regresión multivariante).</li>
+<li>Comparar las medias de las variables en dos poblaciones (test de Hotelling).</li>
+<li>Comparar las medias de las variables en más de dos poblaciones (MANOVA).</li>
+<li>Si los individuos pertenecen a diferentes grupos, encontrar la combinación lineal de las variables que mejor separe dichos grupos (análisis discriminante).</li>
+<li>Clasificar a un conjunto de observaciones en grupos homogéneos (técnicas de formación de grupos).</li>
+</ul>
+<div id="notacion-de-vectores-y-matrices" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Notación de vectores y matrices<a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como hemos comentado, la información de partida en análisis multivariante es un conjunto de datos correspondiente a distintas variables medidas en los elementos de una muestra. Las observaciones correspondientes a cada individuo vendrán dadas por un vector y el conjunto de observaciones de la muestra por una matriz. Por lo tanto, la manipulación de datos multivariantes se simplificará mucho utilizando conceptos de matrices y sus propiedades.</p>
+<p>Representamos el vector<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <span class="math inline">\(\bm{x}\in\mathbb{R}^d\)</span> como el vector columna <span class="math inline">\(d\times 1\)</span>.</p>
+<p><span class="math display">\[\bm{x}=\left(\begin{array}{c}x_1\\ x_2\\ \vdots \\ x_d \end{array}\right).\]</span></p>
+<p>El vector <span class="math inline">\(d\times 1\)</span> con todas sus componentes iguales a uno se
+denotará como <span class="math inline">\(\bm{1_d}\)</span>. Representamos la matriz <span class="math inline">\(\bm{A}=(a_{ij})\)</span> de
+tamaño <span class="math inline">\(m\times n\)</span> como</p>
+<p><span class="math display">\[\bm{A}=\left(\begin{array}{cccc}a_{11}&amp;a_{12}&amp;\ldots&amp;a_{1n}\\
+a_{21}&amp;a_{22}&amp;\ldots&amp;a_{2n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+a_{m1}&amp;a_{m2}&amp;\ldots&amp;a_{mn}\end{array}\right).\]</span></p>
+<p>La traspuesta de
+<span class="math inline">\(\bm{A}\)</span> se denota <span class="math inline">\(\bm{A}^\prime{}\)</span>. Si <span class="math inline">\(\bm{A}\)</span> es una matriz
+cuadrada, su determinante se denota <span class="math inline">\(\left|\bm{A}\right|\)</span> y su traza
+<span class="math inline">\(\textnormal{tr}(\bm{A})\)</span>. Si <span class="math inline">\(\bm{A}\)</span> es no singular
+(<span class="math inline">\(\left|\bm{A}\right|\neq 0\)</span>), su inversa se denota como <span class="math inline">\(\bm{A^{-1}}\)</span>.
+La matriz <span class="math inline">\(n\times n\)</span> con elementos <span class="math inline">\(d_1,\ldots, d_n\)</span> en la diagonal y
+ceros fuera de ella se denota <span class="math inline">\(\textnormal{diag}(d_1,\ldots,d_n).\)</span> La
+matriz identidad <span class="math inline">\(n\times n\)</span> se denota <span class="math inline">\(\bm{I_n}\)</span>. En el Anexo <a href="anexoAlg.html#anexoAlg">B</a>
+encontrarás algunos de los resultados fundamentales de álgebra lineal,
+que nos servirán de ayuda en los próximos capítulos.</p>
+</div>
+<div id="vectores-aleatorios" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Vectores aleatorios<a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un vector aleatorio <span class="math inline">\(d\)</span>-dimensional <span class="math inline">\(\bm{x}\in\mathbb{R}^d\)</span> es una
+colección de variables aleatorias <span class="math inline">\(\bm{x}=(x_1,\ldots,x_d)^\prime{}\)</span>
+medidas simultáneamente sobre el mismo individuo.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el estudio del gorrión pantanero carileonado
+(<em>Ammodramus caudacutus</em>), podemos considerar el vector aleatorio
+<span class="math inline">\(5\)</span>-dimensional <span class="math inline">\(\bm{x}=(x_1,\ldots,x_5)^\prime{}\)</span> , siendo:</p>
+<ul>
+<li><p><span class="math inline">\(x_1\)</span>= Sexo.</p></li>
+<li><p><span class="math inline">\(x_2\)</span>= Tamaño del ala.</p></li>
+<li><p><span class="math inline">\(x_3\)</span>= Longitud del tarso.</p></li>
+<li><p><span class="math inline">\(x_4\)</span>= Tamaño de cabeza.</p></li>
+<li><p><span class="math inline">\(x_5\)</span>= Peso.</p></li>
+</ul>
+<p>Cada una de las componentes de un vector aleatorio es una variable
+aleatoria y, por lo tanto, se puede calcular su media, su varianza y su
+distribución. Sin embargo, hay algunas propiedades conjuntas, como son
+la covarianza o la distribución conjunta que reflejan la relación entre
+las variables que forman el vector. Las medidas más importantes de las
+distribuciones de probabilidad de vectores aleatorios son el vector de
+medias <span class="math inline">\(\bm\mu\)</span> y la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span>.</p>
+<p>Dado un vector aleatorio <span class="math inline">\(d\)</span>-dimensional <span class="math inline">\(\bm{x}\in\mathbb{R}^d\)</span>, se
+define el vector de medias como</p>
+<p><span class="math display">\[{\bm{\mu}}=E({\bm{x}})=\left(\begin{array}{c}E(x_1)\\ \vdots \\ E(x_d) \end{array}\right).\]</span></p>
+<p>Es decir, el vector de medias <span class="math inline">\(\bm\mu\)</span> es el vector cuyas componentes
+son las esperanzas, o medias, de las componentes del vector aleatorio.</p>
+<p>La generalización de la varianza unidimensional al contexto
+multivariante nos lleva a la definición de matriz de covarianzas. Dado
+un vector aleatorio <span class="math inline">\(\bm{x}\in\mathbb{R}^d\)</span> con vector de medias
+<span class="math inline">\(\bm\mu\)</span>, se define la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> como</p>
+<p><span class="math display">\[\label{Sigma}
+\bm\Sigma=E((\bm{x}-\bm\mu)(\bm{x}-\bm\mu)^\prime{}).\]</span></p>
+<p>Así definida, la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> es una matriz de
+dimensión <span class="math inline">\(d\times d\)</span>, simétrica y semidefinida positiva. Podemos
+comprobar que además los elementos de la diagonal son las varianzas de
+cada una de las componentes del vector aleatorio y en cada entrada
+<span class="math inline">\((j,k)\)</span> se tiene la covarianza entre las variables <span class="math inline">\(x_j\)</span> y <span class="math inline">\(x_k\)</span>,</p>
+<p><span class="math display">\[\textnormal{Cov}(x_j,x_k)=\sigma_{jk}=E((x_j-E(x_j))(x_k-E(x_k))).\]</span></p>
+<p>Fíjate que</p>
+<p><span class="math display">\[\textnormal{Cov}(x_j,x_j)=\sigma_{jj}=E((x_j-E(x_j))^2)\]</span>
+representa la varianza de la variable <span class="math inline">\(x_j\)</span>, que denotaremos también
+como <span class="math inline">\(\sigma_j^2\)</span>.En resumen,</p>
+<p><span class="math display">\[\bm\Sigma=\left(\begin{array}{cccc}\textnormal{Var}(x_1)&amp;\textnormal{Cov}(x_1,x_2)&amp;\ldots&amp;\textnormal{Cov}(x_1,x_d)\\
+\textnormal{Cov}(x_2,x_1)&amp;\textnormal{Var}(x_2)&amp;\ldots&amp;\textnormal{Cov}(x_2,x_d)\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+\textnormal{Cov}(x_d,x_1)&amp;\textnormal{Cov}(x_d,x_2)&amp;\ldots&amp;\textnormal{Var}(x_d)\end{array}\right)=\left(\begin{array}{cccc}\sigma_1^2&amp;\sigma_{12}&amp;\ldots&amp;\sigma_{1d}\\
+\sigma_{21}&amp;\sigma_{2}^2&amp;\ldots&amp;\sigma_{2d}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+\sigma_{d1}&amp;\sigma_{d2}&amp;\ldots&amp;\sigma_{d}^2\end{array}\right).\]</span></p>
+<p>Puedes también demostrar como ejercicio que <span class="math inline">\(\bm\Sigma\)</span> puede ser
+expresada como</p>
+<p><span class="math display">\[\bm\Sigma=E(\bm{x}\bm{x}^\prime)-\bm\mu\bm\mu^\prime.\]</span></p>
+<p>Es difícil comparar covarianzas entre pares de variables ya que estas
+dependen de la escala de medida. Para obtener una medida de la relación
+lineal entre pares de variables que sea invariante ante cambios de
+escala podemos estandarizar la covarianza dividiendo por el producto de
+desviaciones típicas de las variables involucradas. Esta covarianza
+estandarizada es lo que se denomina correlación. Así, la correlación
+entre las variables <span class="math inline">\(x_i\)</span> y <span class="math inline">\(x_j\)</span> se calcula como</p>
+<p><span class="math display">\[\rho_{ij}=\frac{\sigma_{ij}}{\sigma_i\sigma_j}.\]</span></p>
+<p>La matriz de correlaciones será por lo tanto</p>
+<p><span class="math display">\[\bm\rho=\left(\begin{array}{cccc}1&amp;\rho_{12}&amp;\ldots&amp;\rho_{1d}\\
+\rho_{21}&amp;1&amp;\ldots&amp;\rho_{2d}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+\rho_{d1}&amp;\rho_{d2}&amp;\ldots&amp;1\end{array}\right).\]</span></p>
+<p>Se verifica</p>
+<p><span class="math display">\[\bm\rho=\bm{D_\Sigma}^{-1}\bm{\Sigma}\bm{D_\Sigma}^{-1}\]</span>
+siendo
+<span class="math inline">\(\bm{D_\Sigma}\)</span> la matriz diagonal de orden <span class="math inline">\(d\)</span> construida colocando en
+la diagonal principal las desviaciones típicas de las variables, es
+decir, <span class="math inline">\(\bm{D_\Sigma}=\textnormal{diag}(\sigma_1,\ldots,\sigma_d)\)</span>.
+Equivalentemente,</p>
+<p><span class="math display">\[\bm{\Sigma}=\bm{D_\Sigma}\bm\rho\bm{D_\Sigma}.\]</span></p>
+</div>
+<div id="representacion-de-datos-multivariantes" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Representación de datos multivariantes<a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el contexto multivariante es conveniente representar las variables
+aleatorias (o sus valores) en forma matricial. Supongamos que hemos
+observado <span class="math inline">\(d\)</span> variables en un conjunto de <span class="math inline">\(n\)</span> elementos. Cada una de
+estas <span class="math inline">\(d\)</span> variables es una variable univariante y el conjunto de las <span class="math inline">\(d\)</span>
+variables constituye un vector aleatorio. Los valores del vector
+aleatorio en cada uno de los <span class="math inline">\(n\)</span> elementos pueden representarse mediante
+una matriz de datos <span class="math inline">\(\bm{X}\)</span> de tamaño <span class="math inline">\(n\times d\)</span> de manera que
+<span class="math inline">\(\bm{X}=(x_{ij})\)</span>, donde el índice <span class="math inline">\(i=1\ldots,n\)</span> representa el individuo
+y el índice <span class="math inline">\(j =1,\ldots,d\)</span> representa la variable. Es decir, cada fila
+de la matriz representa el valor del vector aleatorio (formado por las <span class="math inline">\(d\)</span> variables)
+sobre el individuo <span class="math inline">\(i\)</span>.</p>
+<p><span class="math display">\[\bm{X}=\left(\begin{array}{cccc}x_{11}&amp;x_{12}&amp;\ldots&amp;x_{1d}\\
+x_{21}&amp;x_{22}&amp;\ldots&amp;x_{2d}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+x_{n1}&amp;x_{n2}&amp;\ldots&amp;x_{nd}\end{array}\right)=\left(\begin{array}{c}\bm{x_1}^\prime{}\\ \bm{x_2}^\prime{}\\ \vdots \\ \bm{x_n}^\prime{} \end{array}\right).\]</span></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Se analizaron las variables del estudio del gorrión
+pantanero carileonado en una muestra de 979 gorriones de dicha especie.</p>
+<p>Los datos se encuentran recogidos en el fichero <code>gorrion.txt</code> y se
+pueden leer en R como se muestra a continuación.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduccion-al-analisis-multivariante.html#cb2-1" tabindex="-1"></a><span class="sc">&gt;</span> gorrion <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/gorrion.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="introduccion-al-analisis-multivariante.html#cb2-2" tabindex="-1"></a><span class="sc">&gt;</span> gorrion</span>
+<span id="cb2-3"><a href="introduccion-al-analisis-multivariante.html#cb2-3" tabindex="-1"></a>       Sex Wingcrd Tarsus Head   Wt</span>
+<span id="cb2-4"><a href="introduccion-al-analisis-multivariante.html#cb2-4" tabindex="-1"></a><span class="dv">1</span>     Male    <span class="fl">58.0</span>   <span class="fl">21.7</span> <span class="fl">32.7</span> <span class="fl">20.3</span></span>
+<span id="cb2-5"><a href="introduccion-al-analisis-multivariante.html#cb2-5" tabindex="-1"></a><span class="dv">2</span>   Female    <span class="fl">56.5</span>   <span class="fl">21.1</span> <span class="fl">31.4</span> <span class="fl">17.4</span></span>
+<span id="cb2-6"><a href="introduccion-al-analisis-multivariante.html#cb2-6" tabindex="-1"></a><span class="dv">3</span>     Male    <span class="fl">59.0</span>   <span class="fl">21.0</span> <span class="fl">33.3</span> <span class="fl">21.0</span></span>
+<span id="cb2-7"><a href="introduccion-al-analisis-multivariante.html#cb2-7" tabindex="-1"></a><span class="dv">4</span>     Male    <span class="fl">59.0</span>   <span class="fl">21.3</span> <span class="fl">32.5</span> <span class="fl">21.0</span></span>
+<span id="cb2-8"><a href="introduccion-al-analisis-multivariante.html#cb2-8" tabindex="-1"></a>...</span></code></pre></div>
+<p>El conjunto de datos se puede representar mediante una matriz de 979
+filas (número de individuos en la muestra) y 5 columnas (número de
+variables).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduccion-al-analisis-multivariante.html#cb3-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">class</span>(gorrion)</span>
+<span id="cb3-2"><a href="introduccion-al-analisis-multivariante.html#cb3-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span>
+<span id="cb3-3"><a href="introduccion-al-analisis-multivariante.html#cb3-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(gorrion)</span>
+<span id="cb3-4"><a href="introduccion-al-analisis-multivariante.html#cb3-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">979</span>   <span class="dv">5</span></span></code></pre></div>
+<p>El objeto utilizado en R para almacenar datos de este tipo es un
+data.frame. Podremos editar los datos fácilmente utilizando el comando <code>fix</code> o
+<code>edit</code>.</p>
+<p>A continuación se muestra parte de uno de los muchos conjuntos de datos
+multivariantes que puedes encontrar en R. Se trata del conjunto de datos
+<code>survey</code> (librería MASS).</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> El conjunto de datos <code>survey</code> (librería MASS) corresponde a
+un cuestionario que se realizó a 237 estudiantes de Estadística de la
+Universidad de Adelaida. Entre las variables recogidas hay variables
+cualitativas (como el sexo, mano con la que escribe, etc.) y variables
+cuantitativas (anchura de la mano con la que escribe, anchura de la mano
+con la que no escribe, etc.) Puedes consultar más información sobre este
+conjunto de datos escribiendo <code>help(survey)</code> en la consola de comandos.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduccion-al-analisis-multivariante.html#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(MASS)</span>
+<span id="cb4-2"><a href="introduccion-al-analisis-multivariante.html#cb4-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(survey)</span>
+<span id="cb4-3"><a href="introduccion-al-analisis-multivariante.html#cb4-3" tabindex="-1"></a><span class="sc">&gt;</span> survey</span>
+<span id="cb4-4"><a href="introduccion-al-analisis-multivariante.html#cb4-4" tabindex="-1"></a>       Sex Wr.Hnd NW.Hnd W.Hnd    Fold Pulse    Clap Exer Smoke Height      M.I</span>
+<span id="cb4-5"><a href="introduccion-al-analisis-multivariante.html#cb4-5" tabindex="-1"></a><span class="dv">1</span>   Female   <span class="fl">18.5</span>   <span class="fl">18.0</span> Right  R on L    <span class="dv">92</span>    Left Some Never <span class="fl">173.00</span>   Metric</span>
+<span id="cb4-6"><a href="introduccion-al-analisis-multivariante.html#cb4-6" tabindex="-1"></a><span class="dv">2</span>     Male   <span class="fl">19.5</span>   <span class="fl">20.5</span>  Left  R on L   <span class="dv">104</span>    Left None Regul <span class="fl">177.80</span> Imperial</span>
+<span id="cb4-7"><a href="introduccion-al-analisis-multivariante.html#cb4-7" tabindex="-1"></a><span class="dv">3</span>     Male   <span class="fl">18.0</span>   <span class="fl">13.3</span> Right  L on R    <span class="dv">87</span> Neither None Occas     <span class="cn">NA</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb4-8"><a href="introduccion-al-analisis-multivariante.html#cb4-8" tabindex="-1"></a><span class="dv">4</span>     Male   <span class="fl">18.8</span>   <span class="fl">18.9</span> Right  R on L    <span class="cn">NA</span> Neither None Never <span class="fl">160.00</span>   Metric</span>
+<span id="cb4-9"><a href="introduccion-al-analisis-multivariante.html#cb4-9" tabindex="-1"></a><span class="dv">5</span>     Male   <span class="fl">20.0</span>   <span class="fl">20.0</span> Right Neither    <span class="dv">35</span>   Right Some Never <span class="fl">165.00</span>   Metric</span>
+<span id="cb4-10"><a href="introduccion-al-analisis-multivariante.html#cb4-10" tabindex="-1"></a><span class="dv">6</span>   Female   <span class="fl">18.0</span>   <span class="fl">17.7</span> Right  L on R    <span class="dv">64</span>   Right Some Never <span class="fl">172.72</span> Imperial</span>
+<span id="cb4-11"><a href="introduccion-al-analisis-multivariante.html#cb4-11" tabindex="-1"></a><span class="dv">7</span>     Male   <span class="fl">17.7</span>   <span class="fl">17.7</span> Right  L on R    <span class="dv">83</span>   Right Freq Never <span class="fl">182.88</span> Imperial</span>
+<span id="cb4-12"><a href="introduccion-al-analisis-multivariante.html#cb4-12" tabindex="-1"></a><span class="dv">8</span>   Female   <span class="fl">17.0</span>   <span class="fl">17.3</span> Right  R on L    <span class="dv">74</span>   Right Freq Never <span class="fl">157.00</span>   Metric</span>
+<span id="cb4-13"><a href="introduccion-al-analisis-multivariante.html#cb4-13" tabindex="-1"></a><span class="dv">9</span>     Male   <span class="fl">20.0</span>   <span class="fl">19.5</span> Right  R on L    <span class="dv">72</span>   Right Some Never <span class="fl">175.00</span>   Metric</span>
+<span id="cb4-14"><a href="introduccion-al-analisis-multivariante.html#cb4-14" tabindex="-1"></a>...</span></code></pre></div>
+<div id="visualizacion-de-datos-multivariantes" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Visualización de datos multivariantes<a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uno de los problemas con que nos encontramos a la hora de establecer
+métodos gráficos para describir datos multivariantes es nuestro propio
+sistema de percepción visual. Los gráficos de dispersión en dos
+dimensiones son fáciles de entender. Somos también capaces de
+interpretar gráficos de dispersión en tres dimensiones. Sin embargo,
+cuando la dimensión es mayor necesitamos otros procedimientos para
+visualizar los datos.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Diagrama de dispersión para los datos de tamaño del ala
+(Wingcrd), longitud de tarso (Tarsus) y tamaño de la cabeza (Head) de
+gorrión. La función <code>scatterplot3d</code> de la librería <code>scatterplot3d</code> R
+permite hacer un gráfico como el que se muestra en la Figura <a href="introduccion-al-analisis-multivariante.html#fig:scat3d">1.1</a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduccion-al-analisis-multivariante.html#cb5-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(scatterplot3d)</span>
+<span id="cb5-2"><a href="introduccion-al-analisis-multivariante.html#cb5-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">scatterplot3d</span>(gorrion[, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">color =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;Diagrama de dispersión 3D.&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scat3d"></span>
+<img src="bookdown_AM_files/figure-html/scat3d-1.png" alt="Diagrama de dispersión 3D." width="50%" />
+<p class="caption">
+Figura 1.1: Diagrama de dispersión 3D.
+</p>
+</div>
+<p>También se pueden crear diagramas de dispersión en 3D interactivos
+usando al función <code>plot3d</code> de la librería <code>rgl</code>, como se indica a
+continuación:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduccion-al-analisis-multivariante.html#cb6-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(rgl)</span>
+<span id="cb6-2"><a href="introduccion-al-analisis-multivariante.html#cb6-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot3d</span>(gorrion[, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">col =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>Una forma de representar datos multivariantes es mediante <strong>matrices de
+diagramas de dispersión</strong>. Se construye una cuadrícula con tantas filas
+y columnas como variables. En cada casilla se representa el diagrama de
+dispersión de las variables de la fila y columna correspondientes. Este
+gráfico informa por lo tanto de cómo son las relaciones entre variables,
+pero sólo dos a dos. En la Figura <a href="introduccion-al-analisis-multivariante.html#fig:scat">1.2</a> se muestran matrices de diagramas de dispersión
+para los datos de gorrión.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Matrices de diagramas de dispersión para los datos de
+gorrión. La función <code>pairs</code> de R permite hacer un gráfico como el que se
+muestra en la izquierda.</p>
+<p>La función <code>scatterplotMatrix</code> de la librería <code>car</code> permite además
+añadir en la diagonal los histogramas, boxplots, estimadores de la
+densidad, etc. de las variables del conjunto de datos. También permite
+añadir en cada gráfico el ajuste de regresión lineal o no paramétrico
+para cada par de variables. Consulta la ayuda de la función para obtener
+más información.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduccion-al-analisis-multivariante.html#cb7-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pairs</span>(gorrion[, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb7-2"><a href="introduccion-al-analisis-multivariante.html#cb7-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(car)</span>
+<span id="cb7-3"><a href="introduccion-al-analisis-multivariante.html#cb7-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">scatterplotMatrix</span>(gorrion[, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">diagonal =</span> <span class="fu">list</span>(<span class="at">method =</span> <span class="st">&quot;histogram&quot;</span>, <span class="at">breaks =</span> <span class="st">&quot;FD&quot;</span>),</span>
+<span id="cb7-4"><a href="introduccion-al-analisis-multivariante.html#cb7-4" tabindex="-1"></a><span class="sc">+</span>                   <span class="at">smooth =</span> <span class="cn">FALSE</span>, <span class="at">regLine =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scat"></span>
+<img src="bookdown_AM_files/figure-html/scat-1.png" alt="Matrices de diagramas de dispersión para los datos de gorrión." width="50%" /><img src="bookdown_AM_files/figure-html/scat-2.png" alt="Matrices de diagramas de dispersión para los datos de gorrión." width="50%" />
+<p class="caption">
+Figura 1.2: Matrices de diagramas de dispersión para los datos de gorrión.
+</p>
+</div>
+<p>Cuando en un conjunto de datos tenemos diferentes variables categóricas,
+puede ser interesante visualizar las relaciones entre pares de variables
+teniendo en cuenta los distintos factores de las variables categóricas.
+Podemos en este caso representar <strong>gráficos de dispersión
+condicionales</strong> como el que se muestra en la Figura <a href="introduccion-al-analisis-multivariante.html#fig:con">1.3</a> para
+los datos <code>survey</code>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Gráfico de dispersión condicional para los datos <code>survey</code>.
+La función <code>coplot</code> nos permite visualizar la relación entre el ancho de
+la mano con la que se escribe (variable <code>Wr.Hnd</code>) y el ancho de la mano
+con la que no se escribe (variable <code>NW.Hnd</code>), en función del sexo
+(variable <code>Sex</code>) y de la lateralidad (variable <code>W.Hnd</code>) del individuo.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduccion-al-analisis-multivariante.html#cb8-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coplot</span>(Wr.Hnd <span class="sc">~</span> NW.Hnd <span class="sc">|</span> Sex <span class="sc">*</span> W.Hnd, <span class="at">data =</span> <span class="fu">na.omit</span>(survey))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:con"></span>
+<img src="bookdown_AM_files/figure-html/con-1.png" alt="Gráfico de dispersión condicional para los datos de lateralidad." width="50%" />
+<p class="caption">
+Figura 1.3: Gráfico de dispersión condicional para los datos de lateralidad.
+</p>
+</div>
+<p>Otra herramienta utilizada para representar datos multivariantes son los
+<strong>gráficos de estrellas</strong>. Cada individuo se representa en una estrella,
+con tantos rayos o ejes como variables queramos representar. Cada eje
+representa el valor de la variable re-escalada de manera independiente
+entre variables. Se muestra en la Figura <a href="introduccion-al-analisis-multivariante.html#fig:star">1.4</a> el
+gráfico de estrellas para los datos de iris. A la vista de los gráficos
+de estrella podemos identificar perfectamente las diferentes especies de
+iris, representadas a su vez con distintos colores. Como conclusión,
+parece que las medidas consideradas (longitud y anchura de pétalo y
+sépalo) nos servirían para distinguir unas especies de otras.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Gráfico de estrellas para los datos <code>iris</code> obtenido con la
+función <code>stars</code> de R. Cada estrella representa una flor.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduccion-al-analisis-multivariante.html#cb9-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(iris)</span>
+<span id="cb9-2"><a href="introduccion-al-analisis-multivariante.html#cb9-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">stars</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">col.stars =</span> iris<span class="sc">$</span>Species, <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:star"></span>
+<img src="bookdown_AM_files/figure-html/star-1.png" alt="Gráfico de estrellas para los datos de iris." width="50%" />
+<p class="caption">
+Figura 1.4: Gráfico de estrellas para los datos de iris.
+</p>
+</div>
+<p>También es común representar datos multivariantes mediante <strong>gráficos de
+caras de Chernoff</strong>. El gráfico de caras de Chernoff es como un gráfico
+de estrellas, pero cada individuo ahora se representa en una cara y las
+variables en los rasgos físicos (altura y anchura de la cara, forma de
+la cara, altura y anchura de la boca, curva de la sonrisa, altura y
+anchura de ojos, ...). En la Figura
+<a href="introduccion-al-analisis-multivariante.html#fig:cara">1.5</a> se
+representa el gráfico de caras de Chernoff para un subconjunto de los
+datos de iris.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Gráficos de caras de Chernoff para un subconjunto de los
+datos <code>iris</code> obtenido con la función <code>faces</code> de la librería <code>aplpack</code> de
+R. Cada cara representa una flor. Elegimos 4 flores de cada una de las
+especies (setosa, versicolor, virginica).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduccion-al-analisis-multivariante.html#cb10-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(aplpack)</span>
+<span id="cb10-2"><a href="introduccion-al-analisis-multivariante.html#cb10-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">faces</span>(iris[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">51</span><span class="sc">:</span><span class="dv">54</span>, <span class="dv">101</span><span class="sc">:</span><span class="dv">104</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">face.type =</span> <span class="dv">0</span>)</span>
+<span id="cb10-3"><a href="introduccion-al-analisis-multivariante.html#cb10-3" tabindex="-1"></a>effect of variables<span class="sc">:</span></span>
+<span id="cb10-4"><a href="introduccion-al-analisis-multivariante.html#cb10-4" tabindex="-1"></a> modified item       Var           </span>
+<span id="cb10-5"><a href="introduccion-al-analisis-multivariante.html#cb10-5" tabindex="-1"></a> <span class="st">&quot;height of face   &quot;</span> <span class="st">&quot;Sepal.Length&quot;</span></span>
+<span id="cb10-6"><a href="introduccion-al-analisis-multivariante.html#cb10-6" tabindex="-1"></a> <span class="st">&quot;width of face    &quot;</span> <span class="st">&quot;Sepal.Width&quot;</span> </span>
+<span id="cb10-7"><a href="introduccion-al-analisis-multivariante.html#cb10-7" tabindex="-1"></a> <span class="st">&quot;structure of face&quot;</span> <span class="st">&quot;Petal.Length&quot;</span></span>
+<span id="cb10-8"><a href="introduccion-al-analisis-multivariante.html#cb10-8" tabindex="-1"></a> <span class="st">&quot;height of mouth  &quot;</span> <span class="st">&quot;Petal.Width&quot;</span> </span>
+<span id="cb10-9"><a href="introduccion-al-analisis-multivariante.html#cb10-9" tabindex="-1"></a> <span class="st">&quot;width of mouth   &quot;</span> <span class="st">&quot;Sepal.Length&quot;</span></span>
+<span id="cb10-10"><a href="introduccion-al-analisis-multivariante.html#cb10-10" tabindex="-1"></a> <span class="st">&quot;smiling          &quot;</span> <span class="st">&quot;Sepal.Width&quot;</span> </span>
+<span id="cb10-11"><a href="introduccion-al-analisis-multivariante.html#cb10-11" tabindex="-1"></a> <span class="st">&quot;height of eyes   &quot;</span> <span class="st">&quot;Petal.Length&quot;</span></span>
+<span id="cb10-12"><a href="introduccion-al-analisis-multivariante.html#cb10-12" tabindex="-1"></a> <span class="st">&quot;width of eyes    &quot;</span> <span class="st">&quot;Petal.Width&quot;</span> </span>
+<span id="cb10-13"><a href="introduccion-al-analisis-multivariante.html#cb10-13" tabindex="-1"></a> <span class="st">&quot;height of hair   &quot;</span> <span class="st">&quot;Sepal.Length&quot;</span></span>
+<span id="cb10-14"><a href="introduccion-al-analisis-multivariante.html#cb10-14" tabindex="-1"></a> <span class="st">&quot;width of hair   &quot;</span>  <span class="st">&quot;Sepal.Width&quot;</span> </span>
+<span id="cb10-15"><a href="introduccion-al-analisis-multivariante.html#cb10-15" tabindex="-1"></a> <span class="st">&quot;style of hair   &quot;</span>  <span class="st">&quot;Petal.Length&quot;</span></span>
+<span id="cb10-16"><a href="introduccion-al-analisis-multivariante.html#cb10-16" tabindex="-1"></a> <span class="st">&quot;height of nose  &quot;</span>  <span class="st">&quot;Petal.Width&quot;</span> </span>
+<span id="cb10-17"><a href="introduccion-al-analisis-multivariante.html#cb10-17" tabindex="-1"></a> <span class="st">&quot;width of nose   &quot;</span>  <span class="st">&quot;Sepal.Length&quot;</span></span>
+<span id="cb10-18"><a href="introduccion-al-analisis-multivariante.html#cb10-18" tabindex="-1"></a> <span class="st">&quot;width of ear    &quot;</span>  <span class="st">&quot;Sepal.Width&quot;</span> </span>
+<span id="cb10-19"><a href="introduccion-al-analisis-multivariante.html#cb10-19" tabindex="-1"></a> <span class="st">&quot;height of ear   &quot;</span>  <span class="st">&quot;Petal.Length&quot;</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cara"></span>
+<img src="bookdown_AM_files/figure-html/cara-1.png" alt="Gráfico de caras de Chernoff para un subconjunto de los datos de iris." width="50%" />
+<p class="caption">
+Figura 1.5: Gráfico de caras de Chernoff para un subconjunto de los datos de iris.
+</p>
+</div>
+</div>
+<div id="vector-de-medias-y-matriz-de-covarianzas-muestrales" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Vector de medias y matriz de covarianzas muestrales<a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Supongamos que disponemos de una muestra aleatoria
+<span class="math inline">\(\bm{x_1},\ldots, \bm{x_n}\)</span> de un vector aleatorio en <span class="math inline">\(\mathbb{R}^d\)</span> con
+media <span class="math inline">\(\bm\mu\)</span> y matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span>. De forma análoga al
+caso univariante, calcularemos el vector de medias muestral como
+<span class="math display">\[\overline{\bm{x}}=\frac{1}{n}\sum_{i=1}^n{\bm{x_i}}=\frac{1}{n}\bm{X}^\prime{}\bm{1_n}.\]</span>
+Recuerda que, según la notación establecida,
+<span class="math inline">\(\bm{x_i}=(x_{i1},\ldots,x_{id})^\prime{}\)</span> y <span class="math inline">\(\bm{X}\)</span> es la matriz de
+datos.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Trabajaremos ahora con variables numéricas del estudio del
+gorrión pantanero carileonado.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduccion-al-analisis-multivariante.html#cb11-1" tabindex="-1"></a><span class="sc">&gt;</span> gmed <span class="ot">&lt;-</span> gorrion[, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb11-2"><a href="introduccion-al-analisis-multivariante.html#cb11-2" tabindex="-1"></a><span class="sc">&gt;</span> gmed</span>
+<span id="cb11-3"><a href="introduccion-al-analisis-multivariante.html#cb11-3" tabindex="-1"></a>    Wingcrd Tarsus Head   Wt</span>
+<span id="cb11-4"><a href="introduccion-al-analisis-multivariante.html#cb11-4" tabindex="-1"></a><span class="dv">1</span>      <span class="fl">58.0</span>   <span class="fl">21.7</span> <span class="fl">32.7</span> <span class="fl">20.3</span></span>
+<span id="cb11-5"><a href="introduccion-al-analisis-multivariante.html#cb11-5" tabindex="-1"></a><span class="dv">2</span>      <span class="fl">56.5</span>   <span class="fl">21.1</span> <span class="fl">31.4</span> <span class="fl">17.4</span></span>
+<span id="cb11-6"><a href="introduccion-al-analisis-multivariante.html#cb11-6" tabindex="-1"></a><span class="dv">3</span>      <span class="fl">59.0</span>   <span class="fl">21.0</span> <span class="fl">33.3</span> <span class="fl">21.0</span></span>
+<span id="cb11-7"><a href="introduccion-al-analisis-multivariante.html#cb11-7" tabindex="-1"></a><span class="dv">4</span>      <span class="fl">59.0</span>   <span class="fl">21.3</span> <span class="fl">32.5</span> <span class="fl">21.0</span></span>
+<span id="cb11-8"><a href="introduccion-al-analisis-multivariante.html#cb11-8" tabindex="-1"></a>...</span></code></pre></div>
+<p>Calculamos el vector de medias muestral a partir de la matriz de
+observaciones. Podemos hacerlo de varias maneras. A través de la función
+<code>summary</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduccion-al-analisis-multivariante.html#cb12-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gmed)</span>
+<span id="cb12-2"><a href="introduccion-al-analisis-multivariante.html#cb12-2" tabindex="-1"></a>    Wingcrd          Tarsus           Head             Wt       </span>
+<span id="cb12-3"><a href="introduccion-al-analisis-multivariante.html#cb12-3" tabindex="-1"></a> Min.   <span class="sc">:</span><span class="fl">52.00</span>   Min.   <span class="sc">:</span><span class="fl">18.90</span>   Min.   <span class="sc">:</span><span class="fl">29.20</span>   Min.   <span class="sc">:</span><span class="fl">15.60</span>  </span>
+<span id="cb12-4"><a href="introduccion-al-analisis-multivariante.html#cb12-4" tabindex="-1"></a> <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">56.00</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">20.90</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">31.50</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">19.20</span>  </span>
+<span id="cb12-5"><a href="introduccion-al-analisis-multivariante.html#cb12-5" tabindex="-1"></a> Median <span class="sc">:</span><span class="fl">58.00</span>   Median <span class="sc">:</span><span class="fl">21.40</span>   Median <span class="sc">:</span><span class="fl">31.90</span>   Median <span class="sc">:</span><span class="fl">20.20</span>  </span>
+<span id="cb12-6"><a href="introduccion-al-analisis-multivariante.html#cb12-6" tabindex="-1"></a> Mean   <span class="sc">:</span><span class="fl">57.87</span>   Mean   <span class="sc">:</span><span class="fl">21.48</span>   Mean   <span class="sc">:</span><span class="fl">32.04</span>   Mean   <span class="sc">:</span><span class="fl">20.23</span>  </span>
+<span id="cb12-7"><a href="introduccion-al-analisis-multivariante.html#cb12-7" tabindex="-1"></a> <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">59.00</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">21.90</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">32.40</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">21.10</span>  </span>
+<span id="cb12-8"><a href="introduccion-al-analisis-multivariante.html#cb12-8" tabindex="-1"></a> Max.   <span class="sc">:</span><span class="fl">68.00</span>   Max.   <span class="sc">:</span><span class="fl">25.40</span>   Max.   <span class="sc">:</span><span class="fl">35.70</span>   Max.   <span class="sc">:</span><span class="fl">26.50</span>  </span></code></pre></div>
+<p>A través de la función <code>apply</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduccion-al-analisis-multivariante.html#cb13-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">apply</span>(gmed, <span class="dv">2</span>, mean)</span>
+<span id="cb13-2"><a href="introduccion-al-analisis-multivariante.html#cb13-2" tabindex="-1"></a> Wingcrd   Tarsus     Head       Wt </span>
+<span id="cb13-3"><a href="introduccion-al-analisis-multivariante.html#cb13-3" tabindex="-1"></a><span class="fl">57.86599</span> <span class="fl">21.47620</span> <span class="fl">32.03790</span> <span class="fl">20.22646</span> </span></code></pre></div>
+<p>A través de la matriz de observaciones.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduccion-al-analisis-multivariante.html#cb14-1" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">dim</span>(gmed)[<span class="dv">1</span>]</span>
+<span id="cb14-2"><a href="introduccion-al-analisis-multivariante.html#cb14-2" tabindex="-1"></a><span class="sc">&gt;</span> un <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span>, <span class="at">nr =</span> n, <span class="at">nc =</span> <span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="introduccion-al-analisis-multivariante.html#cb14-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">t</span>(gmed) <span class="sc">%*%</span> un<span class="sc">/</span>n</span>
+<span id="cb14-4"><a href="introduccion-al-analisis-multivariante.html#cb14-4" tabindex="-1"></a>            [,<span class="dv">1</span>]</span>
+<span id="cb14-5"><a href="introduccion-al-analisis-multivariante.html#cb14-5" tabindex="-1"></a>Wingcrd <span class="fl">57.86599</span></span>
+<span id="cb14-6"><a href="introduccion-al-analisis-multivariante.html#cb14-6" tabindex="-1"></a>Tarsus  <span class="fl">21.47620</span></span>
+<span id="cb14-7"><a href="introduccion-al-analisis-multivariante.html#cb14-7" tabindex="-1"></a>Head    <span class="fl">32.03790</span></span>
+<span id="cb14-8"><a href="introduccion-al-analisis-multivariante.html#cb14-8" tabindex="-1"></a>Wt      <span class="fl">20.22646</span></span></code></pre></div>
+<p>La matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> se estimará mediante</p>
+<p><span class="math display">\[\bm{S}=\frac{1}{n}\sum_{i=1}^n\left(\bm{x_i}-\overline{\bm{x}}\right)\left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}.\]</span>
+La matriz de covarianzas muestral <span class="math inline">\(\bm{S}\)</span> es una matriz cuadrada y
+simétrica que contiene en la diagonal las varianzas muestrales y fuera
+de la diagonal las covarianzas muestrales entre los distintos pares de
+variables. Es decir</p>
+<p><span class="math display">\[\bm{S}=\left(\begin{array}{cccc}s_1^2&amp;s_{12}&amp;\ldots&amp;s_{1d}\\
+s_{21}&amp;s_{2}^2&amp;\ldots&amp;s_{2d}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+s_{d1}&amp;s_{d2}&amp;\ldots&amp;s_{d}^2\end{array}\right),\]</span>
+siendo</p>
+<p><span class="math display">\[s_{jk}=\frac{1}{n}\sum_{i=1}^n(x_{ij}-\overline{x}_j)(x_{ik}-\overline{x}_k)\]</span>
+Las varianzas muestrales <span class="math inline">\(s_{jj}\)</span> se denotan <span class="math inline">\(s_j^2\)</span>. La matriz de
+correlaciones muestral <span class="math inline">\(\bm R\)</span> se obtendrá dividiendo las covarianzas
+muestrales por las desviaciones típicas de cada par de variables. Es
+decir,</p>
+<p><span class="math display">\[\bm{R}=\left(\begin{array}{cccc}1&amp;r_{12}&amp;\ldots&amp;r_{1d}\\
+r_{21}&amp;1&amp;\ldots&amp;r_{2d}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+r_{d1}&amp;r_{d2}&amp;\ldots&amp;1\end{array}\right),\]</span>
+siendo</p>
+<p><span class="math display">\[r_{jk}=\frac{s_{jk}}{s_js_k}.\]</span></p>
+<p>De forma análoga al caso poblacional,</p>
+<p><span class="math display">\[\bm{R}=\bm{D_S}^{-1}\bm{S}\bm{D_S}^{-1}\]</span>
+siendo ahora <span class="math inline">\(\bm{D_S}=\textnormal{diag}(s_1,\ldots,s_d)\)</span>, es decir, la
+matriz diagonal de orden <span class="math inline">\(d\)</span> construida colocando en la diagonal
+principal las desviaciones típicas muestrales de las variables. Equivalentemente,</p>
+<p><span class="math display">\[\bm{S}=\bm{D_S}\bm{R}\bm{D_S}.\]</span></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Volvemos al conjunto de datos de iris. Calculamos, para la
+especie setosa, el vector de medias muestral, la matriz de covarianzas
+muestral y la matriz de correlaciones muestral. Debemos tener en cuenta
+que R calcula la matriz de covarianzas muestral corregida
+<span class="math display">\[\frac{1}{n-1}\sum_{i=1}^n\left(\bm{x_i}-\overline{\bm{x}}\right)\left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}.\]</span></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduccion-al-analisis-multivariante.html#cb15-1" tabindex="-1"></a><span class="sc">&gt;</span> setosa <span class="ot">&lt;-</span> iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb15-2"><a href="introduccion-al-analisis-multivariante.html#cb15-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colMeans</span>(setosa)</span>
+<span id="cb15-3"><a href="introduccion-al-analisis-multivariante.html#cb15-3" tabindex="-1"></a>Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span>
+<span id="cb15-4"><a href="introduccion-al-analisis-multivariante.html#cb15-4" tabindex="-1"></a>       <span class="fl">5.006</span>        <span class="fl">3.428</span>        <span class="fl">1.462</span>        <span class="fl">0.246</span> </span>
+<span id="cb15-5"><a href="introduccion-al-analisis-multivariante.html#cb15-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cov</span>(setosa)  <span class="co"># Matriz de covarianzas muestral corregida</span></span>
+<span id="cb15-6"><a href="introduccion-al-analisis-multivariante.html#cb15-6" tabindex="-1"></a>             Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
+<span id="cb15-7"><a href="introduccion-al-analisis-multivariante.html#cb15-7" tabindex="-1"></a>Sepal.Length   <span class="fl">0.12424898</span> <span class="fl">0.099216327</span>  <span class="fl">0.016355102</span> <span class="fl">0.010330612</span></span>
+<span id="cb15-8"><a href="introduccion-al-analisis-multivariante.html#cb15-8" tabindex="-1"></a>Sepal.Width    <span class="fl">0.09921633</span> <span class="fl">0.143689796</span>  <span class="fl">0.011697959</span> <span class="fl">0.009297959</span></span>
+<span id="cb15-9"><a href="introduccion-al-analisis-multivariante.html#cb15-9" tabindex="-1"></a>Petal.Length   <span class="fl">0.01635510</span> <span class="fl">0.011697959</span>  <span class="fl">0.030159184</span> <span class="fl">0.006069388</span></span>
+<span id="cb15-10"><a href="introduccion-al-analisis-multivariante.html#cb15-10" tabindex="-1"></a>Petal.Width    <span class="fl">0.01033061</span> <span class="fl">0.009297959</span>  <span class="fl">0.006069388</span> <span class="fl">0.011106122</span></span>
+<span id="cb15-11"><a href="introduccion-al-analisis-multivariante.html#cb15-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cor</span>(setosa)</span>
+<span id="cb15-12"><a href="introduccion-al-analisis-multivariante.html#cb15-12" tabindex="-1"></a>             Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
+<span id="cb15-13"><a href="introduccion-al-analisis-multivariante.html#cb15-13" tabindex="-1"></a>Sepal.Length    <span class="fl">1.0000000</span>   <span class="fl">0.7425467</span>    <span class="fl">0.2671758</span>   <span class="fl">0.2780984</span></span>
+<span id="cb15-14"><a href="introduccion-al-analisis-multivariante.html#cb15-14" tabindex="-1"></a>Sepal.Width     <span class="fl">0.7425467</span>   <span class="fl">1.0000000</span>    <span class="fl">0.1777000</span>   <span class="fl">0.2327520</span></span>
+<span id="cb15-15"><a href="introduccion-al-analisis-multivariante.html#cb15-15" tabindex="-1"></a>Petal.Length    <span class="fl">0.2671758</span>   <span class="fl">0.1777000</span>    <span class="fl">1.0000000</span>   <span class="fl">0.3316300</span></span>
+<span id="cb15-16"><a href="introduccion-al-analisis-multivariante.html#cb15-16" tabindex="-1"></a>Petal.Width     <span class="fl">0.2780984</span>   <span class="fl">0.2327520</span>    <span class="fl">0.3316300</span>   <span class="fl">1.0000000</span></span></code></pre></div>
+<p>Comprobamos que la matriz de correlaciones muestral también se puede
+calcular como <span class="math inline">\(\bm{R}=\bm{D_S}^{-1}\bm{S}\bm{D_S}^{-1}\)</span>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduccion-al-analisis-multivariante.html#cb16-1" tabindex="-1"></a><span class="sc">&gt;</span> desviaciones <span class="ot">&lt;-</span> <span class="fu">apply</span>(setosa, <span class="dv">2</span>, sd)</span>
+<span id="cb16-2"><a href="introduccion-al-analisis-multivariante.html#cb16-2" tabindex="-1"></a><span class="sc">&gt;</span> Dinv <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">diag</span>(desviaciones))</span>
+<span id="cb16-3"><a href="introduccion-al-analisis-multivariante.html#cb16-3" tabindex="-1"></a><span class="sc">&gt;</span> Dinv <span class="sc">%*%</span> <span class="fu">cov</span>(setosa) <span class="sc">%*%</span> Dinv</span>
+<span id="cb16-4"><a href="introduccion-al-analisis-multivariante.html#cb16-4" tabindex="-1"></a>          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]</span>
+<span id="cb16-5"><a href="introduccion-al-analisis-multivariante.html#cb16-5" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">1.0000000</span> <span class="fl">0.7425467</span> <span class="fl">0.2671758</span> <span class="fl">0.2780984</span></span>
+<span id="cb16-6"><a href="introduccion-al-analisis-multivariante.html#cb16-6" tabindex="-1"></a>[<span class="dv">2</span>,] <span class="fl">0.7425467</span> <span class="fl">1.0000000</span> <span class="fl">0.1777000</span> <span class="fl">0.2327520</span></span>
+<span id="cb16-7"><a href="introduccion-al-analisis-multivariante.html#cb16-7" tabindex="-1"></a>[<span class="dv">3</span>,] <span class="fl">0.2671758</span> <span class="fl">0.1777000</span> <span class="fl">1.0000000</span> <span class="fl">0.3316300</span></span>
+<span id="cb16-8"><a href="introduccion-al-analisis-multivariante.html#cb16-8" tabindex="-1"></a>[<span class="dv">4</span>,] <span class="fl">0.2780984</span> <span class="fl">0.2327520</span> <span class="fl">0.3316300</span> <span class="fl">1.0000000</span></span></code></pre></div>
+<p>Algunos de los resultados que veremos irán encaminados a la obtención de
+la distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span> en este contexto
+multidimensional y bajo la hipótesis de normalidad.</p>
+</div>
+</div>
+<div id="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Vector de medias y matrices de covarianzas para subconjuntos de variables<a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En algunas ocasiones podemos estar interesados en dos o más subconjuntos
+de variables medidas sobre las mismas unidades muestrales.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Un estudio sobre diabetes analiza diferentes variables de
+interés sobre pacientes que no presentan la enfermedad. Las variables de
+mayor relevancia para el estudio son:</p>
+<ul>
+<li><p><span class="math inline">\(x_1\)</span>= Intolerancia a la glucosa</p></li>
+<li><p><span class="math inline">\(x_2\)</span>= Respuesta de la insulina a la glucosa oral</p></li>
+<li><p><span class="math inline">\(x_3\)</span>= Resistencia de la insulina</p></li>
+</ul>
+<p>Se recogen igualmente otras dos variables de menor relevancia:</p>
+<ul>
+<li><p><span class="math inline">\(y_1\)</span>= Peso relativo</p></li>
+<li><p><span class="math inline">\(y_2\)</span>= Glucemia basal</p></li>
+</ul>
+<p>Supongamos, como en el ejemplo anterior, que tenemos dividido el vector
+aleatorio original en dos subvectores <span class="math inline">\(\bm{y}\)</span> y <span class="math inline">\(\bm{x}\)</span> con <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span>
+variables, respectivamente. Tendremos entonces:</p>
+<p><span class="math display">\[E\left(\begin{array}{c}\bm{y}\\ \bm{x}\end{array}\right)=\left(\begin{array}{c}E(\bm{y})\\ E(\bm{x})\end{array}\right)=\left(\begin{array}{c}\bm{\mu_y}\\ \bm{\mu_x}\end{array}\right)\]</span>
+y</p>
+<p><span class="math display">\[\textnormal{Cov}\left(\begin{array}{c}\bm{y}\\ \bm{x}\end{array}\right)=\bm{\Sigma}=\left(\begin{array}{cc}\bm{\Sigma_{yy}}&amp;\bm{\Sigma_{yx}}\\ \bm{\Sigma_{xy}}&amp;\bm{\Sigma_{xx}}\end{array}\right).\]</span></p>
+<p>En las expresiones anteriores
+<span class="math inline">\(\left(\begin{array}{c}\bm{y}\\ \bm{x}\end{array}\right)\)</span> denota el
+vector original de <span class="math inline">\(p+q\)</span> variables. La submatriz <span class="math inline">\(\bm{\Sigma_{yy}}\)</span> es
+la matriz de covarianzas <span class="math inline">\(p\times p\)</span> del subvector <span class="math inline">\(\bm{y}\)</span>. Del mismo
+modo, la submatriz <span class="math inline">\(\bm{\Sigma_{xx}}\)</span> es la matriz de covarianzas
+<span class="math inline">\(q\times q\)</span> del subvector <span class="math inline">\(\bm{x}\)</span>. La submatriz <span class="math inline">\(\bm{\Sigma_{yx}}\)</span> es
+una matriz <span class="math inline">\(p\times q\)</span> con las covarianzas de cada variable <span class="math inline">\(y_j\)</span> con
+<span class="math inline">\(x_k\)</span>. Nótese que <span class="math inline">\(\bm{\Sigma_{xy}}=\bm{\Sigma_{yx}}^\prime\)</span>.</p>
+<p>Estas propiedades a nivel poblacional se trasladan directamente al
+vector de medias y matriz de covarianzas muestrales. Cada observación en
+la muestra se podrá particionar de la siguiente manera:</p>
+<p><span class="math display">\[\left(\begin{array}{c}\bm{y_i}\\ \bm{x_i}\end{array}\right)=\left(\begin{array}{c}
+y_{i1}\\
+\vdots\\
+y_{ip}\\
+x_{i1}\\
+\vdots\\
+x_{iq}\\
+\end{array}\right),\ \ i=1,\ldots,n.\]</span></p>
+<p>Para la muestra de <span class="math inline">\(n\)</span> observaciones, el vector de medias muestral y la
+matriz de covarianzas muestrales tendrán el siguiente aspecto:
+<span class="math display">\[\left(\begin{array}{c}\overline{\bm{y}}\\ \overline{\bm{x}}\end{array}\right)=\left(\begin{array}{c}\overline{y}_1\\ \vdots\\\overline{y}_p \\\overline{x}_1\\ \vdots\\\overline{x}_q\end{array}\right),\ \ \ \ \ \ \ \ \bm{S}=\left(\begin{array}{cc}\bm{S_{yy}}&amp;\bm{S_{yx}}\\ \bm{S_{xy}}&amp;\bm{S_{xx}}\end{array}\right).\]</span></p>
+<p>Lo visto hasta ahora se puede generalizar de forma natural al caso en
+que tengamos el vector original dividido en más de dos subvectores.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Los datos del estudio sobre diabetes se encuentran en el
+fichero <code>diabetes.txt</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduccion-al-analisis-multivariante.html#cb17-1" tabindex="-1"></a><span class="sc">&gt;</span> diab <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/diabetes.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="introduccion-al-analisis-multivariante.html#cb17-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(diab)</span>
+<span id="cb17-3"><a href="introduccion-al-analisis-multivariante.html#cb17-3" tabindex="-1"></a>    y1  y2  x1  x2  x3</span>
+<span id="cb17-4"><a href="introduccion-al-analisis-multivariante.html#cb17-4" tabindex="-1"></a><span class="dv">1</span> <span class="fl">0.81</span>  <span class="dv">80</span> <span class="dv">356</span> <span class="dv">124</span>  <span class="dv">55</span></span>
+<span id="cb17-5"><a href="introduccion-al-analisis-multivariante.html#cb17-5" tabindex="-1"></a><span class="dv">2</span> <span class="fl">0.95</span>  <span class="dv">97</span> <span class="dv">289</span> <span class="dv">117</span>  <span class="dv">76</span></span>
+<span id="cb17-6"><a href="introduccion-al-analisis-multivariante.html#cb17-6" tabindex="-1"></a><span class="dv">3</span> <span class="fl">0.94</span> <span class="dv">105</span> <span class="dv">319</span> <span class="dv">143</span> <span class="dv">105</span></span>
+<span id="cb17-7"><a href="introduccion-al-analisis-multivariante.html#cb17-7" tabindex="-1"></a><span class="dv">4</span> <span class="fl">1.04</span>  <span class="dv">90</span> <span class="dv">356</span> <span class="dv">199</span> <span class="dv">108</span></span>
+<span id="cb17-8"><a href="introduccion-al-analisis-multivariante.html#cb17-8" tabindex="-1"></a><span class="dv">5</span> <span class="fl">1.00</span>  <span class="dv">90</span> <span class="dv">323</span> <span class="dv">240</span> <span class="dv">143</span></span>
+<span id="cb17-9"><a href="introduccion-al-analisis-multivariante.html#cb17-9" tabindex="-1"></a><span class="dv">6</span> <span class="fl">0.76</span>  <span class="dv">86</span> <span class="dv">381</span> <span class="dv">157</span> <span class="dv">165</span></span>
+<span id="cb17-10"><a href="introduccion-al-analisis-multivariante.html#cb17-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colMeans</span>(diab)</span>
+<span id="cb17-11"><a href="introduccion-al-analisis-multivariante.html#cb17-11" tabindex="-1"></a>         y1          y2          x1          x2          x3 </span>
+<span id="cb17-12"><a href="introduccion-al-analisis-multivariante.html#cb17-12" tabindex="-1"></a>  <span class="fl">0.9178261</span>  <span class="fl">90.4130435</span> <span class="fl">340.8260870</span> <span class="fl">171.3695652</span>  <span class="fl">97.7826087</span> </span>
+<span id="cb17-13"><a href="introduccion-al-analisis-multivariante.html#cb17-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cov</span>(diab)</span>
+<span id="cb17-14"><a href="introduccion-al-analisis-multivariante.html#cb17-14" tabindex="-1"></a>            y1         y2           x1           x2          x3</span>
+<span id="cb17-15"><a href="introduccion-al-analisis-multivariante.html#cb17-15" tabindex="-1"></a>y1  <span class="fl">0.01618184</span>   <span class="fl">0.216029</span>    <span class="fl">0.7871691</span>   <span class="sc">-</span><span class="fl">0.2138454</span>    <span class="fl">2.189072</span></span>
+<span id="cb17-16"><a href="introduccion-al-analisis-multivariante.html#cb17-16" tabindex="-1"></a>y2  <span class="fl">0.21602899</span>  <span class="fl">70.558937</span>   <span class="fl">26.2289855</span>  <span class="sc">-</span><span class="fl">23.9560386</span>  <span class="sc">-</span><span class="fl">20.841546</span></span>
+<span id="cb17-17"><a href="introduccion-al-analisis-multivariante.html#cb17-17" tabindex="-1"></a>x1  <span class="fl">0.78716908</span>  <span class="fl">26.228986</span> <span class="fl">1106.4135266</span>  <span class="fl">396.7323671</span>  <span class="fl">108.383575</span></span>
+<span id="cb17-18"><a href="introduccion-al-analisis-multivariante.html#cb17-18" tabindex="-1"></a>x2 <span class="sc">-</span><span class="fl">0.21384541</span> <span class="sc">-</span><span class="fl">23.956039</span>  <span class="fl">396.7323671</span> <span class="fl">2381.8826087</span> <span class="fl">1142.637681</span></span>
+<span id="cb17-19"><a href="introduccion-al-analisis-multivariante.html#cb17-19" tabindex="-1"></a>x3  <span class="fl">2.18907246</span> <span class="sc">-</span><span class="fl">20.841546</span>  <span class="fl">108.3835749</span> <span class="fl">1142.6376812</span> <span class="fl">2136.396135</span></span></code></pre></div>
+<div id="combinaciones-lineales-de-variables" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Combinaciones lineales de variables<a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con frecuencia estamos interesados en combinaciones lineales de las
+variables de estudio <span class="math inline">\(x_1,\ldots, x_d\)</span>. Sean <span class="math inline">\(a_1,\ldots,a_d\)</span> constantes
+y consideremos la combinación lineal</p>
+<p><span class="math display">\[z=a_1x_1+\ldots+a_dx_d=\bm{a}^\prime\bm{x},\]</span>
+donde
+<span class="math inline">\(\bm{a}=(a_1,\ldots,a_d)^\prime\)</span>. Para la combinación
+lineal<span class="math inline">\(z=\bm{a}^\prime\bm{x}\)</span> se tiene que
+<span class="math inline">\(E(z)=\bm{a}^\prime E(\bm{x})\)</span> y
+<span class="math inline">\(\textnormal{Var}(z)=\bm{a}^\prime\bm\Sigma\bm{a}\)</span>.</p>
+<p>De forma más general, si consideramos <span class="math inline">\(k\)</span> combinaciones lineales</p>
+<p><span class="math display">\[\bm{z}=\left(\begin{array}{c}z_1\\z_2\\ \vdots\\ z_k\end{array}\right)=\left(\begin{array}{c}a_{11}x_1+\ldots+a_{1d}x_d\\a_{21}x_1+\ldots+a_{2d}x_d\\ \vdots\\ a_{k1}x_1+\ldots+a_{kd}x_d\end{array}\right)=\left(\begin{array}{c}\bm{a_1}^\prime\bm{x}\\\bm{a_2}^\prime\bm{x}\\ \vdots\\ \bm{a_k}^\prime\bm{x}\end{array}\right)=\bm{A}\bm{x},\]</span>
+entonces <span class="math inline">\(E(\bm{z})=\bm{A} E(\bm{x})\)</span> y
+<span class="math inline">\(\bm{\Sigma_z}=\bm{A}\bm\Sigma\bm{A}^\prime\)</span>. Para la transformación más
+general <span class="math inline">\(\bm{z}=\bm{A}\bm{x}+\bm{b}\)</span>, se tiene
+<span class="math inline">\(E(\bm{z})=\bm{A} E(\bm{x})+\bm{b}\)</span> y
+<span class="math inline">\(\bm{\Sigma_z}=\bm{A}\bm\Sigma\bm{A}^\prime\)</span>.</p>
+<p>Consideremos ahora el análogo muestral. Si aplicamos la transformación a
+todos los elementos de la muestra, es decir, si hacemos
+<span class="math inline">\(\bm{z_i}=\bm{A}\bm{x_i}+\bm{b}\)</span> para <span class="math inline">\(i=1,\ldots, n\)</span>, entonces
+<span class="math inline">\(\overline{\bm{z}}=\bm{A} \overline{\bm{x}}+\bm{b}\)</span> y
+<span class="math inline">\(\bm{S_z}=\bm{A}\bm{S}\bm{A}^\prime\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Para el ejemplo del estudio sobre diabetes consideramos las
+siguientes transformaciones lineales:</p>
+<ul>
+<li><p><span class="math inline">\(z_1=x_1+2x_2-x3\)</span></p></li>
+<li><p><span class="math inline">\(z_2=y_1+4y_2\)</span></p></li>
+</ul>
+<p>En primer lugar calculamos <span class="math inline">\(\overline{z}_1\)</span>, <span class="math inline">\(\overline{z}_2\)</span>,
+<span class="math inline">\(s^2_{z_1}\)</span>, <span class="math inline">\(s^2_{z_2}\)</span> y <span class="math inline">\(s_{z_1z_2}\)</span> a partir de los datos
+transformados</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduccion-al-analisis-multivariante.html#cb18-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">attach</span>(diab)</span>
+<span id="cb18-2"><a href="introduccion-al-analisis-multivariante.html#cb18-2" tabindex="-1"></a><span class="sc">&gt;</span> z1 <span class="ot">&lt;-</span> x1 <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x2 <span class="sc">-</span> x3</span>
+<span id="cb18-3"><a href="introduccion-al-analisis-multivariante.html#cb18-3" tabindex="-1"></a><span class="sc">&gt;</span> z2 <span class="ot">&lt;-</span> y1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> y2</span>
+<span id="cb18-4"><a href="introduccion-al-analisis-multivariante.html#cb18-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(z1)</span>
+<span id="cb18-5"><a href="introduccion-al-analisis-multivariante.html#cb18-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">585.7826</span></span>
+<span id="cb18-6"><a href="introduccion-al-analisis-multivariante.html#cb18-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(z2)</span>
+<span id="cb18-7"><a href="introduccion-al-analisis-multivariante.html#cb18-7" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">362.57</span></span>
+<span id="cb18-8"><a href="introduccion-al-analisis-multivariante.html#cb18-8" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">var</span>(z1)</span>
+<span id="cb18-9"><a href="introduccion-al-analisis-multivariante.html#cb18-9" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">9569.952</span></span>
+<span id="cb18-10"><a href="introduccion-al-analisis-multivariante.html#cb18-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">var</span>(z2)</span>
+<span id="cb18-11"><a href="introduccion-al-analisis-multivariante.html#cb18-11" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1130.687</span></span>
+<span id="cb18-12"><a href="introduccion-al-analisis-multivariante.html#cb18-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cov</span>(z1, z2)</span>
+<span id="cb18-13"><a href="introduccion-al-analisis-multivariante.html#cb18-13" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">5.195778</span></span></code></pre></div>
+<p>De otro modo, podemos escribir</p>
+<p><span class="math display">\[\bm{z}=\left(\begin{array}{c}z_1\\z_2\end{array}\right)=\left(\begin{array}{ccccc}0&amp;0&amp;1&amp;2&amp;-3\\1&amp;4&amp;0&amp;0&amp;0\end{array}\right)\left(\begin{array}{c}y_1\\y_2\\x_1\\x_2\\x_3\end{array}\right)=\bm{A}\left(\begin{array}{c}y_1\\y_2\\x_1\\x_2\\x_3\end{array}\right).\]</span></p>
+<p>Teniendo en cuenta las propiedades de las transformaciones lineales
+discutidas anteriormente, se tiene también:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduccion-al-analisis-multivariante.html#cb19-1" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb19-2"><a href="introduccion-al-analisis-multivariante.html#cb19-2" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="sc">%*%</span> <span class="fu">colMeans</span>(diab)</span>
+<span id="cb19-3"><a href="introduccion-al-analisis-multivariante.html#cb19-3" tabindex="-1"></a>         [,<span class="dv">1</span>]</span>
+<span id="cb19-4"><a href="introduccion-al-analisis-multivariante.html#cb19-4" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">585.7826</span></span>
+<span id="cb19-5"><a href="introduccion-al-analisis-multivariante.html#cb19-5" tabindex="-1"></a>[<span class="dv">2</span>,] <span class="fl">362.5700</span></span>
+<span id="cb19-6"><a href="introduccion-al-analisis-multivariante.html#cb19-6" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="sc">%*%</span> <span class="fu">cov</span>(diab) <span class="sc">%*%</span> <span class="fu">t</span>(A)</span>
+<span id="cb19-7"><a href="introduccion-al-analisis-multivariante.html#cb19-7" tabindex="-1"></a>            [,<span class="dv">1</span>]        [,<span class="dv">2</span>]</span>
+<span id="cb19-8"><a href="introduccion-al-analisis-multivariante.html#cb19-8" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">9569.951691</span>   <span class="sc">-</span><span class="fl">5.195778</span></span>
+<span id="cb19-9"><a href="introduccion-al-analisis-multivariante.html#cb19-9" tabindex="-1"></a>[<span class="dv">2</span>,]   <span class="sc">-</span><span class="fl">5.195778</span> <span class="fl">1130.687409</span></span></code></pre></div>
+</div>
+</div>
+<div id="distancias-estadisticas" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Distancias estadísticas<a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El concepto de distancia entre objetos o individuos observados permite
+interpretar geométricamente muchas técnicas de análisis multivariante.
+En el caso unidimensional, la distancia entre dos puntos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> se
+mide de manera natural mediante la distancia euclídea
+<span class="math inline">\(\left|x-y\right|\)</span>.</p>
+<p>Cuando disponemos de una variable vectorial, cada dato es un punto en
+<span class="math inline">\(\mathbb{R}^d\)</span> y podríamos entonces pensar en utilizar de nuevo la
+distancia euclídea en el contexto multidimensional. A partir de ahora
+sean <span class="math inline">\(\bm{x_i}=(x_{i1},\ldots,x_{id})^\prime{}\)</span> y
+<span class="math inline">\(\bm{x_k}=(x_{k1},\ldots,x_{kd})^\prime{}\)</span> las observaciones de dos
+individuos <span class="math inline">\(i\)</span>, <span class="math inline">\(k\)</span> obtenidas al medir el vector <span class="math inline">\(d\)</span>-dimensional
+<span class="math inline">\((x_1,\ldots, x_d)^\prime{}\)</span>.</p>
+<div id="distancia-euclidea" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Distancia euclídea<a href="introduccion-al-analisis-multivariante.html#distancia-euclidea" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se define la distancia euclídea entre <span class="math inline">\(\bm{x_i}\)</span> y <span class="math inline">\(\bm{x_k}\)</span> como</p>
+<p><span class="math display">\[d_E(\bm{x_i},\bm{x_k})=\sqrt{\sum_{j=1}^d{(x_{ij}-x_{kj})^2}}.\]</span></p>
+<p>La distancia euclídea es la más utilizada pero tiene como inconvenientes
+que depende de las unidades de medida de las variables (no es invariante ante cambios de escala) y presupone que las variables son incorrelacionadas y de varianza unidad.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Supongamos que disponemos de los datos de peso y estatura
+de 300 mujeres con edades comprendidas entre 30 y 40 años. Queremos
+determinar la posición con respecto a la media de tres nuevas mujeres a
+partir de sus respectivos pesos y estaturas. Supongamos que la mujer <span class="math inline">\(A\)</span>
+pesa <span class="math inline">\(63\)</span> kg. y mide <span class="math inline">\(180\)</span> cm. La mujer <span class="math inline">\(B\)</span> pesa <span class="math inline">\(60\)</span> kg. y mide <span class="math inline">\(177\)</span>
+cm. La mujer <span class="math inline">\(C\)</span> pesa <span class="math inline">\(70\)</span> kg. y mide <span class="math inline">\(177\)</span> cm. Los datos se muestran en
+la Figura <a href="introduccion-al-analisis-multivariante.html#fig:dist">1.6</a></p>
+<p>Si bien parece evidente que la posición de las tres mujeres con respecto
+a la media es diferente (la mujer <span class="math inline">\(C\)</span> parece más “cercana” a la media
+que la <span class="math inline">\(A\)</span> y la <span class="math inline">\(B\)</span>), la distancia euclídea de todos los puntos a la
+media es la misma.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dist"></span>
+<img src="bookdown_AM_files/figure-html/dist-1.png" alt="Peso (en kg.) y estatura (en cm.) de 300 mujeres con edades comprendidas entre 30 y 40 años. En rojo se representa el peso medio y la estatura media. En azul, datos de las mujeres A, B y C." width="50%" />
+<p class="caption">
+Figura 1.6: Peso (en kg.) y estatura (en cm.) de 300 mujeres con edades comprendidas entre 30 y 40 años. En rojo se representa el peso medio y la estatura media. En azul, datos de las mujeres A, B y C.
+</p>
+</div>
+</div>
+<div id="distancia-euclidea-estandarizada-por-columnas" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Distancia euclídea estandarizada por columnas<a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una manera de evitar el problema de que la distancia dependa de las
+unidades de medida de las variables, consiste en dividir cada variable
+por un término que elimine el efecto de la escala.</p>
+<p>Se define la distancia euclídea estandarizada por columnas entre
+<span class="math inline">\(\bm{x_i}\)</span> y <span class="math inline">\(\bm{x_k}\)</span> como</p>
+<p><span class="math display">\[d_{Est}(\bm{x_i},\bm{x_k})=\sqrt{\sum_{j=1}^d{\left(\frac{x_{ij}-x_{kj}}{\sigma_j}\right)^2}}.\]</span>
+Su utilidad radica en que es una forma de determinar la similitud entre
+dos variables aleatorias multidimensionales invariante ante cambios de
+escala. Puede verse como una distancia euclídea donde cada coordenada se
+pondera inversamente proporcional a la varianza.</p>
+<p>Tiene como inconvenientes que presupone que las variables son incorrelacionadas.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el ejemplo anterior de los datos de peso y estatura de
+300 mujeres, la distancia euclídea estandarizada por columnas de la
+mujer <span class="math inline">\(A\)</span> a la media es mayor que la distancia euclídea estandarizada
+por columnas de las mujeres <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> a la media. Aun así, la distancia
+euclídea estandarizada por columnas de las mujeres <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> a la media
+es la misma.</p>
+</div>
+<div id="distancia-de-mahalanobis" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Distancia de Mahalanobis<a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se define la distancia de Mahalanobis entre <span class="math inline">\(\bm{x_i}\)</span> y <span class="math inline">\(\bm{x_k}\)</span> como</p>
+<p><span class="math display">\[d_M(\bm{x_i},\bm{x_k})=\sqrt{(\bm{x_i}-\bm{x_k})^\prime{}\bm\Sigma^{-1}(\bm{x_i}-\bm{x_k})}.\]</span></p>
+<p>Geométricamente equivale a girar la nube de puntos hasta eliminar las
+correlaciones y luego calcular la distancia para los datos
+estandarizados. Es adecuada como medida de discrepancia entre datos,
+porque es invariante ante cambios de escala y tiene en cuenta las correlaciones entre las variables.</p>
+<p>Además,</p>
+<ul>
+<li><p><span class="math inline">\(d_M\equiv d_E\)</span> cuando <span class="math inline">\(\bm\Sigma=\bm{I_d}\)</span>.</p></li>
+<li><p><span class="math inline">\(d_M\equiv d_{Est}\)</span> cuando
+<span class="math inline">\(\bm\Sigma=\textnormal{diag}(\sigma_1^2,\ldots,\sigma_d^2)\)</span>.</p></li>
+</ul>
+<p>En caso de que la matriz de covarianzas sea desconocida se calcula</p>
+<p><span class="math display">\[d_M(\bm{x_i},\bm{x_k})=\sqrt{(\bm{x_i}-\bm{x_k})^\prime{}\bm{S}^{-1}(\bm{x_i}-\bm{x_k})}.\]</span></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el ejemplo anterior de los datos de peso y estatura de
+300 mujeres, la distancia de Mahalanobis de la mujer <span class="math inline">\(A\)</span> a la media es
+mayor que la distancia de Mahalanobis de la mujer <span class="math inline">\(B\)</span> a la media, que a
+su vez es mayor que la distancia de Mahalanobis de la mujer <span class="math inline">\(C\)</span> a la
+media.</p>
+</div>
+<div id="estandarizacion" class="section level3 hasAnchor" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Estandarización<a href="introduccion-al-analisis-multivariante.html#estandarizacion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una transformación lineal que tiene un interés especial es la
+<strong>estandarización</strong>. La estandarización (o tipificación) de una variable
+aleatoria se consigue restando la media y dividiendo por la desviación
+típica (raíz cuadrada de la varianza). De esta manera se consigue que la
+nueva variable transformada tenga media cero y varianza uno.</p>
+<p>En el caso de un vector aleatorio de dimensión <span class="math inline">\(d\)</span>, con <span class="math inline">\(d\)</span> mayor que
+uno, podemos pensar en estandarizar cada una de sus variables. Como
+resultado de esta <strong>estandarización univariante</strong> se obtiene un vector
+cuyas componentes tienen todas media cero y desviación típica uno. Sin
+embargo, puede haber correlación entre las variables que componen el
+vector.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En la Figura <a href="introduccion-al-analisis-multivariante.html#fig:estandarizacion">1.7</a> se muestran dos diagramas de dispersión para
+los datos de peso y estatura de mujeres. El primero de ellos representa
+los datos tras haber estandarizado de manera univariante las dos
+variables. Esto hace que se hayan contraído los ejes. Se mantiene la
+correlación positiva, aunque la orientación de la nube de puntos ahora
+es más próxima a la diagonal, pues ambas variables tienen la misma
+dispersión.</p>
+<p>El segundo gráfico muestra el diagrama de dispersión de los datos tras
+haberles aplicado una estandarización bivariante.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:estandarizacion"></span>
+<img src="bookdown_AM_files/figure-html/estandarizacion-1.png" alt="Estandarización univariante y multivariante" width="50%" /><img src="bookdown_AM_files/figure-html/estandarizacion-2.png" alt="Estandarización univariante y multivariante" width="50%" />
+<p class="caption">
+Figura 1.7: Estandarización univariante y multivariante
+</p>
+</div>
+<p>La estandarización multivariante se obtiene así:</p>
+<p><span class="math display">\[\bm{y}=\bm{\Sigma^{-1/2}}(\bm{x}-\bm\mu)\]</span> donde <span class="math inline">\(\bm\mu\)</span> denota el
+vector de medias, <span class="math inline">\(\bm\Sigma\)</span> es la matriz de covarianzas y
+<span class="math inline">\(\bm{\Sigma^{-1/2}}\)</span> es una matriz <span class="math inline">\(d\times d\)</span> que definiremos más
+adelante. Por las propiedades vistas en la sección anterior, se puede
+comprobar que:</p>
+<ul>
+<li><p>El vector estandarizado tiene media cero:</p>
+<p><span class="math display">\[E(\bm{y})=E(\bm{\Sigma^{-1/2}}(\bm{x}-\bm\mu))=\bm{\Sigma^{-1/2}}E(\bm{x}-\bm\mu)=0.\]</span></p></li>
+<li><p>La matriz de covarianzas de <span class="math inline">\(\bm{y}\)</span> es la matriz identidad <span class="math inline">\(d\times d\)</span>, <span class="math inline">\(\bm{I_d}\)</span>:</p>
+<p><span class="math display">\[\mbox{Cov}(\bm{y},\bm{y})=\mbox{Cov}(\bm{\Sigma^{-1/2}}(\bm{x}-\bm\mu),\bm{\Sigma^{-1/2}}(\bm{x}-\bm\mu))=\bm{\Sigma^{-1/2}}\mbox{Cov}(\bm{x},\bm{x})(\bm{\Sigma^{-1/2}})^\prime{}
+\stackrel{(a)}{=}\bm{I_d}.\]</span></p></li>
+</ul>
+<p>Para obtener la matriz <span class="math inline">\(\bm{\Sigma^{-1/2}}\)</span>, de manera que se cumpla la
+igualdad (a) en el cálculo anterior de la matriz de covarianzas,
+tendremos presente que toda matriz de covarianzas es una matriz
+simétrica y semidefinida positiva. Así, se le puede aplicar la
+descomposición en autovalores y autovectores, que vemos a continuación.</p>
+<p>Si <span class="math inline">\(\bm{A}\)</span> es una matriz simétrica, entonces</p>
+<p><span class="math display">\[\bm{A}=\left(\bm{v_1},\ldots,\bm{v_d}\right)\left(\begin{array}{ccc}
+\lambda_1 &amp; &amp; 0 \\
+&amp; \ddots &amp; \\
+0 &amp; &amp; \lambda_d
+\end{array}\right)\left(\begin{array}{c}
+\bm{v_1}^{\prime} \\
+\vdots \\
+\bm{v_d}^{\prime}
+\end{array}\right)\]</span>
+siendo <span class="math inline">\(\bm{v_1},\ldots,\bm{v_d}\)</span> una base
+ortonormal de autovectores de <span class="math inline">\(\bm{A}\)</span> y <span class="math inline">\(\lambda_1,\ldots,\lambda_d\)</span>
+sus autovalores asociados. <span class="math inline">\(\bm{A}\)</span> se dice definida positiva si todos
+los autovalores de <span class="math inline">\(\bm{A}\)</span> son positivos. En ese caso se puede emplear
+para definir una norma (y una distancia):
+<span class="math inline">\(\|\bm{x}\|^2=\bm{x}&#39;\bm{A}\bm{x}\)</span>.</p>
+<p>Entonces, se puede obtener <span class="math inline">\(\bm{\Sigma^{-1/2}}\)</span> a partir de los
+autovalores y autovectores de <span class="math inline">\(\bm\Sigma\)</span>, de la siguiente manera:</p>
+<p><span class="math display">\[{\bm{\Sigma^{-1/2}}}=\left(\bm{v_1},\ldots,\bm{v_d}\right)\left(\begin{array}{ccc}
+1/\sqrt{\lambda_1} &amp; &amp; 0 \\
+&amp; \ddots &amp; \\
+0 &amp; &amp; 1/\sqrt{\lambda_d}
+\end{array}\right)\left(\begin{array}{c}
+\bm{v_1}^{\prime} \\
+\vdots \\
+\bm{v_d}^{\prime}
+\end{array}\right).\]</span></p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Como es habitual en la literatura de análisis multivariante y para evitar confusión entre escalares, vectores y matrices, denotaremos los vectores con letras minúsculas en negrita y las matrices con letras mayúsculas en negrita. Según esta notación, tanto variables aleatorias como sus valores observados se representarán mediante letras minúsculas.<a href="introduccion-al-analisis-multivariante.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inferencia-en-poblaciones-normales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo6 Análisis discriminante | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo6 Análisis discriminante | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo6 Análisis discriminante | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analisis-de-correspondencias.html"/>
+<link rel="next" href="tecnicas-de-formacion-de-grupos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autores"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerrequisitos"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#estandarizacion"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimacion-en-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimadores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#distribucion-de-overline-bm-x-y-bm-s"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-multivariantes-versus-contrastes-univariantes"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza-y-comparaciones-simultaneas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#inferencia-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-h-0-bm-sigma-bm-sigma-0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#comparacion-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secnorm"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones-2"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#razon-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="anexoDist.html"><a href="anexoDist.html#propiedades-de-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="anexoDist.html"><a href="anexoDist.html#formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-gamma-2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-2"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="anexoDist.html"><a href="anexoDist.html#el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="anexoDist.html"><a href="anexoDist.html#introduccion"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-3"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="anexoAlg.html"><a href="anexoAlg.html#autovalores"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-semidefinidas-positivas"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-definidas-positivas"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References {-}</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="analisis-discriminante" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo6</span> Análisis discriminante<a href="analisis-discriminante.html#analisis-discriminante" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Empezamos definiendo el problema discriminante. Resumidamente se puede
+decir que el problema discriminante consiste en establecer reglas de
+diagnóstico que permitan clasificar a un individuo en alguno de dos o
+más grupos bien definidos. El ejemplo paradigmático sería la diagnosis
+entre enfermos y sanos en Medicina. Para fundamentar la decisión de
+diagnóstico se emplean ciertas observaciones del individuo: presencia de
+síntomas, análisis de sangre y otras pruebas diagnósticas. Estas pruebas
+son útiles para el diagnóstico en la medida en que aportan resultados
+diferentes para los individuos enfermos respecto de los sanos.</p>
+<p>Esta situación da lugar a varias tareas, según el objetivo que se
+persiga:</p>
+<ol style="list-style-type: decimal">
+<li><p>Determinar la presencia de diferencias entre los grupos.</p></li>
+<li><p>Determinar qué variables permiten discriminar mejor entre los
+grupos, en base a las diferencias que presentan entre ellos.</p></li>
+<li><p>Construir la regla discriminante en base a una muestra de
+entrenamiento.</p></li>
+<li><p>Asignar un individuo a cierto grupo en base a la regla
+discriminante, bien la regla óptima o bien estimada en base a una
+muestra de entrenamiento.</p></li>
+</ol>
+<p>La primera tarea se resuelve mediante un Análisis (multivariante) de la
+varianza, mientras que las otras tres son específicas del Análisis
+discriminante.</p>
+<p>Realmente la construcción de una regla discriminante y su aplicación
+constituye una cuestión de gran calado dentro de la teoría de la
+decisión y la inferencia estadística. Por ello, aunque el Análisis
+discriminante se puede considerar como una técnica de Análisis
+multivariante, su importancia supera ampliamente a la de otras técnicas,
+como las estudiadas en temas anteriores. El Análisis discriminante se
+puede considerar en sí mismo como una rama de la Estadística.</p>
+<div id="dos-grupos-con-distribuciones-conocidas" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Dos grupos con distribuciones conocidas<a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suponemos la existencia de dos grupos <span class="math inline">\(G_1\)</span> y <span class="math inline">\(G_2\)</span>, definidos de manera
+inequívoca. Consideramos un vector aleatorio <span class="math inline">\(\bm{x}\)</span> que presenta
+funciones de densidad o de probabilidad <span class="math inline">\(f_1\)</span> si el individuo procede
+del grupo <span class="math inline">\(G_1\)</span> y <span class="math inline">\(f_2\)</span> si procede del grupo <span class="math inline">\(G_2\)</span>. Utilizaremos el
+valor observado del vector aleatorio <span class="math inline">\(\bm{x}\)</span> para decidir si un
+individuo pertenece a uno u otro grupo. Esto supone dividir el soporte
+del vector <span class="math inline">\(\bm{x}\)</span> mediante una partición en dos regiones <span class="math inline">\(R_1\)</span> y
+<span class="math inline">\(R_2\)</span>: <span class="math inline">\(R=R_1\cup R_2\)</span> y <span class="math inline">\(R_1\cap R_2=\emptyset\)</span>, de modo que
+clasificaremos al individuo en el grupo <span class="math inline">\(G_1\)</span> si <span class="math inline">\(\bm{x}\in R_1\)</span> y en el
+grupo <span class="math inline">\(G_2\)</span> si <span class="math inline">\(\bm{x}\in R_2\)</span>. En realidad, la regla discriminante
+anterior sería una regla determinista, de modo que una definición
+general de regla discriminante, que incluya la posibilidad de
+aleatorización, sería la siguiente.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-90" class="definition"><strong>Definición 6.1  </strong></span>Una regla discriminante (aleatorizada) es una aplicación</p>
+<p><span class="math display">\[\begin{array}{rccl}
+\varphi : &amp; R &amp; \longrightarrow &amp; [0,1] \\
+          &amp; \bm{x} &amp; \longrightarrow &amp; \varphi(\bm{x})=P(\mbox{Clasificar en }G_1/\bm{x}=\bm{x}).
+\end{array}\]</span></p>
+<p>Una regla discriminante no aleatorizada es de la forma</p>
+<p><span class="math display">\[\varphi(\bm{x})=\left\{\begin{array}{ll}
+1 &amp; \mbox{si } \bm{x}\in R_1, \\
+0 &amp; \mbox{si } \bm{x}\in R_2. \end{array}\right.\]</span></p>
+</div>
+<p>En el procedimiento de clasificación podemos cometer dos tipos de
+errores: clasificar a un individuo que procede del grupo <span class="math inline">\(G_1\)</span> en el
+grupo <span class="math inline">\(G_2\)</span>, y clasificar a un individuo del grupo <span class="math inline">\(G_2\)</span> en el grupo
+<span class="math inline">\(G_1\)</span>. Las probabilidades condicionales de cada uno de estos errores
+son</p>
+<p><span class="math display">\[P(2/1)=\int \left(1-\varphi(\bm{x})\right)f_1(\bm{x})\,d\bm{x}\ \ \ \ \ \ \mbox{y}
+\ \ \ \ \ \ P(1/2)=\int \varphi(\bm{x}) f_2(\bm{x})\,d\bm{x}\]</span> donde las
+integrales son sumas en el caso discreto. Si la regla discriminante es
+no aleatorizada, entonces las probabilidades anteriores se pueden
+expresar así:</p>
+<p><span class="math display">\[P(2/1)=\int_{R_2} f_1(\bm{x})\,d\bm{x}\ \ \ \ \ \ \mbox{y}
+\ \ \ \ \ \ P(1/2)=\int_{R_1} f_2(\bm{x})\,d\bm{x}.\]</span></p>
+<p>Nótese cómo el problema discriminante se puede encuadrar dentro de la
+teoría de la decisión. Un paso más en esta dirección nos conduce a la
+comparación de reglas discriminantes.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-91" class="definition"><strong>Definición 6.2  </strong></span>Una regla discriminante <span class="math inline">\(\varphi\)</span> es preferible a otra <span class="math inline">\(\varphi&#39;\)</span> si</p>
+<p><span class="math display">\[P_{\varphi}(2/1)\leq P_{\varphi&#39;}(2/1)\]</span> y</p>
+<p><span class="math display">\[P_{\varphi}(1/2)\leq P_{\varphi&#39;}(1/2).\]</span></p>
+</div>
+<p><strong>Nota</strong>. La relación “ser preferible” es una relación de orden parcial.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-92" class="definition"><strong>Definición 6.3  </strong></span>Una regla discriminante se dice admisible si no hay ninguna otra regla
+discriminante que sea preferible (estrictamente) a ella. Por “preferible
+estrictamente” entendemos que, además de ser preferible, en alguno de
+los dos errores de clasificación sea estrictamente mejor.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-93" class="theorem"><strong>Teorema 6.1  </strong></span>Sea <span class="math inline">\(f_1\)</span> la función de densidad o de probabilidad, según el caso, del
+vector aleatorio <span class="math inline">\(\bm{x}\)</span> condicionada al grupo <span class="math inline">\(G_1\)</span> y <span class="math inline">\(f_2\)</span> la
+correspondiente función de densidad o probabilidad condicionada al grupo
+<span class="math inline">\(G_2\)</span>.</p>
+<p>Las reglas discriminantes de la forma</p>
+<p><span class="math display">\[\varphi(\bm{x})=\left\{
+{\displaystyle \begin{array}{ll}
+1 &amp; \mbox{si }\ {\displaystyle \frac{f_1(\bm{x})}{f_2(\bm{x})} &gt; c, } \\
+\gamma(\bm{x}) &amp; \mbox{si }\ {\displaystyle \frac{f_1(\bm{x})}{f_2(\bm{x})} = c,} \\
+0 &amp; \mbox{si }\ {\displaystyle \frac{f_1(\bm{x})}{f_2(\bm{x})} &lt; c.}
+\end{array}}\right.\]</span> son admisibles. Además, son las únicas reglas admisibles.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-5" class="proof"><em>Dem</em>. </span>Es la misma que para el Lema de Neyman-Pearson, en el caso del
+contraste de una hipótesis nula simple frente a una alternativa
+simple.</p>
+</div>
+<p>En lo que sigue veremos cómo distintos criterios permiten la elección de
+una regla discriminante.</p>
+</div>
+<div id="criterios-para-elegir-una-regla-discriminante" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Criterios para elegir una regla discriminante<a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="minimizar-la-probabilidad-total-de-clasificacion-incorrecta" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Minimizar la probabilidad total de clasificación incorrecta<a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pensemos en una población que se encuentra dividida en individuos
+pertenecientes al grupo <span class="math inline">\(G_1\)</span> e individuos pertenecientes al grupo
+<span class="math inline">\(G_2\)</span>, con proporciones respectivas <span class="math inline">\(\pi_1\)</span> y <span class="math inline">\(\pi_2=1-\pi_1\)</span>. Así,
+<span class="math inline">\(\pi_1\)</span> y <span class="math inline">\(\pi_2\)</span> se convierten en probabilidades originales de
+pertenencia a cada grupo, antes de observar el vector aleatorio
+<span class="math inline">\(\bm{x}\)</span>. En consecuencia, la probabilidad total de clasificación
+incorrecta es</p>
+<p><span class="math display">\[P(R,f)=\pi_1 P(2/1) + \pi_2 P(1/2)\]</span> denotando
+<span class="math inline">\({R}=(R_1,R_2)^{\prime}\)</span> al vector de regiones de clasificación y
+<span class="math inline">\({f}=(f_1,f_2)^{\prime}\)</span> al vector de densidades. Nuestro objetivo será
+adoptar una regla de clasificación que presente la menor probabilidad
+total de clasificación incorrecta. Recurrimos a un lema que nos ayudará
+en este propósito.</p>
+<div class="lemma">
+<p><span id="lem:unnamed-chunk-95" class="lemma"><strong>Lema 6.1  </strong></span>La integral <span class="math inline">\(\int_{{R}} g(\bm{x})\,d\bm{x}\)</span> alcanza su mínimo como
+función de <span class="math inline">\({R}\)</span> en</p>
+<p><span class="math display">\[R^-=\{\bm{x}: g(\bm{x})&lt;0\}.\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-6" class="proof"><em>Dem</em>. </span>Denotemos <span class="math inline">\(R^+=(R^-)^c=\{\bm{x}:g(\bm{x})\geq 0\}\)</span>. Para
+cualquier conjunto <span class="math inline">\(R\)</span>, se tiene <span class="math display">\[\begin{aligned}
+\int_R g(\bm{x})\,d\bm{x} &amp; = &amp; \int_{R\cap R^-} g(\bm{x})\,dx + \int_{R\cap R^+} g(\bm{x})\,d\bm{x}
+\geq  \int_{R\cap R^-} g(\bm{x})\,d\bm{x} \\
+&amp; = &amp; \int_{R^-} g(\bm{x})\,d\bm{x} - \int_{R^c\cap R^-} g(\bm{x})\,d\bm{x}
+\geq \int_{R^-} g(\bm{x})\,d\bm{x},\end{aligned}\]</span> lo cual concluye la
+demostración del presente lema.</p>
+</div>
+<p>Desarrollando la probabilidad total de clasificación incorrecta,
+obtenemos</p>
+<p><span class="math display">\[\begin{aligned}
+P({R},{f})&amp;=\pi_1P(2/1)+\pi_2P(1/2)\\
+&amp;=\pi_1 (1-\int_{R_1} f_1(\bm{x})\,d\bm{x})
++\pi_2\int_{R_1} f_2(\bm{x})\,d\bm{x} \\
+&amp;= \pi_1+\int_{R_1} [\pi_2 f_2(\bm{x})-\pi_1 f_1(\bm{x})]\,d\bm{x}\end{aligned}\]</span></p>
+<p>Por el lema anterior, como función de <span class="math inline">\(R_1\)</span> alcanza su mínimo en
+<span class="math inline">\(R_1=\{\bm{x}:\pi_2 f_2(\bm{x})-\pi_1 f_1(\bm{x})&lt;0\}\)</span>, que se
+corresponde con la regla de clasificación que asigna al grupo <span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[\frac{f_1(\bm{x})}{f_2(\bm{x})}&gt;\frac{\pi_2}{\pi_1}\]</span> y al grupo <span class="math inline">\(G_2\)</span>
+en otro caso. La asignación en la frontera de <span class="math inline">\(R_1\)</span> no debería ser
+relevante, ya que no afecta a la probabilidad total. Sin embargo, esto
+puede dar lugar a varias reglas con la misma probabilidad total. Pero si
+el vector <span class="math inline">\(\bm{x}\)</span> es continuo y se cumple alguna otra condición más,
+<span class="math inline">\(P(f_1(\bm{x})/f_2(\bm{x})=\pi_2/\pi_1)=0\)</span>, por lo que serían reglas
+equivalentes.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Supongamos que <span class="math inline">\(f_i\)</span> es la densidad de
+<span class="math inline">\(N_d(\bm{\mu_i}, \bm{\Sigma_i})\)</span>, con
+<span class="math inline">\(\bm{\Sigma_1}=\bm{\Sigma_2}=\bm{\Sigma}\)</span>. Vamos a calcular la regla de
+clasificación óptima con el criterio anterior y las correspondientes
+probabilidades de clasificación incorrecta. Las densidades adoptan la
+forma</p>
+<p><span class="math display">\[f_i(\bm{x})=(2\pi)^{-p/2}|\bm\Sigma|^{-1/2}
+\exp\left[-\frac{1}{2} (\bm{x}-\bm{\mu_i})^{\prime}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu_i})\right]\]</span>
+y su cociente será</p>
+<p><span class="math display">\[\begin{aligned}
+\frac{f_1(\bm{x})}{f_2(\bm{x})}&amp;=\exp\left[-\frac{1}{2} (\bm{x}-\bm{\mu_1})^{\prime}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu_1})
++\frac{1}{2} (\bm{x}-\bm{\mu_2})^{\prime}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu_2})\right] \\
+&amp; =  \exp\left[(\bm{\mu_1}-\bm{\mu_2})^{\prime}\bm{\Sigma}^{-1}\bm{x}
+- \frac{1}{2} (\bm{\mu_1}-\bm{\mu_2})^{\prime}\bm{\Sigma}^{-1}(\bm{\mu_1}+\bm{\mu_2})\right].\end{aligned}\]</span>
+Tomando logaritmos, la regla de clasificación óptima asigna al grupo
+<span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[D(\bm{x})=\bm{\lambda}^{\prime}\left[\bm{x}-\frac{1}{2}(\bm{\mu_1}+\bm{\mu_2})\right]&gt;\log(\pi_2/\pi_1)\]</span>
+siendo <span class="math inline">\(\bm{\lambda}=\bm\Sigma^{-1} (\bm{\mu_1}-\bm{\mu_2})\)</span>. La
+ecuación <span class="math inline">\(D(\bm{x})=\log(\pi_2/\pi_1)\)</span> define un hiperplano que separa
+los dos grupos.</p>
+<p>Para calcular las probabilidades de clasificación incorrecta, observamos
+que, condicionado a cada grupo, la variable aleatoria <span class="math inline">\(D(\bm{x})\)</span> tiene
+distribución normal. Su media y varianza condicionadas son</p>
+<p><span class="math display">\[\begin{aligned}
+E[D(\bm{x})/G_1]&amp;=\bm\lambda^{\prime}\left[\bm{\mu_1}-\frac{1}{2}(\bm{\mu_1}+\bm{\mu_2})\right]
+=\frac{1}{2} \Delta^2, \\
+\textnormal{Var}[D(\bm{x})/G_1]&amp;=\textnormal{Var}[\bm\lambda^{\prime}\bm{x}/G_1]=\bm\lambda^{\prime}\bm\Sigma \bm\lambda=\Delta^2\end{aligned}\]</span>
+denotando
+<span class="math inline">\(\Delta^2=(\bm{\mu_1}-\bm{\mu_2})^{\prime}\bm\Sigma^{-1}(\bm{\mu_1}-\bm{\mu_2})=\bm\lambda^{\prime}(\bm{\mu_1}-\bm{\mu_2})\)</span>
+al cuadrado de la distancia de Mahalanobis entre las medias <span class="math inline">\(\bm{\mu_1}\)</span>
+y <span class="math inline">\(\bm{\mu_2}\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{aligned}
+P(2/1)&amp;= P[D(\bm{x})\leq \log(\pi_2/\pi_1)/G_1]\\
+&amp;=P\left[\frac{D(\bm{x})-\Delta^2/2}{\Delta}\leq \frac{\log(\pi_2/\pi_1)-\Delta^2/2}{\Delta}
+/G_1\right] \\
+&amp;=\Phi\left(\frac{\log(\pi_2/\pi_1)-\Delta^2/2}{\Delta}\right).\end{aligned}\]</span>
+De igual modo, <span class="math inline">\(E[D(\bm{x})/G_2]=-\frac{1}{2} \Delta^2\)</span> y
+<span class="math inline">\(\textnormal{Var}[D(\bm{x})/G_2]=\Delta^2\)</span>, y así:</p>
+<p><span class="math display">\[\begin{aligned}
+P(1/2)&amp;= P[D(\bm{x})&gt; \log(\pi_2/\pi_1)/G_2]\\
+&amp;=P\left[\frac{D(\bm{x})+\Delta^2/2}{\Delta}&gt; \frac{\log(\pi_2/\pi_1)+\Delta^2/2}{\Delta}
+/G_2\right] \\
+&amp;=1-\Phi\left(\frac{\log(\pi_2/\pi_1)+\Delta^2/2}{\Delta}\right).\end{aligned}\]</span>
+La probabilidad total de clasificación incorrecta queda:</p>
+<p><span class="math display">\[\begin{aligned}
+P(\mbox{Clasificación incorrecta})&amp;=\pi_1 P(2/1)+\pi_2 P(1/2) \\
+&amp;=\pi_1 \Phi\left(\frac{\log(\pi_2/\pi_1)-\Delta^2/2}{\Delta}\right)\\
+&amp;\qquad +\pi_2 \left[1-\Phi\left(\frac{\log(\pi_2/\pi_1)+\Delta^2/2}{\Delta}\right)\right].\end{aligned}\]</span>
+Si <span class="math inline">\(\pi_1=\pi_2=\frac{1}{2}\)</span>, entonces la regla discriminante consiste
+en clasificar en <span class="math inline">\(G_1\)</span> si
+<span class="math inline">\(D(\bm{x})=\bm\lambda^{\prime}[\bm{x}-\frac{1}{2}(\bm{\mu_1}+\bm{\mu_2})]&gt;\log(\pi_2/\pi_1)=0\)</span>,
+o equivalentemente, si</p>
+<p><span class="math display">\[\bm\lambda^{\prime} \bm{x} &gt; \frac{1}{2}\left(\bm\lambda^{\prime}\bm{\mu_1}+\bm\lambda^{\prime}\bm{\mu_2}\right)\]</span>
+esto es, si <span class="math inline">\(\bm\lambda^{\prime} \bm{x}\)</span> está más próximo a
+<span class="math inline">\(\bm\lambda^{\prime}\bm{\mu_1}\)</span> que a <span class="math inline">\(\bm\lambda^{\prime}\bm{\mu_2}\)</span>. A
+esto se le conoce como regla discriminante lineal de Fisher (1936).</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el ejemplo anterior, supongamos que
+<span class="math inline">\(\bm{\Sigma_1}\neq \bm{\Sigma_2}\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{aligned}
+Q(\bm{x})&amp;=\log(f_1(\bm{x})/f_2(\bm{x})) \\
+&amp;= \frac{1}{2}\log(|\bm{\Sigma_2}|/|\bm{\Sigma_1}|)
+-\frac{1}{2}(\bm{x}-\bm{\mu_1})^{\prime}\bm{\Sigma_1}^{-1} (\bm{x}-\bm{\mu_1})
++\frac{1}{2}(\bm{x}-\bm{\mu_2})^{\prime}\bm{\Sigma_2}^{-1} (\bm{x}-\bm{\mu_2}) \\
+&amp;= \frac{1}{2}\log(|\bm{\Sigma_2}|/|\bm{\Sigma_1}|)
+-\frac{1}{2} \left[ \bm{x}^{\prime}(\bm{\Sigma_1}^{-1}-\bm{\Sigma_2}^{-1}) \bm{x}
+-2\bm{x}^{\prime}(\bm{\Sigma_1}^{-1} \bm{\mu_1} -\bm{\Sigma_2}^{-1} \bm{\mu_2}) \right]\end{aligned}\]</span>
+y la regla óptima clasifica en <span class="math inline">\(G_1\)</span> si <span class="math inline">\(Q(\bm{x})&gt;\log(\pi_2/\pi_1)\)</span>.
+Pero, mientras <span class="math inline">\(D(\bm{x})\)</span> es una función lineal, ahora <span class="math inline">\(Q(\bm{x})\)</span> es
+una función cuadrática, de modo que la frontera entre las dos regiones
+ya no es un hiperplano.</p>
+</div>
+<div id="razon-de-verosimilitudes" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Razón de verosimilitudes<a href="analisis-discriminante.html#razon-de-verosimilitudes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nos situamos en el contexto en que las probabilidades a priori, <span class="math inline">\(\pi_1\)</span>
+y <span class="math inline">\(\pi_2\)</span>, son desconocidas o sencillamente no se tienen en cuenta. Una
+regla de clasificación debería asignar un individuo al grupo más
+verosímil, que es aquel que otorga mayor probabilidad a su resultado
+muestral. Esto equivale a clasificar en el grupo <span class="math inline">\(G_1\)</span> si
+<span class="math inline">\(f_1(\bm{x})/f_2(\bm{x})&gt;1\)</span>, lo cual coincide con el criterio anterior
+para <span class="math inline">\(\pi_1=\pi_2=1/2\)</span>.</p>
+</div>
+<div id="minimizar-el-coste-total-de-clasificacion-incorrecta" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Minimizar el coste total de clasificación incorrecta<a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si asociamos unos costes <span class="math inline">\(C(2/1)\)</span> y <span class="math inline">\(C(1/2)\)</span> a cada uno de los errores
+de clasificación, entonces el coste total esperado es</p>
+<p><span class="math display">\[C=\pi_1P(2/1)C(2/1)+\pi_2P(1/2)C(1/2).\]</span> Podemos repetir los argumentos
+que obtuvieron la regla que minimiza la probabilidad total de
+clasificación incorrecta sustituyendo <span class="math inline">\(\pi_1\)</span> y <span class="math inline">\(\pi_2\)</span> por
+<span class="math inline">\(\pi_1C(2/1)\)</span> y <span class="math inline">\(\pi_2C(1/2)\)</span>, ya que en aquellos argumentos no se usó
+que <span class="math inline">\(\pi_1+\pi_2=1\)</span>. Así, obtendremos que la regla que hace mínimo el
+coste total esperado consiste en clasificar en el grupo <span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[\frac{f_1(\bm{x})}{f_2(\bm{x})}&gt;\frac{\pi_2C(1/2)}{\pi_1C(2/1)}.\]</span> Por
+supuesto, si <span class="math inline">\(C(2/1)=C(1/2)\)</span>, coincide con el criterio que minimiza la
+probabilidad total de clasificación incorrecta.</p>
+</div>
+<div id="maximizar-la-probabilidad-a-posteriori" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Maximizar la probabilidad a posteriori<a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideramos la probabilidad de que el individuo proceda del grupo
+<span class="math inline">\(G_1\)</span>, conocido el valor del vector aleatorio <span class="math inline">\(\bm{x}\)</span>. Dicha
+probabilidad se conoce como probabilidad a posteriori y se puede
+calcular mediante el teorema de Bayes:</p>
+<p><span class="math display">\[P(G_1/\bm{x}=\bm{x_0})=\frac{\pi_1 f_1(\bm{x_0})}{\pi_1 f_1(\bm{x_0})+\pi_2 f_2(\bm{x_0})}.\]</span>
+La probabilidad a posteriori del grupo <span class="math inline">\(G_2\)</span> se define y obtiene de la
+misma manera:</p>
+<p><span class="math display">\[P(G_2/\bm{x}=\bm{x_0})=\frac{\pi_2 f_2(\bm{x_0})}{\pi_1 f_1(\bm{x_0})+\pi_2 f_2(\bm{x_0})}.\]</span>
+Una regla de clasificación razonable asignaría al grupo con mayor
+probabilidad a posteriori, esto es, clasificaría en el grupo <span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[P(G_1/\bm{x})&gt;P(G_2/\bm{x})\]</span> lo cual coincide con
+<span class="math inline">\(f_1(\bm{x})/f_2(\bm{x})&gt;\pi_2/\pi_1\)</span>.</p>
+</div>
+<div id="criterio-minimax" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Criterio minimax<a href="analisis-discriminante.html#criterio-minimax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un procedimiento que minimice la probabilidad total de clasificación
+incorrecta puede no prestar suficiente atención a uno de los grupos, en
+especial si su probabilidad a priori es pequeña. Por ejemplo, esto
+ocurre en el problema de diagnosis de una enfermedad poco frecuente,
+donde la probabilidad de un falso negativo puede ser alta sin afectar
+mucho a la probabilidad total de clasificación incorrecta.</p>
+<p>Esto constituye una justificación para el uso de un criterio más
+conservador, como es el minimax. En este caso, escogemos la regla tal
+que el máximo de sus dos probabilidades de clasificación incorrecta sea
+mínima. Consideremos <span class="math inline">\(P\)</span> una regla de clasificación cualquiera. Entonces, para todo <span class="math inline">\(\alpha\in[0,1]\)</span>,</p>
+<p><span class="math display">\[\begin{aligned}\max\{P(2/1),P(1/2)\}&amp;\geq (1-\alpha)P(2/1)+\alpha P(1/2)\\
+&amp;\geq (1-\alpha)P_{\alpha}(2/1)+\alpha P_{\alpha}(1/2),
+\end{aligned}\]</span>
+siendo <span class="math inline">\(P_{\alpha}\)</span> la regla de clasificación que asigna a <span class="math inline">\(G_1\)</span> si
+<span class="math inline">\(f_1(X)/f_2(X)&gt;\alpha/(1-\alpha)\)</span>. La primera desigualdad anterior es
+inmediata y la segunda se debe a que <span class="math inline">\(P_{\alpha}\)</span> es la regla que hace
+mínima la probabilidad total de clasificación incorrecta bajo la
+distribución a priori: <span class="math inline">\(\pi_2=\alpha\)</span>, <span class="math inline">\(\pi_1=1-\alpha\)</span>.</p>
+<p>Tomemos <span class="math inline">\(c=\frac{\alpha_0}{1-\alpha_0}\)</span> (o equivalentemente, <span class="math inline">\(\alpha_0\)</span>)
+de modo que <span class="math inline">\(P_{\alpha_0}(2/1)=P_{\alpha_0}(1/2)\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{aligned}
+\max\{P(2/1),P(1/2)\} &amp; \geq  (1-\alpha_0)P_{\alpha_0}(2/1)+\alpha_0 P_{\alpha_0}(1/2)
+=(1-\alpha_0+\alpha_0) P_{\alpha_0}(2/1) \\
+&amp;=P_{\alpha_0}(2/1)=\max\{P_{\alpha_0}(2/1),P_{\alpha_0}(1/2)\}\end{aligned}\]</span>
+lo cual demuestra que <span class="math inline">\(P_{\alpha_0}\)</span> es la regla minimax.</p>
+<p>En consecuencia, la regla minimax será la que clasifica en el grupo
+<span class="math inline">\(G_1\)</span> si <span class="math inline">\(f_1(\bm{x})/f_2(\bm{x})&gt;c\)</span>, siendo <span class="math inline">\(c\)</span> tal que
+<span class="math inline">\(P_c(2/1)=P_c(1/2)\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Si las dos distribuciones condicionadas a cada grupo son
+normales con la misma matriz de covarianzas, la regla de clasificación
+minimax asigna al grupo <span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[D(\bm{x})&gt;\log c\]</span> siendo <span class="math inline">\(c\)</span> tal que</p>
+<p><span class="math display">\[\Phi\left(\frac{\log c -\Delta^2/2}{\Delta}\right)
+=1-\Phi\left(\frac{\log c +\Delta^2/2}{\Delta}\right)\]</span> Esta ecuación
+tiene solución <span class="math inline">\(\log c=0\)</span>, o lo que es lo mismo, <span class="math inline">\(c=1\)</span>, lo cual coincide
+con el criterio de la razón de verosimilitudes.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Una población se encuentra dividida en dos grupos <span class="math inline">\(G_1\)</span> y
+<span class="math inline">\(G_2\)</span>. Se realiza una observación de una variable que tiene distribución
+exponencial, cuyo parámetro depende del grupo. Si procede del grupo
+<span class="math inline">\(G_1\)</span> el parámetro es 1, y si procede del grupo <span class="math inline">\(G_2\)</span> el parámetro es 2.</p>
+<p>a. Supongamos una distribución a priori equiprobable sobre los dos
+grupos. Calcula la regla que minimiza la probabilidad de clasificación
+incorrecta. Cuál es ese valor mínimo de la probabilidad de clasificación
+incorrecta?</p>
+<p>b. Calcula la regla de clasificación óptima con el criterio minimax.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Consideremos una población dividida en dos grupos. A cada
+individuo de la población le podemos observar una variable aleatoria
+discreta que toma valores 1,2,3,4 y 5, con probabilidades respectivas
+<span class="math inline">\(0.05\)</span>, <span class="math inline">\(0.15\)</span>, <span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.25\)</span>, <span class="math inline">\(0.05\)</span> para el primer grupo y <span class="math inline">\(0.3\)</span>, <span class="math inline">\(0.1\)</span>, <span class="math inline">\(0.1\)</span>, <span class="math inline">\(0.1\)</span>,
+<span class="math inline">\(0.4\)</span> para el segundo grupo.</p>
+<p>a. Suponiendo una distribución a priori equiprobable entre los dos
+grupos, determina la regla discriminante que hace mínima la probabilidad
+total de clasificación incorrecta.</p>
+<p>b. Determina la regla discriminante óptima con el criterio minimax.</p>
+</div>
+</div>
+<div id="estimacion-de-la-regla-discriminante" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Estimación de la regla discriminante<a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La situación más común en la práctica consiste en que desconocemos las
+distribuciones de <span class="math inline">\(\bm{x}\)</span> condicionales a cada uno de los grupos. En su
+lugar disponemos de muestras procedentes de cada grupo,</p>
+<p><span class="math display">\[\bm{x_{11}},\ldots,\bm{x_{1n_1}}\ \ \mbox{del grupo}\ G_1.\]</span></p>
+<p><span class="math display">\[\bm{x_{21}},\ldots,\bm{x_{2n_2}}\ \ \mbox{del grupo}\ G_2.\]</span> conocidas
+como <em>muestras de entrenamiento</em>, que nos sirven para estimar la regla
+discriminante, por lo general, a través de estimaciones de las
+distribuciones respectivas:</p>
+<p><span class="math display">\[\hat{R}_1=\left\{\bm{x}:\frac{\hat{f}_1(\bm{x})}{\hat{f}_2(\bm{x})}&gt;c\right\}.\]</span></p>
+<p>Si se supone algún modelo paramétrico para las distribuciones, que
+podemos representar en la forma <span class="math inline">\(f_1(\bm{x})=f_1(\bm{x}/\theta_1)\)</span> y
+<span class="math inline">\(f_2(\bm{x})=f_2(\bm{x}/\theta_2)\)</span>, los estimadores serían
+<span class="math inline">\(\hat{f}_1(\bm{x})=f_1(\bm{x}/\hat{\theta}_1)\)</span> y
+<span class="math inline">\(\hat{f}_2(\bm{x})=f_2(\bm{x}/\hat{\theta}_2)\)</span>, donde <span class="math inline">\(\hat{\theta}_1\)</span> y
+<span class="math inline">\(\hat{\theta}_2\)</span> representan estimadores de los parámetros. En ausencia
+de modelo paramétrico, <span class="math inline">\(\hat{f}_1(\bm{x})\)</span> y <span class="math inline">\(\hat{f}_2(\bm{x})\)</span> serían
+algún tipo de estimador no paramétrico de la densidad.</p>
+<p>La regla discriminante estimada, <span class="math inline">\(\hat{R}=(\hat{R}_1,\hat{R}_2)\)</span>, se
+aplicaría más adelante para clasificar a un nuevo individuo en uno u
+otro grupo, en base a su resultado en el vector <span class="math inline">\(\bm{x}\)</span>.</p>
+<p>En la sección anterior vimos que la regla discriminante óptima era
+<span class="math inline">\(R=(R_1,R_2)\)</span>, donde las regiones de clasificación <span class="math inline">\(R_1\)</span> y <span class="math inline">\(R_2\)</span>
+dependían de las verdaderas funciones <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span>. Como <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span>
+son desconocidas, hemos tenido que sustituirlas por estimaciones
+<span class="math inline">\(\hat{f}_1\)</span> y <span class="math inline">\(\hat{f}_2\)</span> obteniendo una regla que ya no será óptima.
+Nuestra esperanza reside en que sea parecida a la regla óptima.</p>
+<div id="tasas-de-error-en-reglas-estimadas" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Tasas de error en reglas estimadas<a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nos interesa conocer cómo afecta la estimación de la regla discriminante
+a los errores de clasificación. Debemos distinguir entre:</p>
+<dl>
+<dt>Tasas de error óptimas</dt>
+<dd>
+<p>Son las probabilidades de error de la regla discriminante óptima.
+Las denotamos</p>
+<p><span class="math display">\[e_{i,opt}=\int_{R_j}f_i(\bm{x})\,d\bm{x}\qquad i=1,2\ \ j\neq i.\]</span></p>
+<p><span class="math display">\[e_{opt}=\pi_1 e_{1,opt}+\pi_2 e_{2,opt}.\]</span></p>
+</dd>
+<dt>Tasas de error efectivas</dt>
+<dd>
+<p>Son las probabilidades de error de la regla discriminante estimada.</p>
+<p><span class="math display">\[e_{i,efe}=\int_{\hat{R}_j}f_i(\bm{x})\,d\bm{x}\qquad i=1,2\ \ j\neq i.\]</span></p>
+<p><span class="math display">\[e_{efe}=\pi_1 e_{1,efe}+\pi_2 e_{2,efe}.\]</span> Nótese que las regiones
+<span class="math inline">\((\hat{R}_1,\hat{R}_2)\)</span> se obtienen de las muestras de
+entrenamiento. En la medida en que estas muestras son aleatorias,
+las regiones de clasificación serán aleatorias, y también lo serán
+las tasas de error efectivas. Por tanto, tiene sentido calcular su
+esperanza.</p>
+</dd>
+<dt>Esperanza de las tasas de error efectivas</dt>
+<dd>
+<p>No son más que la esperanza de las tasas de error anteriores,
+calculadas respecto de la distribución de probabilidad de las
+muestras de entrenamiento: <span class="math inline">\(E(e_{i,efe})\)</span> y</p>
+<p><span class="math display">\[E(e_{efe})=\pi_1 E(e_{1,efe})+\pi_2 E(e_{2,efe}).\]</span></p>
+</dd>
+</dl>
+<p>Es inmediato que</p>
+<p><span class="math display">\[e_{i,opt}\leq e_{i,efe}\qquad\mbox{y}\qquad e_{opt}\leq e_{efe}.\]</span></p>
+<p>Las tasas de error óptimas se refieren a la situación ideal en la que
+las distribuciones de cada grupo son conocidas. Sin embargo, en el caso
+que nos ocupa, las que tienen mayor interés son las tasas de error
+efectivas, pues representan las probabilidades de error en las que se va
+a incurrir cuando se clasifique a un nuevo individuo mediante la regla
+estimada.</p>
+<p>Por desgracia, las tasas de error efectivas son desconocidas ya que
+dependen de <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span>, que representan la distribución de la nueva
+observación. A continuación planteamos diversos estimadores de las tasas
+de error efectivas.</p>
+</div>
+<div id="estimacion-de-las-tasas-de-error-efectivas" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Estimación de las tasas de error efectivas<a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<dl>
+<dt>Estimadores plug-in</dt>
+<dd>
+<p>Se obtienen sustituyendo <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span> por <span class="math inline">\(\hat{f}_1\)</span> y
+<span class="math inline">\(\hat{f}_2\)</span>.</p>
+<p><span class="math display">\[e_{i,pl}=\int_{\hat{R}_j}\hat{f}_i(\bm{x})\,d\bm{x}\qquad i=1,2\ \ j\neq i.\]</span></p>
+</dd>
+<dt>Tasas de error aparentes</dt>
+<dd>
+<p>Si a cada individuo de la muestra de entrenamiento le aplicamos la
+regla discriminante estimada tendremos algunos individuos bien
+clasificados y otros mal clasificados. Pues bien, las tasas de error
+aparentes son las frecuencias relativas de observaciones mal
+clasificadas.</p>
+<p><span class="math display">\[e_{i,apa}=\frac{m_i}{n_i}\qquad i=1,2\]</span> siendo <span class="math inline">\(m_i\)</span> el número de individuos de la muestra de entrenamiento procedente
+del grupo <span class="math inline">\(G_i\)</span> que son mal clasificados por la regla estimada. Las
+tasas de error aparentes tienden a infraestimar las tasas de error
+efectivas ya que estamos aplicando la regla estimada a los mismos
+datos con los que ha sido construida. El mismo fenómeno ocurre con
+los estimadores plug-in, ya que entre la regla estimada y
+<span class="math inline">\(\hat{f}_i\)</span> hay una relación de optimalidad que no se cumple con las
+tasas de error efectivas. Por este motivo, se proponen correcciones
+de las tasas de error aparentes.</p>
+</dd>
+<dt>Corrección por validación cruzada</dt>
+<dd>
+<p>Consiste en construir la regla discriminante con todas las
+observaciones menos una, y aplicar después esa regla para clasificar
+al individuo omitido. Las tasas de error se calcularían después como
+las frecuencias relativas de individuos mal clasificados.</p>
+</dd>
+<dt>Corrección mediante bootstrap</dt>
+<dd>
+<p>Se trata de una corrección del sesgo de las tasas de error
+aparentes. Siguiendo las ideas del bootstrap, extraemos muestras
+artificiales de la forma:</p>
+<p><span class="math display">\[\bm{x_{11}}^*,\ldots,\bm{x_{1n_1}}^*\ \ \mbox{i.i.d. de la distribución equiprobable sobre}
+\ \ \bm{x_{11}},\ldots,\bm{x_{1n_1}}.\]</span></p>
+<p><span class="math display">\[\bm{x_{21}}^*,\ldots,\bm{x_{2n_2}}^*\ \ \mbox{i.i.d. de la distribución equiprobable sobre}
+\ \ \bm{x_{21}},\ldots,\bm{x_{2n_2}}.\]</span></p>
+<p>Sobre las muestras
+artificiales aplicamos los mismos procedimientos de estimación de la
+regla discriminante y cálculo de las tasas de error aparentes,
+<span class="math inline">\(m_1^*/n_1\)</span> y <span class="math inline">\(m_2^*/n_2\)</span>, siendo <span class="math inline">\(m_i^*\)</span> el número de individuos de
+la muestra bootstrap, del grupo <span class="math inline">\(G_i\)</span>, que han sido mal clasificados
+por la regla estimada bootstrap. Denotemos <span class="math inline">\(m_i^{orig}\)</span> al número de
+individuos de la muestra original que son mal clasificados por la
+regla bootstrap. La estimación bootstrap del sesgo sería:
+<span class="math display">\[E^*\left(\frac{m_i^*}{n_i}-\frac{m_i^{orig}}{n_i}\right)\]</span> donde
+<span class="math inline">\(E^*\)</span> denota la esperanza respecto del muestreo bootstrap, que en la
+práctica se puede aproximar mediante la media obtenida tras extraer
+muchas muestras bootstrap.</p>
+<p>La corrección bootstrap del sesgo daría lugar a las tasas de error
+siguientes:
+<span class="math display">\[\frac{m_i}{n_i}-E^*\left(\frac{m_i^*}{n_i}-\frac{m_i^{orig}}{n_i}\right)\]</span></p>
+</dd>
+</dl>
+<p>A partir de cualquiera de las tasas de error anteriores, también se
+puede estimar la probabilidad total de clasificación incorrecta. Para
+ello, podemos suponer que las probabilidades a priori <span class="math inline">\(\pi_1\)</span> y <span class="math inline">\(\pi_2\)</span>
+son conocidas, o en otro caso se pueden estimar mediante las
+proporciones <span class="math inline">\(n_1/(n_1+n_2)\)</span> y <span class="math inline">\(n_2/(n_1+n_2)\)</span>, suponiendo que las dos
+muestras han sido extraídas al azar de la población formada al juntar
+los dos grupos.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Supongamos dos muestras de entrenamiento</p>
+<p><span class="math display">\[\bm{x_{11}},\ldots,\bm{x_{1n_1}}\in N_d(\bm{\mu_1},\bm\Sigma) \ \mbox{del grupo}\ G_1.\]</span></p>
+<p><span class="math display">\[\bm{x_{21}},\ldots,\bm{x_{2n_2}}\in N_d(\bm{\mu_2},\bm\Sigma) \ \mbox{del grupo}\ G_2.\]</span>
+Estamos ante dos distribuciones normales con la misma matriz de
+covarianzas, por lo que, según hemos visto en la sección anterior, la
+regla de clasificación óptima asignaría a un nuevo individuo al grupo
+<span class="math inline">\(G_1\)</span> si</p>
+<p><span class="math display">\[D(\bm{x})=\bm\lambda^{\prime}\left[\bm{x}-\frac{1}{2}(\bm{\mu_1}+\bm{\mu_2})\right]&gt;\log c\]</span>
+siendo <span class="math inline">\(\bm\lambda=\bm\Sigma^{-1} (\bm{\mu_1}-\bm{\mu_2})\)</span>.</p>
+<p>Como <span class="math inline">\(\bm{\mu_1}\)</span>, <span class="math inline">\(\bm{\mu_2}\)</span> y <span class="math inline">\(\bm\Sigma\)</span> son desconocidos, los
+sustituimos por sus estimaciones en base a las muestras de entrenamiento
+<span class="math inline">\(\overline{\bm{x_1}}=n_1^{-1}\sum_{i=1}^{n_1} \bm{x_{1i}}\)</span>,
+<span class="math inline">\(\overline{\bm{x_2}}=n_2^{-1}\sum_{i=1}^{n_2} \bm{x_{2i}}\)</span> y</p>
+<p><span class="math display">\[\bm{S_c}=\frac{(n_1-1)\bm{S_{c1}}+(n_2-1)\bm{S_{c2}}}{n_1+n_2-2}\]</span>
+siendo
+<span class="math inline">\(\bm{S_{c1}}=(n_1-1)^{-1}\sum_{i=1}^{n_1} (\bm{x_{1i}}-\overline{\bm{x_1}})(\bm{x_{1i}}-\overline{\bm{x_1}})^\prime{}\)</span>,
+y análogamente <span class="math inline">\(\bm{S_{c2}}\)</span>.</p>
+<p>La regla estimada resulta</p>
+<p><span class="math display">\[\hat{D}(\bm{x})=\hat{\bm\lambda}^{\prime}\left[\bm{x}-\frac{1}{2}(\overline{\bm{x_1}}+\overline{\bm{x_2}})\right]&gt;\log c\]</span>
+siendo <span class="math inline">\(\hat{\bm\lambda}=\bm{S_c}^{-1} (\overline{\bm{x_1}}-\overline{\bm{x_2}})\)</span>.</p>
+<p>Las tasas de error efectivas serían</p>
+<p><span class="math display">\[e_{1,efe}=\Phi\left(\frac{\log c - \hat{D}(\bm{\mu_1})}{\sqrt{\hat{\bm\lambda}^\prime{}\bm\Sigma\hat{\bm\lambda}}}
+\right)\qquad\mbox{y}\qquad e_{2,efe}=
+\Phi\left(\frac{-\log c + \hat{D}(\bm{\mu_2})}{\sqrt{\hat{\bm\lambda}^\prime{}\bm\Sigma\hat{\bm\lambda}}}
+\right).\]</span></p>
+<p>Sustituyendo en las expresiones anteriores <span class="math inline">\(\bm{\mu_1}\)</span>, <span class="math inline">\(\bm{\mu_2}\)</span> y
+<span class="math inline">\(\bm\Sigma\)</span> por sus estimaciones, obtenemos las estimaciones plug-in de
+las tasas de error</p>
+<p><span class="math display">\[e_{1,pl}=\Phi\left( \frac{\log c - \hat{\Delta}^2/2}{\hat{\Delta}} \right)
+\qquad\mbox{y}\qquad
+e_{2,pl}=\Phi\left( \frac{-\log c - \hat{\Delta}^2/2}{\hat{\Delta}} \right)\]</span>
+donde
+<span class="math inline">\(\hat{\Delta}^2=\left(\overline{\bm{x_1}}-\overline{\bm{x_2}}\right)^\prime{} \bm{S_c}^{-1} \left(\overline{\bm{x_1}}-\overline{\bm{x_2}}\right)\)</span>
+es el cuadrado de la distancia de Mahalanobis en términos muestrales.
+Como ocurre en general, los estimadores <span class="math inline">\(e_{i,pl}\)</span> no son buenos
+estimadores de <span class="math inline">\(e_{i,efe}\)</span>. Para corregirlos se ha propuesto utilizar
+<span class="math inline">\(\tilde{\Delta}\)</span> en lugar de <span class="math inline">\(\hat{\Delta}\)</span> en la expresión de
+<span class="math inline">\(e_{i,pl}\)</span>, siendo
+<span class="math display">\[\tilde{\Delta}^2=\frac{n_1+n_2-d-3}{n_1+n_2-2} \hat{\Delta}^2.\]</span></p>
+<p>Por supuesto, también se pueden llevar a cabo las estimaciones mediante
+las tasas de error aparentes, así como sus correcciones por validación
+cruzada o por bootstrap.</p>
+</div>
+</div>
+<div id="varios-grupos-con-distribuciones-conocidas" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Varios grupos con distribuciones conocidas<a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Supongamos que están definidos <span class="math inline">\(I\)</span> grupos, y queremos construir una
+regla discriminante que permita clasificar en alguno de los grupos en
+función del resultado de un vector aleatorio <span class="math inline">\(\bm{x}\)</span>. Consideramos
+<span class="math inline">\(\pi_1,\ldots,\pi_I\)</span> la distribucion a priori sobre los <span class="math inline">\(I\)</span> grupos, y
+<span class="math inline">\(f_1,\ldots,f_I\)</span> las funciones de densidad o probabilidad de <span class="math inline">\(\bm{x}\)</span>
+condicionadas a cada uno de los grupos. La regla discriminante óptima
+consistirá en</p>
+<p><span class="math display">\[\mbox{Clasificar en el grupo}\ \  g \ \ \mbox{si}\qquad \pi_g f_g(\bm{x})=\max_{i\in\{1,\ldots,I\}} \pi_i f_i(\bm{x}).\]</span> Esta regla es la que clasifica en el grupo con
+mayor probabilidad a posteriori, y es la regla de máxima verosimilitud
+si se omiten las probabilidades a priori.</p>
+<div id="clasificacion-optima-de-varias-poblaciones-normales" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Clasificación óptima de varias poblaciones normales<a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pensemos que los grupos tienen las mismas probabilidades a priori, y que
+las distribuciones <span class="math inline">\(f_i\)</span> son normales de medias
+<span class="math inline">\(\bm{\mu_1},\ldots,\bm{\mu_I}\)</span>, y con la misma matriz de covarianzas
+<span class="math inline">\(\bm\Sigma\)</span>. Entonces la regla anterior se reduce a</p>
+<p><span class="math display" id="eq:reglaoptima">\[\begin{equation}
+\mbox{Clasificar en el grupo}\ \  g \ \ \mbox{si}\ \left(\bm{x}-\bm{\mu_g}\right)^\prime{}\bm{\Sigma}^{-1}\left(\bm{x}-\bm{\mu_g}\right)
+=\min_{i\in\{1,\ldots,I\}} \left(\bm{x}-\bm{\mu_i}\right)^\prime{}\bm{\Sigma}^{-1}\left(\bm{x}-\bm{\mu_i}\right)
+\tag{6.1}
+\end{equation}\]</span>
+esto es, se clasifica la observación <span class="math inline">\(\bm{x}\)</span> en el grupo cuya media
+está más próxima, bajo la distancia de Mahalanobis.</p>
+<p>Cuando sólo hay dos grupos, hemos visto que esta regla es equivalente a
+efectuar la transformación lineal <span class="math inline">\(\bm{\lambda}^\prime{}\bm{x}\)</span> (siendo
+<span class="math inline">\(\bm{\lambda}=\bm{\Sigma}^{-1}(\bm{\mu_1}-\bm{\mu_2})\)</span>) y clasificar en
+el grupo 1 si <span class="math inline">\(\bm{\lambda}^\prime{}\bm{x}\)</span> está más próximo a
+<span class="math inline">\(\bm{\lambda}^\prime{}\bm{\mu_1}\)</span> que a
+<span class="math inline">\(\bm{\lambda}^\prime{}\bm{\mu_2}\)</span>. Cuando hay varios grupos, la regla
+discriminante también se convierte en un criterio lineal, aunque
+necesitaremos más de una transformación lineal.</p>
+<p>Pensemos ahora que se dispone de una muestra procedente de cada grupo</p>
+<p><span class="math display">\[\begin{array}{ccccc}
+\bm{x_{11}} &amp;  \cdots &amp; \bm{x_{1,n_1}} &amp; \mbox{de una población (o grupo)} &amp; N_d(\bm{\mu_1},\bm{\Sigma_1}) \\
+\vdots &amp;  \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+\bm{x_{I1}}  &amp;  \cdots &amp; \bm{x_{I,n_I}} &amp;\mbox{de una población (o grupo)} &amp; N_d(\bm{\mu_I},\bm{\Sigma_I})
+\end{array}\]</span></p>
+<p>Este tipo de observaciones son las que se obtienen en un modelo de
+análisis multivariante de la varianza con matrices de covarianzas
+desiguales.</p>
+<p>En esta situación, suponiendo unas probabilidades a priori
+<span class="math inline">\(\pi_1,\ldots,\pi_I\)</span>, la regla óptima dada por la expresión
+<a href="analisis-discriminante.html#eq:reglaoptima">(6.1)</a>, se puede reducir a</p>
+<p><span class="math display">\[\mbox{Clasificar en el grupo}\ \  g \ \ \mbox{si}\qquad d_g^Q (\bm{x})=\max_{i\in\{1,\ldots,I\}} d_i^Q(\bm{x})\]</span>
+siendo</p>
+<p><span class="math display">\[d_i^Q(\bm{x})=-\frac{1}{2}\log \left|\bm{\Sigma_i}\right| -\frac{1}{2}\left(\bm{x}-\bm{\mu_i}\right)^\prime{}\bm{\Sigma_i}^{-1}\left(\bm{x}-\bm{\mu_i}\right)
++\log \pi_i\qquad\forall i\in\{1,\ldots,I\}.\]</span></p>
+<p>Las funciones <span class="math inline">\(d_i^Q(\bm{x})\)</span> se pueden denominar <strong>funciones de
+clasificación</strong>, pues para clasificar a un individuo con observación
+<span class="math inline">\(\bm{x}\)</span>, se calculan las funciones de clasificación que le corresponden
+en cada grupo, <span class="math inline">\(d_i^Q(\bm{x})\)</span>, y se asigna al grupo cuya función sea
+más grande. El superíndice <span class="math inline">\(Q\)</span> en <span class="math inline">\(d_i^Q(\bm{x})\)</span> se debe a que estas
+funciones son cuadráticas, pues como ya vimos en el tema anterior, si
+las matrices de covarianzas son diferentes dentro de cada grupo,
+entonces la regla óptima es cuadrática. La muestra anterior servirá para
+estimar la regla discriminante, sustituyendo en las funciones de
+clasificación los vectores de medias y las matrices de covarianzas por
+sus análogos empíricos,</p>
+<p><span class="math display">\[\hat{d}_i^Q(\bm{x})=-\frac{1}{2}\log \left|\bm{S_i}\right|
+-\frac{1}{2}\left(\bm{x}-\overline{\bm{x_{i}}}\right)^\prime{}\bm{S_i}^{-1}\left(\bm{x}-\overline{\bm{x_{i}}}\right)
++\log \pi_i\qquad\forall i\in\{1,\ldots,I\}.\]</span></p>
+<p>Si se puede suponer que las matrices de covarianzas dentro de cada grupo
+son iguales, esto es, <span class="math inline">\(\bm{\Sigma_1}=\cdots=\bm{\Sigma_I}=\bm\Sigma\)</span>,
+entonces en las funciones de clasificación se puede suprimir la parte
+cuadrática, pues es la misma para todos los grupos, y resultan las
+siguientes funciones de clasificación lineales:</p>
+<p><span class="math display">\[d_i(\bm{x})=\bm{\mu_i}^{\prime}\bm{\Sigma}^{-1}\bm{x}-\frac{1}{2}\bm{\mu_i}^{\prime}\bm{\Sigma}^{-1}\bm{\mu_i}+\log \pi_i
+\qquad\forall i\in\{1,\ldots,I\}\]</span> que se estiman mediante</p>
+<p><span class="math display">\[\hat{d}_i(\bm{x})=\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\bm{x}-\frac{1}{2}\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\overline{\bm{x_{i}}}+\log \pi_i
+\qquad\forall i\in\{1,\ldots,I\}\]</span> donde
+<span class="math inline">\(\bm{S}=(n-I)^{-1}\sum_{i=1}^I (n_i-1)\bm{S_i}\)</span> es la estimación de la
+matriz de covarianzas común.</p>
+<p>En estas funciones lineales los coeficientes vienen dados por los
+vectores <span class="math inline">\(\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\)</span> y las constantes
+se obtienen de
+<span class="math inline">\(\log \pi_i-\frac{1}{2}\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\overline{\bm{x_{i}}}\)</span>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-de-correspondencias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tecnicas-de-formacion-de-grupos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

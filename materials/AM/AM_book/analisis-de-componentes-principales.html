@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo4 Análisis de componentes principales | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo4 Análisis de componentes principales | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo4 Análisis de componentes principales | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analisis-multivariante-de-la-varianza.html"/>
+<link rel="next" href="analisis-de-correspondencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autores"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerrequisitos"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#estandarizacion"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimacion-en-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimadores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#distribucion-de-overline-bm-x-y-bm-s"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-multivariantes-versus-contrastes-univariantes"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza-y-comparaciones-simultaneas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#inferencia-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-h-0-bm-sigma-bm-sigma-0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#comparacion-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secnorm"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones-2"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#razon-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="anexoDist.html"><a href="anexoDist.html#propiedades-de-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="anexoDist.html"><a href="anexoDist.html#formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-gamma-2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-2"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="anexoDist.html"><a href="anexoDist.html#el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="anexoDist.html"><a href="anexoDist.html#introduccion"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-3"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="anexoAlg.html"><a href="anexoAlg.html#autovalores"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-semidefinidas-positivas"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-definidas-positivas"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References {-}</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="analisis-de-componentes-principales" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo4</span> Análisis de componentes principales<a href="analisis-de-componentes-principales.html#analisis-de-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El análisis de componentes principales se concibe como una técnica de
+reducción de la dimensión, pues permite pasar de una gran cantidad de
+variables interrelacionadas a unas pocas componentes principales. El
+método consiste en buscar combinaciones lineales de las variables
+originales que representen lo mejor posible a la variabilidad presente
+en los datos. De este modo, con unas pocas combinaciones lineales, que
+serán las componentes principales, sería suficiente para entender la
+información contenida en los datos. Al mismo tiempo, la forma en que se
+construyen las componentes, y su relación con unas u otras variables
+originales, sirven para entender la estructura de correlación inherente
+a los datos. Por último, las componentes principales, que forman un
+vector aleatorio de dimensión menor, pueden ser empleadas en análisis
+estadísticos posteriores.</p>
+<div id="descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Descomposición de un vector aleatorio en sus componentes principales<a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección se va a definir el concepto de componentes principales,
+y cómo se obtienen a partir de la matriz de covarianzas de un vector
+aleatorio. Estas ideas y procedimientos se aplican de igual modo tanto a
+un vector aleatorio como a un conjunto de datos. En este último caso, se
+puede pensar que el análisis se está aplicando a una distribución de
+probabilidad discreta equiprobable sobre los vectores observados. Por
+este motivo, esta sección se desarrolla sobre un vector aleatorio
+general, con la única condición de que exista la matriz de covarianzas.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-70" class="definition"><strong>Definición 4.1  </strong></span>Sea <span class="math inline">\(\bm{x}=(x_1,\ldots,x_d)^\prime{}\)</span> un vector aleatorio
+<span class="math inline">\(d\)</span>-dimensional con vector de medias <span class="math inline">\(\bm\mu=E({\bm{x}})\)</span> y matriz de
+covarianzas <span class="math inline">\(\bm\Sigma=E((\bm{x}-\bm\mu)(\bm{x}-\bm\mu)^\prime{})\)</span>. Se
+define la primera componente principal de <span class="math inline">\(\bm{x}\)</span> como una variable
+aleatoria <span class="math inline">\(z_1\)</span> tal que</p>
+<p><span class="math display">\[z_1=\bm{v_1}^{\prime}\bm{x}=v_{11}x_1+\cdots+v_{d1}x_d\ \ \ \mbox{con}
+\ \ \ \bm{v_1}=(v_{11},\ldots,v_{d1})^{\prime} \in {\Bbb R}^d,\]</span></p>
+<p><span class="math display">\[\textnormal{Var}(z_1)=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1\}.\]</span>
+La primera componente principal es una combinación lineal normalizada de
+las variables de <span class="math inline">\(\bm{x}\)</span> y, de entre todas las combinaciones lineales
+normalizadas, es la que tiene mayor varianza.</p>
+</div>
+<p><strong>Nota.</strong> Debe observarse que
+<span class="math inline">\(\textnormal{Var}(\alpha \bm{v}^{\prime}\bm{x})=\alpha^2\textnormal{Var}(\bm{v}^{\prime}\bm{x})\)</span>
+con <span class="math inline">\(\alpha\in {\Bbb R}\)</span>. De modo que multiplicando por una constante
+podemos hacer la varianza tan grande o tan pequeña como queramos. Por
+ello es necesario normalizar, pidiendo que
+<span class="math inline">\(\|\bm{v}\|=\sqrt{\bm{v}^{\prime}\bm{v}}=1\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-71" class="theorem"><strong>Teorema 4.1  </strong></span>La primera componente principal de <span class="math inline">\(\bm{x}\)</span> adopta la forma</p>
+<p><span class="math display">\[z_1=\bm{v_1}^{\prime}\bm{x},\]</span> siendo <span class="math inline">\(\lambda_1\)</span> el mayor autovalor
+de la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> y <span class="math inline">\(\bm{v_1}\)</span> un autovector
+asociado a <span class="math inline">\(\lambda_1\)</span> de norma uno (<span class="math inline">\(\bm{v_1}^{\prime}\bm{v_1}=1\)</span>).
+Además,</p>
+<p><span class="math display">\[\textnormal{Var}(z_1)=\lambda_1.\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Dem</em>. </span>Consideremos <span class="math inline">\(z=\bm{v}^{\prime}\bm{x}\)</span>. Entonces podemos
+calcular su varianza</p>
+<p><span class="math display">\[\textnormal{Var}(z)=\textnormal{Cov}(\bm{v}^{\prime}\bm{x},\bm{v}^{\prime}\bm{x})=\bm{v}^{\prime}\textnormal{Cov}(\bm{x},\bm{x})\bm{v}=\bm{v}^{\prime}\bm\Sigma \bm{\bm{v}}.\]</span>
+Nuestro problema consiste en calcular</p>
+<p><span class="math display">\[\begin{array}{rl}
+\max &amp; \bm{v}^{\prime}\bm\Sigma \bm{v} \\
+\mbox{ sujeto a} &amp; \bm{v}^{\prime}\bm{v}=1.
+\end{array}\]</span> Resolvemos este problema por el método de los
+multiplicadores de Lagrange.</p>
+<p><span class="math display">\[L=\bm{v}^{\prime}\bm\Sigma \bm{v}-\lambda(\bm{v}^{\prime}\bm{v}-1)\]</span>
+Calculamos la matriz jacobiana de <span class="math inline">\(L\)</span> como función de <span class="math inline">\(\bm{v}\)</span> e
+igualamos a cero</p>
+<p><span class="math display">\[\frac{\partial L}{\partial \bm{v}}=2\bm{v}^{\prime}\bm\Sigma-2\lambda \bm{v}^{\prime}=0.\]</span>
+Equivalentemente <span class="math display">\[\bm\Sigma \bm{v}=\lambda \bm{v}.\]</span> Luego el vector
+<span class="math inline">\(\bm{v_1}\)</span> que maximice la función sujeto a la restricción ha de ser un
+autovector de <span class="math inline">\(\bm\Sigma\)</span>, y su autovalor asociado es <span class="math inline">\(\lambda_1\)</span>.
+Multiplicando los dos términos de la ecuación por la izquierda por <span class="math inline">\(\bm{v_1}^{\prime}\)</span> resulta</p>
+<p><span class="math display">\[\bm{v_1}^{\prime}\bm\Sigma \bm{v_1}=\bm{v_1}^{\prime}\lambda_1 \bm{v_1}=\lambda_1 \bm{v_1}^{\prime} \bm{v_1}=\lambda_1.\]</span>
+Luego el autovalor <span class="math inline">\(\lambda_1\)</span> es la función objetivo en el máximo y por
+tanto, <span class="math inline">\(\textnormal{Var}(z_1)=\lambda_1\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unnamed-chunk-73" class="definition"><strong>Definición 4.2  </strong></span>Se define la segunda componente principal de <span class="math inline">\(\bm{x}\)</span> como una variable
+aleatoria <span class="math inline">\(z_2\)</span> tal que</p>
+<p><span class="math display">\[z_2=\bm{v_2}^{\prime}\bm{x}=v_{12}x_1+\cdots+v_{d2}x_d\ \ \ \mbox{con}\ \ \ \bm{v_2}=(v_{12},\ldots,v_{d2})^{\prime}
+\in {\Bbb R}^d,\]</span></p>
+<p><span class="math display">\[\textnormal{Var}(z_2)=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1,\ \bm{v}^{\prime}\bm{v_1}=0\}.\]</span>
+La segunda componente principal es otra combinación lineal de las
+variables de <span class="math inline">\(\bm{x}\)</span> y, de entre todas las combinaciones lineales
+formadas por vectores unitarios ortogonales a <span class="math inline">\(\bm{v_1}\)</span>, es la que
+tiene mayor varianza.</p>
+</div>
+<p>Nótese que</p>
+<p><span class="math display">\[\textnormal{Cov}(\bm{v}^{\prime}\bm{x},z_1)=\textnormal{Cov}(\bm{v}^{\prime}\bm{x}, \bm{v_1}^{\prime}\bm{x})=\bm{v}^{\prime}\textnormal{Cov}(\bm{x},\bm{x})\bm{v_1}=\bm{v}^{\prime}\bm\Sigma \bm{v_1}.\]</span></p>
+<p>Enunciamos a continuación un resultado sencillo.</p>
+<p><strong>Resultado</strong>. Sea <span class="math inline">\(\bm{w}\in {\Bbb R}^d\)</span> un autovector de <span class="math inline">\(\bm\Sigma\)</span>
+asociado a un autovalor no nulo <span class="math inline">\(\lambda\neq 0\)</span>, y sea
+<span class="math inline">\(\bm{v}\in {\Bbb R}^d\)</span>. Entonces</p>
+<p><span class="math display">\[\bm{v}^{\prime} \bm\Sigma \bm{w}=0 \Leftrightarrow \bm{v}^{\prime} \bm{w}=0.\]</span></p>
+<div class="proof">
+<p><span id="unlabeled-div-3" class="proof"><em>Dem</em>. </span>En primer lugar,</p>
+<p><span class="math display">\[\bm{v}^{\prime}\bm\Sigma \bm{w}=\bm{v}^{\prime}\lambda \bm{w}=\lambda \bm{v}^{\prime} \bm{w}=0.\]</span></p>
+<p>En el otro sentido,</p>
+<p><span class="math display">\[\bm{v}^{\prime} \bm{w}=\bm{v}^{\prime}\frac{1}{\lambda}\bm\Sigma \bm{w}=\frac{1}{\lambda} \bm{v}^{\prime}\bm\Sigma \bm{w}
+=\frac{1}{\lambda}0=0.\]</span></p>
+</div>
+<p>Por tanto, en aplicación de este resultado, <span class="math inline">\(\textnormal{Cov}(\bm{v}^{\prime}\bm{x},z_1)=0 \Leftrightarrow \bm{v}^{\prime} \bm{v_1}=0.\)</span> Y hemos probado que la condición de ortogonalidad entre los vectores
+<span class="math inline">\(\bm{v_1}\)</span> y <span class="math inline">\(\bm{v_2}\)</span> es equivalente a la incorrelación de las
+componentes <span class="math inline">\(z_1\)</span> y <span class="math inline">\(z_2\)</span>. En definitiva, podríamos definir la segunda
+componente principal como la combinación lineal de las variables de
+<span class="math inline">\(\bm{x}\)</span> que tiene mayor varianza de entre las combinaciones lineales
+normalizadas e incorrelacionadas con la primera componente principal.</p>
+<p>Respecto a la condición de que <span class="math inline">\(\lambda_1\neq 0\)</span>, hemos de recordar que
+<span class="math inline">\(\lambda_1=\textnormal{Var}(z_1)\)</span>. Por tanto si
+<span class="math inline">\(\lambda_1=\textnormal{Var}(z_1)=0\)</span>, todos los demás autovalores serán
+también cero y <span class="math inline">\(z_1\)</span> y las demás componentes serán variables
+degeneradas.</p>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-75" class="theorem"><strong>Teorema 4.2  </strong></span>La segunda componente principal de <span class="math inline">\(\bm{x}\)</span> adopta la forma</p>
+<p><span class="math display">\[z_2=\bm{v_2}^{\prime}\bm{x}\]</span> siendo <span class="math inline">\(\lambda_2\)</span> el segundo mayor
+autovalor de la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> y <span class="math inline">\(\bm{v_2}\)</span> un
+autovector asociado a <span class="math inline">\(\lambda_2\)</span> de norma uno
+(<span class="math inline">\(\bm{v_2}^{\prime}\bm{v_2}=1\)</span>) y ortogonal a <span class="math inline">\(\bm{v_1}\)</span>
+(<span class="math inline">\(\bm{v_1}^{\prime}\bm{v_2}=0\)</span>). Además</p>
+<p><span class="math display">\[\textnormal{Var}(z_2)=\lambda_2.\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Dem</em>. </span>Procederemos de modo muy similar al caso anterior. Consideramos
+<span class="math inline">\(z=\bm{v}^{\prime}\bm{x}\)</span>, cuya varianza es
+<span class="math inline">\(\textnormal{Var}(z)=\bm{v}^{\prime}\bm\Sigma \bm{v}\)</span>. Nuestro problema
+consiste en</p>
+<p><span class="math display">\[\begin{array}{rl}
+\max &amp; \bm{v}^{\prime}\bm\Sigma \bm{v} \\
+\mbox{ sujeto a} &amp; \bm{v}^{\prime}\bm{v}=1, \\
+&amp; \bm{v_1}^{\prime} \bm{v}=0.
+\end{array}\]</span> Resolvemos este problema por el método de los
+multiplicadores de Lagrange.</p>
+<p><span class="math display">\[L=\bm{v}^{\prime}\bm\Sigma \bm{v}-\lambda_2(\bm{v}^{\prime}\bm{v}-1)-\gamma_2 \bm{v_1}^{\prime} \bm{v}.\]</span>
+Derivamos respecto de <span class="math inline">\(\bm{v}\)</span> e igualamos a cero (momento en el cual
+podemos sustituir el valor <span class="math inline">\(\bm{v_2}\)</span> para mejor comprensión):</p>
+<p><span class="math display" id="eq:lagrange">\[\begin{equation}
+\left(\frac{\partial L}{\partial \bm{v}}/_{\bm{v}=\bm{v_2}}\right)^{\prime}
+=2\bm\Sigma \bm{v_2}-2\lambda_2 \bm{v_2}-\gamma_2\bm{v_1}=0.
+\tag{4.1}
+\end{equation}\]</span></p>
+<p>Multiplicando por la izquierda por <span class="math inline">\(\bm{v_1}^{\prime}\)</span> resulta</p>
+<p><span class="math display">\[2\bm{v_1}^{\prime}\bm\Sigma \bm{v_2} - 2\lambda_2 \bm{v_1}^{\prime} \bm{v_2} - \gamma_2 \bm{v_1}^{\prime}\bm{v_1} =0.\]</span>
+Las restricciones imponen que <span class="math inline">\(\bm{v_1}^{\prime}\bm{v_2}=0\)</span>. Por la
+nota, de ello deducimos que <span class="math inline">\(\bm{v_1}^{\prime}\bm\Sigma \bm{v_2}=0\)</span>. Y
+<span class="math inline">\(\bm{v_1}\)</span> ya verificaba <span class="math inline">\(\bm{v_1}^{\prime}\bm{v_1}=1\)</span>. Entonces la
+ecuación anterior se reduce a <span class="math inline">\(\gamma_2=0\)</span>. Y al sustituir ese valor en
+la ecuación <a href="analisis-de-componentes-principales.html#eq:lagrange">(4.1)</a> se obtiene</p>
+<p><span class="math display">\[\bm\Sigma \bm{v_2}=\lambda_2 \bm{v_2}.\]</span> Razonando igual que antes, el
+vector <span class="math inline">\(\bm{v_2}\)</span> que maximice la función sujeto a las restricciones ha
+de ser un autovector de <span class="math inline">\(\bm\Sigma\)</span>, y su autovalor asociado es
+<span class="math inline">\(\lambda_2\)</span>. La restricción de ortogonalidad respecto de <span class="math inline">\(\bm{v_1}\)</span> nos
+obliga a tomar el segundo mayor autovalor de <span class="math inline">\(\bm\Sigma\)</span>. Como antes,
+<span class="math inline">\(\textnormal{Var}(z_2)=\bm{v_2}^{\prime}\bm\Sigma \bm{v_2}=\lambda_2\)</span>.</p>
+</div>
+<p>Podríamos continuar este proceso extrayendo las componentes principales
+de <span class="math inline">\(\bm{x}\)</span> mediante los autovalores de la matriz de covarianzas
+<span class="math inline">\(\bm\Sigma\)</span> y la base ortonormal de autovectores asociados. De este
+modo, obtenemos p componentes principales.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-77" class="definition"><strong>Definición 4.3  </strong></span>Se definen las <span class="math inline">\(d\)</span> componentes principales de <span class="math inline">\(\bm{x}\)</span> como las
+variables aleatorias <span class="math inline">\((z_1,\ldots,z_d)\)</span> tales que</p>
+<p><span class="math display">\[z_1=\bm{v_1}^{\prime}\bm{x},\ldots,z_d=\bm{v_d}^{\prime}\bm{x},\ \ \ \ \ \ \ \bm{v_1},\ldots,\bm{v_d}\in {\Bbb R}^d.\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\textnormal{Var}(z_1)&amp;=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1\}, \\
+\textnormal{Var}(z_2)&amp;=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1,\ \bm{v_1}^{\prime}\bm{v}=0\}, \\
+&amp;\vdots \\
+\textnormal{Var}(z_j)&amp;=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1,
+\ \bm{v_1}^{\prime}\bm{v}=0,\ldots,\ \bm{v_{j-1}}^{\prime}\bm{v}=0\}, \\
+&amp;\vdots \\
+\textnormal{Var}(z_d)&amp;=\max\{\textnormal{Var}(\bm{v}^{\prime}\bm{x}):\bm{v}\in {\Bbb R}^d,\ \bm{v}^{\prime}\bm{v}=1,
+\ \bm{v_1}^{\prime}\bm{v}=0,\ldots,\ \bm{v_{d-1}}^{\prime}\bm{v}=0\}.\end{aligned}\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-78" class="theorem"><strong>Teorema 4.3  </strong></span>Las <span class="math inline">\(d\)</span> componentes principales de <span class="math inline">\(\bm{x}\)</span> adoptan la forma</p>
+<p><span class="math display">\[z_j=\bm{v_j}^{\prime}\bm{x}\ \ \ j\in\{1,\ldots,d\}\]</span> siendo
+<span class="math inline">\(\lambda_1\geq\ldots\geq\lambda_d\geq 0\)</span> los <span class="math inline">\(d\)</span> autovalores ordenados
+de la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> y <span class="math inline">\(\bm{v_1},\ldots,\bm{v_d}\)</span> sus
+autovectores asociados normalizados, esto es,
+<span class="math inline">\(\{\bm{v_1},\ldots,\bm{v_d}\}\)</span> es una base ortonormal de autovectores.
+Además <span class="math inline">\(\textnormal{Cov}(z_j,z_k)=0\ \ \mbox{si}\ \ j\neq k\)</span> y</p>
+<p><span class="math display">\[\textnormal{Var}(z_j)=\lambda_j\ \ \ j\in\{1,\ldots,d\}.\]</span></p>
+</div>
+<p>Este teorema nos permite expresar <span class="math display">\[\bm{z}=\bm{V}^{\prime}\bm{x}\]</span>
+siendo <span class="math inline">\(\bm{z}=(z_1,\ldots,z_d)^\prime{}\)</span> y
+<span class="math inline">\(\bm{V}=(\bm{v_1},\ldots,\bm{v_d})\)</span> la matriz cuyas columnas son los
+autovectores de <span class="math inline">\(\bm\Sigma\)</span>. Entonces</p>
+<p><span class="math display">\[\textnormal{Cov}(\bm{z},\bm{z})=\textnormal{Cov}(\bm{V}^{\prime}\bm{x},\bm{V}^{\prime}\bm{x})=\bm{V}^{\prime}\textnormal{Cov}(\bm{x},\bm{x})\bm{V}=\bm{V}^{\prime}\bm\Sigma \bm{V}.\]</span>
+Pero la matriz de covarianzas de las componentes principales es diagonal
+y contiene los autovalores de <span class="math inline">\(\bm\Sigma\)</span> en la diagonal. Luego, el
+proceso de extracción de las componentes principales se reduce a la
+diagonalización de la matriz de covarianzas del vector aleatorio
+<span class="math inline">\(\bm{x}\)</span>.</p>
+<p><strong>Ejercicio.</strong> Sea <span class="math inline">\(\bm{x}=(x_1,x_2)^{\prime}\)</span> un vector aleatorio con
+vector de medias <span class="math inline">\(\bm\mu=E(\bm{x})=(4,2)^{\prime}\)</span> y matriz de
+covarianzas</p>
+<p><span class="math display">\[\bm\Sigma=\left(\begin{array}{cc} 2 &amp; 1 \\ 1 &amp; 2 \end{array}\right)\]</span>
+Obtener la descomposición del vector <span class="math inline">\(\bm{x}\)</span> en sus componentes
+principales.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Se ha examinado a 25 alumnos, aspirantes a ingresar en la
+Facultad de Matemáticas, de 5 materias diferentes: Geometría Diferencial
+(cuyo resultado se almacena en la variable <em>geodif</em>), Análisis Complejo
+(<em>ancompl</em>), Álgebra (<em>alg</em>), Análisis Real (<em>anreal</em>) y Estadística
+(<em>estad</em>). Las puntuaciones obtenidas se
+encuentran en el fichero <code>aspirantes.txt</code>.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="analisis-de-componentes-principales.html#cb70-1" tabindex="-1"></a><span class="sc">&gt;</span> dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/aspirantes.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb70-2"><a href="analisis-de-componentes-principales.html#cb70-2" tabindex="-1"></a><span class="sc">&gt;</span> dat</span>
+<span id="cb70-3"><a href="analisis-de-componentes-principales.html#cb70-3" tabindex="-1"></a>   geodif ancompl alg anreal estad</span>
+<span id="cb70-4"><a href="analisis-de-componentes-principales.html#cb70-4" tabindex="-1"></a><span class="dv">1</span>      <span class="dv">36</span>      <span class="dv">58</span>  <span class="dv">43</span>     <span class="dv">36</span>    <span class="dv">37</span></span>
+<span id="cb70-5"><a href="analisis-de-componentes-principales.html#cb70-5" tabindex="-1"></a><span class="dv">2</span>      <span class="dv">62</span>      <span class="dv">54</span>  <span class="dv">50</span>     <span class="dv">46</span>    <span class="dv">52</span></span>
+<span id="cb70-6"><a href="analisis-de-componentes-principales.html#cb70-6" tabindex="-1"></a><span class="dv">3</span>      <span class="dv">31</span>      <span class="dv">42</span>  <span class="dv">41</span>     <span class="dv">40</span>    <span class="dv">29</span></span>
+<span id="cb70-7"><a href="analisis-de-componentes-principales.html#cb70-7" tabindex="-1"></a><span class="dv">4</span>      <span class="dv">76</span>      <span class="dv">78</span>  <span class="dv">69</span>     <span class="dv">66</span>    <span class="dv">81</span></span>
+<span id="cb70-8"><a href="analisis-de-componentes-principales.html#cb70-8" tabindex="-1"></a><span class="dv">5</span>      <span class="dv">46</span>      <span class="dv">56</span>  <span class="dv">52</span>     <span class="dv">56</span>    <span class="dv">40</span></span>
+<span id="cb70-9"><a href="analisis-de-componentes-principales.html#cb70-9" tabindex="-1"></a><span class="dv">6</span>      <span class="dv">12</span>      <span class="dv">42</span>  <span class="dv">38</span>     <span class="dv">38</span>    <span class="dv">28</span></span>
+<span id="cb70-10"><a href="analisis-de-componentes-principales.html#cb70-10" tabindex="-1"></a><span class="dv">7</span>      <span class="dv">39</span>      <span class="dv">46</span>  <span class="dv">51</span>     <span class="dv">54</span>    <span class="dv">41</span></span>
+<span id="cb70-11"><a href="analisis-de-componentes-principales.html#cb70-11" tabindex="-1"></a><span class="dv">8</span>      <span class="dv">30</span>      <span class="dv">51</span>  <span class="dv">54</span>     <span class="dv">52</span>    <span class="dv">32</span></span>
+<span id="cb70-12"><a href="analisis-de-componentes-principales.html#cb70-12" tabindex="-1"></a><span class="dv">9</span>      <span class="dv">22</span>      <span class="dv">32</span>  <span class="dv">43</span>     <span class="dv">28</span>    <span class="dv">22</span></span>
+<span id="cb70-13"><a href="analisis-de-componentes-principales.html#cb70-13" tabindex="-1"></a>...</span></code></pre></div>
+<p>El objetivo de este estudio es obtener un ranking global de alumnos para
+la entrada en la Facultad de Matemáticas, a través de una puntuación
+global, extraída como cierta combinación lineal de las calificaciones en
+las cinco materias examinadas. El comando básico para realizar un análisis de componentes principales
+en R es <code>princomp</code>. También se pueden obtener resultados similares con
+el comando <code>prcomp</code>. La diferencia principal entre uno y otro es que
+<code>princomp</code> diagonaliza la matriz <span class="math inline">\(\bm{S}\)</span>, mientras que <code>prcomp</code>
+diagonaliza la matriz <span class="math inline">\(\bm{S_c}\)</span>. Esto modifica los autovalores en la
+proporción <span class="math inline">\(n/(n-1)\)</span>, pero no supone ningún cambio en los autovectores.
+Hemos optado por el comando <code>princomp</code>. A continuación se muestran las
+instrucciones que permiten realizar un análisis de componentes
+principales para el ejemplo, utilizando R. Mostramos en primer lugar la salida básica del objeto, que muestra las
+desviaciones típicas de las componentes que son las raíces cuadradas de
+los autovalores.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="analisis-de-componentes-principales.html#cb71-1" tabindex="-1"></a><span class="sc">&gt;</span> test.pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(dat)  <span class="co"># Análisis de componentes principales</span></span>
+<span id="cb71-2"><a href="analisis-de-componentes-principales.html#cb71-2" tabindex="-1"></a><span class="sc">&gt;</span> test.pca</span>
+<span id="cb71-3"><a href="analisis-de-componentes-principales.html#cb71-3" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb71-4"><a href="analisis-de-componentes-principales.html#cb71-4" tabindex="-1"></a><span class="fu">princomp</span>(<span class="at">x =</span> dat)</span>
+<span id="cb71-5"><a href="analisis-de-componentes-principales.html#cb71-5" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="analisis-de-componentes-principales.html#cb71-6" tabindex="-1"></a>Standard deviations<span class="sc">:</span></span>
+<span id="cb71-7"><a href="analisis-de-componentes-principales.html#cb71-7" tabindex="-1"></a>   Comp<span class="fl">.1</span>    Comp<span class="fl">.2</span>    Comp<span class="fl">.3</span>    Comp<span class="fl">.4</span>    Comp<span class="fl">.5</span> </span>
+<span id="cb71-8"><a href="analisis-de-componentes-principales.html#cb71-8" tabindex="-1"></a><span class="fl">28.489680</span>  <span class="fl">9.035471</span>  <span class="fl">6.600955</span>  <span class="fl">6.133582</span>  <span class="fl">3.723358</span> </span>
+<span id="cb71-9"><a href="analisis-de-componentes-principales.html#cb71-9" tabindex="-1"></a></span>
+<span id="cb71-10"><a href="analisis-de-componentes-principales.html#cb71-10" tabindex="-1"></a> <span class="dv">5</span>  variables and  <span class="dv">25</span> observations.</span></code></pre></div>
+<p>Con la función <code>summary</code> obtenemos, junto a las desviaciones típicas de
+las componentes, la proporción de varianza explicada y sus valores
+acumulados.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="analisis-de-componentes-principales.html#cb72-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(test.pca)</span>
+<span id="cb72-2"><a href="analisis-de-componentes-principales.html#cb72-2" tabindex="-1"></a>Importance of components<span class="sc">:</span></span>
+<span id="cb72-3"><a href="analisis-de-componentes-principales.html#cb72-3" tabindex="-1"></a>                           Comp<span class="fl">.1</span>     Comp<span class="fl">.2</span>     Comp<span class="fl">.3</span>     Comp<span class="fl">.4</span>     Comp<span class="fl">.5</span></span>
+<span id="cb72-4"><a href="analisis-de-componentes-principales.html#cb72-4" tabindex="-1"></a>Standard deviation     <span class="fl">28.4896795</span> <span class="fl">9.03547104</span> <span class="fl">6.60095491</span> <span class="fl">6.13358179</span> <span class="fl">3.72335754</span></span>
+<span id="cb72-5"><a href="analisis-de-componentes-principales.html#cb72-5" tabindex="-1"></a>Proportion of Variance  <span class="fl">0.8212222</span> <span class="fl">0.08260135</span> <span class="fl">0.04408584</span> <span class="fl">0.03806395</span> <span class="fl">0.01402668</span></span>
+<span id="cb72-6"><a href="analisis-de-componentes-principales.html#cb72-6" tabindex="-1"></a>Cumulative Proportion   <span class="fl">0.8212222</span> <span class="fl">0.90382353</span> <span class="fl">0.94790936</span> <span class="fl">0.98597332</span> <span class="fl">1.00000000</span></span>
+<span id="cb72-7"><a href="analisis-de-componentes-principales.html#cb72-7" tabindex="-1"></a><span class="sc">&gt;</span> test.pca<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb72-8"><a href="analisis-de-componentes-principales.html#cb72-8" tabindex="-1"></a>   Comp<span class="fl">.1</span>    Comp<span class="fl">.2</span>    Comp<span class="fl">.3</span>    Comp<span class="fl">.4</span>    Comp<span class="fl">.5</span> </span>
+<span id="cb72-9"><a href="analisis-de-componentes-principales.html#cb72-9" tabindex="-1"></a><span class="fl">811.66184</span>  <span class="fl">81.63974</span>  <span class="fl">43.57261</span>  <span class="fl">37.62083</span>  <span class="fl">13.86339</span> </span></code></pre></div>
+<p>Representamos a continuación los autovalores (gráfico de sedimentación)
+y el mismo gráfico con líneas, ver Figura
+<a href="analisis-de-componentes-principales.html#fig:sed">4.1</a>.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="analisis-de-componentes-principales.html#cb73-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">screeplot</span>(test.pca)</span>
+<span id="cb73-2"><a href="analisis-de-componentes-principales.html#cb73-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">screeplot</span>(test.pca, <span class="at">type =</span> <span class="st">&quot;lines&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sed"></span>
+<img src="bookdown_AM_files/figure-html/sed-1.png" alt="Gráficos de sedimentación." width="50%" /><img src="bookdown_AM_files/figure-html/sed-2.png" alt="Gráficos de sedimentación." width="50%" />
+<p class="caption">
+Figura 4.1: Gráficos de sedimentación.
+</p>
+</div>
+<p>La función <code>loadings</code> proporciona los coeficientes de las componentes (autovectores), ver Figura
+<a href="analisis-de-componentes-principales.html#fig:scores">4.2</a></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="analisis-de-componentes-principales.html#cb74-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">loadings</span>(test.pca)</span>
+<span id="cb74-2"><a href="analisis-de-componentes-principales.html#cb74-2" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="analisis-de-componentes-principales.html#cb74-3" tabindex="-1"></a>Loadings<span class="sc">:</span></span>
+<span id="cb74-4"><a href="analisis-de-componentes-principales.html#cb74-4" tabindex="-1"></a>        Comp<span class="fl">.1</span> Comp<span class="fl">.2</span> Comp<span class="fl">.3</span> Comp<span class="fl">.4</span> Comp<span class="fl">.5</span></span>
+<span id="cb74-5"><a href="analisis-de-componentes-principales.html#cb74-5" tabindex="-1"></a>geodif   <span class="fl">0.598</span>  <span class="fl">0.675</span>  <span class="fl">0.185</span>  <span class="fl">0.386</span>       </span>
+<span id="cb74-6"><a href="analisis-de-componentes-principales.html#cb74-6" tabindex="-1"></a>ancompl  <span class="fl">0.361</span>  <span class="fl">0.245</span> <span class="sc">-</span><span class="fl">0.249</span> <span class="sc">-</span><span class="fl">0.829</span> <span class="sc">-</span><span class="fl">0.247</span></span>
+<span id="cb74-7"><a href="analisis-de-componentes-principales.html#cb74-7" tabindex="-1"></a>alg      <span class="fl">0.302</span> <span class="sc">-</span><span class="fl">0.214</span> <span class="sc">-</span><span class="fl">0.211</span> <span class="sc">-</span><span class="fl">0.135</span>  <span class="fl">0.894</span></span>
+<span id="cb74-8"><a href="analisis-de-componentes-principales.html#cb74-8" tabindex="-1"></a>anreal   <span class="fl">0.389</span> <span class="sc">-</span><span class="fl">0.338</span> <span class="sc">-</span><span class="fl">0.700</span>  <span class="fl">0.375</span> <span class="sc">-</span><span class="fl">0.321</span></span>
+<span id="cb74-9"><a href="analisis-de-componentes-principales.html#cb74-9" tabindex="-1"></a>estad    <span class="fl">0.519</span> <span class="sc">-</span><span class="fl">0.570</span>  <span class="fl">0.607</span>        <span class="sc">-</span><span class="fl">0.179</span></span>
+<span id="cb74-10"><a href="analisis-de-componentes-principales.html#cb74-10" tabindex="-1"></a></span>
+<span id="cb74-11"><a href="analisis-de-componentes-principales.html#cb74-11" tabindex="-1"></a>               Comp<span class="fl">.1</span> Comp<span class="fl">.2</span> Comp<span class="fl">.3</span> Comp<span class="fl">.4</span> Comp<span class="fl">.5</span></span>
+<span id="cb74-12"><a href="analisis-de-componentes-principales.html#cb74-12" tabindex="-1"></a>SS loadings       <span class="fl">1.0</span>    <span class="fl">1.0</span>    <span class="fl">1.0</span>    <span class="fl">1.0</span>    <span class="fl">1.0</span></span>
+<span id="cb74-13"><a href="analisis-de-componentes-principales.html#cb74-13" tabindex="-1"></a>Proportion Var    <span class="fl">0.2</span>    <span class="fl">0.2</span>    <span class="fl">0.2</span>    <span class="fl">0.2</span>    <span class="fl">0.2</span></span>
+<span id="cb74-14"><a href="analisis-de-componentes-principales.html#cb74-14" tabindex="-1"></a>Cumulative Var    <span class="fl">0.2</span>    <span class="fl">0.4</span>    <span class="fl">0.6</span>    <span class="fl">0.8</span>    <span class="fl">1.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="analisis-de-componentes-principales.html#cb75-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">barplot</span>(<span class="fu">loadings</span>(test.pca), <span class="at">beside =</span> <span class="cn">TRUE</span>)  <span class="co"># Representación coeficientes</span></span>
+<span id="cb75-2"><a href="analisis-de-componentes-principales.html#cb75-2" tabindex="-1"></a><span class="sc">&gt;</span> test.pca<span class="sc">$</span>scores  <span class="co"># Puntuaciones de los individuos en las componentes</span></span>
+<span id="cb75-3"><a href="analisis-de-componentes-principales.html#cb75-3" tabindex="-1"></a>           Comp<span class="fl">.1</span>      Comp<span class="fl">.2</span>      Comp<span class="fl">.3</span>      Comp<span class="fl">.4</span>     Comp<span class="fl">.5</span></span>
+<span id="cb75-4"><a href="analisis-de-componentes-principales.html#cb75-4" tabindex="-1"></a> [<span class="dv">1</span>,]  <span class="sc">-</span><span class="fl">7.5403215</span>  <span class="fl">10.2167650</span>   <span class="fl">2.5374713</span>  <span class="sc">-</span><span class="fl">8.6708997</span> <span class="sc">-</span><span class="fl">4.3011164</span></span>
+<span id="cb75-5"><a href="analisis-de-componentes-principales.html#cb75-5" tabindex="-1"></a> [<span class="dv">2</span>,]  <span class="fl">20.3610372</span>  <span class="fl">13.3460340</span>   <span class="fl">8.9820585</span>   <span class="fl">6.4124949</span> <span class="sc">-</span><span class="fl">1.3548711</span></span>
+<span id="cb75-6"><a href="analisis-de-componentes-principales.html#cb75-6" tabindex="-1"></a> [<span class="dv">3</span>,] <span class="sc">-</span><span class="fl">19.5031539</span>   <span class="fl">6.5552439</span>  <span class="sc">-</span><span class="fl">1.6414327</span>   <span class="fl">5.0042015</span> <span class="sc">-</span><span class="fl">2.2980498</span></span>
+<span id="cb75-7"><a href="analisis-de-componentes-principales.html#cb75-7" tabindex="-1"></a> [<span class="dv">4</span>,]  <span class="fl">65.9652730</span>   <span class="fl">1.3136646</span>   <span class="fl">5.1988159</span>  <span class="sc">-</span><span class="fl">5.2093505</span> <span class="sc">-</span><span class="fl">1.0457668</span></span>
+<span id="cb75-8"><a href="analisis-de-componentes-principales.html#cb75-8" tabindex="-1"></a> [<span class="dv">5</span>,]   <span class="fl">9.7780565</span>   <span class="fl">6.0680143</span>  <span class="sc">-</span><span class="fl">9.1921582</span>   <span class="fl">2.9249303</span> <span class="sc">-</span><span class="fl">2.1069944</span></span>
+<span id="cb75-9"><a href="analisis-de-componentes-principales.html#cb75-9" tabindex="-1"></a> [<span class="dv">6</span>,] <span class="sc">-</span><span class="fl">33.0739529</span>  <span class="sc">-</span><span class="fl">4.3722312</span>  <span class="sc">-</span><span class="fl">3.7345190</span>  <span class="sc">-</span><span class="fl">2.6038323</span> <span class="sc">-</span><span class="fl">5.3246839</span></span>
+<span id="cb75-10"><a href="analisis-de-componentes-principales.html#cb75-10" tabindex="-1"></a> [<span class="dv">7</span>,]   <span class="fl">1.4212177</span>  <span class="sc">-</span><span class="fl">0.7833317</span>  <span class="sc">-</span><span class="fl">5.7800406</span>   <span class="fl">7.8225646</span> <span class="sc">-</span><span class="fl">0.4967347</span></span>
+<span id="cb75-11"><a href="analisis-de-componentes-principales.html#cb75-11" tabindex="-1"></a> [<span class="dv">8</span>,]  <span class="sc">-</span><span class="fl">6.7011638</span>  <span class="sc">-</span><span class="fl">0.4667798</span> <span class="sc">-</span><span class="fl">13.3936497</span>  <span class="sc">-</span><span class="fl">0.3040531</span>  <span class="fl">2.6525120</span></span>
+<span id="cb75-12"><a href="analisis-de-componentes-principales.html#cb75-12" tabindex="-1"></a> [<span class="dv">9</span>,] <span class="sc">-</span><span class="fl">36.1916160</span>   <span class="fl">5.6543609</span>   <span class="fl">2.9062814</span>   <span class="fl">5.5458471</span>  <span class="fl">6.5171961</span></span>
+<span id="cb75-13"><a href="analisis-de-componentes-principales.html#cb75-13" tabindex="-1"></a>...</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scores"></span>
+<img src="bookdown_AM_files/figure-html/scores-1.png" alt="Representación de los coeficientes de las componentes principales." width="50%" />
+<p class="caption">
+Figura 4.2: Representación de los coeficientes de las componentes principales.
+</p>
+</div>
+<p>El <em>biplot</em>, introducido por <span class="citation">Gabriel (<a href="#ref-gabriel71">1971</a>)</span>, es una representación gráfica simultánea de los individuos
+(mediante puntos) y las variables (mediante flechas), en un mismo
+sistema de coordenadas bidimensional construido en base a las dos
+primeras componentes principales. Permite interpretar el significado de
+las componentes (la primera en el eje horizontal y la segunda en el eje
+vertical) en base a las direcciones de las flechas.</p>
+<p>A su vez, se valoran como parecidos los individuos cuyos puntos están
+próximos en el biplot. De igual modo tendrán correlación positiva las
+variables con flechas semejantes. Asimismo, los individuos que se
+encuentran en la dirección de cierta flecha tendrán observaciones altas
+en la variable representada por la flecha.</p>
+<p>Representamos el biplot correspondiente a los datos del ejemplo, ver Figura <a href="analisis-de-componentes-principales.html#fig:bip">4.3</a></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="analisis-de-componentes-principales.html#cb76-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">biplot</span>(test.pca)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bip"></span>
+<img src="bookdown_AM_files/figure-html/bip-1.png" alt="Biplot" width="50%" />
+<p class="caption">
+Figura 4.3: Biplot
+</p>
+</div>
+<p>Obtenemos los mismos resultados haciendo los cálculos de forma directa:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="analisis-de-componentes-principales.html#cb77-1" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dat)</span>
+<span id="cb77-2"><a href="analisis-de-componentes-principales.html#cb77-2" tabindex="-1"></a><span class="sc">&gt;</span> s <span class="ot">&lt;-</span> <span class="fu">cov</span>(dat) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
+<span id="cb77-3"><a href="analisis-de-componentes-principales.html#cb77-3" tabindex="-1"></a><span class="sc">&gt;</span> auto <span class="ot">&lt;-</span> <span class="fu">eigen</span>(s)</span>
+<span id="cb77-4"><a href="analisis-de-componentes-principales.html#cb77-4" tabindex="-1"></a><span class="sc">&gt;</span> lambda <span class="ot">&lt;-</span> auto<span class="sc">$</span>values</span>
+<span id="cb77-5"><a href="analisis-de-componentes-principales.html#cb77-5" tabindex="-1"></a><span class="sc">&gt;</span> v <span class="ot">&lt;-</span> auto<span class="sc">$</span>vectors</span></code></pre></div>
+</div>
+<div id="propiedades-geometricas-de-las-componentes-principales" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Propiedades geométricas de las componentes principales<a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esta sección contiene dos propiedades geométricas interesantes, que
+cumplen las componentes principales, cuando se comparan con el modelo de
+regresión. En primer lugar veremos que las componentes principales
+también son aproximaciones mínimo-cuadráticas del vector aleatorio, y en
+segundo lugar veremos que en el caso de un vector bivariante
+<span class="math inline">\(\bm{x}=(x_1,x_2)^\prime{}\)</span>, la primera componente principal describe
+una recta que pasa entre las dos rectas de regresión lineal simple, una
+de <span class="math inline">\(x_2\)</span> sobre <span class="math inline">\(x_1\)</span> y la otra de <span class="math inline">\(x_1\)</span> sobre <span class="math inline">\(x_2\)</span>.</p>
+<div id="las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Las componentes principales como mejores aproximaciones mínimo-cuadráticas<a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordemos que la componente principal es la variable aleatoria
+unidimensional <span class="math inline">\(z_1=\bm{v_1}^{\prime} \bm{x}\)</span>. Al proyectar el vector
+<span class="math inline">\(\bm{x}\)</span> sobre la recta que pasa por el origen con la dirección
+<span class="math inline">\(\bm{v_1}\)</span>, se obtiene el vector aleatorio</p>
+<p><span class="math display">\[\bm{z_1^m}=\bm{v_1} z_1=\bm{v_1} \bm{v_1}^{\prime} \bm{x}\]</span> que
+coincide con la representación de la primera componente <span class="math inline">\(z_1\)</span> en
+<span class="math inline">\({\Bbb R}^d\)</span> a lo largo de la dirección <span class="math inline">\(\bm{v_1}\)</span>.</p>
+<p>Observamos que este vector aleatorio está contenido en un espacio de
+dimensión uno. De hecho, su matriz de covarianzas es</p>
+<p><span class="math display">\[\textnormal{Cov}(\bm{z_1^m},\bm{z_1^m})=\textnormal{Cov}(\bm{v_1} z_1, \bm{v_1} z_1)=\bm{v_1} \textnormal{Cov}(z_1,z_1) \bm{v_1}^{\prime}= \textnormal{Var}(z_1) \bm{v_1} \bm{v_1}^{\prime}
+=\lambda_1 \bm{v_1} \bm{v_1}^{\prime}\]</span> la cual claramente es una matriz
+de rango uno y no es más que el primer sumando de la descomposición
+espectral de <span class="math inline">\(\bm\Sigma\)</span>.</p>
+<p>Centramos el vector <span class="math inline">\(\bm{z_1^m}\)</span> en el vector de medias de <span class="math inline">\(\bm{x}\)</span>,
+<span class="math inline">\(\bm\mu=E(\bm{x})\)</span>.</p>
+<p><span class="math display">\[\bm{z_1^{mc}}=\bm{z_1^m}-E(\bm{z_1^m})+E(\bm{x})=\bm\mu + \bm{v_1} z_1^c\]</span>
+siendo <span class="math inline">\(z_1^c=\bm{v_1}^{\prime} (\bm{x}-\bm\mu)\)</span> la primera componente
+centrada.</p>
+<p>Este vector aleatorio <span class="math inline">\(\bm{z_1^{mc}}\)</span> es el resultado de proyectar el
+vector <span class="math inline">\(\bm{x}\)</span> sobre la recta que pasa por el vector de medias <span class="math inline">\(\bm\mu\)</span>
+y tiene dirección <span class="math inline">\(\bm{v_1}\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-84" class="theorem"><strong>Teorema 4.4  </strong></span>La recta que pasa por el vector de medias <span class="math inline">\(\bm\mu=E(\bm{x})\)</span> y tiene
+dirección <span class="math inline">\(\bm{v_1}\)</span> es la que hace mínima la distancia cuadrática del
+vector aleatorio <span class="math inline">\(\bm{x}\)</span> a la recta, definiendo esta distancia
+cuadrática como la media del cuadrado de la distancia euclídea usual
+(distancia ortogonal o menor distancia) del vector aleatorio <span class="math inline">\(\bm{x}\)</span> a
+la recta.</p>
+</div>
+<p><strong>Observación</strong>. Este resultado debe relacionarse con la recta de
+regresión, que hace mínima la media (suma en el caso de una muestra) de
+la distancia vertical a la recta. En este caso consideramos la distancia
+ortogonal (la menor distancia), pues no hay variable respuesta ni
+variable explicativa, sino que todas las variables son tratadas de igual
+modo.</p>
+</div>
+<div id="posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión<a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\((x,y)\)</span> un vector aleatorio en el plano. Se puede demostrar que al
+representar en el plano <span class="math inline">\(XY\)</span> la primera componente principal, junto con
+las dos rectas de regresión de <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> y de <span class="math inline">\(x\)</span> sobre <span class="math inline">\(y\)</span>,
+obtenemos tres rectas que pasan por el vector de medias, y la primera
+componente principal forma una recta “menos horizontal” que la recta de
+regresión de <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span>, pero "más horizontal" que la recta de
+regresión de <span class="math inline">\(x\)</span> sobre <span class="math inline">\(y\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Se ha obtenido la muestra siguiente de un vector aleatorio
+<span class="math inline">\((x,y)\)</span>: (-3,7), (1,4), (0,6), (3,5), (1,9), (7,7), (6,9), (8,10),
+(7,12), (10,11). Representamos en la Figura <a href="analisis-de-componentes-principales.html#fig:reg">4.4</a> el diagrama de dispersión, junto con la primera
+componente principal y las dos rectas de regresión.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:reg"></span>
+<img src="bookdown_AM_files/figure-html/reg-1.png" alt="Diagrama de dispersión, junto con la primera componente principal (verde), la recta de regresión de $y$ sobre $x$ (azul) y la recta de regresión $x$ de sobre $y$ (rojo)" width="50%" />
+<p class="caption">
+Figura 4.4: Diagrama de dispersión, junto con la primera componente principal (verde), la recta de regresión de <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> (azul) y la recta de regresión <span class="math inline">\(x\)</span> de sobre <span class="math inline">\(y\)</span> (rojo)
+</p>
+</div>
+</div>
+</div>
+<div id="descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión<a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Según acabamos de ver, desde un punto de vista matricial podemos
+contemplar el proceso de extracción de las componentes principales como
+la diagonalización de la matriz de covarianzas</p>
+<p><span class="math display">\[\bm\Lambda=\bm{V}^{\prime} \bm\Sigma \bm{V}\]</span> siendo
+<span class="math inline">\(\bm\Sigma=\textnormal{Cov}(\bm{x},\bm{x})\)</span> la matriz de covarianzas del
+vector aleatorio original, <span class="math inline">\(\bm\Lambda=\textnormal{Cov}(\bm{z},\bm{z})\)</span>
+la matriz de covarianzas de las componentes (que es diagonal) y
+<span class="math inline">\(\bm{V}=(\bm{v_1}\ldots,\bm{v_d})\)</span> la matriz ortogonal cuyas columnas
+son los autovectores, que a su vez constituyen los coeficientes que
+definen las componentes.</p>
+<p>Multiplicando por <span class="math inline">\(\bm{V}\)</span> por la izquierda y por <span class="math inline">\(\bm{V}^{\prime}\)</span> por
+la derecha, podemos expresar</p>
+<p><span class="math display">\[\bm\Sigma=\bm{V}\bm\Lambda \bm{V}^{\prime}=\sum_{j=1}^d \lambda_j \bm{v_j}\bm{v_j}^{\prime}\]</span>
+que se conoce como la descomposición espectral de la matriz <span class="math inline">\(\bm\Sigma\)</span>. Sabemos que</p>
+<p><span class="math display">\[\textnormal{rango}(\bm\Sigma)=\textnormal{rango}(\bm\Lambda)=\mbox{``número de autovalores no nulos&#39;&#39;}.\]</span>
+A su vez también recordamos que el rango de la matriz de covarianzas
+coincide con la dimensión del menor espacio lineal que contiene al
+vector aleatorio (con probabilidad uno).</p>
+<p>Así si el rango es <span class="math inline">\(k\)</span>, el vector aleatorio estaría contenido en un
+espacio lineal de dimensión <span class="math inline">\(k\)</span>, los <span class="math inline">\(k\)</span> primeros autovalores son no
+nulos y los <span class="math inline">\((d-k)\)</span> últimos son cero, y las <span class="math inline">\((d-k)\)</span> últimas componentes
+tienen varianza cero. Se puede por tanto reducir la dimensión hasta <span class="math inline">\(k\)</span>
+sin perder variabilidad. Sólo estaríamos cambiando el sistema de
+coordenadas.</p>
+<p>Consideremos como medida global de variabilidad del vector aleatorio, la
+traza de su matriz de covarianzas. Nótese que no es más que la suma de
+las varianzas de las variables del vector, pero además tiene esta
+justificación como medida global de variabilidad</p>
+<p><span class="math display">\[\textnormal{traza}(\bm\Sigma)=E(\| \bm{x}-E(\bm{x})\|^2).\]</span> Es la
+media de las desviaciones cuadráticas respecto a la media y por tanto es
+una extensión natural de la varianza de una variable aleatoria.</p>
+<p>De la descomposición espectral se deduce</p>
+<p><span class="math display">\[\textnormal{traza}(\bm\Sigma)=\sum_{j=1}^d \lambda_j \textnormal{traza}(\bm{v_j}\bm{v_j}^{\prime})=\sum_{j=1}^d \lambda_j.\]</span>
+La última igualdad es consecuencia de que los vectores <span class="math inline">\(\bm{v_j}\)</span> son de
+norma uno.</p>
+<p>Si extraemos una componente principal, obtenemos la variable aleatoria
+unidimensional</p>
+<p><span class="math display">\[z_1=\bm{v_1}^{\prime} \bm{x}.\]</span> Si en lugar de recoger
+todo el vector aleatorio, sólo aportamos <span class="math inline">\(z_1\)</span> reduciendo la información
+a una variable unidimensional; junto con la simplificación, se produce
+una reducción de variabilidad, que pasa a ser</p>
+<p><span class="math display">\[\textnormal{Var}(z_1)=\lambda_1.\]</span> Decimos que el cociente</p>
+<p><span class="math display">\[\frac{\lambda_1}{\lambda_1+\cdots+\lambda_d}\]</span> es la proporción de
+variabilidad explicada por la primera componente principal.</p>
+<p>Si en lugar de una única componente principal extraemos <span class="math inline">\(r\)</span> componentes
+resulta</p>
+<p><span class="math display">\[\frac{\lambda_1+\cdots+\lambda_r}{\lambda_1+\cdots+\lambda_r+\lambda_{r+1}
++\cdots+\lambda_d}\]</span> es la proporción de variabilidad explicada por las
+<span class="math inline">\(r\)</span> primeras componentes principales.</p>
+<p>Debemos decidir entre la simplificación que supone la reducción de la
+dimensión y la pérdida de información resultante de la variabilidad no
+explicada. Como criterios para tomar esta decisión, se suelen emplear
+los siguientes:</p>
+<ul>
+<li><p>Criterio de la varianza explicada. Consiste en retener el número de
+componentes que conjuntamente expliquen una proporción de varianza
+establecida, habitualmente un 90% o 95% del total.</p></li>
+<li><p>Criterio del valor propio (Kaiser). Retener sólo las componentes
+cuyos autovalores sean mayores que la media, esto es, mayores que
+<span class="math inline">\(\textnormal{traza}(\bm\Sigma)/d\)</span>. Estas componentes tendrían más
+varianza que la que corresponde en media a una variable, mientras
+que las demás componentes tienen menos.</p></li>
+<li><p>Gráfico de sedimentación (<em>screeplot</em>). Representar en un gráfico
+los valores propios <span class="math inline">\(\lambda_1\geq \lambda_2\geq\cdots\geq\lambda_d\)</span>
+en orden decreciente, y buscar un “codo” en el gráfico, entendiendo
+por codo un punto a partir del cual los valores propios son
+claramente más pequeños que los anteriores, y muy similares entre
+sí.</p></li>
+<li><p>Retener un número preestablecido de componentes principales. Por
+ejemplo, es costumbre retener dos componentes, pues se pueden
+representar fácilmente en el plano.</p></li>
+</ul>
+</div>
+<div id="las-componentes-principales-y-los-cambios-de-escala" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Las componentes principales y los cambios de escala<a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un problema importante del análisis de componentes principales es que
+sus resultados dependen de la escala de medida de las variables
+originales, <span class="math inline">\(\bm{x}\)</span>. Así, si se cambia de escala una variable (dejando
+las demás fijas) las componentes principales se modifican, cambiando
+incluso la posible interpretación de las mismas. En concreto, si se
+aumenta la escala de una variable, ésta verá incrementada su varianza y
+su aportación proporcional a la varianza total, atrayendo de este modo a
+la primera componente principal, que se asemejará a esta variable.</p>
+<p>Claro está que si se realiza el mismo cambio de escala en todas las
+variables, entonces los resultados del análisis de componentes
+principales se mantendrán idénticos.</p>
+<p>Este problema se puede solventar de dos maneras:</p>
+<ul>
+<li><p>Midiendo todas las variables en la misma escala (siempre que sean de
+la misma naturaleza).</p></li>
+<li><p>Aplicando el análisis de componentes principales a las variables
+estandarizadas. Esto último equivale a trabajar con la matriz de
+correlaciones, en lugar de la matriz de covarianzas.</p></li>
+</ul>
+</div>
+<div id="interpretacion-de-las-componentes-principales" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Interpretación de las componentes principales<a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para interpretar las componentes principales,
+<span class="math inline">\(\bm{z}=(z_1,\ldots,z_d)^\prime{}\)</span>, es preciso relacionarlas con las
+variables originales, <span class="math inline">\(\bm{x}\)</span>. El instrumento natural para establecer
+esta relación consiste en calcular la covarianza o la correlación entre
+las componentes y las variables originales <span class="math inline">\(\bm{x}\)</span>. Lo obtenemos a
+continuación.</p>
+<p><span class="math display">\[\textnormal{Cov}(\bm{x},z_k)=\textnormal{Cov}(\bm{x}, \bm{v_k}^{\prime}\bm{x})=\textnormal{Cov}(\bm{x},\bm{x})\bm{v_k}=\bm\Sigma \bm{v_k}=\lambda_k \bm{v_k}.\]</span></p>
+<p>La notación matricial nos permite calcularlas para todas a la vez</p>
+<p><span class="math display">\[\textnormal{Cov}(\bm{x},\bm{z})=\textnormal{Cov}(\bm{x}, \bm{V}^{\prime}\bm{x})=\textnormal{Cov}(\bm{x},\bm{x})\bm{V}=\bm\Sigma \bm{V}=\bm{V}\bm\Lambda.\]</span></p>
+<p>En particular para una variable <span class="math inline">\(x_j\)</span> y una componente <span class="math inline">\(z_k\)</span>:</p>
+<p><span class="math display">\[\textnormal{Cov}(x_j,z_k)=\lambda_k v_{jk}.\]</span></p>
+<p>Se trata por tanto de la varianza de la componente <span class="math inline">\(z_k\)</span> multiplicada
+por el coeficiente <span class="math inline">\(v_{jk}\)</span>, que acompaña a <span class="math inline">\(x_j\)</span> en la construcción de
+<span class="math inline">\(z_k\)</span>. El coeficiente de correlación será</p>
+<p><span class="math display">\[\textnormal{Corr}(x_j,z_k)=\frac{\textnormal{Cov}(x_j,z_k)}{\sqrt{\textnormal{Var}(x_j) \textnormal{Var}(z_k)}}
+=\frac{v_{jk}}{\sigma_j}\sqrt{\lambda_k}.\]</span></p>
+<p>En notación matricial,</p>
+<p><span class="math display">\[\begin{aligned}
+\textnormal{Corr}(\bm{x},\bm{z})&amp;=\mbox{diag}\left(1/\sigma_1,\ldots,1/\sigma_d\right) \bm{V} \bm\Lambda
+\mbox{diag}\left(1/\sqrt{\lambda_1},\ldots, 1/\sqrt{\lambda_d}\right)\\
+&amp;=
+\mbox{diag}(1/\sigma_1,\ldots,1/\sigma_d) \bm{V} \bm\Lambda^{1/2}.
+\end{aligned}\]</span></p>
+<p>Se interpretará cada componente principal en función de las variables
+originales que estén correlacionadas con dicha componente. Asimismo, el
+signo de cada correlación permite valorar qué variables van en el
+sentido de la componente y cuáles en sentido opuesto.</p>
+
+</div>
+</div>
+<h3><span class="header-section-number">C</span> References {-}<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gabriel71" class="csl-entry">
+Gabriel, K. R. 1971. <span>“The Biplot Graphic Display of Matrices with Application to Principal Component Analysis 1.”</span> <em>Biometrika</em> 58 (3): 453–67.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-multivariante-de-la-varianza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-de-correspondencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

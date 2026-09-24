@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo3 Análisis Multivariante de la Varianza | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo3 Análisis Multivariante de la Varianza | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo3 Análisis Multivariante de la Varianza | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inferencia-en-poblaciones-normales.html"/>
+<link rel="next" href="analisis-de-componentes-principales.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autores"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerrequisitos"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#estandarizacion"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimacion-en-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimadores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#distribucion-de-overline-bm-x-y-bm-s"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-multivariantes-versus-contrastes-univariantes"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza-y-comparaciones-simultaneas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#inferencia-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-h-0-bm-sigma-bm-sigma-0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#comparacion-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secnorm"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones-2"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#razon-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="anexoDist.html"><a href="anexoDist.html#propiedades-de-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="anexoDist.html"><a href="anexoDist.html#formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-gamma-2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-2"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="anexoDist.html"><a href="anexoDist.html#el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="anexoDist.html"><a href="anexoDist.html#introduccion"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-3"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="anexoAlg.html"><a href="anexoAlg.html#autovalores"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-semidefinidas-positivas"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-definidas-positivas"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References {-}</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="analisis-multivariante-de-la-varianza" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo3</span> Análisis Multivariante de la Varianza<a href="analisis-multivariante-de-la-varianza.html#analisis-multivariante-de-la-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este capítulo vemos la extensión del análisis de la varianza univariante
+(ANOVA) al caso de que la variable respuesta es multivariante (MANOVA).
+En primer lugar repasaremos los aspectos fundamentales del caso
+unidimensional. Para el caso multidimensional veremos que, en lugar del
+test <span class="math inline">\(F\)</span>, surgen los test de la <span class="math inline">\(\Lambda\)</span> de Wilks y sus alternativas.</p>
+<div id="revision-del-modelo-de-analisis-de-la-varianza-univariante-anova" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Revisión del modelo de análisis de la varianza univariante ANOVA<a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el modelo de análisis de la varianza univariante, disponemos de <span class="math inline">\(k\)</span>
+muestras independientes que provienen de poblaciones normales con la
+misma varianza (modelo homocedástico). Es decir,</p>
+<p><span class="math display">\[\begin{array}{cccccc}
+y_{11} &amp; y_{12} &amp; \cdots &amp; y_{1\,n_1} &amp; \mbox{de una población} &amp; N\left(\mu_1,\sigma^2\right), \\
+y_{21} &amp; y_{22} &amp; \cdots &amp; y_{2\,n_2} &amp; \mbox{de una población} &amp; N\left(\mu_2,\sigma^2\right), \\
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+y_{k1} &amp; y_{k2} &amp; \cdots &amp; y_{k\,n_k} &amp;\mbox{de una población} &amp; N\left(\mu_k,\sigma^2\right).
+\end{array}\]</span></p>
+<p>Cada una de las <span class="math inline">\(k\)</span> muestras (también denominadas grupos) está formada
+por variables independientes y con la misma distribución. Se supone
+además que las <span class="math inline">\(k\)</span> muestras son independientes entre sí. Los grupos
+pueden corresponder, por ejemplo, a diferentes tratamientos aplicados
+por el investigador en un experimento. El primer objetivo de un modelo
+de análisis de la varianza es contrastar la hipótesis nula de que todas
+las medias son iguales. Planteamos así el contraste:</p>
+<p><span class="math display">\[H_0: \mu_1=\mu_2=\cdots=\mu_k.\]</span></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el trabajo clásico de <span class="citation">Andrews and Herzberg (<a href="#ref-andrews1985collection">1985</a>)</span>, se
+comparan manzanos sobre seis tipos de portainjertos. En concreto, se
+analizan ocho manzanos sobre cada tipo de portainjerto. Para cada
+manzano se determina la circunferencia del tronco (mm <span class="math inline">\(\times\)</span> 100) a
+los 4 años. Los datos se encuentran en el fichero <code>tronco.txt</code>.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="analisis-multivariante-de-la-varianza.html#cb53-1" tabindex="-1"></a><span class="sc">&gt;</span> tronco <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tronco.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-2"><a href="analisis-multivariante-de-la-varianza.html#cb53-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(tronco)</span>
+<span id="cb53-3"><a href="analisis-multivariante-de-la-varianza.html#cb53-3" tabindex="-1"></a>  portainjerto cir4</span>
+<span id="cb53-4"><a href="analisis-multivariante-de-la-varianza.html#cb53-4" tabindex="-1"></a><span class="dv">1</span>            <span class="dv">1</span> <span class="fl">1.11</span></span>
+<span id="cb53-5"><a href="analisis-multivariante-de-la-varianza.html#cb53-5" tabindex="-1"></a><span class="dv">2</span>            <span class="dv">1</span> <span class="fl">1.19</span></span>
+<span id="cb53-6"><a href="analisis-multivariante-de-la-varianza.html#cb53-6" tabindex="-1"></a><span class="dv">3</span>            <span class="dv">1</span> <span class="fl">1.09</span></span>
+<span id="cb53-7"><a href="analisis-multivariante-de-la-varianza.html#cb53-7" tabindex="-1"></a><span class="dv">4</span>            <span class="dv">1</span> <span class="fl">1.25</span></span>
+<span id="cb53-8"><a href="analisis-multivariante-de-la-varianza.html#cb53-8" tabindex="-1"></a><span class="dv">5</span>            <span class="dv">1</span> <span class="fl">1.11</span></span>
+<span id="cb53-9"><a href="analisis-multivariante-de-la-varianza.html#cb53-9" tabindex="-1"></a><span class="dv">6</span>            <span class="dv">1</span> <span class="fl">1.08</span></span>
+<span id="cb53-10"><a href="analisis-multivariante-de-la-varianza.html#cb53-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(tronco[, <span class="dv">1</span>])</span>
+<span id="cb53-11"><a href="analisis-multivariante-de-la-varianza.html#cb53-11" tabindex="-1"></a></span>
+<span id="cb53-12"><a href="analisis-multivariante-de-la-varianza.html#cb53-12" tabindex="-1"></a><span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> </span>
+<span id="cb53-13"><a href="analisis-multivariante-de-la-varianza.html#cb53-13" tabindex="-1"></a><span class="dv">8</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">8</span> <span class="dv">8</span> </span></code></pre></div>
+<p>En este caso <span class="math inline">\(k=6\)</span> (tipos de portainjertos) y <span class="math inline">\(n_i=8\)</span> para
+<span class="math inline">\(i=1,\ldots,6\)</span> (número de árboles para cada tipo de portainjerto). El
+objetivo es determinar si existen diferencias significativas en el
+crecimiento de los manzanos debidas al tipo de portainjerto, ver Figura
+<a href="analisis-multivariante-de-la-varianza.html#fig:boxm">3.1</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxm"></span>
+<img src="bookdown_AM_files/figure-html/boxm-1.png" alt="Boxplot para la circunferencia de tronco a los 4 años en cada tipo de portainjerto." width="50%" />
+<p class="caption">
+Figura 3.1: Boxplot para la circunferencia de tronco a los 4 años en cada tipo de portainjerto.
+</p>
+</div>
+<p>Denotamos mediante <span class="math inline">\(\overline{y}_{i\bullet}\)</span> a la media muestral
+procedente de la población <span class="math inline">\(i\)</span>-ésima, es decir,</p>
+<p><span class="math display">\[\overline{y}_{i\bullet}=\frac{1}{n_i}\sum_{j=1}^{n_i} y_{ij}\]</span> para
+<span class="math inline">\(i=1,\ldots,k\)</span>. Sea <span class="math inline">\(n=n_1+\ldots+n_k\)</span> el número total de datos.
+Entonces, la media global de la muestra se calcula como:</p>
+<p><span class="math display">\[\overline{y}_{\bullet\bullet}
+=\frac{1}{n}\sum_{i=1}^k \sum_{j=1}^{n_i} y_{ij}.\]</span></p>
+<p>Se puede expresar el modelo de análisis multivariante de la varianza
+como un caso particular del modelo de regresión lineal. El modelo para
+cada observación es:</p>
+<p><span class="math display">\[y_{ij}=\mu+\alpha_i+\epsilon_{ij}=\mu_i+\epsilon_{ij}\]</span> con
+<span class="math inline">\(i=1,\ldots,k\)</span> y <span class="math inline">\(j=1,\ldots, n_i\)</span>. En el modelo, <span class="math inline">\(\mu_i=\mu+\alpha_i\)</span>
+es la media de la población <span class="math inline">\(i\)</span>-ésima.</p>
+<p>Queremos comparar las medias muestrales <span class="math inline">\(\overline{y}_{i\bullet}\)</span> para
+ver si son suficientemente distintas como para llevarnos a pensar que
+las medias de cada población difieren. Para determinar si hay
+diferencias significativas entre las respuestas medias a distintos
+niveles del factor, el ANOVA descompone la variabilidad total. La
+variabilidad total, medida a través de la desviación cuadrática de los
+datos a la media global, admite la siguiente descomposición:</p>
+<p><span class="math display">\[\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij} - \overline y_{\bullet\bullet}\right)^2
+=\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij} - \overline{y}_{i\bullet} \right)^2
++ \sum_{i=1}^k \sum_{j=1}^{n_i} \left( \overline{y}_{i\bullet} - \overline y_{\bullet\bullet} \right)^2.\]</span></p>
+<p>Al igual que en regresión, lo representamos mediante la <strong>tabla de
+análisis de la varianza</strong>.</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="41%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Fuente de variación</th>
+<th align="center">Suma de cuadrados</th>
+<th align="center">Grados de libertad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Entre poblaciones (VE)</td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^k {n_i} \left(\bar y_{i\bullet}-\bar y_{\bullet\bullet}\right)^2}\)</span></td>
+<td align="center"><span class="math inline">\(k-1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Error (VNE)</td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij}-\bar y_{i\bullet}\right)^2}\)</span></td>
+<td align="center"><span class="math inline">\(n-k\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Total (VT)</td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij}-\bar y_{\bullet\bullet}\right)^2}\)</span></td>
+<td align="center"><span class="math inline">\(n-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Nos fijamos en que VE representa las desviaciones de las medias
+muestrales de cada población respecto a la media global. Sirve por lo
+tanto como medición de la variabilidad entre poblaciones (inter-grupos).
+Además, VNE representa las desviaciones de cada dato respecto a la media
+muestral de la población de la que procede. Es útil como medida de la
+variabilidad interna (intra-grupos), presente entre los individuos de la
+misma población. Para efectuar el contraste de igualdad de las medias
+debemos considerar un estadístico que mida la discrepancia respecto a la
+hipótesis nula de igualdad. Si las medias fueran iguales, las
+desviaciones entre poblaciones no deberían ser muy grandes, comparadas
+con las desviaciones dentro de cada población. Un estadístico razonable
+para el contraste es</p>
+<p><span class="math display">\[F=\frac{VE/(k-1)}{{VNE}/(n-k)}=\frac{\sum_{i=1}^k \sum_{j=1}^{n_i} \left(\bar y_{i\bullet}-\bar y_{\bullet\bullet}\right)^2/(k-1)}
+{\sum_{i=1}^k \sum_{j=1}^{n_i} \left( y_{ij}-\bar y_{i\bullet}\right)^2/(n-k)}.\]</span>
+Si la hipótesis nula <span class="math inline">\(H_0: \mu_1=\mu_2=\cdots=\mu_k\)</span> es cierta, <span class="math inline">\(F\)</span>
+presenta una distribución <span class="math inline">\(F\)</span> de Snédecor <span class="math inline">\(F\in F_{(k-1),(n-k)}\)</span>.
+Rechazaremos <span class="math inline">\(H_0\)</span> cuando para valores grandes de <span class="math inline">\(F\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Volvemos sobre el ejemplo de manzanos sobre diferentes
+tipos de portainjertos. Existen distintas formas de realizar un ANOVA en
+R. Esta es una de ellas:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="analisis-multivariante-de-la-varianza.html#cb54-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">factor</span>(tronco[, <span class="dv">1</span>])</span>
+<span id="cb54-2"><a href="analisis-multivariante-de-la-varianza.html#cb54-2" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> tronco[, <span class="dv">2</span>]</span>
+<span id="cb54-3"><a href="analisis-multivariante-de-la-varianza.html#cb54-3" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb54-4"><a href="analisis-multivariante-de-la-varianza.html#cb54-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(z)</span>
+<span id="cb54-5"><a href="analisis-multivariante-de-la-varianza.html#cb54-5" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb54-6"><a href="analisis-multivariante-de-la-varianza.html#cb54-6" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="analisis-multivariante-de-la-varianza.html#cb54-7" tabindex="-1"></a>Response<span class="sc">:</span> y</span>
+<span id="cb54-8"><a href="analisis-multivariante-de-la-varianza.html#cb54-8" tabindex="-1"></a>          Df  Sum Sq   Mean Sq F value <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb54-9"><a href="analisis-multivariante-de-la-varianza.html#cb54-9" tabindex="-1"></a>x          <span class="dv">5</span> <span class="fl">0.07356</span> <span class="fl">0.0147121</span>   <span class="fl">1.931</span> <span class="fl">0.1094</span></span>
+<span id="cb54-10"><a href="analisis-multivariante-de-la-varianza.html#cb54-10" tabindex="-1"></a>Residuals <span class="dv">42</span> <span class="fl">0.31999</span> <span class="fl">0.0076187</span>               </span></code></pre></div>
+<p>Vemos que el <span class="math inline">\(p\)</span>-valor indica que no hay evidencias significativas para
+rechazar la hipótesis nula de igualdad de medias.</p>
+</div>
+<div id="manova-con-un-factor-de-variacion" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> MANOVA con un factor de variación<a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En general, cuando disponemos de una muestra, no medimos una única
+variable. Lo más habitual es realizar mediciones de diversas variables
+dependientes sobre cada unidad muestral.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el trabajo clásico de <span class="citation">Andrews and Herzberg (<a href="#ref-andrews1985collection">1985</a>)</span>, se
+comparan manzanos sobre seis tipos de portainjertos. En concreto, se
+analizan ocho manzanos sobre cada tipo de portainjerto. Para cada
+manzano se determina <span class="math inline">\(\bm{y}=(y_1,\ldots,y_4)^\prime\)</span>, siendo <span class="math inline">\(y_1\)</span> la
+circunferencia del tronco (mm <span class="math inline">\(\times\)</span> 100) a los 4 años, <span class="math inline">\(y_2\)</span> el
+crecimiento (m) a los 4 años, <span class="math inline">\(y_3\)</span> la circunferencia del tronco (mm
+<span class="math inline">\(\times\)</span> 100) a los 15 años e <span class="math inline">\(y_4\)</span> el peso del árbol (lb <span class="math inline">\(\times\)</span> 1000)
+a los 15 años. Los datos se encuentran en el fichero <code>manzanos.txt</code>.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="analisis-multivariante-de-la-varianza.html#cb55-1" tabindex="-1"></a><span class="sc">&gt;</span> manzanos <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/manzanos.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-2"><a href="analisis-multivariante-de-la-varianza.html#cb55-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(manzanos)</span>
+<span id="cb55-3"><a href="analisis-multivariante-de-la-varianza.html#cb55-3" tabindex="-1"></a>  portainjerto cir4 crec4 cir15 peso15</span>
+<span id="cb55-4"><a href="analisis-multivariante-de-la-varianza.html#cb55-4" tabindex="-1"></a><span class="dv">1</span>            <span class="dv">1</span> <span class="fl">1.11</span> <span class="fl">2.569</span>  <span class="fl">3.58</span>  <span class="fl">0.760</span></span>
+<span id="cb55-5"><a href="analisis-multivariante-de-la-varianza.html#cb55-5" tabindex="-1"></a><span class="dv">2</span>            <span class="dv">1</span> <span class="fl">1.19</span> <span class="fl">2.928</span>  <span class="fl">3.75</span>  <span class="fl">0.821</span></span>
+<span id="cb55-6"><a href="analisis-multivariante-de-la-varianza.html#cb55-6" tabindex="-1"></a><span class="dv">3</span>            <span class="dv">1</span> <span class="fl">1.09</span> <span class="fl">2.865</span>  <span class="fl">3.93</span>  <span class="fl">0.928</span></span>
+<span id="cb55-7"><a href="analisis-multivariante-de-la-varianza.html#cb55-7" tabindex="-1"></a><span class="dv">4</span>            <span class="dv">1</span> <span class="fl">1.25</span> <span class="fl">3.844</span>  <span class="fl">3.94</span>  <span class="fl">1.009</span></span>
+<span id="cb55-8"><a href="analisis-multivariante-de-la-varianza.html#cb55-8" tabindex="-1"></a><span class="dv">5</span>            <span class="dv">1</span> <span class="fl">1.11</span> <span class="fl">3.027</span>  <span class="fl">3.60</span>  <span class="fl">0.766</span></span>
+<span id="cb55-9"><a href="analisis-multivariante-de-la-varianza.html#cb55-9" tabindex="-1"></a><span class="dv">6</span>            <span class="dv">1</span> <span class="fl">1.08</span> <span class="fl">2.336</span>  <span class="fl">3.51</span>  <span class="fl">0.726</span></span></code></pre></div>
+<p>Se trata de comparar las medias de <span class="math inline">\(k\)</span> poblaciones normales
+multivariantes independientes y con matriz de dispersión común.
+Consideremos entonces <span class="math inline">\(k\)</span> muestras independientes</p>
+<p><span class="math display">\[\begin{array}{cccccc}
+\bm{y_{11}} &amp; \bm{y_{12}} &amp; \cdots &amp; \bm{y_{1n_1}} &amp; \mbox{de una población} &amp; N_d(\bm{\mu_1},\bm\Sigma), \\
+\bm{y_{21}} &amp; \bm{y_{22}} &amp; \cdots &amp; \bm{y_{2n_2}} &amp; \mbox{de una población} &amp; N_d(\bm{\mu_2},\bm\Sigma), \\
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+\bm{y_{k1}} &amp; \bm{y_{k2}} &amp; \cdots &amp; \bm{y_{kn_k}} &amp;\mbox{de una población} &amp; N_d(\bm{\mu_k},\bm\Sigma).
+\end{array}\]</span></p>
+<p>Cada una de las <span class="math inline">\(k\)</span> muestras está formada por vectores independientes y
+con la misma distribución. Se trata, por tanto, de <span class="math inline">\(k\)</span> muestras
+aleatorias simples. Además se supone que las <span class="math inline">\(k\)</span> muestras son, entre sí,
+independientes. La hipótesis de homocedasticidad consiste ahora en que
+la matriz de covarianzas se supone que es la misma en todas las
+poblaciones. Recuerda que la homocedasticidad se puede contrastar
+mediante un test de igualdad de las matrices de covarianzas.</p>
+<div id="descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Descomposición de la variabilidad. Contraste de igualdad de medias<a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Igual que ocurría en el caso univariante, se puede expresar el modelo de
+análisis multivariante de la varianza como un caso particular del modelo
+lineal múltiple (la variable respuesta es un vector <span class="math inline">\(d\)</span>-dimensional).
+Para cada observación se tiene,</p>
+<p><span class="math display">\[\bm{y_{ij}}=\bm{\mu}+\bm{\alpha_i}+\bm{\epsilon_{ij}}=\bm{\mu_i}+\bm{\epsilon_{ij}}\]</span>
+con <span class="math inline">\(i=1,\ldots,k\)</span> y <span class="math inline">\(j=1,\ldots, n_i\)</span>. En el modelo,
+<span class="math inline">\(\bm{\mu_i}=\bm{\mu}+\bm{\alpha_i}\)</span> es el vector de medias de la
+población <span class="math inline">\(i\)</span>-ésima.</p>
+<p>El objetivo del modelo de análisis de la varianza multivariante es
+contrastar la hipótesis nula de que los vectores de medias son iguales.
+Planteamos así el contraste:</p>
+<p><span class="math display">\[H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_k}.\]</span></p>
+<p>Es decir,</p>
+<p><span class="math display">\[H_0:
+\left(\begin{array}{c}\mu_{11}\\ \mu_{12}\\\vdots\\ \mu_{1d}\end{array}\right)=\left(\begin{array}{c}\mu_{21}\\ \mu_{22}\\\vdots\\ \mu_{2d}\end{array}\right)=\cdots=\left(\begin{array}{c}\mu_{k1}\\ \mu_{k2}\\\vdots\\ \mu_{kd}\end{array}\right).\]</span></p>
+<p>Al igual que en el caso univariante, podremos calcular la media global
+de la muestra y las medias muestrales por grupo. Así denotamos mediante
+<span class="math inline">\(\bm{\overline{y}_{i\bullet}}\)</span> a la media muestral procedente de la
+población <span class="math inline">\(i\)</span>-ésima, es decir,</p>
+<p><span class="math display">\[\bm{\overline{y}_{i\bullet}}=\frac{1}{n_i}\sum_{j=1}^{n_i} \bm{y_{ij}}\]</span>
+para <span class="math inline">\(i=1,\ldots,k\)</span>. Sea <span class="math inline">\(n=n_1+\ldots+n_k\)</span> el número total de datos.
+Entonces, la media global de la muestra se calcula como:
+<span class="math display">\[\bm{\overline{y}_{\bullet\bullet}}
+=\frac{1}{n}\sum_{i=1}^k \sum_{j=1}^{n_i} \bm{y_{ij}}\]</span></p>
+<p>Para determinar si hay diferencias significativas entre las respuestas
+medias a distintos niveles del factor, el MANOVA descompone la
+variabilidad total de forma similar a como se hacía en el ANOVA. La
+diferencia está en que ahora la variabilidad total se medirá mediante la
+siguiente matriz <span class="math inline">\(d\times d\)</span>:</p>
+<p><span class="math display">\[\sum_{i=1}^k \sum_{j=1}^{n_i}
+\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)
+\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)^\prime{}.\]</span>
+Por analogía con el caso univariante, en el que se comparaban la
+variabilidad inter-grupos con la variabilidad intra-grupos, se calculan
+ahora las matrices</p>
+<p><span class="math display">\[\bm{H}=\sum_{i=1}^kn_i(\bm{\overline{y}_{i\bullet}}-\bm{\overline{y}_{\bullet\bullet}})(\bm{\overline{y}_{i\bullet}}-\bm{\overline{y}_{\bullet\bullet}})^\prime{}\]</span>
+y</p>
+<p><span class="math display">\[\bm{E} = \sum_{i=1}^k \sum_{j=1}^{n_i}
+\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)
+\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)^\prime{}.\]</span></p>
+<p>Se muestra a continuación la <strong>tabla del análisis multivariante de la
+varianza</strong> o tabla MANOVA:</p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="46%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Fuente de variación</th>
+<th align="center">Matriz de covarianzas</th>
+<th align="center">Grados de libertad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Entre poblaciones</td>
+<td align="center"><span class="math inline">\({ \bm{H}=\sum_{i=1}^kn_i(\bm{\overline{y}_{i\bullet}}-\bm{\overline{y}_{\bullet\bullet}})(\bm{\overline{y}_{i\bullet}}-\bm{\overline{y}_{\bullet\bullet}})^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\(k-1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Error</td>
+<td align="center"><span class="math inline">\({\bm{E} = \sum_{i=1}^k \sum_{j=1}^{n_i}\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)\left( \bm{y_{ij}}- \bm{\overline{y}_{i\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^k \left(n_i-1\right)}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\({\bm{E_H} = \sum_{i=1}^k \sum_{j=1}^{n_i}\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)\left( \bm{y_{ij}}-\bm{\overline{y}_{\bullet\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^k n_i-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Observamos que esta tabla no es más que una extensión de la tabla ANOVA
+al caso multivariante. El sentido común nos invita a rechazar la
+hipótesis nula cuando la variabilidad proveniente de las diferencias
+entre poblaciones (que medimos mediante la matriz <span class="math inline">\(\bm{H}\)</span>) sea grande
+comparada con la proveniente del error (medida por <span class="math inline">\(\bm{E}\)</span>).</p>
+</div>
+<div id="el-estadistico-lambda-de-wilks" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks<a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El contraste de razón de verosimiltudes para el contraste
+<span class="math inline">\(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_k}\)</span> viene dado por</p>
+<p><span class="math display">\[\Lambda=\frac{|\bm{E}|}{|\bm{E}+\bm{H}|}.\]</span></p>
+<p>Este estadístico, conocido
+como estadístico de Wilks, compara la matriz <span class="math inline">\(\bm{E}\)</span>, que mide la
+variabilidad intra-grupos, con la matriz <span class="math inline">\(\bm{E_H}=\bm{E}+\bm{H}\)</span>, que
+mide la variabilidad total<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. Se puede demostrar que, bajo la
+hipótesis nula,</p>
+<p><span class="math display">\[\begin{aligned}
+\bm{H} &amp;\in &amp; \mbox{Wishart}_d(\bm\Sigma,k-1) \\
+\bm{E} &amp;\in &amp; \mbox{Wishart}_d(\bm\Sigma,n-k)\end{aligned}\]</span> y además
+son independientes. Entonces tenemos que<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p><span class="math display">\[\frac{|\bm{E}|}{|\bm{E}+\bm{H}|}\in \Lambda(d,k-1,n-k).\]</span> Por tanto,
+rechazaremos la hipótesis nula cuando el estadístico
+<span class="math inline">\(|\bm{E}|/|\bm{E}+\bm{H}|\)</span> tome un valor menor que el cuantil <span class="math inline">\(\alpha\)</span>
+de la distribución <span class="math inline">\(\Lambda(d,k-1,n-k)\)</span>, siendo <span class="math inline">\(\alpha\)</span> el nivel de
+significación fijado de antemano. El estadístico se puede aproximar por
+una distribución <span class="math inline">\(F\)</span> de Snédecor.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Volvemos al ejemplo sobre manzanos. Se trata de contrastar
+<span class="math inline">\(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_6}\)</span>, donde para cada <span class="math inline">\(i\)</span> el
+vector <span class="math inline">\(\bm{\mu_i}=(\mu_{i1},\ldots,\mu{i4})^\prime\)</span> representa el
+vector de medias de <span class="math inline">\(\bm{y}=(y_1,\ldots,y_4)^\prime{}\)</span> para el tipo <span class="math inline">\(i\)</span>
+de portainjerto. Los datos son:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="analisis-multivariante-de-la-varianza.html#cb56-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">factor</span>(manzanos[, <span class="dv">1</span>])</span>
+<span id="cb56-2"><a href="analisis-multivariante-de-la-varianza.html#cb56-2" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(manzanos[, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb56-3"><a href="analisis-multivariante-de-la-varianza.html#cb56-3" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">dim</span>(y)[<span class="dv">1</span>]</span>
+<span id="cb56-4"><a href="analisis-multivariante-de-la-varianza.html#cb56-4" tabindex="-1"></a><span class="sc">&gt;</span> d <span class="ot">&lt;-</span> <span class="fu">dim</span>(y)[<span class="dv">2</span>]</span>
+<span id="cb56-5"><a href="analisis-multivariante-de-la-varianza.html#cb56-5" tabindex="-1"></a><span class="sc">&gt;</span> n</span>
+<span id="cb56-6"><a href="analisis-multivariante-de-la-varianza.html#cb56-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">48</span></span>
+<span id="cb56-7"><a href="analisis-multivariante-de-la-varianza.html#cb56-7" tabindex="-1"></a><span class="sc">&gt;</span> d</span>
+<span id="cb56-8"><a href="analisis-multivariante-de-la-varianza.html#cb56-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<p>Calculamos a continuación la media global de la muestra
+<span class="math inline">\(\bm{\overline{y}_{\bullet\bullet}}\)</span> y las medias
+<span class="math inline">\(\bm{\overline{y}_{i\bullet}}\)</span> correspondientes a cada grupo:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="analisis-multivariante-de-la-varianza.html#cb57-1" tabindex="-1"></a><span class="sc">&gt;</span> medy <span class="ot">&lt;-</span> <span class="fu">apply</span>(y, <span class="dv">2</span>, mean)</span>
+<span id="cb57-2"><a href="analisis-multivariante-de-la-varianza.html#cb57-2" tabindex="-1"></a><span class="sc">&gt;</span> medy</span>
+<span id="cb57-3"><a href="analisis-multivariante-de-la-varianza.html#cb57-3" tabindex="-1"></a>    cir4    crec4    cir15   peso15 </span>
+<span id="cb57-4"><a href="analisis-multivariante-de-la-varianza.html#cb57-4" tabindex="-1"></a><span class="fl">1.102708</span> <span class="fl">2.758854</span> <span class="fl">4.087292</span> <span class="fl">1.083000</span> </span>
+<span id="cb57-5"><a href="analisis-multivariante-de-la-varianza.html#cb57-5" tabindex="-1"></a><span class="sc">&gt;</span> medyi <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(y, <span class="dv">2</span>, tapply, x, mean))</span>
+<span id="cb57-6"><a href="analisis-multivariante-de-la-varianza.html#cb57-6" tabindex="-1"></a><span class="sc">&gt;</span> medyi</span>
+<span id="cb57-7"><a href="analisis-multivariante-de-la-varianza.html#cb57-7" tabindex="-1"></a>              <span class="dv">1</span>        <span class="dv">2</span>        <span class="dv">3</span>       <span class="dv">4</span>       <span class="dv">5</span>        <span class="dv">6</span></span>
+<span id="cb57-8"><a href="analisis-multivariante-de-la-varianza.html#cb57-8" tabindex="-1"></a>cir4   <span class="fl">1.137500</span> <span class="fl">1.157500</span> <span class="fl">1.107500</span> <span class="fl">1.09750</span> <span class="fl">1.08000</span> <span class="fl">1.036250</span></span>
+<span id="cb57-9"><a href="analisis-multivariante-de-la-varianza.html#cb57-9" tabindex="-1"></a>crec4  <span class="fl">2.977125</span> <span class="fl">3.109125</span> <span class="fl">2.815250</span> <span class="fl">2.87975</span> <span class="fl">2.55725</span> <span class="fl">2.214625</span></span>
+<span id="cb57-10"><a href="analisis-multivariante-de-la-varianza.html#cb57-10" tabindex="-1"></a>cir15  <span class="fl">3.738750</span> <span class="fl">4.515000</span> <span class="fl">4.455000</span> <span class="fl">3.90625</span> <span class="fl">4.31250</span> <span class="fl">3.596250</span></span>
+<span id="cb57-11"><a href="analisis-multivariante-de-la-varianza.html#cb57-11" tabindex="-1"></a>peso15 <span class="fl">0.871125</span> <span class="fl">1.280500</span> <span class="fl">1.391375</span> <span class="fl">1.03900</span> <span class="fl">1.18100</span> <span class="fl">0.735000</span></span></code></pre></div>
+<p>A continuación, realizamos el MANOVA:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="analisis-multivariante-de-la-varianza.html#cb58-1" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb58-2"><a href="analisis-multivariante-de-la-varianza.html#cb58-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">manova</span>(z), <span class="at">test =</span> <span class="fu">c</span>(<span class="st">&quot;Wilks&quot;</span>))</span>
+<span id="cb58-3"><a href="analisis-multivariante-de-la-varianza.html#cb58-3" tabindex="-1"></a>          Df   Wilks approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb58-4"><a href="analisis-multivariante-de-la-varianza.html#cb58-4" tabindex="-1"></a>x          <span class="dv">5</span> <span class="fl">0.15401</span>   <span class="fl">4.9369</span>     <span class="dv">20</span>  <span class="fl">130.3</span> <span class="fl">7.714e-09</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb58-5"><a href="analisis-multivariante-de-la-varianza.html#cb58-5" tabindex="-1"></a>Residuals <span class="dv">42</span>                                             </span>
+<span id="cb58-6"><a href="analisis-multivariante-de-la-varianza.html#cb58-6" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb58-7"><a href="analisis-multivariante-de-la-varianza.html#cb58-7" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<p>Comprobamos que el valor del estadístico es <span class="math inline">\(\Lambda=0.15401\)</span>. Para
+ello, calculamos en primer lugar la matriz <span class="math inline">\(\bm{E}\)</span></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="analisis-multivariante-de-la-varianza.html#cb59-1" tabindex="-1"></a><span class="sc">&gt;</span> res <span class="ot">&lt;-</span> z<span class="sc">$</span>residuals</span>
+<span id="cb59-2"><a href="analisis-multivariante-de-la-varianza.html#cb59-2" tabindex="-1"></a><span class="sc">&gt;</span> E <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(res)  <span class="co"># Equivalente a (n - 1) * cov(res)</span></span>
+<span id="cb59-3"><a href="analisis-multivariante-de-la-varianza.html#cb59-3" tabindex="-1"></a><span class="sc">&gt;</span> E</span>
+<span id="cb59-4"><a href="analisis-multivariante-de-la-varianza.html#cb59-4" tabindex="-1"></a>            cir4     crec4     cir15   peso15</span>
+<span id="cb59-5"><a href="analisis-multivariante-de-la-varianza.html#cb59-5" tabindex="-1"></a>cir4   <span class="fl">0.3199875</span>  <span class="fl">1.696564</span> <span class="fl">0.5540875</span> <span class="fl">0.217140</span></span>
+<span id="cb59-6"><a href="analisis-multivariante-de-la-varianza.html#cb59-6" tabindex="-1"></a>crec4  <span class="fl">1.6965637</span> <span class="fl">12.142790</span> <span class="fl">4.3636125</span> <span class="fl">2.110214</span></span>
+<span id="cb59-7"><a href="analisis-multivariante-de-la-varianza.html#cb59-7" tabindex="-1"></a>cir15  <span class="fl">0.5540875</span>  <span class="fl">4.363612</span> <span class="fl">4.2908125</span> <span class="fl">2.481656</span></span>
+<span id="cb59-8"><a href="analisis-multivariante-de-la-varianza.html#cb59-8" tabindex="-1"></a>peso15 <span class="fl">0.2171400</span>  <span class="fl">2.110214</span> <span class="fl">2.4816562</span> <span class="fl">1.722525</span></span></code></pre></div>
+<p>Calculamos ahora la matriz <span class="math inline">\(\bm{E_H}=\bm{E}+\bm{H}\)</span> aplicando la
+definición.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="analisis-multivariante-de-la-varianza.html#cb60-1" tabindex="-1"></a><span class="sc">&gt;</span> resh <span class="ot">&lt;-</span> y <span class="sc">-</span> <span class="fu">matrix</span>(medy, <span class="at">nrow =</span> n, <span class="at">ncol =</span> d, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb60-2"><a href="analisis-multivariante-de-la-varianza.html#cb60-2" tabindex="-1"></a><span class="sc">&gt;</span> EH <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(resh)  <span class="co"># Equivalente a (n - 1) * cov(resh)</span></span>
+<span id="cb60-3"><a href="analisis-multivariante-de-la-varianza.html#cb60-3" tabindex="-1"></a><span class="sc">&gt;</span> EH</span>
+<span id="cb60-4"><a href="analisis-multivariante-de-la-varianza.html#cb60-4" tabindex="-1"></a>            cir4     crec4      cir15   peso15</span>
+<span id="cb60-5"><a href="analisis-multivariante-de-la-varianza.html#cb60-5" tabindex="-1"></a>cir4   <span class="fl">0.3935479</span>  <span class="fl">2.233949</span>  <span class="fl">0.8863521</span> <span class="fl">0.425610</span></span>
+<span id="cb60-6"><a href="analisis-multivariante-de-la-varianza.html#cb60-6" tabindex="-1"></a>crec4  <span class="fl">2.2339490</span> <span class="fl">16.342452</span>  <span class="fl">6.7190010</span> <span class="fl">3.747322</span></span>
+<span id="cb60-7"><a href="analisis-multivariante-de-la-varianza.html#cb60-7" tabindex="-1"></a>cir15  <span class="fl">0.8863521</span>  <span class="fl">6.719001</span> <span class="fl">10.4047479</span> <span class="fl">6.262700</span></span>
+<span id="cb60-8"><a href="analisis-multivariante-de-la-varianza.html#cb60-8" tabindex="-1"></a>peso15 <span class="fl">0.4256100</span>  <span class="fl">3.747322</span>  <span class="fl">6.2627000</span> <span class="fl">4.215616</span></span></code></pre></div>
+<p>Efectivamente, se tiene</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="analisis-multivariante-de-la-varianza.html#cb61-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">det</span>(E)<span class="sc">/</span><span class="fu">det</span>(EH)</span>
+<span id="cb61-2"><a href="analisis-multivariante-de-la-varianza.html#cb61-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1540077</span></span></code></pre></div>
+<p>En base a la aproximación a la <span class="math inline">\(F\)</span> de Snédecor proporcionada por R y al
+<span class="math inline">\(p\)</span>-valor del estadístico, se rechaza la hipótesis nula de igualdad de
+los vectores de medias en los 6 tipos de portainjerto.</p>
+</div>
+<div id="test-de-roy" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Test de Roy<a href="analisis-multivariante-de-la-varianza.html#test-de-roy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existen otros procedimientos para contrastar
+<span class="math inline">\(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_k}\)</span> que dan lugar a
+estadísticos de contraste diferentes al <span class="math inline">\(\Lambda\)</span> de Wilks. Uno de esos
+procedimientos alternativos es el de <em>unión-intersección</em>.</p>
+<p>Un test de unión-intersección para contrastar una hipótesis
+<span class="math inline">\(H_0=\cap_a H_{0a}\)</span> es un test cuya región de rechazo es de la forma
+<span class="math inline">\(R=\cup_a R_a\)</span>, siendo <span class="math inline">\(R_a\)</span> la región de rechazo para <span class="math inline">\(H_{0a}\)</span>.</p>
+<p>Esta idea se aplica en problemas de inferencia multivariante, expresando
+la hipótesis multivariante como intersección de hipótesis univariantes,
+para las cuales ya hay tests disponibles. Siguiendo este procedimiento,
+el test de unión-intersección de Roy tiene como estadístico de
+contraste:</p>
+<p><span class="math display">\[\lambda_1=\mbox{máximo autovalor de}\ \bm{H}\bm{E}^{-1}\]</span> y
+rechazaremos la hipótesis nula para valores grandes de <span class="math inline">\(\lambda_1\)</span>. De
+nuevo, se utilizarán aproximaciones de este estadístico a la <span class="math inline">\(F\)</span> de
+Snédecor.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Calculamos, para el ejemplo sobre manzanos, el estadístico
+de Roy:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="analisis-multivariante-de-la-varianza.html#cb62-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">manova</span>(z), <span class="at">test =</span> <span class="fu">c</span>(<span class="st">&quot;Roy&quot;</span>))</span>
+<span id="cb62-2"><a href="analisis-multivariante-de-la-varianza.html#cb62-2" tabindex="-1"></a>          Df    Roy approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb62-3"><a href="analisis-multivariante-de-la-varianza.html#cb62-3" tabindex="-1"></a>x          <span class="dv">5</span> <span class="fl">1.8757</span>   <span class="fl">15.756</span>      <span class="dv">5</span>     <span class="dv">42</span> <span class="fl">1.002e-08</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb62-4"><a href="analisis-multivariante-de-la-varianza.html#cb62-4" tabindex="-1"></a>Residuals <span class="dv">42</span>                                            </span>
+<span id="cb62-5"><a href="analisis-multivariante-de-la-varianza.html#cb62-5" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb62-6"><a href="analisis-multivariante-de-la-varianza.html#cb62-6" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<p>En base a este estadístico también se rechaza la hipótesis nula de
+igualdad de medias. Comprobamos que el valor del estadístico es
+<span class="math inline">\(\lambda_1=1.8757\)</span>. Para ello, calculamos los autovalores de
+<span class="math inline">\(\bm{H}\bm{E}^{-1}.\)</span></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="analisis-multivariante-de-la-varianza.html#cb63-1" tabindex="-1"></a><span class="sc">&gt;</span> H <span class="ot">&lt;-</span> EH <span class="sc">-</span> E</span>
+<span id="cb63-2"><a href="analisis-multivariante-de-la-varianza.html#cb63-2" tabindex="-1"></a><span class="sc">&gt;</span> lambda <span class="ot">&lt;-</span> <span class="fu">eigen</span>(H <span class="sc">%*%</span> <span class="fu">solve</span>(E))<span class="sc">$</span>values</span>
+<span id="cb63-3"><a href="analisis-multivariante-de-la-varianza.html#cb63-3" tabindex="-1"></a><span class="sc">&gt;</span> lambda1 <span class="ot">&lt;-</span> <span class="fu">max</span>(lambda)</span>
+<span id="cb63-4"><a href="analisis-multivariante-de-la-varianza.html#cb63-4" tabindex="-1"></a><span class="sc">&gt;</span> lambda1</span>
+<span id="cb63-5"><a href="analisis-multivariante-de-la-varianza.html#cb63-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1.875671</span></span></code></pre></div>
+</div>
+<div id="tests-de-pillai-y-lawley-hotelling" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Tests de Pillai y Lawley-Hotelling<a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existen otros dos tests adicionales para contrastar
+<span class="math inline">\(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_k}\)</span> basados en los
+autovalores de la matriz <span class="math inline">\(\bm{H}\bm{E}^{-1}\)</span>. El estadístico de Pillai
+viene dado por</p>
+<p><span class="math display">\[V^{(^d)}=\textnormal{traza}\left[\bm{H}(\bm{E}+\bm{H})^{-1}\right]=\sum_{i=1}^d\theta_i=\sum_{i=1}^d\frac{\lambda_i}{1+\lambda_i}\]</span>
+siendo <span class="math inline">\(\theta_1,\ldots,\theta_d\)</span> los autovalores de
+<span class="math inline">\(\bm{H}(\bm{E}+\bm{H})^{-1}\)</span> y <span class="math inline">\(\lambda_1,\ldots,\lambda_d\)</span> los
+autovalores de <span class="math inline">\(\bm{H}\bm{E}^{-1}\)</span>.</p>
+<p>El estadístico de Lawley-Hotelling se define como</p>
+<p><span class="math display">\[U^{(^d)}=\textnormal{traza}\left[\bm{H}\bm{E}^{-1}\right]=\sum_{i=1}^d\lambda_i\]</span>
+donde <span class="math inline">\(\lambda_1,\ldots,\lambda_d\)</span> son los autovalores de
+<span class="math inline">\(\bm{H}\bm{E}^{-1}\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Calculamos, para el ejemplo sobre manzanos, los
+estadísticos de Pillai y Lawley-Hotelling y comprobamos los valores
+obtenidos:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="analisis-multivariante-de-la-varianza.html#cb64-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">manova</span>(z), <span class="at">test =</span> <span class="fu">c</span>(<span class="st">&quot;Pillai&quot;</span>))</span>
+<span id="cb64-2"><a href="analisis-multivariante-de-la-varianza.html#cb64-2" tabindex="-1"></a>          Df Pillai approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb64-3"><a href="analisis-multivariante-de-la-varianza.html#cb64-3" tabindex="-1"></a>x          <span class="dv">5</span> <span class="fl">1.3055</span>   <span class="fl">4.0697</span>     <span class="dv">20</span>    <span class="dv">168</span> <span class="fl">1.983e-07</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb64-4"><a href="analisis-multivariante-de-la-varianza.html#cb64-4" tabindex="-1"></a>Residuals <span class="dv">42</span>                                            </span>
+<span id="cb64-5"><a href="analisis-multivariante-de-la-varianza.html#cb64-5" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb64-6"><a href="analisis-multivariante-de-la-varianza.html#cb64-6" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb64-7"><a href="analisis-multivariante-de-la-varianza.html#cb64-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(<span class="fu">manova</span>(z), <span class="at">test =</span> <span class="fu">c</span>(<span class="st">&quot;Hotelling-Lawley&quot;</span>))</span>
+<span id="cb64-8"><a href="analisis-multivariante-de-la-varianza.html#cb64-8" tabindex="-1"></a>          Df Hotelling<span class="sc">-</span>Lawley approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb64-9"><a href="analisis-multivariante-de-la-varianza.html#cb64-9" tabindex="-1"></a>x          <span class="dv">5</span>           <span class="fl">2.9214</span>   <span class="fl">5.4776</span>     <span class="dv">20</span>    <span class="dv">150</span> <span class="fl">2.568e-10</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb64-10"><a href="analisis-multivariante-de-la-varianza.html#cb64-10" tabindex="-1"></a>Residuals <span class="dv">42</span>                                                      </span>
+<span id="cb64-11"><a href="analisis-multivariante-de-la-varianza.html#cb64-11" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb64-12"><a href="analisis-multivariante-de-la-varianza.html#cb64-12" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<p>En base a ambos estadísticos también se rechaza la hipótesis nula de
+igualdad de medias. Comprobamos el valor del estadístico de Pillai y de Lawley-Hotelling</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="analisis-multivariante-de-la-varianza.html#cb65-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(lambda<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> lambda))  <span class="co"># estadístico de Pillai</span></span>
+<span id="cb65-2"><a href="analisis-multivariante-de-la-varianza.html#cb65-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1.305472</span></span>
+<span id="cb65-3"><a href="analisis-multivariante-de-la-varianza.html#cb65-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(lambda)  <span class="co"># estadístico de Lawley-Hotelling</span></span>
+<span id="cb65-4"><a href="analisis-multivariante-de-la-varianza.html#cb65-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">2.921368</span></span></code></pre></div>
+</div>
+</div>
+<div id="manova-con-dos-factores-de-variacion" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> MANOVA con dos factores de variación<a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección suponemos que hay dos factores: A y B. Del factor A
+podemos distinguir <span class="math inline">\(a\)</span> niveles, mientras que en el factor B podemos
+encontrar <span class="math inline">\(b\)</span> niveles. En cada una de las <span class="math inline">\(a\cdot b\)</span> posibilidades
+realizamos <span class="math inline">\(n\)</span> observaciones de un vector aleatorio
+<span class="math inline">\(\bm{y}=(y_1,\ldots,y_d)^\prime{}\)</span>. El objetivo será estudiar la
+influencia de los factores A y B, o de su interacción, en la media del
+vector <span class="math inline">\(\bm{y}\)</span>. Así, planteamos el siguiente modelo:</p>
+<p><span class="math display">\[\bm{y_{ijk}}=\bm{\mu}+\bm{\alpha_i}+\bm{\beta_j}+\bm{\gamma_{ij}}+{\bm{\epsilon_{ijk}}} \qquad i=1,\ldots,a, \ \ j=1,\ldots,b, \ \ k=1,\ldots,n.\]</span>
+Se asume que <span class="math inline">\({\bm{\epsilon_{ijk}}}\in N_d(\bm{0},\bm\Sigma)\)</span>. El
+parámetro <span class="math inline">\(\bm{\mu}\)</span> representa la media global, los parámetros
+<span class="math inline">\(\bm{\alpha_i}\)</span> representan el efecto principal del factor A, los
+parámetros <span class="math inline">\(\bm{\beta_j}\)</span> representan el efecto principal del factor B y
+los parámetros <span class="math inline">\(\bm{\gamma_{ij}}\)</span> representan la interacción de los
+factores A y B. Además verifican</p>
+<p><span class="math display">\[\sum_{i=1}^a \bm{\alpha_i}=\sum_{j=1}^b \bm{\beta_j}=\sum_{i=1}^a \bm{\gamma_{ij}}
+=\sum_{j=1}^b\bm{\gamma_{ij}}=\bm{0}\]</span></p>
+<p>Este modelo también se puede ver como un caso particular del modelo
+lineal general multivariante. Las labores de inferencia sobre el modelo
+se realizan en base a la siguiente descomposición de la variabilidad,
+mediante lo que llamaremos tabla MANOVA II:</p>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="47%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Fuente de variación</th>
+<th align="center">Matriz de covarianzas</th>
+<th align="center">Grados de libertad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Factor A</td>
+<td align="center"><span class="math inline">\({ \bm{H_A} = nb\sum_{i=1}^a\left(\bm{\overline y_{i\bullet\bullet}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)  \left(\bm{\overline y_{i\bullet\bullet}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\(a-1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Factor B</td>
+<td align="center"><span class="math inline">\({ \bm{H_B} = na\sum_{j=1}^b\left(\bm{\overline y_{\bullet j \bullet}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)\left(\bm{\overline y_{\bullet j \bullet}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\(b-1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Interacción</td>
+<td align="center"><span class="math inline">\({ \bm{H_{AB}} = n\sum_{i=1}^a\sum_{j=1}^b\left(\bm{\overline{y}_{ij\bullet}}-\bm{\overline y_{i\bullet\bullet}}-\bm{\overline y_{\bullet j\bullet}}+\bm{\overline y_{\bullet\bullet\bullet}}\right)}\)</span></td>
+<td align="center"><span class="math inline">\((a-1)(b-1)\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"><span class="math inline">\({\times \left(\bm{\overline{y}_{ij\bullet}}-\bm{\overline y_{i\bullet\bullet}} -\bm{\overline y_{\bullet j\bullet}}+\bm{\overline y_{\bullet\bullet\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Error</td>
+<td align="center"><span class="math inline">\({ \bm{E} = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n\left( \bm{y_{ijk}}-\bm{\overline y_{ij\bullet}}\right)\left( \bm{y_{ijk}}-\bm{\overline y_{ij\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\(ab(n-1)\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\({\sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n\left( \bm{y_{ijk}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)\left(  \bm{y_{ijk}}-\bm{\overline y_{\bullet\bullet\bullet}}\right)^\prime{}}\)</span></td>
+<td align="center"><span class="math inline">\(abn-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>La hipótesis relativa a la interacción
+<span class="math inline">\(H_{AB}:\bm{\gamma_{ij}}=\bm{0}\ \forall i,j\)</span> se contrasta en base al
+estadístico</p>
+<p><span class="math display">\[\frac{|\bm{E}|}{|\bm{E}+\bm{H_{AB}}|}\in \Lambda\left(d,(a-1)(b-1),ab(n-1)\right).\]</span></p>
+<p>Si se obtiene que la interacción no es significativa, se pasaría a un
+modelo sin interacción, sobre el cual se pueden cuestionar los efectos
+principales. Esto sería el proceder habitual dentro de un planteamiento
+jerárquico, cuestión que ya surgía en los modelos univariantes.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En una especie de césped, denominada Paspalum, se está
+investigando el efecto que experimenta al ser infectada con un hongo. Al
+mismo tiempo se tiene en cuenta la temperatura, dentro de un diseño con
+cuatro valores diferentes: <span class="math inline">\(14, 18, 22, 26^oC\)</span>. En cada realización del
+experimento se miden tres variables:</p>
+<p><span class="math display">\[\begin{aligned}
+y_1&amp;=\mbox{El peso fresco de las raíces (medido en gramos)} \\
+y_2&amp;=\mbox{La longitud máxima de las raíces (medida en milímetros)} \\
+y_3&amp;=\mbox{El peso fresco de las hojas (medido en gramos)}\end{aligned}\]</span>
+Los datos se encuentran en el fichero <code>hongos.txt</code>. Vamos a contrastar
+el efecto del tratamiento con hongos, el efecto de la temperatura y la
+posible interacción entre ambos efectos.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="analisis-multivariante-de-la-varianza.html#cb66-1" tabindex="-1"></a><span class="sc">&gt;</span> hongos <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;data/hongos.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-2"><a href="analisis-multivariante-de-la-varianza.html#cb66-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(hongos)</span>
+<span id="cb66-3"><a href="analisis-multivariante-de-la-varianza.html#cb66-3" tabindex="-1"></a>  tratamiento temperatura  y1   y2  y3</span>
+<span id="cb66-4"><a href="analisis-multivariante-de-la-varianza.html#cb66-4" tabindex="-1"></a><span class="dv">1</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">23.5</span> <span class="fl">1.7</span></span>
+<span id="cb66-5"><a href="analisis-multivariante-de-la-varianza.html#cb66-5" tabindex="-1"></a><span class="dv">2</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.0</span> <span class="fl">27.0</span> <span class="fl">2.3</span></span>
+<span id="cb66-6"><a href="analisis-multivariante-de-la-varianza.html#cb66-6" tabindex="-1"></a><span class="dv">3</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.3</span> <span class="fl">24.5</span> <span class="fl">3.2</span></span>
+<span id="cb66-7"><a href="analisis-multivariante-de-la-varianza.html#cb66-7" tabindex="-1"></a><span class="dv">4</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.2</span> <span class="fl">20.5</span> <span class="fl">1.5</span></span>
+<span id="cb66-8"><a href="analisis-multivariante-de-la-varianza.html#cb66-8" tabindex="-1"></a><span class="dv">5</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">2.0</span> <span class="fl">19.0</span> <span class="fl">2.0</span></span>
+<span id="cb66-9"><a href="analisis-multivariante-de-la-varianza.html#cb66-9" tabindex="-1"></a><span class="dv">6</span>           <span class="dv">1</span>           <span class="dv">1</span> <span class="fl">3.5</span> <span class="fl">23.5</span> <span class="fl">2.9</span></span>
+<span id="cb66-10"><a href="analisis-multivariante-de-la-varianza.html#cb66-10" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(hongos<span class="sc">$</span>y1, hongos<span class="sc">$</span>y2, hongos<span class="sc">$</span>y3)</span>
+<span id="cb66-11"><a href="analisis-multivariante-de-la-varianza.html#cb66-11" tabindex="-1"></a><span class="sc">&gt;</span> tratamiento <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>tratamiento)</span>
+<span id="cb66-12"><a href="analisis-multivariante-de-la-varianza.html#cb66-12" tabindex="-1"></a><span class="sc">&gt;</span> temperatura <span class="ot">&lt;-</span> <span class="fu">factor</span>(hongos<span class="sc">$</span>temperatura)</span></code></pre></div>
+<p>Empezando por el modelo más general, con ambos efectos principales y la
+interacción, si se contrasta la interacción resulta:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="analisis-multivariante-de-la-varianza.html#cb67-1" tabindex="-1"></a><span class="sc">&gt;</span> m12i <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura)</span>
+<span id="cb67-2"><a href="analisis-multivariante-de-la-varianza.html#cb67-2" tabindex="-1"></a><span class="sc">&gt;</span> m12 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura)</span>
+<span id="cb67-3"><a href="analisis-multivariante-de-la-varianza.html#cb67-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb67-4"><a href="analisis-multivariante-de-la-varianza.html#cb67-4" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-5"><a href="analisis-multivariante-de-la-varianza.html#cb67-5" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="analisis-multivariante-de-la-varianza.html#cb67-6" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-7"><a href="analisis-multivariante-de-la-varianza.html#cb67-7" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-8"><a href="analisis-multivariante-de-la-varianza.html#cb67-8" tabindex="-1"></a>  Res.Df Df Gen.var.   Wilks approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-9"><a href="analisis-multivariante-de-la-varianza.html#cb67-9" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
+<span id="cb67-10"><a href="analisis-multivariante-de-la-varianza.html#cb67-10" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.70548</span>   <span class="fl">1.5864</span>      <span class="dv">9</span> <span class="fl">92.633</span> <span class="fl">0.1307</span></span>
+<span id="cb67-11"><a href="analisis-multivariante-de-la-varianza.html#cb67-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb67-12"><a href="analisis-multivariante-de-la-varianza.html#cb67-12" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-13"><a href="analisis-multivariante-de-la-varianza.html#cb67-13" tabindex="-1"></a></span>
+<span id="cb67-14"><a href="analisis-multivariante-de-la-varianza.html#cb67-14" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-15"><a href="analisis-multivariante-de-la-varianza.html#cb67-15" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-16"><a href="analisis-multivariante-de-la-varianza.html#cb67-16" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb67-17"><a href="analisis-multivariante-de-la-varianza.html#cb67-17" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                         </span>
+<span id="cb67-18"><a href="analisis-multivariante-de-la-varianza.html#cb67-18" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.25155</span>   <span class="fl">3.3541</span>      <span class="dv">3</span>     <span class="dv">40</span> <span class="fl">0.02819</span> <span class="sc">*</span></span>
+<span id="cb67-19"><a href="analisis-multivariante-de-la-varianza.html#cb67-19" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb67-20"><a href="analisis-multivariante-de-la-varianza.html#cb67-20" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb67-21"><a href="analisis-multivariante-de-la-varianza.html#cb67-21" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb67-22"><a href="analisis-multivariante-de-la-varianza.html#cb67-22" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-23"><a href="analisis-multivariante-de-la-varianza.html#cb67-23" tabindex="-1"></a></span>
+<span id="cb67-24"><a href="analisis-multivariante-de-la-varianza.html#cb67-24" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-25"><a href="analisis-multivariante-de-la-varianza.html#cb67-25" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-26"><a href="analisis-multivariante-de-la-varianza.html#cb67-26" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-27"><a href="analisis-multivariante-de-la-varianza.html#cb67-27" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                               </span>
+<span id="cb67-28"><a href="analisis-multivariante-de-la-varianza.html#cb67-28" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span>          <span class="fl">0.38126</span>   <span class="fl">1.5533</span>      <span class="dv">9</span>    <span class="dv">110</span> <span class="fl">0.1384</span></span>
+<span id="cb67-29"><a href="analisis-multivariante-de-la-varianza.html#cb67-29" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m12, m12i, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb67-30"><a href="analisis-multivariante-de-la-varianza.html#cb67-30" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb67-31"><a href="analisis-multivariante-de-la-varianza.html#cb67-31" tabindex="-1"></a></span>
+<span id="cb67-32"><a href="analisis-multivariante-de-la-varianza.html#cb67-32" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb67-33"><a href="analisis-multivariante-de-la-varianza.html#cb67-33" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">*</span> temperatura</span>
+<span id="cb67-34"><a href="analisis-multivariante-de-la-varianza.html#cb67-34" tabindex="-1"></a>  Res.Df Df Gen.var.  Pillai approx F num Df den Df <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)</span>
+<span id="cb67-35"><a href="analisis-multivariante-de-la-varianza.html#cb67-35" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">43</span>      <span class="fl">12.852</span>                                      </span>
+<span id="cb67-36"><a href="analisis-multivariante-de-la-varianza.html#cb67-36" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">40</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.299</span> <span class="fl">0.32058</span>   <span class="fl">1.5953</span>      <span class="dv">9</span>    <span class="dv">120</span> <span class="fl">0.1241</span></span></code></pre></div>
+<p>Únicamente el test de Roy produce un nivel crítico algo pequeño,
+mientras que los otros tests no muestran significación. En consecuencia,
+se suprime la interacción del modelo. En el modelo sin interacción y con
+los dos efectos principales, se contrasta la significación de cada uno
+de los efectos, con los resultados siguientes. Para el tratamiento:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="analisis-multivariante-de-la-varianza.html#cb68-1" tabindex="-1"></a><span class="sc">&gt;</span> m1 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> tratamiento)</span>
+<span id="cb68-2"><a href="analisis-multivariante-de-la-varianza.html#cb68-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb68-3"><a href="analisis-multivariante-de-la-varianza.html#cb68-3" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-4"><a href="analisis-multivariante-de-la-varianza.html#cb68-4" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="analisis-multivariante-de-la-varianza.html#cb68-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-6"><a href="analisis-multivariante-de-la-varianza.html#cb68-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-7"><a href="analisis-multivariante-de-la-varianza.html#cb68-7" tabindex="-1"></a>  Res.Df Df Gen.var.    Wilks approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-8"><a href="analisis-multivariante-de-la-varianza.html#cb68-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                              </span>
+<span id="cb68-9"><a href="analisis-multivariante-de-la-varianza.html#cb68-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">0.064601</span>    <span class="fl">23.12</span>      <span class="dv">9</span> <span class="fl">99.934</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-10"><a href="analisis-multivariante-de-la-varianza.html#cb68-10" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-11"><a href="analisis-multivariante-de-la-varianza.html#cb68-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-12"><a href="analisis-multivariante-de-la-varianza.html#cb68-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb68-13"><a href="analisis-multivariante-de-la-varianza.html#cb68-13" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-14"><a href="analisis-multivariante-de-la-varianza.html#cb68-14" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="analisis-multivariante-de-la-varianza.html#cb68-15" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-16"><a href="analisis-multivariante-de-la-varianza.html#cb68-16" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-17"><a href="analisis-multivariante-de-la-varianza.html#cb68-17" tabindex="-1"></a>  Res.Df Df Gen.var.    Roy approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-18"><a href="analisis-multivariante-de-la-varianza.html#cb68-18" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                            </span>
+<span id="cb68-19"><a href="analisis-multivariante-de-la-varianza.html#cb68-19" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">5.1828</span>   <span class="fl">74.287</span>      <span class="dv">3</span>     <span class="dv">43</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-20"><a href="analisis-multivariante-de-la-varianza.html#cb68-20" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-21"><a href="analisis-multivariante-de-la-varianza.html#cb68-21" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-22"><a href="analisis-multivariante-de-la-varianza.html#cb68-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb68-23"><a href="analisis-multivariante-de-la-varianza.html#cb68-23" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-24"><a href="analisis-multivariante-de-la-varianza.html#cb68-24" tabindex="-1"></a></span>
+<span id="cb68-25"><a href="analisis-multivariante-de-la-varianza.html#cb68-25" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-26"><a href="analisis-multivariante-de-la-varianza.html#cb68-26" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-27"><a href="analisis-multivariante-de-la-varianza.html#cb68-27" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df    <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-28"><a href="analisis-multivariante-de-la-varianza.html#cb68-28" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                                      </span>
+<span id="cb68-29"><a href="analisis-multivariante-de-la-varianza.html#cb68-29" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span>           <span class="fl">6.6858</span>   <span class="fl">29.467</span>      <span class="dv">9</span>    <span class="dv">119</span> <span class="sc">&lt;</span> <span class="fl">2.2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-30"><a href="analisis-multivariante-de-la-varianza.html#cb68-30" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-31"><a href="analisis-multivariante-de-la-varianza.html#cb68-31" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb68-32"><a href="analisis-multivariante-de-la-varianza.html#cb68-32" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m1, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb68-33"><a href="analisis-multivariante-de-la-varianza.html#cb68-33" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb68-34"><a href="analisis-multivariante-de-la-varianza.html#cb68-34" tabindex="-1"></a></span>
+<span id="cb68-35"><a href="analisis-multivariante-de-la-varianza.html#cb68-35" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento</span>
+<span id="cb68-36"><a href="analisis-multivariante-de-la-varianza.html#cb68-36" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb68-37"><a href="analisis-multivariante-de-la-varianza.html#cb68-37" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df   <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)    </span>
+<span id="cb68-38"><a href="analisis-multivariante-de-la-varianza.html#cb68-38" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">46</span>      <span class="fl">29.940</span>                                           </span>
+<span id="cb68-39"><a href="analisis-multivariante-de-la-varianza.html#cb68-39" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">3</span>   <span class="fl">12.852</span> <span class="fl">1.4391</span>   <span class="fl">13.215</span>      <span class="dv">9</span>    <span class="dv">129</span> <span class="fl">8.45e-15</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb68-40"><a href="analisis-multivariante-de-la-varianza.html#cb68-40" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb68-41"><a href="analisis-multivariante-de-la-varianza.html#cb68-41" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<p>Para la temperatura:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="analisis-multivariante-de-la-varianza.html#cb69-1" tabindex="-1"></a><span class="sc">&gt;</span> m2 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> temperatura)</span>
+<span id="cb69-2"><a href="analisis-multivariante-de-la-varianza.html#cb69-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb69-3"><a href="analisis-multivariante-de-la-varianza.html#cb69-3" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-4"><a href="analisis-multivariante-de-la-varianza.html#cb69-4" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="analisis-multivariante-de-la-varianza.html#cb69-5" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-6"><a href="analisis-multivariante-de-la-varianza.html#cb69-6" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-7"><a href="analisis-multivariante-de-la-varianza.html#cb69-7" tabindex="-1"></a>  Res.Df Df Gen.var.  Wilks approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-8"><a href="analisis-multivariante-de-la-varianza.html#cb69-8" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
+<span id="cb69-9"><a href="analisis-multivariante-de-la-varianza.html#cb69-9" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.8163</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-10"><a href="analisis-multivariante-de-la-varianza.html#cb69-10" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-11"><a href="analisis-multivariante-de-la-varianza.html#cb69-11" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-12"><a href="analisis-multivariante-de-la-varianza.html#cb69-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb69-13"><a href="analisis-multivariante-de-la-varianza.html#cb69-13" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-14"><a href="analisis-multivariante-de-la-varianza.html#cb69-14" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="analisis-multivariante-de-la-varianza.html#cb69-15" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-16"><a href="analisis-multivariante-de-la-varianza.html#cb69-16" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-17"><a href="analisis-multivariante-de-la-varianza.html#cb69-17" tabindex="-1"></a>  Res.Df Df Gen.var.     Roy approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-18"><a href="analisis-multivariante-de-la-varianza.html#cb69-18" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                         </span>
+<span id="cb69-19"><a href="analisis-multivariante-de-la-varianza.html#cb69-19" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-20"><a href="analisis-multivariante-de-la-varianza.html#cb69-20" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-21"><a href="analisis-multivariante-de-la-varianza.html#cb69-21" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-22"><a href="analisis-multivariante-de-la-varianza.html#cb69-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb69-23"><a href="analisis-multivariante-de-la-varianza.html#cb69-23" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-24"><a href="analisis-multivariante-de-la-varianza.html#cb69-24" tabindex="-1"></a></span>
+<span id="cb69-25"><a href="analisis-multivariante-de-la-varianza.html#cb69-25" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-26"><a href="analisis-multivariante-de-la-varianza.html#cb69-26" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-27"><a href="analisis-multivariante-de-la-varianza.html#cb69-27" tabindex="-1"></a>  Res.Df Df Gen.var. Hotelling<span class="sc">-</span>Lawley approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-28"><a href="analisis-multivariante-de-la-varianza.html#cb69-28" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                                  </span>
+<span id="cb69-29"><a href="analisis-multivariante-de-la-varianza.html#cb69-29" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span>          <span class="fl">0.22504</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-30"><a href="analisis-multivariante-de-la-varianza.html#cb69-30" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-31"><a href="analisis-multivariante-de-la-varianza.html#cb69-31" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb69-32"><a href="analisis-multivariante-de-la-varianza.html#cb69-32" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">anova</span>(m2, m12, <span class="at">test =</span> <span class="st">&quot;Pillai&quot;</span>)</span>
+<span id="cb69-33"><a href="analisis-multivariante-de-la-varianza.html#cb69-33" tabindex="-1"></a>Analysis of Variance Table</span>
+<span id="cb69-34"><a href="analisis-multivariante-de-la-varianza.html#cb69-34" tabindex="-1"></a></span>
+<span id="cb69-35"><a href="analisis-multivariante-de-la-varianza.html#cb69-35" tabindex="-1"></a>Model <span class="dv">1</span><span class="sc">:</span> y <span class="sc">~</span> temperatura</span>
+<span id="cb69-36"><a href="analisis-multivariante-de-la-varianza.html#cb69-36" tabindex="-1"></a>Model <span class="dv">2</span><span class="sc">:</span> y <span class="sc">~</span> tratamiento <span class="sc">+</span> temperatura</span>
+<span id="cb69-37"><a href="analisis-multivariante-de-la-varianza.html#cb69-37" tabindex="-1"></a>  Res.Df Df Gen.var. Pillai approx F num Df den Df  <span class="fu">Pr</span>(<span class="sc">&gt;</span>F)  </span>
+<span id="cb69-38"><a href="analisis-multivariante-de-la-varianza.html#cb69-38" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">44</span>      <span class="fl">13.439</span>                                        </span>
+<span id="cb69-39"><a href="analisis-multivariante-de-la-varianza.html#cb69-39" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">43</span> <span class="sc">-</span><span class="dv">1</span>   <span class="fl">12.852</span> <span class="fl">0.1837</span>   <span class="fl">3.0756</span>      <span class="dv">3</span>     <span class="dv">41</span> <span class="fl">0.03807</span> <span class="sc">*</span></span>
+<span id="cb69-40"><a href="analisis-multivariante-de-la-varianza.html#cb69-40" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb69-41"><a href="analisis-multivariante-de-la-varianza.html#cb69-41" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<p>Por tanto, la temperatura tiene un efecto muy significativo sobre las
+variables que se están midiendo. El tratamiento también resulta
+significativo, aunque no es tan notorio. Los niveles críticos de los
+cuatro test coinciden para el contraste del tratamiento. Este hecho se
+debe a que hay únicamente dos tratamientos, por lo que la matriz <span class="math inline">\(H\)</span>
+asociada al contraste tiene rango uno.</p>
+
+</div>
+</div>
+<h3><span class="header-section-number">C</span> References {-}<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-andrews1985collection" class="csl-entry">
+Andrews, D. F., and A. M. Herzberg. 1985. <em>Data : A Collection of Problems from Many Fields for the Student and Research Worker</em>. Springer-Verlag.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>La razón para no comparar directamente <span class="math inline">\(\bm{H}\)</span> con <span class="math inline">\(\bm{E}\)</span>, sino
+con <span class="math inline">\(\bm{E}+\bm{H}\)</span> es que <span class="math inline">\(\bm{H}\)</span> podría tener algún autovalor
+cero y eso haría que su determinante fuera cero.<a href="analisis-multivariante-de-la-varianza.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Ver Anexo <a href="anexoDist.html#anexoDist">A</a> de distribuciones multidimensionales para la
+definición formal de la distribución <span class="math inline">\(\Lambda\)</span> de Wilks<a href="analisis-multivariante-de-la-varianza.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inferencia-en-poblaciones-normales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-de-componentes-principales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

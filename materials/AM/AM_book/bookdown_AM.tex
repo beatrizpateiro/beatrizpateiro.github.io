@@ -391,7 +391,7 @@ A lo largo del documento se incluyen ejemplos de aplicación de los distintos m�
 
 Los conjuntos de datos utilizados en los ejemplos se encuentran disponibles en el siguiente enlace: \url{https://beatrizpateiro.github.io/materials/AM/data.zip}.
 
-\chapter{Introducción al análisis multivariante}\label{introducciuxf3n-al-anuxe1lisis-multivariante}
+\chapter{Introducción al análisis multivariante}\label{introduccion-al-analisis-multivariante}
 
 Son muchas las situaciones reales en las que necesitamos tener en cuenta varias variables de forma simultánea. Podemos pensar en problemas sencillos en todas las disciplinas en los que necesitemos analizar datos de distintas variables o características medidas sobre los individuos de una muestra.
 En algunas ocasiones puede resultar adecuado estudiar cada una de las variables de interés de forma individual. Sin embargo, en general las variables están relacionadas entre sí de tal manera que los análisis individuales proporcionan poca información sobre la estructura del conjunto de datos.
@@ -428,7 +428,7 @@ Las técnicas de análisis multivariante incluyen tanto métodos puramente descr
   Clasificar a un conjunto de observaciones en grupos homogéneos (técnicas de formación de grupos).
 \end{itemize}
 
-\section{Notación de vectores y matrices}\label{notaciuxf3n-de-vectores-y-matrices}
+\section{Notación de vectores y matrices}\label{notacion-de-vectores-y-matrices}
 
 Como hemos comentado, la información de partida en análisis multivariante es un conjunto de datos correspondiente a distintas variables medidas en los elementos de una muestra. Las observaciones correspondientes a cada individuo vendrán dadas por un vector y el conjunto de observaciones de la muestra por una matriz. Por lo tanto, la manipulación de datos multivariantes se simplificará mucho utilizando conceptos de matrices y sus propiedades.
 
@@ -558,7 +558,7 @@ Equivalentemente,
 
 \[\bm{\Sigma}=\bm{D_\Sigma}\bm\rho\bm{D_\Sigma}.\]
 
-\section{Representación de datos multivariantes}\label{representaciuxf3n-de-datos-multivariantes}
+\section{Representación de datos multivariantes}\label{representacion-de-datos-multivariantes}
 
 En el contexto multivariante es conveniente representar las variables
 aleatorias (o sus valores) en forma matricial. Supongamos que hemos
@@ -656,7 +656,7 @@ conjunto de datos escribiendo \texttt{help(survey)} en la consola de comandos.
 
 \normalsize
 
-\subsection{Visualización de datos multivariantes}\label{visualizaciuxf3n-de-datos-multivariantes}
+\subsection{Visualización de datos multivariantes}\label{visualizacion-de-datos-multivariantes}
 
 Uno de los problemas con que nos encontramos a la hora de establecer
 métodos gráficos para describir datos multivariantes es nuestro propio
@@ -1222,7 +1222,7 @@ discutidas anteriormente, se tiene también:
 
 \normalsize
 
-\section{Distancias estadísticas}\label{distancias-estaduxedsticas}
+\section{Distancias estadísticas}\label{distancias-estadisticas}
 
 El concepto de distancia entre objetos o individuos observados permite
 interpretar geométricamente muchas técnicas de análisis multivariante.
@@ -1238,7 +1238,7 @@ sean \(\bm{x_i}=(x_{i1},\ldots,x_{id})^\prime{}\) y
 individuos \(i\), \(k\) obtenidas al medir el vector \(d\)-dimensional
 \((x_1,\ldots, x_d)^\prime{}\).
 
-\subsection{Distancia euclídea}\label{distancia-eucluxeddea}
+\subsection{Distancia euclídea}\label{distancia-euclidea}
 
 Se define la distancia euclídea entre \(\bm{x_i}\) y \(\bm{x_k}\) como
 
@@ -1271,7 +1271,7 @@ media es la misma.
 \end{figure}
 \normalsize
 
-\subsection{Distancia euclídea estandarizada por columnas}\label{distancia-eucluxeddea-estandarizada-por-columnas}
+\subsection{Distancia euclídea estandarizada por columnas}\label{distancia-euclidea-estandarizada-por-columnas}
 
 Una manera de evitar el problema de que la distancia dependa de las
 unidades de medida de las variables, consiste en dividir cada variable
@@ -1326,7 +1326,7 @@ mayor que la distancia de Mahalanobis de la mujer \(B\) a la media, que a
 su vez es mayor que la distancia de Mahalanobis de la mujer \(C\) a la
 media.
 
-\subsection{Estandarización}\label{estandarizaciuxf3n}
+\subsection{Estandarización}\label{estandarizacion}
 
 Una transformación lineal que tiene un interés especial es la
 \textbf{estandarización}. La estandarización (o tipificación) de una variable
@@ -1482,9 +1482,9 @@ normalidad multivariante. Están basados en la extensión de las medidas
 de asimetría, kurtosis, así como del test de Shapiro-Wilk al caso
 multivariante.
 
-\section{Estimación en la distribución normal multivariante}\label{estimaciuxf3n-en-la-distribuciuxf3n-normal-multivariante}
+\section{Estimación en la distribución normal multivariante}\label{estimacion-en-la-distribucion-normal-multivariante}
 
-\subsection{La distribución normal multivariante}\label{la-distribuciuxf3n-normal-multivariante}
+\subsection{La distribución normal multivariante}\label{la-distribucion-normal-multivariante}
 
 Recordamos que si una variable aleatoria \(x\) unidimensional, con media
 \(\mu\) y varianza \(\sigma^2\) tiene distribución normal, entonces su
@@ -1572,7 +1572,7 @@ que contenga al grueso del vector.
 \caption{Izquierda, representación de la elipse correspondiente a una matriz de covarianzas $2\times 2$. con autovectores $\bm{v_1}$, $\bm{v_2}$ y autovalores $\lambda_1$, $\lambda_2$. Cada radio de la elipse es la raíz cuadrada de un autovalor de la matriz de covarianzas. Derecha, representación de las elipses correspondientes a matrices de covarianzas $\bm{\Sigma_1}=\bm{I_2}$ (rojo), $\bm{\Sigma_2}=\mbox{diag}(3,1)$ (verde) y $\bm{\Sigma_3}=(\sigma_{ij})$ con $\sigma_{11}=3$, $\sigma_{22}=1$, $\sigma_{12}=1.4$ (azul).}\label{fig:detsigma}
 \end{figure}
 
-\subsection{Estimadores de máxima verosimilitud}\label{estimadores-de-muxe1xima-verosimilitud}
+\subsection{Estimadores de máxima verosimilitud}\label{estimadores-de-maxima-verosimilitud}
 
 Consideremos disponible una muestra aleatoria simple
 \(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm\mu,\bm\Sigma)\) de vectores
@@ -1662,7 +1662,7 @@ máximo:
 &= c - \frac{n}{2} \left( \log |\bm{S}| + d\right).
 \end{aligned}\]
 
-\subsection{\texorpdfstring{Distribución de \(\overline{\bm{x}}\) y \(\bm{S}\)}{Distribución de \textbackslash overline\{\textbackslash bm\{x\}\} y \textbackslash bm\{S\}}}\label{distribuciuxf3n-de-overlinebmx-y-bms}
+\subsection{\texorpdfstring{Distribución de \(\overline{\bm{x}}\) y \(\bm{S}\)}{Distribución de \textbackslash overline\{\textbackslash bm\{x\}\} y \textbackslash bm\{S\}}}\label{distribucion-de-overline-bm-x-y-bm-s}
 
 Sea entonces \(\bm{x_1},\ldots,\bm{x_n}\) una muestra aleatoria simple de
 \(N_d(\bm\mu,\bm\Sigma)\). En el apartado anterior hemos visto que los
@@ -1756,7 +1756,7 @@ de medias de una población normal asumiendo que la matriz de covarianzas
 \(\bm\Sigma\) es conocida. Antes, repasaremos la teoría en el caso
 unidimensional.
 
-\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu=\mu_0\) con \(\sigma^2\) conocida}{Revisión del caso unidimensional H\_0:\textbackslash mu=\textbackslash mu\_0 con \textbackslash sigma\^{}2 conocida}}\label{revisiuxf3n-del-caso-unidimensional-h_0mumu_0-con-sigma2-conocida}
+\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu=\mu_0\) con \(\sigma^2\) conocida}{Revisión del caso unidimensional H\_0:\textbackslash mu=\textbackslash mu\_0 con \textbackslash sigma\^{}2 conocida}}\label{revision-del-caso-unidimensional-h-0-mu-mu-0-con-sigma-2-conocida}
 
 La hipótesis de interés es que la media \(\mu\) de una variable aleatoria
 \(x\) es igual a un valor dado \(\mu_0\) frente a la alternativa de que no
@@ -1778,7 +1778,7 @@ y podríamos utilizar que \(z^2\) se distribuye, bajo la hipótesis nula, como
 una ji-cuadrado con un grado de libertad. Entonces rechazaríamos \(H_0\)
 si \(z^2\geq 3.84\).
 
-\subsubsection{\texorpdfstring{Contraste multivariante \(H_0:\bm\mu=\bm{\mu_0}\) con \(\bm\Sigma\) conocida}{Contraste multivariante H\_0:\textbackslash bm\textbackslash mu=\textbackslash bm\{\textbackslash mu\_0\} con \textbackslash bm\textbackslash Sigma conocida}}\label{contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-conocida}
+\subsubsection{\texorpdfstring{Contraste multivariante \(H_0:\bm\mu=\bm{\mu_0}\) con \(\bm\Sigma\) conocida}{Contraste multivariante H\_0:\textbackslash bm\textbackslash mu=\textbackslash bm\{\textbackslash mu\_0\} con \textbackslash bm\textbackslash Sigma conocida}}\label{contraste-multivariante-h-0-bm-mu-bm-mu-0-con-bm-sigma-conocida}
 
 Partimos ahora de una muestra aleatoria simple \(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\mu},\bm\Sigma)\)
 de vectores
@@ -1938,7 +1938,7 @@ de una población normal asumiendo que la matriz de covarianzas
 \(\bm\Sigma\) es desconocida. Repasaremos de nuevo en primer lugar la
 teoría en el caso unidimensional.
 
-\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu=\mu_0\) con \(\sigma^2\) desconocida}{Revisión del caso unidimensional H\_0:\textbackslash mu=\textbackslash mu\_0 con \textbackslash sigma\^{}2 desconocida}}\label{revisiuxf3n-del-caso-unidimensional-h_0mumu_0-con-sigma2-desconocida}
+\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu=\mu_0\) con \(\sigma^2\) desconocida}{Revisión del caso unidimensional H\_0:\textbackslash mu=\textbackslash mu\_0 con \textbackslash sigma\^{}2 desconocida}}\label{revision-del-caso-unidimensional-h-0-mu-mu-0-con-sigma-2-desconocida}
 
 La hipótesis de interés es que la media \(\mu\) de una variable aleatoria
 \(x\) es igual a un valor dado \(\mu_0\) frente a la alternativa de que no
@@ -1969,7 +1969,7 @@ Veremos
 que esta forma de escribir el estadístico estará relacionada con la
 versión multivariante del contraste.
 
-\subsubsection{\texorpdfstring{Contraste multivariante \(H_0:\bm\mu=\bm{\mu_0}\) con \(\bm\Sigma\) desconocida}{Contraste multivariante H\_0:\textbackslash bm\textbackslash mu=\textbackslash bm\{\textbackslash mu\_0\} con \textbackslash bm\textbackslash Sigma desconocida}}\label{contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-desconocida}
+\subsubsection{\texorpdfstring{Contraste multivariante \(H_0:\bm\mu=\bm{\mu_0}\) con \(\bm\Sigma\) desconocida}{Contraste multivariante H\_0:\textbackslash bm\textbackslash mu=\textbackslash bm\{\textbackslash mu\_0\} con \textbackslash bm\textbackslash Sigma desconocida}}\label{contraste-multivariante-h-0-bm-mu-bm-mu-0-con-bm-sigma-desconocida}
 
 Disponemos ahora de una muestra aleatoria simple \(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\bm{\mu}},\bm\Sigma)\) y deseamos
 realizar tareas de inferencia relativas al vector de medias \(\bm{\mu}\).
@@ -2190,7 +2190,7 @@ la matriz de covarianzas era conocida (elipse en verde).
 \caption{Zonas de rechazo y no rechazo para el contraste bivariante correspondiente a los datos de tests de inteligencia ($n=20$). Para el caso en que se conoce la matriz de covarianzas, rechazamos la hipótesis nula si $\overline{\bm{x}}$ no pertenece a la elipse en verde. Para el caso en que se desconoce la matriz de covarianzas, rechazamos la hipótesis nula si $\overline{\bm{x}}$ no pertenece a la elipse en rojo.}\label{fig:test3a}
 \end{figure}
 
-\section{Regiones de confianza y comparaciones simultáneas}\label{regiones-de-confianza-y-comparaciones-simultuxe1neas}
+\section{Regiones de confianza y comparaciones simultáneas}\label{regiones-de-confianza-y-comparaciones-simultaneas}
 
 \subsection{Regiones de confianza}\label{regiones-de-confianza}
 
@@ -2256,7 +2256,7 @@ de que todos los intervalos simultáneamente contengan a la componente
 correspondiente del vector de medias será en general inferior al nivel
 de confianza fijado.
 
-\subsection{Intervalos de confianza simultáneos por el método de Scheffé}\label{intervalos-de-confianza-simultuxe1neos-por-el-muxe9todo-de-scheffuxe9}
+\subsection{Intervalos de confianza simultáneos por el método de Scheffé}\label{intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe}
 
 Para satisfacer un nivel de confianza simultáneo, debemos modificar la
 construcción de los intervalos haciéndolos más amplios. Vamos a plantear
@@ -2322,7 +2322,7 @@ los que se obtienen mediante el método de Scheffé.
 \end{longtable}
 }
 
-\subsection{Intervalos de confianza simultáneos por el método de Bonferroni}\label{intervalos-de-confianza-simultuxe1neos-por-el-muxe9todo-de-bonferroni}
+\subsection{Intervalos de confianza simultáneos por el método de Bonferroni}\label{intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni}
 
 Otro método para obtener intervalos de confianza simultáneos es el
 método de Bonferroni. Es una alternativa válida en cualquier contexto en
@@ -2395,7 +2395,7 @@ más pequeños, también conforme a lo previsible.
 \caption{Región de confianza para el vector de medias (elipse), junto con intervalos de confianza individuales (trazo azul), simultáneos por el método de Bonferroni (trazo negro) y simultáneos por el método de Scheffé (trazo verde).}\label{fig:tema2figura1}
 \end{figure}
 
-\section{Generalización del contraste sobre el vector de medias}\label{generalizaciuxf3n-del-contraste-sobre-el-vector-de-medias}
+\section{Generalización del contraste sobre el vector de medias}\label{generalizacion-del-contraste-sobre-el-vector-de-medias}
 
 En esta sección veremos cómo se puede generalizar el contraste sobre el
 vector de medias, al caso de restricciones más genéricas sobre
@@ -2542,7 +2542,7 @@ nula \(H_0: \bm{A}\bm{\mu}=\bm{b}\) si
 siendo \(f_{q,n-q,\alpha}\) el cuantil \(1-\alpha\) de la distribución
 \(F_{q,n-q}\).
 
-\subsubsection{Caso particular. Contraste de igualdad de las componentes del vector de medias}\label{caso-particular.-contraste-de-igualdad-de-las-componentes-del-vector-de-medias}
+\subsubsection{Caso particular. Contraste de igualdad de las componentes del vector de medias}\label{caso-particular-contraste-de-igualdad-de-las-componentes-del-vector-de-medias}
 
 El contraste de la hipótesis nula de que las \(d\) componentes del vector
 de medias, \(\bm{\mu}=(\mu_1,\ldots,\mu_d)^\prime{}\), son iguales, se
@@ -2663,7 +2663,7 @@ ejemplo si la matriz de covarianzas tiene una estructura determinada o
 si algunos elementos de la matriz de covarianzas son cero (implicando
 así la independencia de los subvectores correspondientes).
 
-\subsection{\texorpdfstring{Contraste \(H_0: \bm\Sigma=\bm{\Sigma_0}\)}{Contraste H\_0: \textbackslash bm\textbackslash Sigma=\textbackslash bm\{\textbackslash Sigma\_0\}}}\label{contraste-h_0-bmsigmabmsigma_0}
+\subsection{\texorpdfstring{Contraste \(H_0: \bm\Sigma=\bm{\Sigma_0}\)}{Contraste H\_0: \textbackslash bm\textbackslash Sigma=\textbackslash bm\{\textbackslash Sigma\_0\}}}\label{contraste-h-0-bm-sigma-bm-sigma-0}
 
 Disponemos de una muestra aleatoria simple
 \(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\mu},\bm\Sigma)\) de vectores
@@ -2815,7 +2815,7 @@ estadístico de contraste y apelamos a la distribución asintótica, que es
 \(\chi_m^2\) con el mismo número de grados de libertad,
 \(m=\frac{1}{2}d(d+1)\).
 
-\section{Generalización del contraste sobre la matriz de covarianzas}\label{generalizaciuxf3n-del-contraste-sobre-la-matriz-de-covarianzas}
+\section{Generalización del contraste sobre la matriz de covarianzas}\label{generalizacion-del-contraste-sobre-la-matriz-de-covarianzas}
 
 En esta sección se va a generalizar el test obtenido para el
 contraste de la matriz de covarianzas. En primer lugar ofrecemos el
@@ -2844,7 +2844,7 @@ casos supondremos que disponemos de una muestra aleatoria simple
 \(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\mu},\bm\Sigma)\) y que el vector de
 medias \(\bm{\mu}\) es desconocido.
 
-\subsection{\texorpdfstring{Contraste de la hipótesis nula \(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)}{Contraste de la hipótesis nula H\_0: \textbackslash bm\textbackslash Sigma=k\textbackslash bm\{\textbackslash Sigma\_0\},\textbackslash{} \textbackslash{} k\textbackslash in (0,+\textbackslash infty)}}\label{contraste-de-la-hipuxf3tesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty}
+\subsection{\texorpdfstring{Contraste de la hipótesis nula \(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)}{Contraste de la hipótesis nula H\_0: \textbackslash bm\textbackslash Sigma=k\textbackslash bm\{\textbackslash Sigma\_0\},\textbackslash{} \textbackslash{} k\textbackslash in (0,+\textbackslash infty)}}\label{contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty}
 
 Supongamos que queremos contrastar una hipótesis nula compuesta sobre la
 matriz de covarianzas
@@ -2880,7 +2880,7 @@ Por último, no estando disponible la distribución exacta de este
 estadístico, la aproximamos por una \(\chi_m^2\), siendo el número de
 grados de libertad \(m=\frac{1}{2}d(d+1)-1=\frac{1}{2}(d-1)(d+2)\).
 
-\subsubsection{\texorpdfstring{Test de esfericidad \(H_0: \bm\Sigma=\sigma^2\bm{I_d}\)}{Test de esfericidad H\_0: \textbackslash bm\textbackslash Sigma=\textbackslash sigma\^{}2\textbackslash bm\{I\_d\}}}\label{test-de-esfericidad-h_0-bmsigmasigma2bmi_d}
+\subsubsection{\texorpdfstring{Test de esfericidad \(H_0: \bm\Sigma=\sigma^2\bm{I_d}\)}{Test de esfericidad H\_0: \textbackslash bm\textbackslash Sigma=\textbackslash sigma\^{}2\textbackslash bm\{I\_d\}}}\label{test-de-esfericidad-h-0-bm-sigma-sigma-2-bm-i-d}
 
 Hay un caso particular de este tipo de contraste que tiene un interés
 especial. Es el test de esfericidad, que consiste en contrastar la
@@ -3048,7 +3048,7 @@ Esto hace que las medias aritmética y geométrica sean muy diferentes. El
 nivel crítico es muy pequeño, por lo que hay
 pruebas muy significativas de ausencia de esfericidad.
 
-\subsection{\texorpdfstring{Contraste de independencia de dos subvectores \(H_0: \bm{\Sigma_{12}}=\bm{0}\)}{Contraste de independencia de dos subvectores H\_0: \textbackslash bm\{\textbackslash Sigma\_\{12\}\}=\textbackslash bm\{0\}}}\label{contraste-de-independencia-de-dos-subvectores-h_0-bmsigma_12bm0}
+\subsection{\texorpdfstring{Contraste de independencia de dos subvectores \(H_0: \bm{\Sigma_{12}}=\bm{0}\)}{Contraste de independencia de dos subvectores H\_0: \textbackslash bm\{\textbackslash Sigma\_\{12\}\}=\textbackslash bm\{0\}}}\label{contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0}
 
 Supongamos que el vector de interés \(\bm{x}\) se divide en dos
 subvectores con \(d_1\) y \(d_2\) variables (\(d_1+d_2=d\)). Por ejemplo, si
@@ -3261,7 +3261,7 @@ siendo \(f_{6,82,\alpha}\) el cuantil \(1-\alpha\) de la distribución
 
 Es decir, rechazamos la hipótesis nula de independencia.
 
-\subsubsection{Caso particular. Coeficiente de correlación múltiple}\label{caso-particular.-coeficiente-de-correlaciuxf3n-muxfaltiple}
+\subsubsection{Caso particular. Coeficiente de correlación múltiple}\label{caso-particular-coeficiente-de-correlacion-multiple}
 
 Consideremos que uno de los conjuntos de variables tenga un único
 elemento, por ejemplo, \(d_1=1\) y \(d_2=d-1\). En esta situación,
@@ -3284,7 +3284,7 @@ Finalmente, el coeficiente de correlación múltiple se considerará
 significativo cuando el estadístico anterior \(R^2/(1-R^2)\) sea grande,
 comparado con la distribución \(F\) de Snédecor.
 
-\subsection{\texorpdfstring{Contraste de independencia de todas las variables \(H_0:\bm\Sigma\) es diagonal}{Contraste de independencia de todas las variables H\_0:\textbackslash bm\textbackslash Sigma es diagonal}}\label{contraste-de-independencia-de-todas-las-variables-h_0bmsigma-es-diagonal}
+\subsection{\texorpdfstring{Contraste de independencia de todas las variables \(H_0:\bm\Sigma\) es diagonal}{Contraste de independencia de todas las variables H\_0:\textbackslash bm\textbackslash Sigma es diagonal}}\label{contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal}
 
 La hipótesis nula consiste en suponer que las variables son
 incorrelacionadas, pero, a diferencia del test de esfericidad, no
@@ -3370,7 +3370,7 @@ estadístico nos lleva a aceptar sin lugar a dudas la hipotesis nula.
 
 \normalsize
 
-\section{Comparación de poblaciones normales multivariantes}\label{comparaciuxf3n-de-poblaciones-normales-multivariantes}
+\section{Comparación de poblaciones normales multivariantes}\label{comparacion-de-poblaciones-normales-multivariantes}
 
 Vamos a considerar ahora varias poblaciones normales multivariantes, de
 las cuales extraemos muestras de manera independiente. En base a estas
@@ -3403,7 +3403,7 @@ primer lugar el contraste de igualdad de medias de dos poblaciones
 normales univariantes suponiendo que las varianzas son desconocidas pero
 iguales.
 
-\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu_1=\mu_2\) con \(\sigma_1^2=\sigma_2^2\) desconocidas}{Revisión del caso unidimensional H\_0:\textbackslash mu\_1=\textbackslash mu\_2 con \textbackslash sigma\_1\^{}2=\textbackslash sigma\_2\^{}2 desconocidas}}\label{revisiuxf3n-del-caso-unidimensional-h_0mu_1mu_2-con-sigma_12sigma_22-desconocidas}
+\subsubsection{\texorpdfstring{Revisión del caso unidimensional \(H_0:\mu_1=\mu_2\) con \(\sigma_1^2=\sigma_2^2\) desconocidas}{Revisión del caso unidimensional H\_0:\textbackslash mu\_1=\textbackslash mu\_2 con \textbackslash sigma\_1\^{}2=\textbackslash sigma\_2\^{}2 desconocidas}}\label{revision-del-caso-unidimensional-h-0-mu-1-mu-2-con-sigma-1-2-sigma-2-2-desconocidas}
 
 Disponemos de una muestra formada por \(n_1\) variables independientes y
 con la misma distribución \(N(\mu_1, \sigma_1^2)\) y una muestra formada
@@ -3437,7 +3437,7 @@ t^2=\frac{n_1n_2}{n_1+n_2}(\overline{x}_1 -\overline{x}_2)\frac{1}{s_{P}^2}(\ove
 \label{eq:t22}
 \end{equation}
 
-\subsubsection{\texorpdfstring{Caso multidimensional \(H_0:\bm{\mu_1}=\bm{\mu_2}\) con \(\bm{\Sigma_1}=\bm{\Sigma_2}\) desconocidas}{Caso multidimensional H\_0:\textbackslash bm\{\textbackslash mu\_1\}=\textbackslash bm\{\textbackslash mu\_2\} con \textbackslash bm\{\textbackslash Sigma\_1\}=\textbackslash bm\{\textbackslash Sigma\_2\} desconocidas}}\label{caso-multidimensional-h_0bmmu_1bmmu_2-con-bmsigma_1bmsigma_2-desconocidas}
+\subsubsection{\texorpdfstring{Caso multidimensional \(H_0:\bm{\mu_1}=\bm{\mu_2}\) con \(\bm{\Sigma_1}=\bm{\Sigma_2}\) desconocidas}{Caso multidimensional H\_0:\textbackslash bm\{\textbackslash mu\_1\}=\textbackslash bm\{\textbackslash mu\_2\} con \textbackslash bm\{\textbackslash Sigma\_1\}=\textbackslash bm\{\textbackslash Sigma\_2\} desconocidas}}\label{caso-multidimensional-h-0-bm-mu-1-bm-mu-2-con-bm-sigma-1-bm-sigma-2-desconocidas}
 
 En el caso multivariante disponemos de \[\begin{aligned}
 \bm{x_{11}},\ldots,\bm{x_{1n_1}}&\in & N_d(\bm{\mu_1},\bm{\Sigma_1}) \qquad \mbox{independientes}\\
@@ -3726,7 +3726,7 @@ Shapiro-Wilk.
 \caption{Funciones de densidad correspondientes a una distribución normal de media cero y varianza $5/3$ (rojo), $t$ de Student con 5 grados de libertad (azul), uniforme en $\left[-\sqrt{5},\sqrt{5}\right]$ (verde) y $\chi^2$ con 5 grados de libertad (rosa) y $Q$-$Q$ plots correspondientes a muestras generadas a partir de dichas distribuciones.}\label{fig:qq}
 \end{figure}
 
-\subsubsection{Test basado en la asimetría}\label{test-basado-en-la-asimetruxeda}
+\subsubsection{Test basado en la asimetría}\label{test-basado-en-la-asimetria}
 
 Es bien conocido que la distribución normal es simétrica en torno a su
 media. Como además, la forma más común de desviarse respecto de la
@@ -4049,7 +4049,7 @@ manera de extender el test de Shapiro-Wilk con datos multivariantes.
 Empezamos estudiando ciertos conceptos previos en relación con este tipo
 de contrastes.
 
-\subsubsection{Invariancia, estandarización, y distancias y ángulos de Mahalanobis}\label{invariancia-estandarizaciuxf3n-y-distancias-y-uxe1ngulos-de-mahalanobis}
+\subsubsection{Invariancia, estandarización, y distancias y ángulos de Mahalanobis}\label{invariancia-estandarizacion-y-distancias-y-angulos-de-mahalanobis}
 
 Sabemos que la normalidad se conserva frente a traslaciones y
 transformaciones lineales, esto es:
@@ -4125,12 +4125,12 @@ utilizado en la sección siguiente para definir una medida de asimetría.
 \caption{Representación de los valores $r_{ij}$.}\label{fig:Tema3Figura5}
 \end{figure}
 
-\subsubsection{Tests basados en medidas de asimetría y kurtosis}\label{tests-basados-en-medidas-de-asimetruxeda-y-kurtosis}
+\subsubsection{Tests basados en medidas de asimetría y kurtosis}\label{tests-basados-en-medidas-de-asimetria-y-kurtosis}
 
 Existen diversas formas de definir medidas de asimetría y kurtosis con
 datos multivariantes. Consideraremos aquí las introducidas por \citet{mardia70}.
 
-\paragraph{Coeficiente de asimetría multivariante}\label{coeficiente-de-asimetruxeda-multivariante}
+\paragraph{Coeficiente de asimetría multivariante}\label{coeficiente-de-asimetria-multivariante}
 
 Así, calcularemos la asimetría de la siguiente manera:
 
@@ -4235,7 +4235,7 @@ rechazará la normalidad tanto para valores demasiado grandes como para
 valores demasiado pequeños de \(K_m\). De nuevo, los valores críticos
 están tabulados y los aproximaremos por simulación.
 
-\subsubsection{Extensión multivariantes del test de Shapiro-Wilk}\label{extensiuxf3n-multivariantes-del-test-de-shapiro-wilk}
+\subsubsection{Extensión multivariantes del test de Shapiro-Wilk}\label{extension-multivariantes-del-test-de-shapiro-wilk}
 
 Existen diversas maneras de extender el test de Shapiro-Wilk. Nos
 centraremos en una idea muy sencilla, que surge del concepto de
@@ -4263,7 +4263,7 @@ propuesto por Villasenor Alva y González Estrada (2009). Se rechazará la
 normalidad cuando \(W_{VG}\) sea pequeño, en comparación con ciertos
 valores tabulados, que de nuevo podemos aproximar por simulación.
 
-\chapter{Análisis Multivariante de la Varianza}\label{anuxe1lisis-multivariante-de-la-varianza}
+\chapter{Análisis Multivariante de la Varianza}\label{analisis-multivariante-de-la-varianza}
 
 En este capítulo vemos la extensión del análisis de la varianza univariante
 (ANOVA) al caso de que la variable respuesta es multivariante (MANOVA).
@@ -4271,7 +4271,7 @@ En primer lugar repasaremos los aspectos fundamentales del caso
 unidimensional. Para el caso multidimensional veremos que, en lugar del
 test \(F\), surgen los test de la \(\Lambda\) de Wilks y sus alternativas.
 
-\section{Revisión del modelo de análisis de la varianza univariante ANOVA}\label{revisiuxf3n-del-modelo-de-anuxe1lisis-de-la-varianza-univariante-anova}
+\section{Revisión del modelo de análisis de la varianza univariante ANOVA}\label{revision-del-modelo-de-analisis-de-la-varianza-univariante-anova}
 
 En el modelo de análisis de la varianza univariante, disponemos de \(k\)
 muestras independientes que provienen de poblaciones normales con la
@@ -4438,7 +4438,7 @@ R. Esta es una de ellas:
 Vemos que el \(p\)-valor indica que no hay evidencias significativas para
 rechazar la hipótesis nula de igualdad de medias.
 
-\section{MANOVA con un factor de variación}\label{manova-con-un-factor-de-variaciuxf3n}
+\section{MANOVA con un factor de variación}\label{manova-con-un-factor-de-variacion}
 
 En general, cuando disponemos de una muestra, no medimos una única
 variable. Lo más habitual es realizar mediciones de diversas variables
@@ -4490,7 +4490,7 @@ la matriz de covarianzas se supone que es la misma en todas las
 poblaciones. Recuerda que la homocedasticidad se puede contrastar
 mediante un test de igualdad de las matrices de covarianzas.
 
-\subsection{Descomposición de la variabilidad. Contraste de igualdad de medias}\label{descomposiciuxf3n-de-la-variabilidad.-contraste-de-igualdad-de-medias}
+\subsection{Descomposición de la variabilidad. Contraste de igualdad de medias}\label{descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias}
 
 Igual que ocurría en el caso univariante, se puede expresar el modelo de
 análisis multivariante de la varianza como un caso particular del modelo
@@ -4576,7 +4576,7 @@ hipótesis nula cuando la variabilidad proveniente de las diferencias
 entre poblaciones (que medimos mediante la matriz \(\bm{H}\)) sea grande
 comparada con la proveniente del error (medida por \(\bm{E}\)).
 
-\subsection{\texorpdfstring{El estadístico \(\Lambda\) de Wilks}{El estadístico \textbackslash Lambda de Wilks}}\label{el-estaduxedstico-lambda-de-wilks}
+\subsection{\texorpdfstring{El estadístico \(\Lambda\) de Wilks}{El estadístico \textbackslash Lambda de Wilks}}\label{el-estadistico-lambda-de-wilks}
 
 El contraste de razón de verosimiltudes para el contraste
 \(H_0: \bm{\mu_1}=\bm{\mu_2}=\cdots=\bm{\mu_k}\) viene dado por
@@ -4844,7 +4844,7 @@ igualdad de medias. Comprobamos el valor del estadístico de Pillai y de Lawley-
 
 \normalsize
 
-\section{MANOVA con dos factores de variación}\label{manova-con-dos-factores-de-variaciuxf3n}
+\section{MANOVA con dos factores de variación}\label{manova-con-dos-factores-de-variacion}
 
 En esta sección suponemos que hay dos factores: A y B. Del factor A
 podemos distinguir \(a\) niveles, mientras que en el factor B podemos
@@ -5105,7 +5105,7 @@ cuatro test coinciden para el contraste del tratamiento. Este hecho se
 debe a que hay únicamente dos tratamientos, por lo que la matriz \(H\)
 asociada al contraste tiene rango uno.
 
-\chapter{Análisis de componentes principales}\label{anuxe1lisis-de-componentes-principales}
+\chapter{Análisis de componentes principales}\label{analisis-de-componentes-principales}
 
 El análisis de componentes principales se concibe como una técnica de
 reducción de la dimensión, pues permite pasar de una gran cantidad de
@@ -5121,7 +5121,7 @@ a los datos. Por último, las componentes principales, que forman un
 vector aleatorio de dimensión menor, pueden ser empleadas en análisis
 estadísticos posteriores.
 
-\section{Descomposición de un vector aleatorio en sus componentes principales}\label{descomposiciuxf3n-de-un-vector-aleatorio-en-sus-componentes-principales}
+\section{Descomposición de un vector aleatorio en sus componentes principales}\label{descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales}
 
 En esta sección se va a definir el concepto de componentes principales,
 y cómo se obtienen a partir de la matriz de covarianzas de un vector
@@ -5564,7 +5564,7 @@ Obtenemos los mismos resultados haciendo los cálculos de forma directa:
 
 \normalsize
 
-\section{Propiedades geométricas de las componentes principales}\label{propiedades-geomuxe9tricas-de-las-componentes-principales}
+\section{Propiedades geométricas de las componentes principales}\label{propiedades-geometricas-de-las-componentes-principales}
 
 Esta sección contiene dos propiedades geométricas interesantes, que
 cumplen las componentes principales, cuando se comparan con el modelo de
@@ -5575,7 +5575,7 @@ segundo lugar veremos que en el caso de un vector bivariante
 una recta que pasa entre las dos rectas de regresión lineal simple, una
 de \(x_2\) sobre \(x_1\) y la otra de \(x_1\) sobre \(x_2\).
 
-\subsection{Las componentes principales como mejores aproximaciones mínimo-cuadráticas}\label{las-componentes-principales-como-mejores-aproximaciones-muxednimo-cuadruxe1ticas}
+\subsection{Las componentes principales como mejores aproximaciones mínimo-cuadráticas}\label{las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas}
 
 Recordemos que la componente principal es la variable aleatoria
 unidimensional \(z_1=\bm{v_1}^{\prime} \bm{x}\). Al proyectar el vector
@@ -5621,7 +5621,7 @@ ortogonal (la menor distancia), pues no hay variable respuesta ni
 variable explicativa, sino que todas las variables son tratadas de igual
 modo.
 
-\subsection{Posición en el plano de la 1ª componente principal respecto a las rectas de regresión}\label{posiciuxf3n-en-el-plano-de-la-1uxaa-componente-principal-respecto-a-las-rectas-de-regresiuxf3n}
+\subsection{Posición en el plano de la 1ª componente principal respecto a las rectas de regresión}\label{posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion}
 
 Sea \((x,y)\) un vector aleatorio en el plano. Se puede demostrar que al
 representar en el plano \(XY\) la primera componente principal, junto con
@@ -5645,7 +5645,7 @@ componente principal y las dos rectas de regresión.
 \caption{Diagrama de dispersión, junto con la primera componente principal (verde), la recta de regresión de $y$ sobre $x$ (azul) y la recta de regresión $x$ de sobre $y$ (rojo)}\label{fig:reg}
 \end{figure}
 
-\section{Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión}\label{descomposiciuxf3n-de-la-variabilidad-proporciuxf3n-de-varianza-explicada-y-criterios-para-la-reducciuxf3n-de-dimensiuxf3n}
+\section{Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión}\label{descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension}
 
 Según acabamos de ver, desde un punto de vista matricial podemos
 contemplar el proceso de extracción de las componentes principales como
@@ -5768,7 +5768,7 @@ Este problema se puede solventar de dos maneras:
   correlaciones, en lugar de la matriz de covarianzas.
 \end{itemize}
 
-\section{Interpretación de las componentes principales}\label{interpretaciuxf3n-de-las-componentes-principales}
+\section{Interpretación de las componentes principales}\label{interpretacion-de-las-componentes-principales}
 
 Para interpretar las componentes principales,
 \(\bm{z}=(z_1,\ldots,z_d)^\prime{}\), es preciso relacionarlas con las
@@ -5808,7 +5808,7 @@ originales que estén correlacionadas con dicha componente. Asimismo, el
 signo de cada correlación permite valorar qué variables van en el
 sentido de la componente y cuáles en sentido opuesto.
 
-\chapter{Análisis de correspondencias}\label{anuxe1lisis-de-correspondencias}
+\chapter{Análisis de correspondencias}\label{analisis-de-correspondencias}
 
 El Análisis de Correspondencias estudia la relación entre dos variables
 discretas a través de su distribución conjunta de frecuencias. Nos
@@ -6029,7 +6029,7 @@ procede llevar a cabo un Análisis de Correspondencias. En caso de
 rechazo, habremos concluido que existe asociación, y mediante el
 Análisis de Correspondencias se realiza un estudio de dicha asociación.
 
-\section{Representación de los perfiles de fila}\label{representaciuxf3n-de-los-perfiles-de-fila}
+\section{Representación de los perfiles de fila}\label{representacion-de-los-perfiles-de-fila}
 
 \subsection{Perfiles de fila estandarizados}\label{perfiles-de-fila-estandarizados}
 
@@ -6058,7 +6058,7 @@ estandarizados, como medida global de variabilidad, y reduce el estudio
 a un análisis de componentes principales sobre los perfiles
 estandarizados.
 
-\subsection{Análisis de componentes principales de los perfiles estandarizados}\label{anuxe1lisis-de-componentes-principales-de-los-perfiles-estandarizados}
+\subsection{Análisis de componentes principales de los perfiles estandarizados}\label{analisis-de-componentes-principales-de-los-perfiles-estandarizados}
 
 Formemos una matriz cuyas filas sean los perfiles de fila
 estandarizados:
@@ -6196,9 +6196,9 @@ La proporción de variabilidad explicada si tomamos \((k-1)\) componentes
 sería como quedarnos con las \((k-1)\) primeras columnas (de la \(2\) a la
 \(k\)) tanto en la matriz \(\bm{A}\) como en la tabla anterior.
 
-\section{Representación de los perfiles de columna}\label{representaciuxf3n-de-los-perfiles-de-columna}
+\section{Representación de los perfiles de columna}\label{representacion-de-los-perfiles-de-columna}
 
-\subsection{Análisis de componentes principales de los perfiles estandarizados}\label{anuxe1lisis-de-componentes-principales-de-los-perfiles-estandarizados-1}
+\subsection{Análisis de componentes principales de los perfiles estandarizados}\label{analisis-de-componentes-principales-de-los-perfiles-estandarizados-2}
 
 El análisis anterior de los perfiles de fila se puede repetir de la
 misma manera para los perfiles de columna. Los pasos se llevan a cabo en
@@ -6286,7 +6286,7 @@ Estas coordenadas verifican las siguientes propiedades:
   originarios.
 \end{itemize}
 
-\subsection{Contribuciones}\label{contribuciones-1}
+\subsection{Contribuciones}\label{contribuciones-2}
 
 De la segunda propiedad se deduce que la distancia al centroide, esto
 es, al perfil medio, de cada perfil de columna se puede expresar:
@@ -6335,7 +6335,7 @@ La proporción de variabilidad explicada si tomamos \((k-1)\) componentes
 sería como quedarnos con las \((k-1)\) primeras columnas (de la \(2\) a la
 \(k\)) tanto en la matriz \(\bm{B}\) como en la tabla anterior.
 
-\section{Representación simultánea de los perfiles de fila y columna}\label{representaciuxf3n-simultuxe1nea-de-los-perfiles-de-fila-y-columna}
+\section{Representación simultánea de los perfiles de fila y columna}\label{representacion-simultanea-de-los-perfiles-de-fila-y-columna}
 
 Consideremos la matriz
 
@@ -6586,7 +6586,7 @@ correspondiente a los Inactivos, esto indica que en su perfil hay un
 porcentaje alto de población inactiva. Igualmente para las categorías de
 Ocupados y Parados.
 
-\chapter{Análisis discriminante}\label{anuxe1lisis-discriminante}
+\chapter{Análisis discriminante}\label{analisis-discriminante}
 
 Empezamos definiendo el problema discriminante. Resumidamente se puede
 decir que el problema discriminante consiste en establecer reglas de
@@ -6723,7 +6723,7 @@ una regla discriminante.
 
 \section{Criterios para elegir una regla discriminante}\label{criterios-para-elegir-una-regla-discriminante}
 
-\subsection{Minimizar la probabilidad total de clasificación incorrecta}\label{minimizar-la-probabilidad-total-de-clasificaciuxf3n-incorrecta}
+\subsection{Minimizar la probabilidad total de clasificación incorrecta}\label{minimizar-la-probabilidad-total-de-clasificacion-incorrecta}
 
 Pensemos en una población que se encuentra dividida en individuos
 pertenecientes al grupo \(G_1\) e individuos pertenecientes al grupo
@@ -6860,7 +6860,7 @@ Pero, mientras \(D(\bm{x})\) es una función lineal, ahora \(Q(\bm{x})\) es
 una función cuadrática, de modo que la frontera entre las dos regiones
 ya no es un hiperplano.
 
-\subsection{Razón de verosimilitudes}\label{razuxf3n-de-verosimilitudes}
+\subsection{Razón de verosimilitudes}\label{razon-de-verosimilitudes}
 
 Nos situamos en el contexto en que las probabilidades a priori, \(\pi_1\)
 y \(\pi_2\), son desconocidas o sencillamente no se tienen en cuenta. Una
@@ -6870,7 +6870,7 @@ muestral. Esto equivale a clasificar en el grupo \(G_1\) si
 \(f_1(\bm{x})/f_2(\bm{x})>1\), lo cual coincide con el criterio anterior
 para \(\pi_1=\pi_2=1/2\).
 
-\subsection{Minimizar el coste total de clasificación incorrecta}\label{minimizar-el-coste-total-de-clasificaciuxf3n-incorrecta}
+\subsection{Minimizar el coste total de clasificación incorrecta}\label{minimizar-el-coste-total-de-clasificacion-incorrecta}
 
 Si asociamos unos costes \(C(2/1)\) y \(C(1/2)\) a cada uno de los errores
 de clasificación, entonces el coste total esperado es
@@ -6975,7 +6975,7 @@ total de clasificación incorrecta.
 
 b. Determina la regla discriminante óptima con el criterio minimax.
 
-\section{Estimación de la regla discriminante}\label{estimaciuxf3n-de-la-regla-discriminante}
+\section{Estimación de la regla discriminante}\label{estimacion-de-la-regla-discriminante}
 
 La situación más común en la práctica consiste en que desconocemos las
 distribuciones de \(\bm{x}\) condicionales a cada uno de los grupos. En su
@@ -7058,7 +7058,7 @@ dependen de \(f_1\) y \(f_2\), que representan la distribución de la nueva
 observación. A continuación planteamos diversos estimadores de las tasas
 de error efectivas.
 
-\subsection{Estimación de las tasas de error efectivas}\label{estimaciuxf3n-de-las-tasas-de-error-efectivas}
+\subsection{Estimación de las tasas de error efectivas}\label{estimacion-de-las-tasas-de-error-efectivas}
 
 \begin{description}
 \item[Estimadores plug-in]
@@ -7193,7 +7193,7 @@ consistirá en
 mayor probabilidad a posteriori, y es la regla de máxima verosimilitud
 si se omiten las probabilidades a priori.
 
-\subsection{Clasificación óptima de varias poblaciones normales}\label{clasificaciuxf3n-uxf3ptima-de-varias-poblaciones-normales}
+\subsection{Clasificación óptima de varias poblaciones normales}\label{clasificacion-optima-de-varias-poblaciones-normales}
 
 Pensemos que los grupos tienen las mismas probabilidades a priori, y que
 las distribuciones \(f_i\) son normales de medias
@@ -7274,7 +7274,7 @@ vectores \(\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\) y las constantes
 se obtienen de
 \(\log \pi_i-\frac{1}{2}\overline{\bm{x_{i}}}^{\prime}\bm{S}^{-1}\overline{\bm{x_{i}}}\).
 
-\chapter{Técnicas de formación de grupos}\label{tuxe9cnicas-de-formaciuxf3n-de-grupos}
+\chapter{Técnicas de formación de grupos}\label{tecnicas-de-formacion-de-grupos}
 
 En este capítulo haremos una breve introducción a los procedimientos de
 formación de grupos. Lo primero que destacamos es la amplitud y
@@ -7323,7 +7323,7 @@ inferencia para la construcción de los grupos. No trataremos aquí estos
 métodos basados en el modelo, y nos restringiremos a los métodos más
 conocidos de formación de grupos.
 
-\section{Métodos jerárquicos.}\label{muxe9todos-jeruxe1rquicos.}
+\section{Métodos jerárquicos.}\label{metodos-jerarquicos}
 
 Como ya se expresó en la introducción, los métodos jerárquicos parten de
 una matriz de distancia entre individuos, y en base a ella pretenden un
@@ -7396,7 +7396,7 @@ dos grupos como el promedio de las distancias entre sus individuos:
 \[d(C_r,C_s)=\frac{1}{n_r n_s}  \sum_{i\in C_r, j\in C_s} d_{ij}.\]
 \end{description}
 
-\section{Métodos de particionamiento.}\label{muxe9todos-de-particionamiento.}
+\section{Métodos de particionamiento.}\label{metodos-de-particionamiento}
 
 Los métodos de particionamiento, según ya se dijo en la introducción,
 pretenden una partición de los individuos de la muestra en \(k\) grupos,
@@ -7477,7 +7477,7 @@ importantes. En este tema estudiaremos distribuciones que surgen al
 hacer operaciones naturales de cara a la inferencia sobre vectores
 normales multivariantes.
 
-\section{Distribución normal multivariante}\label{distribuciuxf3n-normal-multivariante}
+\section{Distribución normal multivariante}\label{distribucion-normal-multivariante}
 
 Un vector aleatorio \(d\)-dimensional \(\bm{x}\) tiene distribución normal
 multivariante con vector de medias \(\bm{\mu}\) y matriz de covarianzas
@@ -7487,7 +7487,7 @@ multivariante con vector de medias \(\bm{\mu}\) y matriz de covarianzas
 Decimos en este caso que \(\bm{x}\) tiene distribución
 \(N_d(\bm{\mu},\bm\Sigma)\).
 
-\subsection{Propiedades de la distribución normal multivariante}\label{propiedades-de-la-distribuciuxf3n-normal-multivariante}
+\subsection{Propiedades de la distribución normal multivariante}\label{propiedades-de-la-distribucion-normal-multivariante}
 
 Presentamos a continuación algunas propiedades conocidas de la
 distribución normal multivariante.
@@ -7578,9 +7578,9 @@ distribución normal multivariante.
   \[\bm{x}-\bm{y}\textnormal{ tiene distribución }  N_p(\bm{\mu_x}-\bm{\mu_y},\bm{\Sigma_{xx}}+\bm{\Sigma_{yy}}).\]
 \end{itemize}
 
-\section{Distribución de Wishart}\label{distribuciuxf3n-de-wishart}
+\section{Distribución de Wishart}\label{distribucion-de-wishart}
 
-\subsection{Definición y propiedades}\label{definiciuxf3n-y-propiedades}
+\subsection{Definición y propiedades}\label{definicion-y-propiedades}
 
 La distribución de Wishart surge como una extensión al caso
 multivariante de la distribución ji-cuadrado. Recuerda que si
@@ -7725,7 +7725,7 @@ Veremos a continuación algunas propiedades de la distribución Wishart.
   \[\bm{M_1}+\bm{M_2}\in W_d(\bm\Sigma,m_1+m_2).\]
 \end{enumerate}
 
-\subsection{Formas cuadráticas en una muestra de observaciones normales multivariantes}\label{formas-cuadruxe1ticas-en-una-muestra-de-observaciones-normales-multivariantes}
+\subsection{Formas cuadráticas en una muestra de observaciones normales multivariantes}\label{formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes}
 
 En esta sección veremos las extensiones al caso multivariante de los
 resultados sobre la distribución de formas cuadráticas de variables
@@ -7948,9 +7948,9 @@ covarianzas muestral tiene distribución Wishart con matriz \(\bm\Sigma\) y
 observar que \(\bm{M}\bm{b}=\bm{0}\).
 \end{proof}
 
-\section{\texorpdfstring{Distribución \(\Gamma^2\) de Hotelling}{Distribución \textbackslash Gamma\^{}2 de Hotelling}}\label{distribuciuxf3n-gamma2-de-hotelling}
+\section{\texorpdfstring{Distribución \(\Gamma^2\) de Hotelling}{Distribución \textbackslash Gamma\^{}2 de Hotelling}}\label{distribucion-gamma-2-de-hotelling}
 
-\subsection{Definición y propiedades}\label{definiciuxf3n-y-propiedades-1}
+\subsection{Definición y propiedades}\label{definicion-y-propiedades-2}
 
 La distribución \(\Gamma^2\) de Hotelling juega un papel semejante a la
 distribución \(t\) de Student en el caso multivariante. En concreto, la
@@ -8020,7 +8020,7 @@ Se omite aquí la demostración de este teorema. Se puede
 encontrar en \citet{mkb79}.
 \end{proof}
 
-\subsection{\texorpdfstring{El estadístico \(\Gamma^2\) de Hotelling para inferencia sobre el vector de medias}{El estadístico \textbackslash Gamma\^{}2 de Hotelling para inferencia sobre el vector de medias}}\label{el-estaduxedstico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias}
+\subsection{\texorpdfstring{El estadístico \(\Gamma^2\) de Hotelling para inferencia sobre el vector de medias}{El estadístico \textbackslash Gamma\^{}2 de Hotelling para inferencia sobre el vector de medias}}\label{el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias}
 
 El siguiente corolario establece que la distancia de la media muestral a
 la media poblacional, medida a partir de la matriz de covarianzas
@@ -8088,9 +8088,9 @@ tiene que
 Simplificando se llega a la expresión que figura en este corolario.
 \end{proof}
 
-\section{\texorpdfstring{Distribución \(\Lambda\) de Wilks}{Distribución \textbackslash Lambda de Wilks}}\label{distribuciuxf3n-lambda-de-wilks}
+\section{\texorpdfstring{Distribución \(\Lambda\) de Wilks}{Distribución \textbackslash Lambda de Wilks}}\label{distribucion-lambda-de-wilks}
 
-\subsection{Introducción}\label{introducciuxf3n}
+\subsection{Introducción}\label{introduccion}
 
 La distribución \(\Lambda\) de Wilks sirve para extender al caso
 multivariante la distribución \(F\) de Snédecor. Así, si la \(F\) de
@@ -8125,7 +8125,7 @@ restricción, que denotamos por \(\bm{H}\), y juega el papel de
 entonces se rechaza la hipótesis nula. La forma de medir si una matriz
 de covarianzas es grande o pequeña será a través de su determinante.
 
-\subsection{Definición y propiedades}\label{definiciuxf3n-y-propiedades-2}
+\subsection{Definición y propiedades}\label{definicion-y-propiedades-3}
 
 Vamos a definir la distribución \(\Lambda\) de Wilks como el cociente
 entre el determinante de \(\bm{E}\) y el determinante de \(\bm{E}+\bm{H}\).

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | bookdown_AM.knit</title>
+  <title>Capítulo7 Técnicas de formación de grupos | bookdown_AM.knit</title>
   <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | bookdown_AM.knit" />
+  <meta property="og:title" content="Capítulo7 Técnicas de formación de grupos | bookdown_AM.knit" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/coverAM.jpg" />
   <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | bookdown_AM.knit" />
+  <meta name="twitter:title" content="Capítulo7 Técnicas de formación de grupos | bookdown_AM.knit" />
   
   <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
   <meta name="twitter:image" content="/images/coverAM.jpg" />
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="analisis-discriminante.html"/>
+<link rel="next" href="anexoDist.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -362,19 +362,199 @@ div.csl-indent {
 \(
 \newcommand{\textnormal}[1]{\textrm{#1}}
 \)
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="tecnicas-de-formacion-de-grupos" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo7</span> Técnicas de formación de grupos<a href="tecnicas-de-formacion-de-grupos.html#tecnicas-de-formacion-de-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este capítulo haremos una breve introducción a los procedimientos de
+formación de grupos. Lo primero que destacamos es la amplitud y
+diversidad de estos métodos, tanto en sus objetivos como en los
+procedimientos que emplean. El aspecto común a todos ellos es el
+propósito de formar grupos que todavía no están definidos. En esto se
+diferencia del análisis discriminante, en el cual los grupos están
+perfectamente definidos y el propósito es clasificar a un individuo en
+alguno de los grupos. Como decimos, las técnicas de formación de grupos
+pretenden formar grupos, reconocer patrones o estructuras dentro de la
+población general, en base a cierto tipo de observaciones.</p>
+<p>Podemos plantear una clasificación de las técnicas de formación de
+grupos en:</p>
+<dl>
+<dt>Métodos jerárquicos</dt>
+<dd>
+<p>También se conocen como métodos de <em>taxonomía numérica</em>, pues tienen
+mucha semejanza con la taxonomía de los seres vivos en Biología.
+Partiendo de una matriz de distancias entre individuos, el objetivo
+es construir un árbol de clasificación en distintos niveles. En el
+nivel más bajo estarían grupos de individuos muy próximos o
+semejantes (por ejemplo, las especies). A niveles superiores se
+crean grupos como resultado de la agregación de los grupos de nivel
+inferior (por ejemplo, familias, tipos o reinos).</p>
+</dd>
+<dt>Métodos de particionamiento</dt>
+<dd>
+<p>Al contrario de los métodos jerárquicos, los métodos de
+particionamiento sólo pretenden una división de los individuos en un
+conjunto de grupos, todos al mismo nivel, que constituyen una
+partición de la población original.</p>
+</dd>
+</dl>
+<p>Los métodos que estudiaremos en este tema no establecen suposiciones
+sobre el modelo estadístico que generó los datos, y en este sentido se
+deben interpretar como métodos descriptivos que ayudan a la comprensión
+sobre las propiedades que presenta un conjunto de datos multivariantes.
+Además, como cualquier método descriptivo, puede servir como punto de
+partida que sugiere propiedades de la población, que merezcan un
+análisis más detallado.</p>
+<p>Aún así, existen también métodos de formación de grupos, que están
+basados en un modelo estadístico, que refleja propiedades previsibles
+sobre cómo están constituidos los grupos, por ejemplo, la normalidad de
+la distribución. En este contexto, se pueden adoptar métodos de
+inferencia para la construcción de los grupos. No trataremos aquí estos
+métodos basados en el modelo, y nos restringiremos a los métodos más
+conocidos de formación de grupos.</p>
+<div id="metodos-jerarquicos" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Métodos jerárquicos.<a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como ya se expresó en la introducción, los métodos jerárquicos parten de
+una matriz de distancia entre individuos, y en base a ella pretenden un
+agrupamiento de los individuos a distintos niveles. En el nivel más bajo
+cada grupo estaría formado por individuos, mientras que los grupos a
+niveles superiores serían el resultado de agregar grupos de niveles
+inferiores. Los algoritmos que se emplean para crear esta jerarquía
+pueden ser de dos tipos:</p>
+<dl>
+<dt>Aglomerativos</dt>
+<dd>
+<p>Partiendo de los individuos, se construyen grupos formados por
+individuos, para después construir grupos, mediante la agregación de
+los grupos ya formados en etapas anteriores.</p>
+</dd>
+<dt>Divisivos</dt>
+<dd>
+<p>Partiendo del grupo total formado por todos los individuos, se
+genera una división en subgrupos (generalmente en dos), que más
+adelante vuelven a ser subdivididos.</p>
+</dd>
+</dl>
+<p>Nos centraremos en los algoritmos aglomerativos, que son los más
+comunes. El algoritmo constaría de los siguientes pasos:</p>
+<ul>
+<li><p><strong>Paso 1 (Comienzo)</strong>: Se definen los grupos o <em>clusters</em>
+<span class="math inline">\(C_1,\ldots,C_n\)</span>, que está formados cada uno por un individuo.</p></li>
+<li><p><strong>Paso 2</strong>: Se buscan los dos grupos <span class="math inline">\(C_i\)</span> y <span class="math inline">\(C_j\)</span> que estén más
+próximos, se juntan y consecuentemente se reduce el número de
+grupos.</p></li>
+<li><p><strong>Paso 3</strong>: Se recalculan las distancias de todos los demás grupos al
+nuevo grupo, formado al juntar <span class="math inline">\(C_i\)</span> y <span class="math inline">\(C_j\)</span>.</p></li>
+<li><p><strong>Paso 4</strong>: Si el número de grupos es uno, se detiene el algoritmo. En
+otro caso, se vuelve al paso 2.</p></li>
+</ul>
+<p>En este algoritmo queda por determinar cómo se efectúa el paso 3. De
+hecho, bajo esta misma estructura del algoritmo aglomerativo, los
+métodos concretos se diferencian en cómo resuelven este paso. Hay
+variadas formas de hacerlo, pero vamos a mencionar las tres que
+consideramos principales.</p>
+<dl>
+<dt>Método del mínimo:</dt>
+<dd>
+<p>Consiste en definir
+<span class="math inline">\(d(C_k,C_i\cup C_j)=\min\{d(C_k,C_i),d(C_k,C_j)\}\)</span>, donde
+<span class="math inline">\(d(C_r,C_s)\)</span> denota la distancia del grupo <span class="math inline">\(C_r\)</span> al grupo <span class="math inline">\(C_s\)</span>.
+Esto es equivalente a definir la distancia entre dos grupos así:</p>
+<p><span class="math display">\[d(C_r,C_s)=\min_{i\in C_r, j\in C_s} d_{ij}\]</span> siendo <span class="math inline">\(d_{ij}\)</span> la
+distancia entre los individuos <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, que en este caso
+pertenecen a los grupos <span class="math inline">\(C_r\)</span> y <span class="math inline">\(C_s\)</span>, respectivamente.</p>
+</dd>
+<dt>Método del máximo:</dt>
+<dd>
+<p>Consiste en definir
+<span class="math inline">\(d(C_k,C_i\cup C_j)=\max\{d(C_k,C_i),d(C_k,C_j)\}\)</span>. En este caso es
+equivalente a definir la distancia entre dos grupos como la mayor
+distancia entre sus individuos:</p>
+<p><span class="math display">\[d(C_r,C_s)=\max_{i\in C_r, j\in C_s} d_{ij}.\]</span></p>
+</dd>
+<dt>Método del promedio:</dt>
+<dd>
+<p>Consiste en definir
+<span class="math inline">\(d(C_k,C_i\cup C_j)=\frac{n_i}{n_i+n_j} d(C_k,C_i)+ \frac{n_j}{n_i+n_j} d(C_k,C_j)\)</span>,
+siendo <span class="math inline">\(n_i\)</span> y <span class="math inline">\(n_j\)</span> el número de individuos en los grupos <span class="math inline">\(C_i\)</span> y
+<span class="math inline">\(C_j\)</span>, respectivamente. Es equivalente a definir la distancia entre
+dos grupos como el promedio de las distancias entre sus individuos:</p>
+<p><span class="math display">\[d(C_r,C_s)=\frac{1}{n_r n_s}  \sum_{i\in C_r, j\in C_s} d_{ij}.\]</span></p>
+</dd>
+</dl>
+</div>
+<div id="metodos-de-particionamiento" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Métodos de particionamiento.<a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los métodos de particionamiento, según ya se dijo en la introducción,
+pretenden una partición de los individuos de la muestra en <span class="math inline">\(k\)</span> grupos,
+en base a los valores de las variables observadas en cada individuo. Por
+supuesto, los grupos se formarán por proximidad en el espacio
+<span class="math inline">\(d\)</span>-dimensional, siendo <span class="math inline">\(d\)</span> el número de variables.</p>
+<p>Un criterio natural para la formación de los grupos, consistiría en
+elegir la partición en grupos que haga mínima la variabilidad dentro de
+cada grupo, medida por la suma de cuadrados intra-grupo. El criterio
+parece sencillo pero el problema será la imposibilidad de recorrer todas
+las particiones posibles de <span class="math inline">\(n\)</span> individuos en <span class="math inline">\(k\)</span> grupos. Sólo <span class="math inline">\(n=15\)</span>
+datos y <span class="math inline">\(k=3\)</span> grupos son suficientes para generar más de dos millones de
+posibles particiones. Con valores de <span class="math inline">\(n\)</span> y <span class="math inline">\(k\)</span> algo más grandes, el
+número de particiones crece de manera desorbitada.</p>
+<p>Ante esta situación, es preciso adoptar un algoritmo que partiendo de
+una solución inicial razonable, llegue a una solución mejor de acuerdo
+con el criterio, mediante pasos que aporten mejoras sucesivas. Nótese
+que, a pesar de existir muchas particiones, la inmensa mayoría son
+absurdas como solución del problema, pues carecen de sentido todos los
+grupos que se formen tomando observaciones "salteadas" en el espacio.</p>
+<p>Vamos a considerar únicamente el algoritmo de las <span class="math inline">\(k\)</span>-medias, del que
+hay múltiples versiones, aunque su forma más sencilla podría constar de
+los pasos siguientes.</p>
+<ul>
+<li><p><strong>Paso 1</strong>: Crear una partición inicial en <span class="math inline">\(k\)</span> grupos.</p></li>
+<li><p><strong>Paso 2</strong>: Asignar cada individuo al grupo cuyo centro, que
+denominaremos <strong>centroide</strong>, le quede más próximo. Recalcular los
+centroides en base a los grupos modificados.</p></li>
+<li><p><strong>Paso 3</strong>: Repetir el paso 2 hasta que no haya más reasignaciones.</p></li>
+</ul>
+<p>El primer paso se puede obtener proporcionando <span class="math inline">\(k\)</span> centroides iniciales
+escogidos adecuadamente a la vista de la muestra. De hecho, pueden ser
+individuos de la muestra. También es posible conformar la partición
+inicial, aplicando una técnica de agrupamiento jerárquico, y escogiendo
+el nivel de agrupamiento en el cual se generan <span class="math inline">\(k\)</span> grupos.</p>
+<p>El paso 2 admite muchas variantes dependiendo del algoritmo concreto.
+Planteado en términos generales, la idea es considerar posibles cambios
+de algunos individuos de un grupo a otro. Serían candidatos a cambiar de
+grupo los individuos que ocupan posiciones fronterizas. Para cada
+posible cambio, se evalúan las consecuencias que tendría sobre el
+criterio (por ejemplo, suma de cuadrados intra-grupo), y se efectúa el
+cambio que más contribuye a mejorar el criterio. Se detiene el algoritmo
+cuando no hay cambios que redunden en mejoras apreciables del criterio.</p>
+<p>Los algoritmos de las <span class="math inline">\(k\)</span>-medias presentan ciertas limitaciones, como
+puede ser la dependencia de la partición inicial que se escoja, así como
+la tendencia a formar grupos esféricos, ya que la distancia que se
+considera es la distancia euclídea usual. Existen muchas propuestas de
+otros métodos que permiten superar estas limitaciones y que se adaptan a
+propósitos diversos. En cualquier caso, el algoritmo de las <span class="math inline">\(k\)</span>-medias
+es un punto de referencia inicial, que se debe tener presente dentro de
+los métodos de particionamiento.</p>
+<p>La función <em>kmeans</em> de <span class="math inline">\(R\)</span> permite escoger entre varios métodos de las
+<span class="math inline">\(k\)</span>-medias. Si no se indica el método, por defecto aplica el algoritmo
+de <span class="citation">Hartigan and Wong (<a href="#ref-Hartigan1979">1979</a>)</span>.</p>
+
+</div>
+</div>
+
+
+
+<h3><span class="header-section-number">C</span> References {-}<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Hartigan1979" class="csl-entry">
+Hartigan, J. A., and M. A. Wong. 1979. <span>“A k-Means Clustering Algorithm.”</span> <em>Applied Statistics</em> 28 (1): 100–108.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="analisis-discriminante.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anexoDist.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

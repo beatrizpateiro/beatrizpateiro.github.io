@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo5 Análisis de correspondencias | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo5 Análisis de correspondencias | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo5 Análisis de correspondencias | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analisis-de-componentes-principales.html"/>
+<link rel="next" href="analisis-discriminante.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autores"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerrequisitos"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#notacion-de-vectores-y-matrices"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vectores-aleatorios"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#representacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#visualizacion-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancias-estadisticas"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-euclidea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introduccion-al-analisis-multivariante.html"><a href="introduccion-al-analisis-multivariante.html#estandarizacion"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimacion-en-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#estimadores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#distribucion-de-overline-bm-x-y-bm-s"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-multivariantes-versus-contrastes-univariantes"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contrastes-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza-y-comparaciones-simultaneas"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-scheffe"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#intervalos-de-confianza-simultaneos-por-el-metodo-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#inferencia-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-h-0-bm-sigma-bm-sigma-0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#generalizacion-del-contraste-sobre-la-matriz-de-covarianzas"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-la-hipotesis-nula-h-0-bm-sigma-k-bm-sigma-0-k-in-0-infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-dos-subvectores-h-0-bm-sigma-12-bm-0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-independencia-de-todas-las-variables-h-0-bm-sigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#comparacion-de-poblaciones-normales-multivariantes"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secnorm"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#revision-del-modelo-de-analisis-de-la-varianza-univariante-anova"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-un-factor-de-variacion"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#descomposicion-de-la-variabilidad-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#el-estadistico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="analisis-multivariante-de-la-varianza.html"><a href="analisis-multivariante-de-la-varianza.html#manova-con-dos-factores-de-variacion"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-un-vector-aleatorio-en-sus-componentes-principales"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#propiedades-geometricas-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-minimo-cuadraticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#posicion-en-el-plano-de-la-1a-componente-principal-respecto-a-las-rectas-de-regresion"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#descomposicion-de-la-variabilidad-proporcion-de-varianza-explicada-y-criterios-para-la-reduccion-de-dimension"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#las-componentes-principales-y-los-cambios-de-escala"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#interpretacion-de-las-componentes-principales"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#contribuciones-2"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-correspondencias.html"><a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#dos-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterios-para-elegir-una-regla-discriminante"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-la-probabilidad-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#razon-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#minimizar-el-coste-total-de-clasificacion-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-la-regla-discriminante"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#estimacion-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#varios-grupos-con-distribuciones-conocidas"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="analisis-discriminante.html"><a href="analisis-discriminante.html#clasificacion-optima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-jerarquicos"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="tecnicas-de-formacion-de-grupos.html"><a href="tecnicas-de-formacion-de-grupos.html#metodos-de-particionamiento"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="anexoDist.html"><a href="anexoDist.html#propiedades-de-la-distribucion-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-de-wishart"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="anexoDist.html"><a href="anexoDist.html#formas-cuadraticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-gamma-2-de-hotelling"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-2"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="anexoDist.html"><a href="anexoDist.html#el-estadistico-gamma-2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="anexoDist.html"><a href="anexoDist.html#distribucion-lambda-de-wilks"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="anexoDist.html"><a href="anexoDist.html#introduccion"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="anexoDist.html"><a href="anexoDist.html#definicion-y-propiedades-3"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ap%C3%A9ndice-propiedades-de-la-distribuci%C3%B3n-de-hotelling-y-de-wilks"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distribuci%C3%B3n-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="anexoAlg.html"><a href="anexoAlg.html#autovalores"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-semidefinidas-positivas"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="anexoAlg.html"><a href="anexoAlg.html#matrices-definidas-positivas"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>C</b> References {-}</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="analisis-de-correspondencias" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo5</span> Análisis de correspondencias<a href="analisis-de-correspondencias.html#analisis-de-correspondencias" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El Análisis de Correspondencias estudia la relación entre dos variables
+discretas a través de su distribución conjunta de frecuencias. Nos
+apoyaremos en el siguiente ejemplo.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> <em>Encuesta de Población Activa (EPA, 2010). Datos de
+actividad y ocupación</em>. La Encuesta de Población Activa, comúnmente
+conocida como EPA, es una encuesta que realiza el Instituto Nacional de
+Estadística (INE) y que recoge información sobre el empleo en España.
+Así, de esta encuesta se extraen los datos de actividad, ocupación y
+tasa de paro, que además se pueden relacionar con características de los
+individuos, como su sexo, edad o comunidad autónoma de residencia.</p>
+<p>Vamos a estudiar la relación que puede haber entre la comunidad autónoma
+y una variable que indicará si el individuo es inactivo, está ocupado o
+está parado. Se define como inactivo a un individuo que no realiza
+trabajo remunerado, ni está en condiciones de realizarlo, bien por falta
+de capacidad (niños, ancianos o discapacitados) o por decisión propia.
+Ocupado es aquél que realiza trabajo remunerado, y parado es aquél que
+no lo realiza, aunque se encuentra en condiciones de trabajar y busca
+empleo. Los datos del fichero <code>epa2010.csv</code> recogen las frecuencias (en miles de
+personas) en cada comunidad autónomica y según su actividad (ocupado,
+parado o inactivo).</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="analisis-de-correspondencias.html#cb78-1" tabindex="-1"></a><span class="sc">&gt;</span> dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/epa2010.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;latin1&quot;</span>)</span>
+<span id="cb78-2"><a href="analisis-de-correspondencias.html#cb78-2" tabindex="-1"></a><span class="sc">&gt;</span> dat</span>
+<span id="cb78-3"><a href="analisis-de-correspondencias.html#cb78-3" tabindex="-1"></a>            Comunidad.Autónoma Ocupados Parados Inactivos</span>
+<span id="cb78-4"><a href="analisis-de-correspondencias.html#cb78-4" tabindex="-1"></a><span class="dv">1</span>                    Andalucía   <span class="fl">2849.1</span>  <span class="fl">1127.4</span>    <span class="fl">2794.2</span></span>
+<span id="cb78-5"><a href="analisis-de-correspondencias.html#cb78-5" tabindex="-1"></a><span class="dv">2</span>                       Aragón    <span class="fl">540.3</span>   <span class="fl">103.3</span>     <span class="fl">467.5</span></span>
+<span id="cb78-6"><a href="analisis-de-correspondencias.html#cb78-6" tabindex="-1"></a><span class="dv">3</span>      Asturias, Principado de    <span class="fl">398.0</span>    <span class="fl">79.6</span>     <span class="fl">451.8</span></span>
+<span id="cb78-7"><a href="analisis-de-correspondencias.html#cb78-7" tabindex="-1"></a><span class="dv">4</span>               Balears, Illes    <span class="fl">450.0</span>   <span class="fl">128.6</span>     <span class="fl">320.3</span></span>
+<span id="cb78-8"><a href="analisis-de-correspondencias.html#cb78-8" tabindex="-1"></a><span class="dv">5</span>                     Canarias    <span class="fl">771.2</span>   <span class="fl">314.4</span>     <span class="fl">663.8</span></span>
+<span id="cb78-9"><a href="analisis-de-correspondencias.html#cb78-9" tabindex="-1"></a><span class="dv">6</span>                    Cantabria    <span class="fl">233.8</span>    <span class="fl">41.0</span>     <span class="fl">219.6</span></span>
+<span id="cb78-10"><a href="analisis-de-correspondencias.html#cb78-10" tabindex="-1"></a><span class="dv">7</span>              Castilla y León    <span class="fl">996.8</span>   <span class="fl">186.8</span>     <span class="fl">962.4</span></span>
+<span id="cb78-11"><a href="analisis-de-correspondencias.html#cb78-11" tabindex="-1"></a><span class="dv">8</span>         Castilla <span class="sc">-</span> La Mancha    <span class="fl">779.2</span>   <span class="fl">211.2</span>     <span class="fl">712.9</span></span>
+<span id="cb78-12"><a href="analisis-de-correspondencias.html#cb78-12" tabindex="-1"></a><span class="dv">9</span>                     Cataluña   <span class="fl">3133.5</span>   <span class="fl">686.8</span>    <span class="fl">2256.8</span></span>
+<span id="cb78-13"><a href="analisis-de-correspondencias.html#cb78-13" tabindex="-1"></a>...</span></code></pre></div>
+<p>Mediante un análisis de correspondencias seremos capaces de describir
+las relaciones que pueda haber entre la comunidad autónoma y la
+actividad, por ejemplo, indicando que en cierta comunidad autónoma hay
+un mayor porcentaje de parados, que en otra abundan especialmente los
+inactivos, o que en una tercera predominan los ocupados.</p>
+<p>Las tablas de frecuencias, como la vista en el ejemplo, se conocen como
+<strong>tablas de contingencia</strong>. Reflejan la distribución conjunta del par
+formado por las dos variables discretas, que denotaremos <span class="math inline">\((x,y)\)</span>.
+Introduciendo cierta notación, podríamos expresar la tabla de
+contingencia así:</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+x\backslash y &amp; y_1 &amp; \ldots &amp; y_j &amp; \ldots &amp; y_s &amp; \\
+\hline x_1 &amp; n_{11} &amp; \cdots &amp; n_{1j} &amp; \cdots &amp; n_{1s} &amp; n_{1\bullet} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; &amp; \vdots &amp;\vdots \\
+x_i &amp; n_{i1} &amp; \cdots &amp; n_{ij} &amp; \cdots &amp; n_{is} &amp; n_{i\bullet} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; &amp; \vdots &amp;\vdots \\
+x_r &amp; n_{r1} &amp; \cdots &amp; n_{rj} &amp; \cdots &amp; n_{rs} &amp; n_{r\bullet} \\
+\hline &amp; n_{\bullet 1} &amp; \cdots &amp; n_{\bullet j} &amp; \cdots &amp; n_{\bullet s} &amp; n \\
+\end{array}\]</span></p>
+<p>siendo <span class="math inline">\(n_{ij}\)</span> la frecuencia absoluta del par <span class="math inline">\((x_i,y_j)\)</span>,
+<span class="math inline">\((n_{1\bullet},\ldots,n_{i\bullet},\ldots,n_{r\bullet})\)</span> la distribución
+marginal de la variable <span class="math inline">\(x\)</span> y
+<span class="math inline">\((n_{\bullet 1},\ldots,n_{\bullet j},\ldots,n_{\bullet s})\)</span> la
+distribución marginal de la variable <span class="math inline">\(y\)</span>.</p>
+<p>Si dividimos entre el tamaño muestral, <span class="math inline">\(n\)</span>, obtenemos una tabla similar,
+pero ahora en términos relativos.</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+x\backslash y &amp; y_1 &amp; \ldots &amp; y_j &amp; \ldots &amp; y_s &amp; \\
+\hline x_1 &amp; f_{11} &amp; \cdots &amp; f_{1j} &amp; \cdots &amp; f_{1s} &amp; f_{1\bullet} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; &amp; \vdots &amp;\vdots \\
+x_i &amp; f_{i1} &amp; \cdots &amp; f_{ij} &amp; \cdots &amp; f_{is} &amp; f_{i\bullet} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; &amp; \vdots &amp;\vdots \\
+x_r &amp; f_{r1} &amp; \cdots &amp; f_{rj} &amp; \cdots &amp; f_{rs} &amp; f_{r\bullet} \\
+\hline &amp; f_{\bullet 1} &amp; \cdots &amp; f_{\bullet j} &amp; \cdots &amp; f_{\bullet s} &amp; 1 \\
+\end{array}\]</span></p>
+<p>siendo <span class="math inline">\(f_{ij}\)</span> la frecuencia relativa del par <span class="math inline">\((x_i,y_j)\)</span>,
+<span class="math inline">\((f_{1\bullet},\ldots,f_{i\bullet},\ldots,f_{r\bullet})\)</span> la distribución
+marginal de la variable <span class="math inline">\(x\)</span> y
+<span class="math inline">\((f_{\bullet 1},\ldots,f_{\bullet j},\ldots,f_{\bullet s})\)</span> la
+distribución marginal de la variable <span class="math inline">\(y\)</span>.</p>
+<p>En primer lugar recordaremos los conceptos de independencia y asociación
+(lo contrario a la independencia) entre dos variables discretas. Veremos
+que el estadístico ji-cuadrado, que se usa habitualmente para contrastar
+la independencia, se puede interpretar como una medida de asociación. En
+este sentido, veremos que refleja la variabilidad entre distribuciones
+condicionadas.</p>
+<p>A continuación abordaremos la representación de la asociación
+mediante un procedimiento de componentes principales y la representación simultánea de las categorías de las dos
+variables discretas, lo cual culmina los objetivos del análisis de
+correspondencias, pues en este gráfico simultáneo identificaremos las
+asociaciones entre categorías.</p>
+<div id="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles<a href="analisis-de-correspondencias.html#test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si el análisis de correspondencias pretende estudiar la relación entre
+las dos variables, la situación extrema de no relación se producirá
+cuando las dos variables sean independientes. Esto es equivalente a que
+la distribución conjunta resulte del producto de las marginales. En
+términos de las frecuencias observadas, ese producto de marginales da
+lugar a lo que se suele conocer como frecuencias esperadas, que son:</p>
+<p><span class="math display">\[n_{i\bullet}n_{\bullet j}/n.\]</span></p>
+<p>A partir de aquí se construye el estadístico ji-cuadrado para contrastar
+la independencia comparando las frecuencias observadas con las
+esperadas:</p>
+<p><span class="math display">\[\chi^2=\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(n_{ij}-n_{i\bullet}n_{\bullet j}/n\right)^2}{n_{i\bullet}n_{\bullet j}/n}.\]</span></p>
+<p>Bajo la hipótesis nula de independencia, el estadístico ji-cuadrado
+tiene una distribución ji-cuadrado con <span class="math inline">\((r-1)\times (s-1)\)</span> grados de
+libertad.</p>
+<p>Además del contraste de independencia, podemos pensar que el estadístico
+ji-cuadrado es una medida de discrepancia respecto de la independencia,
+y por tanto es una medida de asociación entre las categorías de ambas
+variables. Con este fin, vamos a expresar el estadístico ji–cuadrado en
+términos de frecuencias relativas:</p>
+<p><span class="math display">\[\chi^2=\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(f_{ij}n-f_{i\bullet}f_{\bullet j}n\right)^2}{f_{i\bullet}f_{\bullet j}n}
+=n\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(f_{ij}-f_{i\bullet}f_{\bullet j}\right)^2}{f_{i\bullet}f_{\bullet j}}.\]</span></p>
+<p>Ahora observamos que el estadístico ji-cuadrado, representado en cierta
+forma, admite una interpretación interesante:</p>
+<p><span class="math display">\[\frac{\chi^2}{n}=\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(f_{i\bullet}\frac{f_{ij}}{f_{i\bullet}}
+-f_{i\bullet}f_{\bullet j}\right)^2}{f_{i\bullet}f_{\bullet j}}
+=\sum_{i=1}^r f_{i\bullet} \sum_{j=1}^s
+\left(\frac{f_{ij}}{f_{i\bullet}}-f_{\bullet j}\right)^2
+\frac{1}{f_{\bullet j}}=\sum_{i=1}^r f_{i\bullet} d^2(\bm{r_i},\bm{m_y})\]</span></p>
+<p>siendo
+<span class="math inline">\(\bm{r_i}=\left(\frac{f_{i1}}{f_{i\bullet}},\ldots,\frac{f_{is}}{f_{i\bullet}}\right)^\prime{}\)</span>
+la distribución de <span class="math inline">\(y\)</span> condicionada a <span class="math inline">\(x=x_i\)</span>, también conocida como
+perfil de fila <span class="math inline">\(i\)</span>-ésimo;
+<span class="math inline">\(\bm{m_y}=\left(f_{\bullet 1},\ldots,f_{\bullet s}\right)^\prime{}\)</span> la
+distribución marginal de <span class="math inline">\(y\)</span>; y <span class="math inline">\(d^2(\bm{r_i},\bm{m_y})\)</span> una distancia
+entre el perfil <span class="math inline">\(i\)</span>-ésimo y la distribución marginal. A esta distancia
+se la conoce como <strong>distancia ji-cuadrado</strong> y a <span class="math inline">\(\chi^2/n\)</span> como
+<strong>inercia</strong>.</p>
+<p>La tabla siguiente contiene los perfiles de fila, junto con la
+distribución marginal de <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+x\backslash y &amp; y_1 &amp; \ldots &amp; y_j &amp; \ldots &amp; y_s &amp; \\
+\hline x_1 &amp; f_{11}/f_{1\bullet} &amp; \cdots &amp; f_{1j}/f_{1\bullet} &amp; \cdots &amp; f_{1s}/f_{1\bullet} &amp; 1 \\
+\vdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \vdots \\
+x_i &amp; f_{i1}/f_{i\bullet} &amp; \cdots &amp; f_{ij}/f_{i\bullet} &amp; \cdots &amp; f_{is}/f_{i\bullet} &amp; 1 \\
+\vdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \vdots \\
+x_r &amp; f_{r1}/f_{r\bullet} &amp; \cdots &amp; f_{rj}/f_{r\bullet} &amp; \cdots &amp; f_{rs}/f_{r\bullet} &amp; 1 \\
+\hline &amp; f_{\bullet 1} &amp; \cdots &amp; f_{\bullet j} &amp; \cdots &amp; f_{\bullet s} &amp; 1 \\
+\end{array}\]</span></p>
+<p>De este modo, el estadístico ji-cuadrado (dividido entre n) es una media
+ponderada de las distancias ji-cuadrado de los perfiles de fila a la
+distribución marginal de <span class="math inline">\(y\)</span>. Si observamos que la distribución marginal
+se puede obtener como media de los perfiles de fila, veremos el
+estadístico ji-cuadrado como una medida de variabilidad de los perfiles
+en torno a su media, <span class="math inline">\(\bm{m_y}\)</span>. Bajo hipótesis de independencia, los
+perfiles han de ser muy similares entre sí y, por tanto, muy similares a
+la distribución marginal, dando lugar a un valor pequeño de la
+variabilidad, medida por el estadístico ji-cuadrado.</p>
+<p>De igual modo se puede interpretar el estadístico ji-cuadrado en
+términos de distancias ji-cuadrado entre perfiles de columna:</p>
+<p><span class="math display">\[\frac{\chi^2}{n}=\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(f_{\bullet j}\frac{f_{ij}}{f_{\bullet j}}
+-f_{i\bullet}f_{\bullet j}\right)^2}{f_{i\bullet}f_{\bullet j}}
+=\sum_{j=1}^s f_{\bullet j} \sum_{i=1}^r
+\left(\frac{f_{ij}}{f_{\bullet j}}-f_{i \bullet}\right)^2
+\frac{1}{f_{i \bullet}}=\sum_{j=1}^s f_{\bullet j} d^2(\bm{c_j},\bm{m_x})\]</span></p>
+<p>siendo
+<span class="math inline">\(\bm{c_j}=\left(\frac{f_{1j}}{f_{\bullet j}},\ldots,\frac{f_{rj}}{f_{\bullet j}}\right)^\prime{}\)</span>
+la distribución de <span class="math inline">\(x\)</span> condicionada a <span class="math inline">\(y=y_j\)</span>, también conocida como
+perfil de columna <span class="math inline">\(j\)</span>-ésimo;
+<span class="math inline">\(\bm{m_x}=\left(f_{1 \bullet},\ldots,f_{r \bullet}\right)^\prime{}\)</span> la
+distribución marginal de <span class="math inline">\(x\)</span>; y <span class="math inline">\(d^2(\bm{c_j},\bm{m_x})\)</span> la distancia
+ji-cuadrado entre el perfil <span class="math inline">\(j\)</span>-ésimo y la distribución marginal.</p>
+<p>La tabla siguiente contiene los perfiles de columna, junto con la
+distribución marginal de <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+x\backslash y &amp; y_1 &amp; \ldots &amp; y_j &amp; \ldots &amp; y_s &amp; \\
+\hline x_1 &amp; f_{11}/f_{\bullet 1} &amp; \vdots &amp; f_{1j}/f_{\bullet j} &amp; \vdots &amp; f_{1s}/f_{\bullet s} &amp; f_{1 \bullet} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+x_i &amp; f_{i1}/f_{\bullet 1} &amp; \vdots &amp; f_{ij}/f_{\bullet j} &amp; \vdots &amp; f_{is}/f_{\bullet s} &amp; f_{i \bullet} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+x_r &amp; f_{r1}/f_{\bullet 1} &amp; \vdots &amp; f_{rj}/f_{\bullet j} &amp; \vdots &amp; f_{rs}/f_{\bullet s} &amp; f_{r \bullet} \\
+\hline &amp; 1 &amp; \cdots &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
+\end{array}\]</span></p>
+<p>El análisis de correspondencias es un procedimiento de representación e
+interpretación de la variabilidad resultante del estadístico
+ji-cuadrado. Por tanto, si aceptamos la hipótesis de independencia no
+procede llevar a cabo un Análisis de Correspondencias. En caso de
+rechazo, habremos concluido que existe asociación, y mediante el
+Análisis de Correspondencias se realiza un estudio de dicha asociación.</p>
+</div>
+<div id="representacion-de-los-perfiles-de-fila" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Representación de los perfiles de fila<a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-fila" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="perfiles-de-fila-estandarizados" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Perfiles de fila estandarizados<a href="analisis-de-correspondencias.html#perfiles-de-fila-estandarizados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pensemos en la descomposición de la ji-cuadrado a través de los perfiles
+de fila. Los perfiles de fila se pueden concebir como vectores del
+espacio <span class="math inline">\({\Bbb R}^s\)</span> y su variabilidad se encuentra medida a través de
+la distancia ji-cuadrado en dicho espacio:</p>
+<p><span class="math display">\[d^2(\bm{u},\bm{v})=\sum_{j=1}^s (u_j-v_j)^2 \frac{1}{f_{\bullet j}}\]</span>
+siendo <span class="math inline">\(\bm{u}=(u_1,\ldots,u_s)^\prime{}\)</span> y
+<span class="math inline">\(\bm{v}=(v_1,\ldots,v_s)^\prime{}\)</span> vectores de <span class="math inline">\({\Bbb R}^s\)</span>. Si
+dividimos las coordenadas de cada perfil de fila por
+<span class="math inline">\(\left(\frac{1}{\sqrt{f_{\bullet 1}}},\ldots,\frac{1}{\sqrt{f_{\bullet s}}}\right)\)</span>
+entonces podemos considerar los vectores</p>
+<p><span class="math display">\[\bm{r_i^e}=\left(\frac{f_{i1}}{f_{i\bullet}\sqrt{f_{\bullet 1}}},\ldots,
+\frac{f_{is}}{f_{i\bullet}\sqrt{f_{\bullet s}}}\right)^\prime{} \qquad i\in \{1,\ldots,r\}\]</span>
+dotados ahora de la distancia euclídea ordinaria, ya que la inercia
+total se puede expresar como la media ponderada de las distancias
+euclídeas de estos vectores a su media: <span class="math display">\[\frac{\chi^2}{n}
+=\sum_{i=1}^r f_{i\bullet} \sum_{j=1}^s
+\left(\frac{f_{ij}}{f_{i\bullet}\sqrt{f_{\bullet j}}}-\sqrt{f_{\bullet j}}\right)^2.\]</span></p>
+<p>Esto coincide con la traza de la matriz de covarianzas de los perfiles
+estandarizados, como medida global de variabilidad, y reduce el estudio
+a un análisis de componentes principales sobre los perfiles
+estandarizados.</p>
+</div>
+<div id="analisis-de-componentes-principales-de-los-perfiles-estandarizados" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Análisis de componentes principales de los perfiles estandarizados<a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Formemos una matriz cuyas filas sean los perfiles de fila
+estandarizados:</p>
+<p><span class="math display">\[\bm{X}=\left(\frac{f_{ij}}{f_{i\bullet}\sqrt{f_{\bullet j}}}\right)_{i,j}
+=\left(\begin{array}{c} {\bm{r_1^e}}^\prime{} \\ \vdots \\ {\bm{r_r^e}}^\prime{} \end{array}\right).\]</span></p>
+<p>Si esta matriz se piensa como una matriz de observaciones donde cada
+columna es una variable y cada fila es un individuo, ponderado por la
+frecuencia marginal <span class="math inline">\(f_{i\bullet}\)</span> que le corresponda, entonces el
+vector de medias es:
+<span class="math inline">\(\bm{m_y^e}=\left(\sqrt{f_{\bullet 1}},\ldots,\sqrt{f_{\bullet s}}\right)^\prime{}\)</span>
+y la matriz de covarianzas:</p>
+<p><span class="math display">\[\bm{\Sigma_r}=\bm{X}^{\prime} \bm{D_r} \bm{X} - \bm{m_y^e}{\bm{m_y^e}}^\prime{}\]</span>
+siendo <span class="math inline">\(\bm{D_r}=\textnormal{diag}(f_{1\bullet},\ldots,f_{r\bullet})\)</span>.</p>
+<p>El análisis de componentes principales de los perfiles de fila
+estandarizados pasa por diagonalizar la matriz de covarianzas
+<span class="math inline">\(\bm{\Sigma_r}\)</span>. Para ello, el resultado que sigue es muy útil.</p>
+<p><strong>Resultado</strong>. La matriz <span class="math inline">\(\bm{X^{\prime} D_r X}\)</span> es una matriz simétrica
+y semidefinida positiva, y tiene al vector <span class="math inline">\(\bm{m_y^e}\)</span> como vector
+propio de valor propio uno.</p>
+<p>En base a este resultado, <span class="math inline">\(\bm{m_y^e}(\bm{m_y^e})^{\prime}\)</span> no es más
+que el primer término de la descomposición espectral de
+<span class="math inline">\(\bm{X^{\prime} D_r X}\)</span>, <span class="math inline">\(\bm{m_y^e}\)</span> es un autovector de
+<span class="math inline">\(\bm{\Sigma_r}\)</span> de autovalor cero, y el resto de autovectores y
+autovalores de <span class="math inline">\(\bm{\Sigma_r}\)</span> y <span class="math inline">\(\bm{X^{\prime} D_r X}\)</span> coinciden.</p>
+<p>Esta pérdida de una dimensión en el espacio de los perfiles de fila se
+debe a que los perfiles de fila verifican:</p>
+<p><span class="math display">\[\sum_{j=1}^s \frac{f_{i j}}{f_{i\bullet}}=1 \qquad \forall i\in\{1,\ldots,r\}
+\qquad \left[\bm{r_i}^\prime{}\bm{1_s}=1\right]\]</span> y, en consecuencia,
+los perfiles de fila estandarizados:</p>
+<p><span class="math display">\[\sum_{j=1}^s \sqrt{f_{\bullet j}}
+\frac{f_{i j}}{\sqrt{f_{\bullet j}}f_{i\bullet}}=1 \qquad \forall i\in\{1,\ldots,r\}
+\qquad \left[{\bm{r_i^e}}^\prime{}\bm{m_y^e}=1\right].\]</span></p>
+<p>De este modo, en
+ambos casos se encuentran contenidos en un hiperplano, y el vector
+característico de dicho hiperplano (<span class="math inline">\(\bm{m_y^e}\)</span> en el caso de los
+perfiles estandarizados) es un autovector cuyo autovalor asociado es
+cero.</p>
+<p>Para completar la comprensión de este hecho, obtenemos una nueva
+expresión para la inercia:</p>
+<p><span class="math display">\[\frac{\chi^2}{n}
+=\sum_{i=1}^r\sum_{j=1}^s
+\frac{\left(f_{ij}-f_{i\bullet}f_{\bullet j}\right)^2}{f_{i\bullet}f_{\bullet j}}
+=\sum_{i=1}^r\sum_{j=1}^s
+\frac{f_{ij}^2}{f_{i\bullet}f_{\bullet j}}-1=\textnormal{traza} \left(\bm{X^{\prime} D_r X}\right)-1
+=\textnormal{traza} \left(\bm{\Sigma_r}\right).\]</span> La segunda igualdad se
+obtiene desarrollando el cuadrado. Haber obtenido la traza de la matriz
+de covarianzas <span class="math inline">\(\bm{\Sigma_r}\)</span> no es más que lo que cabía esperar. Así, pensemos en la diagonalización</p>
+<p><span class="math display">\[\bm{X^{\prime} D_r X}=\bm{V}\bm{\Lambda}\bm{V}^{\prime}\]</span> siendo
+<span class="math inline">\(\bm{V}=(\bm{m_y^e}, \bm{v_2}, \ldots, \bm{v_s})\)</span> la matriz cuyas
+columnas son los autovectores y <span class="math inline">\(\bm\Lambda\)</span> la matriz diagonal que
+contiene los autovalores correspondientes ordenados de mayor a menor, es
+decir,
+<span class="math inline">\(\bm\Lambda=\textnormal{diag} \left(1,\lambda_2,\ldots,\lambda_{s}\right)\)</span>.
+Entonces las coordenadas de las filas respecto de las componentes
+principales vendrán dadas por las columnas segunda, tercera y sucesivas
+de la matriz</p>
+<p><span class="math display">\[\bm{A}=\bm{XV}
+=\left(\begin{array}{c} {\bm{r_1^e}}^\prime{} \\ \vdots \\  {\bm{r_r^e}}^\prime{} \end{array}\right)
+\left(\bm{m_y^e}, \bm{v_2}, \ldots, \bm{v_s}\right)
+=\left(\begin{array}{ccccc}
+1 &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1s} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; a_{r2} &amp; a_{r3} &amp; \cdots &amp; a_{rs} \end{array}\right).\]</span></p>
+<p>Estas coordenadas verifican las siguientes propiedades:</p>
+<ul>
+<li><p>Las coordenadas tienen media ponderada cero.
+<span class="math inline">\(\left(\ \sum_{i=1}^r f_{i\bullet} a_{ij}=0\ \ \forall j\in\{2,\ldots,s\}\ \right).\)</span></p></li>
+<li><p>Las distancias euclídeas entre los vectores de coordenadas de dos
+filas coincide con la distancia euclídea entre los correspondientes
+perfiles estandarizados, la cual a su vez coincidía con la distancia
+ji cuadrado entre los perfiles de fila originarios.</p></li>
+</ul>
+</div>
+<div id="contribuciones" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Contribuciones<a href="analisis-de-correspondencias.html#contribuciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>De la segunda propiedad se deduce que la distancia al centroide, esto
+es, al perfil medio, de cada perfil de fila se puede expresar:
+<span class="math display">\[d^2(\bm{r_i},\bm{m_y})=\sum_{k=2}^s a_{ik}^2\]</span> y esto, multiplicado
+por <span class="math inline">\(f_{i\bullet}\)</span>, lo concebimos como la contribución del perfil de
+fila <span class="math inline">\(i\)</span>-ésimo a la inercia total.</p>
+<p>El análisis de componentes principales de los perfiles estandarizados da
+lugar a una descomposición de la inercia como suma de los autovalores</p>
+<p><span class="math display">\[\frac{\chi^2}{n}=\textnormal{traza}(\bm{\Sigma_r})=\lambda_2+\lambda_3+\ldots+\lambda_s\]</span>
+siendo</p>
+<p><span class="math display">\[\lambda_k = \bm{v_k}^{\prime} \bm{X}^{\prime} \bm{D_r X v_k} = \sum_{i=1}^r f_{i\bullet} a_{ik}^2.\]</span>
+Para una fácil comprensión de la segunda igualdad, debe recordarse que
+<span class="math inline">\(\bm{X v_k}\)</span> es el vector columna (columna <span class="math inline">\(k\)</span>-ésima de la matriz
+<span class="math inline">\(\bm{A}\)</span>) que contiene las cooordenadas de cada perfil de fila respecto
+de la componente <span class="math inline">\(k\)</span>-ésima.</p>
+<p>La tabla siguiente es una descomposición de la inercia total en perfiles
+de fila y componentes:</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+&amp; \mbox{ Componente 2}  &amp; \cdots &amp; \mbox{ Componente k} &amp; \cdots
+  &amp; \mbox{ Componente s} &amp; \\ \hline
+\mbox{ Perfil 1}
+&amp; f_{1\bullet} a_{12}^2 &amp; \cdots &amp; f_{1\bullet} a_{1k}^2
+&amp; \cdots &amp; f_{1\bullet} a_{1s}^2 &amp; \sum_{k=2}^s f_{1\bullet} a_{1k}^2 \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\
+\mbox{ Perfil i}
+&amp; f_{i\bullet} a_{i2}^2  &amp; \cdots &amp; f_{i\bullet} a_{ik}^2
+&amp; \cdots &amp; f_{i\bullet} a_{is}^2 &amp; \sum_{k=2}^s f_{i\bullet} a_{ik}^2 \\
+\vdots &amp; \vdots  &amp; &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\
+\mbox{ Perfil r}
+&amp; f_{r\bullet} a_{r2}^2  &amp; \cdots &amp; f_{r\bullet} a_{rk}^2
+&amp; \cdots &amp; f_{r\bullet} a_{rs}^2 &amp; \sum_{k=2}^s f_{1\bullet} a_{rk}^2 \\
+\hline &amp; \sum_{i=1}^r f_{i\bullet} a_{i 2}^2 &amp; \cdots &amp; \sum_{i=1}^r f_{i\bullet} a_{i k}^2
+&amp; \cdots &amp; \sum_{i=1}^r f_{i\bullet} a_{i s}^2 &amp; \chi^2/n \end{array}\]</span></p>
+<p>La proporción de variabilidad explicada si tomamos <span class="math inline">\((k-1)\)</span> componentes
+(<span class="math inline">\(k\leq s\)</span>) será:
+<span class="math display">\[\frac{\lambda_2+\ldots+\lambda_k}{\lambda_2+\ldots+\lambda_{s}}\]</span> y
+sería como quedarnos con las <span class="math inline">\((k-1)\)</span> primeras columnas (de la <span class="math inline">\(2\)</span> a la
+<span class="math inline">\(k\)</span>) tanto en la matriz <span class="math inline">\(\bm{A}\)</span> como en la tabla anterior.</p>
+</div>
+</div>
+<div id="representacion-de-los-perfiles-de-columna" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Representación de los perfiles de columna<a href="analisis-de-correspondencias.html#representacion-de-los-perfiles-de-columna" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analisis-de-componentes-principales-de-los-perfiles-estandarizados-2" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Análisis de componentes principales de los perfiles estandarizados<a href="analisis-de-correspondencias.html#analisis-de-componentes-principales-de-los-perfiles-estandarizados-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El análisis anterior de los perfiles de fila se puede repetir de la
+misma manera para los perfiles de columna. Los pasos se llevan a cabo en
+perfecta analogía con el caso anterior. Resumiendo, tendríamos que la
+inercia total se puede expresar como media ponderada de las distancias
+ji-cuadrado de los perfiles de columna (a su media), o equivalentemente,
+como las distancias euclídeas de los perfiles estandarizados (a su media
+correspondiente):</p>
+<p><span class="math display">\[\frac{\chi^2}{n}
+=\sum_{j=1}^s f_{\bullet j} \sum_{i=1}^r
+\left(\frac{f_{ij}}{f_{\bullet j}\sqrt{f_{i \bullet}}}-\sqrt{f_{i \bullet}}\right)^2
+=\sum_{j=1}^s f_{\bullet j} \left\|\bm{c_i^e}-\bm{m_x^e}\right\|^2.\]</span></p>
+<p>Formamos la matriz <span class="math inline">\(\bm{Y}\)</span>, cuyas columnas son los perfiles de columna
+estandarizados:</p>
+<p><span class="math display">\[\bm{Y}=\left(\frac{f_{ij}}{f_{\bullet j}\sqrt{f_{i \bullet}}}\right)_{i,j}
+=\left( \bm{c_1^e}, \ldots,  \bm{c_s^e} \right)\]</span> la cual se concibe
+como una matriz de observaciones transpuesta, donde cada fila es una
+variable y cada columna es un individuo, ponderado por la frecuencia
+marginal <span class="math inline">\(f_{\bullet j}\)</span> que le corresponda. Entonces el vector de
+medias es:
+<span class="math inline">\(\bm{m_x^e}=\left(\sqrt{f_{1 \bullet}},\ldots,\sqrt{f_{r \bullet}}\right)^{\prime}\)</span>
+y la matriz de covarianzas:</p>
+<p><span class="math display">\[\bm{\Sigma_s}=\bm{Y D_s Y^{\prime}} - \bm{m_x^e} {\bm{m_x^e}}^{\prime}\]</span>
+siendo <span class="math inline">\(\bm{D_s}=\textnormal{diag}(f_{\bullet 1},\ldots,f_{\bullet s})\)</span>.</p>
+<p>De nuevo se aplica el Análisis de Componentes Principales, mediante la
+diagonalización de la matriz de covarianzas <span class="math inline">\(\bm{\Sigma_s}\)</span>. Surge
+entonces el resultado siguiente.</p>
+<p><strong>Resultado</strong>. La matriz <span class="math inline">\(\bm{Y D_s Y^{\prime}}\)</span> es una matriz simétrica
+y semidefinida positiva, y tiene al vector <span class="math inline">\(\bm{m_x^e}\)</span> como vector
+propio de valor propio uno.</p>
+<p>En base a este resultado, <span class="math inline">\(\bm{m_x^e}{\bm{m_x^e}}^{\prime}\)</span> no es más
+que el primer término de la descomposición espectral de
+<span class="math inline">\(\bm{Y D_s Y^{\prime}}\)</span>, <span class="math inline">\(\bm{m_x^e}\)</span> es un autovector de
+<span class="math inline">\(\bm{\Sigma_s}\)</span> de autovalor cero, y el resto de autovectores y
+autovalores de <span class="math inline">\(\bm{\Sigma_s}\)</span> e <span class="math inline">\(\bm{Y D_s Y^{\prime}}\)</span> coinciden.</p>
+<p>De nuevo se pierde una dimensión en el espacio de los perfiles de
+columna, puesto que verifican una restricción lineal obvia, consecuencia
+de que sus componentes suman uno. Esta restricción se convierte en los
+perfiles de columna estandarizados, en que pertenecen al hiperplano cuyo
+vector característico es <span class="math inline">\(\bm{m_x^e}\)</span>. Así, <span class="math display">\[\frac{\chi^2}{n}
+=\mbox{traza} \left(\bm{Y D_s Y^{\prime}}\right)-1
+=\mbox{traza} \left(\bm{\Sigma_s}\right).\]</span></p>
+<p>Entonces, la diagonalización conduce a</p>
+<p><span class="math display">\[\bm{Y D_s Y^{\prime}}=\bm{W}\bm{\Lambda} \bm{W}^{\prime}\]</span> siendo
+<span class="math inline">\(\bm{W}=\left( \bm{m_x^e}, \bm{w_2}, \ldots, \bm{w_r}\right)\)</span> la matriz
+cuyas columnas son los autovectores y <span class="math inline">\(\bm{\Lambda}\)</span> la la matriz
+diagonal que contiene los autovalores correspondientes ordenados de
+mayor a menor, es decir
+<span class="math inline">\(\bm{\Lambda}=\mbox{diag} \left(1,\lambda_2,\ldots,\lambda_r \right)\)</span>.
+Ahora las coordenadas de las columnas respecto de las componentes
+principales vendrán dadas por las filas segunda, tercera y sucesivas de
+la matriz</p>
+<p><span class="math display">\[\bm{B}=\bm{W}^{\prime}\bm{Y}
+=\left(\begin{array}{c} {\bm{m_x^e}}^{\prime} \\ \bm{w_2}^{\prime} \\ \vdots \\ \bm{w_r}^{\prime} \end{array} \right)
+\left(\bm{c_1^e}, \ldots, \bm{c_s^e} \right)
+=\left(\begin{array}{ccc}
+1&amp; \cdots &amp; 1 \\
+b_{21} &amp; \cdots &amp; b_{2s} \\
+b_{31} &amp; \cdots &amp; b_{3s} \\
+\vdots &amp; \ddots &amp; \vdots \\
+b_{r1} &amp; \cdots &amp; b_{rs} \end{array}\right).\]</span></p>
+<p>Estas coordenadas verifican las siguientes propiedades:</p>
+<ul>
+<li><p>Las coordenadas tienen media ponderada cero.
+<span class="math inline">\(\left(\ \sum_{j=1}^s f_{\bullet j} b_{ij}=0\ \ \forall i\in\{2,\ldots,r\}\ \right).\)</span></p></li>
+<li><p>Las distancias euclídeas entre los vectores de coordenadas de dos
+columnas coincide con la distancia euclídea entre los
+correspondientes perfiles estandarizados, la cual a su vez coincidía
+con la distancia ji cuadrado entre los perfiles de columna
+originarios.</p></li>
+</ul>
+</div>
+<div id="contribuciones-2" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Contribuciones<a href="analisis-de-correspondencias.html#contribuciones-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>De la segunda propiedad se deduce que la distancia al centroide, esto
+es, al perfil medio, de cada perfil de columna se puede expresar:</p>
+<p><span class="math display">\[d^2(\bm{c_j},\bm{m_x})=\sum_{k=2}^r b_{k j}^2\]</span> y esto, multiplicado
+por <span class="math inline">\(f_{\bullet j}\)</span>, lo concebimos como la contribución del perfil de
+columna <span class="math inline">\(j\)</span>-ésimo a la inercia total.</p>
+<p>El análisis de componentes principales de los perfiles estandarizados da
+lugar a una descomposición de la inercia como suma de los autovalores</p>
+<p><span class="math display">\[\frac{\chi^2}{n}=\mbox{traza}(\bm{\Sigma_s})=\lambda_2+\lambda_3+\ldots+\lambda_r\]</span>
+siendo</p>
+<p><span class="math display">\[\lambda_k = \bm{w_k}^{\prime} \bm{Y D_s Y^{\prime}} \bm{w_k} = \sum_{j=1}^r f_{\bullet j} b_{kj}^2.\]</span>
+Para una fácil comprensión de la segunda igualdad, debe recordarse que
+<span class="math inline">\(\bm{w_k}^{\prime}\bm{Y}\)</span> es el vector fila (fila <span class="math inline">\(k\)</span>-ésima de la matriz
+<span class="math inline">\(\bm{B}\)</span>) que contiene las cooordenadas de cada perfil de columna
+respecto de la componente <span class="math inline">\(k\)</span>-ésima.</p>
+<p>La tabla siguiente es una descomposición de la inercia total en perfiles
+de columna y componentes:</p>
+<p><span class="math display">\[\begin{array}{c|ccccc|c}
+&amp; \mbox{ Perfil 1} &amp;  \cdots &amp; \mbox{ Perfil j} &amp; \cdots
+  &amp; \mbox{ Perfil s} &amp; \\ \hline
+\mbox{ Componente 2}
+&amp; f_{\bullet 1} b_{21}^2 &amp;  \cdots &amp; f_{\bullet j} b_{2j}^2
+&amp; \cdots &amp; f_{\bullet s} b_{2s}^2 &amp; \sum_{j=1}^s f_{\bullet j} b_{2j}^2 \\
+\vdots &amp; \vdots &amp;  &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\
+\mbox{ Componente k}
+&amp; f_{\bullet 1} b_{k1}^2 &amp;  \cdots &amp; f_{\bullet j} b_{kj}^2
+&amp; \cdots &amp; f_{\bullet s} b_{ks}^2 &amp; \sum_{j=1}^s f_{\bullet j} b_{kj}^2 \\
+\vdots &amp; \vdots &amp;  &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\
+\mbox{ Componente r}
+&amp; f_{\bullet 1} b_{r1}^2 &amp;  \cdots &amp; f_{\bullet j} b_{rj}^2
+&amp; \cdots &amp; f_{\bullet s} b_{rs}^2 &amp; \sum_{j=1}^s f_{\bullet j} b_{rj}^2 \\
+\hline &amp; \sum_{k=2}^r f_{\bullet 1} b_{k 1}^2 &amp; \cdots
+&amp; \sum_{k=2}^r f_{\bullet j} b_{k j}^2
+&amp; \cdots &amp; \sum_{k=2}^r f_{\bullet s} b_{k s}^2 &amp; \chi^2/n \end{array}\]</span></p>
+<p>La proporción de variabilidad explicada si tomamos <span class="math inline">\((k-1)\)</span> componentes
+(<span class="math inline">\(k\leq r\)</span>) será:</p>
+<p><span class="math display">\[\frac{\lambda_2+\ldots+\lambda_k}{\lambda_2+\ldots+\lambda_{r}}\]</span> y
+sería como quedarnos con las <span class="math inline">\((k-1)\)</span> primeras columnas (de la <span class="math inline">\(2\)</span> a la
+<span class="math inline">\(k\)</span>) tanto en la matriz <span class="math inline">\(\bm{B}\)</span> como en la tabla anterior.</p>
+</div>
+</div>
+<div id="representacion-simultanea-de-los-perfiles-de-fila-y-columna" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Representación simultánea de los perfiles de fila y columna<a href="analisis-de-correspondencias.html#representacion-simultanea-de-los-perfiles-de-fila-y-columna" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consideremos la matriz</p>
+<p><span class="math display">\[\bm{Z}=\left( \frac{f_{ij}}{\sqrt{f_{i\bullet}}\sqrt{f_{\bullet j}}} \right)_{i,j}.\]</span></p>
+<p>Observemos que</p>
+<p><span class="math display">\[\bm{X}=\bm{D_r}^{-1}\bm{F} \bm{D_s}^{-1/2},\ \ \ \ \bm{Y}=\bm{D_r}^{-1/2} \bm{F} \bm{D_s}^{-1},\ \ \ \ \bm{Z}=\bm{D_r}^{-1/2} \bm{F}\bm{D_s}^{-1/2}\]</span>
+siendo <span class="math inline">\(\bm{F}=\left(f_{ij}\right)_{i,j}\)</span>. Entonces</p>
+<ul>
+<li><p><span class="math inline">\(\bm{X}^{\prime} \bm{D_r} \bm{X}=\bm{Z}^{\prime} \bm{Z}\qquad \bm{Y \bm{D_s} \bm{Y}^{\prime}}=\bm{Z}\bm{Z}^{\prime}.\)</span></p></li>
+<li><p>Si <span class="math inline">\(\bm{v}\)</span> es autovector de <span class="math inline">\(\bm{Z}^{\prime} \bm{Z}\)</span> con autovalor
+asociado <span class="math inline">\(\lambda\)</span>, entonces <span class="math inline">\(\bm{w}=\bm{Z}\bm{v}\)</span> es autovector de
+<span class="math inline">\(\bm{Z}\bm{Z}^{\prime}\)</span> con autovalor asociado <span class="math inline">\(\lambda\)</span>.</p></li>
+</ul>
+<p>Por tanto, ambas matrices tienen los mismos autovalores, mientras que
+los autovectores mantienen la relación que se acaba de indicar. Como
+consecuencia, el número de autovalores no nulos será
+<span class="math inline">\(k_0\leq \min\{r,s\}\)</span>. En lo que sigue supondremos una matriz común de
+autovalores no nulos <span class="math inline">\(\bm{D_{\lambda}}\)</span> de orden <span class="math inline">\(k_0\)</span>, y los
+autovectores y coordenadas se referirán únicamente a las <span class="math inline">\(k_0\)</span>
+componentes asociadas a estos autovalores no nulos, tanto cuando se
+interpreten en el espacio de filas como en el de columnas.</p>
+<p>Recordemos la diagonalización</p>
+<p><span class="math display">\[\bm{Z}^{\prime} \bm{Z}= \bm{X}^{\prime} \bm{D_r} \bm{X}= \bm{V}\bm{D_{\lambda}}\bm{V}^{\prime}.\]</span>
+Entonces las columnas de <span class="math inline">\(\bm{ZV}\)</span> son los autovectores de
+<span class="math inline">\(\bm{Z}\bm{Z}^{\prime}\)</span>, que una vez normalizadas darán lugar a la
+matriz ortogonal para la diagonalización
+<span class="math inline">\(\bm{Z}\bm{Z}^{\prime}= \bm{W}\bm{D_{\lambda}} \bm{W}^{\prime}\)</span>:</p>
+<p><span class="math display">\[\bm{W}=\bm{Z}\bm{VD_{\lambda}}^{-1/2}.\]</span> Finalmente, las coordenadas de
+los perfiles de columna eran las columnas de la matriz</p>
+<p><span class="math display">\[\bm{B}=\bm{W}^{\prime}\bm{Y}.\]</span> Vamos a deducir la relación que existe
+entre estas coordenadas y las coordenadas de los perfiles de fila,
+<span class="math inline">\(\bm{A}=\bm{XV}\)</span>.</p>
+<p><span class="math display">\[\begin{aligned}
+\bm{B}&amp;= \bm{W}^{\prime}\bm{Y}= \left(\bm{Z}\bm{V}\bm{D_{\lambda}}^{-1/2}\right)^{\prime} \bm{Y}
+=\bm{D_{\lambda}}^{-1/2}\bm{V}^{\prime} \bm{Z}^{\prime} \bm{Y} \\
+&amp;=\bm{D_{\lambda}}^{-1/2} \bm{V}^{\prime} \left(\bm{D_r}^{-1/2}\bm{F}\bm{D_s}^{-1/2}\right)^{\prime} \bm{D_r}^{-1/2}\bm{F}\bm{D_s}^{-1}
+=\bm{D_{\lambda}}^{-1/2} \bm{V}^{\prime} \bm{D_s}^{-1/2} \bm{F}^{\prime} \bm{D_r}^{-1} \bm{F}\bm{D_s}^{-1} \\
+&amp;=\bm{D_{\lambda}}^{-1/2} \bm{A}^{\prime} \bm{F}\bm{D_s}^{-1}. \end{aligned}\]</span>
+En la última igualdad se ha utilizado que
+<span class="math inline">\(\bm{A}=\bm{X}\bm{V}=\bm{D_r}^{-1}\bm{F}\bm{D_s}^{-1/2}\bm{V}\)</span>. Pero el
+resultado obtenido se puede escribir así:</p>
+<p><span class="math display">\[b_{kj}=\frac{1}{\sqrt{\lambda_k}} \left( \frac{f_{1j}}{f_{\bullet j}} a_{1k}
++\ldots + \frac{f_{rj}}{f_{\bullet j}} a_{rk} \right)\]</span> de modo que la
+coordenada del perfil de columna <span class="math inline">\(j\)</span>-ésimo en la componente <span class="math inline">\(k\)</span>-ésima es
+una combinación ponderada de las coordenadas de cada perfil de fila en
+dicha componente, siendo los pesos de tal ponderación las frecuencias
+relativas de cada categoría de la variable <span class="math inline">\(x\)</span> condicionada a la
+categoría j de <span class="math inline">\(y\)</span>. Así, si una categoría i presenta alta frecuencia
+condicionada pesará más en esta combinación, aproximando hacia sí la
+coordenada de la categoría <span class="math inline">\(j\)</span> de la variable <span class="math inline">\(y\)</span>. De igual modo, se puede ver que</p>
+<p><span class="math display">\[\bm{A}=\bm{D_r}^{-1}\bm{F}\bm{B}^{\prime}\bm{D_{\lambda}}^{-1/2}.\]</span></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> En el ejemplo sobre los datos de la EPA (2010), vamos a
+representar en un mismo gráfico bidimensional los perfiles de fila y
+columna.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="analisis-de-correspondencias.html#cb79-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(MASS)  <span class="co"># Cargamos el paquete MASS (Venables y Ripley)</span></span>
+<span id="cb79-2"><a href="analisis-de-correspondencias.html#cb79-2" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat<span class="sc">$</span>Ocupados, dat<span class="sc">$</span>Parados, dat<span class="sc">$</span>Inactivos)  <span class="co"># Frecuencias absolutas</span></span>
+<span id="cb79-3"><a href="analisis-de-correspondencias.html#cb79-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rownames</span>(m) <span class="ot">&lt;-</span> dat<span class="sc">$</span>Comunidad.Autónoma  <span class="co"># Nombres de filas</span></span>
+<span id="cb79-4"><a href="analisis-de-correspondencias.html#cb79-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colnames</span>(m) <span class="ot">&lt;-</span> <span class="fu">names</span>(dat)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]  <span class="co"># Nombres de las columnas</span></span>
+<span id="cb79-5"><a href="analisis-de-correspondencias.html#cb79-5" tabindex="-1"></a><span class="sc">&gt;</span> r <span class="ot">&lt;-</span> <span class="fu">nrow</span>(m)  <span class="co"># Número de filas</span></span>
+<span id="cb79-6"><a href="analisis-de-correspondencias.html#cb79-6" tabindex="-1"></a><span class="sc">&gt;</span> s <span class="ot">&lt;-</span> <span class="fu">ncol</span>(m)  <span class="co"># Número de columnas</span></span>
+<span id="cb79-7"><a href="analisis-de-correspondencias.html#cb79-7" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">sum</span>(m)  <span class="co"># Frecuencia total (tamaño muestral)</span></span>
+<span id="cb79-8"><a href="analisis-de-correspondencias.html#cb79-8" tabindex="-1"></a><span class="sc">&gt;</span> f <span class="ot">&lt;-</span> m<span class="sc">/</span>n  <span class="co"># Frecuencias relativas (conjuntas)</span></span>
+<span id="cb79-9"><a href="analisis-de-correspondencias.html#cb79-9" tabindex="-1"></a><span class="sc">&gt;</span> mx <span class="ot">&lt;-</span> <span class="fu">apply</span>(f, <span class="dv">1</span>, sum)  <span class="co"># Frecuencias marginales de columna</span></span>
+<span id="cb79-10"><a href="analisis-de-correspondencias.html#cb79-10" tabindex="-1"></a><span class="sc">&gt;</span> my <span class="ot">&lt;-</span> <span class="fu">apply</span>(f, <span class="dv">2</span>, sum)  <span class="co"># Frecuencias marginales de fila</span></span></code></pre></div>
+<p>Calculamos los perfiles de fila y columna.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="analisis-de-correspondencias.html#cb80-1" tabindex="-1"></a><span class="sc">&gt;</span> ri <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span>mx) <span class="sc">%*%</span> f  <span class="co"># Perfiles de fila</span></span>
+<span id="cb80-2"><a href="analisis-de-correspondencias.html#cb80-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rownames</span>(ri) <span class="ot">&lt;-</span> dat<span class="sc">$</span>Comunidad.Autónoma</span>
+<span id="cb80-3"><a href="analisis-de-correspondencias.html#cb80-3" tabindex="-1"></a><span class="sc">&gt;</span> cj <span class="ot">&lt;-</span> f <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span>my)  <span class="co"># Perfiles de columna</span></span>
+<span id="cb80-4"><a href="analisis-de-correspondencias.html#cb80-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">colnames</span>(cj) <span class="ot">&lt;-</span> <span class="fu">names</span>(dat)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<p>A continuación, calculamos las componentes principales de los perfiles
+de fila estandarizados.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="analisis-de-correspondencias.html#cb81-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> ri <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(my))  <span class="co"># Perfiles de fila estandarizados</span></span>
+<span id="cb81-2"><a href="analisis-de-correspondencias.html#cb81-2" tabindex="-1"></a><span class="sc">&gt;</span> mye <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(my)  <span class="co"># Marginal de fila estandarizada</span></span>
+<span id="cb81-3"><a href="analisis-de-correspondencias.html#cb81-3" tabindex="-1"></a><span class="sc">&gt;</span> sr <span class="ot">&lt;-</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> <span class="fu">diag</span>(mx) <span class="sc">%*%</span> x <span class="sc">-</span> mye <span class="sc">%*%</span> <span class="fu">t</span>(mye)  <span class="co"># Matriz Sigma_r</span></span>
+<span id="cb81-4"><a href="analisis-de-correspondencias.html#cb81-4" tabindex="-1"></a><span class="sc">&gt;</span> auto <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">t</span>(x) <span class="sc">%*%</span> <span class="fu">diag</span>(mx) <span class="sc">%*%</span> x)  <span class="co"># Diagonalización </span></span>
+<span id="cb81-5"><a href="analisis-de-correspondencias.html#cb81-5" tabindex="-1"></a><span class="sc">&gt;</span> lam <span class="ot">&lt;-</span> auto<span class="sc">$</span>values  <span class="co"># Autovalores</span></span>
+<span id="cb81-6"><a href="analisis-de-correspondencias.html#cb81-6" tabindex="-1"></a><span class="sc">&gt;</span> v <span class="ot">&lt;-</span> auto<span class="sc">$</span>vectors  <span class="co"># Autovectores</span></span></code></pre></div>
+<p>Calculamos ahora las coordenadas de los perfiles de fila estandarizados
+en las componentes y hacemos la representación (Figura
+<a href="analisis-de-correspondencias.html#fig:co">5.1</a>).</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="analisis-de-correspondencias.html#cb82-1" tabindex="-1"></a><span class="sc">&gt;</span> a <span class="ot">&lt;-</span> x <span class="sc">%*%</span> v</span>
+<span id="cb82-2"><a href="analisis-de-correspondencias.html#cb82-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(a[, <span class="dv">2</span>], a[, <span class="dv">3</span>])</span>
+<span id="cb82-3"><a href="analisis-de-correspondencias.html#cb82-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">text</span>(a[, <span class="dv">2</span>], a[, <span class="dv">3</span>], <span class="at">labels =</span> dat<span class="sc">$</span>Comunidad.Autónoma)</span>
+<span id="cb82-4"><a href="analisis-de-correspondencias.html#cb82-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb82-5"><a href="analisis-de-correspondencias.html#cb82-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:co"></span>
+<img src="bookdown_AM_files/figure-html/co-1.png" alt="Gráficos de perfiles de fila." width="50%" />
+<p class="caption">
+Figura 5.1: Gráficos de perfiles de fila.
+</p>
+</div>
+<p>A continuación, calculamos las componentes principales de los perfiles
+de columna estandarizados.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="analisis-de-correspondencias.html#cb83-1" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(mx)) <span class="sc">%*%</span> cj  <span class="co"># Perfiles de columna estandarizados</span></span>
+<span id="cb83-2"><a href="analisis-de-correspondencias.html#cb83-2" tabindex="-1"></a><span class="sc">&gt;</span> mxe <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(mx)  <span class="co"># Marginal de columna estandarizada</span></span>
+<span id="cb83-3"><a href="analisis-de-correspondencias.html#cb83-3" tabindex="-1"></a><span class="sc">&gt;</span> sigs <span class="ot">&lt;-</span> y <span class="sc">%*%</span> <span class="fu">diag</span>(my) <span class="sc">%*%</span> <span class="fu">t</span>(y) <span class="sc">-</span> mxe <span class="sc">%*%</span> <span class="fu">t</span>(mxe)  <span class="co"># Matriz Sigma_s</span></span>
+<span id="cb83-4"><a href="analisis-de-correspondencias.html#cb83-4" tabindex="-1"></a><span class="sc">&gt;</span> auto <span class="ot">&lt;-</span> <span class="fu">eigen</span>(y <span class="sc">%*%</span> <span class="fu">diag</span>(my) <span class="sc">%*%</span> <span class="fu">t</span>(y))  <span class="co"># Diagonalización </span></span>
+<span id="cb83-5"><a href="analisis-de-correspondencias.html#cb83-5" tabindex="-1"></a><span class="sc">&gt;</span> lam <span class="ot">&lt;-</span> auto<span class="sc">$</span>values  <span class="co"># Autovalores</span></span>
+<span id="cb83-6"><a href="analisis-de-correspondencias.html#cb83-6" tabindex="-1"></a><span class="sc">&gt;</span> w <span class="ot">&lt;-</span> auto<span class="sc">$</span>vectors  <span class="co"># Autovectores</span></span></code></pre></div>
+<p>Calculamos ahora las coordenadas de los perfiles de columna
+estandarizados en las componentes y hacemos la representación (Figura
+<a href="analisis-de-correspondencias.html#fig:cod">5.2</a>).</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="analisis-de-correspondencias.html#cb84-1" tabindex="-1"></a><span class="sc">&gt;</span> b <span class="ot">&lt;-</span> <span class="fu">t</span>(w) <span class="sc">%*%</span> y</span>
+<span id="cb84-2"><a href="analisis-de-correspondencias.html#cb84-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(b[<span class="dv">2</span>, ], b[<span class="dv">3</span>, ])</span>
+<span id="cb84-3"><a href="analisis-de-correspondencias.html#cb84-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">text</span>(b[<span class="dv">2</span>, ], b[<span class="dv">3</span>, ], <span class="fu">names</span>(dat)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb84-4"><a href="analisis-de-correspondencias.html#cb84-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb84-5"><a href="analisis-de-correspondencias.html#cb84-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cod"></span>
+<img src="bookdown_AM_files/figure-html/cod-1.png" alt="Gráficos de perfiles de columna." width="50%" />
+<p class="caption">
+Figura 5.2: Gráficos de perfiles de columna.
+</p>
+</div>
+<p>Hacemos ahora la representación simultánea (Figura <a href="analisis-de-correspondencias.html#fig:cos">5.3</a>).</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="analisis-de-correspondencias.html#cb85-1" tabindex="-1"></a><span class="sc">&gt;</span> z <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(mx)) <span class="sc">%*%</span> f <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(my))</span>
+<span id="cb85-2"><a href="analisis-de-correspondencias.html#cb85-2" tabindex="-1"></a><span class="sc">&gt;</span>  k0 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb85-3"><a href="analisis-de-correspondencias.html#cb85-3" tabindex="-1"></a><span class="sc">&gt;</span>  w <span class="ot">&lt;-</span> z <span class="sc">%*%</span> v[, <span class="dv">1</span><span class="sc">:</span>k0] <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(lam[<span class="dv">1</span><span class="sc">:</span>k0]))</span>
+<span id="cb85-4"><a href="analisis-de-correspondencias.html#cb85-4" tabindex="-1"></a><span class="sc">&gt;</span>  b <span class="ot">&lt;-</span> <span class="fu">t</span>(w) <span class="sc">%*%</span> y</span>
+<span id="cb85-5"><a href="analisis-de-correspondencias.html#cb85-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(<span class="fu">c</span>(a[, <span class="dv">2</span>], b[<span class="dv">2</span>, ]), <span class="fu">c</span>(a[, <span class="dv">3</span>], b[<span class="dv">3</span>, ]))</span>
+<span id="cb85-6"><a href="analisis-de-correspondencias.html#cb85-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">text</span>(<span class="fu">c</span>(a[, <span class="dv">2</span>], b[<span class="dv">2</span>, ]), <span class="fu">c</span>(a[, <span class="dv">3</span>], b[<span class="dv">3</span>, ]), </span>
+<span id="cb85-7"><a href="analisis-de-correspondencias.html#cb85-7" tabindex="-1"></a><span class="sc">+</span>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">as.character</span>(dat<span class="sc">$</span>Comunidad.Autónoma), <span class="fu">names</span>(dat)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]), </span>
+<span id="cb85-8"><a href="analisis-de-correspondencias.html#cb85-8" tabindex="-1"></a><span class="sc">+</span>      <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;blue&quot;</span>, r), <span class="fu">rep</span>(<span class="st">&quot;red&quot;</span>, s)), <span class="at">cex =</span> <span class="fl">0.7</span>)</span>
+<span id="cb85-9"><a href="analisis-de-correspondencias.html#cb85-9" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb85-10"><a href="analisis-de-correspondencias.html#cb85-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cos"></span>
+<img src="bookdown_AM_files/figure-html/cos-1.png" alt="Representación simultánea de los perfiles de fila y columna para los datos de la EPA." width="50%" />
+<p class="caption">
+Figura 5.3: Representación simultánea de los perfiles de fila y columna para los datos de la EPA.
+</p>
+</div>
+<p>También podemos hacer la representación utilizando el comando <code>corresp</code>.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="analisis-de-correspondencias.html#cb86-1" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> m</span>
+<span id="cb86-2"><a href="analisis-de-correspondencias.html#cb86-2" tabindex="-1"></a><span class="sc">&gt;</span> r.out <span class="ot">&lt;-</span> <span class="fu">corresp</span>(m, <span class="at">nf =</span> <span class="dv">2</span>)</span>
+<span id="cb86-3"><a href="analisis-de-correspondencias.html#cb86-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">biplot</span>(<span class="fu">corresp</span>(m, <span class="at">nf =</span> <span class="dv">2</span>), <span class="at">cex =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:co2"></span>
+<img src="bookdown_AM_files/figure-html/co2-1.png" alt="Representación simultánea de los perfiles de fila y columna para los datos de la EPA (función corresp)." width="50%" />
+<p class="caption">
+Figura 5.4: Representación simultánea de los perfiles de fila y columna para los datos de la EPA (función corresp).
+</p>
+</div>
+<p>El resultado se muestra en la Figura <a href="analisis-de-correspondencias.html#fig:co2">5.4</a>. El eje horizontal corresponde a la primera
+componente y el eje vertical a la segunda. La proximidad entre los
+puntos de distintas comunidades autónomas indica que presentan perfiles
+similares. Asimismo, si una comunidad autónoma está próxima al punto
+correspondiente a los Inactivos, esto indica que en su perfil hay un
+porcentaje alto de población inactiva. Igualmente para las categorías de
+Ocupados y Parados.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-de-componentes-principales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-discriminante.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown_AM.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "url": "https\://beatrizpateiro.github.io/materials/AM/AM_book/"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
