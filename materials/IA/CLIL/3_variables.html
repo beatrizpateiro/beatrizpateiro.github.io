@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Variables aleatorias – Laboratorios da materia Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./4_inferencia.html" rel="next">
+<link href="./2_probabilidade.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c5f0c0a35ff45d3efbfe7e2e7f738dd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3_variables.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Laboratorios da materia Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución a R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión linear</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#distribucións-en-r" id="toc-distribucións-en-r" class="nav-link active" data-scroll-target="#distribucións-en-r"><span class="header-section-number">3.1</span> Distribucións en R</a></li>
+  <li><a href="#principais-modelos-de-variables-aleatorias-discretas" id="toc-principais-modelos-de-variables-aleatorias-discretas" class="nav-link" data-scroll-target="#principais-modelos-de-variables-aleatorias-discretas"><span class="header-section-number">3.2</span> Principais modelos de variables aleatorias discretas</a>
+  <ul class="collapse">
+  <li><a href="#distribucións-de-bernoulli-e-binomial" id="toc-distribucións-de-bernoulli-e-binomial" class="nav-link" data-scroll-target="#distribucións-de-bernoulli-e-binomial"><span class="header-section-number">3.2.1</span> Distribucións de Bernoulli e Binomial</a></li>
+  <li><a href="#distribucións-xeométrica-e-binomial-negativa" id="toc-distribucións-xeométrica-e-binomial-negativa" class="nav-link" data-scroll-target="#distribucións-xeométrica-e-binomial-negativa"><span class="header-section-number">3.2.2</span> Distribucións xeométrica e binomial negativa</a></li>
+  <li><a href="#distribución-de-poisson" id="toc-distribución-de-poisson" class="nav-link" data-scroll-target="#distribución-de-poisson"><span class="header-section-number">3.2.3</span> Distribución de Poisson</a></li>
+  <li><a href="#distribución-hiperxeométrica" id="toc-distribución-hiperxeométrica" class="nav-link" data-scroll-target="#distribución-hiperxeométrica"><span class="header-section-number">3.2.4</span> Distribución hiperxeométrica</a></li>
+  </ul></li>
+  <li><a href="#principais-modelos-de-variables-aleatorias-continuas" id="toc-principais-modelos-de-variables-aleatorias-continuas" class="nav-link" data-scroll-target="#principais-modelos-de-variables-aleatorias-continuas"><span class="header-section-number">3.3</span> Principais modelos de variables aleatorias continuas</a>
+  <ul class="collapse">
+  <li><a href="#distribución-uniforme" id="toc-distribución-uniforme" class="nav-link" data-scroll-target="#distribución-uniforme"><span class="header-section-number">3.3.1</span> Distribución uniforme</a></li>
+  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal"><span class="header-section-number">3.3.2</span> Distribución normal</a></li>
+  <li><a href="#distribución-exponencial" id="toc-distribución-exponencial" class="nav-link" data-scroll-target="#distribución-exponencial"><span class="header-section-number">3.3.3</span> Distribución exponencial</a></li>
+  <li><a href="#distribución-gamma" id="toc-distribución-gamma" class="nav-link" data-scroll-target="#distribución-gamma"><span class="header-section-number">3.3.4</span> Distribución gamma</a></li>
+  <li><a href="#distribución-beta" id="toc-distribución-beta" class="nav-link" data-scroll-target="#distribución-beta"><span class="header-section-number">3.3.5</span> Distribución beta</a></li>
+  </ul></li>
+  <li><a href="#teorema-central-do-límite" id="toc-teorema-central-do-límite" class="nav-link" data-scroll-target="#teorema-central-do-límite"><span class="header-section-number">3.4</span> Teorema Central do Límite</a></li>
+  <li><a href="#exercicios" id="toc-exercicios" class="nav-link" data-scroll-target="#exercicios"><span class="header-section-number">3.5</span> EXERCICIOS</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLE/"><i class="bi bi-link-45deg"></i>Material de teoría</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Neste laboratorio imos explorar de forma práctica as ideas fundamentais vistas no tema de variables aleatorias. Estudaremos como representar e visualizar con R as distribucións máis importantes. Veremos como simular con R datos destas distribucións e analizaremos as mostras obtidas mediante representacións gráficas e comparacións coas distribucións teóricas. Tamén verificaremos o TCL de forma experimental.</p>
+<section id="distribucións-en-r" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="distribucións-en-r"><span class="header-section-number">3.1</span> Distribucións en R</h2>
+<p>R dispón de catro funcións básicas para traballar con distribucións de probabilidade. Cada unha destas funcións fórmase cun prefixo, que indica a acción que realiza a función, e un sufixo, que indica o modelo de distribución co que se está a traballar.</p>
+<div style="width:70%; margin: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prefixo en R</th>
+<th>Descrición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>d</code></td>
+<td>función de masa (distribucións discretas) ou función de densidade (distribucións continuas)</td>
+</tr>
+<tr class="even">
+<td><code>p</code></td>
+<td>probabilidade acumulada ou función de distribución</td>
+</tr>
+<tr class="odd">
+<td><code>q</code></td>
+<td>cuantís da distribución</td>
+</tr>
+<tr class="even">
+<td><code>r</code></td>
+<td>xeración de números aleatorios da distribución</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A continuación amósanse algúns dos sufixos que se empregan en R para modelos de variables aleatorias discretas:</p>
+<div style="width:50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Distribución</th>
+<th>Sufixo en R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Binomial</td>
+<td><code>binom</code></td>
+</tr>
+<tr class="even">
+<td>Xeométrica</td>
+<td><code>geom</code></td>
+</tr>
+<tr class="odd">
+<td>Poisson</td>
+<td><code>pois</code></td>
+</tr>
+<tr class="even">
+<td>Binomial negativa</td>
+<td><code>nbinom</code></td>
+</tr>
+<tr class="odd">
+<td>Hiperxeométrica</td>
+<td><code>hyper</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Na seguinte táboa figuran os sufixos que se empregan en R para os principais modelos de variables aleatorias continuas.</p>
+<div style="width:50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Distribución</th>
+<th>Sufixo en R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Uniforme continua</td>
+<td><code>unif</code></td>
+</tr>
+<tr class="even">
+<td>Normal</td>
+<td><code>norm</code></td>
+</tr>
+<tr class="odd">
+<td>Exponencial</td>
+<td><code>exp</code></td>
+</tr>
+<tr class="even">
+<td>Gamma</td>
+<td><code>gamma</code></td>
+</tr>
+<tr class="odd">
+<td>Beta</td>
+<td><code>beta</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Por exemplo, a función <code>rbinom()</code> utilízase para xerar números aleatorios dunha variable binomial, mentres que a función <code>dpois()</code> serve para calcular a función de masa dunha variable de Poisson e a función <code>dnorm()</code> para avaliar a función de densidade dunha variable normal. Estas funcións son moi útiles para comprender mellor como se comportan as variables aleatorias, xa que permiten visualizar as súas funcións de masa ou densidade, estudar a súa función de distribución e analizar o seu comportamento mediante a xeración de datos simulados.</p>
+</section>
+<section id="principais-modelos-de-variables-aleatorias-discretas" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="principais-modelos-de-variables-aleatorias-discretas"><span class="header-section-number">3.2</span> Principais modelos de variables aleatorias discretas</h2>
+<section id="distribucións-de-bernoulli-e-binomial" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="distribucións-de-bernoulli-e-binomial"><span class="header-section-number">3.2.1</span> Distribucións de Bernoulli e Binomial</h3>
+<p>Unha variable aleatoria binomial <span class="math inline">\(X\)</span> conta o <strong>número de éxitos en <span class="math inline">\(n\)</span> experimentos de Bernoulli independentes</strong> con probabilidade de éxito en cada intento <span class="math inline">\(p\)</span>. Lembra que unha variable de Bernoulli só toma dous valores: 1 (éxito) e 0 (fracaso) e a distribución caracterízase pola probabilidade de éxito <span class="math inline">\(p\)</span>.</p>
+<p>Se <span class="math inline">\(X\sim \textnormal{Binom}(n,p)\)</span>, entón:</p>
+<p><span class="math display">\[
+P(X = x) = \binom{n}{x} p^x (1 - p)^{n - x},\quad x = 0,1,\ldots,n.
+\]</span> Podemos calcular a función de masa dunha binomial en R coa función <code>dbinom()</code>. Por exemplo, se <span class="math inline">\(X\sim \textnormal{Binom}(n=5,p=0.3)\)</span> e queremos calcular <span class="math inline">\(P(X=2)\)</span>, escribimos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Representamos a continuación a función de masa dunha variable <span class="math inline">\(X\sim \textnormal{Binom}(5,0.3)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Número de intentos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="co"># Probabilidade de éxito de cada intento</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n <span class="co"># Valores que toma a variable</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, p) <span class="co"># Función de masa dunha Binom(n,p) avaliada en x</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, px, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"P(X=x)"</span>) <span class="co"># Representación da función de masa</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>O problema do cabaleiro de Meré
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No século XVII, os xogos de azar eran a principal diversión da alta sociedade francesa. Antoine Gombard, Cabaleiro de Meré, preguntoulle a Blaise Pascal (1623–1662) durante unha viaxe se era vantaxoso apostar polo resultado de obter polo menos un seis nunha serie de catro lanzamentos dun dado. No tema anterior obtivemos unha solución aproximada a este problema mediante simulación, pero pódese resolver de forma exacta empregando a distribución binomial como se amosa a continuación. (<em>Podes comparar o resultado coa solución aproximada obtida no tema anterior</em>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">dbinom</span>(<span class="dv">0</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>) <span class="co"># Probabilidade de obter polo menos un seis en 4 dados</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Lembra que a función de distribución <span class="math inline">\(F(x)\)</span> dunha variable aleatoria <span class="math inline">\(X\)</span> vén dada por <span class="math display">\[F(x)=P(X\leq x).\]</span> A función de distribución <span class="math inline">\(F(x)\)</span> describe a probabilidade de obter un valor igual ou inferior a <span class="math inline">\(x\)</span>. Se queremos avaliar a función de distribución dunha variable binomial en R utilizaremos a función <code>pbinom()</code>. Por exemplo, sexa <span class="math inline">\(X\thicksim \textnormal{Bin}(5,0.3)\)</span>. Para calcular <span class="math inline">\(F(2)=P(X\leq 2)\)</span>, escribimos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Observa que é equivalente a</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A función cuantil é a inversa da función de distribución. Representa o primeiro valor da variable que alcanza a probabilidade pedida. A función para calcular os cuantís dunha binomial en R é <code>qbinom()</code>. Por exemplo, a mediana de <span class="math inline">\(X\sim\textnormal{Binom}(5,0.3)\)</span> é:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Os cuartís de <span class="math inline">\(X\thicksim\textnormal{Binom}(5, 0.3)\)</span>, calcúlanse como:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A función para xerar en R números aleatorios dunha binomial é <code>rbinom()</code>. O primeiro argumento da función é o número de elementos que se van xerar. Por exemplo, se queremos xerar un único número dunha variable <span class="math inline">\(X\sim\textnormal{Binom}(5,0.3)\)</span> escribimos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>O problema do cabaleiro de Meré (outra forma de simular resultados do experimento)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Agora que sabemos que o número de seises obtidos en catro lanzamentos dun dado segue unha distribución binomial, podemos simular os resultados de moitas apostas de forma máis sinxela empregando a función <code>rbinom()</code>, sen necesidade de simular cada lanzamento de dado individualmente. Así, no seguinte código <code>n6</code> contén o número de seises obtidos en 4 lanzamentos de dados en cada unha das <code>B=100000</code> apostas. Finalmente, calculamos a frecuencia coa que se obtivo polo menos un seis, que proporciona unha aproximación á probabilidade exacta calculada anteriormente.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n6 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(B, <span class="dv">4</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(n6 <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="sc">/</span> B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribucións-xeométrica-e-binomial-negativa" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="distribucións-xeométrica-e-binomial-negativa"><span class="header-section-number">3.2.2</span> Distribucións xeométrica e binomial negativa</h3>
+<p>Consideramos agora o experimento que consiste en repetir un experimento de Bernoulli ata obter o primeiro éxito, e definimos a variable aleatoria <span class="math inline">\(X\)</span> como o <strong>número de fracasos antes de obter o primeiro éxito</strong>. Así definida, <span class="math inline">\(X\)</span> segue unha distribución xeométrica de parámetro <span class="math inline">\(p\)</span>, sendo <span class="math inline">\(p\)</span> probabilidade de éxito en cada intento. En R, <code>dgeom()</code> calcula a función de masa, <code>pgeom()</code> a función de distribución, <code>qgeom()</code> os cuantís, e <code>rgeom()</code> xera valores aleatorios dunha distribución xeométrica.</p>
+<p>Por exemplo, supoñamos que estamos xogando ao parchís e necesitamos sacar un cinco para poder saír da casa. Lanzamos repetidamente un dado. Cal é a probabilidade de obter exactamente 10 resultados distintos de cinco antes de conseguir o noso primeiro cinco? Observa que se consideramos a variable aleatoria <span class="math inline">\(X\)</span>= número de resultados distintos de 5 antes do primeiro cinco, entón <span class="math inline">\(X\sim \textnormal{Xe}(p=1/6)\)</span>. Queremos calcular <span class="math inline">\(P(X=10)\)</span>, é dicir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgeom</span>(<span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Sexa agora <span class="math inline">\(X\)</span> a variable aleatoria que representa o <strong>número de fracasos antes de acadar o <span class="math inline">\(k\)</span>-ésimo éxito</strong>. Así definida, <span class="math inline">\(X\)</span> segue unha distribución binomial negativa e denótase como <span class="math inline">\(X\sim\textnormal{BN}(k, p)\)</span> (a distribución xeométrica é un caso particular con <span class="math inline">\(k=1\)</span>). En R, <code>dnbinom()</code> calcula a función de masa, <code>pnbinom()</code> a función de distribución, <code>qnbinom()</code> os cuantís, e <code>rnbinom()</code> xera valores aleatorios dunha distribución binomial negativa.</p>
+<p>Por exemplo, supoñamos que no experimento que consiste en repetir o lanzamento dun dado, queremos calcular a probabilidade de obter exactamente 10 resultados distintos de cinco antes de conseguir o noso terceiro cinco. Observa que se consideramos a variable aleatoria <span class="math inline">\(X\)</span>= número de resultados distintos de 5 antes do terceiro cinco, entón <span class="math inline">\(X\sim \textnormal{BN}(k=3, p=1/6)\)</span>. Queremos calcular <span class="math inline">\(P(X=10)\)</span>, é dicir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnbinom</span>(<span class="dv">10</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="distribución-de-poisson" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="distribución-de-poisson"><span class="header-section-number">3.2.3</span> Distribución de Poisson</h3>
+<p>Un proceso de Poisson xeneraliza en certa medida o proceso de Bernoulli. Consiste en observar o número de veces que se presenta un suceso (número de éxitos) nun determinado intervalo (xeralmente de tempo). Nestes procesos supónse que hai estabilidade, no sentido de que o número medio de sucesos por unidade de tempo (<span class="math inline">\(\lambda\)</span>) permanece constante. Sexa <span class="math inline">\(\lambda &gt; 0\)</span> o número medio de sucesos no intervalo e <span class="math inline">\(X\)</span> o <strong>número de éxitos por intervalo</strong>. Así definida <span class="math inline">\(X\)</span> ten distribución de Poisson de parámetro <span class="math inline">\(\lambda\)</span> e denotamos <span class="math inline">\(X \sim \text{Pois}(\lambda)\)</span>.</p>
+<p>En R, <code>dpois()</code> calcula a función de masa, <code>ppois()</code> a función de distribución, <code>qpois()</code> os cuantís, e <code>rpois()</code> xera valores aleatorios dunha distribución de Poisson.</p>
+<p>Por exemplo, representamos a continuación a función de masa dunha variable <span class="math inline">\(X\sim \text{Pois}(\lambda=3)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">dpois</span>(x, lambda)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, px, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"P(X=x)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-hiperxeométrica" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="distribución-hiperxeométrica"><span class="header-section-number">3.2.4</span> Distribución hiperxeométrica</h3>
+<p>Consideremos unha poboación finita de <span class="math inline">\(N\)</span> elementos, dos cales <span class="math inline">\(k\)</span> pertencen á unha certa clase D e <span class="math inline">\(N-k\)</span> ao resto. Se agora tomamos unha mostra <strong>sen reposición</strong> de tamaño <span class="math inline">\(n\)</span> e estudamos a variable aleatoria <span class="math inline">\(X\)</span> que representa o <strong>número de elementos da clase D na mostra de tamaño <span class="math inline">\(n\)</span></strong>, esta segue unha distribución hiperxeométrica <span class="math inline">\(X \sim \text{H}(N, n, k)\)</span>.</p>
+<p>En R, <code>dhyper()</code> calcula a función de masa, <code>phyper()</code> a función de distribución, <code>qhyper()</code> os cuantís, e <code>rhyper()</code> xera valores aleatorios dunha distribución hiperxeométrica. Para especificar a distribución hiperxeométrica coa que queremos traballar, debemos especificar tres argumentos (<code>m</code>, <code>n</code>, <code>k</code>). Temos que ter coidado con estes argumentos, pois non coinciden exactamente cos valores <span class="math inline">\(N\)</span>, <span class="math inline">\(n\)</span> e <span class="math inline">\(k\)</span>. Así:</p>
+<div style="width:70%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Argumento</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>m</code></td>
+<td>número de elementos da clase D na poboación (<span class="math inline">\(k\)</span>)</td>
+</tr>
+<tr class="even">
+<td><code>n</code></td>
+<td>número de elementos da outra clase (<span class="math inline">\(N-k\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><code>k</code></td>
+<td>tamaño da mostra (<span class="math inline">\(n\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Supoñamos o seguinte exemplo: 15 cidadáns estadounidenses e 20 non cidadáns estadounidenses pasan por unha liña de seguridade nun aeroporto. Selecciónanse aleatoriamente dez persoas para un control adicional. ¿Cal é a probabilidade de que dous ou menos dos pasaxeiros seleccionados sexan cidadáns estadounidenses? Sexa <span class="math inline">\(X\)</span> o número de cidadáns estadounidenses na mostra de tamaño <span class="math inline">\(n=10\)</span>. Así definida <span class="math inline">\(X \sim \text{H}(N=35, n=10, k=15)\)</span>. Queremos calcular <span class="math inline">\(P(X\leq 2)\)</span>. En R teríamos que executar:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">2</span>, <span class="at">m =</span> <span class="dv">15</span>, <span class="at">n =</span> <span class="dv">20</span>, <span class="at">k =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="principais-modelos-de-variables-aleatorias-continuas" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="principais-modelos-de-variables-aleatorias-continuas"><span class="header-section-number">3.3</span> Principais modelos de variables aleatorias continuas</h2>
+<section id="distribución-uniforme" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="distribución-uniforme"><span class="header-section-number">3.3.1</span> Distribución uniforme</h3>
+<p>Unha variable aleatoria <span class="math inline">\(X\)</span> segue unha distribución uniforme nun intervalo <span class="math inline">\([a, b]\)</span> se a función de densidade é constante no intervalo, é dicir,</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{1}{b - a}, &amp; \text{se } x \in (a,b), \\
+0, &amp; \text{en caso contrario}.
+\end{cases}
+\]</span></p>
+<p>En R, <code>dunif()</code> avalía a función de densidade, <code>punif()</code> a función de distribución, <code>qunif()</code> os cuantís, e <code>runif()</code> xera valores aleatorios dunha distribución uniforme continua.</p>
+<p>Representamos a función de densidade e a función de distribución dunha variable <span class="math inline">\(X\sim\textnormal{Unif}([0,1])\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(a <span class="sc">-</span> <span class="dv">1</span>, b <span class="sc">+</span> <span class="dv">1</span>, <span class="at">length =</span> <span class="dv">1000</span>) <span class="co"># Valores onde avaliar f</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dunif</span>(x, <span class="at">min =</span> a, <span class="at">max =</span> b) <span class="co"># Función de densidade</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">punif</span>(x, <span class="at">min =</span> a, <span class="at">max =</span> b) <span class="co"># Función de distribución</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de densidade"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de distribución"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Calculamos como exemplo os cuartís dunha variable <span class="math inline">\(X\sim\textnormal{Unif}([1,2])\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qunif</span>(<span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A continuación xeramos 1000 números aleatorios seguindo unha distribución uniforme continua no intervalos <span class="math inline">\([0,1]\)</span> e calculamos a súa media.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xu <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xu)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="distribución-normal" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="distribución-normal"><span class="header-section-number">3.3.2</span> Distribución normal</h3>
+<p>Sexa <span class="math inline">\(X\)</span> unha variable aleatoria con distribución normal de media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^{2}\)</span>. Denotámola <span class="math inline">\(X\sim \text{N}(\mu, \sigma)\)</span>. Lembramos que a súa función de densidade vén dada por:</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^{2}}}, \quad -\infty &lt; x &lt; \infty.
+\]</span></p>
+<p>En R, <code>dnorm()</code> avalía a función de densidade, <code>pnorm()</code> a función de distribución, <code>qnorm()</code> os cuantís, e <code>rnorm()</code> xera valores aleatorios dunha distribución normal.</p>
+<p>Representamos a función de densidade e a función de distribución dunha variable <span class="math inline">\(X\sim \text{N}(0,1)\)</span> (normal estándar).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length =</span> <span class="dv">1000</span>) <span class="co"># Valores onde avaliar f</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># Función de densidade</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># Función de distribución</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de densidade"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de distribución"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Moitas veces resulta útil transformar unha variable normal <span class="math inline">\(X\sim \text{N}(\mu, \sigma)\)</span> nunha variable normal estándar (de media 0 e varianza 1). Isto faise mediante a estandarización:</p>
+<p><span class="math display">\[Z=\frac{X-\mu}{\sigma}\sim \text{N}(0, 1).\]</span></p>
+<p>Por exemplo, se <span class="math inline">\(X\sim \text{N}(\mu=4, \sigma=2)\)</span>, entón <span class="math inline">\(P(X\leq 6)=P\left(\frac{X-4}{2}\leq \frac{6-4}{2}\right)=P(Z\leq 1)\)</span>. Comprobámolo con R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co"># P(X&lt;6) con X~N(6,2)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="co"># P(Z&lt;1) con Z~N(0,1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Calculamos a continuación os cuartís dunha variable <span class="math inline">\(X\sim\textnormal{N}(0,1)\)</span>. Observa que non é necesario especificar os argumentos <code>mean = 0</code> e <code>sd = 1</code>, xa que eses son os seus valores por defecto.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Por último, xeramos 1000 números aleatorios seguindo unha distribución normal estándar. Representamos o histograma destes datos e engadimos a curva da función de densidade correspondente (neste caso o facemos coa función <code>curve()</code>, que permite debuxar unha función matemática sobre un gráfico). Deste xeito, podemos comprobar visualmente que os datos xerados se distribúen segundo o esperado, é dicir, se parecen á distribución normal teórica.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xn <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(xn, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-exponencial" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="distribución-exponencial"><span class="header-section-number">3.3.3</span> Distribución exponencial</h3>
+<p>Sexa <span class="math inline">\(X\)</span> unha variable aleatoria con distribución exponencial de parámetro <span class="math inline">\(\lambda\)</span>. Denotámola <span class="math inline">\(X\sim\text{Exp}(\lambda)\)</span>. Lembramos que a súa función de densidade vén dada por:</p>
+<p><span class="math display">\[f(x) = \begin{cases}
+\lambda e^{-\lambda x} &amp; \text{se } x &gt; 0, \\
+0 &amp; \text{noutro caso}.
+\end{cases}\]</span></p>
+<p>En R, <code>dexp()</code> avalía a función de densidade, <code>pexp()</code> a función de distribución, <code>qexp()</code> os cuantís, e <code>rexp()</code> xera valores aleatorios dunha distribución exponencial.</p>
+<p>Como exemplo, representamos a función de densidade e a función de distribución dunha variable <span class="math inline">\(X\sim \text{Exp}(\lambda=2)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">length =</span> <span class="dv">1000</span>) <span class="co"># Valores onde avaliar f</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dexp</span>(x, <span class="at">rate =</span> lambda) <span class="co"># Función de densidade</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">pexp</span>(x, <span class="at">rate =</span> lambda) <span class="co"># Función de distribución</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de densidade"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de distribución"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-22-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-gamma" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="distribución-gamma"><span class="header-section-number">3.3.4</span> Distribución gamma</h3>
+<p>Unha variable aleatoria <span class="math inline">\(X\)</span> que mide o tempo de espera ata o suceso número <span class="math inline">\(k\)</span> nun proceso de Poisson segue unha distribución gamma de parámetros <span class="math inline">\(\lambda\)</span> e <span class="math inline">\(k\)</span>. Denótase por <span class="math inline">\(X\sim\text{Gamma}(\lambda, k)\)</span>, onde o primeiro parámetro representa o número medio de sucesos por unidade de tempo e <span class="math inline">\(k\)</span> é o número de sucesos que queremos que ocorran (é unha xeneralización da distribución exponencial). A función de densidade é</p>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+\frac{\lambda^k}{\Gamma(k)} e^{-\lambda x} x^{k-1} &amp; \text{se } x &gt; 0, \\
+0 &amp; \text{noutro caso}
+\end{cases}
+\]</span></p>
+<p>onde para valores de <span class="math inline">\(k\)</span> naturais distintos de cero, <span class="math inline">\(\Gamma(k) = (k - 1)!=(k-1)(k-2)\cdots 2\cdot 1\)</span>.</p>
+<p>En R, <code>dgamma()</code> avalía a función de densidade, <code>pgamma()</code> a función de distribución, <code>qgamma()</code> os cuantís, e <code>rgamma()</code> xera valores aleatorios dunha distribución gamma.</p>
+<p>Como exemplo, representamos a función de densidade e a función de distribución dunha variable <span class="math inline">\(X\sim\Gamma(\lambda=2, k=3)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">length =</span> <span class="dv">1000</span>) <span class="co"># Valores onde avaliar f</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> k, <span class="at">rate =</span> lambda) <span class="co"># Función de densidade</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">pgamma</span>(x, <span class="at">shape =</span> k, <span class="at">rate =</span> lambda) <span class="co"># Función de densidade</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de densidade"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de distribución"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-beta" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="distribución-beta"><span class="header-section-number">3.3.5</span> Distribución beta</h3>
+<p>Diremos que unha variable aleatoria <span class="math inline">\(X\)</span> segue unha distribución beta de parámetros <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span>, e denotamos <span class="math inline">\(X\sim\text{Beta}(p,q)\)</span> con <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span> positivos se a súa función de densidade vén dada como se indica a continuación.</p>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+\frac{x^{p-1} (1 - x)^{q-1}}{\beta(p,q)} &amp; \text{se } 0 &lt; x &lt; 1, \\
+0 &amp; \text{noutro caso}.
+\end{cases}
+\]</span></p>
+<p>onde <span class="math inline">\(\beta(p,q) =  \frac{\Gamma(p) \cdot \Gamma(q)}{\Gamma(p + q)}.\)</span></p>
+<p>En R, <code>dbeta()</code> avalía a función de densidade, <code>pbeta()</code> a función de distribución, <code>qbeta()</code> os cuantís, e <code>rbeta()</code> xera valores aleatorios dunha distribución beta.</p>
+<p>Como exemplo, representamos a función de densidade e a función de distribución dunha variable <span class="math inline">\(X\sim\text{Beta}(p=2, q=5)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> <span class="dv">1000</span>) <span class="co"># Valores onde avaliar f</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(x, <span class="at">shape1 =</span> p, <span class="at">shape2 =</span> q) <span class="co"># Función de densidade</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">pbeta</span>(x, <span class="at">shape1 =</span> p, <span class="at">shape2 =</span> q) <span class="co"># Función de densidade</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de densidade"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Fx, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Función de distribución"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="teorema-central-do-límite" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="teorema-central-do-límite"><span class="header-section-number">3.4</span> Teorema Central do Límite</h2>
+<p>O Teorema Central do Límite (TCL) establece que, se temos unha sucesión de variables aleatorias independentes e idénticamente distribuídas (i.i.d.), cunha media finita <span class="math inline">\(\mu\)</span> e unha varianza finita <span class="math inline">\(\sigma^2\)</span>, entón a distribución da súa suma (ou, de maneira equivalente, da súa media) tende a unha distribución normal cando o número de variables é suficientemente grande.</p>
+<p>Formalmente, se <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> son variables aleatorias i.i.d. con <span class="math inline">\(\mathbb{E}(X_i)=\mu\)</span> e <span class="math inline">\(\text{Var}(X_i)=\sigma^2\)</span>, entón <span class="math display">\[\frac{\sum_{i=1}^n X_i-n\mu}{\sigma\sqrt{n}}\underset{n\to\infty}{\longrightarrow }N(0,1).\]</span> De forma equivalente, a media muestral <span class="math inline">\(\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i\)</span> verifica <span class="math display">\[\frac{\bar{X}_n-\mu}{\sigma/\sqrt{n}}\underset{n\to\infty}{\longrightarrow } N(0,1).\]</span> Podemos observar e xustificar de maneira intuitiva este resultado mediante simulación. En esencia, o TCL afirma que, se tomamos moitas mostras de tamaño <span class="math inline">\(n\)</span> dunha variable aleatoria con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>, entón a distribución das sumas (ou das medias) destas mostras tende a aproximarse a unha distribución normal cando <span class="math inline">\(n\)</span> é suficientemente grande. Na primeira formulación, isto significa que, se para cada mostra calculamos a suma dos seus valores e representamos un histograma con todas esas sumas, a forma do histograma debería ser aproximadamente normal. De maneira equivalente, na segunda formulación, podemos calcular a media de cada unha das mostras xeradas e representar a distribución desas medias mediante un histograma. De novo, observaremos que esa distribución se asemella cada vez máis a unha normal a medida que aumenta <span class="math inline">\(n\)</span>. Finalmente, se estandarizamos estas sumas ou medias como se indica en cada caso, os histogramas obtidos deberían aproximarse á distribución normal estándar <span class="math inline">\(\text{N}(0,1)\)</span>.</p>
+<p>Para ilustrar o TCL, imos partir dunha distribución que non é normal, por exemplo unha distribución exponencial. Recorda que se <span class="math inline">\(X\sim\text{Exp}(\lambda)\)</span>, entón a súa media é <span class="math inline">\(\mu=1/\lambda\)</span> e a súa varianza é <span class="math inline">\(\sigma^2=1/\lambda^2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># número de mostras</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span> <span class="co"># tamaño de cada mostra</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución orixinal: Exponencial(lambda)</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> lambda <span class="co"># media teórica</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> lambda <span class="co"># desviación típica teórica</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulamos B mostras de tamaño n e, para cada mostra, calculamos suma e media</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> sumas <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  mostra <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  sumas[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mostra)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  medias[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(mostra)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizamos as sumas</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>Zsuma <span class="ot">&lt;-</span> (sumas <span class="sc">-</span> n <span class="sc">*</span> mu) <span class="sc">/</span> (sigma <span class="sc">*</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizamos as medias</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>Zmedia <span class="ot">&lt;-</span> (medias <span class="sc">-</span> mu) <span class="sc">/</span> (sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma das sumas estandarizadas</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Zsuma,</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"TCL: Aproximación á N(0,1) da suma de exponenciais"</span>,</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Valores de Zsuma"</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Engadimos a densidade dunha N(0,1)</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma das medias estandarizadas</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Zmedia,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"lightgreen"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"TCL: Aproximación á N(0,1) da media de exponenciais"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Valores de Zmedia"</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Engadimos a densidade dunha N(0,1)</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-25-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O Teorema TCL xustifica, entre outras cousas, por que unha distribución binomial pode aproximarse por unha distribución normal cando <span class="math inline">\(n\)</span> é grande. Para entendelo, basta lembrar que unha variable binomial <span class="math inline">\(X\sim\text{Binom}(n,p)\)</span> conta o número de éxitos en <span class="math inline">\(n\)</span> repeticións independentes dun experimento con probabilidade de éito en cada intento <span class="math inline">\(p\)</span>. Por exemplo, lanzar unha moeda <span class="math inline">\(n\)</span> veces e contar cantas caras saen. Agora ben, cada repetición individual pode representarse cunha variable de Bernoulli:</p>
+<p><span class="math display">\[
+X_i =
+\begin{cases}
+1, &amp; \text{se hai éxito},\\
+0, &amp; \text{se non hai éxito}.
+\end{cases}
+\]</span></p>
+<p>A variable binomial non é máis que a suma destes <span class="math inline">\(n\)</span> resultados:</p>
+<p><span class="math display">\[
+X = X_1 + X_2 + \cdots + X_n.
+\]</span></p>
+<p>É dicir, unha binomial é simplemente a suma de variables de Bernoulli independentes <span class="math inline">\(X_i\)</span> (cada unha delas con <span class="math inline">\(\mathbb{E}(X_i)=p\)</span> e <span class="math inline">\(\text{Var}(X_i)=p(1-p)\)</span>). E aquí é onde entra o TCL: este teorema di que a suma dun gran número de variables aleatorias independentes tende a seguir unha distribución normal, independentemente da distribución orixinal. Por iso, cando <span class="math inline">\(n\)</span> é suficientemente grande, a distribución binomial <span class="math inline">\(\text{Binom}(n,p)\)</span> pode aproximarse por unha normal de media <span class="math inline">\(np\)</span> e de desviación típica <span class="math inline">\(\sqrt{np(1-p)}\)</span>.</p>
+<p>Na seguinte gráfica amosamos a función de masa dunha variable aleatoria <span class="math inline">\(X\sim \text{Binom}(n,p)\)</span> para distintos valores de <span class="math inline">\(n\)</span>. En cada caso, superpoñemos tamén a densidade da distribución normal<span class="math inline">\(\text{N}(\mu=np,\sigma=\sqrt{np(1-p)})\)</span>, que proporciona unha aproximación cada vez mellor á binomial a medida que <span class="math inline">\(n\)</span> aumenta, tal e como xustifica o TCL.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="co"># Parámetro p</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>n_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">50</span>) <span class="co"># Valores de n que imos comparar</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)) <span class="co"># Debuxar 3 gráficos en fila</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> n_values) {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n <span class="co"># Valores posibles da binomial</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p) <span class="co"># Función de masa binomial</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Parámetros da aproximación normal</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> n <span class="sc">*</span> p</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p))</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Representar función de masa</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(x, fx,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"h"</span>,</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n),</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"P(X = x)"</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Engadir densidade normal aproximada</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma),</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">2</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_variables_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cómpre lembrar que a distribución binomial é <strong>discreta</strong> e só pode tomar valores enteiros (<span class="math inline">\(0,1,2,\dots,n\)</span>), mentres que a distribución normal é <strong>continua</strong>. Por iso, cando aproximamos unha binomial <span class="math inline">\(X\sim \text{Binom}(n,p)\)</span> mediante unha normal <span class="math inline">\(Y\sim \text{N}(np,\sqrt{np(1-p)})\)</span>, adoita empregarse a chamada <strong>corrección por continuidade</strong>:</p>
+<p><span class="math display">\[
+P(X = k)\approx P(k-0.5\leq Y \le k+0.5),
+\]</span> Por exemplo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> n <span class="sc">*</span> p</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p))</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">5</span>, n, p) <span class="co"># P(X=k)</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">5.5</span>, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">4.5</span>, mu, sigma) <span class="co"># P(k-0.5&lt;Y&lt;k+0.5)=F(5.5)-F(4.5)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercicios" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exercicios"><span class="header-section-number">3.5</span> EXERCICIOS</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Boletín de exercicios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/PDF.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="EXERCICIOS/3_boletin_Variables.pdf">Descargar (PDF)</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Arquivos de datos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/laliga_matches_2024_2025.csv" download="">laliga_matches_2024_2025.csv</a> Este ficheiro foi obtido a partir de Masryo, T. (2025). Football Matches Results 2024–25 [Dataset]. GitHub. <a href="">https://github.com/tarekmasryo/football-matches-2025-dataset</a>. Licencia CC BY 4.0.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./2_probabilidade.html" class="pagination-link" aria-label="Fundamentos de probabilidade">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./4_inferencia.html" class="pagination-link" aria-label="Introdución á inferencia estatística e á estimación de parámetros">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

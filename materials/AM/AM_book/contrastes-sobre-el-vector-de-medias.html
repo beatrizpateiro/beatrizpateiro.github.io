@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Contrastes sobre el vector de medias | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Contrastes sobre el vector de medias | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Contrastes sobre el vector de medias | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="contrastes-multivariantes-versus-contrastes-univariantes.html"/>
+<link rel="next" href="regiones-de-confianza-y-comparaciones-simultáneas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="autores.html"><a href="autores.html"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="prerrequisitos.html"><a href="prerrequisitos.html"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-al-análisis-multivariante.html"><a href="introducción-al-análisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="notación-de-vectores-y-matrices.html"><a href="notación-de-vectores-y-matrices.html"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="vectores-aleatorios.html"><a href="vectores-aleatorios.html"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#visualización-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#estandarización"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#estimadores-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#distribución-de-overlinebmx-y-bms"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="contrastes-multivariantes-versus-contrastes-univariantes.html"><a href="contrastes-multivariantes-versus-contrastes-univariantes.html"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-scheffé"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html#contraste-h_0-bmsigmabmsigma_0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-la-hipótesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-dos-subvectores-h_0-bmsigma_12bm0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-todas-las-variables-h_0bmsigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="secnorm.html"><a href="secnorm.html"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="secnorm.html"><a href="secnorm.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="secnorm.html"><a href="secnorm.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-multivariante-de-la-varianza.html"><a href="análisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><a href="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#descomposición-de-la-variabilidad.-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#el-estadístico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="manova-con-dos-factores-de-variación.html"><a href="manova-con-dos-factores-de-variación.html"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><a href="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-mínimo-cuadráticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#posición-en-el-plano-de-la-1ª-componente-principal-respecto-a-las-rectas-de-regresión"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><a href="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="las-componentes-principales-y-los-cambios-de-escala.html"><a href="las-componentes-principales-y-los-cambios-de-escala.html"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="interpretación-de-las-componentes-principales.html"><a href="interpretación-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-correspondencias.html"><a href="análisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><a href="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados-1"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#contribuciones-1"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><a href="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-discriminante.html"><a href="análisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dos-grupos-con-distribuciones-conocidas.html"><a href="dos-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-la-probabilidad-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#razón-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-el-coste-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#estimación-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html#clasificación-óptima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="técnicas-de-formación-de-grupos.html"><a href="técnicas-de-formación-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-jerárquicos..html"><a href="métodos-jerárquicos..html"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-de-particionamiento..html"><a href="métodos-de-particionamiento..html"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html#propiedades-de-la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#definición-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#definición-y-propiedades-1"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#el-estadístico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#introducción"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#definición-y-propiedades-2"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="autovalores.html"><a href="autovalores.html"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="matrices-semidefinidas-positivas.html"><a href="matrices-semidefinidas-positivas.html"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="matrices-definidas-positivas.html"><a href="matrices-definidas-positivas.html"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="contrastes-sobre-el-vector-de-medias" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Contrastes sobre el vector de medias<a href="contrastes-sobre-el-vector-de-medias.html#contrastes-sobre-el-vector-de-medias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A continuación veremos cómo se puede usar el test de razón de
+verosimilitudes para hacer inferencia en poblaciones normales
+multivariantes. En esta sección ilustraremos el caso del problema de
+inferencia sobre el vector de medias cuando la matriz de covarianzas es
+conocida, y también cuando es desconocida.</p>
+<div id="contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Contraste sobre el vector de medias con matriz de covarianzas conocida<a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En este apartado veremos como llevar a cabo un contraste sobre el vector
+de medias de una población normal asumiendo que la matriz de covarianzas
+<span class="math inline">\(\bm\Sigma\)</span> es conocida. Antes, repasaremos la teoría en el caso
+unidimensional.</p>
+<div id="revisión-del-caso-unidimensional-h_0mumu_0-con-sigma2-conocida" class="section level4 hasAnchor" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> Revisión del caso unidimensional <span class="math inline">\(H_0:\mu=\mu_0\)</span> con <span class="math inline">\(\sigma^2\)</span> conocida<a href="contrastes-sobre-el-vector-de-medias.html#revisión-del-caso-unidimensional-h_0mumu_0-con-sigma2-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La hipótesis de interés es que la media <span class="math inline">\(\mu\)</span> de una variable aleatoria
+<span class="math inline">\(x\)</span> es igual a un valor dado <span class="math inline">\(\mu_0\)</span> frente a la alternativa de que no
+es igual a <span class="math inline">\(\mu_0\)</span>, es decir
+<span class="math display">\[H_0:\mu=\mu_0\textnormal{ frente a }H_1:\mu\neq\mu_0.\]</span> Dada una
+muestra <span class="math inline">\(x_1,\ldots,x_n\)</span> de normales <span class="math inline">\(N(\mu,\sigma^2)\)</span> con <span class="math inline">\(\sigma^2\)</span>
+conocida, se calcula la media muestral <span class="math inline">\(\overline{x}\)</span> y se compara con
+<span class="math inline">\(\mu_0\)</span> a través del estadístico</p>
+<p><span class="math display">\[z=\frac{\overline{x}-\mu_0}{\sigma/\sqrt{n}}\]</span></p>
+<p>que, bajo la hipótesis
+nula, se distribuye como una normal estándar. Por lo tanto, para un
+nivel de significación <span class="math inline">\(\alpha=0.05\)</span> rechazamos la hipótesis nula si
+<span class="math inline">\(\left|z\right|\geq 1.96\)</span>. Equivalentemente</p>
+<p><span class="math display">\[z^2=n(\overline{x}-\mu_0)\frac{1}{\sigma^2}(\overline{x}-\mu_0)\]</span>
+y podríamos utilizar que <span class="math inline">\(z^2\)</span> se distribuye, bajo la hipótesis nula, como
+una ji-cuadrado con un grado de libertad. Entonces rechazaríamos <span class="math inline">\(H_0\)</span>
+si <span class="math inline">\(z^2\geq 3.84\)</span>.</p>
+</div>
+<div id="contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-conocida" class="section level4 hasAnchor" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> Contraste multivariante <span class="math inline">\(H_0:\bm\mu=\bm{\mu_0}\)</span> con <span class="math inline">\(\bm\Sigma\)</span> conocida<a href="contrastes-sobre-el-vector-de-medias.html#contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Partimos ahora de una muestra aleatoria simple <span class="math inline">\(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\mu},\bm\Sigma)\)</span>
+de vectores
+aleatorios independientes y con la misma distribución normal
+multivariante.</p>
+<p>Suponiendo que la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> es conocida,
+deseamos llevar a cabo tareas de inferencia relativas al vector de
+medias <span class="math inline">\(\bm{\mu}\)</span>. En concreto, podemos estar interesados en una región
+de confianza para <span class="math inline">\(\bm{\mu}\)</span>, o podemos querer contrastar una hipótesis
+nula del tipo <span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span>.</p>
+<p>Centrándonos en el contraste de la hipótesis nula
+<span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span>, vamos a abordar este problema mediante el
+procedimiento de razón de verosimilitudes. En esta situación, el
+estadístico de contraste sería:</p>
+<p><span class="math display">\[-2\log \lambda(\bm{x})=-2\log \frac{L(\bm{x},\bm{\mu_0},\bm\Sigma)}{\sup_{\bm{\mu}} L(\bm{x},\bm{\mu},\bm\Sigma)}\]</span>
+donde la función de verosimilitud es la que se ha tratado en la sección
+anterior.</p>
+<p>De lo allí expuesto extraemos que, bajo la hipótesis nula,
+<span class="math inline">\(H_0: \bm{\mu}=\bm{\mu_0}\)</span>, la función de log-verosimilitud adopta la
+forma:</p>
+<p><span class="math display">\[\log L(\bm{x},\bm{\mu_0},\bm\Sigma) = c - \frac{n}{2} \log |\bm\Sigma |
+-\frac{1}{2} \sum_{i=1}^n \left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}\bm\Sigma^{-1} \left(\bm{x_i}-\overline{\bm{x}}\right)
+-\frac{n}{2}  \left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)\]</span>
+mientras que bajo la alternativa, aplicando la expresión <a href="estimación-en-la-distribución-normal-multivariante.html#eq:supmu">(2.1)</a>, se tiene</p>
+<p><span class="math display">\[\sup_{\bm{\mu}}\log L(\bm{x},\bm{\mu},\bm\Sigma) = c - \frac{n}{2} \log |\bm\Sigma|
+-\frac{1}{2} \sum_{i=1}^n \left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}\bm\Sigma^{-1} \left(\bm{x_i}-\overline{\bm{x}}\right).\]</span></p>
+<p>En definitiva, el estadístico de contraste resulta:</p>
+<p><span class="math display">\[-2\log \lambda(\bm{x})=-2\log \frac{L(\bm{x},\bm{\mu_0},\bm\Sigma)}{\sup_{\bm{\mu}} L(\bm{x},\bm{\mu},\bm\Sigma)}
+=n\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right).\]</span></p>
+<p>Observamos que si <span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span> es cierta,</p>
+<p><span class="math display">\[\overline{\bm{x}}\in N_d\left(\bm{\mu_0},\bm\Sigma/n\right)\]</span> y, en
+consecuencia,</p>
+<p><span class="math display">\[n\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)\in\chi_d^2.\]</span></p>
+<p>Así, rechazaremos la hipótesis nula <span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span> cuando</p>
+<p><span class="math display">\[\label{testchi}
+n\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)&gt;\chi_{d,\alpha}^2\]</span>
+siendo <span class="math inline">\(\chi_{d,\alpha}^2\)</span> el cuantil <span class="math inline">\(1-\alpha\)</span> de la distribución
+<span class="math inline">\(\chi_d^2\)</span>. La región de rechazo se corresponde con el exterior de un
+elipsoide en <span class="math inline">\(\mathbb{R}^d\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Volvemos al estudio sobre Psicología educativa. Se le han
+realizado los dos tests de inteligencia a 20 alumnos de un centro
+universitario. La nota media obtenida por los 20 alumnos en el test de
+valoración de habilidades aritméticas fue de <span class="math inline">\(102\)</span> puntos. La nota media
+en el test de habilidades de memoria fue de <span class="math inline">\(98\)</span> puntos. Asumamos además
+que las notas obtenidas provienen de una distribución normal bivariante
+<span class="math inline">\(N_2(\bm{\mu}, \bm\Sigma)\)</span> siendo</p>
+<p><span class="math display">\[\bm\Sigma=\left(\begin{array}{cc}
+49 &amp; 35 \\
+35 &amp; 52
+\end{array}\right).\]</span>
+Queremos contrastar si las notas medias de
+estudiantes universitarios en los dos tests de inteligencia son iguales
+a 100. Es decir, queremos contrastar la hipótesis nula
+<span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span>, siendo <span class="math inline">\(\bm{\mu_0}=(100,100)^\prime{}\)</span>.</p>
+<p>A partir de la muestra obtenemos que
+<span class="math inline">\(\overline{\bm{x}}=(\overline{x_1},\overline{x_2})^\prime{}=(102,98)^\prime{}\)</span>.
+Calculamos el valor del estadístico para el contraste multivariante.</p>
+<p><span class="math display">\[n\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)=20\left(2,-2\right)\left(\begin{array}{cc}
+49 &amp; 35 \\
+35 &amp; 52
+\end{array}\right)^{-1} \left(\begin{array}{r}
+2 \\
+-2
+\end{array}\right)=10.34014.\]</span></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-1" tabindex="-1"></a><span class="sc">&gt;</span> Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">49</span>, <span class="dv">35</span>, <span class="dv">35</span>, <span class="dv">52</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb30-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-2" tabindex="-1"></a><span class="sc">&gt;</span> xbar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">98</span>)</span>
+<span id="cb30-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-3" tabindex="-1"></a><span class="sc">&gt;</span> mu0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb30-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-4" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="sc">*</span> (xbar <span class="sc">-</span> mu0) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma) <span class="sc">%*%</span> (xbar <span class="sc">-</span> mu0)</span>
+<span id="cb30-5"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-5" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb30-6"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-6" tabindex="-1"></a>         [,<span class="dv">1</span>]</span>
+<span id="cb30-7"><a href="contrastes-sobre-el-vector-de-medias.html#cb30-7" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">10.34014</span></span></code></pre></div>
+<p>Rechazamos la hipótesis nula (para un nivel de significación
+<span class="math inline">\(\alpha=0.05\)</span>) ya que el valor del estadístico es mayor que
+<span class="math inline">\(\chi_{d,\alpha}^2=5.991465\)</span>. También podemos calcular el <span class="math inline">\(p\)</span>-valor del
+estadístico y razonar a partir de él (como el <span class="math inline">\(p\)</span>-valor es menor que
+<span class="math inline">\(\alpha=0.05\)</span> se rechaza <span class="math inline">\(H_0\)</span> para dicho nivel de significación).</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb31-1" tabindex="-1"></a><span class="sc">&gt;</span> alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb31-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb31-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, <span class="dv">2</span>)</span>
+<span id="cb31-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb31-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">5.991465</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb32-1" tabindex="-1"></a><span class="sc">&gt;</span> pvalue <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(estad, <span class="dv">2</span>)</span>
+<span id="cb32-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb32-2" tabindex="-1"></a><span class="sc">&gt;</span> pvalue</span>
+<span id="cb32-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb32-3" tabindex="-1"></a>            [,<span class="dv">1</span>]</span>
+<span id="cb32-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb32-4" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">0.005684182</span></span></code></pre></div>
+<p>Sin embargo, si planteamos los contrastes individuales <span class="math inline">\(H_0:\mu_1=100\)</span> y
+<span class="math inline">\(H_0:\mu_2=100\)</span> se tiene que</p>
+<p><span class="math display">\[\frac{\overline{x_1}-\mu_0}{\sigma_1/\sqrt{n}}=\frac{102-100}{\sqrt{49/20}}=1.2777\]</span>
+y</p>
+<p><span class="math display">\[\frac{\overline{x_2}-\mu_0}{\sigma_2/\sqrt{n}}=\frac{98-100}{\sqrt{52/20}}= -1.24034.\]</span>
+En ambos casos, el valor absoluto del estadístico es menor que 1.96 y
+por lo tanto no se rechazaría la hipótesis nula para ninguno de los dos
+contrastes individuales. En la Figura
+<a href="contrastes-sobre-el-vector-de-medias.html#fig:test">2.4</a> se representan
+las zonas de rechazo y no rechazo para los contrastes univariantes y
+para el contraste bivariante correspondiente a los datos de este ejemplo
+(<span class="math inline">\(n=20\)</span>). Si <span class="math inline">\(\overline{\bm{x}}\)</span> pertenece a la zona verde, no se
+rechaza la hipótesis nula <span class="math inline">\(H_0:\bm\mu=\bm{\mu_0}\)</span> siendo
+<span class="math inline">\(\bm{\mu_0}=(100,100)^\prime\)</span>. Si <span class="math inline">\(\overline{\bm{x}}\)</span> pertenece a la
+zona azul, no se rechaza ni <span class="math inline">\(H_0:\mu_1=100\)</span> ni <span class="math inline">\(H_0:\mu_2=100\)</span>. Fíjate
+que el punto
+<span class="math inline">\(\overline{\bm{x}}=(\overline{x_1},\overline{x_2})^\prime{}=(102,98)^\prime{}\)</span>
+está fuera de la elipse que representa la zona de no rechazo del test
+multivariante y sin embargo, cae en la zona de no rechazo de los dos
+contrastes univariantes.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:test"></span>
+<img src="bookdown_AM_files/figure-html/test-1.png" alt="Zonas de rechazo y no rechazo para los contrastes univariantes y para el contraste bivariante correspondiente a los datos de tests de inteligencia ($n=20$). Si $\overline{\bm{x}}$ pertenece a la zona verde, no se rechaza la hipótesis nula $H_0:\bm\mu=\bm{\mu_0}$ siendo $\bm{\mu_0}=(100,100)^\prime$. Si $\overline{\bm{x}}$ pertenece a la zona azul, no se rechaza ni $H_0:\mu_1=100$ ni $H_0:\mu_2=100$." width="50%" />
+<p class="caption">
+Figura 2.4: Zonas de rechazo y no rechazo para los contrastes univariantes y para el contraste bivariante correspondiente a los datos de tests de inteligencia (<span class="math inline">\(n=20\)</span>). Si <span class="math inline">\(\overline{\bm{x}}\)</span> pertenece a la zona verde, no se rechaza la hipótesis nula <span class="math inline">\(H_0:\bm\mu=\bm{\mu_0}\)</span> siendo <span class="math inline">\(\bm{\mu_0}=(100,100)^\prime\)</span>. Si <span class="math inline">\(\overline{\bm{x}}\)</span> pertenece a la zona azul, no se rechaza ni <span class="math inline">\(H_0:\mu_1=100\)</span> ni <span class="math inline">\(H_0:\mu_2=100\)</span>.
+</p>
+</div>
+</div>
+</div>
+<div id="contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Contraste sobre el vector de medias con matriz de covarianzas desconocida<a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Veremos ahora como llevar a cabo un contraste sobre el vector de medias
+de una población normal asumiendo que la matriz de covarianzas
+<span class="math inline">\(\bm\Sigma\)</span> es desconocida. Repasaremos de nuevo en primer lugar la
+teoría en el caso unidimensional.</p>
+<div id="revisión-del-caso-unidimensional-h_0mumu_0-con-sigma2-desconocida" class="section level4 hasAnchor" number="2.3.2.1">
+<h4><span class="header-section-number">2.3.2.1</span> Revisión del caso unidimensional <span class="math inline">\(H_0:\mu=\mu_0\)</span> con <span class="math inline">\(\sigma^2\)</span> desconocida<a href="contrastes-sobre-el-vector-de-medias.html#revisión-del-caso-unidimensional-h_0mumu_0-con-sigma2-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La hipótesis de interés es que la media <span class="math inline">\(\mu\)</span> de una variable aleatoria
+<span class="math inline">\(x\)</span> es igual a un valor dado <span class="math inline">\(\mu_0\)</span> frente a la alternativa de que no
+es igual a <span class="math inline">\(\mu_0\)</span>, es decir</p>
+<p><span class="math display">\[H_0:\mu=\mu_0\textnormal{ frente a }H_1:\mu\neq\mu_0.\]</span>
+Dada una
+muestra <span class="math inline">\(x_1,\ldots,x_n\)</span> de normales <span class="math inline">\(N(\mu,\sigma^2)\)</span> con <span class="math inline">\(\sigma^2\)</span>
+desconocida, se calcula la media muestral <span class="math inline">\(\overline{x}\)</span> y se compara
+con <span class="math inline">\(\mu_0\)</span> a través del estadístico</p>
+<p><span class="math display">\[t=\frac{\overline{x}-\mu_0}{s_c/\sqrt{n}}\]</span>
+siendo
+<span class="math inline">\(s_c=\sum_{i=1}^n(x_i-\overline{x})^2/(n-1)\)</span> la cuasivarianza muestral.
+Bajo la hipótesis nula, el estadístico se distribuye como una <span class="math inline">\(t\)</span> de
+Student con <span class="math inline">\(n-1\)</span> grados de libertad. Por lo tanto, para un nivel de
+significación <span class="math inline">\(\alpha\)</span> rechazamos la hipótesis nula si
+<span class="math inline">\(\left|t\right|\geq t_{\alpha/2}\)</span>, siendo <span class="math inline">\(t_{\alpha/2}\)</span> el cuantil
+<span class="math inline">\(1-\alpha/2\)</span> de la distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> grados de
+libertad. Equivalentemente</p>
+<p><span class="math display" id="eq:t2">\[\begin{equation}
+t^2=n(\overline{x}-\mu_0)\frac{1}{s_c^2}(\overline{x}-\mu_0).
+\tag{2.2}
+\end{equation}\]</span></p>
+<p>Veremos
+que esta forma de escribir el estadístico estará relacionada con la
+versión multivariante del contraste.</p>
+</div>
+<div id="contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-desconocida" class="section level4 hasAnchor" number="2.3.2.2">
+<h4><span class="header-section-number">2.3.2.2</span> Contraste multivariante <span class="math inline">\(H_0:\bm\mu=\bm{\mu_0}\)</span> con <span class="math inline">\(\bm\Sigma\)</span> desconocida<a href="contrastes-sobre-el-vector-de-medias.html#contraste-multivariante-h_0bmmubmmu_0-con-bmsigma-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Disponemos ahora de una muestra aleatoria simple <span class="math inline">\(\bm{x_1},\ldots,\bm{x_n}\in N_d(\bm{\bm{\mu}},\bm\Sigma)\)</span> y deseamos
+realizar tareas de inferencia relativas al vector de medias <span class="math inline">\(\bm{\mu}\)</span>.
+Suponemos que la matriz de covarianzas <span class="math inline">\(\bm\Sigma\)</span> es desconocida.</p>
+<p>El estadístico de razón de verosimilitudes para el contraste de la
+hipótesis nula <span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span> sería:</p>
+<p><span class="math display">\[-2\log \lambda(\bm{x})
+=-2\log \frac{\sup_{\bm\Sigma} L(\bm{x},\bm{\mu_0},\bm\Sigma)}{\sup_{\bm{\mu},\bm\Sigma} L(\bm{x},\bm{\mu},\bm\Sigma)}.\]</span></p>
+<p>Nótese que ahora, al ser <span class="math inline">\(\bm\Sigma\)</span> desconocida, se convierte en un
+parámetro tanto bajo la hipótesis nula como bajo la alternativa,
+parámetro que será estimado por máxima verosimilitud.</p>
+<p>Bajo la alternativa, hemos visto en la sección anterior que los
+estimadores de máxima verosimilitud del vector de medias y la matriz de
+covarianzas (sin restricciones) son <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span>,
+respectivamente. Asimismo, la función de verosimilitud tiene como
+máximo:</p>
+<p><span class="math display">\[\sup_{\bm\Sigma}\sup_{\bm{\mu}}\log L(\bm{x},\bm{\mu},\bm\Sigma)
+= c - \frac{n}{2}
+\left( \log |\bm{S}| + \mbox{traza} \left( \bm{S}^{-1} \bm{S} \right)\right)
+= c - \frac{n}{2} \left( \log |\bm{S}| + d\right).\]</span></p>
+<p>A continuación maximizamos la verosimilitud bajo la hipótesis nula. Para
+ello basta con expresar la verosimilitud en una forma similar a la
+anterior:</p>
+<p><span class="math display">\[\begin{aligned}
+\log L(\bm{x},\bm{\mu_0},\bm\Sigma) &amp;= c - \frac{n}{2} \log |\bm\Sigma|
+-\frac{1}{2} \mbox{traza} \left[\sum_{i=1}^n
+\left(\bm{x_i}-\bm{\mu_0}\right)^\prime{}\bm\Sigma^{-1} \left(\bm{x_i}-\bm{\mu_0}\right)\right] \\
+&amp;= c - \frac{n}{2} \log |\bm\Sigma|
+-\frac{1}{2} \sum_{i=1}^n \mbox{traza}
+\left[ \bm\Sigma^{-1} \left(\bm{x_i}-\bm{\mu_0}\right)  \left(\bm{x_i}-\bm{\mu_0}\right)^\prime{} \right] \\
+&amp;= c - \frac{n}{2} \left( \log |\bm\Sigma|
++ \mbox{traza} \left( \bm\Sigma^{-1} \hat{\bm\Sigma}_{\bm{\mu_0}} \right)\right)\end{aligned}\]</span></p>
+<p>siendo <span class="math inline">\(\hat{\bm\Sigma}_{\bm{\mu_0}}=\frac{1}{n}\sum_{i=1}^n
+\left(\bm{x_i}-\bm{\mu_0}\right)  \left(\bm{x_i}-\bm{\mu_0}\right)^\prime{}\)</span>,
+el cual resulta ser un estimador razonable de la matriz de covarianzas
+bajo la hipótesis de que la media vale <span class="math inline">\(\bm{\mu_0}\)</span>. Por lo demás los
+pasos son idénticos al caso anterior, salvo que se ha puesto
+<span class="math inline">\(\bm{\mu_0}\)</span> allí donde se hallaba <span class="math inline">\(\overline{\bm{x}}\)</span>. Aplicando de
+nuevo el lema, concluimos que <span class="math inline">\(\hat{\bm\Sigma}_{\bm{\mu_0}}\)</span> es el
+estimador de máxima verosimilitud de la matriz de covarianzas bajo la
+hipótesis nula, y que la función de verosimilitud bajo dicha hipótesis
+alcanza el valor máximo:</p>
+<p><span class="math display">\[\sup_{\bm\Sigma}\log L(\bm{x},\bm{\mu_0},\bm\Sigma)
+= c - \frac{n}{2} \left( \log |\hat{\bm\Sigma}_{\bm{\mu_0}}| + d \right).\]</span></p>
+<p>Entonces el estadístico de contraste mediante la razón de
+verosimilitudes resulta:</p>
+<p><span class="math display">\[-2\log \lambda(\bm{x})
+=-2\log \frac{\sup_{\bm\Sigma} L(\bm{x},\bm{\mu_0},\bm\Sigma)}{\sup_{\bm{\mu},\bm\Sigma} L(\bm{x},\bm{\mu},\bm\Sigma)}
+=n\left( \log |\hat{\bm\Sigma}_{\bm{\mu_0}}| - \log |\bm{S}| \right).\]</span></p>
+<p>Descomponemos</p>
+<p><span class="math display">\[\begin{aligned}
+\hat{\bm\Sigma}_{\bm{\mu_0}} &amp;=
+\frac{1}{n} \sum_{i=1}^n \left(\bm{x_i}-\bm{\mu_0}\right) \left(\bm{x_i}-\bm{\mu_0}\right)^\prime{} \\
+&amp;= \frac{1}{n} \sum_{i=1}^n \left[ \left(\bm{x_i}-\overline{\bm{x}}\right) \left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}
++ \left(\overline{\bm{x}}-\bm{\mu_0}\right) \left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{}
++ 2 \left(\overline{\bm{x}}-\bm{\mu_0}\right) \left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{} \right] \\
+&amp;= \bm{S}+\bm{r}\bm{r}^\prime{}\end{aligned}\]</span>
+siendo
+<span class="math inline">\(\bm{r}=\overline{\bm{x}}-\bm{\mu_0}\)</span>. Sustituyendo en el estadístico de
+contraste obtenemos</p>
+<p><span class="math display">\[\begin{aligned}
+-2\log \lambda(\bm{x})
+&amp;= n\left( \log |\bm{S}+\bm{r}\bm{r}^\prime{}| - \log |\bm{S}| \right) \\
+&amp;= n\left( \log \left(|\bm{S}|\cdot \left|\bm{I_d}+\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\right|\right) - \log |\bm{S}| \right)
+\\
+&amp;=n \log \left|\bm{I_d}+\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\right|.\end{aligned}\]</span></p>
+<p>Estudiemos, pues, el determinante que aparece en el último término. En
+(a) denotamos mediante <span class="math inline">\(\lambda_1,\ldots,\lambda_d\)</span> a los autovalores de
+<span class="math inline">\(\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\)</span>, y observamos que
+<span class="math inline">\(1+\lambda_1,\ldots,1+\lambda_d\)</span> son los autovalores de
+<span class="math inline">\(\bm{I_d}+\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\)</span>. En (b) y (c) usamos que la
+matriz <span class="math inline">\(\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\)</span> es de rango uno.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left|\bm{I_d}+\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\right|&amp;\stackrel{(a)}{=}
+\prod_{j=1}^d \left(1+\lambda_j\right)\\
+&amp;\stackrel{(b)}{=}
+1+\lambda_1\\
+&amp;\stackrel{(c)}{=}
+1+{\textnormal{traza}}\left(\bm{S}^{-1}\bm{r}\bm{r}^\prime{}\right)\\
+&amp;=1+{\textnormal{traza}}\left(\bm{r}^\prime{}\bm{S}^{-1}\bm{r}\right)\\
+&amp;=1+\bm{r}^\prime{}\bm{S}^{-1}\bm{r}.
+\end{aligned}\]</span></p>
+<p>Finalmente,</p>
+<p><span class="math display">\[-2\log \lambda(\bm{x})=n\log\left(1+\bm{r}^\prime{}\bm{S}^{-1}\bm{r}\right)\]</span></p>
+<p>será el estadístico de contraste y rechazaremos la hipótesis nula si
+este estadístico toma un valor demasiado grande.</p>
+<p>Será equivalente si consideramos el estadístico</p>
+<p><span class="math display">\[\bm{r}^\prime{}\bm{S}^{-1}\bm{r}=\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{} \bm{S}^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)\]</span></p>
+<p>y rechazamos la hipótesis nula cuando este nuevo estadístico toma un
+valor demasiado grande. Nótese que el estadístico anterior se obtiene
+tras aplicar una transformación creciente a este último.</p>
+<p>El estadístico recuerda al comentado en <a href="contrastes-sobre-el-vector-de-medias.html#eq:t2">(2.2)</a> para el caso
+univariante si tenemos en cuenta que:</p>
+<p><span class="math display">\[T^2=(n-1)\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{} \bm{S}^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)=n\left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{} \bm{S_c}^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)\]</span></p>
+<p>donde <span class="math inline">\(\bm{S_c}=n/(n-1)\bm{S}\)</span> denota la matriz de covarianzas
+corregida. La distribución de <span class="math inline">\(T^2\)</span> bajo la hipótesis nula fue obtenida
+por <span class="citation">Hotelling (<a href="#ref-hot36">1936</a>)</span>. Se tiene que, si <span class="math inline">\(H_0\)</span> es cierta, el estadístico
+<span class="math inline">\(T^2\)</span> sigue una distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> de parámetros
+<span class="math inline">\(d\)</span> y <span class="math inline">\(n-1\)</span>. La distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling juega un papel
+semejante a la distribución <span class="math inline">\(t\)</span> de Student en el caso multivariante.
+Puedes encontrar propiedades y resultados sobre esta distribución en el
+Anexo <a href="anexoDist.html#anexoDist">A</a>. Los valores críticos de la distribución <span class="math inline">\(\Gamma^2\)</span> de
+Hotelling están tabulados. Aun así, se puede convertir una variable con
+distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling en otra con distribución <span class="math inline">\(F\)</span> de
+Snédecor. De este modo se evita la necesidad de considerar nuevas tablas
+de cuantiles. Simplemente se efectuaría la transformación y se apelaría
+a las tablas y operaciones conocidas para la <span class="math inline">\(F\)</span> de Snédecor. En nuestro
+caso se tiene que, bajo <span class="math inline">\(H_0\)</span>,</p>
+<p><span class="math display">\[\frac{n-d}{d} \left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{} \bm{S}^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)
+\in F_{d,n-d}.\]</span></p>
+<p>En definitiva, rechazaremos la hipótesis nula <span class="math inline">\(H_0: \bm{\mu}=\bm{\mu_0}\)</span>
+si</p>
+<p><span class="math display">\[\frac{n-d}{d} \left(\overline{\bm{x}}-\bm{\mu_0}\right)^\prime{} \bm{S}^{-1} \left(\overline{\bm{x}}-\bm{\mu_0}\right)
+&gt; f_{d,n-d,\alpha}\]</span>
+siendo <span class="math inline">\(f_{d,n-d,\alpha}\)</span> el cuantil <span class="math inline">\(1-\alpha\)</span> de
+la distribución <span class="math inline">\(F_{d,n-d}\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> El fichero <code>notas.txt</code> contiene las puntuaciones obtenidas
+por los 20 alumnos que han realizado los tests de inteligencia citados
+en los ejemplos previos. Asumamos ahora que las notas obtenidas
+provienen de una distribución normal bivariante
+<span class="math inline">\(N_2(\bm{\mu}, \bm\Sigma)\)</span> pero que <span class="math inline">\(\bm\Sigma\)</span> es desconocida. Queremos
+contrastar la hipótesis nula <span class="math inline">\(H_0:\bm{\mu}=\bm{\mu_0}\)</span>, siendo
+<span class="math inline">\(\bm{\mu_0}=(100,100)^\prime{}\)</span>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-1" tabindex="-1"></a><span class="sc">&gt;</span> tests <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/notas.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-2" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">dim</span>(tests)[<span class="dv">1</span>]</span>
+<span id="cb33-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-3" tabindex="-1"></a><span class="sc">&gt;</span> d <span class="ot">&lt;-</span> <span class="fu">dim</span>(tests)[<span class="dv">2</span>]</span>
+<span id="cb33-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-4" tabindex="-1"></a><span class="sc">&gt;</span> xbar <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(tests)</span>
+<span id="cb33-5"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-5" tabindex="-1"></a><span class="sc">&gt;</span> xbar</span>
+<span id="cb33-6"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-6" tabindex="-1"></a>Test1 Test2 </span>
+<span id="cb33-7"><a href="contrastes-sobre-el-vector-de-medias.html#cb33-7" tabindex="-1"></a>  <span class="dv">102</span>    <span class="dv">98</span> </span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb34-1" tabindex="-1"></a><span class="sc">&gt;</span> S <span class="ot">&lt;-</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n <span class="sc">*</span> <span class="fu">cov</span>(tests)</span>
+<span id="cb34-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb34-2" tabindex="-1"></a><span class="sc">&gt;</span> S</span>
+<span id="cb34-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb34-3" tabindex="-1"></a>      Test1 Test2</span>
+<span id="cb34-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb34-4" tabindex="-1"></a>Test1  <span class="fl">84.1</span>  <span class="fl">38.3</span></span>
+<span id="cb34-5"><a href="contrastes-sobre-el-vector-de-medias.html#cb34-5" tabindex="-1"></a>Test2  <span class="fl">38.3</span>  <span class="fl">32.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb35-1" tabindex="-1"></a><span class="sc">&gt;</span> mu0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb35-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb35-2" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> (n <span class="sc">-</span> d)<span class="sc">/</span>d <span class="sc">*</span> (xbar <span class="sc">-</span> mu0) <span class="sc">%*%</span> <span class="fu">solve</span>(S) <span class="sc">%*%</span> (xbar <span class="sc">-</span> mu0)</span>
+<span id="cb35-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb35-3" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb35-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb35-4" tabindex="-1"></a>         [,<span class="dv">1</span>]</span>
+<span id="cb35-5"><a href="contrastes-sobre-el-vector-de-medias.html#cb35-5" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">5.458867</span></span></code></pre></div>
+<p>Rechazamos la hipótesis nula (para un nivel de significación
+<span class="math inline">\(\alpha=0.05\)</span>) ya que el valor del estadístico es mayor que
+<span class="math inline">\(f_{d,n-d,\alpha}=3.554557\)</span>. También podemos calcular el <span class="math inline">\(p\)</span>-valor del
+estadístico y razonar a partir de él (como el <span class="math inline">\(p\)</span>-valor es menor que
+<span class="math inline">\(\alpha=0.05\)</span> se rechaza <span class="math inline">\(H_0\)</span> para dicho nivel de significación).</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb36-1" tabindex="-1"></a><span class="sc">&gt;</span> alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb36-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb36-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qf</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, d, n <span class="sc">-</span> d)</span>
+<span id="cb36-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb36-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">3.554557</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="contrastes-sobre-el-vector-de-medias.html#cb37-1" tabindex="-1"></a><span class="sc">&gt;</span> pvalue <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(estad, d, n <span class="sc">-</span> d)</span>
+<span id="cb37-2"><a href="contrastes-sobre-el-vector-de-medias.html#cb37-2" tabindex="-1"></a><span class="sc">&gt;</span> pvalue</span>
+<span id="cb37-3"><a href="contrastes-sobre-el-vector-de-medias.html#cb37-3" tabindex="-1"></a>          [,<span class="dv">1</span>]</span>
+<span id="cb37-4"><a href="contrastes-sobre-el-vector-de-medias.html#cb37-4" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="fl">0.0140273</span></span></code></pre></div>
+<p>En la Figura <a href="contrastes-sobre-el-vector-de-medias.html#fig:test3a">2.5</a> se representa en rojo la zona de no rechazo del
+contraste bivariante correspondiente a los datos de este ejemplo
+(<span class="math inline">\(n=20\)</span>) en comparación con la zona de no rechazo cuando se suponía que
+la matriz de covarianzas era conocida (elipse en verde).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:test3a"></span>
+<img src="bookdown_AM_files/figure-html/test3a-1.png" alt="Zonas de rechazo y no rechazo para el contraste bivariante correspondiente a los datos de tests de inteligencia ($n=20$). Para el caso en que se conoce la matriz de covarianzas, rechazamos la hipótesis nula si $\overline{\bm{x}}$ no pertenece a la elipse en verde. Para el caso en que se desconoce la matriz de covarianzas, rechazamos la hipótesis nula si $\overline{\bm{x}}$ no pertenece a la elipse en rojo." width="50%" />
+<p class="caption">
+Figura 2.5: Zonas de rechazo y no rechazo para el contraste bivariante correspondiente a los datos de tests de inteligencia (<span class="math inline">\(n=20\)</span>). Para el caso en que se conoce la matriz de covarianzas, rechazamos la hipótesis nula si <span class="math inline">\(\overline{\bm{x}}\)</span> no pertenece a la elipse en verde. Para el caso en que se desconoce la matriz de covarianzas, rechazamos la hipótesis nula si <span class="math inline">\(\overline{\bm{x}}\)</span> no pertenece a la elipse en rojo.
+</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-hot36" class="csl-entry">
+Hotelling, Harold. 1936. <span>“Relations Between Two Sets of Variates.”</span> <em>Biometrika</em> 28 (3/4): 321–77.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Formalmente, dadas <span class="math inline">\(\bm{Z}\in N_d(\bm{0},\bm{I_d})\)</span> y
+<span class="math inline">\(\bm{R}\in W_d(\bm{I_d},m)\)</span> independientes, con <span class="math inline">\(m\geq d\)</span> se dice
+que la variable aleatoria unidimensional
+<span class="math inline">\(m\bm{Z}^{\prime} \bm{R}^{-1} \bm{Z} \in \Gamma^2(d,m)\)</span> tiene una
+distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling de parámetros <span class="math inline">\(d\)</span> y <span class="math inline">\(m\)</span>.<a href="contrastes-sobre-el-vector-de-medias.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="contrastes-multivariantes-versus-contrastes-univariantes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regiones-de-confianza-y-comparaciones-simultáneas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown_AM.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"url": "http\://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

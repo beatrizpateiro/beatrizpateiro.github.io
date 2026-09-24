@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Contrastes de hipóteses – Laboratorios da materia Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6_regresion.html" rel="next">
+<link href="./4_inferencia.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c5f0c0a35ff45d3efbfe7e2e7f738dd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_contrastes.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipóteses</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Laboratorios da materia Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución a R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión linear</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link active" data-scroll-target="#conceptos-básicos"><span class="header-section-number">5.1</span> Conceptos básicos</a></li>
+  <li><a href="#contrastes-para-a-media-dunha-poboación-normal" id="toc-contrastes-para-a-media-dunha-poboación-normal" class="nav-link" data-scroll-target="#contrastes-para-a-media-dunha-poboación-normal"><span class="header-section-number">5.2</span> Contrastes para a media dunha poboación normal</a>
+  <ul class="collapse">
+  <li><a href="#contrastes-para-a-media-con-varianza-coñecida" id="toc-contrastes-para-a-media-con-varianza-coñecida" class="nav-link" data-scroll-target="#contrastes-para-a-media-con-varianza-coñecida"><span class="header-section-number">5.2.1</span> Contrastes para a media con varianza coñecida</a></li>
+  <li><a href="#contrastes-para-a-media-con-varianza-descoñecida" id="toc-contrastes-para-a-media-con-varianza-descoñecida" class="nav-link" data-scroll-target="#contrastes-para-a-media-con-varianza-descoñecida"><span class="header-section-number">5.2.2</span> Contrastes para a media con varianza descoñecida</a></li>
+  </ul></li>
+  <li><a href="#contrastes-para-a-diferenza-de-medias" id="toc-contrastes-para-a-diferenza-de-medias" class="nav-link" data-scroll-target="#contrastes-para-a-diferenza-de-medias"><span class="header-section-number">5.3</span> Contrastes para a diferenza de medias</a>
+  <ul class="collapse">
+  <li><a href="#mostras-independentes-varianzas-descoñecidas-e-iguais" id="toc-mostras-independentes-varianzas-descoñecidas-e-iguais" class="nav-link" data-scroll-target="#mostras-independentes-varianzas-descoñecidas-e-iguais"><span class="header-section-number">5.3.1</span> Mostras independentes, varianzas descoñecidas e iguais</a></li>
+  <li><a href="#mostras-independentes-varianzas-descoñecidas-e-distintas" id="toc-mostras-independentes-varianzas-descoñecidas-e-distintas" class="nav-link" data-scroll-target="#mostras-independentes-varianzas-descoñecidas-e-distintas"><span class="header-section-number">5.3.2</span> Mostras independentes, varianzas descoñecidas e distintas</a></li>
+  <li><a href="#mostras-emparelladas" id="toc-mostras-emparelladas" class="nav-link" data-scroll-target="#mostras-emparelladas"><span class="header-section-number">5.3.3</span> Mostras emparelladas</a></li>
+  </ul></li>
+  <li><a href="#contrastes-para-a-razón-de-varianzas-de-poboacións-normais" id="toc-contrastes-para-a-razón-de-varianzas-de-poboacións-normais" class="nav-link" data-scroll-target="#contrastes-para-a-razón-de-varianzas-de-poboacións-normais"><span class="header-section-number">5.4</span> Contrastes para a razón de varianzas de poboacións normais</a></li>
+  <li><a href="#contrastes-para-unha-proporción" id="toc-contrastes-para-unha-proporción" class="nav-link" data-scroll-target="#contrastes-para-unha-proporción"><span class="header-section-number">5.5</span> Contrastes para unha proporción</a></li>
+  <li><a href="#contrastes-para-a-diferenza-de-proporcións" id="toc-contrastes-para-a-diferenza-de-proporcións" class="nav-link" data-scroll-target="#contrastes-para-a-diferenza-de-proporcións"><span class="header-section-number">5.6</span> Contrastes para a diferenza de proporcións</a></li>
+  <li><a href="#exercicios" id="toc-exercicios" class="nav-link" data-scroll-target="#exercicios"><span class="header-section-number">5.7</span> EXERCICIOS</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLE/"><i class="bi bi-link-45deg"></i>Material de teoría</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipóteses</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Nesta práctica aplicaremos os conceptos de contrastes de hipóteses estudados na teoría utilizando o entorno de programación R. O obxectivo é que aprendamos a formular hipóteses estatísticas, calcular estatísticos de contraste e interpretar os p-valores para tomar decisións sobre parámetros dunha poboación a partir de mostras.</p>
+<section id="conceptos-básicos" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="conceptos-básicos"><span class="header-section-number">5.1</span> Conceptos básicos</h2>
+<p>Un <strong>contraste de hipóteses</strong> é un procedemento estatístico que permite tomar unha decisión sobre un parámetro descoñecido dunha poboación a partir dunha mostra. Para iso formúlanse dúas hipóteses:</p>
+<ul>
+<li><strong>Hipótese nula</strong> <span class="math inline">\(H_0\)</span>: representa a afirmación inicial sobre o parámetro. É a hipótese que asumimos certa antes de observar os datos. Goza de <em>presunción de inocencia</em>, de modo que só se rexeitará se hai evidencia suficiente en contra dela.</li>
+<li><strong>Hipótese alternativa</strong> <span class="math inline">\(H_1\)</span>: representa a afirmación que se acepta se a evidencia da mostra é suficientemente forte contra <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+<p>A decisión baséase nun <strong>estatístico de contraste</strong>, cuxa distribución baixo <span class="math inline">\(H_0\)</span> é coñecida. Ao fixar un nivel de significación <span class="math inline">\(\alpha\)</span>, obtense implícitamente unha división en dúas rexións do conxunto de posibles valores do estatístico de contraste:</p>
+<ul>
+<li>A <strong>rexión de rexeitamento</strong> ou rexión crítica, que ten probabilidade <span class="math inline">\(\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).<br>
+</li>
+<li>A <strong>rexión de aceptación</strong>, que ten probabilidade <span class="math inline">\(1-\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).</li>
+</ul>
+<p>Se o valor do estatístico cae na rexión de aceptación, non existen razóns suficientes para rexeitar a hipótese nula cun nivel de significación <span class="math inline">\(\alpha\)</span>, e o contraste considérase <strong>estatísticamente non significativo</strong>, é dicir, non existe evidencia a favor de <span class="math inline">\(H_1\)</span>. Se o valor do estatístico cae na rexión de rexeitamento, os datos non son compatibles con <span class="math inline">\(H_0\)</span> e rexeitamos a hipótese. Entón dicimos que o contraste é <strong>estatísticamente significativo</strong>, é dicir, existe evidencia estatisticamente significativa a favor de <span class="math inline">\(H_1\)</span>.</p>
+<p>Tamén podemos tomar a decisión a partir do denominado <strong>p-valor</strong> do estatístico, que mide a evidencia da mostra contra a hipótese nula. Dado un <strong>nivel de significación</strong> <span class="math inline">\(\alpha \in [0,1]\)</span>, a regra de decisión é:</p>
+<ul>
+<li>Se <span class="math inline">\(\textnormal{p-valor} &lt; \alpha\)</span> rexeitamos <span class="math inline">\(H_0\)</span> a nivel <span class="math inline">\(\alpha\)</span>.</li>
+<li>Se <span class="math inline">\(\textnormal{p-valor} &gt; \alpha\)</span> non rexeitamos <span class="math inline">\(H_0\)</span> a nivel <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+</section>
+<section id="contrastes-para-a-media-dunha-poboación-normal" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="contrastes-para-a-media-dunha-poboación-normal"><span class="header-section-number">5.2</span> Contrastes para a media dunha poboación normal</h2>
+<p>Consideremos unha mostra aleatoria simple <span class="math inline">\(X_1,\dots,X_n\)</span> de tamaño <span class="math inline">\(n\)</span> procedente dunha poboación normal <span class="math inline">\(N(\mu,\sigma)\)</span>. O obxectivo é formualr contrastes relativos á media poboacional <span class="math inline">\(\mu\)</span>.</p>
+<section id="contrastes-para-a-media-con-varianza-coñecida" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="contrastes-para-a-media-con-varianza-coñecida"><span class="header-section-number">5.2.1</span> Contrastes para a media con varianza coñecida</h3>
+<p>Supoñamos que a varianza da poboación <span class="math inline">\(\sigma^2\)</span> é coñecida. Queremos en primeiro lugar contrastar se a media da poboación é igual a un determinado valor <span class="math inline">\(\mu_0\)</span>. Formulamos o contraste</p>
+<p><span class="math display">\[
+H_0:\mu=\mu_0 \qquad \text{fronte a} \qquad H_1:\mu\neq\mu_0.
+\]</span></p>
+<p>Se a varianza da poboación é coñecida, o <strong>estatístico de contraste</strong> é</p>
+<p><span class="math display">\[
+Z=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}},
+\]</span></p>
+<p>que segue unha distribución normal estándar <span class="math inline">\(N(0,1)\)</span> cando <span class="math inline">\(H_0\)</span> é certa.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste bilateral <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> coñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq \mu_0\)</span> para un nivel <span class="math inline">\(\alpha\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\leq -z_{\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\geq z_{\alpha/2}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é distinto de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica <span class="math inline">\(\sigma=0.3\)</span>. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿podemos asumir que o tempo medio de resposta é distinto de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>xbar</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.24</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.529822</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>z_alpha2 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>z_alpha2</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.959964</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (z <span class="sc">&gt;</span> z_alpha2 <span class="sc">|</span> z <span class="sc">&lt;</span> (<span class="sc">-</span>z_alpha2)) {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo medio non é 5 ms."</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo medio de 5 ms."</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo medio non é 5 ms."</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z)))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste Z ="</span>, z, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste Z = 2.529822</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.01141204</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.01141204</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste unilateral <span class="math inline">\(H_0:\mu\leq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> coñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\leq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\geq z_{\alpha}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é maior de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica <span class="math inline">\(\sigma=0.3\)</span>. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿hai evidencia de que o tempo medio de resposta é maior de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>xbar</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.24</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.529822</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>z_alpha <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>z_alpha</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.644854</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (z <span class="sc">&gt;</span> z_alpha) {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é maior de 5 ms."</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo menor ou igual que 5 ms."</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é maior de 5 ms."</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste Z ="</span>, z, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste Z = 2.529822</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.005706018</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.005706018</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste unilateral <span class="math inline">\(H_0:\mu\geq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> coñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\geq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\leq -z_{\alpha}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é menor de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica <span class="math inline">\(\sigma=0.3\)</span>. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿hai evidencia de que o tempo medio de resposta é menor de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>xbar</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.24</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.529822</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>z_alpha <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>z_alpha</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.644854</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (z <span class="sc">&lt;=</span> <span class="sc">-</span>z_alpha) {</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é menor de 5 ms."</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo maior ou igual que 5 ms."</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo maior ou igual que 5 ms."</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste Z ="</span>, z, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste Z = 2.529822</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.994294</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.994294</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="contrastes-para-a-media-con-varianza-descoñecida" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="contrastes-para-a-media-con-varianza-descoñecida"><span class="header-section-number">5.2.2</span> Contrastes para a media con varianza descoñecida</h3>
+<p>Supoñamos agora que a varianza da poboación <span class="math inline">\(\sigma^2\)</span> é coñecida. Queremos formular o contraste</p>
+<p><span class="math display">\[
+H_0:\mu=\mu_0 \qquad \text{fronte a} \qquad H_1:\mu\neq\mu_0.
+\]</span> Neste caso, o <strong>estatístico de contraste</strong> é</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}},
+\]</span></p>
+<p>que segue unha distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> grados de liberdade cando <span class="math inline">\(H_0\)</span> é certa.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste bilateral <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> descoñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq \mu_0\)</span> para un nivel <span class="math inline">\(\alpha\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\leq -t_{n-1,\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\geq t_{n-1,\alpha/2}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é distinto de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica descoñecida. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿podemos asumir que o tempo medio de resposta é distinto de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(S<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>T</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.212467</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>t_alpha2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>t_alpha2</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.262157</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (T <span class="sc">&gt;</span> t_alpha2 <span class="sc">|</span> T <span class="sc">&lt;</span> (<span class="sc">-</span>t_alpha2)) {</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo medio non é 5 ms."</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo medio de 5 ms."</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo medio non é 5 ms."</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(T), n <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste T ="</span>, T, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste T = 5.212467</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.0005547442</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.0005547442</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste unilateral <span class="math inline">\(H_0:\mu\leq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> descoñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\leq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\geq t_{\alpha}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é maior de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica descoñecida. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿hai evidencia de que o tempo medio de resposta é maior de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(S<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>T</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.212467</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>t_alpha</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.833113</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (T <span class="sc">&gt;</span> t_alpha) {</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é maior de 5 ms."</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo menor ou igual que 5 ms."</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é maior de 5 ms."</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(T, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste T ="</span>, T, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste T = 5.212467</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.0002773721</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.0002773721</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Contraste unilateral <span class="math inline">\(H_0:\mu\geq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> (<span class="math inline">\(\sigma^2\)</span> descoñecida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\geq\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\leq -t_{n-1,\alpha}
+\]</span></p>
+<p>Isto é equivalente a comprobar se o <strong>p-valor</strong> é menor que <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Como exemplo, supoñamos unha plataforma de comercio electrónico que quere comprobar se o tempo medio de resposta do seu sistema é menor de 5 ms. Para iso mídese o tempo de resposta en 10 usuarios:</p>
+<p><span class="math display">\[
+5.31,\ 5.36,\ 4.96,\ 5.17,\ 5.29,\ 5.12,\ 5.12,\ 5.30,\ 5.31,\ 5.46
+\]</span></p>
+<p>Suponse que a variable é normal con desviación típica descoñecida. Para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, ¿hai evidencia de que o tempo medio de resposta é menor de 5 ms?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatístico de contraste</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu0)<span class="sc">/</span>(S<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>T</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5.212467</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>t_alpha</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.833113</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir da rexión crítica</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (T <span class="sc">&lt;=</span> <span class="sc">-</span>t_alpha) {</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, rexeitamos H0: hai evidencia de que o tempo é menor de 5 ms."</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    decision <span class="ot">&lt;-</span> <span class="st">"Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo maior ou igual que 5 ms."</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>decision</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Para un nivel alpha=0.05, non rexeitamos H0: os datos son compatibles cun tempo maior ou igual que 5 ms."</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Decisión a partir do p-valor</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="fu">pt</span>(T, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estatístico de contraste T ="</span>, T, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Estatístico de contraste T = 5.212467</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-valor ="</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">## p-valor = 0.9997226</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rexeitamos H0 para valores alpha maiores que"</span>, p_valor, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Rexeitamos H0 para valores alpha maiores que 0.9997226</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>En R, os contrastes para a media cunha varianza descoñecida pódense realizar directamente coa función <code>t.test()</code>. Esta función calcula automaticamente o estatístico de contraste e o p-valor. O argumento <code>alternative</code> indica o tipo de contraste que queremos realizar.</p>
+<ul>
+<li><p><code>alternative = "two.sided"</code> realiza un contraste bilateral (<span class="math inline">\(H_1:\mu\neq \mu_0\)</span> )</p></li>
+<li><p><code>alternative = "greater"</code> realiza un contraste unilateral á dereita (<span class="math inline">\(H_1:\mu&gt;\mu_0\)</span>).</p></li>
+<li><p><code>alternative = "less"</code> realiza un contraste unilateral á esquerda (<span class="math inline">\(H_1:\mu&lt;\mu_0\)</span>).</p></li>
+</ul>
+<p>Empregando os mesmos datos do exemplo anterior:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.31</span>, <span class="fl">5.36</span>, <span class="fl">4.96</span>, <span class="fl">5.17</span>, <span class="fl">5.29</span>, <span class="fl">5.12</span>, <span class="fl">5.12</span>, <span class="fl">5.3</span>, <span class="fl">5.31</span>, <span class="fl">5.46</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cotraste bilateral</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.2125, df = 9, p-value = 0.0005547</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is not equal to 5</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5.135842 5.344158</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x </span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">##      5.24</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Contraste unilateral á dereita (H1: mu &gt; mu0)</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.2125, df = 9, p-value = 0.0002774</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is greater than 5</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  5.155597      Inf</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x </span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">##      5.24</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Contraste unilateral á esquerda (H1: mu &lt; mu0)</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0, <span class="at">alternative =</span> <span class="st">"less"</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.2125, df = 9, p-value = 0.9997</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is less than 5</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="do">##      -Inf 5.324403</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x </span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="do">##      5.24</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="contrastes-para-a-diferenza-de-medias" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="contrastes-para-a-diferenza-de-medias"><span class="header-section-number">5.3</span> Contrastes para a diferenza de medias</h2>
+<p>Moitas veces queremos <strong>comparar as medias de dúas poboacións</strong>, xa sexa de dúas poboacións diferentes ou de dúas medicións sobre os mesmos individuos dunha poboación. Segundo o tipo de datos dispoñibles, a comparación realízase con <strong>mostras independentes</strong> ou <strong>mostras emparelladas</strong>, nas que se obteñen dúas observacións relacionadas para cada individuo. Neste caso, traballaremos unicamente co caso de <strong>varianzas descoñecidas</strong>, que é o máis habitual en aplicacións reais. Todos os contrastes realizaranse de forma directa mediante a función <code>t.test()</code> de R, que implementa automaticamente os procedementos baseados na distribución <span class="math inline">\(t\)</span> de Student para mostras independentes e emparelladas. Ademais, neste punto deixaremos de calcular explicitamente os estatísticos de contraste e as rexións críticas en cada caso, xa que estes detalles poden consultarse no material teórico. Na práctica centrámonos na interpretación do p-valor e na decisión estatística final.</p>
+<section id="mostras-independentes-varianzas-descoñecidas-e-iguais" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="mostras-independentes-varianzas-descoñecidas-e-iguais"><span class="header-section-number">5.3.1</span> Mostras independentes, varianzas descoñecidas e iguais</h3>
+<p>Supoñamos dúas poboacións nas que se estudan dúas características distribuídas normalmente con medias descoñecidas <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>, respectivamente. Estamos interesados en realizar contrates sobre a diferencia de medias <span class="math inline">\(\mu_1-\mu_2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>As mostras considéranse <strong>independentes</strong> e supoñemos que as <strong>varianzas son descoñecidas pero iguais</strong>.</p>
+<p>Como exemplo, supoñamos de novo unha plataforma de comercio electrónico que compara o tempo medio de resposta do seu sistema en dous servidores distintos. Supoñemos que as varianzas dos tempos de resposta en cada servidor son descoñecidas pero iguais. Obsérvanse os tempos de 10 usuarios distintos en cada servidor:</p>
+<ul>
+<li>Servidor 1: <span class="math inline">\(5.60, 5.10, 5.35, 5.75, 5.20, 5.70, 5.45, 5.30, 5.65, 5.25\)</span></li>
+<li>Servidor 2: <span class="math inline">\(5.10, 4.80, 4.85, 5.20, 4.90, 5.00, 4.95, 4.88, 5.05, 4.92\)</span></li>
+</ul>
+<p>Queremos contrastar se existen diferenzas entre os tempos medios dos dous servidores.</p>
+<p><span class="math display">\[
+H_0:\mu_1=\mu_2 \qquad \text{fronte a} \qquad H_1:\mu_1\neq\mu_2
+\]</span> En R, podemos realizar directamente este contraste coa función <code>t.test()</code> indicando as dúas mostras e o argumento <code>var.equal = TRUE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.6</span>, <span class="fl">5.1</span>, <span class="fl">5.35</span>, <span class="fl">5.75</span>, <span class="fl">5.2</span>, <span class="fl">5.7</span>, <span class="fl">5.45</span>, <span class="fl">5.3</span>, <span class="fl">5.65</span>, <span class="fl">5.25</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">4.85</span>, <span class="fl">5.2</span>, <span class="fl">4.9</span>, <span class="dv">5</span>, <span class="fl">4.95</span>, <span class="fl">4.88</span>, <span class="fl">5.05</span>, <span class="fl">4.92</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1, x2, <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Two Sample t-test</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x1 and x2</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.7263, df = 18, p-value = 1.983e-05</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  0.2975622 0.6424378</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     5.435     4.965</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Observamos que o p-valor é moi pequeno (inferior a 0.05), polo que rexeitamos a hipótese nula. Polo tanto, existe evidencia estatística suficiente para concluír que os tempos medios de resposta dos dous servidores son diferentes. Agora, se o que nos interesa é determinar se o tempo medio no servidor 1 é maior que no servidor 2, formulamos un contraste unilateral:</p>
+<p><span class="math display">\[
+H_0:\mu_1\leq\mu_2 \qquad \text{fronte a} \qquad H_1:\mu_1&gt;\mu_2
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.6</span>, <span class="fl">5.1</span>, <span class="fl">5.35</span>, <span class="fl">5.75</span>, <span class="fl">5.2</span>, <span class="fl">5.7</span>, <span class="fl">5.45</span>, <span class="fl">5.3</span>, <span class="fl">5.65</span>, <span class="fl">5.25</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">4.85</span>, <span class="fl">5.2</span>, <span class="fl">4.9</span>, <span class="dv">5</span>, <span class="fl">4.95</span>, <span class="fl">4.88</span>, <span class="fl">5.05</span>, <span class="fl">4.92</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1, x2, <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Two Sample t-test</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x1 and x2</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.7263, df = 18, p-value = 9.917e-06</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is greater than 0</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  0.3276729       Inf</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     5.435     4.965</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>De novo, o p-valor é moi pequeno, polo que, para calquera nivel de significación razoable, rexeitamos a hipótese nula. Existe evidencia estatística suficiente para concluír que o servidor 1 presenta un tempo medio de resposta maior que o servidor 2.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>É importante ter en conta que en <code>t.test()</code> a orde na que se introducen as mostras é relevante, xa que determina a interpretación das hipóteses. En particular, a primeira mostra introducida considérase como referencia para o cálculo da diferenza de medias. Isto é especialmente importante nos contrastes unilaterais, xa que o sentido da hipótese alternativa depende directamente da orde na que se introducen os datos.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mostras-independentes-varianzas-descoñecidas-e-distintas" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="mostras-independentes-varianzas-descoñecidas-e-distintas"><span class="header-section-number">5.3.2</span> Mostras independentes, varianzas descoñecidas e distintas</h3>
+<p>Supoñamos dúas poboacións nas que se estudan dúas características distribuídas normalmente con medias descoñecidas <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>, respectivamente. Estamos interesados en realizar contrates sobre a diferencia de medias <span class="math inline">\(\mu_1-\mu_2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>As mostras considéranse <strong>independentes</strong> e supoñemos que as <strong>varianzas son descoñecidas e distintas</strong>.</p>
+<p>Como exemplo, supoñamos de novo unha plataforma de comercio electrónico que compara o tempo medio de resposta do seu sistema en dous servidores distintos. Supoñemos agora que as varianzas dos tempos de resposta en cada servidor son descoñecidas e distintas. Obsérvanse os tempos de 10 usuarios distintos en cada servidor:</p>
+<ul>
+<li>Servidor 1: <span class="math inline">\(5.60, 5.10, 5.35, 5.75, 5.20, 5.70, 5.45, 5.30, 5.65, 5.25\)</span></li>
+<li>Servidor 2: <span class="math inline">\(5.10, 4.80, 4.85, 5.20, 4.90, 5.00, 4.95, 4.88, 5.05, 4.92\)</span></li>
+</ul>
+<p>Queremos contrastar se existen diferenzas entre os tempos medios de resposta dos dous servidores.</p>
+<p><span class="math display">\[
+H_0:\mu_1=\mu_2 \qquad \text{fronte a} \qquad H_1:\mu_1\neq\mu_2
+\]</span> En R, realizamos este contraste de novo coa función <code>t.test()</code> indicando agora o argumento <code>var.equal = FALSE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.6</span>, <span class="fl">5.1</span>, <span class="fl">5.35</span>, <span class="fl">5.75</span>, <span class="fl">5.2</span>, <span class="fl">5.7</span>, <span class="fl">5.45</span>, <span class="fl">5.3</span>, <span class="fl">5.65</span>, <span class="fl">5.25</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">4.85</span>, <span class="fl">5.2</span>, <span class="fl">4.9</span>, <span class="dv">5</span>, <span class="fl">4.95</span>, <span class="fl">4.88</span>, <span class="fl">5.05</span>, <span class="fl">4.92</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1, x2, <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x1 and x2</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## t = 5.7263, df = 13.805, p-value = 5.53e-05</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  0.2937289 0.6462711</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     5.435     4.965</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Observamos que o p-valor é moi pequeno (inferior a 0.05), polo que rexeitamos a hipótese nula. Polo tanto, existe evidencia estatística suficiente para concluír que os tempos medios de resposta dos dous servidores son diferentes.</p>
+</section>
+<section id="mostras-emparelladas" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="mostras-emparelladas"><span class="header-section-number">5.3.3</span> Mostras emparelladas</h3>
+<p>Consideremos agora unha poboación na que medimos dúas características relacionadas <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> sobre os mesmos individuos. Supoñemos que <span class="math inline">\(X_1 \sim N(\mu_1, \sigma_1)\)</span> e <span class="math inline">\(X_2 \sim N(\mu_2, \sigma_2)\)</span>, pero tendo en conta que agora <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> <strong>non son independentes</strong>. Queremos realizar contrastes sobre a diferencia de medias <span class="math inline">\(\mu_1-\mu_2\)</span>. Na práctica, dispoñemos de dúas <strong>mostras emparelladas</strong> de tamaño <span class="math inline">\(n\)</span> observadas <strong>nos mesmos individuos</strong>:</p>
+<ul>
+<li><span class="math inline">\(X_{11}, \dots, X_{1n}\)</span> coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li><span class="math inline">\(X_{21}, \dots, X_{2n}\)</span> coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>Como exemplo, un equipo de IA quere avaliar o impacto dunha nova técnica de preprocesamento sobre o tempo de adestramento dun modelo de clasificación de imaxes. Para iso, obtéñense os tempos de adestramento do modelo (en segundos) para 10 imaxes antes e despois de aplicar a técnica.</p>
+<ul>
+<li>Antes do preprocesamento: <span class="math inline">\(82, 85, 78, 90, 88, 84, 87, 80, 86, 83\)</span></li>
+<li>Despois do preprocesamento: <span class="math inline">\(85, 88, 80, 92, 90, 86, 89, 82, 88, 85\)</span></li>
+</ul>
+<p>Queremos contrastar se existen diferenzas nos tempos medios de adestramento antes (<span class="math inline">\(\mu_1\)</span>) e despois (<span class="math inline">\(\mu_2\)</span>) da técnica de preprocesamento.</p>
+<p><span class="math display">\[
+H_0:\mu_1=\mu_2 \qquad \text{fronte a} \qquad H_1:\mu_1\neq\mu_2
+\]</span> En R, realizamos este contraste coa función <code>t.test()</code> indicando agora o argumento <code>paired = TRUE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>antes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">82</span>, <span class="dv">85</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">84</span>, <span class="dv">87</span>, <span class="dv">80</span>, <span class="dv">86</span>, <span class="dv">83</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>despois <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">88</span>, <span class="dv">80</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">86</span>, <span class="dv">89</span>, <span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">85</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(antes, despois, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Paired t-test</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  antes and despois</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## t = -16.5, df = 9, p-value = 4.917e-08</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean difference is not equal to 0</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  -2.501621 -1.898379</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="do">## mean difference </span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="do">##            -2.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Á vista do p-valor, rexeitamos a hipótese nula. Polo tanto, existe evidencia estatística suficiente para concluír que os tempos medios de adestramento antes e despois da técnica de preprocesamento son diferentes. Se agora queremos comprobar se o tempo de adestramento é maior despois da técnica de preprocesamento, formulamos un contraste unilateral axeitado e repetimos o procedemento coa opción correspondente en <code>t.test()</code>.</p>
+<p><span class="math display">\[
+H_0:\mu_1\geq\mu_2 \qquad \text{fronte a} \qquad H_1:\mu_1&lt;\mu_2
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>antes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">82</span>, <span class="dv">85</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">84</span>, <span class="dv">87</span>, <span class="dv">80</span>, <span class="dv">86</span>, <span class="dv">83</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>despois <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">88</span>, <span class="dv">80</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">86</span>, <span class="dv">89</span>, <span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">85</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(antes, despois, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">"less"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Paired t-test</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  antes and despois</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">## t = -16.5, df = 9, p-value = 2.459e-08</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean difference is less than 0</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="do">##       -Inf -1.955585</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="do">## mean difference </span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="do">##            -2.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Observa que escribimos <code>alternative = "less"</code> porque estamos a probar se <em>antes &lt; despois</em> (a hipótese alternativa é <span class="math inline">\(H_1:\mu_1&lt;\mu_2\)</span>). A partir do resultado obtido, rexeitamos a hipótese nula. Polo tanto, existe evidencia estatística suficiente para concluír que o tempo medio de adestramento é significativamente maior despois da técnica de preprocesamento.</p>
+</section>
+</section>
+<section id="contrastes-para-a-razón-de-varianzas-de-poboacións-normais" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="contrastes-para-a-razón-de-varianzas-de-poboacións-normais"><span class="header-section-number">5.4</span> Contrastes para a razón de varianzas de poboacións normais</h2>
+<p>Antes de estudar os contrastes para varianzas, é importante destacar que, do mesmo xeito que ocorría nos intervalos de confianza, en R non existe unha función básica específica para realizar contrastes dunha soa varianza. Este tipo de contraste pode abordarse mediante a distribución chi-cadrado, de forma manual ou empregando librerías adicionais. Porén, neste curso non imos tratar este procedemento de forma explícita. Porén, si dispoñemos dunha función directa para comparar dúas varianzas.</p>
+<p>Supoñamos dúas poboacións nas que se estudan dúas características distribuídas normalmente con varianzas descoñecidas <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span>, respectivamente. O obxectivo é <strong>comparar as dúas varianzas</strong> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>Os contrastes que se consideran poden ser bilaterais ou unilaterais, dependendo do interese do estudo. É dicir, analizaremos contrastes do tipo</p>
+<p><span class="math display">\[
+H_0:\sigma_1^2=\sigma_2^2
+\qquad \text{fronte a} \qquad
+H_1:\sigma_1^2\neq\sigma_2^2,
+\]</span></p>
+<p>ou ben os correspondentes contrastes unilaterais cando se quere determinar se unha das varianzas é maior ou menor ca outra.</p>
+<p>Como exemplo, unha plataforma de comercio electrónico quere analizar a variabilidade do tempo de resposta do seu sistema de recomendación en dous servidores distintos. Obsérvanse os tempos de 10 usuarios distintos en cada servidor:</p>
+<ul>
+<li>Servidor 1: <span class="math inline">\(5.60, 5.10, 5.35, 5.75, 5.20, 5.70, 5.45, 5.30, 5.65, 5.25\)</span></li>
+<li>Servidor 2: <span class="math inline">\(5.10, 4.80, 4.85, 5.20, 4.90, 5.00, 4.95, 4.88, 5.05, 4.92\)</span></li>
+</ul>
+<p>Supoñendo que os tempos son normais, queremos contrastar se existen diferenzas entre as varianzas dos tempos de resposta dos dous servidores.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.6</span>, <span class="fl">5.1</span>, <span class="fl">5.35</span>, <span class="fl">5.75</span>, <span class="fl">5.2</span>, <span class="fl">5.7</span>, <span class="fl">5.45</span>, <span class="fl">5.3</span>, <span class="fl">5.65</span>, <span class="fl">5.25</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">4.85</span>, <span class="fl">5.2</span>, <span class="fl">4.9</span>, <span class="dv">5</span>, <span class="fl">4.95</span>, <span class="fl">4.88</span>, <span class="fl">5.05</span>, <span class="fl">4.92</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(x1, x2, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  F test to compare two variances</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x1 and x2</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## F = 3.4564, num df = 9, denom df = 9, p-value = 0.07882</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true ratio of variances is not equal to 1</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   0.8585332 13.9156468</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ratio of variances </span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="do">##            3.45645</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>O resultado do contraste proporciona p-valor de 0.07882. Comparando o p-valor co nivel de significación <span class="math inline">\(\alpha\)</span>, observamos que:</p>
+<ul>
+<li>Se <span class="math inline">\(\alpha &lt; 0.07882\)</span>, non se rexeita a hipótese nula.</li>
+<li>Se <span class="math inline">\(\alpha \ge 0.07882\)</span>, rexeitaríase a hipótese nula.</li>
+</ul>
+<p>En particular, para valores habituais como <span class="math inline">\(\alpha = 0.05\)</span>, non se rexeita a hipótese nula. Polo tanto, non hai evidencia estatística suficiente para concluír que existan diferenzas significativas entre as varianzas das dúas poboacións (para un nivel de significación <span class="math inline">\(\alpha = 0.05\)</span> os datos son compatibles coa hipótese de igualdade de varianzas).</p>
+<p>Se se quixeran formular contrastes unilaterais, estes poderían realizarse tamén mediante o argumento <code>alternative</code> da función <code>var.test()</code>, indicando se se desexa comprobar se a varianza dunha poboación é maior ou menor ca da outra.</p>
+</section>
+<section id="contrastes-para-unha-proporción" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="contrastes-para-unha-proporción"><span class="header-section-number">5.5</span> Contrastes para unha proporción</h2>
+<p>Ademais dos intervalos de confianza que vimos no tema anterior, tamén podemos realizar <strong>contrastes de hipóteses sobre unha proporción</strong>.</p>
+<p>Consideramos o contraste:</p>
+<p><span class="math display">\[
+H_0: p = p_0
+\qquad \text{fronte a} \qquad
+H_1: p \neq p_0
+\]</span> Na teoría, os contrastes sobre proporcións realízanse empregando a aproximación normal do estimador. En R, a función <code>prop.test()</code> implementa este contraste de forma automática. O argumento <code>correct = FALSE</code> emprégase para desactivar a corrección por continuidade que se aplica ao aproximar a distribución binomial pola normal, facendo que o procedemento sexa máis fiel á formulación teórica vista na aula.</p>
+<p>Como exemplo, consideremos un modelo de clasificación de imaxes. Avaliáronse 50 imaxes, das cales 42 foron clasificadas correctamente. Queremos contrastar se a proporción de acerto é significativamente distinta do 90%:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(x, n, <span class="at">p =</span> <span class="fl">0.9</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1-sample proportions test without continuity correction</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  x out of n, null probability 0.9</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">## X-squared = 2, df = 1, p-value = 0.1573</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: true p is not equal to 0.9</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  0.7148578 0.9166258</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="do">##    p </span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.84</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Á vista do resultado de <code>prop.test()</code>, para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, non existe evidencia estatística suficiente para rexeitar a hipótese nula sobre a proporción.</p>
+<p>Observa que intervalo de confianza para a proporción que devolve <code>prop.test()</code> non coincide exactamente co intervalo aproximado calculado na sesión de laboratorio anterior. Isto débese a que non se constrúe de forma idéntica á aproximación normal explicada na teoría.</p>
+<p>Igual que nos outros casos, poderíase empregar o argumento <code>alternative</code> da función <code>prop.test()</code>, se o que se desexa é contrastar se a proporción de acerto é significativamente maior ou menor que un valor dado.</p>
+</section>
+<section id="contrastes-para-a-diferenza-de-proporcións" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="contrastes-para-a-diferenza-de-proporcións"><span class="header-section-number">5.6</span> Contrastes para a diferenza de proporcións</h2>
+<p>Nalgúns casos estamos interesados en contrastar hipóteses sobre a diferenza de proporcións <span class="math inline">\(p_1 - p_2\)</span> de dúas poboacións. Para iso dispoñemos de dúas mostras independentes:</p>
+<ul>
+<li>Unha mostra de tamaño <span class="math inline">\(n_1\)</span> procedente da poboación 1.</li>
+<li>Unha mostra de tamaño <span class="math inline">\(n_2\)</span> procedente da poboación 2.</li>
+</ul>
+<p>As mostras considéranse independentes, é dicir, os individuos de cada poboación son distintos.</p>
+<p>Consideramos o contraste:</p>
+<p><span class="math display">\[
+H_0: p_1 = p_2
+\qquad \text{fronte a} \qquad
+H_1: p_1 \neq p_2
+\]</span></p>
+<p>Como exemplo, comparamos dous modelos de clasificación de imaxes:</p>
+<ul>
+<li>Modelo A: 42 acertos en 50 imaxes</li>
+<li>Modelo B: 45 acertos en 50 imaxes</li>
+</ul>
+<p>Queremos contrastar se a proporción de acerto é significativamente diferente nos dous modelos. En R realizamos o contraste mediante:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">42</span>  <span class="co"># Modelo A</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">45</span>  <span class="co"># Modelo B</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2-sample test for equality of proportions without continuity correction</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="do">## data:  c(x1, x2) out of c(n1, n2)</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="do">## X-squared = 0.79576, df = 1, p-value = 0.3724</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="do">## alternative hypothesis: two.sided</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  -0.19130296  0.07130296</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="do">## prop 1 prop 2 </span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="do">##   0.84   0.90</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Á vista do resultado de <code>prop.test()</code>, para un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, non existe evidencia estatística suficiente para rexeitar a hipótese nula. Polo tanto, non hai evidencia estatística suficiente para concluír que existan diferenzas significativas entres as proporcións de clasificación correcta dos dous modelos.</p>
+<p>De novo, como en todos os casos anteriores poderíase empregar o argumento <code>alternative</code> da función <code>prop.test()</code>, se o que se desexa é contrastar se a proporción de acerto é significativamente maior ou menor no modelo A que no modelo B.</p>
+</section>
+<section id="exercicios" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="exercicios"><span class="header-section-number">5.7</span> EXERCICIOS</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Boletín de exercicios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/PDF.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="EXERCICIOS/5_boletin_Contrastes.pdf">Descargar (PDF)</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Arquivos de datos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/StudentPerformanceFactors.csv" download="">StudentPerformanceFactors.csv</a> Este ficheiro foi obtido de Kaggle. <a href="https://www.kaggle.com/datasets/sadiajavedd/students-academic-performance-dataset">https://www.kaggle.com/datasets/sadiajavedd/students-academic-performance-dataset</a>.</p>
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/heart_rate_data.csv" download="">heart_rate_data.csv</a> Este ficheiro foi obtido de Kaggle. <a href="https://www.kaggle.com/datasets/abdullahmalmutairi/pre-and-post-exercise-heart-rate-analysis">https://www.kaggle.com/datasets/abdullahmalmutairi/pre-and-post-exercise-heart-rate-analysis</a>.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./4_inferencia.html" class="pagination-link" aria-label="Introdución á inferencia estatística e á estimación de parámetros">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6_regresion.html" class="pagination-link" aria-label="Introdución á regresión linear">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión linear</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

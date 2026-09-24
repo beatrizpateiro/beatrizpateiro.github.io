@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.9 Contrastes de normalidad | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.9 Contrastes de normalidad | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.9 Contrastes de normalidad | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="comparación-de-poblaciones-normales-multivariantes.html"/>
+<link rel="next" href="análisis-multivariante-de-la-varianza.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="autores.html"><a href="autores.html"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="prerrequisitos.html"><a href="prerrequisitos.html"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-al-análisis-multivariante.html"><a href="introducción-al-análisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="notación-de-vectores-y-matrices.html"><a href="notación-de-vectores-y-matrices.html"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="vectores-aleatorios.html"><a href="vectores-aleatorios.html"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#visualización-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#estandarización"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#estimadores-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#distribución-de-overlinebmx-y-bms"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="contrastes-multivariantes-versus-contrastes-univariantes.html"><a href="contrastes-multivariantes-versus-contrastes-univariantes.html"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-scheffé"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html#contraste-h_0-bmsigmabmsigma_0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-la-hipótesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-dos-subvectores-h_0-bmsigma_12bm0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-todas-las-variables-h_0bmsigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="secnorm.html"><a href="secnorm.html"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="secnorm.html"><a href="secnorm.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="secnorm.html"><a href="secnorm.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-multivariante-de-la-varianza.html"><a href="análisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><a href="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#descomposición-de-la-variabilidad.-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#el-estadístico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="manova-con-dos-factores-de-variación.html"><a href="manova-con-dos-factores-de-variación.html"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><a href="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-mínimo-cuadráticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#posición-en-el-plano-de-la-1ª-componente-principal-respecto-a-las-rectas-de-regresión"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><a href="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="las-componentes-principales-y-los-cambios-de-escala.html"><a href="las-componentes-principales-y-los-cambios-de-escala.html"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="interpretación-de-las-componentes-principales.html"><a href="interpretación-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-correspondencias.html"><a href="análisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><a href="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados-1"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#contribuciones-1"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><a href="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-discriminante.html"><a href="análisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dos-grupos-con-distribuciones-conocidas.html"><a href="dos-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-la-probabilidad-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#razón-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-el-coste-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#estimación-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html#clasificación-óptima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="técnicas-de-formación-de-grupos.html"><a href="técnicas-de-formación-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-jerárquicos..html"><a href="métodos-jerárquicos..html"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-de-particionamiento..html"><a href="métodos-de-particionamiento..html"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html#propiedades-de-la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#definición-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#definición-y-propiedades-1"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#el-estadístico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#introducción"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#definición-y-propiedades-2"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="autovalores.html"><a href="autovalores.html"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="matrices-semidefinidas-positivas.html"><a href="matrices-semidefinidas-positivas.html"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="matrices-definidas-positivas.html"><a href="matrices-definidas-positivas.html"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="secnorm" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Contrastes de normalidad<a href="secnorm.html#secnorm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="secuni" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> Revisión del caso univariante<a href="secnorm.html#secuni" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se han desarrollado muchos procedimientos para el contraste de la
+normalidad en el caso univariante. Un procedimiento gráfico sencillo
+para evaluar la normalidad de un conjunto de observaciones de una
+variable es el <span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plot, que compara los cuantiles de la muestra
+con los cuantiles de la distribución normal univariante. En la Figura
+<a href="secnorm.html#fig:qq">2.8</a> se muestran los
+<span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plots correspondientes a muestras generadas a partir de
+distintas distribuciones. Cuando los puntos se acercan a la línea recta
+representada (como en la primera gráfica), no hay evidencia de falta de
+normalidad. La desviación de los puntos con respecto a la recta indica
+falta de normalidad. Por ejemplo, un <span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plot como el de los datos
+generados a partir de la <span class="math inline">\(t\)</span> de Student, es típico en datos que
+provienen de distribuciones con colas más pesadas que la Normal. Para
+datos que provienen de distribuciones con colas menos pesadas que la
+Normal se suelen obtener <span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plots como el de los datos uniformes
+en la Figura <a href="secnorm.html#fig:qq">2.8</a>. Un
+<span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plot como el de los datos generados a partir de la <span class="math inline">\(\chi^2\)</span> es
+típico en datos que provienen de distribuciones asimétricas. Si bien el
+<span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plot nos puede servir para valorar de forma visual la
+normalidad de una muestra, es adecuado hacer uso de procedimientos
+objetivos. Veremos a continuación algunos de dichos procedimientos,
+aquellos que se extienden de manera más natural al caso multivariante.
+Serán los métodos basados en la asimetría, la kurtosis, y el test de
+Shapiro-Wilk.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:qq"></span>
+<img src="bookdown_AM_files/figure-html/qq-1.png" alt="Funciones de densidad correspondientes a una distribución normal de media cero y varianza $5/3$ (rojo), $t$ de Student con 5 grados de libertad (azul), uniforme en $\left[-\sqrt{5},\sqrt{5}\right]$ (verde) y $\chi^2$ con 5 grados de libertad (rosa) y $Q$-$Q$ plots correspondientes a muestras generadas a partir de dichas distribuciones." width="50%" /><img src="bookdown_AM_files/figure-html/qq-2.png" alt="Funciones de densidad correspondientes a una distribución normal de media cero y varianza $5/3$ (rojo), $t$ de Student con 5 grados de libertad (azul), uniforme en $\left[-\sqrt{5},\sqrt{5}\right]$ (verde) y $\chi^2$ con 5 grados de libertad (rosa) y $Q$-$Q$ plots correspondientes a muestras generadas a partir de dichas distribuciones." width="50%" />
+<p class="caption">
+Figura 2.8: Funciones de densidad correspondientes a una distribución normal de media cero y varianza <span class="math inline">\(5/3\)</span> (rojo), <span class="math inline">\(t\)</span> de Student con 5 grados de libertad (azul), uniforme en <span class="math inline">\(\left[-\sqrt{5},\sqrt{5}\right]\)</span> (verde) y <span class="math inline">\(\chi^2\)</span> con 5 grados de libertad (rosa) y <span class="math inline">\(Q\)</span>-<span class="math inline">\(Q\)</span> plots correspondientes a muestras generadas a partir de dichas distribuciones.
+</p>
+</div>
+<div id="test-basado-en-la-asimetría" class="section level4 hasAnchor" number="2.9.1.1">
+<h4><span class="header-section-number">2.9.1.1</span> Test basado en la asimetría<a href="secnorm.html#test-basado-en-la-asimetría" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Es bien conocido que la distribución normal es simétrica en torno a su
+media. Como además, la forma más común de desviarse respecto de la
+normalidad es por falta de simetría, por ejemplo en variables positivas,
+parece lógico construir un método de contraste en base a cierta medida
+de asimetría.</p>
+<p>Si <span class="math inline">\(x_1,\ldots,x_n\)</span> es una muestra aleatoria simple (observaciones
+independientes e idénticamente distribuidas), el coeficiente de
+asimetría muestral se define como</p>
+<p><span class="math display">\[A=\frac{\frac{1}{n}\sum_{i=1}^n\left(x_i-\overline{x}\right)^3}{s^3}
+=\frac{1}{n}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s}\right)^3\]</span>
+siendo <span class="math inline">\(\overline{x}\)</span> la media muestral y <span class="math inline">\(s^2\)</span> la varianza muestral. El
+coeficiente de asimetría es la media de las potencias cúbicas (también
+llamado momento de orden tres) de los valores estandarizados. Al estar
+estandarizados, habrá observaciones a ambos lados de la media,
+manteniendo un equilibrio (en orden uno). Sin embargo, la potencia tres
+que se emplea en el coeficiente de asimetría, rompe el equilibrio en
+caso de distribución asimétrica. En la Figura <a href="secnorm.html#fig:asim2">2.9</a> se muestran
+los coeficiente de asimetría (para calcularlos puedes utilizar la
+función <code>skewness</code> de la librería <code>moments</code>) de datos generados de
+distintas distribuciones.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:asim2"></span>
+<img src="bookdown_AM_files/figure-html/asim2-1.png" alt="Histogramas y coeficiente de asimetría correspondientes a datos generados de una distribución normal (izquierda), de una exponencial (centro) y de los mismos datos exponenciales tras cambiarles el signo (derecha). Los datos se representan en azul. En rojo, media muestral." width="33%" /><img src="bookdown_AM_files/figure-html/asim2-2.png" alt="Histogramas y coeficiente de asimetría correspondientes a datos generados de una distribución normal (izquierda), de una exponencial (centro) y de los mismos datos exponenciales tras cambiarles el signo (derecha). Los datos se representan en azul. En rojo, media muestral." width="33%" /><img src="bookdown_AM_files/figure-html/asim2-3.png" alt="Histogramas y coeficiente de asimetría correspondientes a datos generados de una distribución normal (izquierda), de una exponencial (centro) y de los mismos datos exponenciales tras cambiarles el signo (derecha). Los datos se representan en azul. En rojo, media muestral." width="33%" />
+<p class="caption">
+Figura 2.9: Histogramas y coeficiente de asimetría correspondientes a datos generados de una distribución normal (izquierda), de una exponencial (centro) y de los mismos datos exponenciales tras cambiarles el signo (derecha). Los datos se representan en azul. En rojo, media muestral.
+</p>
+</div>
+<p>Si la distribución de los datos muestrales es normal, entonces el
+coeficiente de asimetría tiene distribución asintótica normal de media
+cero y varianza <span class="math inline">\(6/n\)</span>, por lo que se puede emplear como estadístico de
+contraste el siguiente:</p>
+<p><span class="math display">\[\sqrt{\frac{n}{6}}\ A\approx N(0,1)\]</span></p>
+<p>Se rechazará la normalidad, en base al coeficiente de asimetría, cuando
+el estadístico anterior sea muy grande (en positivo o negativo), en
+comparación con los cuantiles de la <span class="math inline">\(N(0,1)\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Vamos a presentar los resultados del contraste de normalidad basado en
+asimetría aplicado a datos simulados de distintas distribuciones.
+Mostramos en primer lugar los valores del coeficiente de asimetría, el
+estadístico de contraste y nivel crítico para datos simulados de la
+distribución normal.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="secnorm.html#cb78-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(moments)</span>
+<span id="cb78-2"><a href="secnorm.html#cb78-2" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb78-3"><a href="secnorm.html#cb78-3" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb78-4"><a href="secnorm.html#cb78-4" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="ot">&lt;-</span> <span class="fu">skewness</span>(x)</span>
+<span id="cb78-5"><a href="secnorm.html#cb78-5" tabindex="-1"></a><span class="sc">&gt;</span> A</span>
+<span id="cb78-6"><a href="secnorm.html#cb78-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">0.09408815</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="secnorm.html#cb79-1" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> A</span>
+<span id="cb79-2"><a href="secnorm.html#cb79-2" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb79-3"><a href="secnorm.html#cb79-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">0.2103875</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="secnorm.html#cb80-1" tabindex="-1"></a><span class="sc">&gt;</span> pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(estad)))</span>
+<span id="cb80-2"><a href="secnorm.html#cb80-2" tabindex="-1"></a><span class="sc">&gt;</span> pval</span>
+<span id="cb80-3"><a href="secnorm.html#cb80-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.8333653</span></span></code></pre></div>
+<p>Como cabía esperar, la pequeña asimetría muestral de los datos normales
+no resulta significativa. Veamos ahora lo que ocurre cuando generamos
+datos de una distribución asimétrica como la exponencial.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="secnorm.html#cb81-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n)</span>
+<span id="cb81-2"><a href="secnorm.html#cb81-2" tabindex="-1"></a><span class="sc">&gt;</span> A <span class="ot">&lt;-</span> <span class="fu">skewness</span>(x)</span>
+<span id="cb81-3"><a href="secnorm.html#cb81-3" tabindex="-1"></a><span class="sc">&gt;</span> A</span>
+<span id="cb81-4"><a href="secnorm.html#cb81-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1.754585</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="secnorm.html#cb82-1" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> A</span>
+<span id="cb82-2"><a href="secnorm.html#cb82-2" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb82-3"><a href="secnorm.html#cb82-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">3.923371</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="secnorm.html#cb83-1" tabindex="-1"></a><span class="sc">&gt;</span> pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(estad)))</span>
+<span id="cb83-2"><a href="secnorm.html#cb83-2" tabindex="-1"></a><span class="sc">&gt;</span> pval</span>
+<span id="cb83-3"><a href="secnorm.html#cb83-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">8.73186e-05</span></span></code></pre></div>
+</div>
+<div id="test-basado-en-la-kurtosis" class="section level4 hasAnchor" number="2.9.1.2">
+<h4><span class="header-section-number">2.9.1.2</span> Test basado en la kurtosis<a href="secnorm.html#test-basado-en-la-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Partimos de la muestra <span class="math inline">\(x_1,\ldots,x_n\)</span>. El momento de orden cuatro de
+los valores estandarizados se calcula como:</p>
+<p><span class="math display">\[\frac{1}{n}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s}\right)^4,\]</span></p>
+<p>siendo <span class="math inline">\(\overline{x}\)</span> la media muestral y <span class="math inline">\(s^2\)</span> la varianza muestral.
+Recordemos que las características de posición se calculan mediante un
+momento de orden uno (la media), las de dispersión a través de un
+momento de orden dos (la varianza) y la asimetría con un momento de
+orden tres (el coeficiente de asimetría). El momento de orden cuatro
+permite medir características de forma, que son un refinamiento todavía
+más detallado en el análisis de la distribución. Si bien en algunos
+textos la kurtosis se define como el momento de orden 4, es más habitual
+definir la kurtosis como:</p>
+<p><span class="math display">\[K=\frac{1}{n}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s}\right)^4-3.\]</span>
+En esta definición se resta tres para que el coeficiente valga cero en
+la distribución normal. Así definida, <span class="math inline">\(K\)</span> también se conoce como <em>exceso
+de kurtosis</em>.</p>
+<p>En la Figura <a href="secnorm.html#fig:qq">2.8</a> se
+representaban tres distribuciones con la misma media, desviación típica
+y asimetría (asimetría cero, pues son simétricas). Son la <span class="math inline">\(t\)</span> de Student
+con 5 grados de libertad, la normal y la uniforme, ambas con la misma
+media y desviación típica que la <span class="math inline">\(t_5\)</span>. Para ello, se toma la normal con
+media cero y desviación típica <span class="math inline">\(\sqrt{5/3}\)</span>, y la uniforme entre
+<span class="math inline">\(-\sqrt{5}\)</span> y <span class="math inline">\(\sqrt{5}\)</span>. Vemos que la distribución <span class="math inline">\(t\)</span> de Student es la
+que presenta una mayor concentración de probabilidad en las proximidades
+de la media, así como en las colas (lejanías extremas)<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Esto hace
+que tenga un coeficiente de apuntamiento más grande. Por el contrario,
+la distribución uniforme es la que presenta menor densidad en las
+proximidades de la media, y carece de colas. En este caso, la densidad
+es más grande en los valores con desviaciones intermedias <span class="math inline">\((\mu-\sigma)\)</span>
+y <span class="math inline">\((\mu+\sigma)\)</span>. Como resultado, el coeficiente de apuntamiento será
+más pequeño para la distribución uniforme. La distribución normal
+presenta un comportamiento intermedio entre la <span class="math inline">\(t_5\)</span> y la uniforme.</p>
+<p>Si una distribución tiene un apuntamiento similar al de la normal
+decimos que es <strong>mesocúrtica</strong>, si el apuntamiento es mayor se dice
+<strong>leptocúrtica</strong>, y si es menor se dice <strong>platicúrtica</strong>. La <span class="math inline">\(t\)</span> de
+Student es una distribución leptocúrtica y la uniforme platicúrtica.</p>
+<p>Volviendo al propósito de contraste de la normalidad, si estamos ante
+una distribución simétrica, podemos valorar una posible desviación del
+modelo normal en función de su apuntamiento o kurtosis. Rechazaremos la
+normalidad si la kurtosis muestral es mucho mayor o mucho menor que
+cero, que es lo que corresponde a la distribución normal.</p>
+<p>Se puede demostrar que si la distribución de los datos muestrales es
+normal, entonces la kurtosis tiene distribución asintótica normal de
+media cero y varianza <span class="math inline">\(24/n\)</span>, por lo que se puede emplear como
+estadístico de contraste el siguiente:</p>
+<p><span class="math display">\[\sqrt{\frac{n}{24}}\ K\approx N(0,1).\]</span></p>
+<p>Se rechazará la normalidad, en
+base a la kurtosis, cuando el estadístico anterior sea muy grande (en
+positivo o negativo), en comparación con los cuantiles de la <span class="math inline">\(N(0,1)\)</span>.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Vamos a extraer muestras simuladas de tamaño 100 de cada una de las tres
+distribuciones que se han comentado en esta sección, y cuyas densidades
+se representan en la Figura <a href="secnorm.html#fig:qq" reference-type="ref" reference="fig:qq">2</a>: <span class="math inline">\(t_5\)</span> de Student, normal y uniforme. Aplicamos a
+continuación el contraste de normalidad basado en la kurtosis. En primer
+lugar, generamos datos de una normal con varianza <span class="math inline">\(5/3\)</span>:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="secnorm.html#cb84-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(moments)</span>
+<span id="cb84-2"><a href="secnorm.html#cb84-2" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb84-3"><a href="secnorm.html#cb84-3" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">3</span>))</span>
+<span id="cb84-4"><a href="secnorm.html#cb84-4" tabindex="-1"></a><span class="sc">&gt;</span> K <span class="ot">&lt;-</span> <span class="fu">kurtosis</span>(x) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb84-5"><a href="secnorm.html#cb84-5" tabindex="-1"></a><span class="sc">&gt;</span> K</span>
+<span id="cb84-6"><a href="secnorm.html#cb84-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.6656975</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="secnorm.html#cb85-1" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">/</span><span class="dv">24</span>) <span class="sc">*</span> K</span>
+<span id="cb85-2"><a href="secnorm.html#cb85-2" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb85-3"><a href="secnorm.html#cb85-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1.358849</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="secnorm.html#cb86-1" tabindex="-1"></a><span class="sc">&gt;</span> pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(estad)))</span>
+<span id="cb86-2"><a href="secnorm.html#cb86-2" tabindex="-1"></a><span class="sc">&gt;</span> pval</span>
+<span id="cb86-3"><a href="secnorm.html#cb86-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1741943</span></span></code></pre></div>
+<p>Aplicamos ahora el contraste a una muestra generada a partir de una
+<span class="math inline">\(t_5\)</span>:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="secnorm.html#cb87-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">rt</span>(n, <span class="dv">5</span>)</span>
+<span id="cb87-2"><a href="secnorm.html#cb87-2" tabindex="-1"></a><span class="sc">&gt;</span> K <span class="ot">&lt;-</span> <span class="fu">kurtosis</span>(x) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb87-3"><a href="secnorm.html#cb87-3" tabindex="-1"></a><span class="sc">&gt;</span> K</span>
+<span id="cb87-4"><a href="secnorm.html#cb87-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1.095394</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="secnorm.html#cb88-1" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">/</span><span class="dv">24</span>) <span class="sc">*</span> K</span>
+<span id="cb88-2"><a href="secnorm.html#cb88-2" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb88-3"><a href="secnorm.html#cb88-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">2.235964</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="secnorm.html#cb89-1" tabindex="-1"></a><span class="sc">&gt;</span> pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(estad)))</span>
+<span id="cb89-2"><a href="secnorm.html#cb89-2" tabindex="-1"></a><span class="sc">&gt;</span> pval</span>
+<span id="cb89-3"><a href="secnorm.html#cb89-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.02535411</span></span></code></pre></div>
+<p>Por último, aplicamos el contraste a una muestra generada a partir de la
+distribución uniforme en el intervalo <span class="math inline">\(\left[-\sqrt{5},\sqrt{5}\right]\)</span>.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="secnorm.html#cb90-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="sc">-</span><span class="fu">sqrt</span>(<span class="dv">5</span>), <span class="fu">sqrt</span>(<span class="dv">5</span>))</span>
+<span id="cb90-2"><a href="secnorm.html#cb90-2" tabindex="-1"></a><span class="sc">&gt;</span> K <span class="ot">&lt;-</span> <span class="fu">kurtosis</span>(x) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb90-3"><a href="secnorm.html#cb90-3" tabindex="-1"></a><span class="sc">&gt;</span> K</span>
+<span id="cb90-4"><a href="secnorm.html#cb90-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">1.031331</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="secnorm.html#cb91-1" tabindex="-1"></a><span class="sc">&gt;</span> estad <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n<span class="sc">/</span><span class="dv">24</span>) <span class="sc">*</span> K</span>
+<span id="cb91-2"><a href="secnorm.html#cb91-2" tabindex="-1"></a><span class="sc">&gt;</span> estad</span>
+<span id="cb91-3"><a href="secnorm.html#cb91-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">2.105195</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="secnorm.html#cb92-1" tabindex="-1"></a><span class="sc">&gt;</span> pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(estad)))</span>
+<span id="cb92-2"><a href="secnorm.html#cb92-2" tabindex="-1"></a><span class="sc">&gt;</span> pval</span>
+<span id="cb92-3"><a href="secnorm.html#cb92-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.03527432</span></span></code></pre></div>
+<p>Los resultados son los que cabía esperar. Así, el coeficiente de
+apuntamiento muestral es próximo a cero para la normal, negativo para la
+uniforme y positivo para la <span class="math inline">\(t_5\)</span>. Al estandarizarlos, se obtienen
+cantidades comparables con la <span class="math inline">\(N(0,1)\)</span>, que arrojan los niveles críticos
+que se muestran en las salidas. Las discrepancias más significativas se
+obtienen con la <span class="math inline">\(t_5\)</span> de Student.</p>
+</div>
+<div id="test-de-shapiro-wilk" class="section level4 hasAnchor" number="2.9.1.3">
+<h4><span class="header-section-number">2.9.1.3</span> Test de Shapiro-Wilk<a href="secnorm.html#test-de-shapiro-wilk" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Veamos ahora uno de los contrastes más utilizados para contrastar
+normalidad. Se trata del test de Shapiro -Wilk, que plantea como
+hipótesis nula que la muestra <span class="math inline">\(x_1,\ldots,x_n\)</span> proviene de una población
+normal. Este procedimiento es más general, pues permite detectar tanto
+defectos de simetría como de kurtosis, o incluso de otro tipo no
+considerado por los tests anteriores. Consideremos los datos
+estandarizados</p>
+<p><span class="math display">\[z_i=\frac{x_i-\overline{x}}{s}\qquad i\in\{1,\ldots,n\}.\]</span></p>
+<p>El estadístico de Shapiro-Wilk se construye de la siguiente manera:</p>
+<p><span class="math display">\[W=\sum_{i=1}^{[n/2]}a_{i,n} \left(z_{(n-i+1):n}-z_{i:n}\right)\]</span></p>
+<p>siendo <span class="math inline">\(z_{1:n}&lt;\ldots&lt;z_{n:n}\)</span> la muestra ordenada de los datos
+estandarizados y <span class="math inline">\(a_{i,n}\)</span> ciertas constantes. Consiste en calcular las
+distancias entre los datos de la muestra ordenada, simétricos respecto
+de la mediana, esto es, la distancia entre el primero y el último, el
+segundo y el penúltimo, y así sucesivamente; en general el <span class="math inline">\(z_{i:n}\)</span> y
+el <span class="math inline">\(z_{(n-i+1):n}\)</span>. El propósito es comparar estas distancias con las
+que habría en una muestra de observaciones normales. Podremos llevar a
+cabo el test de Shapiro -Wilk en R mediante la función <code>shapiro.test</code>,
+como se muestra en el siguiente ejemplo.</p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#138D75;overflow:visible;position:relative;"><path d="M24 32c13.3 0 24 10.7 24 24V408c0 13.3 10.7 24 24 24H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H72c-39.8 0-72-32.2-72-72V56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <span style="color: #138D75;">Ejemplo.</span></strong> Vamos a extraer muestras simuladas de tamaño 100 de cada una
+de las distribuciones vistas en las secciones anteriores: normal,
+<span class="math inline">\(\chi^2\)</span>, uniforme y <span class="math inline">\(t\)</span> de Student, ver Figura <a href="secnorm.html#fig:qq">2.8</a>. Los resultados
+del test de Shapiro-Wilk se muestran a continuación:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="secnorm.html#cb93-1" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb93-2"><a href="secnorm.html#cb93-2" tabindex="-1"></a><span class="sc">&gt;</span> x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">3</span>))</span>
+<span id="cb93-3"><a href="secnorm.html#cb93-3" tabindex="-1"></a><span class="sc">&gt;</span> x2 <span class="ot">&lt;-</span> <span class="fu">rt</span>(n, <span class="dv">5</span>)</span>
+<span id="cb93-4"><a href="secnorm.html#cb93-4" tabindex="-1"></a><span class="sc">&gt;</span> x3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="sc">-</span><span class="fu">sqrt</span>(<span class="dv">5</span>), <span class="fu">sqrt</span>(<span class="dv">5</span>))</span>
+<span id="cb93-5"><a href="secnorm.html#cb93-5" tabindex="-1"></a><span class="sc">&gt;</span> x4 <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(n, <span class="dv">5</span>)</span>
+<span id="cb93-6"><a href="secnorm.html#cb93-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">shapiro.test</span>(x1)</span>
+<span id="cb93-7"><a href="secnorm.html#cb93-7" tabindex="-1"></a></span>
+<span id="cb93-8"><a href="secnorm.html#cb93-8" tabindex="-1"></a>    Shapiro<span class="sc">-</span>Wilk normality test</span>
+<span id="cb93-9"><a href="secnorm.html#cb93-9" tabindex="-1"></a></span>
+<span id="cb93-10"><a href="secnorm.html#cb93-10" tabindex="-1"></a>data<span class="sc">:</span>  x1</span>
+<span id="cb93-11"><a href="secnorm.html#cb93-11" tabindex="-1"></a>W <span class="ot">=</span> <span class="fl">0.9515</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.1854</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="secnorm.html#cb94-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">shapiro.test</span>(x2)</span>
+<span id="cb94-2"><a href="secnorm.html#cb94-2" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="secnorm.html#cb94-3" tabindex="-1"></a>    Shapiro<span class="sc">-</span>Wilk normality test</span>
+<span id="cb94-4"><a href="secnorm.html#cb94-4" tabindex="-1"></a></span>
+<span id="cb94-5"><a href="secnorm.html#cb94-5" tabindex="-1"></a>data<span class="sc">:</span>  x2</span>
+<span id="cb94-6"><a href="secnorm.html#cb94-6" tabindex="-1"></a>W <span class="ot">=</span> <span class="fl">0.88543</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.003765</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="secnorm.html#cb95-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">shapiro.test</span>(x3)</span>
+<span id="cb95-2"><a href="secnorm.html#cb95-2" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="secnorm.html#cb95-3" tabindex="-1"></a>    Shapiro<span class="sc">-</span>Wilk normality test</span>
+<span id="cb95-4"><a href="secnorm.html#cb95-4" tabindex="-1"></a></span>
+<span id="cb95-5"><a href="secnorm.html#cb95-5" tabindex="-1"></a>data<span class="sc">:</span>  x3</span>
+<span id="cb95-6"><a href="secnorm.html#cb95-6" tabindex="-1"></a>W <span class="ot">=</span> <span class="fl">0.90155</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.009167</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="secnorm.html#cb96-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">shapiro.test</span>(x4)</span>
+<span id="cb96-2"><a href="secnorm.html#cb96-2" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="secnorm.html#cb96-3" tabindex="-1"></a>    Shapiro<span class="sc">-</span>Wilk normality test</span>
+<span id="cb96-4"><a href="secnorm.html#cb96-4" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="secnorm.html#cb96-5" tabindex="-1"></a>data<span class="sc">:</span>  x4</span>
+<span id="cb96-6"><a href="secnorm.html#cb96-6" tabindex="-1"></a>W <span class="ot">=</span> <span class="fl">0.89688</span>, p<span class="sc">-</span>value <span class="ot">=</span> <span class="fl">0.007053</span></span></code></pre></div>
+<p>En los tres casos donde los datos no proceden de una distribución normal
+los niveles críticos conducen al rechazo de la normalidad.</p>
+</div>
+</div>
+<div id="secmul" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> Contraste de la normalidad multivariante<a href="secnorm.html#secmul" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta sección veremos cómo se pueden extender los conceptos de
+asimetría y kurtosis al caso multivariante. Asimismo, también se verá la
+manera de extender el test de Shapiro-Wilk con datos multivariantes.
+Empezamos estudiando ciertos conceptos previos en relación con este tipo
+de contrastes.</p>
+<div id="invariancia-estandarización-y-distancias-y-ángulos-de-mahalanobis" class="section level4 hasAnchor" number="2.9.2.1">
+<h4><span class="header-section-number">2.9.2.1</span> Invariancia, estandarización, y distancias y ángulos de Mahalanobis<a href="secnorm.html#invariancia-estandarización-y-distancias-y-ángulos-de-mahalanobis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sabemos que la normalidad se conserva frente a traslaciones y
+transformaciones lineales, esto es:</p>
+<p>Para cualesquiera <span class="math inline">\(\bm{b}\)</span> vector de dimensión <span class="math inline">\(d\)</span> y <span class="math inline">\(\bm{A}\)</span> matriz
+<span class="math inline">\(d\times d\)</span> no singular,</p>
+<p><span class="math display">\[\bm{x}\ \ \mbox{tiene distribución normal} \Leftrightarrow\bm{A}\bm{x}+\bm{b}\ \ \mbox{tiene distribución normal}\]</span></p>
+<p>Por tanto, si estamos contrastando que el vector <span class="math inline">\(\bm{x}\)</span> tenga
+distribución normal, tanta evidencia habrá a favor o en contra de esta
+hipótesis, si empleamos los datos de <span class="math inline">\(\bm{x}\)</span> como si empleamos los
+datos transformados <span class="math inline">\(\bm{A}\bm{x}+\bm{b}\)</span>.</p>
+<p>Diremos que un test de normalidad multivariante es <strong>invariante</strong> si
+proporciona los mismos resultados con los datos originales que con datos
+transformados por traslaciones o transformaciones lineales.</p>
+<p>Nos parece que la invariancia es una propiedad deseable para un test de
+normalidad. Ahora, si somos libres de transformar los datos, se nos
+ocurre aplicar la estandarización multivariante, pues es una
+transformación que los simplifica al suprimirles la media y la matriz de
+covarianzas. Pasamos entonces de los datos originales <span class="math inline">\(\bm{x_1},\ldots,\bm{x_n}\)</span> a los datos estandarizados:</p>
+<p><span class="math display">\[\bm{z_i}=\bm{S^{-1/2}}\left(\bm{x_i}-\overline{\bm{x}}\right)\]</span> siendo
+<span class="math inline">\(\overline{\bm{x}}\)</span> la media muestral y <span class="math inline">\(\bm{S}\)</span> la matriz de covarianzas
+muestral. La idea es que si los datos originales
+<span class="math inline">\(\bm{x_1},\ldots,\bm{x_n}\)</span> provienen de una distribución normal, los
+datos estandarizados <span class="math inline">\(\bm{z_1},\ldots,\bm{z_n}\)</span> deberían presentar una
+distribución normal estándar, esto es, deberían mostrar un aspecto
+esférico, sin especial predilección por unas direcciones frente a otras,
+y con mayor concentración en la zona central.</p>
+<p>Las distancias de Mahalanobis de las observaciones al vector de medias
+se pueden expresar así:</p>
+<p><span class="math display">\[r_{ii}=\left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}\bm{S}^{-1}\left(\bm{x_i}-\overline{\bm{x}}\right)=\bm{z_i}^\prime{}\bm{z_i}=\|\bm{z_i}\|^2.\]</span></p>
+<p>Consideramos ahora los valores</p>
+<p><span class="math display">\[r_{ij}=\left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}\bm{S}^{-1}\left(\bm{x_j}-\overline{\bm{x}}\right)=\bm{z_i}^\prime{}\bm{z_j}.\]</span>
+Además, como <span class="math inline">\(\bm{z_i}^\prime{}\bm{z_j}\)</span> representa un producto escalar
+de vectores, se tiene también</p>
+<p><span class="math display">\[r_{ij}=\bm{z_i}^\prime{}\bm{z_j}=\|\bm{z_i}\|\cdot\|\bm{z_j}\|\cdot \cos(\theta_{ij})\]</span>
+siendo <span class="math inline">\(\theta_{ij}\)</span> el ángulo que forman las observaciones
+estandarizadas <span class="math inline">\(\bm{z_i}\)</span> y <span class="math inline">\(\bm{z_j}\)</span> en el espacio usual. El ángulo
+<span class="math inline">\(\theta_{ij}\)</span> se conoce como <strong>ángulo de Mahalanobis</strong> que forman las
+observaciones <span class="math inline">\(\bm{x_i}\)</span> y <span class="math inline">\(\bm{x_j}\)</span> en el espacio original. En la
+Figura <a href="secnorm.html#fig:Tema3Figura5">2.10</a> se representa una muestra de observaciones,
+que han sido estandarizadas. Por tanto, las distancias y los ángulos de
+Mahalanobis coinciden con las distancias y ángulos ordinarias en esta
+representación. El punto central, representado en color azul, es la
+posición del vector de medias. En el gráfico se han destacado también
+dos puntos, denotados por (a) y (b), respectivamente.</p>
+<p>Las longitudes de las flechas, que son sus distancias al vector de
+medias, serían las raíces cuadradas de sus valores <span class="math inline">\(r_{ii}\)</span> y <span class="math inline">\(r_{jj}\)</span>.
+El valor <span class="math inline">\(r_{ij}\)</span> para este par de puntos sería el producto de las
+longitudes, multiplicado por el coseno del ángulo que forman las dos
+flechas. Así, si el ángulo es de 90 grados, <span class="math inline">\(r_{ij}\)</span> vale cero, si es
+menor de 90 grados <span class="math inline">\(r_{ij}\)</span> es positivo, y si es mayor de 90 grados es
+negativo. De este modo, <span class="math inline">\(r_{ij}\)</span> refleja si los dos puntos (a) y (b)
+están del mismo lado o si se encuentran en lados opuestos. Esto será
+utilizado en la sección siguiente para definir una medida de asimetría.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Tema3Figura5"></span>
+<img src="bookdown_AM_files/figure-html/Tema3Figura5-1.png" alt="Representación de los valores $r_{ij}$." width="50%" />
+<p class="caption">
+Figura 2.10: Representación de los valores <span class="math inline">\(r_{ij}\)</span>.
+</p>
+</div>
+</div>
+<div id="tests-basados-en-medidas-de-asimetría-y-kurtosis" class="section level4 hasAnchor" number="2.9.2.2">
+<h4><span class="header-section-number">2.9.2.2</span> Tests basados en medidas de asimetría y kurtosis<a href="secnorm.html#tests-basados-en-medidas-de-asimetría-y-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Existen diversas formas de definir medidas de asimetría y kurtosis con
+datos multivariantes. Consideraremos aquí las introducidas por <span class="citation">K. V. Mardia (<a href="#ref-mardia70">1970</a>)</span>.</p>
+<div id="coeficiente-de-asimetría-multivariante" class="section level5 hasAnchor" number="2.9.2.2.1">
+<h5><span class="header-section-number">2.9.2.2.1</span> Coeficiente de asimetría multivariante<a href="secnorm.html#coeficiente-de-asimetría-multivariante" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Así, calcularemos la asimetría de la siguiente manera:</p>
+<p><span class="math display">\[A_m=\frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^n r_{ij}^3\]</span></p>
+<p>En la Figura <a href="secnorm.html#fig:Tema3Figura5">2.10</a> se ofrece una representación que resulta muy
+útil para interpretar los valores <span class="math inline">\(r_{ij}\)</span>. Como vimos en la sección
+anterior, <span class="math inline">\(r_{ij}\)</span> es positivo si los dos puntos en cuestión, (a) y (b)
+en el gráfico, forman un ángulo inferior a 90 grados. Por el contrario,
+<span class="math inline">\(r_{ij}\)</span> será negativo si el ángulo es superior a 90 grados. Siempre se
+cumple que</p>
+<p><span class="math display">\[\sum_{i=1}^n r_{ij}=0=\sum_{j=1}^n r_{ij}\]</span> esto es, se
+cancelan los valores positivos con los negativos, lo cual es muy
+comprensible, pues el vector de media ocupa la posición central. Esto
+también se cumplía en el caso univariante.</p>
+<p>Sin embargo, al elevar al cubo los <span class="math inline">\(r_{ij}\)</span>, se desequilibra este
+balance. Para mantener el equilibrio, por cada punto, como el (b),
+tendría que haber otro punto, que se representa como -(b) en el gráfico,
+situado en la posición contraria a (b) respecto del vector de medias.
+Los puntos (b) y -(b) tendrían los mismos valores <span class="math inline">\(r_{ij}\)</span> con el resto
+de la muestra, pero con signos cambiados. Al efectuar cualquier potencia
+impar, como el cubo, se cancelarían. Así, si cada punto de la muestra
+tuviera otro punto simétrico en la propia muestra, el coeficiente de
+asimetría valdría cero. En otro caso, si la simetría se cumple
+aceptablemente, el coeficiente sería sólo algo mayor que cero, mientras
+que si hay un comportamiento claramente distinto en lados opuestos, el
+coeficiente de asimetría sería más grande.</p>
+<p>En la Figura <a href="secnorm.html#fig:asim">2.11</a> se presentan ejemplos de muestras bivariantes generadas a partir de
+diferentes distribuciones. Los puntos en negro representan los datos
+muestrales y en rojo se representa el vector de medias muestral y la
+elipse asociada a la matriz de covarianzas muestral.</p>
+<p>Los dos primeros gráficos representan datos simulados de distintas
+distribuciones normales. Como se esperaba, en ambos casos el valor del
+coeficiente de asimetría muestral <span class="math inline">\(A_m\)</span> se aproxima a cero ya que, a
+nivel teórico, la distribución normal multivariante es simétrica.</p>
+<p>A continuación se representan datos bivariantes con marginales
+exponenciales e independientes. La asimetría del modelo se refleja en el
+valor del coeficiente de asimetría muestral. En el cuarto gráfico se han
+simulados tres grupos de datos normales multivariantes. Esto hace que la
+distribución de la muestra completa no sea normal. De hecho, la
+presencia de varios grupos es una causa muy común de falta de
+normalidad. También es común que produzca un efecto de asimetría, que
+permite detectar esa falta de normalidad. Por último, se han simulado
+observaciones uniformes en el cuadrado unidad. El modelo teórico es
+simétrico y de hecho el valor muestral de <span class="math inline">\(A_m\)</span> es próximo a cero.</p>
+<p>Como test de normalidad, y dado que la distribución normal es simétrica,
+rechazaremos la normalidad, por falta de simetría, si el coeficiente
+<span class="math inline">\(A_m\)</span> es demasiado grande, comparado con ciertos valores tabulados
+correspondientes a muestras normales. Aproximaremos estos valores por
+simulación.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:asim"></span>
+<img src="bookdown_AM_files/figure-html/asim-1.png" alt="Ejemplos de muestras bivariantes para su contraste de normalidad." width="33%" /><img src="bookdown_AM_files/figure-html/asim-2.png" alt="Ejemplos de muestras bivariantes para su contraste de normalidad." width="33%" /><img src="bookdown_AM_files/figure-html/asim-3.png" alt="Ejemplos de muestras bivariantes para su contraste de normalidad." width="33%" /><img src="bookdown_AM_files/figure-html/asim-4.png" alt="Ejemplos de muestras bivariantes para su contraste de normalidad." width="33%" /><img src="bookdown_AM_files/figure-html/asim-5.png" alt="Ejemplos de muestras bivariantes para su contraste de normalidad." width="33%" />
+<p class="caption">
+Figura 2.11: Ejemplos de muestras bivariantes para su contraste de normalidad.
+</p>
+</div>
+</div>
+<div id="coeficiente-de-kurtosis-multivariante" class="section level5 hasAnchor" number="2.9.2.2.2">
+<h5><span class="header-section-number">2.9.2.2.2</span> Coeficiente de kurtosis multivariante<a href="secnorm.html#coeficiente-de-kurtosis-multivariante" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>El coeficiente de kurtosis propuesto por <span class="citation">K. V. Mardia (<a href="#ref-mardia70">1970</a>)</span> adopta la forma
+siguiente: <span class="math display">\[K_m=\frac{1}{n}\sum_{i=1}^n r_{ii}^2.\]</span></p>
+<p>A la vista de esta definición, el coeficiente de kurtosis está basado
+únicamente en los valores <span class="math inline">\(r_{ii}\)</span>. Como <span class="math inline">\(r_{ii}\)</span> es el cuadrado de la
+distancia del dato i-ésimo al vector de medias, los valores <span class="math inline">\(r_{ii}^2\)</span>
+que figuran en la definición de <span class="math inline">\(K_m\)</span> son las potencias cuartas de estas
+distancias.</p>
+<p>Por tanto, el coeficiente <span class="math inline">\(K_m\)</span> generaliza la medida de kurtosis al caso
+multivariante como estas potencias cuartas de la distancia a la media.
+De esta manera, para la kurtosis no importará la dirección o sentido de
+la desviación respecto de la media, sino únicamente la magnitud de dicha
+desviación. Se trata, pues, de detectar si los datos se agrupan en torno
+a la Media<span class="math inline">\(\pm\)</span>Desviación típica, que en el caso multivariante sería la
+elipse en rojo de la Figura <a href="secnorm.html#fig:asim" reference-type="ref" reference="fig:asim">11</a>, o si por el contrario se agrupan o muy cerca de
+la media o muy lejos de ésta. Si están cerca de la elipse la kurtosis
+será pequeña (distribución platicúrtica), y si están o muy cerca de la
+media o muy lejos de ella, la kurtosis será grande y diremos que la
+distribución es leptocúrtica.</p>
+<p>Igual que en el caso univariante, la distribución normal multivariante
+presenta un valor intermedio de kurtosis (diríamos que es mesocúrtica).
+Se puede demostrar que un vector normal <span class="math inline">\(d\)</span>-dimensional tiene kurtosis
+multivariante igual a <span class="math inline">\(d(d+2)\)</span>. En la Figura
+<a href="secnorm.html#fig:asim">2.11</a> se observa
+que el valor del coeficiente de kurtosis <span class="math inline">\(K_m\)</span> es próximo a <span class="math inline">\(d(d+2)=8\)</span>
+para las muestras normales. Los datos generados de la mixtura de
+normales y de la uniforme presentan valores menores, y serían
+platicúrticos. Los datos generados de la exponencial son leptocúrticos.</p>
+<p>Respecto del contraste de normalidad, el test basado en la kurtosis
+rechazará la normalidad tanto para valores demasiado grandes como para
+valores demasiado pequeños de <span class="math inline">\(K_m\)</span>. De nuevo, los valores críticos
+están tabulados y los aproximaremos por simulación.</p>
+</div>
+</div>
+<div id="extensión-multivariantes-del-test-de-shapiro-wilk" class="section level4 hasAnchor" number="2.9.2.3">
+<h4><span class="header-section-number">2.9.2.3</span> Extensión multivariantes del test de Shapiro-Wilk<a href="secnorm.html#extensión-multivariantes-del-test-de-shapiro-wilk" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Existen diversas maneras de extender el test de Shapiro-Wilk. Nos
+centraremos en una idea muy sencilla, que surge del concepto de
+invariancia. Así, el vector aleatorio es normal multivariante si y sólo
+si su estandarización lo es, esto es:</p>
+<p><span class="math display">\[\bm{x}\in N_d(\bm{\mu},\bm{\Sigma}) \Longleftrightarrow \bm{z}=\bm{\Sigma^{-1/2}}(\bm{x}-\bm{\mu})\in N_d(\bm{0},\bm{I_d})\]</span></p>
+<p>Lo interesante es que <span class="math inline">\(\bm{z}\)</span> tiene sus <span class="math inline">\(d\)</span> componentes (las <span class="math inline">\(d\)</span>
+variables) incorrelacionadas, y entonces <span class="math inline">\(\bm{z}\)</span> es normal si y sólo si
+sus componentes son normales. Ante tal resultado, basta con comprobar si
+las <span class="math inline">\(d\)</span> variables resultantes de la estandarización multivariante son
+normales. Volvemos entonces a los datos estandarizados:</p>
+<p><span class="math display">\[\bm{z_i}=\bm{S^{-1/2}}\left(\bm{x_i}-\overline{\bm{x}}\right)\]</span> siendo
+<span class="math inline">\(\overline{\bm{x}}\)</span> la media muestral y <span class="math inline">\(\bm{S}\)</span> la matriz de covarianzas
+muestral.</p>
+<p>Si <span class="math inline">\(W_1,\ldots,W_d\)</span> son los estadísticos de Shapiro-Wilk de cada
+componente de <span class="math inline">\(\bm{z_1},\ldots,\bm{z_n}\)</span>, entonces podemos considerar el
+estadístico de Shapiro-Wilk multivariante:</p>
+<p><span class="math display">\[W_{VG}=\frac{1}{d}\sum_{j=1}^d W_j\]</span> Este estadístico ha sido
+propuesto por Villasenor Alva y González Estrada (2009). Se rechazará la
+normalidad cuando <span class="math inline">\(W_{VG}\)</span> sea pequeño, en comparación con ciertos
+valores tabulados, que de nuevo podemos aproximar por simulación.</p>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mardia70" class="csl-entry">
+Mardia, K. V. 1970. <span>“Measures of Multivariate Skewness and Kurtosis with Applications.”</span> <em>Biometrika</em> 57 (3): 519–30.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p>El fenómeno de la cola es difícilmente perceptible en la Figura
+<a href="secnorm.html#fig:qq">2.8</a>. Aún así, se
+puede observar que el trazo rojo, correspondiente a la <span class="math inline">\(t_5\)</span>, se
+encuentra ligeramente más elevado que el azul, correspondiente a la
+normal, en las colas. Es una pequeña diferencia a la vista, porque
+ambas densidades convergen a cero en las colas. Sin embargo, la
+consecuencia es que la <span class="math inline">\(t_5\)</span> presenta una frecuencia no despreciable
+de observaciones muy grandes, cosa que no ocurre con la normal.
+Estas observaciones grandes (o extremas), al elevarlas a la potencia
+cuarta, aportan una contribución considerable a la kurtosis.<a href="secnorm.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="comparación-de-poblaciones-normales-multivariantes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análisis-multivariante-de-la-varianza.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown_AM.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"url": "http\://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

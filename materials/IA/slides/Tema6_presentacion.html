@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Tema6_presentacion_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Tema6_presentacion_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Tema6_presentacion_files/libs/quarto-html/popper.min.js"></script>
+<script src="Tema6_presentacion_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Tema6_presentacion_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Tema6_presentacion_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Tema6_presentacion_files/libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.19">
+
+  <title>Tema 6. Introdución á regresión lineal</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Tema6_presentacion_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Tema6_presentacion_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="Tema6_presentacion_files/libs/revealjs/dist/theme/quarto-de70a4a5c81100fb8ac4f8dec0a2f7f8.css">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="Tema6_presentacion_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="Tema6_presentacion_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+  <link href="Tema6_presentacion_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Tema 6. Introdución á regresión lineal</h1>
+  <p class="subtitle">Estatística. Grao en Intelixencia Artificial</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="tema-6.-introdución-á-regresión-lineal" class="slide level2">
+<h2>Tema 6. Introdución á regresión lineal</h2>
+<style>
+.mysmall {
+  font-size: 0.85em;
+}
+</style>
+<p>Ao rematar este tema deberías:</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img data-src="images/goals.jpg"></p>
+</div><div class="column" style="width:70%;">
+<p><br></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Comprender o concepto de regresión lineal como ferramenta para modelar a relación entre variables cuantitativas e realizar predicións.</label></li>
+<li><label><input type="checkbox">Interpretar os parámetros do modelo de regresión.</label></li>
+<li><label><input type="checkbox">Coñecer o método dos mínimos cadrados como procedemento para estimar os parámetros do modelo de regresión.</label></li>
+<li><label><input type="checkbox">Avaliar a calidade do axuste do modelo mediante o coeficiente de determinación e a descomposición da variabilidade.</label></li>
+<li><label><input type="checkbox">Comprender de forma básica a idea de contraste de hipóteses na regresión para valorar a significatividade da relación entre variables.</label></li>
+</ul>
+</div></div>
+</section>
+<section id="introdución-á-regresión-lineal" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<p>En moitas situacións prácticas non só interesa describir unha variable, senón comprender como cambia en función doutras.</p>
+<ul>
+<li><p>Analizar como se comporta o peso en función da estatura</p></li>
+<li><p>Analizar como inflúe o tamaño dun conxunto de datos de adestramento na precisión dun modelo de aprendizaxe automática</p></li>
+<li><p>Estudar como cambia o tempo de adestramento dun modelo en función do número de parámetros ou das características empregadas</p></li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Modelos de regresión</strong></p>
+</div>
+<div class="callout-content">
+<p>Teñen como obxectivo describir e predicir o valor dunha variable numérica chamada <strong>variable resposta</strong> (<span class="math inline">\(Y\)</span>) a partir dunha ou máis <strong>variables explicativas</strong> (<span class="math inline">\(X_1, X_2,\ldots, X_p\)</span>). Estes modelos permiten non só analizar relacións, senón tamén realizar predicións para novos datos.</p>
+<p><span class="math display">\[Y=f(X_1,\ldots,X_p)+\epsilon\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="introdución-á-regresión-lineal-1" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<p>Considérase que a variable resposta <span class="math inline">\(Y\)</span>, que asumimos depende dunha única variable explicativa <span class="math inline">\(X\)</span>. Na práctica, non observamos toda a poboación, senón unha mostra de tamaño <span class="math inline">\(n\)</span>, formada por pares de observacións da forma <span class="math inline">\((x_1,y_1),\ldots,(x_n,y_n).\)</span></p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Exemplo</a></li><li><a href="#tabset-1-2">Código R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>Queremos analizar se existe algunha relación que explique o peso (<span class="math inline">\(Y\)</span>) en función da estatura (<span class="math inline">\(X\)</span>). Dispoñemos dunha mostra coas estaturas (cm) e pesos (kg) de <span class="math inline">\(n=120\)</span> individuos.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Tema6_presentacion_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="355"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">plot</span>(datos<span class="sc">$</span>Altura, datos<span class="sc">$</span>Peso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Tema6_presentacion_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="introdución-á-regresión-lineal-2" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<p><strong>O diagrama de dispersión</strong>. Consiste en representar nunha cuadrícula os pares de observacións <span class="math inline">\((x_i, y_i)\)</span> de cada individuo da mostra. A nube de puntos que se forma tamén se chama <strong>nube de puntos</strong> ou <strong>scatter plot</strong></p>
+<ul>
+<li>Amosa a posible relación entre as dúas variables e detectar patróns lineais ou non lineais.
+<ul>
+<li>Se non hai relación, a nube aparecerá dispersa sen patrón definido.</li>
+<li>Se hai relación lineal os puntos tenden a agruparse arredor dunha liña ascendente pou descendente.</li>
+<li>Se hai relación non lineal a tendencia dos puntos segue unha curva, por exemplo, unha parábola ou un patrón sen liña recta clara.<br>
+</li>
+</ul></li>
+<li>Permite identificar posibles valores atípicos.</li>
+</ul>
+</section>
+<section id="introdución-á-regresión-lineal-3" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Covarianza</strong></p>
+</div>
+<div class="callout-content">
+<p>Sexan <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións das variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Defínese a covarianza como:</p>
+<p><span class="math display">\[
+s_{xy} =
+\frac{(x_1-\bar{x})(y_1-\bar{y}) + \ldots + (x_n-\bar{x})(y_n-\bar{y})}{n}
+=
+\frac{1}{n}\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+</div>
+</div>
+</div>
+<p>A covarianza pódese interpretar como unha medida de relación lineal entre as variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>:</p>
+<ul>
+<li>Valores positivos indican que cando <span class="math inline">\(X\)</span> aumenta, <span class="math inline">\(Y\)</span> tende a aumentar.</li>
+<li>Valores negativos indican que cando <span class="math inline">\(X\)</span> aumenta, <span class="math inline">\(Y\)</span> tende a diminuír.</li>
+<li>Valores próximos a cero indican que non hai unha relación lineal clara.</li>
+</ul>
+<p><strong>Propiedades:</strong></p>
+<ul>
+<li>A covarianza de <span class="math inline">\((X, Y)\)</span> é igual á de <span class="math inline">\((Y, X)\)</span>, é dicir, <span class="math inline">\(s_{xy} = s_{yx}\)</span></li>
+<li>A covarianza de <span class="math inline">\((X, Y)\)</span> é igual á varianza de <span class="math inline">\(X\)</span>, é dicir, <span class="math inline">\(s_{xx} = s_x^2\)</span></li>
+</ul>
+</section>
+<section id="introdución-á-regresión-lineal-4" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Covarianza</strong></p>
+</div>
+<div class="callout-content">
+<p>Sexan <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións das variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Defínese a covarianza como:</p>
+<p><span class="math display">\[
+s_{xy} =
+\frac{(x_1-\bar{x})(y_1-\bar{y}) + \ldots + (x_n-\bar{x})(y_n-\bar{y})}{n}
+=
+\frac{1}{n}\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Exemplo</a></li><li><a href="#tabset-2-2">Código R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Calculamos a covarianza entre Altura e Peso do conxunto de datos de exemplo.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Covarianza entre Altura e Peso</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Sxy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; width: 12em;">60.42</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<p>En R, a función cov() calcula por defecto a covarianza con denominador <span class="math inline">\(n-1\)</span>. Para obter a covarianza definida teoricamente neste tema (dividindo entre <span class="math inline">\(n\)</span>), é preciso facer a corrección que se amosa.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb2-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<span id="cb2-3"><a href=""></a><span class="fu">cov</span>(datos<span class="sc">$</span>Altura, datos<span class="sc">$</span>Peso) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
+<span id="cb2-4"><a href=""></a><span class="do">## [1] 60.41736</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="introdución-á-regresión-lineal-5" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficiente de correlación lineal</strong></p>
+</div>
+<div class="callout-content">
+<p>Sexan <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións das variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Defínese o coeficiente de correlación lineal como:</p>
+<p><span class="math display">\[
+r_{xy} =
+\frac{s_{xy}}{s_x s_y}
+\]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li>O coeficiente de correlación lineal toma valores en [-1,1] e serve para investigar a relación lineal entre as variables.
+<ul>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(-1\)</span>, temos unha relación inversa entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, é dicir, cando unha variable toma valores altos, a outra tende a ser baixa.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(+1\)</span>, temos unha relación directa, de modo que valores altos dunha variable están asociados con valores altos da outra.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a cero, non existe relación lineal significativa entre as variables.</li>
+</ul></li>
+</ul>
+</section>
+<section id="introdución-á-regresión-lineal-6" class="slide level2">
+<h2>Introdución á regresión lineal</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficiente de correlación lineal</strong></p>
+</div>
+<div class="callout-content">
+<p>Sexan <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións das variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Defínese o coeficiente de correlación lineal como:</p>
+<p><span class="math display">\[
+r_{xy} =
+\frac{s_{xy}}{s_x s_y}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Exemplo</a></li><li><a href="#tabset-3-2">Código R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Calculamos o coeficiente de correlación lineal entre Altura e Peso do conxunto de datos de exemplo.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Correlación entre Altura e Peso</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">rxy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; width: 12em;">0.59</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<p>En R, a función cor() calcula o coeficiente de correlación lineala.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">cor</span>(datos<span class="sc">$</span>Altura, datos<span class="sc">$</span>Peso)</span>
+<span id="cb3-3"><a href=""></a><span class="do">## [1] 0.5881948</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="o-modelo-de-regresión-lineal-simple" class="slide level2">
+<h2>O modelo de regresión lineal simple</h2>
+<p>Un dos modelos de regresión máis sinxelos é a <strong>regresión lineal simple</strong>, na que se supón que a variable resposta <span class="math inline">\(Y\)</span> depende dunha única variable explicativa <span class="math inline">\(X\)</span> e que a relación entre ambas pode aproximarse mediante unha recta.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Modelo de regresión lineal simple</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> é o intercepto,</li>
+<li><span class="math inline">\(\beta_1\)</span> é a pendente,</li>
+<li><span class="math inline">\(\varepsilon\)</span> é o termo de erro.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="estimación-do-modelo" class="slide level2">
+<h2>Estimación do modelo</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Modelo de regresión lineal simple</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> é o intercepto,</li>
+<li><span class="math inline">\(\beta_1\)</span> é a pendente,</li>
+<li><span class="math inline">\(\varepsilon\)</span> é o termo de erro.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Na práctica, os parámetros <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> son descoñecidos e deben estimarse a partir dunha mostra:</p>
+<p><span class="math display">\[
+(x_1,y_1), \ldots, (x_n,y_n).
+\]</span> A recta estimada obtense mediante o <strong>método dos mínimos cadrados</strong>, e escríbese como:</p>
+<p><span class="math display">\[
+\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X.
+\]</span></p>
+</section>
+<section id="estimación-do-modelo.-método-dos-mínimos-cadrados" class="slide level2">
+<h2>Estimación do modelo. Método dos mínimos cadrados</h2>
+<div class="mysmall">
+<p>Os erros de predición defínense como:</p>
+<p><span class="math display">\[
+e_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i).
+\]</span></p>
+<p>O obxectivo é minimizar a suma dos erros ao cadrado:</p>
+<p><span class="math display">\[
+ECM(\beta_0,\beta_1)=\frac{1}{n}\sum_{i=1}^n (y_i-(\beta_0+\beta_1 x_i))^2.
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Estimadores resultantes de minimizar <span class="math inline">\(ECM(\beta_0,\beta_1)\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{s_{xy}}{s_x^2}, \quad
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Recta de regresión de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(X\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\hat{y} = \hat{\beta}_0+\hat{\beta}_1 x = \bar{y} + \frac{s_{xy}}{s_x^2} (x - \bar{x}).
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recta-de-regresión-de-y-sobre-x-1" class="slide level2">
+<h2>Recta de regresión de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(X\)</span></h2>
+<div class="mysmall">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Recta de regresión de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(X\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\hat{y} = \hat{\beta}_0+\hat{\beta}_1 x = \bar{y} + \frac{s_{xy}}{s_x^2} (x - \bar{x}).
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Exemplo</a></li><li><a href="#tabset-4-2">Código R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>Calculamos a recta de regresión do peso (<span class="math inline">\(Y\)</span>) sobre a estatura (<span class="math inline">\(X\)</span>).</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficientes da recta de regresión</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{s_{xy}}{s_x^2}= 0.730208\]</span></p>
+<p><span class="math display">\[
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} =-61.2789
+\]</span></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Tema6_presentacion_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="355"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb4-2"><a href=""></a>y <span class="ot">&lt;-</span> datos<span class="sc">$</span>Peso</span>
+<span id="cb4-3"><a href=""></a>x <span class="ot">&lt;-</span> datos<span class="sc">$</span>Altura</span>
+<span id="cb4-4"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="fu">cov</span>(x, y)<span class="sc">/</span><span class="fu">var</span>(x)</span>
+<span id="cb4-5"><a href=""></a>b1</span>
+<span id="cb4-6"><a href=""></a><span class="do">## [1] 0.730208</span></span>
+<span id="cb4-7"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> b1 <span class="sc">*</span> <span class="fu">mean</span>(x)</span>
+<span id="cb4-8"><a href=""></a>b0</span>
+<span id="cb4-9"><a href=""></a><span class="do">## [1] -61.2789</span></span>
+<span id="cb4-10"><a href=""></a><span class="co"># La recta de regresión es Y=b0+b1*X</span></span>
+<span id="cb4-11"><a href=""></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Peso <span class="sc">~</span> Altura, <span class="at">data =</span> datos)</span>
+<span id="cb4-12"><a href=""></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb4-13"><a href=""></a><span class="do">## </span></span>
+<span id="cb4-14"><a href=""></a><span class="do">## Call:</span></span>
+<span id="cb4-15"><a href=""></a><span class="do">## lm(formula = Peso ~ Altura, data = datos)</span></span>
+<span id="cb4-16"><a href=""></a><span class="do">## </span></span>
+<span id="cb4-17"><a href=""></a><span class="do">## Residuals:</span></span>
+<span id="cb4-18"><a href=""></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb4-19"><a href=""></a><span class="do">## -19.698  -6.261  -1.238   4.528  34.874 </span></span>
+<span id="cb4-20"><a href=""></a><span class="do">## </span></span>
+<span id="cb4-21"><a href=""></a><span class="do">## Coefficients:</span></span>
+<span id="cb4-22"><a href=""></a><span class="do">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb4-23"><a href=""></a><span class="do">## (Intercept) -61.27890   16.00750  -3.828 0.000208 ***</span></span>
+<span id="cb4-24"><a href=""></a><span class="do">## Altura        0.73021    0.09242   7.901 1.62e-12 ***</span></span>
+<span id="cb4-25"><a href=""></a><span class="do">## ---</span></span>
+<span id="cb4-26"><a href=""></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb4-27"><a href=""></a><span class="do">## </span></span>
+<span id="cb4-28"><a href=""></a><span class="do">## Residual standard error: 9.209 on 118 degrees of freedom</span></span>
+<span id="cb4-29"><a href=""></a><span class="do">## Multiple R-squared:  0.346,  Adjusted R-squared:  0.3404 </span></span>
+<span id="cb4-30"><a href=""></a><span class="do">## F-statistic: 62.42 on 1 and 118 DF,  p-value: 1.618e-12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="descomposición-da-variabilidade" class="slide level2">
+<h2>Descomposición da variabilidade</h2>
+<div class="mysmall">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="math inline">\(\text{Variabilidade Total} = \text{Variabilidade Explicada} + \text{Variabilidade Non Explicada}\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+VT = VE + VNE.
+\]</span></p>
+<p><span class="math display">\[\sum_{i=1}^n (y_i - \bar{y})^2=\sum_{i=1}^n (\hat{y}_i - \bar{y})^2+\sum_{i=1}^n (y_i - \hat{y}_i)^2\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li><p><strong>Variabilidade total:</strong> <span class="math inline">\(VT = \sum_{i=1}^n (y_i - \bar{y})^2.\)</span></p></li>
+<li><p><strong>Variabilidade explicada:</strong> <span class="math inline">\(VE = \sum_{i=1}^n (\hat{y}_i - \bar{y})^2\)</span></p></li>
+<li><p><strong>Variabilidade non explicada:</strong> <span class="math inline">\(VNE = \sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="coeficiente-de-determinación" class="slide level2">
+<h2>Coeficiente de determinación</h2>
+<div class="mysmall">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficiente de determinación</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+R^2 = \frac{VE}{VT} = 1 - \frac{VNE}{VT}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Ademáis, no caso da regresión lineal simple:</p>
+<p><span class="math display">\[
+R^2 = r_{xy}^2.
+\]</span></p>
+<ul>
+<li>O coeficiente <span class="math inline">\(R^2\)</span> mide a proporción da variabilidade explicada polo modelo.</li>
+<li>Toma valores entre 0 e 1.</li>
+<li>Canto máis próximo a 1 sexa o seu valor, maior será a capacidade do modelo para explicar a variabilidade dos datos.</li>
+<li>Pola contra, valores próximos a 0 indican que o modelo explica pouca variabilidade.</li>
+</ul>
+</div>
+</section>
+<section id="coeficiente-de-determinación-2" class="slide level2">
+<h2>Coeficiente de determinación</h2>
+<div class="mysmall">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficiente de determinación</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+R^2 = \frac{VE}{VT} = 1 - \frac{VNE}{VT}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Exemplo</a></li><li><a href="#tabset-5-2">Código R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>Calculamos a recta de regresión do peso (<span class="math inline">\(Y\)</span>) sobre a estatura (<span class="math inline">\(X\)</span>).</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficientes da recta de regresión</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{s_{xy}}{s_x^2}= 0.730208\]</span></p>
+<p><span class="math display">\[
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} =-61.2789
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Coeficiente de determinación</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+R^2 = 0.346\]</span></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Tema6_presentacion_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="355"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb5-2"><a href=""></a>y <span class="ot">&lt;-</span> datos<span class="sc">$</span>Peso</span>
+<span id="cb5-3"><a href=""></a>x <span class="ot">&lt;-</span> datos<span class="sc">$</span>Altura</span>
+<span id="cb5-4"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="fu">cov</span>(x, y)<span class="sc">/</span><span class="fu">var</span>(x)</span>
+<span id="cb5-5"><a href=""></a>b1</span>
+<span id="cb5-6"><a href=""></a><span class="do">## [1] 0.730208</span></span>
+<span id="cb5-7"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> b1 <span class="sc">*</span> <span class="fu">mean</span>(x)</span>
+<span id="cb5-8"><a href=""></a>b0</span>
+<span id="cb5-9"><a href=""></a><span class="do">## [1] -61.2789</span></span>
+<span id="cb5-10"><a href=""></a><span class="co"># La recta de regresión es Y=b0+b1*X</span></span>
+<span id="cb5-11"><a href=""></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Peso <span class="sc">~</span> Altura, <span class="at">data =</span> datos)</span>
+<span id="cb5-12"><a href=""></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb5-13"><a href=""></a><span class="do">## </span></span>
+<span id="cb5-14"><a href=""></a><span class="do">## Call:</span></span>
+<span id="cb5-15"><a href=""></a><span class="do">## lm(formula = Peso ~ Altura, data = datos)</span></span>
+<span id="cb5-16"><a href=""></a><span class="do">## </span></span>
+<span id="cb5-17"><a href=""></a><span class="do">## Residuals:</span></span>
+<span id="cb5-18"><a href=""></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb5-19"><a href=""></a><span class="do">## -19.698  -6.261  -1.238   4.528  34.874 </span></span>
+<span id="cb5-20"><a href=""></a><span class="do">## </span></span>
+<span id="cb5-21"><a href=""></a><span class="do">## Coefficients:</span></span>
+<span id="cb5-22"><a href=""></a><span class="do">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb5-23"><a href=""></a><span class="do">## (Intercept) -61.27890   16.00750  -3.828 0.000208 ***</span></span>
+<span id="cb5-24"><a href=""></a><span class="do">## Altura        0.73021    0.09242   7.901 1.62e-12 ***</span></span>
+<span id="cb5-25"><a href=""></a><span class="do">## ---</span></span>
+<span id="cb5-26"><a href=""></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb5-27"><a href=""></a><span class="do">## </span></span>
+<span id="cb5-28"><a href=""></a><span class="do">## Residual standard error: 9.209 on 118 degrees of freedom</span></span>
+<span id="cb5-29"><a href=""></a><span class="do">## Multiple R-squared:  0.346,  Adjusted R-squared:  0.3404 </span></span>
+<span id="cb5-30"><a href=""></a><span class="do">## F-statistic: 62.42 on 1 and 118 DF,  p-value: 1.618e-12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tema-6.-introdución-á-regresión-lineal-1" class="slide level2">
+<h2>Tema 6. Introdución á regresión lineal</h2>
+<p>Ao rematar este tema deberías:</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img data-src="images/goals.jpg"></p>
+</div><div class="column" style="width:70%;">
+<p><br></p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Comprender o concepto de regresión lineal como ferramenta para modelar a relación entre variables cuantitativas e realizar predicións.</label></li>
+<li><label><input type="checkbox" checked="">Interpretar os parámetros do modelo de regresión.</label></li>
+<li><label><input type="checkbox" checked="">Coñecer o método dos mínimos cadrados como procedemento para estimar os parámetros do modelo de regresión.</label></li>
+<li><label><input type="checkbox" checked="">Avaliar a calidade do axuste do modelo mediante o coeficiente de determinación e a descomposición da variabilidade.</label></li>
+<li><label><input type="checkbox" checked="">Comprender de forma básica a idea de contraste de hipóteses na regresión para valorar a significatividade da relación entre variables.</label></li>
+</ul>
+</div></div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/logo_eamo.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Beatriz Pateiro López</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Tema6_presentacion_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Tema6_presentacion_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': true,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false,"preview-links":"auto"},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

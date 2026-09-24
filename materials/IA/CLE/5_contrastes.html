@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Contraste de hipóteses – Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6_regresion.html" rel="next">
+<link href="./4_inferencia.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db2c0c5076fa667ddcdfddb53354bdfb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_contrastes.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliografía</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link active" data-scroll-target="#conceptos-básicos"><span class="header-section-number">5.1</span> Conceptos básicos</a>
+  <ul class="collapse">
+  <li><a href="#erro-de-tipo-i-e-erro-de-tipo-ii" id="toc-erro-de-tipo-i-e-erro-de-tipo-ii" class="nav-link" data-scroll-target="#erro-de-tipo-i-e-erro-de-tipo-ii"><span class="header-section-number">5.1.1</span> Erro de tipo I e erro de tipo II</a></li>
+  <li><a href="#nivel-de-significación-e-potencia-dun-test" id="toc-nivel-de-significación-e-potencia-dun-test" class="nav-link" data-scroll-target="#nivel-de-significación-e-potencia-dun-test"><span class="header-section-number">5.1.2</span> Nivel de significación e potencia dun test</a></li>
+  <li><a href="#rexión-crítica-dun-test" id="toc-rexión-crítica-dun-test" class="nav-link" data-scroll-target="#rexión-crítica-dun-test"><span class="header-section-number">5.1.3</span> Rexión crítica dun test</a></li>
+  <li><a href="#o-p-valor-dun-contraste" id="toc-o-p-valor-dun-contraste" class="nav-link" data-scroll-target="#o-p-valor-dun-contraste"><span class="header-section-number">5.1.4</span> O p-valor dun contraste</a></li>
+  <li><a href="#resumo-das-etapas-na-resolución-dun-contraste-de-hipóteses" id="toc-resumo-das-etapas-na-resolución-dun-contraste-de-hipóteses" class="nav-link" data-scroll-target="#resumo-das-etapas-na-resolución-dun-contraste-de-hipóteses"><span class="header-section-number">5.1.5</span> Resumo das etapas na resolución dun contraste de hipóteses</a></li>
+  <li><a href="#relación-cos-intervalos-de-confianza" id="toc-relación-cos-intervalos-de-confianza" class="nav-link" data-scroll-target="#relación-cos-intervalos-de-confianza"><span class="header-section-number">5.1.6</span> Relación cos intervalos de confianza</a></li>
+  </ul></li>
+  <li><a href="#contrastes-sobre-a-media-dunha-poboación-normal" id="toc-contrastes-sobre-a-media-dunha-poboación-normal" class="nav-link" data-scroll-target="#contrastes-sobre-a-media-dunha-poboación-normal"><span class="header-section-number">5.2</span> Contrastes sobre a media dunha poboación normal</a>
+  <ul class="collapse">
+  <li><a href="#contrastes-sobre-a-media-con-varianza-coñecida" id="toc-contrastes-sobre-a-media-con-varianza-coñecida" class="nav-link" data-scroll-target="#contrastes-sobre-a-media-con-varianza-coñecida"><span class="header-section-number">5.2.1</span> Contrastes sobre a media con varianza coñecida</a></li>
+  <li><a href="#contrastes-sobre-a-media-con-varianza-descoñecida" id="toc-contrastes-sobre-a-media-con-varianza-descoñecida" class="nav-link" data-scroll-target="#contrastes-sobre-a-media-con-varianza-descoñecida"><span class="header-section-number">5.2.2</span> Contrastes sobre a media con varianza descoñecida</a></li>
+  </ul></li>
+  <li><a href="#contrastes-sobre-as-medias-de-dúas-poboacións-normais" id="toc-contrastes-sobre-as-medias-de-dúas-poboacións-normais" class="nav-link" data-scroll-target="#contrastes-sobre-as-medias-de-dúas-poboacións-normais"><span class="header-section-number">5.3</span> Contrastes sobre as medias de dúas poboacións normais</a>
+  <ul class="collapse">
+  <li><a href="#mostras-independentes-varianzas-coñecidas" id="toc-mostras-independentes-varianzas-coñecidas" class="nav-link" data-scroll-target="#mostras-independentes-varianzas-coñecidas"><span class="header-section-number">5.3.1</span> Mostras independentes, varianzas coñecidas</a></li>
+  <li><a href="#mostras-independentes-varianzas-descoñecidas-e-iguais" id="toc-mostras-independentes-varianzas-descoñecidas-e-iguais" class="nav-link" data-scroll-target="#mostras-independentes-varianzas-descoñecidas-e-iguais"><span class="header-section-number">5.3.2</span> Mostras independentes, varianzas descoñecidas e iguais</a></li>
+  <li><a href="#mostras-emparelladas" id="toc-mostras-emparelladas" class="nav-link" data-scroll-target="#mostras-emparelladas"><span class="header-section-number">5.3.3</span> Mostras emparelladas</a></li>
+  </ul></li>
+  <li><a href="#contrastes-sobre-unha-varianza" id="toc-contrastes-sobre-unha-varianza" class="nav-link" data-scroll-target="#contrastes-sobre-unha-varianza"><span class="header-section-number">5.4</span> Contrastes sobre unha varianza</a></li>
+  <li><a href="#contrastes-sobre-dúas-varianzas" id="toc-contrastes-sobre-dúas-varianzas" class="nav-link" data-scroll-target="#contrastes-sobre-dúas-varianzas"><span class="header-section-number">5.5</span> Contrastes sobre dúas varianzas</a></li>
+  <li><a href="#contrastes-sobre-unha-proporción" id="toc-contrastes-sobre-unha-proporción" class="nav-link" data-scroll-target="#contrastes-sobre-unha-proporción"><span class="header-section-number">5.6</span> Contrastes sobre unha proporción</a></li>
+  <li><a href="#contrastes-sobre-dúas-proporcións" id="toc-contrastes-sobre-dúas-proporcións" class="nav-link" data-scroll-target="#contrastes-sobre-dúas-proporcións"><span class="header-section-number">5.7</span> Contrastes sobre dúas proporcións</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLIL/"><i class="bi bi-link-45deg"></i>Material de laboratorio</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Os procedementos de inferencia que levamos realizado ata agora resúmense en dous: a estimación puntual e os intervalos de confianza. Coa estimación puntual obtemos valores concretos que serven como estimacións dos parámetros poboacionais de interese; por exemplo, estimamos a media poboacional, <span class="math inline">\(\mu\)</span>, coa media mostral, <span class="math inline">\(\bar{X}\)</span>. Cos intervalos de confianza obtemos rexións aleatorias que conteñen os parámetros de interese con certa probabilidade.</p>
+<p>A outra grande tarefa da Inferencia Estatística consiste en responder a preguntas moi concretas sobre a poboación. Por exemplo, ¿podemos asumir que o tempo medio de resposta do sistema de recomendación dunha plataforma de comercio electrónico é 5 ms? ou ¿o tempo medio de resposta do sistema de recomendación dunha plataforma de comercio electrónico é o mesmo que o do sistema de recomendación doutra plataforma? ou ¿a probabilidade de acerto dun sistema de clasificación é 0.9? Como veremos, estas cuestións formúlanse en termos de hipóteses que debemos aceptar ou rexeitar. E esta decisión tomarémola en base a unha realización mostral. Cando os datos mostrais discrepen moito da hipótese, rexeitaremos a hipótese.</p>
+<section id="conceptos-básicos" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="conceptos-básicos"><span class="header-section-number">5.1</span> Conceptos básicos</h2>
+<p>Comezamos cunha hipótese de traballo sobre un parámetro de interese <span class="math inline">\(\theta\)</span> e dispoñemos dunha mostra de observacións. O obxectivo é determinar se a hipótese formulada é compatible co que podemos inferir a partir dos datos da mostra; é dicir, decidir se a información empírica apoia ou contradí a hipótese inicial.</p>
+<ul>
+<li><p>Chamaremos <strong>hipótese nula</strong>, denotada por <span class="math inline">\(H_0\)</span>, á que asumimos certa antes de observar os datos. Goza de <em>presunción de inocencia</em>, de modo que só se rexeitará se hai evidencia suficiente en contra dela.</p></li>
+<li><p>Chamaremos <strong>hipótese alternativa</strong>, denotada por <span class="math inline">\(H_1\)</span>, á situación na que a hipótese nula non é certa, e é nela onde recae a carga da proba.</p></li>
+</ul>
+<p>Na práctica, analizamos se os datos da mostra proporcionan evidencia estatística suficiente en contra de <span class="math inline">\(H_0\)</span>. Rexeitamos <span class="math inline">\(H_0\)</span> en favor de <span class="math inline">\(H_1\)</span> se os datos mostran probas significativas que apoian <span class="math inline">\(H_1\)</span>. Se non, consideramos que os datos son consistentes con <span class="math inline">\(H_0\)</span>.</p>
+<p>De forma xeral, un contraste de hipóteses para un parámetro <span class="math inline">\(\theta\)</span> pódese expresar como:</p>
+<p><span class="math display">\[
+\begin{cases}
+H_0: \theta \in \Theta_0 \\
+H_1: \theta \in \Theta_1
+\end{cases}
+\]</span></p>
+<p>onde <span class="math inline">\(\Theta_0\)</span> e <span class="math inline">\(\Theta_1\)</span> son subconxuntos do espazo de parámetros.</p>
+<ul>
+<li>Unha <strong>hipótese simple</strong> é aquela en que <span class="math inline">\(\Theta_0\)</span> contén un único valor de <span class="math inline">\(\theta\)</span>.<br>
+</li>
+<li>Unha <strong>hipótese composta</strong> é aquela en que <span class="math inline">\(\Theta_0\)</span> contén varios valores posibles de <span class="math inline">\(\theta\)</span>.</li>
+</ul>
+<p>Por exemplo, se queremos comprobar se <span class="math inline">\(\theta\)</span> toma un valor específico <span class="math inline">\(\theta_0\)</span>, o contraste sería:</p>
+<p><span class="math display">\[
+\begin{cases}
+H_0: \theta = \theta_0 \\
+H_1: \theta \neq \theta_0
+\end{cases}
+\]</span></p>
+<p>Neste caso <span class="math inline">\(H_0\)</span> é simple, e rexeitaríase só se os datos mostrasen evidencia suficiente para suxerir que <span class="math inline">\(\theta \neq \theta_0\)</span>.</p>
+<p>Se, en cambio, queremos determinar se <span class="math inline">\(\theta\)</span> supera un certo limiar <span class="math inline">\(\theta_0\)</span>, o contraste sería:</p>
+<p><span class="math display">\[
+\begin{cases}
+H_0: \theta \leq \theta_0 \\
+H_1: \theta &gt; \theta_0
+\end{cases}
+\]</span></p>
+<p>Agora a hipótese nula <span class="math inline">\(H_0\)</span> é composta, xa que admite calquera valor de <span class="math inline">\(\theta\)</span> menor ou igual a <span class="math inline">\(\theta_0\)</span>.</p>
+<!--Tamén podemos comparar tempos medios de dúas plataformas. Por exemplo, se queremos saber se o tempo medio de resposta da primeira plataforma é igual ao da segunda, formulamos:
+
+$$
+\begin{cases}
+H_0:\ \mu_1 = \mu_2 \\
+H_1:\ \mu_1 \neq \mu_2
+\end{cases}
+\quad \text{ou equivalentemente} \quad
+\begin{cases}
+H_0:\ \mu_1 - \mu_2 = 0 \\
+H_1:\ \mu_1 - \mu_2 \neq 0
+\end{cases}
+$$
+
+onde $\mu_1$ é o tempo medio da primeira plataforma e $\mu_2$ o da segunda.
+
+Se, pola contra, queremos determinar se o tempo medio de resposta da primeira plataforma é menor que o da segunda, o contraste sería:
+
+$$
+\begin{cases}
+H_0:\ \mu_1 \geq \mu_2 \\
+H_1:\ \mu_1 < \mu_2
+\end{cases}
+\quad \text{ou equivalentemente} \quad
+\begin{cases}
+H_0:\ \mu_1 - \mu_2 \geq 0 \\
+H_1:\ \mu_1 - \mu_2 < 0
+\end{cases}
+$$-->
+<section id="erro-de-tipo-i-e-erro-de-tipo-ii" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="erro-de-tipo-i-e-erro-de-tipo-ii"><span class="header-section-number">5.1.1</span> Erro de tipo I e erro de tipo II</h3>
+<p>Volvemos ao problema de decisión que supón o contraste de hipóteses. A seguinte táboa reflicte os posibles acertos ou erros nun contraste:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 35%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>Decisión: non se rexeita <span class="math inline">\(H_0\)</span></th>
+<th>Decisión: rexeítase <span class="math inline">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Realidade</strong></td>
+<td><span class="math inline">\(H_0\)</span> verdadeira</td>
+<td>Decisión correcta</td>
+<td>Erro tipo I</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(H_0\)</span> falsa</td>
+<td>Erro tipo II</td>
+<td>Decisión correcta</td>
+</tr>
+</tbody>
+</table>
+<p>Observamos que se pode tomar unha decisión correcta ou errónea:</p>
+<ul>
+<li>Chamamos <strong>erro de tipo I</strong> ao que cometemos cando rexeitamos a hipótese nula sendo certa.<br>
+</li>
+<li>O <strong>erro de tipo II</strong> é o que cometemos cando non rexeitamos (aceptamos) a hipótese nula sendo falsa.</li>
+</ul>
+</section>
+<section id="nivel-de-significación-e-potencia-dun-test" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="nivel-de-significación-e-potencia-dun-test"><span class="header-section-number">5.1.2</span> Nivel de significación e potencia dun test</h3>
+<p>Dado que calquera decisión tomada ao facer un contraste está baseada en información parcial dunha poboación, debemos ter en conta a probabilidade de tomar unha decisión incorrecta.</p>
+<ul>
+<li>Probabilidade do erro de tipo I: denótase por <span class="math inline">\(\alpha\)</span> e denomínase <strong>nivel de significación</strong>.</li>
+</ul>
+<p><span class="math display">\[
+\alpha = P(\text{rexeitar } H_0 \mid H_0 \text{ é certa})
+\]</span></p>
+<ul>
+<li>Probabilidade do erro de tipo II: denótase por <span class="math inline">\(\beta\)</span>.</li>
+</ul>
+<p><span class="math display">\[
+\beta = P(\text{non rexeitar } H_0 \mid H_0 \text{ é falsa})
+\]</span></p>
+<ul>
+<li>A probabilidade de detectar que unha hipótese é falsa denomínase <strong>potencia</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\text{Potencia} = P(\text{rexeitar } H_0 \mid H_0 \text{ é falsa}) = 1 - \beta
+\]</span></p>
+<p>Así, o nivel de significación é a probabilidade de rexeitar <span class="math inline">\(H_0\)</span> cando é certa. A potencia é a probabilidade de rexeitar <span class="math inline">\(H_0\)</span> cando é falsa. Debemos adoptar un criterio que, en base á mostra, nos permita decidir se rexeitamos ou non a hipótese nula. Sería desexable facelo de maneira que as probabilidades de ambos tipos de erro fosen o máis pequenas posible. Porén, cun tamaño de mostra fixo, diminuír a probabilidade do erro de tipo I implica aumentar a probabilidade do erro de tipo II. É dicir, se reducimos o nivel de significación, tamén reducimos a potencia do test. Unha forma habitual de proceder é fixar o nivel de significación <span class="math inline">\(\alpha\)</span> (son comúns valores como <span class="math inline">\(0.05\)</span>, <span class="math inline">\(0.01\)</span> e <span class="math inline">\(0.1\)</span>) e escoller o criterio que proporcione a maior potencia posible.</p>
+</section>
+<section id="rexión-crítica-dun-test" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="rexión-crítica-dun-test"><span class="header-section-number">5.1.3</span> Rexión crítica dun test</h3>
+<p>Ao fixar un nivel de significación <span class="math inline">\(\alpha\)</span>, obtense implícitamente unha división en dúas rexións do conxunto de posibles valores do estatístico de contraste:</p>
+<ul>
+<li>A <strong>rexión de rexeitamento</strong> ou rexión crítica, que ten probabilidade <span class="math inline">\(\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).<br>
+</li>
+<li>A <strong>rexión de aceptación</strong>, que ten probabilidade <span class="math inline">\(1-\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).</li>
+</ul>
+<p>Se o valor do estatístico cae na rexión de aceptación, non existen razóns suficientes para rexeitar a hipótese nula cun nivel de significación <span class="math inline">\(\alpha\)</span>, e o contraste considérase <strong>estatísticamente non significativo</strong>, é dicir, non existe evidencia a favor de <span class="math inline">\(H_1\)</span>.</p>
+<p>Se o valor do estatístico cae na rexión de rexeitamento, os datos non son compatibles con <span class="math inline">\(H_0\)</span> e rexeitamos a hipótese. Entón dicimos que o contraste é <strong>estatísticamente significativo</strong>, é dicir, existe evidencia estatisticamente significativa a favor de <span class="math inline">\(H_1\)</span>.</p>
+<!--### Exemplo: Contraste bilateral
+
+Se estamos interesados en determinar se a media $\mu$ dunha variable difire significativamente dun valor dado $\mu_0$, o contraste sería:
+
+$H_0: \mu = \mu_0$  
+$H_1: \mu \neq \mu_0$
+
+Dados os valores dunha mostra, rexeitaríamos $H_0$ se $\bar{X}$ está "lonxe" de $\mu_0$ **en ambas direccións**. A rexión crítica sería a seguinte:  
+
+*(Aquí inserirías unha imaxe ou gráfico se dispoñible)*
+
+### Exemplo: Contraste unilateral pola dereita
+
+Se queremos determinar se a media $\mu$ dunha variable é significativamente maior que $\mu_0$:
+
+$H_0: \mu \leq \mu_0$  
+$H_1: \mu > \mu_0$
+
+Rexeitaríamos $H_0$ se $\bar{X}$ está "lonxe" de $\mu_0$ **nunha soa dirección**. A rexión crítica sería a seguinte:  
+
+*(Aquí inserirías unha imaxe ou gráfico se dispoñible)*
+
+### Exemplo: Contraste unilateral pola esquerda
+
+Se queremos determinar se a media $\mu$ dunha variable é significativamente menor que $\mu_0$:
+
+$H_0: \mu \geq \mu_0$  
+$H_1: \mu < \mu_0$
+
+Rexeitaríamos $H_0$ se $\bar{X}$ está "lonxe" de $\mu_0$ **nunha soa dirección**. A rexión crítica sería a seguinte:  
+
+*(Aquí inserirías unha imaxe ou gráfico se dispoñible)*-->
+</section>
+<section id="o-p-valor-dun-contraste" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="o-p-valor-dun-contraste"><span class="header-section-number">5.1.4</span> O p-valor dun contraste</h3>
+<p>A medida que o nivel de significación <span class="math inline">\(\alpha\)</span> diminúe, é máis difícil rexeitar a hipótese nula (mantendo os mesmos datos). Dado un estatístico de contraste, existe un valor de <span class="math inline">\(\alpha\)</span> a partir do cal xa non podemos rexeitar <span class="math inline">\(H_0\)</span>. A este valor chámaselle o <strong>p-valor</strong> do contraste e denótase por <span class="math inline">\(p\)</span>. Se o nivel de significación é menor que <span class="math inline">\(p\)</span>, xa non se rexeita <span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li>Se <span class="math inline">\(\alpha &lt; p\)</span>, non podemos rexeitar <span class="math inline">\(H_0\)</span> a nivel <span class="math inline">\(\alpha\)</span>.<br>
+</li>
+<li>Se <span class="math inline">\(\alpha &gt; p\)</span>, podemos rexeitar <span class="math inline">\(H_0\)</span> a nivel <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+</section>
+<section id="resumo-das-etapas-na-resolución-dun-contraste-de-hipóteses" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="resumo-das-etapas-na-resolución-dun-contraste-de-hipóteses"><span class="header-section-number">5.1.5</span> Resumo das etapas na resolución dun contraste de hipóteses</h3>
+<p>Resumindo, as etapas na resolución dun contraste de hipóteses son:</p>
+<ol type="1">
+<li><p>Especificar as hipóteses nula <span class="math inline">\(H_0\)</span> e alternativa <span class="math inline">\(H_1\)</span>.</p></li>
+<li><p>Escoller un estatístico de contraste apropiado, para medir a discrepancia entre a hipótese e a mostra.</p></li>
+<li><p>Fixar o nivel de significación <span class="math inline">\(\alpha\)</span> en función de canto de importante se considere rexeitar <span class="math inline">\(H_0\)</span> cando realmente é certa.</p></li>
+<li><p>Ao fixar un nivel de significación <span class="math inline">\(\alpha\)</span>, obténse implícitamente unha división en dúas rexións do conxunto de posibles valores do estatístico de contraste:</p>
+<ul>
+<li>A <strong>rexión de rexeitamento</strong> ou rexión crítica, que ten probabilidade <span class="math inline">\(\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).<br>
+</li>
+<li>A <strong>rexión de non rexeitamento</strong>, que ten probabilidade <span class="math inline">\(1-\alpha\)</span> (baixo <span class="math inline">\(H_0\)</span>).</li>
+</ul></li>
+<li><p>Se o valor do estatístico cae na rexión de rexeitamento, os datos non son compatibles con <span class="math inline">\(H_0\)</span> e rexeitamos a hipótese. Entón dicimos que o contraste é <strong>estatísticamente significativo</strong>, é dicir, existe evidencia estatisticamente significativa a favor de <span class="math inline">\(H_1\)</span>.</p></li>
+<li><p>Se o valor do estatístico cae na rexión de aceptación, non existen razóns suficientes para rexeitar a hipótese nula cun nivel de significación <span class="math inline">\(\alpha\)</span>, e o contraste considérase <strong>estatísticamente non significativo</strong>, é dicir, non existe evidencia a favor de <span class="math inline">\(H_1\)</span>.</p></li>
+<li><p>Alternativamente, en lugar de fixar un nivel de significación, podemos calcular o <strong>p-valor</strong> asociado ao estatístico observado. O p-valor indica o nivel de significación máis pequeno para o cal se rexeitaría <span class="math inline">\(H_0\)</span>. Se <span class="math inline">\(p \leq \alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span>; se <span class="math inline">\(p &gt; \alpha\)</span>, non rexeitamos <span class="math inline">\(H_0\)</span>.</p></li>
+</ol>
+</section>
+<section id="relación-cos-intervalos-de-confianza" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="relación-cos-intervalos-de-confianza"><span class="header-section-number">5.1.6</span> Relación cos intervalos de confianza</h3>
+<p>Os intervalos de confianza e os contrastes de hipóteses están intimamente relacionados. En xeral, un contraste bilateral pode expresarse como:</p>
+<p><span class="math display">\[
+\begin{cases}
+H_0:\ \theta = \theta_0 \\
+H_1:\ \theta \neq \theta_0
+\end{cases}
+\]</span></p>
+<p>onde <span class="math inline">\(\theta\)</span> é o parámetro de interese (media, proporción, etc.).</p>
+<p>Unha vez dispoñemos dunha mostra, o contraste consiste en determinar se o valor observado do estatístico é suficientemente “lonxe” do valor baixo <span class="math inline">\(H_0\)</span>. Neste contexto, podemos interpretar os resultados do contraste utilizando un intervalo de confianza para <span class="math inline">\(\theta\)</span> de nivel <span class="math inline">\(1-\alpha\)</span>:</p>
+<ul>
+<li>Se <span class="math inline">\(\theta_0\)</span> <strong>non pertence</strong> ao intervalo de confianza, existe evidencia suficiente para rexeitar <span class="math inline">\(H_0\)</span> ao nivel de significación <span class="math inline">\(\alpha\)</span>.<br>
+</li>
+<li>Se <span class="math inline">\(\theta_0\)</span> <strong>pertence</strong> ao intervalo de confianza, non existe evidencia suficiente para rexeitar <span class="math inline">\(H_0\)</span> ao nivel <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+<p>Esta relación é válida de forma xeral para calquera parámetro sobre o que poidamos construír un intervalo de confianza. En termos intuitivos, o intervalo de confianza indica todos os valores de <span class="math inline">\(\theta\)</span> que serían compatibles cos datos segundo o nivel de significación seleccionado; os valores fóra dese intervalo son os que o contraste consideraría “incompatibles” coas observacións.</p>
+<p>Veremos agora como levar a cabo os contrastes de hipóteses na práctica. Estudaremos cales son os estatísticos de contraste axeitados dependendo do parámetro ao que faga referencia o test e veremos como construír a rexión crítica en cada caso.</p>
+</section>
+</section>
+<section id="contrastes-sobre-a-media-dunha-poboación-normal" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="contrastes-sobre-a-media-dunha-poboación-normal"><span class="header-section-number">5.2</span> Contrastes sobre a media dunha poboación normal</h2>
+<p>Queremos contrastar hipóteses relativas á media dunha poboación con distribución normal <span class="math inline">\(N(\mu,\sigma)\)</span>. Para iso, tomamos <span class="math inline">\(X_1,\ldots,X_n\)</span> unha mostra aleatoria simple dunha <span class="math inline">\(N(\mu,\sigma)\)</span>.</p>
+<section id="contrastes-sobre-a-media-con-varianza-coñecida" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="contrastes-sobre-a-media-con-varianza-coñecida"><span class="header-section-number">5.2.1</span> Contrastes sobre a media con varianza coñecida</h3>
+<p>Supoñamos que a varianza <span class="math inline">\(\sigma^2\)</span> é coñecida. Deséxase contrastar unha hipótese relativa á media <span class="math inline">\(\mu\)</span>.</p>
+<p><strong>Contraste bilateral.</strong> Se queremos determinar se a media é significativamente distinta dun certo valor dado <span class="math inline">\(\mu_0\)</span>, entón o contraste formulado sería un contraste bilateral</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu=\mu_0\\
+H_1:\ \mu\neq \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Se a hipótese nula <span class="math inline">\(H_0:\mu=\mu_0\)</span> é certa, entón</p>
+<p><span class="math display">\[
+\frac{\bar X-\mu_0}{\sigma/\sqrt{n}}\sim N(0,1).
+\]</span></p>
+<p>O sentido común aconséllanos rexeitar a hipótese nula de que a media poboacional é <span class="math inline">\(\mu_0\)</span> cando a media mostral sexa moi distinta de <span class="math inline">\(\mu_0\)</span>. Para respectar ademais un nivel de significación <span class="math inline">\(\alpha\)</span> prefixado, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\leq -z_{\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\geq z_{\alpha/2}.
+\]</span></p>
+<p>Lembra que <span class="math inline">\(z_{\alpha/2}\)</span> denota o punto tal que <span class="math inline">\(P(Z&gt; z_{\alpha/2})=\alpha/2\)</span> sendo <span class="math inline">\(Z\sim N(0,1)\)</span>.</p>
+<p><strong>Contraste unilateral pola dereita.</strong> Supoñamos agora que queremos determinar se a media <span class="math inline">\(\mu\)</span> é significativamente maior que un valor dado <span class="math inline">\(\mu_0\)</span>. Entón, o contraste formulado sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu\leq\mu_0\\
+H_1:\ \mu&gt; \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X}\)</span> é considerablemente maior que <span class="math inline">\(\mu_0\)</span>. , Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\leq \mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\geq z_{\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong> Supoñamos agora que queremos determinar se a media <span class="math inline">\(\mu\)</span> é significativamente menor que un valor dado <span class="math inline">\(\mu_0\)</span>. Entón, o contraste formulado sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu\geq\mu_0\\
+H_1:\ \mu&lt; \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X}\)</span> é considerablemente menor que <span class="math inline">\(\mu_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\geq \mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\leq -z_{\alpha}.
+\]</span></p>
+</section>
+<section id="contrastes-sobre-a-media-con-varianza-descoñecida" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="contrastes-sobre-a-media-con-varianza-descoñecida"><span class="header-section-number">5.2.2</span> Contrastes sobre a media con varianza descoñecida</h3>
+<p>Supoñamos agora que queremos contrastar hipóteses relativas á media <span class="math inline">\(\mu\)</span> pero descoñecemos a varianza <span class="math inline">\(\sigma^2\)</span>. Podemos repetir toda a argumentación anterior coa salvidade de que cando a varianza é descoñecida non podemos usar <span class="math inline">\(\sigma^2\)</span> e no seu lugar debemos empregar un estimador axeitado como a varianza mostral <span class="math inline">\(S^2\)</span>.</p>
+<p><strong>Contraste bilateral.</strong> Se queremos determinar se a media é significativamente distinta dun certo valor dado <span class="math inline">\(\mu_0\)</span>, entón o contraste formulado sería un contraste bilateral</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu=\mu_0\\
+H_1:\ \mu\neq \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Se a hipótese nula <span class="math inline">\(H_0:\mu=\mu_0\)</span> é certa, entón</p>
+<p><span class="math display">\[
+\frac{\bar X-\mu_0}{S/\sqrt{n}}\sim t_{n-1}.
+\]</span></p>
+<p>O sentido común aconséllanos rexeitar a hipótese nula de que a media poboacional é <span class="math inline">\(\mu_0\)</span> cando a media mostral sexa moi distinta de <span class="math inline">\(\mu_0\)</span>. Para respectar ademais un nivel de significación <span class="math inline">\(\alpha\)</span> prefixado, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu=\mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu\neq\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\leq -t_{n-1,\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\geq t_{n-1,\alpha/2}.
+\]</span></p>
+<p>Lembra que <span class="math inline">\(t_{n-1,\alpha/2}\)</span> denota o punto tal que <span class="math inline">\(P(T&gt; t_{n-1,\alpha/2})=\alpha/2\)</span> sendo <span class="math inline">\(T\)</span> unha variable <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> graos de liberdade.</p>
+<p><strong>Contraste unilateral pola dereita.</strong> Supoñamos agora que queremos determinar se a media <span class="math inline">\(\mu\)</span> é significativamente maior que un valor dado <span class="math inline">\(\mu_0\)</span>. Entón, o contraste formulado sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu\leq\mu_0\\
+H_1:\ \mu&gt; \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X}\)</span> é considerablemente maior que <span class="math inline">\(\mu_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\leq \mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&gt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\geq t_{n-1,\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong> Supoñamos agora que queremos determinar se a media <span class="math inline">\(\mu\)</span> é significativamente menor que un valor dado <span class="math inline">\(\mu_0\)</span>. Entón, o contraste formulado sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu\geq\mu_0\\
+H_1:\ \mu&lt; \mu_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X}\)</span> é considerablemente menor que <span class="math inline">\(\mu_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0:\mu\geq \mu_0\)</span> fronte a <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\leq -t_{n-1,\alpha}.
+\]</span></p>
+</section>
+</section>
+<section id="contrastes-sobre-as-medias-de-dúas-poboacións-normais" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="contrastes-sobre-as-medias-de-dúas-poboacións-normais"><span class="header-section-number">5.3</span> Contrastes sobre as medias de dúas poboacións normais</h2>
+<section id="mostras-independentes-varianzas-coñecidas" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="mostras-independentes-varianzas-coñecidas"><span class="header-section-number">5.3.1</span> Mostras independentes, varianzas coñecidas</h3>
+<p>Consideremos agora o seguinte modelo xeral. Temos dúas poboacións normais, coas súas respectivas medias e varianzas: <span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span> e <span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span> e queremos contrastar hipóteses que comparen as súas medias, <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>. Extraemos:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1^2)\)</span>.</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2^2)\)</span>.</li>
+</ul>
+<p>Supoñemos que as mostras son independentes, é dicir, os individuos onde se obtiveron as medicións da poboación 1 son distintos dos da poboación 2. Supoñemos ademais que as varianzas <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span> son coñecidas.</p>
+<p><strong>Contraste bilateral.</strong> Se queremos saber se podemos asumir que a media é a mesma en ambas poboacións, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1=\mu_2\\
+H_1:\ \mu_1\neq \mu_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1-\mu_2=0\\
+H_1:\ \mu_1-\mu_2\neq 0
+\end{array}
+\right.
+\]</span></p>
+<p>Se <span class="math inline">\(H_0\)</span> é certa, entón</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{\sigma_1^2}{n_1} +\frac{\sigma_2^2}{n_2}}} \sim N(0,1).
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> fronte a <span class="math inline">\(H_1\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{\sigma_1^2}{n_1} +\frac{\sigma_2^2}{n_2}}}
+\leq -z_{\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{\sigma_1^2}{n_1} +\frac{\sigma_2^2}{n_2}}}
+\geq z_{\alpha/2}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(z_{\alpha/2}\)</span> verifica <span class="math inline">\(P(Z&gt;z_{\alpha/2})=\alpha/2\)</span> con <span class="math inline">\(Z\sim N(0,1)\)</span>.</p>
+<p><strong>Contraste unilateral pola dereita.</strong> Se queremos comprobar se <span class="math inline">\(\mu_1&gt;\mu_2\)</span>, o contraste é</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\leq\mu_2\\
+H_1:\ \mu_1&gt; \mu_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1-\mu_2\leq 0\\
+H_1:\ \mu_1-\mu_2&gt; 0
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{\sigma_1^2}{n_1} +\frac{\sigma_2^2}{n_2}}}
+\geq z_{\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong> Se queremos comprobar se <span class="math inline">\(\mu_1&lt;\mu_2\)</span>, o contraste é</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\geq\mu_2\\
+H_1:\ \mu_1&lt; \mu_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1-\mu_2\geq 0\\
+H_1:\ \mu_1-\mu_2&lt; 0
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{\sigma_1^2}{n_1} +\frac{\sigma_2^2}{n_2}}}
+\leq -z_{\alpha}.
+\]</span></p>
+</section>
+<section id="mostras-independentes-varianzas-descoñecidas-e-iguais" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="mostras-independentes-varianzas-descoñecidas-e-iguais"><span class="header-section-number">5.3.2</span> Mostras independentes, varianzas descoñecidas e iguais</h3>
+<p>Na práctica, <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span> adoitan ser descoñecidas, pero ás veces pódese asumir que son iguais. Consideramos dúas mostras independentes como antes e supoñemos <span class="math inline">\(\sigma_1^2=\sigma_2^2\)</span>.</p>
+<p>O estimador combinado da varianza é</p>
+<p><span class="math display">\[
+S_P^2 = \frac{(n_1 - 1) S_1^2 + (n_2 - 1) S_2^2}{n_1 + n_2 - 2},
+\]</span></p>
+<p>onde <span class="math inline">\(S_1^2\)</span> e <span class="math inline">\(S_2^2\)</span> son as varianzas mostrais.</p>
+<p><strong>Contraste bilateral.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1=\mu_2\\
+H_1:\ \mu_1\neq \mu_2
+\end{array}
+\right.
+\quad \text{ou} \quad
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1-\mu_2=0\\
+H_1:\ \mu_1-\mu_2\neq 0
+\end{array}
+\right.
+\]</span></p>
+<p>Se <span class="math inline">\(H_0\)</span> é certa,</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{S_P^2}{n_1} +\frac{S_P^2}{n_2}}} \sim t_{n_1+n_2-2}.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{S_P^2}{n_1} +\frac{S_P^2}{n_2}}}
+\leq -t_{n_1+n_2-2,\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{S_P^2}{n_1} +\frac{S_P^2}{n_2}}}
+\geq t_{n_1+n_2-2\alpha/2}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(t_{\alpha/2}\)</span> cumpre <span class="math inline">\(P(T&gt;t_{n_1+n_2-2,\alpha/2})=\alpha/2\)</span> con <span class="math inline">\(T\)</span> t de Student con <span class="math inline">\(n_1+n_2-2\)</span> graos de liberdade.</p>
+<p><strong>Contraste unilateral pola dereita.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\leq\mu_2\\
+H_1:\ \mu_1&gt; \mu_2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{S_P^2}{n_1} +\frac{S_P^2}{n_2}}}
+\geq t_{n_1+n_2-2,\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\geq\mu_2\\
+H_1:\ \mu_1&lt; \mu_2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar X_1 -\bar X_2}{\sqrt{\frac{S_P^2}{n_1} +\frac{S_P^2}{n_2}}}
+\leq -t_{n_1+n_2-2,\alpha}.
+\]</span></p>
+</section>
+<section id="mostras-emparelladas" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="mostras-emparelladas"><span class="header-section-number">5.3.3</span> Mostras emparelladas</h3>
+<p>En moitas ocasións compáranse dous tratamentos aplicados aos mesmos individuos. Neste caso considéranse mostras emparelladas. Definimos <span class="math inline">\(D=X_1-X_2\)</span>.</p>
+<p><strong>Contraste bilateral.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1=\mu_2\\
+H_1:\ \mu_1\neq \mu_2
+\end{array}
+\right.
+\quad \text{ou} \quad
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1-\mu_2=0\\
+H_1:\ \mu_1-\mu_2\neq 0
+\end{array}
+\right.
+\]</span></p>
+<p>Se <span class="math inline">\(H_0\)</span> é certa,</p>
+<p><span class="math display">\[
+\frac{\bar{D}}{S_D/\sqrt{n}} \sim t_{n-1}.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{D}}{S_D/\sqrt{n}}
+\leq -t_{n-1,\alpha/2}
+\quad \text{ou} \quad
+\frac{\bar{D}}{S_D/\sqrt{n}}
+\geq t_{n-1\alpha/2}.
+\]</span></p>
+<p><strong>Contraste unilateral pola dereita.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\leq\mu_2\\
+H_1:\ \mu_1&gt; \mu_2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{D}}{S_D/\sqrt{n}} \geq t_{n-1,\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \mu_1\geq\mu_2\\
+H_1:\ \mu_1&lt; \mu_2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\bar{D}}{S_D/\sqrt{n}} \leq -t_{n-1,\alpha}.
+\]</span></p>
+</section>
+</section>
+<section id="contrastes-sobre-unha-varianza" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="contrastes-sobre-unha-varianza"><span class="header-section-number">5.4</span> Contrastes sobre unha varianza</h2>
+<p>Se queremos contrastar hipóteses sobre a varianza dunha poboación normal <span class="math inline">\(\sigma^2\)</span>, utilizaremos como estatístico de referencia a varianza mostral <span class="math inline">\(S^2\)</span>.</p>
+<p><strong>Contraste bilateral.</strong> Se queremos comprobar se a varianza <span class="math inline">\(\sigma^2\)</span> é significativamente distinta dun valor dado <span class="math inline">\(\sigma_0^2\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma^2 = \sigma_0^2\\
+H_1:\ \sigma^2 \neq \sigma_0^2
+\end{array}
+\right.
+\]</span></p>
+<p>O estatístico de contraste é</p>
+<p><span class="math display">\[
+\frac{(n-1)S^2}{\sigma_0^2}
+\]</span></p>
+<p>que segue unha distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n-1\)</span> graos de liberdade baixo <span class="math inline">\(H_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{(n-1)S^2}{\sigma_0^2} \leq \chi^2_{n-1,1-\alpha/2}
+\quad \text{ou} \quad
+\frac{(n-1)S^2}{\sigma_0^2} \geq \chi^2_{n-1,\alpha/2}.
+\]</span></p>
+<p>onde <span class="math inline">\(\chi^2_{n-1,1-\alpha/2}\)</span> e <span class="math inline">\(\chi^2_{n-1,\alpha/2}\)</span> denotan, respectivamente, os cuantís <span class="math inline">\(\alpha/2\)</span> e <span class="math inline">\(1-\alpha/2\)</span> da distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n-1\)</span> graos de liberdade.</p>
+<p><strong>Contraste unilateral pola dereita.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma^2 \leq \sigma_0^2\\
+H_1:\ \sigma^2 &gt; \sigma_0^2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{(n-1)S^2}{\sigma_0^2} \geq \chi^2_{n-1,\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma^2 \geq \sigma_0^2\\
+H_1:\ \sigma^2 &lt; \sigma_0^2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{(n-1)S^2}{\sigma_0^2} \leq \chi^2_{n-1,1-\alpha}.
+\]</span></p>
+</section>
+<section id="contrastes-sobre-dúas-varianzas" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="contrastes-sobre-dúas-varianzas"><span class="header-section-number">5.5</span> Contrastes sobre dúas varianzas</h2>
+<p>Queremos comparar as varianzas de dúas poboacións normais <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span> a partir de dúas mostras independentes:</p>
+<ul>
+<li>Mostra 1: tamaño <span class="math inline">\(n_1\)</span> e varianza mostral <span class="math inline">\(S_1^2\)</span></li>
+<li>Mostra 2: tamaño <span class="math inline">\(n_2\)</span> e varianza mostral <span class="math inline">\(S_2^2\)</span></li>
+</ul>
+<p><strong>Contraste bilateral.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma_1^2 = \sigma_2^2\\
+H_1:\ \sigma_1^2 \neq \sigma_2^2
+\end{array}
+\right.
+\]</span></p>
+<p>O estatístico de contraste é</p>
+<p><span class="math display">\[
+F = \frac{S_1^2}{S_2^2}
+\]</span></p>
+<p>que segue unha distribución <span class="math inline">\(F_{n_1-1,n_2-1}\)</span> baixo <span class="math inline">\(H_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+F \leq F_{n_1-1,n_2-1,1-\alpha/2}
+\quad \text{ou} \quad
+F \geq F_{n_1-1,n_2-1,\alpha/2}.
+\]</span> onde <span class="math inline">\(F_{n_1-1,n_2-1,\,1-\alpha/2}\)</span> e <span class="math inline">\(F_{n_1-1,n_2-1,\,\alpha/2}\)</span> denotan, respectivamente, os cuantís <span class="math inline">\(\alpha/2\)</span> e <span class="math inline">\(1-\alpha/2\)</span> da distribución <span class="math inline">\(F\)</span> de Snedecor con <span class="math inline">\(n_1-1\)</span> e <span class="math inline">\(n_2-1\)</span> graos de liberdade.</p>
+<p><strong>Contraste unilateral pola dereita.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma_1^2 \leq \sigma_2^2\\
+H_1:\ \sigma_1^2 &gt; \sigma_2^2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+F \geq F_{n_1-1,n_2-1,\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong></p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ \sigma_1^2 \geq \sigma_2^2\\
+H_1:\ \sigma_1^2 &lt; \sigma_2^2
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+F \leq F_{n_1-1,n_2-1,1-\alpha}.
+\]</span></p>
+</section>
+<section id="contrastes-sobre-unha-proporción" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="contrastes-sobre-unha-proporción"><span class="header-section-number">5.6</span> Contrastes sobre unha proporción</h2>
+<p>Queremos contrastar hipóteses como as propostas na sección anterior pero sobre unha proporción <span class="math inline">\(p\)</span>. Para iso utilizaremos como estatístico de referencia a proporción mostral <span class="math inline">\(\hat{p}\)</span>.</p>
+<p><strong>Contraste bilateral.</strong> Se queremos determinar se a proporción <span class="math inline">\(p\)</span> é significativamente distinta dun certo valor dado <span class="math inline">\(p_0\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p=p_0\\
+H_1:\ p\neq p_0
+\end{array}
+\right.
+\]</span></p>
+<p>O sentido común aconséllanos rexeitar a hipótese nula de que a proporción é <span class="math inline">\(p_0\)</span> cando a proporción mostral <span class="math inline">\(\hat{p}\)</span> sexa moi distinta de <span class="math inline">\(p_0\)</span>. Para respectar ademais un nivel de significación <span class="math inline">\(\alpha\)</span> prefixado, rexeitamos <span class="math inline">\(H_0\)</span> fronte a <span class="math inline">\(H_1\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\leq -z_{\alpha/2}
+\quad \text{ou} \quad
+\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\geq z_{\alpha/2}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(z_{\alpha/2}\)</span> denota o punto tal que <span class="math inline">\(P(Z&gt;z_{\alpha/2})=\alpha/2\)</span> sendo <span class="math inline">\(Z\sim N(0,1)\)</span>.</p>
+<p><strong>Contraste unilateral pola dereita.</strong> Se queremos determinar se a proporción <span class="math inline">\(p\)</span> é significativamente maior que un valor dado <span class="math inline">\(p_0\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p\leq p_0\\
+H_1:\ p&gt; p_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\hat{p}\)</span> é considerablemente maior que <span class="math inline">\(p_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> fronte a <span class="math inline">\(H_1\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\geq z_{\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong> Se queremos determinar se a proporción <span class="math inline">\(p\)</span> é significativamente menor que un valor dado <span class="math inline">\(p_0\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p\geq p_0\\
+H_1:\ p&lt; p_0
+\end{array}
+\right.
+\]</span></p>
+<p>Dados os valores dunha mostra, parece claro que deberiamos rexeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\hat{p}\)</span> é considerablemente menor que <span class="math inline">\(p_0\)</span>. Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> fronte a <span class="math inline">\(H_1\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\leq -z_{\alpha}.
+\]</span></p>
+</section>
+<section id="contrastes-sobre-dúas-proporcións" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="contrastes-sobre-dúas-proporcións"><span class="header-section-number">5.7</span> Contrastes sobre dúas proporcións</h2>
+<p>En ocasións estamos interesados en contrastar as proporcións <span class="math inline">\(p_1\)</span> e <span class="math inline">\(p_2\)</span> de dúas poboacións. Temos entón dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes da poboación 1.</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes da poboación 2.</li>
+</ul>
+<p>Supoñemos que as mostras son independentes. Denotamos por <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> o número de éxitos observados en cada mostra, respectivamente. As proporcións mostrais son</p>
+<p><span class="math display">\[
+\hat p_1=\frac{x_1}{n_1}, \qquad \hat p_2=\frac{x_2}{n_2}.
+\]</span></p>
+<p><strong>Contraste bilateral.</strong> Se queremos saber se podemos asumir que a proporción é a mesma en ambas poboacións, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p_1=p_2\\
+H_1:\ p_1\neq p_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ p_1-p_2=0\\
+H_1:\ p_1-p_2\neq 0
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos <span class="math inline">\(H_0\)</span> fronte a <span class="math inline">\(H_1\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat p_1-\hat p_2}
+{\sqrt{{\hat p(1-\hat p)}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+\leq -z_{\alpha/2}
+\quad \text{ou} \quad
+\frac{\hat p_1-\hat p_2}
+{\sqrt{{\hat p(1-\hat p)}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}    
+\geq z_{\alpha/2}.
+\]</span></p>
+<p>onde <span class="math inline">\(\hat p=\frac{x_1+x_2}{n_1+n_2}\)</span> é o estimador da proporción común baixo a hipótese nula (H_0:p_1=p_2), e <span class="math inline">\(z_{\alpha/2}\)</span> verifica <span class="math inline">\(P(Z&gt;z_{\alpha/2})=\alpha/2\)</span> con <span class="math inline">\(Z\sim N(0,1)\)</span>.</p>
+<p><strong>Contraste unilateral pola dereita.</strong> Se queremos determinar se <span class="math inline">\(p_1\)</span> é maior que <span class="math inline">\(p_2\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p_1\leq p_2\\
+H_1:\ p_1&gt; p_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ p_1-p_2\leq 0\\
+H_1:\ p_1-p_2&gt; 0
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat p_1-\hat p_2}
+{\sqrt{{\hat p(1-\hat p)}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}    
+\geq z_{\alpha}.
+\]</span></p>
+<p><strong>Contraste unilateral pola esquerda.</strong> Se queremos determinar se <span class="math inline">\(p_1\)</span> é menor que <span class="math inline">\(p_2\)</span>, o contraste sería</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+H_0:\ p_1\geq p_2\\
+H_1:\ p_1&lt; p_2
+\end{array}
+\right.
+\quad \text{ou equivalentemente} \quad
+\left\{
+\begin{array}{l}
+H_0:\ p_1-p_2\geq 0\\
+H_1:\ p_1-p_2&lt; 0
+\end{array}
+\right.
+\]</span></p>
+<p>Fixado un nivel de significación <span class="math inline">\(\alpha\)</span>, rexeitamos a hipótese nula <span class="math inline">\(H_0\)</span> se</p>
+<p><span class="math display">\[
+\frac{\hat p_1-\hat p_2}
+{\sqrt{{\hat p(1-\hat p)}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}    
+\leq -z_{\alpha}.
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./4_inferencia.html" class="pagination-link" aria-label="Introdución á inferencia estatística e á estimación de parámetros">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6_regresion.html" class="pagination-link" aria-label="Introdución á regresión lineal">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

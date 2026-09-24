@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Introdución á inferencia estatística e á estimación de parámetros – Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./5_contrastes.html" rel="next">
+<link href="./3_variables.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db2c0c5076fa667ddcdfddb53354bdfb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4_inferencia.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliografía</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link active" data-scroll-target="#conceptos-básicos"><span class="header-section-number">4.1</span> Conceptos básicos</a></li>
+  <li><a href="#plantexamento-xeral-do-problema-de-inferencia-paramétrica" id="toc-plantexamento-xeral-do-problema-de-inferencia-paramétrica" class="nav-link" data-scroll-target="#plantexamento-xeral-do-problema-de-inferencia-paramétrica"><span class="header-section-number">4.2</span> Plantexamento xeral do problema de inferencia paramétrica</a></li>
+  <li><a href="#estimación-puntual" id="toc-estimación-puntual" class="nav-link" data-scroll-target="#estimación-puntual"><span class="header-section-number">4.3</span> Estimación puntual</a>
+  <ul class="collapse">
+  <li><a href="#estimación-puntual-da-media-e-a-varianza" id="toc-estimación-puntual-da-media-e-a-varianza" class="nav-link" data-scroll-target="#estimación-puntual-da-media-e-a-varianza"><span class="header-section-number">4.3.1</span> Estimación puntual da media e a varianza</a></li>
+  <li><a href="#estimación-puntual-dunha-proporción" id="toc-estimación-puntual-dunha-proporción" class="nav-link" data-scroll-target="#estimación-puntual-dunha-proporción"><span class="header-section-number">4.3.2</span> Estimación puntual dunha proporción</a></li>
+  </ul></li>
+  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">4.4</span> Intervalos de confianza</a>
+  <ul class="collapse">
+  <li><a href="#intervalo-de-confianza-para-a-media-dunha-poboación-normal" id="toc-intervalo-de-confianza-para-a-media-dunha-poboación-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-a-media-dunha-poboación-normal"><span class="header-section-number">4.4.1</span> Intervalo de confianza para a media dunha poboación normal</a></li>
+  <li><a href="#intervalo-de-confianza-para-a-diferenza-de-medias-de-poboacións-normais" id="toc-intervalo-de-confianza-para-a-diferenza-de-medias-de-poboacións-normais" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-a-diferenza-de-medias-de-poboacións-normais"><span class="header-section-number">4.4.2</span> Intervalo de confianza para a diferenza de medias de poboacións normais</a></li>
+  <li><a href="#intervalo-de-confianza-para-a-varianza-dunha-poboación-normal" id="toc-intervalo-de-confianza-para-a-varianza-dunha-poboación-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-a-varianza-dunha-poboación-normal"><span class="header-section-number">4.4.3</span> Intervalo de confianza para a varianza dunha poboación normal</a></li>
+  <li><a href="#intervalo-de-confianza-para-o-cociente-de-varianzas-de-poboacións-normais" id="toc-intervalo-de-confianza-para-o-cociente-de-varianzas-de-poboacións-normais" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-o-cociente-de-varianzas-de-poboacións-normais"><span class="header-section-number">4.4.4</span> Intervalo de confianza para o cociente de varianzas de poboacións normais</a></li>
+  <li><a href="#intervalo-de-confianza-para-unha-proporción" id="toc-intervalo-de-confianza-para-unha-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-unha-proporción"><span class="header-section-number">4.4.5</span> Intervalo de confianza para unha proporción</a></li>
+  <li><a href="#intervalo-de-confianza-para-a-diferenza-de-proporcións" id="toc-intervalo-de-confianza-para-a-diferenza-de-proporcións" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-a-diferenza-de-proporcións"><span class="header-section-number">4.4.6</span> Intervalo de confianza para a diferenza de proporcións</a></li>
+  </ul></li>
+  <li><a href="#anexo-distribucións-asociadas-coa-normal" id="toc-anexo-distribucións-asociadas-coa-normal" class="nav-link" data-scroll-target="#anexo-distribucións-asociadas-coa-normal">Anexo: Distribucións asociadas coa normal</a>
+  <ul class="collapse">
+  <li><a href="#anexo_distribucion" id="toc-anexo_distribucion" class="nav-link" data-scroll-target="#anexo_distribucion"><span class="header-section-number">4.4.7</span> Distribución chi cadrado</a></li>
+  <li><a href="#anexo_distribucion2" id="toc-anexo_distribucion2" class="nav-link" data-scroll-target="#anexo_distribucion2"><span class="header-section-number">4.4.8</span> Distribución <span class="math inline">\(t\)</span> de Student</a></li>
+  <li><a href="#anexo_distribucion3" id="toc-anexo_distribucion3" class="nav-link" data-scroll-target="#anexo_distribucion3"><span class="header-section-number">4.4.9</span> Distribución F de Snedecor</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLIL/"><i class="bi bi-link-45deg"></i>Material de laboratorio</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Como xa comentamos noutras ocasións, o noso obxectivo principal é o estudo dunha poboación e das súas características. Chamaremos <strong>parámetro</strong> a unha característica numérica que nos interese coñecer da poboación. Por exemplo, poderían ser parámetros de interese a proporción real de acertos dun modelo de clasificación de imaxes que distingue entre gatos e cans ou o tempo medio de resposta dun sistema de recomendación, por exemplo, o número medio de milisegundos que tarda unha plataforma de comercio electrónico en xerar recomendacións personalizadas para un usuario. Xeralmente é difícil obter información de toda a poboación (todas as imaxes posibles que o modelo pode recibir ou todas as interaccións futuras dos usuarios) e por iso, na práctica, contaremos cunha mostra representativa da devandita poboación, é dicir, cun conxunto limitado de imaxes de proba nas que se avalía o modelo de clasificación ou cun rexistro de tempos de resposta, que nos permitan estimar esas cantidades descoñecidas.</p>
+<p>No tema 1 estudamos conceptos básicos de estatística descritiva, que nos proporcionaban ferramentas para resumir, ordenar e extraer os aspectos máis relevantes da información da mostra. No tema 2 establecemos as bases para traballar con incertezas ou probabilidades. Agora, tras estudar os principais modelos de variables aleatorias no tema 3, poderemos comezar a facer inferencia sobre a poboación de interese baseándonos no que observamos nunha mostra. Non nos conformaremos con describir uns datos contidos nunha mostra, senón que pretendemos extraer conclusións para a poboación da que foron extraídos. A esta última tarefa chamámoslle <strong>Inferencia Estatística</strong>.</p>
+<p>Segundo os obxectivos, poderemos clasificar as tarefas de inferencia en dúas grandes categorías: a primeira, na que o interese se centra en <strong>estimar</strong> ou aproximar o valor dun parámetro (por exemplo, a proporción de acertos do modelo de clasificación ou o tempo medio de resposta do sistema de recomendación) e a segunda, na que o interese se centra en <strong>contrastar</strong> posibles valores dun parámetro (por exemplo, determinar se o tempo medio de resposta do sistema de recomendación é superior a 5 milisegundos).</p>
+<section id="conceptos-básicos" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="conceptos-básicos"><span class="header-section-number">4.1</span> Conceptos básicos</h2>
+<p>Vexamos algunhas definicións básicas en Inferencia Estatística. Algunhas delas xa foron introducidas nos temas anteriores.</p>
+<ul>
+<li><p><strong>Poboación</strong>. É o conxunto homoxéneo de individuos sobre os que se estudan unha ou varias características observables. Por exemplo, todos os usuarios dunha plataforma de comercio electrónico, sobre os que nos interesa coñecer o tempo medio de resposta do sistema de recomendación.</p></li>
+<li><p><strong>Mostra</strong>. É un subconxunto extraído da poboación ao que podemos observar. Múltiples razóns impídennos observar toda a poboación. Por ese motivo, extraemos unha mostra e con ela obtemos información sobre o conxunto da poboación.</p></li>
+<li><p><strong>Tamaño da poboación ou da mostra</strong>. É o número de individuos que as forman, en cada caso.</p></li>
+</ul>
+<p>Debemos facer unha primeira distinción, ao falar de Inferencia, segundo a natureza do problema que se formule:</p>
+<ul>
+<li><p><strong>Inferencia paramétrica</strong>: cando se coñece a forma da distribución de probabilidade e interesa determinar o parámetro ou parámetros dos que depende. Por exemplo, se o tempo de resposta do sistema de recomendación segue unha distribución Normal e interesa coñecer a media <span class="math inline">\(\mu\)</span> e a desviación típica <span class="math inline">\(\sigma\)</span>. Dentro da inferencia paramétrica distinguimos:</p>
+<ul>
+<li><p><strong>Estimación puntual</strong>. Consiste en propoñer un valor, calculado a partir da mostra, que estea o máis próximo posible ao verdadeiro parámetro. Por exemplo, a media mostral pode ser un estimador razoable da media poboacional e a proporción mostral da proporción poboacional.</p></li>
+<li><p><strong>Intervalos de confianza</strong>. Dado que a estimación puntual leva asociado un certo erro, construímos un intervalo que, con alta probabilidade, conteña o parámetro. A amplitude do intervalo dános unha idea da marxe de erro da nosa estimación.</p></li>
+<li><p><strong>Contrastes de hipóteses</strong>. Trátase de responder a preguntas moi concretas sobre a poboación, reducindo o problema a unha decisión sobre a veracidade de determinadas hipóteses. Por exemplo, podemos preguntarnos se o tempo medio de resposta do sistema de recomendación é superior a 5 milisegundos.</p></li>
+</ul></li>
+<li><p><strong>Inferencia non paramétrica</strong>: cando non se coñece a forma da distribución poboacional. Tamén se poden formular tarefas de estimación, intervalos de confianza e contrastes de hipóteses, aínda que as técnicas estatísticas empregadas son diferentes.</p></li>
+</ul>
+</section>
+<section id="plantexamento-xeral-do-problema-de-inferencia-paramétrica" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="plantexamento-xeral-do-problema-de-inferencia-paramétrica"><span class="header-section-number">4.2</span> Plantexamento xeral do problema de inferencia paramétrica</h2>
+<p>Como xa comentamos no tema 3, unha variable aleatoria é unha función que asigna un valor numérico ao resultado dun experimento aleatorio. É dicir, representa numericamente unha característica observable cuxo valor pode variar segundo o caso considerado. Por exemplo, unha variable aleatoria pode ser o tempo de resposta dun sistema de recomendación. O seu valor cambia dun usuario a outro ou dunha interacción a outra. Outros exemplos serían o número de recomendacións aceptadas por un usuario ou o acerto ou erro dun modelo de clasificación de imaxes (variable binaria).</p>
+<p>Xeralmente asúmese que a distribución da variable de interese <span class="math inline">\(X\)</span> pertence a unha determinada familia de distribucións, como por exemplo a normal ou a binomial. Esta familia depende dun ou varios parámetros, como a media <span class="math inline">\(\mu\)</span> e a varianza <span class="math inline">\(\sigma^2\)</span> no caso da normal, e a probabilidade de éxito <span class="math inline">\(p\)</span> no caso da binomial.</p>
+<p>Normalmente é imposible ou moi custoso obter os valores da variable de interese para todos os individuos da poboación e así determinar o parámetro que define a distribución. Na práctica só contamos cunha mostra representativa e teremos que estimar os parámetros poboacionais a partir dos valores observados na mostra.</p>
+<ul>
+<li><p>Unha <strong>mostra aleatoria simple (m.a.s)</strong> de tamaño <span class="math inline">\(n\)</span> está formada por <span class="math inline">\(n\)</span> variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span><br>
+independentes e coa mesma distribución que <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Chamamos <strong>realización mostral</strong> aos valores concretos <span class="math inline">\(x_1, x_2, \ldots,x_n\)</span> que toman as <span class="math inline">\(n\)</span> variables aleatorias despois de obter a mostra.</p></li>
+<li><p>Un <strong>estatístico</strong> é unha función da mostra aleatoria <span class="math inline">\(T(X_1, X_2, \ldots, X_n)\)</span> e, polo tanto, xorde como resultado de calquera operación realizada sobre a mostra. Tamén é unha variable aleatoria e, por iso, terá unha determinada distribución, denominada <strong>distribución do estatístico no mostreo</strong>.</p></li>
+<li><p>Para resolver o problema da <strong>estimación puntual</strong>, é dicir, para propoñer un valor do parámetro poboacional descoñecido <span class="math inline">\(\theta\)</span>, escollemos o valor que tomou un estatístico calculado sobre a nosa realización mostral. Ao estatístico escollido para este fin chamámoslle <strong>estimador</strong> do parámetro. Ao valor concreto obtido cunha realización mostral determinada chamámoslle <strong>estimación</strong>.</p></li>
+</ul>
+<p>O problema consiste, polo tanto, en elixir un bo estimador, é dicir, unha función da mostra que teña boas propiedades. En xeral, para estimar un parámetro poboacional (como a media ou unha proporción), adoita empregarse o correspondente estatístico mostral. Así, a media mostral utilízase como estimador da media poboacional e a proporción mostral como estimador da proporción poboacional. Estes estimadores resultan naturais e intuitivos, e baixo condicións habituais presentan boas propiedades teóricas.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Notación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O longo do tema empregaremos a notación <span class="math inline">\(x_\alpha\)</span> para indicar o cuantil de orde <span class="math inline">\(1-\alpha\)</span> dunha distribución. É dicir, <span class="math inline">\(x_\alpha\)</span> é o valor que verifica</p>
+<p><span class="math display">\[
+P(X \le x_\alpha) = 1-\alpha,
+\]</span></p>
+<p>ou, de forma equivalente, o valor que deixa unha probabilidade <span class="math inline">\(\alpha\)</span> á súa dereita.</p>
+</div>
+</div>
+</section>
+<section id="estimación-puntual" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="estimación-puntual"><span class="header-section-number">4.3</span> Estimación puntual</h2>
+<p>Sexa <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> unha m.a.s dunha poboación. Sexa <span class="math inline">\(\theta\)</span> un parámetro de interese desa poboación. Un <strong>estimador puntual (estimador)</strong> de <span class="math inline">\(\theta\)</span> é un estatístico <span class="math inline">\(\hat{\theta}\equiv T(X_1, X_2, \ldots, X_n)\)</span> cuxa función é aproximar o valor de <span class="math inline">\(\theta\)</span>. Lembramos que un estatístico é unha variable aleatoria e, por iso, terá unha certa distribución.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Propiedades dos estimadores
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sexa <span class="math inline">\(\theta\)</span> un parámetro de interese e <span class="math inline">\(\hat{\theta}\equiv T(X_1, X_2, \ldots, X_n)\)</span> un estimador de <span class="math inline">\(\theta\)</span>. O <strong>nesgo</strong> de <span class="math inline">\(\hat{\theta}\)</span> é a diferencia entre a súa esperanza e o verdadeiro valor <span class="math inline">\(\theta\)</span>, é dicir, <span class="math display">\[\textnormal{Nesgo}_{\theta}(\hat{\theta})=\mathbb{E}(\hat{\theta})-\theta.\]</span> Diremos que <span class="math inline">\(\hat{\theta}\)</span> é <strong>sen nesgo</strong> para <span class="math inline">\(\theta\)</span> se ten nesgo cero ou, equivalemente, se <span class="math display">\[\mathbb{E}(\hat{\theta})=\theta.\]</span></p>
+<p>Diremos que <span class="math inline">\(\hat{\theta}\)</span> é <strong>asintóticamente sen nesgo</strong> para <span class="math inline">\(\theta\)</span> se <span class="math display">\[\lim_{n\to\infty}\mathbb{E}(\hat{\theta})=\theta.\]</span></p>
+<p>Defínese o <strong>Erro Cuadrático Medio (ECM)</strong> dun estimador <span class="math inline">\(\hat{\theta}\)</span> como <span class="math display">\[\textnormal{ECM}(\hat{\theta})=\mathbb{E}((\hat{\theta}-\theta)^2).\]</span></p>
+<p>Pódese demostrar que <span class="math display">\[\textnormal{ECM}(\hat{\theta})=\mathbb{E}((\hat{\theta}-\theta)^2)=\mathrm{Var}(\hat{\theta})+\textnormal{Nesgo}_{\theta}(\hat{\theta})^2.\]</span></p>
+<p>Diremos que <span class="math inline">\(\hat{\theta}\)</span> é <strong>consistente en media cuadrática</strong> se <span class="math display">\[\lim_{n \to
+\infty } \textnormal{ECM}( {\hat {\theta } } ) = 0.\]</span></p>
+</div>
+</div>
+<p>Que un estimador sexa sen nesgo é unha boa propiedade. Tamén nos interesará que a dispersión do estimador sexa pequena e que diminúa ao aumentar o tamaño da mostra. Canto máis preto estea a esperanza dun estimador do parámetro, e canto máis pequena sexa a súa varianza, menor será o seu ECM.</p>
+<section id="estimación-puntual-da-media-e-a-varianza" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="estimación-puntual-da-media-e-a-varianza"><span class="header-section-number">4.3.1</span> Estimación puntual da media e a varianza</h3>
+<p>Consideremos unha mostra aleatoria simple <span class="math inline">\(X_1, \ldots, X_n\)</span> de tamaño <span class="math inline">\(n\)</span> dunha poboación con media <span class="math inline">\(\mu\)</span> e desviación típica <span class="math inline">\(\sigma\)</span>. O problema consiste en estimar os parámetros <span class="math inline">\(\mu\)</span> (media poboacional) e <span class="math inline">\(\sigma\)</span> (desviación típica poboacional).</p>
+<section id="estimación-puntual-da-media" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="estimación-puntual-da-media">Estimación puntual da media</h4>
+<p>Como estimador natural para a media poboacional, <span class="math inline">\(\mu\)</span>, propoñemos a media muestral:</p>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1 + \cdots + X_n}{n}.
+\]</span></p>
+<p>Observamos que <span class="math inline">\(\mathbb{E}(\bar{X}) = \mu\)</span>, polo que <span class="math inline">\(\bar{X}\)</span> é sen nesgo para <span class="math inline">\(\mu\)</span>, e a súa varianza é:</p>
+<p><span class="math display">\[
+\text{Var}(\bar{X}) = \frac{\sigma^2}{n}.
+\]</span></p>
+<p>Polo tanto, a desviación típica da media muestral é <span class="math inline">\({\sigma}/{\sqrt{n}}\)</span>. Este valor denomínase <strong>erro estándar</strong> de <span class="math inline">\(\bar{X}\)</span>. Canto maior sexa <span class="math inline">\(n\)</span>, menor será o erro estándar e máis precisa será a estimación.</p>
+<p><strong>Distribución do estatístico:</strong> Se <span class="math inline">\(X_1, \dots, X_n\)</span> son variables aleatorias independentes e distribuídas segundo <span class="math inline">\(N(\mu, \sigma)\)</span>, entón a media muestral é exactamente normal:</p>
+<p><span class="math display">\[
+\bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)
+\]</span> e podemos facer inferencias exactas mesmo con mostras pequenas.</p>
+<p>Se <span class="math inline">\(X_1, \dots, X_n\)</span> non son necesariamente normais, polo Teorema Central do Límite , para <span class="math inline">\(n\)</span> grande, a media muestral aproxímase a unha normal:</p>
+<p><span class="math display">\[
+\bar{X} \xrightarrow[n \to \infty]{}  N\left(\mu, \frac{\sigma}{\sqrt{n}}\right).
+\]</span></p>
+</section>
+<section id="estimación-puntual-da-varianza" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="estimación-puntual-da-varianza">Estimación puntual da varianza</h4>
+<p>Como estimador para a varianza poblacional <span class="math inline">\(\sigma^2\)</span> empregaremos:</p>
+<p><span class="math display">\[
+S^2 = \frac{1}{n-1} \sum_{i=1}^{n} \left(X_i - \bar{X}\right)^2,
+\]</span></p>
+<p>tamén chamada <strong>cuasivarianza muestral</strong>. Definida desta maneira, <span class="math inline">\(S^2\)</span> cumpre que <span class="math inline">\(\mathbb{E}(S^2) = \sigma^2\)</span>, polo que é un estimador sen nesgo para <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>Distribución do estatístico:</strong> Se <span class="math inline">\(X_1, \dots, X_n\)</span> son variables aleatorias independentes e distribuídas segundo <span class="math inline">\(N(\mu, \sigma)\)</span>, entón <span class="math inline">\((n-1)S^2/\sigma^2\)</span> segue unha distribución chi cadrado con <span class="math inline">\(n-1\)</span> graos de liberdade (ver <a href="#anexo_distribucion">Anexo</a>):</p>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2}\sim \chi^2_{n-1}.\]</span> <em>Se a poboación non é normal, a distribución non ten unha forma simple. Polo tanto, a partir de agora faremos inferencias sobre a varianza só en poboacións normais, onde a distribución do estimador está ben definida</em>.</p>
+</section>
+</section>
+<section id="estimación-puntual-dunha-proporción" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="estimación-puntual-dunha-proporción"><span class="header-section-number">4.3.2</span> Estimación puntual dunha proporción</h3>
+<p>Consideremos agora o problema de estimar a proporción de individuos dunha poboación que presentan unha certa característica, a partir dunha mostra aleatoria simple. Para iso, definimos a variable aleatoria</p>
+<p><span class="math display">\[
+X=\begin{cases}
+1, &amp; \text{se o individuo presenta a característica de interese} \\
+0, &amp; \text{se o individuo non presenta a característica de interese.}
+\end{cases}
+\]</span></p>
+<p>Observa que así definida, <span class="math inline">\(X\)</span> ten distribución Bernoulli(<span class="math inline">\(p\)</span>), onde o parámetro <span class="math inline">\(p\)</span> é precisamente a proporción (descoñecida) de individuos coa característica na poboación.</p>
+<p>A mostra está formada por <span class="math inline">\(n\)</span> variables <span class="math inline">\(X_1,\ldots,X_n\)</span> independentes e coa mesma distribución que <span class="math inline">\(X\)</span>. O estimador razoable para <span class="math inline">\(p\)</span> é a proporción muestral:</p>
+<p><span class="math display">\[
+\hat p = \frac{\text{número de individuos coa característica na mostra}}{n} = \frac{X_1 + \cdots + X_n}{n}.
+\]</span></p>
+<p>Observamos que <span class="math inline">\(\mathbb{E}(\hat p) = p\)</span>, polo que <span class="math inline">\(\hat p\)</span> é un estimador sen nesgo para <span class="math inline">\(p\)</span>. A súa varianza é</p>
+<p><span class="math display">\[
+\text{Var}(\hat p) = \frac{p(1-p)}{n}.
+\]</span></p>
+<p>Como consecuencia, o erro estándar de <span class="math inline">\(\hat p\)</span> é <span class="math inline">\(\sqrt{{p(1-p)}/{n}}\)</span>. Canto maior sexa o tamaño da mostra <span class="math inline">\(n\)</span>, menor será o erro estándar e máis precisa será a estimación de <span class="math inline">\(p.\)</span></p>
+<p><strong>Distribución do estatístico:</strong> Polo Teorema Central do Límite, para <span class="math inline">\(n\)</span> grande, <span class="math inline">\(\hat p\)</span> é aproximadamente normal con media <span class="math inline">\(p\)</span> e varianza <span class="math inline">\(p(1-p)/n\)</span>. É dicir,</p>
+<p><span class="math display">\[
+\hat p  \xrightarrow[n \to \infty]{} N\left(p,\sqrt{\frac{p(1-p)}{n}}\right).
+\]</span></p>
+</section>
+</section>
+<section id="intervalos-de-confianza" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="intervalos-de-confianza"><span class="header-section-number">4.4</span> Intervalos de confianza</h2>
+<p>En moitos casos, unha estimación puntual non é suficiente, xa que non nos proporciona o erro que se comete na estimación. Para obter máis información, veremos a continuación como calcular un intervalo numérico que, cunha certa <em>seguridade</em>, conteña o valor do parámetro na poboación.</p>
+<p>Un <strong>intervalo de confianza</strong> é un intervalo construído a partir da mostra e, por tanto, <strong>aleatorio</strong>, que contén ao parámetro cunha certa probabilidade, chamada <strong>nivel de confianza</strong>.</p>
+<div id="def-IC" class="definition theorem">
+<p><span class="theorem-title"><strong>Definición 4.1</strong></span> Un intervalo de confianza para un parámetro descoñecido <span class="math inline">\(\theta\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>, <span class="math inline">\(\alpha \in [0,1]\)</span> é un intervalo de extremos aleatorios <span class="math inline">\(L_1\equiv L_1(X_1,\ldots,X_n)\)</span> e <span class="math inline">\(L_2\equiv L_2(X_1,\ldots,X_n)\)</span> que, con probabilidade <span class="math inline">\(1−\alpha\)</span> conté ao parámetro, é dicir, <span class="math display">\[
+P(L_1 \leq \theta \leq L_2) = 1-\alpha.
+\]</span></p>
+</div>
+<p>O nivel de confianza adoita expresarse en porcentaxe. Por exemplo, un intervalo de confianza do 95% contén ao parámetro descoñecido cunha probabilidade de 0.95.<br>
+O método que usaremos para construír intervalos de confianza denomínase <strong>método pivotal</strong>.</p>
+<section id="intervalo-de-confianza-para-a-media-dunha-poboación-normal" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-a-media-dunha-poboación-normal"><span class="header-section-number">4.4.1</span> Intervalo de confianza para a media dunha poboación normal</h3>
+<p>Consideremos unha mostra aleatoria simple <span class="math inline">\(X_1,\dots,X_n\)</span> de tamaño <span class="math inline">\(n\)</span> procedente dunha poboación normal <span class="math inline">\(N(\mu,\sigma)\)</span>. O obxectivo é construír un intervalo de confianza para o parámetro <span class="math inline">\(\mu\)</span>, é dicir, para a media da poboación.</p>
+<section id="intervalo-de-confianza-para-a-media-con-varianza-coñecida" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="intervalo-de-confianza-para-a-media-con-varianza-coñecida">Intervalo de confianza para a media con varianza coñecida</h4>
+<p>Se coñecemos a varianza poboacional <span class="math inline">\(\sigma^2\)</span>, podemos usar como pivote a distribución da media muestral:</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \sim N(0,1).
+\]</span></p>
+<p>Se <span class="math inline">\(z_{\alpha/2}\)</span> é o número tal que <span class="math inline">\(P(Z \leq z_{\alpha/2}) = 1-\alpha/2\)</span> con <span class="math inline">\(Z \sim N(0,1)\)</span>, entón:</p>
+<p><span class="math display">\[
+P\left(-z_{\alpha/2} \le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \le z_{\alpha/2}\right) = 1-\alpha.
+\]</span></p>
+<p>Equivalentemente:</p>
+<p><span class="math display">\[
+P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \le \mu \le \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1-\alpha.
+\]</span></p>
+<p>O intervalo de confianza con nivel <span class="math inline">\(1-\alpha\)</span> é:</p>
+<p><span class="math display">\[
+\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}}, \;\; \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right).
+\]</span></p>
+<p>Ao radio do intervalo de confianza anterior chámaselle <strong>marxe de erro</strong>. Observa que a marxe de erro depende da desviación típica da pobación, do tamaño da mostra e do nivel de confianza fixado:</p>
+<ul>
+<li><strong>Desviación típica da poboación</strong>. Canto maior sexa a dispersión dos datos na poboación, máis difícil é estimar con precisión a media poboacional. Por iso, a medida que <span class="math inline">\(\sigma\)</span> aumenta, tamén aumenta a marxe de erro dun intervalo de confianza.</li>
+<li><strong>Tamaño da mostra</strong>. Para un nivel de confianza fixo, canto maior sexa o tamaño da mostra, menor será o marxe de erro.<br>
+</li>
+<li><strong>Nivel de confianza</strong>. Se aumentamos o nivel de confianza (por exemplo, de 90% a 95%), quere dicir que queremos estar máis seguros de non equivocarnos. Para conseguir esa seguridade, o intervalo debe ser máis amplo, polo que o marxe de erro aumenta.</li>
+</ul>
+<p>Unha cuestión interesante é determinar o <strong>tamaño da mostra necesario</strong> para obter un intervalo de confianza cunha lonxitude determinada. Neste caso, a lonxitude do intervalo é:</p>
+<p><span class="math display">\[
+L = 2 \, z_{\alpha/2} \, \frac{\sigma}{\sqrt{n}}.
+\]</span></p>
+<p>Despexando <span class="math inline">\(n\)</span> da fórmula anterior, obtemos o tamaño da mostra necesario:</p>
+<p><span class="math display">\[
+n = \left(\frac{2 \, z_{\alpha/2} \, \sigma}{L}\right)^2.
+\]</span></p>
+<p>Isto permite calcular directamente o número de observacións necesarias para que o intervalo de confianza teña a lonxitude desexada e un nivel de confianza determinado.</p>
+</section>
+<section id="intervalo-de-confianza-para-a-media-con-varianza-descoñecida" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="intervalo-de-confianza-para-a-media-con-varianza-descoñecida">Intervalo de confianza para a media con varianza descoñecida</h4>
+<p>Na práctica, normalmente non se coñece <span class="math inline">\(\sigma^2\)</span>. Neste caso, usamos como pivote:</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu}{S/\sqrt{n}},
+\]</span></p>
+<p>onde <span class="math inline">\(S\)</span> é a cuasidesviación típica muestral</p>
+<p><span class="math display">\[
+S = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2}.
+\]</span></p>
+<p>Este pivote segue unha distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> graos de liberdade (ver <a href="#anexo_distribucion2">Anexo</a>):</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu}{S/\sqrt{n}} \sim t_{n-1}.
+\]</span></p>
+<p>Se <span class="math inline">\(t_{n-1,\alpha/2}\)</span> é tal que <span class="math inline">\(P(T \leq t_{n-1,\alpha/2}) = 1-\alpha/2\)</span> con <span class="math inline">\(T \sim t_{n-1}\)</span>, entón:</p>
+<p><span class="math display">\[
+P\left(-t_{n-1,\alpha/2} \le \frac{\bar{X}-\mu}{S/\sqrt{n}} \le t_{n-1,\alpha/2}\right) = 1-\alpha.
+\]</span></p>
+<p>Equivalentemente:</p>
+<p><span class="math display">\[
+P\left(\bar{X} - t_{n-1,\alpha/2}\frac{S}{\sqrt{n}} \le \mu \le \bar{X} + t_{n-1,\alpha/2}\frac{S}{\sqrt{n}}\right) = 1-\alpha.
+\]</span></p>
+<p>O intervalo de confianza con nivel <span class="math inline">\(1-\alpha\)</span> é:</p>
+<p><span class="math display">\[
+\left(\bar{X} - t_{n-1,\alpha/2}\frac{S}{\sqrt{n}}, \;\; \bar{X} + t_{n-1\alpha/2}\frac{S}{\sqrt{n}}\right).
+\]</span></p>
+</section>
+</section>
+<section id="intervalo-de-confianza-para-a-diferenza-de-medias-de-poboacións-normais" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-a-diferenza-de-medias-de-poboacións-normais"><span class="header-section-number">4.4.2</span> Intervalo de confianza para a diferenza de medias de poboacións normais</h3>
+<p>O obxectivo deste apartado é construír intervalos de confianza non só para a media dunha característica dunha poboación, como fixemos anteriormente, senón tamén para <strong>comparar dúas medias</strong>, xa sexa de dúas poboacións diferentes ou de dúas medicións sobre os mesmos individuos dunha poboación. Segundo o tipo de datos dispoñibles, a comparación realízase con <strong>mostras independentes</strong> ou <strong>mostras emparelladas</strong>, nas que se obteñen dúas observacións relacionadas para cada individuo.</p>
+<section id="mostras-independentes-varianzas-coñecidas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mostras-independentes-varianzas-coñecidas">Mostras independentes, varianzas coñecidas</h4>
+<p>Supoñamos dúas poboacións nas que se estudan dúas características distribuídas normalmente con medias descoñecidas <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>, respectivamente. Estamos interesados en construír un intervalo de confianza para a diferenza de medias <span class="math inline">\(\mu_1-\mu_2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>As mostras considéranse <strong>independentes</strong>, é dicir, os individuos da poboación 1 son distintos dos individuos da poboación 2. Supoñemos ademais que as <strong>varianzas <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span> son coñecidas</strong>.</p>
+<p>O estatístico a utilizar é:</p>
+<p><span class="math display">\[
+\frac{(\bar X_1 - \bar X_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
+\]</span></p>
+<p>O intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para a diferenza de medias <span class="math inline">\(\mu_1-\mu_2\)</span> será:</p>
+<p><span class="math display">\[
+\left(
+(\bar X_1 - \bar X_2) - z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}},\;\;
+(\bar X_1 - \bar X_2) + z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+\right).
+\]</span></p>
+</section>
+<section id="mostras-independentes-varianzas-descoñecidas-e-iguais" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mostras-independentes-varianzas-descoñecidas-e-iguais">Mostras independentes, varianzas descoñecidas e iguais</h4>
+<p>En moitas aplicacións, os valores de <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span> son descoñecidos, pero podemos supoñer que son iguais. Consideremos dúas poboacións con características distribuídas normalmente con medias descoñecidas <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>. Queremos construír un intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>As mostras considéranse <strong>independentes</strong> e supoñemos que as <strong>varianzas son descoñecidas pero iguais</strong>. O estatístico é:</p>
+<p><span class="math display">\[
+\frac{(\bar X_1 - \bar X_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{S_p^2}{n_1} + \frac{S_p^2}{n_2}}} \sim t_{n_1+n_2-2},
+\]</span></p>
+<p>onde <span class="math inline">\(S_p^2\)</span> é o estimador combinado de varianza das dúas poboacións</p>
+<p><span class="math display">\[
+S_p^2 = \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1+n_2-2}.
+\]</span></p>
+<p>O intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\mu_1-\mu_2\)</span> será:</p>
+<p><span class="math display">\[
+\left(
+(\bar X_1 - \bar X_2) - t_{n_1+n_2-2,\alpha/2} \sqrt{\frac{S_p^2}{n_1} + \frac{S_p^2}{n_2}},\;\;
+(\bar X_1 - \bar X_2) + t_{n_1+n_2-2,\alpha/2} \sqrt{\frac{S_p^2}{n_1} + \frac{S_p^2}{n_2}}
+\right).
+\]</span></p>
+</section>
+<section id="mostras-independentes-varianzas-descoñecidas-e-distintas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mostras-independentes-varianzas-descoñecidas-e-distintas">Mostras independentes, varianzas descoñecidas e distintas</h4>
+<p>Consideremos agora dúas poboacións con características distribuídas normalmente con medias descoñecidas <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_2\)</span>. Queremos construír un intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>As mostras considéranse <strong>independentes</strong> e supoñemos que as <strong>varianzas son descoñecidas e diferentes</strong>. Agora non podemos ter unha estimación global da varianza como no caso anterior, polo que o estatístico pivote que debemos utilizar é:</p>
+<p><span class="math display">\[
+W = \frac{(\bar X_1 - \bar X_2) - (\mu_1 - \mu_2)}{{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}},
+\]</span></p>
+<p>que asintoticamente segue unha distribución <span class="math inline">\(N(0,1)\)</span>. Por tanto, para tamaños de mostra grandes podemos construír un intervalo de confianza aproximado de nivel <span class="math inline">\(1-\alpha\)</span> para a diferenza de medias <span class="math inline">\(\mu_1-\mu_2\)</span> da forma:</p>
+<p><span class="math display">\[
+\left(
+(\bar X_1 - \bar X_2) - z_{\alpha/2} \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}, \;\;
+(\bar X_1 - \bar X_2) + z_{\alpha/2} \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}
+\right).
+\]</span></p>
+<p>Con todo, a converxencia do estatístico é lenta, polo que o resultado pode ser pouco preciso para tamaños de mostra pequenos. Para este caso, cando <span class="math inline">\(n_1\)</span> ou <span class="math inline">\(n_2 &lt; 30\)</span>, convén tomar precaucións ou empregar aproximacións alternativas (aproximación de Welch, que substitúe <span class="math inline">\(z_{\alpha/2}\)</span> polo valor <span class="math inline">\(t_{\alpha/2}\)</span> dunha distribución <span class="math inline">\(t\)</span> de Student adecuada para o caso).</p>
+</section>
+<section id="mostras-emparelladas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mostras-emparelladas">Mostras emparelladas</h4>
+<p>Consideremos agora unha poboación na que medimos dúas características relacionadas <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> sobre os mesmos individuos. Supoñemos que <span class="math inline">\(X_1 \sim N(\mu_1, \sigma_1)\)</span> e <span class="math inline">\(X_2 \sim N(\mu_2, \sigma_2)\)</span>, pero tendo en conta que agora <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> <strong>non son independentes</strong>. Definimos a variable das diferenzas <span class="math inline">\(D = X_1 - X_2\)</span>, que segue unha distribución normal con media</p>
+<p><span class="math display">\[
+\mu_D = \mathbb{E}(X_1 - X_2) = \mu_1 - \mu_2
+\]</span></p>
+<p>e varianza</p>
+<p><span class="math display">\[
+\sigma_D^2 = \text{Var}(X_1 - X_2).
+\]</span></p>
+<p>Queremos construír un intervalo de confianza para a diferenza de medias <span class="math inline">\(\mu_1-\mu_2\)</span>. Na práctica, dispoñemos de dúas <strong>mostras emparelladas</strong> de tamaño <span class="math inline">\(n\)</span> observadas <strong>nos mesmos individuos</strong>:</p>
+<ul>
+<li><span class="math inline">\(X_{11}, \dots, X_{1n}\)</span> coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li><span class="math inline">\(X_{21}, \dots, X_{2n}\)</span> coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>Tendo en conta que os valores están emparellados, construímos a mostra das diferenzas:</p>
+<p><span class="math display">\[
+D_i = X_{1i} - X_{2i}, \quad i=1,\dots,n
+\]</span></p>
+<p>e estimamos:</p>
+<ul>
+<li><span class="math inline">\(\mu_D = \mu_1 - \mu_2\)</span> mediante a media das diferenzas <span class="math inline">\(\bar D\)</span>.<br>
+</li>
+<li><span class="math inline">\(\sigma_D^2\)</span> mediante a varianza muestral das diferenzas <span class="math inline">\(S_D^2\)</span>.</li>
+</ul>
+<p>Como estatístico pivote utilizamos:</p>
+<p><span class="math display">\[
+\frac{\bar D - (\mu_1 - \mu_2)}{S_D / \sqrt{n}} \sim t_{n-1}.
+\]</span></p>
+<p>O intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para a diferenza de medias <span class="math inline">\(\mu_1 - \mu_2\)</span> é:</p>
+<p><span class="math display">\[
+\left(
+\bar D - t_{n-1,\alpha/2} \frac{S_D}{\sqrt{n}}, \;\;
+\bar D + t_{n-1\alpha/2} \frac{S_D}{\sqrt{n}}
+\right).
+\]</span></p>
+</section>
+</section>
+<section id="intervalo-de-confianza-para-a-varianza-dunha-poboación-normal" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="intervalo-de-confianza-para-a-varianza-dunha-poboación-normal"><span class="header-section-number">4.4.3</span> Intervalo de confianza para a varianza dunha poboación normal</h3>
+<p>Consideremos de novo unha mostra aleatoria simple <span class="math inline">\(X_1,\dots,X_n\)</span> de tamaño <span class="math inline">\(n\)</span> procedente dunha poboación normal <span class="math inline">\(N(\mu,\sigma)\)</span>. Agora o obxectivo é construír un intervalo de confianza para o parámetro <span class="math inline">\(\sigma^2\)</span>, é dicir, para a varianza da poboación. Nese caso, podemos considerar como estatístico pivote:</p>
+<p><span class="math display">\[
+\frac{(n-1) S^2}{\sigma^2} \sim \chi^2_{n-1},
+\]</span></p>
+<p>Procedendo de forma análoga ao caso da media, temos:</p>
+<p><span class="math display">\[
+P\Big(\chi^2_{n-1,1-\alpha/2} \le \frac{(n-1) S^2}{\sigma^2} \le \chi^2_{n-1,\alpha/2}\Big) = 1-\alpha,
+\]</span></p>
+<p>onde <span class="math inline">\(\chi^2_{n-1,1-\alpha/2}\)</span> e <span class="math inline">\(\chi^2_{n-1,\alpha/2}\)</span> denotan, respectivamente, os cuantís <span class="math inline">\(\alpha/2\)</span> e <span class="math inline">\(1-\alpha/2\)</span> da distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n-1\)</span> graos de liberdade. Despexando <span class="math inline">\(\sigma^2\)</span>, obtense o intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para a varianza:</p>
+<p><span class="math display">\[
+\left(
+\frac{(n-1)S^2}{\chi^2_{n-1,\,\alpha/2}},
+\;
+\frac{(n-1)S^2}{\chi^2_{n-1,\,1-\alpha/2}}
+\right).
+\]</span></p>
+</section>
+<section id="intervalo-de-confianza-para-o-cociente-de-varianzas-de-poboacións-normais" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-o-cociente-de-varianzas-de-poboacións-normais"><span class="header-section-number">4.4.4</span> Intervalo de confianza para o cociente de varianzas de poboacións normais</h3>
+<p>Supoñamos dúas poboacións nas que se estudan dúas características distribuídas normalmente con varianzas descoñecidas <span class="math inline">\(\sigma_1^2\)</span> e <span class="math inline">\(\sigma_2^2\)</span>, respectivamente. O obxectivo deste apartado é construír un intervalo de confianza para <strong>comparar as dúas varianzas</strong>. Estamos interesados en construír un intervalo de confianza para o cociente de varianzas <span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span> a partir de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_1, \sigma_1)\)</span>.<br>
+</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes e coa mesma distribución <span class="math inline">\(N(\mu_2, \sigma_2)\)</span>.</li>
+</ul>
+<p>Sabemos que</p>
+<p><span class="math display">\[
+\frac{(n_1-1)S_1^2}{\sigma_1^2} \sim \chi^2_{n_1-1},
+\qquad
+\frac{(n_2-1)S_2^2}{\sigma_2^2} \sim \chi^2_{n_2-1},
+\]</span></p>
+<p>e que estas variables son independentes. Polo tanto,</p>
+<p><span class="math display">\[
+\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}
+\sim F_{n_1-1,n_2-1},
+\]</span></p>
+<p>onde <span class="math inline">\(F_{n_1-1,n_2-1}\)</span> é unha distribución F de Snedecor (ver <a href="#anexo_distribucion3">Anexo</a>). Procedendo como nos casos anteriores, obtense</p>
+<p><span class="math display">\[
+P\!\left(
+F_{n_1-1,n_2-1,\,1-\alpha/2}
+\le
+\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}
+\le
+F_{n_1-1,n_2-1,\,\alpha/2}
+\right)=1-\alpha,
+\]</span></p>
+<p>onde <span class="math inline">\(F_{n_1-1,n_2-1,\,1-\alpha/2}\)</span> e <span class="math inline">\(F_{n_1-1,n_2-1,\,\alpha/2}\)</span> denotan, respectivamente, os cuantís <span class="math inline">\(\alpha/2\)</span> e <span class="math inline">\(1-\alpha/2\)</span> da distribución <span class="math inline">\(F\)</span> de Snedecor con <span class="math inline">\(n_1-1\)</span> e <span class="math inline">\(n_2-1\)</span> graos de liberdade. Despexando <span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span>, o intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para o cociente de varianzas é</p>
+<p><span class="math display">\[
+\left(
+\frac{{S_1^2}/{S_2^2}}{F_{n_1-1,n_2-1,\,\alpha/2}},
+\;
+\frac{{S_1^2}/{S_2^2}}{F_{n_1-1,n_2-1,\,1-\alpha/2}}
+\right)=\left(
+\frac{{S_1^2}}{{S_2^2}}{F_{n_2-1,n_1-1,\,1-\alpha/2}},
+\;
+\frac{{S_1^2}}{{S_2^2}}{F_{n_2-1,n_1-1,\,\alpha/2}}
+\right).
+\]</span></p>
+</section>
+<section id="intervalo-de-confianza-para-unha-proporción" class="level3" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="intervalo-de-confianza-para-unha-proporción"><span class="header-section-number">4.4.5</span> Intervalo de confianza para unha proporción</h3>
+<p>Consideremos unha mostra aleatoria simple de tamaño <span class="math inline">\(n\)</span> dunha poboación na que queremos estimar a proporción <span class="math inline">\(p\)</span> dunha característica de interese. A proporción muestral é:</p>
+<p><span class="math display">\[
+\hat p = \frac{X_1 + \dots + X_n}{n},
+\]</span></p>
+<p>onde <span class="math inline">\(X_i = 1\)</span> se o individuo presenta a característica e <span class="math inline">\(X_i = 0\)</span> en caso contrario. Para <span class="math inline">\(n\)</span> grande, polo Teorema Central do Límite, podemos aproximar a distribución da proporción muestral por unha normal:</p>
+<p><span class="math display">\[
+\frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}} \xrightarrow[n \to \infty]{d} N(0,1).
+\]</span></p>
+<p>Entón:</p>
+<p><span class="math display">\[
+P\left(-z_{\alpha/2} \le \frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}} \le z_{\alpha/2}\right) = 1-\alpha.
+\]</span></p>
+<p>Equivalentemente:</p>
+<p><span class="math display">\[
+P\left(\hat p - z_{\alpha/2} \sqrt{\frac{p(1-p)}{n}} \le p \le \hat p + z_{\alpha/2} \sqrt{\frac{p(1-p)}{n}}\right) = 1-\alpha.
+\]</span></p>
+<p>O intervalo de confianza aproximado para <span class="math inline">\(p\)</span> con nivel <span class="math inline">\(1-\alpha\)</span> é:</p>
+<p><span class="math display">\[
+\left(\hat p - z_{\alpha/2} \sqrt{\frac{\hat p (1-\hat p)}{n}}, \;\; \hat p + z_{\alpha/2} \sqrt{\frac{\hat p (1-\hat p)}{n}}\right).
+\]</span></p>
+</section>
+<section id="intervalo-de-confianza-para-a-diferenza-de-proporcións" class="level3" data-number="4.4.6">
+<h3 data-number="4.4.6" class="anchored" data-anchor-id="intervalo-de-confianza-para-a-diferenza-de-proporcións"><span class="header-section-number">4.4.6</span> Intervalo de confianza para a diferenza de proporcións</h3>
+<p>Nalgúns casos estamos interesados en estimar a diferenza de proporcións <span class="math inline">\(p_1-p_2\)</span> de dúas poboacións. Para iso dispoñemos de dúas mostras:</p>
+<ul>
+<li>Unha mostra formada por <span class="math inline">\(n_1\)</span> variables independentes procedentes da poboación 1.</li>
+<li>Unha mostra formada por <span class="math inline">\(n_2\)</span> variables independentes procedentes da poboación 2.</li>
+</ul>
+<p>Supoñemos que as mostras son independentes, é dicir, os individuos nos que se realizan as medicións da poboación 1 son distintos dos individuos da poboación 2.</p>
+<p>Para tamaños mostrais grandes, o estatístico</p>
+<p><span class="math display">\[
+\frac{(\hat p_1-\hat p_2)-(p_1-p_2)}
+{\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2(1-\hat p_2)}{n_2}}}
+\sim N(0,1).
+\]</span></p>
+<p>A partir deste resultado, o intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para a diferenza de proporcións <span class="math inline">\(p_1-p_2\)</span> é</p>
+<p><span class="math display">\[
+\left(
+(\hat p_1-\hat p_2)-z_{\alpha/2}
+\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2(1-\hat p_2)}{n_2}},
+\;
+(\hat p_1-\hat p_2)+z_{\alpha/2}
+\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2(1-\hat p_2)}{n_2}}
+\right).
+\]</span></p>
+</section>
+</section>
+<section id="anexo-distribucións-asociadas-coa-normal" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="anexo-distribucións-asociadas-coa-normal">Anexo: Distribucións asociadas coa normal</h2>
+<p>Ademais do modelo normal, existen outros modelos probabilísticos que desempeñan un papel fundamental na inferencia estatística. Entre eles destacan as distribucións <span class="math inline">\(\chi^2\)</span> (chi cadrado) e <span class="math inline">\(t\)</span> de Student, que aparecen de maneira natural ao estudar estimadores baseados en mostras dunha poboación normal.</p>
+<section id="anexo_distribucion" class="level3" data-number="4.4.7">
+<h3 data-number="4.4.7" class="anchored" data-anchor-id="anexo_distribucion"><span class="header-section-number">4.4.7</span> Distribución chi cadrado</h3>
+<p>A distribución chi cadrado con <span class="math inline">\(n \in \mathbb{N}\)</span> graos de liberdade é a distribución da suma dos cadrados de <span class="math inline">\(n\)</span> variables aleatorias independentes que seguen unha distribución normal estándar. É dicir, se <span class="math inline">\(Z_1, \dots, Z_n\)</span> son variables aleatorias independentes e distribuídas como <span class="math inline">\(N(0,1)\)</span>, entón a variable</p>
+<p><span class="math display">\[
+X = Z_1^2 + Z_2^2 + \cdots + Z_n^2
+\]</span></p>
+<p>segue unha distribución chi cadrado con <span class="math inline">\(n\)</span> graos de liberdade. Denótase por <span class="math inline">\(X\sim\chi^2_n\)</span>.</p>
+<section id="propiedades" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="propiedades">Propiedades</h4>
+<ol type="1">
+<li>A variable <span class="math inline">\(\chi^2_n\)</span> só toma valores en <span class="math inline">\([0,+\infty)\)</span>.</li>
+<li>A distribución é asimétrica, especialmente para poucos graos de liberdade.</li>
+<li>A distribución chi cadrado con <span class="math inline">\(n\)</span> graos de liberdade é un caso particular da distribución gamma. Concretamente, <span class="math inline">\(\chi^2_n\sim\text{Gamma}\left({\frac{1}{2}},{\frac{n}{2}}\right)\)</span>.</li>
+<li>A media e varianza da distribución chi cadrado con <span class="math inline">\(n\)</span> graos de liberdade son: <span class="math display">\[
+\mathbb{E}(\chi^2_n) = n, \qquad \text{Var}(\chi^2_n) = 2n.
+\]</span></li>
+</ol>
+</section>
+</section>
+<section id="anexo_distribucion2" class="level3" data-number="4.4.8">
+<h3 data-number="4.4.8" class="anchored" data-anchor-id="anexo_distribucion2"><span class="header-section-number">4.4.8</span> Distribución <span class="math inline">\(t\)</span> de Student</h3>
+<p>A distribución <span class="math inline">\(t\)</span> de Student é unha distribución de variable aleatoria continua que describe a relación entre unha normal estándar e unha chi cadrado. Se <span class="math inline">\(Z \sim N(0,1)\)</span> é unha variable normal estándar e <span class="math inline">\(Y \sim \chi^2_n\)</span> é independente de <span class="math inline">\(Z\)</span>, entón a variable aleatoria:</p>
+<p><span class="math display">\[
+T = \frac{Z}{\sqrt{Y/n}}
+\]</span></p>
+<p>segue unha distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n\)</span> graos de liberdade. Denótase por <span class="math inline">\(T \sim t_n\)</span>.</p>
+<section id="propiedades-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="propiedades-1">Propiedades</h4>
+<ol type="1">
+<li>A variable <span class="math inline">\(t_n\)</span> toma valores en toda a recta real: <span class="math inline">\((-\infty, +\infty)\)</span>.<br>
+</li>
+<li>A distribución é simétrica respecto de 0.<br>
+</li>
+<li>Para <span class="math inline">\(n&gt;1\)</span>, a media existe e é <span class="math inline">\(\mathbb{E}(t_n)=0\)</span>.<br>
+</li>
+<li>Para <span class="math inline">\(n&gt;2\)</span>, a varianza existe e é <span class="math inline">\(\text{Var}(t_n) = \frac{n}{n-2}\)</span>.<br>
+</li>
+<li>Canto maior sexa <span class="math inline">\(n\)</span>, máis se asemella á normal estándar <span class="math inline">\(N(0,1)\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="anexo_distribucion3" class="level3" data-number="4.4.9">
+<h3 data-number="4.4.9" class="anchored" data-anchor-id="anexo_distribucion3"><span class="header-section-number">4.4.9</span> Distribución F de Snedecor</h3>
+<p>A distribución <span class="math inline">\(F\)</span> de Snedecor é unha distribución de variable aleatoria continua que describe a relación entre dúas chi cadrado independentes. Sexan <span class="math inline">\(X \sim \chi^2_{n}\)</span> e <span class="math inline">\(Y \sim \chi^2_{m}\)</span> independentes. Entón, a variable aleatoria</p>
+<p><span class="math display">\[
+F = \frac{X/n}{Y/m}
+\]</span></p>
+<p>segue unha distribución <span class="math inline">\(F\)</span> de Snedecor con <span class="math inline">\(n\)</span> e <span class="math inline">\(m\)</span> graos de liberdade. Denótase por <span class="math inline">\(F \sim F_{n,m}\)</span>.</p>
+<section id="propiedades-2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="propiedades-2">Propiedades</h4>
+<ol type="1">
+<li>A variable <span class="math inline">\(F_{n_1,n_2}\)</span> só toma valores en <span class="math inline">\([0,+\infty)\)</span>.<br>
+</li>
+<li>A distribución é asimétrica, con cola cara a dereita, especialmente cando <span class="math inline">\(n\)</span> ou <span class="math inline">\(m\)</span> son pequenos.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./3_variables.html" class="pagination-link" aria-label="Variables aleatorias">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./5_contrastes.html" class="pagination-link" aria-label="Contraste de hipóteses">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

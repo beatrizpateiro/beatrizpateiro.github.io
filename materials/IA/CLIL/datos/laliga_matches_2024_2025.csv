@@ -1,0 +1,381 @@
+"","competition_code","competition_name","season","match_id","matchday","stage","status","date_utc","referee","home_team_id","home_team","away_team_id","away_team","fulltime_home","fulltime_away","halftime_home","halftime_away","goal_difference","total_goals","match_outcome","home_points","away_points","referee_id","home_goals","away_goals"
+"381","PD","La Liga","2024/2025",498613,1,"REGULAR_SEASON","FINISHED","2024-08-15 17:00:00+00:00","Alejandro Muñiz Ruiz",77,"Athletic Club",82,"Getafe CF",1,1,1,0,0,2,"Draw",1,1,25,1,1
+"382","PD","La Liga","2024/2025",498614,1,"REGULAR_SEASON","FINISHED","2024-08-15 19:30:00+00:00","Miguel Ortiz Arias",90,"Real Betis Balompié",298,"Girona FC",1,1,1,0,0,2,"Draw",1,1,26,1,1
+"383","PD","La Liga","2024/2025",498616,1,"REGULAR_SEASON","FINISHED","2024-08-16 17:00:00+00:00","Alejandro Quintero González",558,"RC Celta de Vigo",263,"Deportivo Alavés",2,1,0,1,1,3,"Home Win",3,0,27,2,1
+"384","PD","La Liga","2024/2025",498621,1,"REGULAR_SEASON","FINISHED","2024-08-16 19:30:00+00:00","Francisco Hernández Maeso",275,"UD Las Palmas",559,"Sevilla FC",2,2,1,1,0,4,"Draw",1,1,28,2,2
+"385","PD","La Liga","2024/2025",498615,1,"REGULAR_SEASON","FINISHED","2024-08-17 17:00:00+00:00","Juan Pulido Santana",79,"CA Osasuna",745,"CD Leganés",1,1,0,1,0,2,"Draw",1,1,29,1,1
+"386","PD","La Liga","2024/2025",498617,1,"REGULAR_SEASON","FINISHED","2024-08-17 19:30:00+00:00","José Sánchez Martínez",95,"Valencia CF",81,"FC Barcelona",1,2,1,1,-1,3,"Away Win",0,3,30,1,2
+"387","PD","La Liga","2024/2025",498620,1,"REGULAR_SEASON","FINISHED","2024-08-18 17:00:00+00:00","Alejandro Hernández Hernández",92,"Real Sociedad de Fútbol",87,"Rayo Vallecano de Madrid",1,2,0,0,-1,3,"Away Win",0,3,31,1,2
+"388","PD","La Liga","2024/2025",498619,1,"REGULAR_SEASON","FINISHED","2024-08-18 19:30:00+00:00","César Soto Grado",89,"RCD Mallorca",86,"Real Madrid CF",1,1,0,1,0,2,"Draw",1,1,32,1,1
+"389","PD","La Liga","2024/2025",498622,1,"REGULAR_SEASON","FINISHED","2024-08-19 17:00:00+00:00","Pablo González Fuertes",250,"Real Valladolid CF",80,"RCD Espanyol de Barcelona",1,0,1,0,1,1,"Home Win",3,0,33,1,0
+"390","PD","La Liga","2024/2025",498618,1,"REGULAR_SEASON","FINISHED","2024-08-19 19:30:00+00:00","Guillermo Cuadra Fernández",94,"Villarreal CF",78,"Club Atlético de Madrid",2,2,2,2,0,4,"Draw",1,1,34,2,2
+"391","PD","La Liga","2024/2025",498626,2,"REGULAR_SEASON","FINISHED","2024-08-23 17:00:00+00:00","José Munuera Montero",558,"RC Celta de Vigo",95,"Valencia CF",3,1,2,1,2,4,"Home Win",3,0,35,3,1
+"392","PD","La Liga","2024/2025",498630,2,"REGULAR_SEASON","FINISHED","2024-08-23 19:30:00+00:00","Isidro Díaz de Mera",559,"Sevilla FC",94,"Villarreal CF",1,2,1,1,-1,3,"Away Win",0,3,36,1,2
+"393","PD","La Liga","2024/2025",498624,2,"REGULAR_SEASON","FINISHED","2024-08-24 15:00:00+00:00","Adrián Cordero Vega",79,"CA Osasuna",89,"RCD Mallorca",1,0,0,0,1,1,"Home Win",3,0,37,1,0
+"394","PD","La Liga","2024/2025",498628,2,"REGULAR_SEASON","FINISHED","2024-08-24 17:00:00+00:00","Jesús Gil Manzano",81,"FC Barcelona",77,"Athletic Club",2,1,1,1,1,3,"Home Win",3,0,38,2,1
+"395","PD","La Liga","2024/2025",498629,2,"REGULAR_SEASON","FINISHED","2024-08-24 19:30:00+00:00","Javier Alberola Rojas",82,"Getafe CF",87,"Rayo Vallecano de Madrid",0,0,0,0,0,0,"Draw",1,1,39,0,0
+"396","PD","La Liga","2024/2025",498632,2,"REGULAR_SEASON","FINISHED","2024-08-24 19:30:00+00:00","Mario Melero López",80,"RCD Espanyol de Barcelona",92,"Real Sociedad de Fútbol",0,1,0,0,-1,1,"Away Win",0,3,40,0,1
+"397","PD","La Liga","2024/2025",498631,2,"REGULAR_SEASON","FINISHED","2024-08-25 15:00:00+00:00","Víctor García Verdura",86,"Real Madrid CF",250,"Real Valladolid CF",3,0,0,0,3,3,"Home Win",3,0,41,3,0
+"398","PD","La Liga","2024/2025",498625,2,"REGULAR_SEASON","FINISHED","2024-08-25 17:00:00+00:00","Ricardo de Burgos",745,"CD Leganés",275,"UD Las Palmas",2,1,0,0,1,3,"Home Win",3,0,42,2,1
+"399","PD","La Liga","2024/2025",498627,2,"REGULAR_SEASON","FINISHED","2024-08-25 17:15:00+00:00","Mateo Busquets Ferrer",263,"Deportivo Alavés",90,"Real Betis Balompié",0,0,0,0,0,0,"Draw",1,1,43,0,0
+"400","PD","La Liga","2024/2025",498623,2,"REGULAR_SEASON","FINISHED","2024-08-25 19:30:00+00:00","Juan Martínez Munuera",78,"Club Atlético de Madrid",298,"Girona FC",3,0,1,0,3,3,"Home Win",3,0,44,3,0
+"401","PD","La Liga","2024/2025",498636,3,"REGULAR_SEASON","FINISHED","2024-08-26 19:30:00+00:00","Miguel Ortiz Arias",94,"Villarreal CF",558,"RC Celta de Vigo",4,3,1,2,1,7,"Home Win",3,0,26,4,3
+"402","PD","La Liga","2024/2025",498638,3,"REGULAR_SEASON","FINISHED","2024-08-27 17:00:00+00:00","Alejandro Muñiz Ruiz",89,"RCD Mallorca",559,"Sevilla FC",0,0,0,0,0,0,"Draw",1,1,25,0,0
+"403","PD","La Liga","2024/2025",498637,3,"REGULAR_SEASON","FINISHED","2024-08-27 19:30:00+00:00","César Soto Grado",87,"Rayo Vallecano de Madrid",81,"FC Barcelona",1,2,1,0,-1,3,"Away Win",0,3,32,1,2
+"404","PD","La Liga","2024/2025",498633,3,"REGULAR_SEASON","FINISHED","2024-08-28 17:00:00+00:00","Pablo González Fuertes",77,"Athletic Club",95,"Valencia CF",1,0,1,0,1,1,"Home Win",3,0,33,1,0
+"405","PD","La Liga","2024/2025",498640,3,"REGULAR_SEASON","FINISHED","2024-08-28 17:00:00+00:00","Alejandro Quintero González",250,"Real Valladolid CF",745,"CD Leganés",0,0,0,0,0,0,"Draw",1,1,27,0,0
+"406","PD","La Liga","2024/2025",498639,3,"REGULAR_SEASON","FINISHED","2024-08-28 19:30:00+00:00","José Sánchez Martínez",92,"Real Sociedad de Fútbol",263,"Deportivo Alavés",1,2,1,1,-1,3,"Away Win",0,3,30,1,2
+"407","PD","La Liga","2024/2025",498642,3,"REGULAR_SEASON","FINISHED","2024-08-28 19:30:00+00:00","Ricardo de Burgos",78,"Club Atlético de Madrid",80,"RCD Espanyol de Barcelona",0,0,0,0,0,0,"Draw",1,1,42,0,0
+"408","PD","La Liga","2024/2025",498635,3,"REGULAR_SEASON","FINISHED","2024-08-29 17:00:00+00:00","Francisco Hernández Maeso",298,"Girona FC",79,"CA Osasuna",4,0,1,0,4,4,"Home Win",3,0,28,4,0
+"409","PD","La Liga","2024/2025",498641,3,"REGULAR_SEASON","FINISHED","2024-08-29 19:30:00+00:00","Mateo Busquets Ferrer",275,"UD Las Palmas",86,"Real Madrid CF",1,1,1,0,0,2,"Draw",1,1,43,1,1
+"410","PD","La Liga","2024/2025",498634,3,"REGULAR_SEASON","FINISHED","2024-09-18 17:00:00+00:00","Unknown",90,"Real Betis Balompié",82,"Getafe CF",2,1,0,0,1,3,"Home Win",3,0,-1,2,1
+"411","PD","La Liga","2024/2025",498647,4,"REGULAR_SEASON","FINISHED","2024-08-31 15:00:00+00:00","Isidro Díaz de Mera",81,"FC Barcelona",250,"Real Valladolid CF",7,0,3,0,7,7,"Home Win",3,0,36,7,0
+"412","PD","La Liga","2024/2025",498643,4,"REGULAR_SEASON","FINISHED","2024-08-31 17:00:00+00:00","Alejandro Hernández Hernández",77,"Athletic Club",78,"Club Atlético de Madrid",0,1,0,0,-1,1,"Away Win",0,3,31,0,1
+"413","PD","La Liga","2024/2025",498652,4,"REGULAR_SEASON","FINISHED","2024-08-31 17:15:00+00:00","Adrián Cordero Vega",80,"RCD Espanyol de Barcelona",87,"Rayo Vallecano de Madrid",2,1,1,1,1,3,"Home Win",3,0,37,2,1
+"414","PD","La Liga","2024/2025",498645,4,"REGULAR_SEASON","FINISHED","2024-08-31 19:30:00+00:00","Mario Melero López",745,"CD Leganés",89,"RCD Mallorca",0,1,0,1,-1,1,"Away Win",0,3,40,0,1
+"415","PD","La Liga","2024/2025",498650,4,"REGULAR_SEASON","FINISHED","2024-08-31 19:30:00+00:00","Jesús Gil Manzano",95,"Valencia CF",94,"Villarreal CF",1,1,1,1,0,2,"Draw",1,1,38,1,1
+"416","PD","La Liga","2024/2025",498644,4,"REGULAR_SEASON","FINISHED","2024-09-01 15:00:00+00:00","Juan Martínez Munuera",79,"CA Osasuna",558,"RC Celta de Vigo",3,2,2,1,1,5,"Home Win",3,0,44,3,2
+"417","PD","La Liga","2024/2025",498646,4,"REGULAR_SEASON","FINISHED","2024-09-01 15:00:00+00:00","Víctor García Verdura",263,"Deportivo Alavés",275,"UD Las Palmas",2,0,1,0,2,2,"Home Win",3,0,41,2,0
+"418","PD","La Liga","2024/2025",498649,4,"REGULAR_SEASON","FINISHED","2024-09-01 17:00:00+00:00","José Sánchez Martínez",559,"Sevilla FC",298,"Girona FC",0,2,0,1,-2,2,"Away Win",0,3,30,0,2
+"419","PD","La Liga","2024/2025",498648,4,"REGULAR_SEASON","FINISHED","2024-09-01 17:15:00+00:00","José Munuera Montero",82,"Getafe CF",92,"Real Sociedad de Fútbol",0,0,0,0,0,0,"Draw",1,1,35,0,0
+"420","PD","La Liga","2024/2025",498651,4,"REGULAR_SEASON","FINISHED","2024-09-01 19:30:00+00:00","Javier Alberola Rojas",86,"Real Madrid CF",90,"Real Betis Balompié",2,0,0,0,2,2,"Home Win",3,0,39,2,0
+"421","PD","La Liga","2024/2025",498654,5,"REGULAR_SEASON","FINISHED","2024-09-13 19:00:00+00:00","Pablo González Fuertes",90,"Real Betis Balompié",745,"CD Leganés",2,0,0,0,2,2,"Home Win",3,0,33,2,0
+"422","PD","La Liga","2024/2025",498659,5,"REGULAR_SEASON","FINISHED","2024-09-14 12:00:00+00:00","Ricardo de Burgos",89,"RCD Mallorca",94,"Villarreal CF",1,2,0,1,-1,3,"Away Win",0,3,42,1,2
+"423","PD","La Liga","2024/2025",498662,5,"REGULAR_SEASON","FINISHED","2024-09-14 14:15:00+00:00","Juan Pulido Santana",80,"RCD Espanyol de Barcelona",263,"Deportivo Alavés",3,2,1,1,1,5,"Home Win",3,0,29,3,2
+"424","PD","La Liga","2024/2025",498657,5,"REGULAR_SEASON","FINISHED","2024-09-14 16:30:00+00:00","Mateo Busquets Ferrer",559,"Sevilla FC",82,"Getafe CF",1,0,1,0,1,1,"Home Win",3,0,43,1,0
+"425","PD","La Liga","2024/2025",498660,5,"REGULAR_SEASON","FINISHED","2024-09-14 19:00:00+00:00","Juan Martínez Munuera",92,"Real Sociedad de Fútbol",86,"Real Madrid CF",0,2,0,0,-2,2,"Away Win",0,3,44,0,2
+"426","PD","La Liga","2024/2025",498655,5,"REGULAR_SEASON","FINISHED","2024-09-15 12:00:00+00:00","Francisco Hernández Maeso",558,"RC Celta de Vigo",250,"Real Valladolid CF",3,1,2,0,2,4,"Home Win",3,0,28,3,1
+"427","PD","La Liga","2024/2025",498656,5,"REGULAR_SEASON","FINISHED","2024-09-15 14:15:00+00:00","Alejandro Muñiz Ruiz",298,"Girona FC",81,"FC Barcelona",1,4,0,2,-3,5,"Away Win",0,3,25,1,4
+"428","PD","La Liga","2024/2025",498661,5,"REGULAR_SEASON","FINISHED","2024-09-15 16:30:00+00:00","Miguel Ortiz Arias",275,"UD Las Palmas",77,"Athletic Club",2,3,0,2,-1,5,"Away Win",0,3,26,2,3
+"429","PD","La Liga","2024/2025",498653,5,"REGULAR_SEASON","FINISHED","2024-09-15 19:00:00+00:00","César Soto Grado",78,"Club Atlético de Madrid",95,"Valencia CF",3,0,1,0,3,3,"Home Win",3,0,32,3,0
+"430","PD","La Liga","2024/2025",498658,5,"REGULAR_SEASON","FINISHED","2024-09-16 19:00:00+00:00","Alejandro Quintero González",87,"Rayo Vallecano de Madrid",79,"CA Osasuna",3,1,0,1,2,4,"Home Win",3,0,27,3,1
+"431","PD","La Liga","2024/2025",498666,6,"REGULAR_SEASON","FINISHED","2024-09-20 19:00:00+00:00","Javier Alberola Rojas",263,"Deportivo Alavés",559,"Sevilla FC",2,1,1,0,1,3,"Home Win",3,0,39,2,1
+"432","PD","La Liga","2024/2025",498671,6,"REGULAR_SEASON","FINISHED","2024-09-21 12:00:00+00:00","Guillermo Cuadra Fernández",250,"Real Valladolid CF",92,"Real Sociedad de Fútbol",0,0,0,0,0,0,"Draw",1,1,34,0,0
+"433","PD","La Liga","2024/2025",498665,6,"REGULAR_SEASON","FINISHED","2024-09-21 14:15:00+00:00","Isidro Díaz de Mera",79,"CA Osasuna",275,"UD Las Palmas",2,1,1,1,1,3,"Home Win",3,0,36,2,1
+"434","PD","La Liga","2024/2025",498668,6,"REGULAR_SEASON","FINISHED","2024-09-21 16:30:00+00:00","Alejandro Hernández Hernández",95,"Valencia CF",298,"Girona FC",2,0,0,0,2,2,"Home Win",3,0,31,2,0
+"435","PD","La Liga","2024/2025",498672,6,"REGULAR_SEASON","FINISHED","2024-09-21 19:00:00+00:00","José Munuera Montero",86,"Real Madrid CF",80,"RCD Espanyol de Barcelona",4,1,0,0,3,5,"Home Win",3,0,35,4,1
+"436","PD","La Liga","2024/2025",498667,6,"REGULAR_SEASON","FINISHED","2024-09-22 12:00:00+00:00","Adrián Cordero Vega",82,"Getafe CF",745,"CD Leganés",1,1,0,0,0,2,"Draw",1,1,37,1,1
+"437","PD","La Liga","2024/2025",498663,6,"REGULAR_SEASON","FINISHED","2024-09-22 14:15:00+00:00","José Sánchez Martínez",77,"Athletic Club",558,"RC Celta de Vigo",3,1,2,1,2,4,"Home Win",3,0,30,3,1
+"438","PD","La Liga","2024/2025",498669,6,"REGULAR_SEASON","FINISHED","2024-09-22 16:30:00+00:00","Mateo Busquets Ferrer",94,"Villarreal CF",81,"FC Barcelona",1,5,1,2,-4,6,"Away Win",0,3,43,1,5
+"439","PD","La Liga","2024/2025",498670,6,"REGULAR_SEASON","FINISHED","2024-09-22 19:00:00+00:00","Mario Melero López",87,"Rayo Vallecano de Madrid",78,"Club Atlético de Madrid",1,1,1,0,0,2,"Draw",1,1,40,1,1
+"440","PD","La Liga","2024/2025",498664,6,"REGULAR_SEASON","FINISHED","2024-09-23 19:00:00+00:00","Víctor García Verdura",90,"Real Betis Balompié",89,"RCD Mallorca",1,2,1,1,-1,3,"Away Win",0,3,41,1,2
+"441","PD","La Liga","2024/2025",498679,7,"REGULAR_SEASON","FINISHED","2024-09-17 17:00:00+00:00","Adrián Cordero Vega",89,"RCD Mallorca",92,"Real Sociedad de Fútbol",1,0,1,0,1,1,"Home Win",3,0,37,1,0
+"442","PD","La Liga","2024/2025",498673,7,"REGULAR_SEASON","FINISHED","2024-09-19 17:00:00+00:00","Francisco Hernández Maeso",745,"CD Leganés",77,"Athletic Club",0,2,0,0,-2,2,"Away Win",0,3,28,0,2
+"443","PD","La Liga","2024/2025",498677,7,"REGULAR_SEASON","FINISHED","2024-09-24 17:00:00+00:00","Juan Pulido Santana",559,"Sevilla FC",250,"Real Valladolid CF",2,1,1,0,1,3,"Home Win",3,0,29,2,1
+"444","PD","La Liga","2024/2025",498678,7,"REGULAR_SEASON","FINISHED","2024-09-24 17:00:00+00:00","Miguel Ortiz Arias",95,"Valencia CF",79,"CA Osasuna",0,0,0,0,0,0,"Draw",1,1,26,0,0
+"445","PD","La Liga","2024/2025",498680,7,"REGULAR_SEASON","FINISHED","2024-09-24 19:00:00+00:00","Alejandro Muñiz Ruiz",86,"Real Madrid CF",263,"Deportivo Alavés",3,2,2,0,1,5,"Home Win",3,0,25,3,2
+"446","PD","La Liga","2024/2025",498676,7,"REGULAR_SEASON","FINISHED","2024-09-25 17:00:00+00:00","Juan Martínez Munuera",298,"Girona FC",87,"Rayo Vallecano de Madrid",0,0,0,0,0,0,"Draw",1,1,44,0,0
+"447","PD","La Liga","2024/2025",498675,7,"REGULAR_SEASON","FINISHED","2024-09-25 19:00:00+00:00","Pablo González Fuertes",81,"FC Barcelona",82,"Getafe CF",1,0,1,0,1,1,"Home Win",3,0,33,1,0
+"448","PD","La Liga","2024/2025",498681,7,"REGULAR_SEASON","FINISHED","2024-09-26 17:00:00+00:00","José Sánchez Martínez",275,"UD Las Palmas",90,"Real Betis Balompié",1,1,1,1,0,2,"Draw",1,1,30,1,1
+"449","PD","La Liga","2024/2025",498682,7,"REGULAR_SEASON","FINISHED","2024-09-26 17:00:00+00:00","Alejandro Quintero González",80,"RCD Espanyol de Barcelona",94,"Villarreal CF",1,2,1,1,-1,3,"Away Win",0,3,27,1,2
+"450","PD","La Liga","2024/2025",498674,7,"REGULAR_SEASON","FINISHED","2024-09-26 19:00:00+00:00","Víctor García Verdura",558,"RC Celta de Vigo",78,"Club Atlético de Madrid",0,1,0,0,-1,1,"Away Win",0,3,41,0,1
+"451","PD","La Liga","2024/2025",498691,8,"REGULAR_SEASON","FINISHED","2024-09-27 19:00:00+00:00","José Munuera Montero",250,"Real Valladolid CF",89,"RCD Mallorca",1,2,0,0,-1,3,"Away Win",0,3,35,1,2
+"452","PD","La Liga","2024/2025",498687,8,"REGULAR_SEASON","FINISHED","2024-09-28 12:00:00+00:00","Isidro Díaz de Mera",82,"Getafe CF",263,"Deportivo Alavés",2,0,1,0,2,2,"Home Win",3,0,36,2,0
+"453","PD","La Liga","2024/2025",498689,8,"REGULAR_SEASON","FINISHED","2024-09-28 14:15:00+00:00","Alejandro Muñiz Ruiz",87,"Rayo Vallecano de Madrid",745,"CD Leganés",1,1,1,0,0,2,"Draw",1,1,25,1,1
+"454","PD","La Liga","2024/2025",498690,8,"REGULAR_SEASON","FINISHED","2024-09-28 16:30:00+00:00","Javier Alberola Rojas",92,"Real Sociedad de Fútbol",95,"Valencia CF",3,0,1,0,3,3,"Home Win",3,0,39,3,0
+"455","PD","La Liga","2024/2025",498685,8,"REGULAR_SEASON","FINISHED","2024-09-28 19:00:00+00:00","Guillermo Cuadra Fernández",79,"CA Osasuna",81,"FC Barcelona",4,2,2,0,2,6,"Home Win",3,0,34,4,2
+"456","PD","La Liga","2024/2025",498686,8,"REGULAR_SEASON","FINISHED","2024-09-29 12:00:00+00:00","Ricardo de Burgos",558,"RC Celta de Vigo",298,"Girona FC",1,1,0,1,0,2,"Draw",1,1,42,1,1
+"457","PD","La Liga","2024/2025",498683,8,"REGULAR_SEASON","FINISHED","2024-09-29 14:15:00+00:00","César Soto Grado",77,"Athletic Club",559,"Sevilla FC",1,1,1,0,0,2,"Draw",1,1,32,1,1
+"458","PD","La Liga","2024/2025",498692,8,"REGULAR_SEASON","FINISHED","2024-09-29 16:30:00+00:00","Alejandro Hernández Hernández",90,"Real Betis Balompié",80,"RCD Espanyol de Barcelona",1,0,0,0,1,1,"Home Win",3,0,31,1,0
+"459","PD","La Liga","2024/2025",498684,8,"REGULAR_SEASON","FINISHED","2024-09-29 19:00:00+00:00","Mateo Busquets Ferrer",78,"Club Atlético de Madrid",86,"Real Madrid CF",1,1,0,0,0,2,"Draw",1,1,43,1,1
+"460","PD","La Liga","2024/2025",498688,8,"REGULAR_SEASON","FINISHED","2024-09-30 19:00:00+00:00","Mario Melero López",94,"Villarreal CF",275,"UD Las Palmas",3,1,1,0,2,4,"Home Win",3,0,40,3,1
+"461","PD","La Liga","2024/2025",498693,9,"REGULAR_SEASON","FINISHED","2024-10-04 19:00:00+00:00","Alejandro Quintero González",745,"CD Leganés",95,"Valencia CF",0,0,0,0,0,0,"Draw",1,1,27,0,0
+"462","PD","La Liga","2024/2025",498702,9,"REGULAR_SEASON","FINISHED","2024-10-05 12:00:00+00:00","Francisco Hernández Maeso",80,"RCD Espanyol de Barcelona",89,"RCD Mallorca",2,1,1,0,1,3,"Home Win",3,0,28,2,1
+"463","PD","La Liga","2024/2025",498695,9,"REGULAR_SEASON","FINISHED","2024-10-05 14:15:00+00:00","José Sánchez Martínez",82,"Getafe CF",79,"CA Osasuna",1,1,1,0,0,2,"Draw",1,1,30,1,1
+"464","PD","La Liga","2024/2025",498700,9,"REGULAR_SEASON","FINISHED","2024-10-05 16:30:00+00:00","Pablo González Fuertes",250,"Real Valladolid CF",87,"Rayo Vallecano de Madrid",1,2,0,0,-1,3,"Away Win",0,3,33,1,2
+"465","PD","La Liga","2024/2025",498701,9,"REGULAR_SEASON","FINISHED","2024-10-05 16:30:00+00:00","Adrián Cordero Vega",275,"UD Las Palmas",558,"RC Celta de Vigo",0,1,0,1,-1,1,"Away Win",0,3,37,0,1
+"466","PD","La Liga","2024/2025",498698,9,"REGULAR_SEASON","FINISHED","2024-10-05 19:00:00+00:00","Guillermo Cuadra Fernández",86,"Real Madrid CF",94,"Villarreal CF",2,0,1,0,2,2,"Home Win",3,0,34,2,0
+"467","PD","La Liga","2024/2025",498696,9,"REGULAR_SEASON","FINISHED","2024-10-06 12:00:00+00:00","Juan Pulido Santana",298,"Girona FC",77,"Athletic Club",2,1,1,1,1,3,"Home Win",3,0,29,2,1
+"468","PD","La Liga","2024/2025",498694,9,"REGULAR_SEASON","FINISHED","2024-10-06 14:15:00+00:00","Miguel Ortiz Arias",263,"Deportivo Alavés",81,"FC Barcelona",0,3,0,3,-3,3,"Away Win",0,3,26,0,3
+"469","PD","La Liga","2024/2025",498697,9,"REGULAR_SEASON","FINISHED","2024-10-06 16:30:00+00:00","Juan Martínez Munuera",559,"Sevilla FC",90,"Real Betis Balompié",1,0,0,0,1,1,"Home Win",3,0,44,1,0
+"470","PD","La Liga","2024/2025",498699,9,"REGULAR_SEASON","FINISHED","2024-10-06 19:00:00+00:00","Isidro Díaz de Mera",92,"Real Sociedad de Fútbol",78,"Club Atlético de Madrid",1,1,0,1,0,2,"Draw",1,1,36,1,1
+"471","PD","La Liga","2024/2025",498706,10,"REGULAR_SEASON","FINISHED","2024-10-18 19:00:00+00:00","Mario Melero López",263,"Deportivo Alavés",250,"Real Valladolid CF",2,3,1,1,-1,5,"Away Win",0,3,40,2,3
+"472","PD","La Liga","2024/2025",498712,10,"REGULAR_SEASON","FINISHED","2024-10-19 12:00:00+00:00","Mateo Busquets Ferrer",77,"Athletic Club",80,"RCD Espanyol de Barcelona",4,1,3,0,3,5,"Home Win",3,0,43,4,1
+"473","PD","La Liga","2024/2025",498704,10,"REGULAR_SEASON","FINISHED","2024-10-19 14:15:00+00:00","Alejandro Muñiz Ruiz",79,"CA Osasuna",90,"Real Betis Balompié",1,2,0,1,-1,3,"Away Win",0,3,25,1,2
+"474","PD","La Liga","2024/2025",498708,10,"REGULAR_SEASON","FINISHED","2024-10-19 16:30:00+00:00","César Soto Grado",298,"Girona FC",92,"Real Sociedad de Fútbol",0,1,0,1,-1,1,"Away Win",0,3,32,0,1
+"475","PD","La Liga","2024/2025",498705,10,"REGULAR_SEASON","FINISHED","2024-10-19 19:00:00+00:00","Alejandro Hernández Hernández",558,"RC Celta de Vigo",86,"Real Madrid CF",1,2,0,1,-1,3,"Away Win",0,3,31,1,2
+"476","PD","La Liga","2024/2025",498711,10,"REGULAR_SEASON","FINISHED","2024-10-20 12:00:00+00:00","Javier Alberola Rojas",89,"RCD Mallorca",87,"Rayo Vallecano de Madrid",1,0,0,0,1,1,"Home Win",3,0,39,1,0
+"477","PD","La Liga","2024/2025",498703,10,"REGULAR_SEASON","FINISHED","2024-10-20 14:15:00+00:00","José Munuera Montero",78,"Club Atlético de Madrid",745,"CD Leganés",3,1,0,1,2,4,"Home Win",3,0,35,3,1
+"478","PD","La Liga","2024/2025",498710,10,"REGULAR_SEASON","FINISHED","2024-10-20 16:30:00+00:00","Víctor García Verdura",94,"Villarreal CF",82,"Getafe CF",1,1,1,0,0,2,"Draw",1,1,41,1,1
+"479","PD","La Liga","2024/2025",498707,10,"REGULAR_SEASON","FINISHED","2024-10-20 19:00:00+00:00","Ricardo de Burgos",81,"FC Barcelona",559,"Sevilla FC",5,1,3,0,4,6,"Home Win",3,0,42,5,1
+"480","PD","La Liga","2024/2025",498709,10,"REGULAR_SEASON","FINISHED","2024-10-21 19:00:00+00:00","Jesús Gil Manzano",95,"Valencia CF",275,"UD Las Palmas",2,3,1,1,-1,5,"Away Win",0,3,38,2,3
+"481","PD","La Liga","2024/2025",498722,11,"REGULAR_SEASON","FINISHED","2024-10-25 19:00:00+00:00","Miguel Ortiz Arias",80,"RCD Espanyol de Barcelona",559,"Sevilla FC",0,2,0,2,-2,2,"Away Win",0,3,26,0,2
+"482","PD","La Liga","2024/2025",498720,11,"REGULAR_SEASON","FINISHED","2024-10-26 12:00:00+00:00","Francisco Hernández Maeso",250,"Real Valladolid CF",94,"Villarreal CF",1,2,0,1,-1,3,"Away Win",0,3,28,1,2
+"483","PD","La Liga","2024/2025",498716,11,"REGULAR_SEASON","FINISHED","2024-10-26 14:15:00+00:00","Adrián Cordero Vega",87,"Rayo Vallecano de Madrid",263,"Deportivo Alavés",1,0,0,0,1,1,"Home Win",3,0,37,1,0
+"484","PD","La Liga","2024/2025",498721,11,"REGULAR_SEASON","FINISHED","2024-10-26 16:30:00+00:00","Alejandro Quintero González",275,"UD Las Palmas",298,"Girona FC",1,0,1,0,1,1,"Home Win",3,0,27,1,0
+"485","PD","La Liga","2024/2025",498718,11,"REGULAR_SEASON","FINISHED","2024-10-26 19:00:00+00:00","José Sánchez Martínez",86,"Real Madrid CF",81,"FC Barcelona",0,4,0,0,-4,4,"Away Win",0,3,30,0,4
+"486","PD","La Liga","2024/2025",498714,11,"REGULAR_SEASON","FINISHED","2024-10-27 13:00:00+00:00","Mario Melero López",745,"CD Leganés",558,"RC Celta de Vigo",3,0,0,0,3,3,"Home Win",3,0,40,3,0
+"487","PD","La Liga","2024/2025",498715,11,"REGULAR_SEASON","FINISHED","2024-10-27 15:15:00+00:00","Guillermo Cuadra Fernández",82,"Getafe CF",95,"Valencia CF",1,1,0,1,0,2,"Draw",1,1,34,1,1
+"488","PD","La Liga","2024/2025",498713,11,"REGULAR_SEASON","FINISHED","2024-10-27 17:30:00+00:00","Jesús Gil Manzano",90,"Real Betis Balompié",78,"Club Atlético de Madrid",1,0,1,0,1,1,"Home Win",3,0,38,1,0
+"489","PD","La Liga","2024/2025",498719,11,"REGULAR_SEASON","FINISHED","2024-10-27 20:00:00+00:00","Juan Pulido Santana",92,"Real Sociedad de Fútbol",79,"CA Osasuna",0,2,0,2,-2,2,"Away Win",0,3,29,0,2
+"490","PD","La Liga","2024/2025",498717,11,"REGULAR_SEASON","FINISHED","2024-10-28 20:00:00+00:00","Juan Martínez Munuera",89,"RCD Mallorca",77,"Athletic Club",0,0,0,0,0,0,"Draw",1,1,44,0,0
+"491","PD","La Liga","2024/2025",498727,12,"REGULAR_SEASON","FINISHED","2024-11-01 20:00:00+00:00","Pablo González Fuertes",263,"Deportivo Alavés",89,"RCD Mallorca",1,0,0,0,1,1,"Home Win",3,0,33,1,0
+"492","PD","La Liga","2024/2025",498725,12,"REGULAR_SEASON","FINISHED","2024-11-02 13:00:00+00:00","Víctor García Verdura",79,"CA Osasuna",250,"Real Valladolid CF",1,0,1,0,1,1,"Home Win",3,0,41,1,0
+"493","PD","La Liga","2024/2025",498728,12,"REGULAR_SEASON","FINISHED","2024-11-02 15:15:00+00:00","Mateo Busquets Ferrer",298,"Girona FC",745,"CD Leganés",4,3,2,2,1,7,"Home Win",3,0,43,4,3
+"494","PD","La Liga","2024/2025",498724,12,"REGULAR_SEASON","FINISHED","2024-11-03 13:00:00+00:00","Ricardo de Burgos",78,"Club Atlético de Madrid",275,"UD Las Palmas",2,0,1,0,2,2,"Home Win",3,0,42,2,0
+"495","PD","La Liga","2024/2025",498732,12,"REGULAR_SEASON","FINISHED","2024-11-03 15:15:00+00:00","José Munuera Montero",81,"FC Barcelona",80,"RCD Espanyol de Barcelona",3,1,3,0,2,4,"Home Win",3,0,35,3,1
+"496","PD","La Liga","2024/2025",498729,12,"REGULAR_SEASON","FINISHED","2024-11-03 17:30:00+00:00","Alejandro Muñiz Ruiz",559,"Sevilla FC",92,"Real Sociedad de Fútbol",0,2,0,1,-2,2,"Away Win",0,3,25,0,2
+"497","PD","La Liga","2024/2025",498723,12,"REGULAR_SEASON","FINISHED","2024-11-03 20:00:00+00:00","Javier Alberola Rojas",77,"Athletic Club",90,"Real Betis Balompié",1,1,0,0,0,2,"Draw",1,1,39,1,1
+"498","PD","La Liga","2024/2025",498726,12,"REGULAR_SEASON","FINISHED","2024-11-04 20:00:00+00:00","Jesús Gil Manzano",558,"RC Celta de Vigo",82,"Getafe CF",1,0,1,0,1,1,"Home Win",3,0,38,1,0
+"499","PD","La Liga","2024/2025",498731,12,"REGULAR_SEASON","FINISHED","2024-12-18 20:30:00+00:00","Alejandro Hernández Hernández",94,"Villarreal CF",87,"Rayo Vallecano de Madrid",1,1,1,1,0,2,"Draw",1,1,31,1,1
+"500","PD","La Liga","2024/2025",498730,12,"REGULAR_SEASON","FINISHED","2025-01-03 20:00:00+00:00","César Soto Grado",95,"Valencia CF",86,"Real Madrid CF",1,2,1,0,-1,3,"Away Win",0,3,32,1,2
+"501","PD","La Liga","2024/2025",498737,13,"REGULAR_SEASON","FINISHED","2024-11-08 20:00:00+00:00","Francisco Hernández Maeso",87,"Rayo Vallecano de Madrid",275,"UD Las Palmas",1,3,0,1,-2,4,"Away Win",0,3,28,1,3
+"502","PD","La Liga","2024/2025",498739,13,"REGULAR_SEASON","FINISHED","2024-11-09 13:00:00+00:00","Mario Melero López",86,"Real Madrid CF",79,"CA Osasuna",4,0,2,0,4,4,"Home Win",3,0,40,4,0
+"503","PD","La Liga","2024/2025",498736,13,"REGULAR_SEASON","FINISHED","2024-11-09 15:15:00+00:00","Alejandro Quintero González",94,"Villarreal CF",263,"Deportivo Alavés",3,0,1,0,3,3,"Home Win",3,0,27,3,0
+"504","PD","La Liga","2024/2025",498734,13,"REGULAR_SEASON","FINISHED","2024-11-09 20:00:00+00:00","Juan Pulido Santana",745,"CD Leganés",559,"Sevilla FC",1,0,0,0,1,1,"Home Win",3,0,29,1,0
+"505","PD","La Liga","2024/2025",498733,13,"REGULAR_SEASON","FINISHED","2024-11-10 13:00:00+00:00","Miguel Ortiz Arias",90,"Real Betis Balompié",558,"RC Celta de Vigo",2,2,1,1,0,4,"Draw",1,1,26,2,2
+"506","PD","La Liga","2024/2025",498738,13,"REGULAR_SEASON","FINISHED","2024-11-10 15:15:00+00:00","José Sánchez Martínez",89,"RCD Mallorca",78,"Club Atlético de Madrid",0,1,0,0,-1,1,"Away Win",0,3,30,0,1
+"507","PD","La Liga","2024/2025",498735,13,"REGULAR_SEASON","FINISHED","2024-11-10 17:30:00+00:00","Juan Martínez Munuera",82,"Getafe CF",298,"Girona FC",0,1,0,1,-1,1,"Away Win",0,3,44,0,1
+"508","PD","La Liga","2024/2025",498741,13,"REGULAR_SEASON","FINISHED","2024-11-10 17:30:00+00:00","Adrián Cordero Vega",250,"Real Valladolid CF",77,"Athletic Club",1,1,0,0,0,2,"Draw",1,1,37,1,1
+"509","PD","La Liga","2024/2025",498740,13,"REGULAR_SEASON","FINISHED","2024-11-10 20:00:00+00:00","Guillermo Cuadra Fernández",92,"Real Sociedad de Fútbol",81,"FC Barcelona",1,0,1,0,1,1,"Home Win",3,0,34,1,0
+"510","PD","La Liga","2024/2025",498742,13,"REGULAR_SEASON","FINISHED","2024-12-18 20:30:00+00:00","Pablo González Fuertes",80,"RCD Espanyol de Barcelona",95,"Valencia CF",1,1,1,0,0,2,"Draw",1,1,33,1,1
+"511","PD","La Liga","2024/2025",498748,14,"REGULAR_SEASON","FINISHED","2024-11-22 20:00:00+00:00","Pablo González Fuertes",82,"Getafe CF",250,"Real Valladolid CF",2,0,0,0,2,2,"Home Win",3,0,33,2,0
+"512","PD","La Liga","2024/2025",498750,14,"REGULAR_SEASON","FINISHED","2024-11-23 13:00:00+00:00","Ricardo de Burgos",95,"Valencia CF",90,"Real Betis Balompié",4,2,1,1,2,6,"Home Win",3,0,42,4,2
+"513","PD","La Liga","2024/2025",498744,14,"REGULAR_SEASON","FINISHED","2024-11-23 15:15:00+00:00","Víctor García Verdura",78,"Club Atlético de Madrid",263,"Deportivo Alavés",2,1,0,1,1,3,"Home Win",3,0,41,2,1
+"514","PD","La Liga","2024/2025",498751,14,"REGULAR_SEASON","FINISHED","2024-11-23 17:30:00+00:00","Alejandro Muñiz Ruiz",275,"UD Las Palmas",89,"RCD Mallorca",2,3,0,0,-1,5,"Away Win",0,3,25,2,3
+"515","PD","La Liga","2024/2025",498752,14,"REGULAR_SEASON","FINISHED","2024-11-23 17:30:00+00:00","Alejandro Hernández Hernández",298,"Girona FC",80,"RCD Espanyol de Barcelona",4,1,4,0,3,5,"Home Win",3,0,31,4,1
+"516","PD","La Liga","2024/2025",498747,14,"REGULAR_SEASON","FINISHED","2024-11-23 20:00:00+00:00","César Soto Grado",558,"RC Celta de Vigo",81,"FC Barcelona",2,2,0,1,0,4,"Draw",1,1,32,2,2
+"517","PD","La Liga","2024/2025",498745,14,"REGULAR_SEASON","FINISHED","2024-11-24 13:00:00+00:00","José Munuera Montero",79,"CA Osasuna",94,"Villarreal CF",2,2,2,0,0,4,"Draw",1,1,35,2,2
+"518","PD","La Liga","2024/2025",498749,14,"REGULAR_SEASON","FINISHED","2024-11-24 15:15:00+00:00","Mateo Busquets Ferrer",559,"Sevilla FC",87,"Rayo Vallecano de Madrid",1,0,1,0,1,1,"Home Win",3,0,43,1,0
+"519","PD","La Liga","2024/2025",498746,14,"REGULAR_SEASON","FINISHED","2024-11-24 17:30:00+00:00","Javier Alberola Rojas",745,"CD Leganés",86,"Real Madrid CF",0,3,0,1,-3,3,"Away Win",0,3,39,0,3
+"520","PD","La Liga","2024/2025",498743,14,"REGULAR_SEASON","FINISHED","2024-11-24 20:00:00+00:00","Jesús Gil Manzano",77,"Athletic Club",92,"Real Sociedad de Fútbol",1,0,1,0,1,1,"Home Win",3,0,38,1,0
+"521","PD","La Liga","2024/2025",498758,15,"REGULAR_SEASON","FINISHED","2024-11-29 20:00:00+00:00","Alejandro Quintero González",89,"RCD Mallorca",95,"Valencia CF",2,1,1,1,1,3,"Home Win",3,0,27,2,1
+"522","PD","La Liga","2024/2025",498754,15,"REGULAR_SEASON","FINISHED","2024-11-30 13:00:00+00:00","Adrián Cordero Vega",81,"FC Barcelona",275,"UD Las Palmas",1,2,0,0,-1,3,"Away Win",0,3,37,1,2
+"523","PD","La Liga","2024/2025",498753,15,"REGULAR_SEASON","FINISHED","2024-11-30 15:15:00+00:00","Isidro Díaz de Mera",263,"Deportivo Alavés",745,"CD Leganés",1,1,0,0,0,2,"Draw",1,1,36,1,1
+"524","PD","La Liga","2024/2025",498762,15,"REGULAR_SEASON","FINISHED","2024-11-30 17:30:00+00:00","José Sánchez Martínez",80,"RCD Espanyol de Barcelona",558,"RC Celta de Vigo",3,1,1,0,2,4,"Home Win",3,0,30,3,1
+"525","PD","La Liga","2024/2025",498761,15,"REGULAR_SEASON","FINISHED","2024-11-30 20:00:00+00:00","Guillermo Cuadra Fernández",250,"Real Valladolid CF",78,"Club Atlético de Madrid",0,5,0,3,-5,5,"Away Win",0,3,34,0,5
+"526","PD","La Liga","2024/2025",498756,15,"REGULAR_SEASON","FINISHED","2024-12-01 13:00:00+00:00","Miguel Ortiz Arias",94,"Villarreal CF",298,"Girona FC",2,2,1,0,0,4,"Draw",1,1,26,2,2
+"527","PD","La Liga","2024/2025",498759,15,"REGULAR_SEASON","FINISHED","2024-12-01 15:15:00+00:00","Alejandro Hernández Hernández",86,"Real Madrid CF",82,"Getafe CF",2,0,2,0,2,2,"Home Win",3,0,31,2,0
+"528","PD","La Liga","2024/2025",498757,15,"REGULAR_SEASON","FINISHED","2024-12-01 17:30:00+00:00","Mario Melero López",87,"Rayo Vallecano de Madrid",77,"Athletic Club",1,2,1,0,-1,3,"Away Win",0,3,40,1,2
+"529","PD","La Liga","2024/2025",498760,15,"REGULAR_SEASON","FINISHED","2024-12-01 20:00:00+00:00","Francisco Hernández Maeso",92,"Real Sociedad de Fútbol",90,"Real Betis Balompié",2,0,2,0,2,2,"Home Win",3,0,28,2,0
+"530","PD","La Liga","2024/2025",498755,15,"REGULAR_SEASON","FINISHED","2024-12-02 20:00:00+00:00","Juan Martínez Munuera",559,"Sevilla FC",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,44,1,1
+"531","PD","La Liga","2024/2025",498768,16,"REGULAR_SEASON","FINISHED","2024-12-06 20:00:00+00:00","Ricardo de Burgos",558,"RC Celta de Vigo",89,"RCD Mallorca",2,0,1,0,2,2,"Home Win",3,0,42,2,0
+"532","PD","La Liga","2024/2025",498771,16,"REGULAR_SEASON","FINISHED","2024-12-07 13:00:00+00:00","Isidro Díaz de Mera",275,"UD Las Palmas",250,"Real Valladolid CF",2,1,1,1,1,3,"Home Win",3,0,36,2,1
+"533","PD","La Liga","2024/2025",498765,16,"REGULAR_SEASON","FINISHED","2024-12-07 15:15:00+00:00","Alejandro Muñiz Ruiz",90,"Real Betis Balompié",81,"FC Barcelona",2,2,0,1,0,4,"Draw",1,1,25,2,2
+"534","PD","La Liga","2024/2025",498770,16,"REGULAR_SEASON","FINISHED","2024-12-07 17:30:00+00:00","José Munuera Montero",95,"Valencia CF",87,"Rayo Vallecano de Madrid",0,1,0,1,-1,1,"Away Win",0,3,35,0,1
+"535","PD","La Liga","2024/2025",498769,16,"REGULAR_SEASON","FINISHED","2024-12-07 20:00:00+00:00","Jesús Gil Manzano",298,"Girona FC",86,"Real Madrid CF",0,3,0,1,-3,3,"Away Win",0,3,38,0,3
+"536","PD","La Liga","2024/2025",498767,16,"REGULAR_SEASON","FINISHED","2024-12-08 13:00:00+00:00","Pablo González Fuertes",745,"CD Leganés",92,"Real Sociedad de Fútbol",0,3,0,1,-3,3,"Away Win",0,3,33,0,3
+"537","PD","La Liga","2024/2025",498763,16,"REGULAR_SEASON","FINISHED","2024-12-08 15:15:00+00:00","Víctor García Verdura",77,"Athletic Club",94,"Villarreal CF",2,0,1,0,2,2,"Home Win",3,0,41,2,0
+"538","PD","La Liga","2024/2025",498766,16,"REGULAR_SEASON","FINISHED","2024-12-08 17:30:00+00:00","César Soto Grado",79,"CA Osasuna",263,"Deportivo Alavés",2,2,0,1,0,4,"Draw",1,1,32,2,2
+"539","PD","La Liga","2024/2025",498764,16,"REGULAR_SEASON","FINISHED","2024-12-08 20:00:00+00:00","Javier Alberola Rojas",78,"Club Atlético de Madrid",559,"Sevilla FC",4,3,1,2,1,7,"Home Win",3,0,39,4,3
+"540","PD","La Liga","2024/2025",498772,16,"REGULAR_SEASON","FINISHED","2024-12-09 20:00:00+00:00","Mateo Busquets Ferrer",82,"Getafe CF",80,"RCD Espanyol de Barcelona",1,0,1,0,1,1,"Home Win",3,0,43,1,0
+"541","PD","La Liga","2024/2025",498781,17,"REGULAR_SEASON","FINISHED","2024-12-13 20:00:00+00:00","Miguel Ortiz Arias",250,"Real Valladolid CF",95,"Valencia CF",1,0,1,0,1,1,"Home Win",3,0,26,1,0
+"542","PD","La Liga","2024/2025",498782,17,"REGULAR_SEASON","FINISHED","2024-12-14 13:00:00+00:00","Adrián Cordero Vega",80,"RCD Espanyol de Barcelona",79,"CA Osasuna",0,0,0,0,0,0,"Draw",1,1,37,0,0
+"543","PD","La Liga","2024/2025",498779,17,"REGULAR_SEASON","FINISHED","2024-12-14 15:15:00+00:00","Francisco Hernández Maeso",89,"RCD Mallorca",298,"Girona FC",2,1,1,1,1,3,"Home Win",3,0,28,2,1
+"544","PD","La Liga","2024/2025",498776,17,"REGULAR_SEASON","FINISHED","2024-12-14 17:30:00+00:00","Jesús Gil Manzano",559,"Sevilla FC",558,"RC Celta de Vigo",1,0,0,0,1,1,"Home Win",3,0,38,1,0
+"545","PD","La Liga","2024/2025",498778,17,"REGULAR_SEASON","FINISHED","2024-12-14 20:00:00+00:00","Juan Martínez Munuera",87,"Rayo Vallecano de Madrid",86,"Real Madrid CF",3,3,2,2,0,6,"Draw",1,1,44,3,3
+"546","PD","La Liga","2024/2025",498773,17,"REGULAR_SEASON","FINISHED","2024-12-15 13:00:00+00:00","César Soto Grado",78,"Club Atlético de Madrid",82,"Getafe CF",1,0,0,0,1,1,"Home Win",3,0,32,1,0
+"547","PD","La Liga","2024/2025",498774,17,"REGULAR_SEASON","FINISHED","2024-12-15 15:15:00+00:00","José Sánchez Martínez",263,"Deportivo Alavés",77,"Athletic Club",1,1,0,1,0,2,"Draw",1,1,30,1,1
+"548","PD","La Liga","2024/2025",498777,17,"REGULAR_SEASON","FINISHED","2024-12-15 17:30:00+00:00","Guillermo Cuadra Fernández",94,"Villarreal CF",90,"Real Betis Balompié",1,2,0,1,-1,3,"Away Win",0,3,34,1,2
+"549","PD","La Liga","2024/2025",498780,17,"REGULAR_SEASON","FINISHED","2024-12-15 17:30:00+00:00","Mario Melero López",92,"Real Sociedad de Fútbol",275,"UD Las Palmas",0,0,0,0,0,0,"Draw",1,1,40,0,0
+"550","PD","La Liga","2024/2025",498775,17,"REGULAR_SEASON","FINISHED","2024-12-15 20:00:00+00:00","Alejandro Quintero González",81,"FC Barcelona",745,"CD Leganés",0,1,0,1,-1,1,"Away Win",0,3,27,0,1
+"551","PD","La Liga","2024/2025",498789,18,"REGULAR_SEASON","FINISHED","2024-12-20 20:00:00+00:00","Pablo González Fuertes",298,"Girona FC",250,"Real Valladolid CF",3,0,2,0,3,3,"Home Win",3,0,33,3,0
+"552","PD","La Liga","2024/2025",498788,18,"REGULAR_SEASON","FINISHED","2024-12-21 13:00:00+00:00","José Munuera Montero",82,"Getafe CF",89,"RCD Mallorca",0,1,0,0,-1,1,"Away Win",0,3,35,0,1
+"553","PD","La Liga","2024/2025",498786,18,"REGULAR_SEASON","FINISHED","2024-12-21 15:15:00+00:00","Mateo Busquets Ferrer",558,"RC Celta de Vigo",92,"Real Sociedad de Fútbol",2,0,2,0,2,2,"Home Win",3,0,43,2,0
+"554","PD","La Liga","2024/2025",498784,18,"REGULAR_SEASON","FINISHED","2024-12-21 17:30:00+00:00","Alejandro Quintero González",79,"CA Osasuna",77,"Athletic Club",1,2,1,1,-1,3,"Away Win",0,3,27,1,2
+"555","PD","La Liga","2024/2025",498787,18,"REGULAR_SEASON","FINISHED","2024-12-21 20:00:00+00:00","Ricardo de Burgos",81,"FC Barcelona",78,"Club Atlético de Madrid",1,2,1,0,-1,3,"Away Win",0,3,42,1,2
+"556","PD","La Liga","2024/2025",498790,18,"REGULAR_SEASON","FINISHED","2024-12-22 13:00:00+00:00","Javier Alberola Rojas",95,"Valencia CF",263,"Deportivo Alavés",2,2,0,1,0,4,"Draw",1,1,39,2,2
+"557","PD","La Liga","2024/2025",498791,18,"REGULAR_SEASON","FINISHED","2024-12-22 15:15:00+00:00","Isidro Díaz de Mera",86,"Real Madrid CF",559,"Sevilla FC",4,2,3,1,2,6,"Home Win",3,0,36,4,2
+"558","PD","La Liga","2024/2025",498785,18,"REGULAR_SEASON","FINISHED","2024-12-22 17:30:00+00:00","Alejandro Muñiz Ruiz",745,"CD Leganés",94,"Villarreal CF",2,5,2,2,-3,7,"Away Win",0,3,25,2,5
+"559","PD","La Liga","2024/2025",498792,18,"REGULAR_SEASON","FINISHED","2024-12-22 17:30:00+00:00","César Soto Grado",275,"UD Las Palmas",80,"RCD Espanyol de Barcelona",1,0,0,0,1,1,"Home Win",3,0,32,1,0
+"560","PD","La Liga","2024/2025",498783,18,"REGULAR_SEASON","FINISHED","2024-12-22 20:00:00+00:00","Víctor García Verdura",90,"Real Betis Balompié",87,"Rayo Vallecano de Madrid",1,1,1,0,0,2,"Draw",1,1,41,1,1
+"561","PD","La Liga","2024/2025",498798,19,"REGULAR_SEASON","FINISHED","2024-12-03 18:00:00+00:00","Jesús Gil Manzano",89,"RCD Mallorca",81,"FC Barcelona",1,5,1,1,-4,6,"Away Win",0,3,38,1,5
+"562","PD","La Liga","2024/2025",498793,19,"REGULAR_SEASON","FINISHED","2024-12-04 20:00:00+00:00","José Sánchez Martínez",77,"Athletic Club",86,"Real Madrid CF",2,1,0,0,1,3,"Home Win",3,0,30,2,1
+"563","PD","La Liga","2024/2025",498797,19,"REGULAR_SEASON","FINISHED","2025-01-10 20:00:00+00:00","Guillermo Cuadra Fernández",87,"Rayo Vallecano de Madrid",558,"RC Celta de Vigo",2,1,1,1,1,3,"Home Win",3,0,34,2,1
+"564","PD","La Liga","2024/2025",498795,19,"REGULAR_SEASON","FINISHED","2025-01-11 13:00:00+00:00","Mateo Busquets Ferrer",263,"Deportivo Alavés",298,"Girona FC",0,1,0,0,-1,1,"Away Win",0,3,43,0,1
+"565","PD","La Liga","2024/2025",498800,19,"REGULAR_SEASON","FINISHED","2025-01-11 15:15:00+00:00","Adrián Cordero Vega",250,"Real Valladolid CF",90,"Real Betis Balompié",1,0,0,0,1,1,"Home Win",3,0,37,1,0
+"566","PD","La Liga","2024/2025",498802,19,"REGULAR_SEASON","FINISHED","2025-01-11 17:30:00+00:00","Juan Martínez Munuera",80,"RCD Espanyol de Barcelona",745,"CD Leganés",1,1,1,1,0,2,"Draw",1,1,44,1,1
+"567","PD","La Liga","2024/2025",498796,19,"REGULAR_SEASON","FINISHED","2025-01-11 20:00:00+00:00","Francisco Hernández Maeso",559,"Sevilla FC",95,"Valencia CF",1,1,0,0,0,2,"Draw",1,1,28,1,1
+"568","PD","La Liga","2024/2025",498801,19,"REGULAR_SEASON","FINISHED","2025-01-12 13:00:00+00:00","Javier Alberola Rojas",275,"UD Las Palmas",82,"Getafe CF",1,2,0,0,-1,3,"Away Win",0,3,39,1,2
+"569","PD","La Liga","2024/2025",498794,19,"REGULAR_SEASON","FINISHED","2025-01-12 15:15:00+00:00","Isidro Díaz de Mera",78,"Club Atlético de Madrid",79,"CA Osasuna",1,0,0,0,1,1,"Home Win",3,0,36,1,0
+"570","PD","La Liga","2024/2025",498799,19,"REGULAR_SEASON","FINISHED","2025-01-13 20:00:00+00:00","César Soto Grado",92,"Real Sociedad de Fútbol",94,"Villarreal CF",1,0,0,0,1,1,"Home Win",3,0,32,1,0
+"571","PD","La Liga","2024/2025",498812,20,"REGULAR_SEASON","FINISHED","2025-01-17 20:00:00+00:00","Ricardo de Burgos",80,"RCD Espanyol de Barcelona",250,"Real Valladolid CF",2,1,1,0,1,3,"Home Win",3,0,42,2,1
+"572","PD","La Liga","2024/2025",498808,20,"REGULAR_SEASON","FINISHED","2025-01-18 13:00:00+00:00","Juan Martínez Munuera",298,"Girona FC",559,"Sevilla FC",1,2,1,0,-1,3,"Away Win",0,3,44,1,2
+"573","PD","La Liga","2024/2025",498805,20,"REGULAR_SEASON","FINISHED","2025-01-18 15:15:00+00:00","Mario Melero López",745,"CD Leganés",78,"Club Atlético de Madrid",1,0,0,0,1,1,"Home Win",3,0,40,1,0
+"574","PD","La Liga","2024/2025",498803,20,"REGULAR_SEASON","FINISHED","2025-01-18 17:30:00+00:00","Alejandro Hernández Hernández",90,"Real Betis Balompié",263,"Deportivo Alavés",1,3,1,1,-2,4,"Away Win",0,3,31,1,3
+"575","PD","La Liga","2024/2025",498807,20,"REGULAR_SEASON","FINISHED","2025-01-18 20:00:00+00:00","Pablo González Fuertes",82,"Getafe CF",81,"FC Barcelona",1,1,1,1,0,2,"Draw",1,1,33,1,1
+"576","PD","La Liga","2024/2025",498806,20,"REGULAR_SEASON","FINISHED","2025-01-19 13:00:00+00:00","Miguel Ortiz Arias",558,"RC Celta de Vigo",77,"Athletic Club",1,2,0,0,-1,3,"Away Win",0,3,26,1,2
+"577","PD","La Liga","2024/2025",498811,20,"REGULAR_SEASON","FINISHED","2025-01-19 15:15:00+00:00","Alejandro Quintero González",86,"Real Madrid CF",275,"UD Las Palmas",4,1,3,1,3,5,"Home Win",3,0,27,4,1
+"578","PD","La Liga","2024/2025",498804,20,"REGULAR_SEASON","FINISHED","2025-01-19 17:30:00+00:00","Alejandro Muñiz Ruiz",79,"CA Osasuna",87,"Rayo Vallecano de Madrid",1,1,0,1,0,2,"Draw",1,1,25,1,1
+"579","PD","La Liga","2024/2025",498809,20,"REGULAR_SEASON","FINISHED","2025-01-19 20:00:00+00:00","Víctor García Verdura",95,"Valencia CF",92,"Real Sociedad de Fútbol",1,0,1,0,1,1,"Home Win",3,0,41,1,0
+"580","PD","La Liga","2024/2025",498810,20,"REGULAR_SEASON","FINISHED","2025-01-20 20:00:00+00:00","José Munuera Montero",94,"Villarreal CF",89,"RCD Mallorca",4,0,4,0,4,4,"Home Win",3,0,35,4,0
+"581","PD","La Liga","2024/2025",498821,21,"REGULAR_SEASON","FINISHED","2025-01-24 20:00:00+00:00","Jesús Gil Manzano",275,"UD Las Palmas",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,38,1,1
+"582","PD","La Liga","2024/2025",498818,21,"REGULAR_SEASON","FINISHED","2025-01-25 13:00:00+00:00","Javier Alberola Rojas",89,"RCD Mallorca",90,"Real Betis Balompié",0,1,0,0,-1,1,"Away Win",0,3,39,0,1
+"583","PD","La Liga","2024/2025",498814,21,"REGULAR_SEASON","FINISHED","2025-01-25 15:15:00+00:00","José Sánchez Martínez",78,"Club Atlético de Madrid",94,"Villarreal CF",1,1,0,1,0,2,"Draw",1,1,30,1,1
+"584","PD","La Liga","2024/2025",498822,21,"REGULAR_SEASON","FINISHED","2025-01-25 17:30:00+00:00","Adrián Cordero Vega",559,"Sevilla FC",80,"RCD Espanyol de Barcelona",1,1,0,1,0,2,"Draw",1,1,37,1,1
+"585","PD","La Liga","2024/2025",498820,21,"REGULAR_SEASON","FINISHED","2025-01-25 20:00:00+00:00","Mateo Busquets Ferrer",250,"Real Valladolid CF",86,"Real Madrid CF",0,3,0,1,-3,3,"Away Win",0,3,43,0,3
+"586","PD","La Liga","2024/2025",498817,21,"REGULAR_SEASON","FINISHED","2025-01-26 13:00:00+00:00","Isidro Díaz de Mera",87,"Rayo Vallecano de Madrid",298,"Girona FC",2,1,0,0,1,3,"Home Win",3,0,36,2,1
+"587","PD","La Liga","2024/2025",498819,21,"REGULAR_SEASON","FINISHED","2025-01-26 15:15:00+00:00","Guillermo Cuadra Fernández",92,"Real Sociedad de Fútbol",82,"Getafe CF",0,3,0,0,-3,3,"Away Win",0,3,34,0,3
+"588","PD","La Liga","2024/2025",498813,21,"REGULAR_SEASON","FINISHED","2025-01-26 17:30:00+00:00","Alejandro Hernández Hernández",77,"Athletic Club",745,"CD Leganés",0,0,0,0,0,0,"Draw",1,1,31,0,0
+"589","PD","La Liga","2024/2025",498816,21,"REGULAR_SEASON","FINISHED","2025-01-26 20:00:00+00:00","César Soto Grado",81,"FC Barcelona",95,"Valencia CF",7,1,5,0,6,8,"Home Win",3,0,32,7,1
+"590","PD","La Liga","2024/2025",498815,21,"REGULAR_SEASON","FINISHED","2025-01-27 20:00:00+00:00","Francisco Hernández Maeso",263,"Deportivo Alavés",558,"RC Celta de Vigo",1,1,1,0,0,2,"Draw",1,1,28,1,1
+"591","PD","La Liga","2024/2025",498826,22,"REGULAR_SEASON","FINISHED","2025-01-31 20:00:00+00:00","Alejandro Quintero González",745,"CD Leganés",87,"Rayo Vallecano de Madrid",0,1,0,0,-1,1,"Away Win",0,3,27,0,1
+"592","PD","La Liga","2024/2025",498828,22,"REGULAR_SEASON","FINISHED","2025-02-01 13:00:00+00:00","Ricardo de Burgos",82,"Getafe CF",559,"Sevilla FC",0,0,0,0,0,0,"Draw",1,1,42,0,0
+"593","PD","La Liga","2024/2025",498831,22,"REGULAR_SEASON","FINISHED","2025-02-01 15:15:00+00:00","Isidro Díaz de Mera",94,"Villarreal CF",250,"Real Valladolid CF",5,1,1,0,4,6,"Home Win",3,0,36,5,1
+"594","PD","La Liga","2024/2025",498823,22,"REGULAR_SEASON","FINISHED","2025-02-01 17:30:00+00:00","Víctor García Verdura",78,"Club Atlético de Madrid",89,"RCD Mallorca",2,0,1,0,2,2,"Home Win",3,0,41,2,0
+"595","PD","La Liga","2024/2025",498832,22,"REGULAR_SEASON","FINISHED","2025-02-01 20:00:00+00:00","Alejandro Muñiz Ruiz",80,"RCD Espanyol de Barcelona",86,"Real Madrid CF",1,0,0,0,1,1,"Home Win",3,0,25,1,0
+"596","PD","La Liga","2024/2025",498827,22,"REGULAR_SEASON","FINISHED","2025-02-02 13:00:00+00:00","José Munuera Montero",81,"FC Barcelona",263,"Deportivo Alavés",1,0,0,0,1,1,"Home Win",3,0,35,1,0
+"597","PD","La Liga","2024/2025",498830,22,"REGULAR_SEASON","FINISHED","2025-02-02 15:15:00+00:00","Pablo González Fuertes",95,"Valencia CF",558,"RC Celta de Vigo",2,1,1,0,1,3,"Home Win",3,0,33,2,1
+"598","PD","La Liga","2024/2025",498825,22,"REGULAR_SEASON","FINISHED","2025-02-02 17:30:00+00:00","Miguel Ortiz Arias",79,"CA Osasuna",92,"Real Sociedad de Fútbol",2,1,1,0,1,3,"Home Win",3,0,26,2,1
+"599","PD","La Liga","2024/2025",498824,22,"REGULAR_SEASON","FINISHED","2025-02-02 20:00:00+00:00","Juan Martínez Munuera",90,"Real Betis Balompié",77,"Athletic Club",2,2,2,1,0,4,"Draw",1,1,44,2,2
+"600","PD","La Liga","2024/2025",498829,22,"REGULAR_SEASON","FINISHED","2025-02-03 20:00:00+00:00","Mario Melero López",298,"Girona FC",275,"UD Las Palmas",2,1,1,0,1,3,"Home Win",3,0,40,2,1
+"601","PD","La Liga","2024/2025",498838,23,"REGULAR_SEASON","FINISHED","2025-02-07 20:00:00+00:00","Jesús Gil Manzano",87,"Rayo Vallecano de Madrid",250,"Real Valladolid CF",1,0,0,0,1,1,"Home Win",3,0,38,1,0
+"602","PD","La Liga","2024/2025",498834,23,"REGULAR_SEASON","FINISHED","2025-02-08 13:00:00+00:00","Mateo Busquets Ferrer",558,"RC Celta de Vigo",90,"Real Betis Balompié",3,2,0,2,1,5,"Home Win",3,0,43,3,2
+"603","PD","La Liga","2024/2025",498833,23,"REGULAR_SEASON","FINISHED","2025-02-08 15:15:00+00:00","José Sánchez Martínez",77,"Athletic Club",298,"Girona FC",3,0,2,0,3,3,"Home Win",3,0,30,3,0
+"604","PD","La Liga","2024/2025",498841,23,"REGULAR_SEASON","FINISHED","2025-02-08 17:30:00+00:00","Francisco Hernández Maeso",275,"UD Las Palmas",94,"Villarreal CF",1,2,0,0,-1,3,"Away Win",0,3,28,1,2
+"605","PD","La Liga","2024/2025",498840,23,"REGULAR_SEASON","FINISHED","2025-02-08 20:00:00+00:00","César Soto Grado",86,"Real Madrid CF",78,"Club Atlético de Madrid",1,1,0,1,0,2,"Draw",1,1,32,1,1
+"606","PD","La Liga","2024/2025",498835,23,"REGULAR_SEASON","FINISHED","2025-02-09 13:00:00+00:00","Isidro Díaz de Mera",263,"Deportivo Alavés",82,"Getafe CF",0,1,0,1,-1,1,"Away Win",0,3,36,0,1
+"607","PD","La Liga","2024/2025",498837,23,"REGULAR_SEASON","FINISHED","2025-02-09 15:15:00+00:00","Guillermo Cuadra Fernández",95,"Valencia CF",745,"CD Leganés",2,0,2,0,2,2,"Home Win",3,0,34,2,0
+"608","PD","La Liga","2024/2025",498842,23,"REGULAR_SEASON","FINISHED","2025-02-09 17:30:00+00:00","Javier Alberola Rojas",92,"Real Sociedad de Fútbol",80,"RCD Espanyol de Barcelona",2,1,1,0,1,3,"Home Win",3,0,39,2,1
+"609","PD","La Liga","2024/2025",498836,23,"REGULAR_SEASON","FINISHED","2025-02-09 20:00:00+00:00","Alejandro Hernández Hernández",559,"Sevilla FC",81,"FC Barcelona",1,4,1,1,-3,5,"Away Win",0,3,31,1,4
+"610","PD","La Liga","2024/2025",498839,23,"REGULAR_SEASON","FINISHED","2025-02-10 20:00:00+00:00","Adrián Cordero Vega",89,"RCD Mallorca",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,37,1,1
+"611","PD","La Liga","2024/2025",498848,24,"REGULAR_SEASON","FINISHED","2025-02-14 20:00:00+00:00","Alejandro Quintero González",298,"Girona FC",82,"Getafe CF",1,2,0,1,-1,3,"Away Win",0,3,27,1,2
+"612","PD","La Liga","2024/2025",498846,24,"REGULAR_SEASON","FINISHED","2025-02-15 13:00:00+00:00","Pablo González Fuertes",745,"CD Leganés",263,"Deportivo Alavés",3,3,2,1,0,6,"Draw",1,1,33,3,3
+"613","PD","La Liga","2024/2025",498845,24,"REGULAR_SEASON","FINISHED","2025-02-15 15:15:00+00:00","José Munuera Montero",79,"CA Osasuna",86,"Real Madrid CF",1,1,0,1,0,2,"Draw",1,1,35,1,1
+"614","PD","La Liga","2024/2025",498843,24,"REGULAR_SEASON","FINISHED","2025-02-15 17:30:00+00:00","Juan Martínez Munuera",78,"Club Atlético de Madrid",558,"RC Celta de Vigo",1,1,0,0,0,2,"Draw",1,1,44,1,1
+"615","PD","La Liga","2024/2025",498849,24,"REGULAR_SEASON","FINISHED","2025-02-15 20:00:00+00:00","Ricardo de Burgos",94,"Villarreal CF",95,"Valencia CF",1,1,1,0,0,2,"Draw",1,1,42,1,1
+"616","PD","La Liga","2024/2025",498852,24,"REGULAR_SEASON","FINISHED","2025-02-16 13:00:00+00:00","Guillermo Cuadra Fernández",80,"RCD Espanyol de Barcelona",77,"Athletic Club",1,1,0,0,0,2,"Draw",1,1,34,1,1
+"617","PD","La Liga","2024/2025",498851,24,"REGULAR_SEASON","FINISHED","2025-02-16 15:15:00+00:00","Javier Alberola Rojas",250,"Real Valladolid CF",559,"Sevilla FC",0,4,0,2,-4,4,"Away Win",0,3,39,0,4
+"618","PD","La Liga","2024/2025",498850,24,"REGULAR_SEASON","FINISHED","2025-02-16 17:30:00+00:00","Miguel Ortiz Arias",89,"RCD Mallorca",275,"UD Las Palmas",3,1,3,0,2,4,"Home Win",3,0,26,3,1
+"619","PD","La Liga","2024/2025",498844,24,"REGULAR_SEASON","FINISHED","2025-02-16 20:00:00+00:00","Jesús Gil Manzano",90,"Real Betis Balompié",92,"Real Sociedad de Fútbol",3,0,0,0,3,3,"Home Win",3,0,38,3,0
+"620","PD","La Liga","2024/2025",498847,24,"REGULAR_SEASON","FINISHED","2025-02-17 20:00:00+00:00","Mario Melero López",81,"FC Barcelona",87,"Rayo Vallecano de Madrid",1,0,1,0,1,1,"Home Win",3,0,40,1,0
+"621","PD","La Liga","2024/2025",498854,25,"REGULAR_SEASON","FINISHED","2025-02-21 20:00:00+00:00","José Sánchez Martínez",558,"RC Celta de Vigo",79,"CA Osasuna",1,0,0,0,1,1,"Home Win",3,0,30,1,0
+"622","PD","La Liga","2024/2025",498862,25,"REGULAR_SEASON","FINISHED","2025-02-22 13:00:00+00:00","Juan Pulido Santana",263,"Deportivo Alavés",80,"RCD Espanyol de Barcelona",0,1,0,0,-1,1,"Away Win",0,3,29,0,1
+"623","PD","La Liga","2024/2025",498858,25,"REGULAR_SEASON","FINISHED","2025-02-22 15:15:00+00:00","Víctor García Verdura",87,"Rayo Vallecano de Madrid",94,"Villarreal CF",0,1,0,0,-1,1,"Away Win",0,3,41,0,1
+"624","PD","La Liga","2024/2025",498857,25,"REGULAR_SEASON","FINISHED","2025-02-22 17:30:00+00:00","Mateo Busquets Ferrer",95,"Valencia CF",78,"Club Atlético de Madrid",0,3,0,2,-3,3,"Away Win",0,3,43,0,3
+"625","PD","La Liga","2024/2025",498861,25,"REGULAR_SEASON","FINISHED","2025-02-22 20:00:00+00:00","Adrián Cordero Vega",275,"UD Las Palmas",81,"FC Barcelona",0,2,0,0,-2,2,"Away Win",0,3,37,0,2
+"626","PD","La Liga","2024/2025",498853,25,"REGULAR_SEASON","FINISHED","2025-02-23 13:00:00+00:00","César Soto Grado",77,"Athletic Club",250,"Real Valladolid CF",7,1,4,0,6,8,"Home Win",3,0,32,7,1
+"627","PD","La Liga","2024/2025",498859,25,"REGULAR_SEASON","FINISHED","2025-02-23 15:15:00+00:00","Guillermo Cuadra Fernández",86,"Real Madrid CF",298,"Girona FC",2,0,1,0,2,2,"Home Win",3,0,34,2,0
+"628","PD","La Liga","2024/2025",498855,25,"REGULAR_SEASON","FINISHED","2025-02-23 17:30:00+00:00","Javier Alberola Rojas",82,"Getafe CF",90,"Real Betis Balompié",1,2,0,1,-1,3,"Away Win",0,3,39,1,2
+"629","PD","La Liga","2024/2025",498860,25,"REGULAR_SEASON","FINISHED","2025-02-23 20:00:00+00:00","Francisco Hernández Maeso",92,"Real Sociedad de Fútbol",745,"CD Leganés",3,0,1,0,3,3,"Home Win",3,0,28,3,0
+"630","PD","La Liga","2024/2025",498856,25,"REGULAR_SEASON","FINISHED","2025-02-24 20:00:00+00:00","Alejandro Muñiz Ruiz",559,"Sevilla FC",89,"RCD Mallorca",1,1,1,0,0,2,"Draw",1,1,25,1,1
+"631","PD","La Liga","2024/2025",498871,26,"REGULAR_SEASON","FINISHED","2025-02-28 20:00:00+00:00","Ricardo de Burgos",250,"Real Valladolid CF",275,"UD Las Palmas",1,1,0,1,0,2,"Draw",1,1,42,1,1
+"632","PD","La Liga","2024/2025",498868,26,"REGULAR_SEASON","FINISHED","2025-03-01 13:00:00+00:00","Miguel Ortiz Arias",298,"Girona FC",558,"RC Celta de Vigo",2,2,1,1,0,4,"Draw",1,1,26,2,2
+"633","PD","La Liga","2024/2025",498869,26,"REGULAR_SEASON","FINISHED","2025-03-01 15:15:00+00:00","Pablo González Fuertes",87,"Rayo Vallecano de Madrid",559,"Sevilla FC",1,1,0,0,0,2,"Draw",1,1,33,1,1
+"634","PD","La Liga","2024/2025",498864,26,"REGULAR_SEASON","FINISHED","2025-03-01 17:30:00+00:00","Alejandro Hernández Hernández",90,"Real Betis Balompié",86,"Real Madrid CF",2,1,1,1,1,3,"Home Win",3,0,31,2,1
+"635","PD","La Liga","2024/2025",498863,26,"REGULAR_SEASON","FINISHED","2025-03-01 20:00:00+00:00","Jesús Gil Manzano",78,"Club Atlético de Madrid",77,"Athletic Club",1,0,0,0,1,1,"Home Win",3,0,38,1,0
+"636","PD","La Liga","2024/2025",498866,26,"REGULAR_SEASON","FINISHED","2025-03-02 13:00:00+00:00","Juan Martínez Munuera",745,"CD Leganés",82,"Getafe CF",1,0,0,0,1,1,"Home Win",3,0,44,1,0
+"637","PD","La Liga","2024/2025",498867,26,"REGULAR_SEASON","FINISHED","2025-03-02 15:15:00+00:00","Alejandro Quintero González",81,"FC Barcelona",92,"Real Sociedad de Fútbol",4,0,2,0,4,4,"Home Win",3,0,27,4,0
+"638","PD","La Liga","2024/2025",498870,26,"REGULAR_SEASON","FINISHED","2025-03-02 17:30:00+00:00","César Soto Grado",89,"RCD Mallorca",263,"Deportivo Alavés",1,1,1,0,0,2,"Draw",1,1,32,1,1
+"639","PD","La Liga","2024/2025",498865,26,"REGULAR_SEASON","FINISHED","2025-03-02 20:00:00+00:00","Mario Melero López",79,"CA Osasuna",95,"Valencia CF",3,3,3,2,0,6,"Draw",1,1,40,3,3
+"640","PD","La Liga","2024/2025",498872,26,"REGULAR_SEASON","FINISHED","2025-04-27 14:15:00+00:00","José Munuera Montero",94,"Villarreal CF",80,"RCD Espanyol de Barcelona",1,0,0,0,1,1,"Home Win",3,0,35,1,0
+"641","PD","La Liga","2024/2025",498875,27,"REGULAR_SEASON","FINISHED","2025-03-08 13:00:00+00:00","Isidro Díaz de Mera",558,"RC Celta de Vigo",745,"CD Leganés",2,1,2,1,1,3,"Home Win",3,0,36,2,1
+"642","PD","La Liga","2024/2025",498876,27,"REGULAR_SEASON","FINISHED","2025-03-08 15:15:00+00:00","Miguel Ortiz Arias",263,"Deportivo Alavés",94,"Villarreal CF",1,0,1,0,1,1,"Home Win",3,0,26,1,0
+"643","PD","La Liga","2024/2025",498879,27,"REGULAR_SEASON","FINISHED","2025-03-08 17:30:00+00:00","Juan Pulido Santana",95,"Valencia CF",250,"Real Valladolid CF",2,1,1,1,1,3,"Home Win",3,0,29,2,1
+"644","PD","La Liga","2024/2025",498878,27,"REGULAR_SEASON","FINISHED","2025-03-09 13:00:00+00:00","Guillermo Cuadra Fernández",82,"Getafe CF",78,"Club Atlético de Madrid",2,1,0,0,1,3,"Home Win",3,0,34,2,1
+"645","PD","La Liga","2024/2025",498880,27,"REGULAR_SEASON","FINISHED","2025-03-09 15:15:00+00:00","Francisco Hernández Maeso",86,"Real Madrid CF",87,"Rayo Vallecano de Madrid",2,1,2,1,1,3,"Home Win",3,0,28,2,1
+"646","PD","La Liga","2024/2025",498873,27,"REGULAR_SEASON","FINISHED","2025-03-09 17:30:00+00:00","Alejandro Hernández Hernández",77,"Athletic Club",89,"RCD Mallorca",1,1,0,0,0,2,"Draw",1,1,31,1,1
+"647","PD","La Liga","2024/2025",498874,27,"REGULAR_SEASON","FINISHED","2025-03-09 17:30:00+00:00","José Sánchez Martínez",90,"Real Betis Balompié",275,"UD Las Palmas",1,0,0,0,1,1,"Home Win",3,0,30,1,0
+"648","PD","La Liga","2024/2025",498881,27,"REGULAR_SEASON","FINISHED","2025-03-09 20:00:00+00:00","Víctor García Verdura",92,"Real Sociedad de Fútbol",559,"Sevilla FC",0,1,0,0,-1,1,"Away Win",0,3,41,0,1
+"649","PD","La Liga","2024/2025",498882,27,"REGULAR_SEASON","FINISHED","2025-03-10 20:00:00+00:00","Adrián Cordero Vega",80,"RCD Espanyol de Barcelona",298,"Girona FC",1,1,0,0,0,2,"Draw",1,1,37,1,1
+"650","PD","La Liga","2024/2025",498877,27,"REGULAR_SEASON","FINISHED","2025-03-27 20:00:00+00:00","Mateo Busquets Ferrer",81,"FC Barcelona",79,"CA Osasuna",3,0,2,0,3,3,"Home Win",3,0,43,3,0
+"651","PD","La Liga","2024/2025",498891,28,"REGULAR_SEASON","FINISHED","2025-03-14 20:00:00+00:00","Mario Melero López",275,"UD Las Palmas",263,"Deportivo Alavés",2,2,0,1,0,4,"Draw",1,1,40,2,2
+"652","PD","La Liga","2024/2025",498890,28,"REGULAR_SEASON","FINISHED","2025-03-15 13:00:00+00:00","Víctor García Verdura",250,"Real Valladolid CF",558,"RC Celta de Vigo",0,1,0,0,-1,1,"Away Win",0,3,41,0,1
+"653","PD","La Liga","2024/2025",498892,28,"REGULAR_SEASON","FINISHED","2025-03-15 15:15:00+00:00","Alejandro Quintero González",89,"RCD Mallorca",80,"RCD Espanyol de Barcelona",2,1,0,0,1,3,"Home Win",3,0,27,2,1
+"654","PD","La Liga","2024/2025",498888,28,"REGULAR_SEASON","FINISHED","2025-03-15 17:30:00+00:00","Jesús Gil Manzano",94,"Villarreal CF",86,"Real Madrid CF",1,2,1,2,-1,3,"Away Win",0,3,38,1,2
+"655","PD","La Liga","2024/2025",498886,28,"REGULAR_SEASON","FINISHED","2025-03-15 20:00:00+00:00","José Munuera Montero",298,"Girona FC",95,"Valencia CF",1,1,0,0,0,2,"Draw",1,1,35,1,1
+"656","PD","La Liga","2024/2025",498885,28,"REGULAR_SEASON","FINISHED","2025-03-16 13:00:00+00:00","César Soto Grado",745,"CD Leganés",90,"Real Betis Balompié",2,3,2,0,-1,5,"Away Win",0,3,32,2,3
+"657","PD","La Liga","2024/2025",498887,28,"REGULAR_SEASON","FINISHED","2025-03-16 15:15:00+00:00","Juan Pulido Santana",559,"Sevilla FC",77,"Athletic Club",0,1,0,0,-1,1,"Away Win",0,3,29,0,1
+"658","PD","La Liga","2024/2025",498884,28,"REGULAR_SEASON","FINISHED","2025-03-16 17:30:00+00:00","Alejandro Hernández Hernández",79,"CA Osasuna",82,"Getafe CF",1,2,1,0,-1,3,"Away Win",0,3,31,1,2
+"659","PD","La Liga","2024/2025",498889,28,"REGULAR_SEASON","FINISHED","2025-03-16 17:30:00+00:00","Alejandro Muñiz Ruiz",87,"Rayo Vallecano de Madrid",92,"Real Sociedad de Fútbol",2,2,0,1,0,4,"Draw",1,1,25,2,2
+"660","PD","La Liga","2024/2025",498883,28,"REGULAR_SEASON","FINISHED","2025-03-16 20:00:00+00:00","Ricardo de Burgos",78,"Club Atlético de Madrid",81,"FC Barcelona",2,4,1,0,-2,6,"Away Win",0,3,42,2,4
+"661","PD","La Liga","2024/2025",498901,29,"REGULAR_SEASON","FINISHED","2025-03-29 13:00:00+00:00","Adrián Cordero Vega",92,"Real Sociedad de Fútbol",250,"Real Valladolid CF",2,1,1,0,1,3,"Home Win",3,0,37,2,1
+"662","PD","La Liga","2024/2025",498902,29,"REGULAR_SEASON","FINISHED","2025-03-29 15:15:00+00:00","Javier Alberola Rojas",80,"RCD Espanyol de Barcelona",78,"Club Atlético de Madrid",1,1,0,1,0,2,"Draw",1,1,39,1,1
+"663","PD","La Liga","2024/2025",498896,29,"REGULAR_SEASON","FINISHED","2025-03-29 17:30:00+00:00","José Munuera Montero",263,"Deportivo Alavés",87,"Rayo Vallecano de Madrid",0,2,0,1,-2,2,"Away Win",0,3,35,0,2
+"664","PD","La Liga","2024/2025",498900,29,"REGULAR_SEASON","FINISHED","2025-03-29 20:00:00+00:00","Pablo González Fuertes",86,"Real Madrid CF",745,"CD Leganés",3,2,1,2,1,5,"Home Win",3,0,33,3,2
+"665","PD","La Liga","2024/2025",498898,29,"REGULAR_SEASON","FINISHED","2025-03-30 12:00:00+00:00","Isidro Díaz de Mera",82,"Getafe CF",94,"Villarreal CF",1,2,1,2,-1,3,"Away Win",0,3,36,1,2
+"666","PD","La Liga","2024/2025",498897,29,"REGULAR_SEASON","FINISHED","2025-03-30 14:15:00+00:00","Juan Pulido Santana",81,"FC Barcelona",298,"Girona FC",4,1,1,0,3,5,"Home Win",3,0,29,4,1
+"667","PD","La Liga","2024/2025",498893,29,"REGULAR_SEASON","FINISHED","2025-03-30 16:30:00+00:00","Guillermo Cuadra Fernández",77,"Athletic Club",79,"CA Osasuna",0,0,0,0,0,0,"Draw",1,1,34,0,0
+"668","PD","La Liga","2024/2025",498899,29,"REGULAR_SEASON","FINISHED","2025-03-30 16:30:00+00:00","Francisco Hernández Maeso",95,"Valencia CF",89,"RCD Mallorca",1,0,0,0,1,1,"Home Win",3,0,28,1,0
+"669","PD","La Liga","2024/2025",498894,29,"REGULAR_SEASON","FINISHED","2025-03-30 19:00:00+00:00","Mateo Busquets Ferrer",90,"Real Betis Balompié",559,"Sevilla FC",2,1,2,1,1,3,"Home Win",3,0,43,2,1
+"670","PD","La Liga","2024/2025",498895,29,"REGULAR_SEASON","FINISHED","2025-03-31 19:00:00+00:00","Juan Martínez Munuera",558,"RC Celta de Vigo",275,"UD Las Palmas",1,1,1,0,0,2,"Draw",1,1,44,1,1
+"671","PD","La Liga","2024/2025",498912,30,"REGULAR_SEASON","FINISHED","2025-04-04 19:00:00+00:00","Unknown",87,"Rayo Vallecano de Madrid",80,"RCD Espanyol de Barcelona",0,4,0,2,-4,4,"Away Win",0,3,-1,0,4
+"672","PD","La Liga","2024/2025",498905,30,"REGULAR_SEASON","FINISHED","2025-04-05 12:00:00+00:00","Alejandro Muñiz Ruiz",298,"Girona FC",263,"Deportivo Alavés",0,1,0,0,-1,1,"Away Win",0,3,25,0,1
+"673","PD","La Liga","2024/2025",498909,30,"REGULAR_SEASON","FINISHED","2025-04-05 14:15:00+00:00","Guillermo Cuadra Fernández",86,"Real Madrid CF",95,"Valencia CF",1,2,0,1,-1,3,"Away Win",0,3,34,1,2
+"674","PD","La Liga","2024/2025",498908,30,"REGULAR_SEASON","FINISHED","2025-04-05 16:30:00+00:00","Ricardo de Burgos",89,"RCD Mallorca",558,"RC Celta de Vigo",1,2,1,0,-1,3,"Away Win",0,3,42,1,2
+"675","PD","La Liga","2024/2025",498904,30,"REGULAR_SEASON","FINISHED","2025-04-05 19:00:00+00:00","Jesús Gil Manzano",81,"FC Barcelona",90,"Real Betis Balompié",1,1,1,1,0,2,"Draw",1,1,38,1,1
+"676","PD","La Liga","2024/2025",498911,30,"REGULAR_SEASON","FINISHED","2025-04-06 12:00:00+00:00","Miguel Ortiz Arias",275,"UD Las Palmas",92,"Real Sociedad de Fútbol",1,3,0,1,-2,4,"Away Win",0,3,26,1,3
+"677","PD","La Liga","2024/2025",498906,30,"REGULAR_SEASON","FINISHED","2025-04-06 14:15:00+00:00","César Soto Grado",559,"Sevilla FC",78,"Club Atlético de Madrid",1,2,1,1,-1,3,"Away Win",0,3,32,1,2
+"678","PD","La Liga","2024/2025",498910,30,"REGULAR_SEASON","FINISHED","2025-04-06 16:30:00+00:00","Alejandro Quintero González",250,"Real Valladolid CF",82,"Getafe CF",0,4,0,3,-4,4,"Away Win",0,3,27,0,4
+"679","PD","La Liga","2024/2025",498907,30,"REGULAR_SEASON","FINISHED","2025-04-06 19:00:00+00:00","Mario Melero López",94,"Villarreal CF",77,"Athletic Club",0,0,0,0,0,0,"Draw",1,1,40,0,0
+"680","PD","La Liga","2024/2025",498903,30,"REGULAR_SEASON","FINISHED","2025-04-07 19:00:00+00:00","Víctor García Verdura",745,"CD Leganés",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,41,1,1
+"681","PD","La Liga","2024/2025",498920,31,"REGULAR_SEASON","FINISHED","2025-04-11 19:00:00+00:00","José Sánchez Martínez",95,"Valencia CF",559,"Sevilla FC",1,0,1,0,1,1,"Home Win",3,0,30,1,0
+"682","PD","La Liga","2024/2025",498921,31,"REGULAR_SEASON","FINISHED","2025-04-12 12:00:00+00:00","José Munuera Montero",92,"Real Sociedad de Fútbol",89,"RCD Mallorca",0,2,0,1,-2,2,"Away Win",0,3,35,0,2
+"683","PD","La Liga","2024/2025",498919,31,"REGULAR_SEASON","FINISHED","2025-04-12 14:15:00+00:00","Javier Alberola Rojas",82,"Getafe CF",275,"UD Las Palmas",1,3,1,0,-2,4,"Away Win",0,3,39,1,3
+"684","PD","La Liga","2024/2025",498922,31,"REGULAR_SEASON","FINISHED","2025-04-12 16:30:00+00:00","Mateo Busquets Ferrer",558,"RC Celta de Vigo",80,"RCD Espanyol de Barcelona",0,2,0,1,-2,2,"Away Win",0,3,43,0,2
+"685","PD","La Liga","2024/2025",498917,31,"REGULAR_SEASON","FINISHED","2025-04-12 19:00:00+00:00","Francisco Hernández Maeso",745,"CD Leganés",81,"FC Barcelona",0,1,0,0,-1,1,"Away Win",0,3,28,0,1
+"686","PD","La Liga","2024/2025",498916,31,"REGULAR_SEASON","FINISHED","2025-04-13 12:00:00+00:00","Pablo González Fuertes",79,"CA Osasuna",298,"Girona FC",2,1,1,0,1,3,"Home Win",3,0,33,2,1
+"687","PD","La Liga","2024/2025",498918,31,"REGULAR_SEASON","FINISHED","2025-04-13 14:15:00+00:00","Juan Martínez Munuera",263,"Deportivo Alavés",86,"Real Madrid CF",0,1,0,1,-1,1,"Away Win",0,3,44,0,1
+"688","PD","La Liga","2024/2025",498915,31,"REGULAR_SEASON","FINISHED","2025-04-13 16:30:00+00:00","Juan Pulido Santana",90,"Real Betis Balompié",94,"Villarreal CF",1,2,1,1,-1,3,"Away Win",0,3,29,1,2
+"689","PD","La Liga","2024/2025",498913,31,"REGULAR_SEASON","FINISHED","2025-04-13 19:00:00+00:00","Adrián Cordero Vega",77,"Athletic Club",87,"Rayo Vallecano de Madrid",3,1,0,1,2,4,"Home Win",3,0,37,3,1
+"690","PD","La Liga","2024/2025",498914,31,"REGULAR_SEASON","FINISHED","2025-04-14 19:00:00+00:00","Isidro Díaz de Mera",78,"Club Atlético de Madrid",250,"Real Valladolid CF",4,2,2,1,2,6,"Home Win",3,0,36,4,2
+"691","PD","La Liga","2024/2025",498932,32,"REGULAR_SEASON","FINISHED","2025-04-18 19:00:00+00:00","Ricardo de Burgos",80,"RCD Espanyol de Barcelona",82,"Getafe CF",1,0,1,0,1,1,"Home Win",3,0,42,1,0
+"692","PD","La Liga","2024/2025",498927,32,"REGULAR_SEASON","FINISHED","2025-04-19 12:00:00+00:00","Alejandro Quintero González",87,"Rayo Vallecano de Madrid",95,"Valencia CF",1,1,1,0,0,2,"Draw",1,1,27,1,1
+"693","PD","La Liga","2024/2025",498923,32,"REGULAR_SEASON","FINISHED","2025-04-19 14:15:00+00:00","Mario Melero López",81,"FC Barcelona",558,"RC Celta de Vigo",4,3,1,1,1,7,"Home Win",3,0,40,4,3
+"694","PD","La Liga","2024/2025",498928,32,"REGULAR_SEASON","FINISHED","2025-04-19 16:30:00+00:00","Alejandro Muñiz Ruiz",89,"RCD Mallorca",745,"CD Leganés",0,0,0,0,0,0,"Draw",1,1,25,0,0
+"695","PD","La Liga","2024/2025",498931,32,"REGULAR_SEASON","FINISHED","2025-04-19 19:00:00+00:00","Víctor García Verdura",275,"UD Las Palmas",78,"Club Atlético de Madrid",1,0,0,0,1,1,"Home Win",3,0,41,1,0
+"696","PD","La Liga","2024/2025",498930,32,"REGULAR_SEASON","FINISHED","2025-04-20 12:00:00+00:00","Jesús Gil Manzano",250,"Real Valladolid CF",79,"CA Osasuna",2,3,0,2,-1,5,"Away Win",0,3,38,2,3
+"697","PD","La Liga","2024/2025",498926,32,"REGULAR_SEASON","FINISHED","2025-04-20 14:15:00+00:00","Guillermo Cuadra Fernández",94,"Villarreal CF",92,"Real Sociedad de Fútbol",2,2,1,1,0,4,"Draw",1,1,34,2,2
+"698","PD","La Liga","2024/2025",498925,32,"REGULAR_SEASON","FINISHED","2025-04-20 16:30:00+00:00","Miguel Ortiz Arias",559,"Sevilla FC",263,"Deportivo Alavés",1,1,1,1,0,2,"Draw",1,1,26,1,1
+"699","PD","La Liga","2024/2025",498929,32,"REGULAR_SEASON","FINISHED","2025-04-20 19:00:00+00:00","Juan Martínez Munuera",86,"Real Madrid CF",77,"Athletic Club",1,0,0,0,1,1,"Home Win",3,0,44,1,0
+"700","PD","La Liga","2024/2025",498924,32,"REGULAR_SEASON","FINISHED","2025-04-21 19:00:00+00:00","Alejandro Hernández Hernández",298,"Girona FC",90,"Real Betis Balompié",1,3,0,3,-2,4,"Away Win",0,3,31,1,3
+"701","PD","La Liga","2024/2025",498942,33,"REGULAR_SEASON","FINISHED","2025-04-22 17:00:00+00:00","Juan Pulido Santana",95,"Valencia CF",80,"RCD Espanyol de Barcelona",1,1,0,1,0,2,"Draw",1,1,29,1,1
+"702","PD","La Liga","2024/2025",498940,33,"REGULAR_SEASON","FINISHED","2025-04-22 19:30:00+00:00","Miguel Ortiz Arias",81,"FC Barcelona",89,"RCD Mallorca",1,0,0,0,1,1,"Home Win",3,0,26,1,0
+"703","PD","La Liga","2024/2025",498933,33,"REGULAR_SEASON","FINISHED","2025-04-23 17:00:00+00:00","Isidro Díaz de Mera",77,"Athletic Club",275,"UD Las Palmas",1,0,1,0,1,1,"Home Win",3,0,36,1,0
+"704","PD","La Liga","2024/2025",498938,33,"REGULAR_SEASON","FINISHED","2025-04-23 17:00:00+00:00","Javier Alberola Rojas",558,"RC Celta de Vigo",94,"Villarreal CF",3,0,1,0,3,3,"Home Win",3,0,39,3,0
+"705","PD","La Liga","2024/2025",498939,33,"REGULAR_SEASON","FINISHED","2025-04-23 19:30:00+00:00","Mateo Busquets Ferrer",263,"Deportivo Alavés",92,"Real Sociedad de Fútbol",1,0,0,0,1,1,"Home Win",3,0,43,1,0
+"706","PD","La Liga","2024/2025",498941,33,"REGULAR_SEASON","FINISHED","2025-04-23 19:30:00+00:00","José Sánchez Martínez",82,"Getafe CF",86,"Real Madrid CF",0,1,0,1,-1,1,"Away Win",0,3,30,0,1
+"707","PD","La Liga","2024/2025",498936,33,"REGULAR_SEASON","FINISHED","2025-04-24 17:00:00+00:00","Adrián Cordero Vega",79,"CA Osasuna",559,"Sevilla FC",1,0,1,0,1,1,"Home Win",3,0,37,1,0
+"708","PD","La Liga","2024/2025",498937,33,"REGULAR_SEASON","FINISHED","2025-04-24 17:00:00+00:00","José Munuera Montero",745,"CD Leganés",298,"Girona FC",1,1,0,0,0,2,"Draw",1,1,35,1,1
+"709","PD","La Liga","2024/2025",498934,33,"REGULAR_SEASON","FINISHED","2025-04-24 19:30:00+00:00","Pablo González Fuertes",78,"Club Atlético de Madrid",87,"Rayo Vallecano de Madrid",3,0,2,0,3,3,"Home Win",3,0,33,3,0
+"710","PD","La Liga","2024/2025",498935,33,"REGULAR_SEASON","FINISHED","2025-04-24 19:30:00+00:00","Francisco Hernández Maeso",90,"Real Betis Balompié",250,"Real Valladolid CF",5,1,1,1,4,6,"Home Win",3,0,28,5,1
+"711","PD","La Liga","2024/2025",498947,34,"REGULAR_SEASON","FINISHED","2025-05-02 19:00:00+00:00","Víctor García Verdura",87,"Rayo Vallecano de Madrid",82,"Getafe CF",1,0,1,0,1,1,"Home Win",3,0,41,1,0
+"712","PD","La Liga","2024/2025",498943,34,"REGULAR_SEASON","FINISHED","2025-05-03 12:00:00+00:00","Juan Martínez Munuera",263,"Deportivo Alavés",78,"Club Atlético de Madrid",0,0,0,0,0,0,"Draw",1,1,44,0,0
+"713","PD","La Liga","2024/2025",498946,34,"REGULAR_SEASON","FINISHED","2025-05-03 14:15:00+00:00","Alejandro Quintero González",94,"Villarreal CF",79,"CA Osasuna",4,2,3,0,2,6,"Home Win",3,0,27,4,2
+"714","PD","La Liga","2024/2025",498951,34,"REGULAR_SEASON","FINISHED","2025-05-03 16:30:00+00:00","Ricardo de Burgos",275,"UD Las Palmas",95,"Valencia CF",2,3,1,1,-1,5,"Away Win",0,3,42,2,3
+"715","PD","La Liga","2024/2025",498950,34,"REGULAR_SEASON","FINISHED","2025-05-03 19:00:00+00:00","Alejandro Muñiz Ruiz",250,"Real Valladolid CF",81,"FC Barcelona",1,2,1,0,-1,3,"Away Win",0,3,25,1,2
+"716","PD","La Liga","2024/2025",498948,34,"REGULAR_SEASON","FINISHED","2025-05-04 12:00:00+00:00","Jesús Gil Manzano",86,"Real Madrid CF",558,"RC Celta de Vigo",3,2,2,0,1,5,"Home Win",3,0,38,3,2
+"717","PD","La Liga","2024/2025",498945,34,"REGULAR_SEASON","FINISHED","2025-05-04 14:15:00+00:00","Alejandro Hernández Hernández",559,"Sevilla FC",745,"CD Leganés",2,2,1,1,0,4,"Draw",1,1,31,2,2
+"718","PD","La Liga","2024/2025",498952,34,"REGULAR_SEASON","FINISHED","2025-05-04 16:30:00+00:00","Guillermo Cuadra Fernández",80,"RCD Espanyol de Barcelona",90,"Real Betis Balompié",1,2,1,0,-1,3,"Away Win",0,3,34,1,2
+"719","PD","La Liga","2024/2025",498949,34,"REGULAR_SEASON","FINISHED","2025-05-04 19:00:00+00:00","César Soto Grado",92,"Real Sociedad de Fútbol",77,"Athletic Club",0,0,0,0,0,0,"Draw",1,1,32,0,0
+"720","PD","La Liga","2024/2025",498944,34,"REGULAR_SEASON","FINISHED","2025-05-05 19:00:00+00:00","Mario Melero López",298,"Girona FC",89,"RCD Mallorca",1,0,1,0,1,1,"Home Win",3,0,40,1,0
+"721","PD","La Liga","2024/2025",498961,35,"REGULAR_SEASON","FINISHED","2025-05-09 19:00:00+00:00","Francisco Hernández Maeso",275,"UD Las Palmas",87,"Rayo Vallecano de Madrid",0,1,0,0,-1,1,"Away Win",0,3,28,0,1
+"722","PD","La Liga","2024/2025",498959,35,"REGULAR_SEASON","FINISHED","2025-05-10 12:00:00+00:00","Adrián Cordero Vega",95,"Valencia CF",82,"Getafe CF",3,0,3,0,3,3,"Home Win",3,0,37,3,0
+"723","PD","La Liga","2024/2025",498956,35,"REGULAR_SEASON","FINISHED","2025-05-10 14:15:00+00:00","Pablo González Fuertes",558,"RC Celta de Vigo",559,"Sevilla FC",3,2,1,1,1,5,"Home Win",3,0,33,3,2
+"724","PD","La Liga","2024/2025",498958,35,"REGULAR_SEASON","FINISHED","2025-05-10 16:30:00+00:00","Isidro Díaz de Mera",298,"Girona FC",94,"Villarreal CF",0,1,0,0,-1,1,"Away Win",0,3,36,0,1
+"725","PD","La Liga","2024/2025",498960,35,"REGULAR_SEASON","FINISHED","2025-05-10 16:30:00+00:00","Juan Pulido Santana",89,"RCD Mallorca",250,"Real Valladolid CF",2,1,1,1,1,3,"Home Win",3,0,29,2,1
+"726","PD","La Liga","2024/2025",498954,35,"REGULAR_SEASON","FINISHED","2025-05-10 19:00:00+00:00","José Sánchez Martínez",78,"Club Atlético de Madrid",92,"Real Sociedad de Fútbol",4,0,4,0,4,4,"Home Win",3,0,30,4,0
+"727","PD","La Liga","2024/2025",498962,35,"REGULAR_SEASON","FINISHED","2025-05-11 12:00:00+00:00","Javier Alberola Rojas",745,"CD Leganés",80,"RCD Espanyol de Barcelona",3,2,2,0,1,5,"Home Win",3,0,39,3,2
+"728","PD","La Liga","2024/2025",498957,35,"REGULAR_SEASON","FINISHED","2025-05-11 14:15:00+00:00","Alejandro Hernández Hernández",81,"FC Barcelona",86,"Real Madrid CF",4,3,4,2,1,7,"Home Win",3,0,31,4,3
+"729","PD","La Liga","2024/2025",498953,35,"REGULAR_SEASON","FINISHED","2025-05-11 16:30:00+00:00","José Munuera Montero",77,"Athletic Club",263,"Deportivo Alavés",1,0,0,0,1,1,"Home Win",3,0,35,1,0
+"730","PD","La Liga","2024/2025",498955,35,"REGULAR_SEASON","FINISHED","2025-05-11 19:00:00+00:00","Miguel Ortiz Arias",90,"Real Betis Balompié",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,26,1,1
+"731","PD","La Liga","2024/2025",498971,36,"REGULAR_SEASON","FINISHED","2025-05-13 17:00:00+00:00","Alejandro Quintero González",250,"Real Valladolid CF",298,"Girona FC",0,1,0,0,-1,1,"Away Win",0,3,27,0,1
+"732","PD","La Liga","2024/2025",498970,36,"REGULAR_SEASON","FINISHED","2025-05-13 18:00:00+00:00","Víctor García Verdura",92,"Real Sociedad de Fútbol",558,"RC Celta de Vigo",0,1,0,1,-1,1,"Away Win",0,3,41,0,1
+"733","PD","La Liga","2024/2025",498966,36,"REGULAR_SEASON","FINISHED","2025-05-13 19:30:00+00:00","Juan Martínez Munuera",559,"Sevilla FC",275,"UD Las Palmas",1,0,0,0,1,1,"Home Win",3,0,44,1,0
+"734","PD","La Liga","2024/2025",498964,36,"REGULAR_SEASON","FINISHED","2025-05-14 17:00:00+00:00","Jesús Gil Manzano",263,"Deportivo Alavés",95,"Valencia CF",1,0,0,0,1,1,"Home Win",3,0,38,1,0
+"735","PD","La Liga","2024/2025",498967,36,"REGULAR_SEASON","FINISHED","2025-05-14 17:00:00+00:00","Ricardo de Burgos",94,"Villarreal CF",745,"CD Leganés",3,0,3,0,3,3,"Home Win",3,0,42,3,0
+"736","PD","La Liga","2024/2025",498969,36,"REGULAR_SEASON","FINISHED","2025-05-14 19:30:00+00:00","Javier Alberola Rojas",86,"Real Madrid CF",89,"RCD Mallorca",2,1,0,1,1,3,"Home Win",3,0,39,2,1
+"737","PD","La Liga","2024/2025",498963,36,"REGULAR_SEASON","FINISHED","2025-05-15 17:00:00+00:00","Mario Melero López",79,"CA Osasuna",78,"Club Atlético de Madrid",2,0,1,0,2,2,"Home Win",3,0,40,2,0
+"738","PD","La Liga","2024/2025",498968,36,"REGULAR_SEASON","FINISHED","2025-05-15 17:00:00+00:00","Pablo González Fuertes",87,"Rayo Vallecano de Madrid",90,"Real Betis Balompié",2,2,2,0,0,4,"Draw",1,1,33,2,2
+"739","PD","La Liga","2024/2025",498965,36,"REGULAR_SEASON","FINISHED","2025-05-15 19:30:00+00:00","Guillermo Cuadra Fernández",82,"Getafe CF",77,"Athletic Club",0,2,0,0,-2,2,"Away Win",0,3,34,0,2
+"740","PD","La Liga","2024/2025",498972,36,"REGULAR_SEASON","FINISHED","2025-05-15 19:30:00+00:00","César Soto Grado",80,"RCD Espanyol de Barcelona",81,"FC Barcelona",0,2,0,0,-2,2,"Away Win",0,3,32,0,2
+"741","PD","La Liga","2024/2025",498973,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Adrián Cordero Vega",78,"Club Atlético de Madrid",90,"Real Betis Balompié",4,1,2,0,3,5,"Home Win",3,0,37,4,1
+"742","PD","La Liga","2024/2025",498974,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Juan Pulido Santana",558,"RC Celta de Vigo",87,"Rayo Vallecano de Madrid",1,2,1,2,-1,3,"Away Win",0,3,29,1,2
+"743","PD","La Liga","2024/2025",498975,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","José Munuera Montero",81,"FC Barcelona",94,"Villarreal CF",2,3,2,1,-1,5,"Away Win",0,3,35,2,3
+"744","PD","La Liga","2024/2025",498976,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Mateo Busquets Ferrer",559,"Sevilla FC",86,"Real Madrid CF",0,2,0,0,-2,2,"Away Win",0,3,43,0,2
+"745","PD","La Liga","2024/2025",498977,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Alejandro Muñiz Ruiz",95,"Valencia CF",77,"Athletic Club",0,1,0,0,-1,1,"Away Win",0,3,25,0,1
+"746","PD","La Liga","2024/2025",498978,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Alejandro Hernández Hernández",89,"RCD Mallorca",82,"Getafe CF",1,2,0,0,-1,3,"Away Win",0,3,31,1,2
+"747","PD","La Liga","2024/2025",498979,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Miguel Ortiz Arias",92,"Real Sociedad de Fútbol",298,"Girona FC",3,2,2,1,1,5,"Home Win",3,0,26,3,2
+"748","PD","La Liga","2024/2025",498980,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Isidro Díaz de Mera",250,"Real Valladolid CF",263,"Deportivo Alavés",0,1,0,1,-1,1,"Away Win",0,3,36,0,1
+"749","PD","La Liga","2024/2025",498981,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","José Sánchez Martínez",275,"UD Las Palmas",745,"CD Leganés",0,1,0,1,-1,1,"Away Win",0,3,30,0,1
+"750","PD","La Liga","2024/2025",498982,37,"REGULAR_SEASON","FINISHED","2025-05-18 17:00:00+00:00","Francisco Hernández Maeso",79,"CA Osasuna",80,"RCD Espanyol de Barcelona",2,0,1,0,2,2,"Home Win",3,0,28,2,0
+"751","PD","La Liga","2024/2025",498984,38,"REGULAR_SEASON","FINISHED","2025-05-23 19:00:00+00:00","Víctor García Verdura",90,"Real Betis Balompié",95,"Valencia CF",1,1,1,0,0,2,"Draw",1,1,41,1,1
+"752","PD","La Liga","2024/2025",498991,38,"REGULAR_SEASON","FINISHED","2025-05-24 14:15:00+00:00","Mario Melero López",86,"Real Madrid CF",92,"Real Sociedad de Fútbol",2,0,1,0,2,2,"Home Win",3,0,40,2,0
+"753","PD","La Liga","2024/2025",498985,38,"REGULAR_SEASON","FINISHED","2025-05-24 16:30:00+00:00","César Soto Grado",745,"CD Leganés",250,"Real Valladolid CF",3,0,3,0,3,3,"Home Win",3,0,32,3,0
+"754","PD","La Liga","2024/2025",498992,38,"REGULAR_SEASON","FINISHED","2025-05-24 16:30:00+00:00","Alejandro Muñiz Ruiz",80,"RCD Espanyol de Barcelona",275,"UD Las Palmas",2,0,0,0,2,2,"Home Win",3,0,25,2,0
+"755","PD","La Liga","2024/2025",498986,38,"REGULAR_SEASON","FINISHED","2025-05-24 19:00:00+00:00","Guillermo Cuadra Fernández",263,"Deportivo Alavés",79,"CA Osasuna",1,1,0,0,0,2,"Draw",1,1,34,1,1
+"756","PD","La Liga","2024/2025",498987,38,"REGULAR_SEASON","FINISHED","2025-05-24 19:00:00+00:00","Juan Martínez Munuera",82,"Getafe CF",558,"RC Celta de Vigo",1,2,1,1,-1,3,"Away Win",0,3,44,1,2
+"757","PD","La Liga","2024/2025",498990,38,"REGULAR_SEASON","FINISHED","2025-05-24 19:00:00+00:00","Ricardo de Burgos",87,"Rayo Vallecano de Madrid",89,"RCD Mallorca",0,0,0,0,0,0,"Draw",1,1,42,0,0
+"758","PD","La Liga","2024/2025",498988,38,"REGULAR_SEASON","FINISHED","2025-05-25 12:00:00+00:00","Jesús Gil Manzano",298,"Girona FC",78,"Club Atlético de Madrid",0,4,0,0,-4,4,"Away Win",0,3,38,0,4
+"759","PD","La Liga","2024/2025",498989,38,"REGULAR_SEASON","FINISHED","2025-05-25 14:15:00+00:00","Javier Alberola Rojas",94,"Villarreal CF",559,"Sevilla FC",4,2,3,1,2,6,"Home Win",3,0,39,4,2
+"760","PD","La Liga","2024/2025",498983,38,"REGULAR_SEASON","FINISHED","2025-05-25 19:00:00+00:00","Pablo González Fuertes",77,"Athletic Club",81,"FC Barcelona",0,3,0,2,-3,3,"Away Win",0,3,33,0,3

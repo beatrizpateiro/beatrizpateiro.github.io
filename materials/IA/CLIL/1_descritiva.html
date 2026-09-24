@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Estatística descritiva – Laboratorios da materia Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./2_probabilidade.html" rel="next">
+<link href="./0_introducion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c5f0c0a35ff45d3efbfe7e2e7f738dd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_descritiva.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Laboratorios da materia Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución a R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión linear</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#táboas-de-frecuencias" id="toc-táboas-de-frecuencias" class="nav-link active" data-scroll-target="#táboas-de-frecuencias"><span class="header-section-number">1.1</span> Táboas de frecuencias</a></li>
+  <li><a href="#representacións-gráficas" id="toc-representacións-gráficas" class="nav-link" data-scroll-target="#representacións-gráficas"><span class="header-section-number">1.2</span> Representacións gráficas</a></li>
+  <li><a href="#medidas-características" id="toc-medidas-características" class="nav-link" data-scroll-target="#medidas-características"><span class="header-section-number">1.3</span> Medidas características</a></li>
+  <li><a href="#tipificación-e-transformación-de-datos-en-r" id="toc-tipificación-e-transformación-de-datos-en-r" class="nav-link" data-scroll-target="#tipificación-e-transformación-de-datos-en-r"><span class="header-section-number">1.4</span> Tipificación e transformación de datos en R</a>
+  <ul class="collapse">
+  <li><a href="#tipificar-datos" id="toc-tipificar-datos" class="nav-link" data-scroll-target="#tipificar-datos"><span class="header-section-number">1.4.1</span> Tipificar datos</a></li>
+  <li><a href="#transformación-de-datos" id="toc-transformación-de-datos" class="nav-link" data-scroll-target="#transformación-de-datos"><span class="header-section-number">1.4.2</span> Transformación de datos</a></li>
+  </ul></li>
+  <li><a href="#estatística-descritiva-bidimensional" id="toc-estatística-descritiva-bidimensional" class="nav-link" data-scroll-target="#estatística-descritiva-bidimensional"><span class="header-section-number">1.5</span> Estatística descritiva bidimensional</a>
+  <ul class="collapse">
+  <li><a href="#táboas-de-continxencia" id="toc-táboas-de-continxencia" class="nav-link" data-scroll-target="#táboas-de-continxencia"><span class="header-section-number">1.5.1</span> Táboas de continxencia</a></li>
+  <li><a href="#boxplot-para-unha-variable-continua-segundo-unha-categórica" id="toc-boxplot-para-unha-variable-continua-segundo-unha-categórica" class="nav-link" data-scroll-target="#boxplot-para-unha-variable-continua-segundo-unha-categórica"><span class="header-section-number">1.5.2</span> Boxplot para unha variable continua segundo unha categórica</a></li>
+  <li><a href="#análise-de-dúas-variables-cuantitativas" id="toc-análise-de-dúas-variables-cuantitativas" class="nav-link" data-scroll-target="#análise-de-dúas-variables-cuantitativas"><span class="header-section-number">1.5.3</span> Análise de dúas variables cuantitativas</a></li>
+  </ul></li>
+  <li><a href="#táboa-resumo-de-procedementos-e-funcións" id="toc-táboa-resumo-de-procedementos-e-funcións" class="nav-link" data-scroll-target="#táboa-resumo-de-procedementos-e-funcións"><span class="header-section-number">1.6</span> Táboa resumo de procedementos e funcións</a></li>
+  <li><a href="#exercicios" id="toc-exercicios" class="nav-link" data-scroll-target="#exercicios"><span class="header-section-number">1.7</span> EXERCICIOS</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLE/"><i class="bi bi-link-45deg"></i>Material de teoría</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Como comentamos nas sesións expositivas, unha análise estatística normalmente comeza cun conxunto de datos que usamos como mostra representativa dunha poboación máis ampla. O obxectivo da estatística descritiva é organizar, resumir e presentar a información contida nesta mostra, empregando principalmente táboas de frecuencias, medidas numéricas e representacións gráficas.</p>
+<p>Esta fase, relacionada coa análise exploratoria de datos (EDA, polas súas siglas en inglés), tamén inclúe o preprocesado dos datos como paso fundamental. Nesta etapa realízanse tarefas como eliminar ou imputar valores ausentes, corrixir formatos incorrectos e detectar e tratar valores atípicos.</p>
+<section id="táboas-de-frecuencias" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="táboas-de-frecuencias"><span class="header-section-number">1.1</span> Táboas de frecuencias</h2>
+<p>Unha táboa de frecuencias está composta por varias columnas: as frecuencias absolutas, as frecuencias relativas e as súas correspondentes acumuladas, cando teñan sentido. Comezaremos por obter as frecuencias absolutas, para o que se utiliza a función <code>table()</code>. No caso das frecuencias relativas é tan sinxelo como dividir as frecuencias absolutas previamente calculadas entre o tamaño muestral, que se pode obter facilmente coa función <code>length()</code>.</p>
+<p>Consideremos unha mostra de 20 observacións da variable <span class="math inline">\(X=\)</span> Satisfacción co servizo de atención ao cliente, que introducimos en R do seguinte modo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>satisfaccion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"boa"</span>, <span class="st">"boa"</span>, <span class="st">"regular"</span>, <span class="st">"moi boa"</span>, <span class="st">"mala"</span>, <span class="st">"boa"</span>, <span class="st">"boa"</span>, <span class="st">"regular"</span>, <span class="st">"moi mala"</span>, <span class="st">"boa"</span>, <span class="st">"moi boa"</span>, <span class="st">"moi boa"</span>, <span class="st">"regular"</span>, <span class="st">"boa"</span>, <span class="st">"mala"</span>, <span class="st">"boa"</span>, <span class="st">"moi boa"</span>, <span class="st">"moi boa"</span>, <span class="st">"boa"</span>, <span class="st">"regular"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Esta variable así definida é almacenada en R como unha variable de tipo carácter. Para facela de tipo factor (que é o tipo de variables que R emprega para as variables cualitativas) e que permite comprender que existen unhas determinadas categorías que se van repetindo na nosa mostra faremos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>satisfaccion <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(satisfaccion)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(satisfaccion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Por defecto, e tal e como se observa na saída, R ordena as categorías alfabeticamente. Se queremos que aparezan nunha orde “lóxica” debemos de permutarlas segundo ese criterio:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>satisfaccion <span class="ot">&lt;-</span> <span class="fu">factor</span>(satisfaccion, <span class="at">levels =</span> <span class="fu">levels</span>(satisfaccion)[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>)])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(satisfaccion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nun primeiro lugar obteremos as frecuencias absolutas e relativas:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Fabs <span class="ot">&lt;-</span> <span class="fu">table</span>(satisfaccion)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Fabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Frel <span class="ot">&lt;-</span> <span class="fu">table</span>(satisfaccion) <span class="sc">/</span> <span class="fu">length</span>(satisfaccion)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Frel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para obter as frecuencias acumuladas (tanto absolutas como relativas) que neste caso ten sentido calcular por tratarse dunha variable cualitativa ordinal, utilízase a función <code>cumsum()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>FabsAcum <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(Fabs)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>FabsAcum</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>FrelAcum <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(Frel)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>FrelAcum</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para ver a táboa de frecuencias completa, podemos “pegar por columnas” os vectores calculados previamente coa función <code>cbind()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Taboa <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Fabs, Frel, FabsAcum, FrelAcum)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Taboa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Vexamos agora un exemplo con datos reais. No conxunto de datos <code>quine</code> da libraría <code>MASS</code> recóllese información sobre o absentismo escolar de 146 escolares en Nova Gales (Australia). A función <code>head()</code> amosa as primeiras filas do conxunto de datos. Entre as variables recollidas están o sexo (<code>Sex</code>) e a idade (<code>Age</code>) medida en grupos. Para construír as correspondentes táboas de frecuencias empregaremos o seguinte código (hai que ter en conta que a variable <code>Age</code> está categorizada e é cualitativa ordinal, mentres que <code>Sex</code> é cualitativa nominal).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(quine)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ni <span class="ot">&lt;-</span> <span class="fu">table</span>(quine<span class="sc">$</span>Age)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fi <span class="ot">&lt;-</span> ni <span class="sc">/</span> <span class="fu">length</span>(quine<span class="sc">$</span>Age)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>Nin <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(ni)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>Fi <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(fi)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>tabAge <span class="ot">&lt;-</span> <span class="fu">cbind</span>(ni, fi, Nin, Fi)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>tabAge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Podemos estar interesados en redondear a un número de cifras decimais concreto, para o que podemos utilizar a función <code>round()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tabAge <span class="ot">&lt;-</span> <span class="fu">round</span>(tabAge, <span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tabAge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para a variable <code>Sex</code> non calculamos frecuencias acumulados, pois non ten sentido.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ni <span class="ot">&lt;-</span> <span class="fu">table</span>(quine<span class="sc">$</span>Sex)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fi <span class="ot">&lt;-</span> ni <span class="sc">/</span> <span class="fu">length</span>(quine<span class="sc">$</span>Sex)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tabSex <span class="ot">&lt;-</span> <span class="fu">cbind</span>(ni, fi)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>tabSex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="representacións-gráficas" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="representacións-gráficas"><span class="header-section-number">1.2</span> Representacións gráficas</h2>
+<p>As representacións gráficas máis simples para variables cualitativas ou cuantitativas discretas son o <strong>diagrama de barras</strong> e o <strong>diagrama de sectores</strong>, como vimos no Tema 1. Sobre os datos do exemplo inicial sobre a variable <span class="math inline">\(X=\)</span> Satisfacción co servizo de atención ao cliente, poderiamos construír un diagrama de barras executando:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(satisfaccion), <span class="at">ylab =</span> <span class="st">"Proporción"</span>, <span class="at">col =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>e para debuxar o diagrama de sectores fariamos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">table</span>(satisfaccion), <span class="at">main =</span> <span class="st">"Satisfacción"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nótese que calquera das representacións anteriores poderíanse obter para unha táboa de frecuencias relativas simplemente dividindo entre o tamaño muestral, é dicir, <code>length(satisfaccion)</code>.</p>
+<p>No caso do exemplo con datos reais, representaremos tanto <code>Age</code> como <code>Sex</code> mediante diagramas de barras, na primeira farémolo coas frecuencias absolutas e na segunda coas relativas:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(quine<span class="sc">$</span>Age), <span class="at">ylab =</span> <span class="st">"Frecuencias absolutas"</span>, <span class="at">col =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(quine<span class="sc">$</span>Sex) <span class="sc">/</span> <span class="fu">length</span>(quine<span class="sc">$</span>Sex), <span class="at">ylab =</span> <span class="st">"Frecuencias relativas"</span>, <span class="at">col =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Para variables cuantitativas continuas consideremos o exemplo dos datos do geyser Old Faithful, dispoñible dentro da libraría <code>MASS</code> no datase <code>geyser</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(geyser)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>duration <span class="ot">&lt;-</span> geyser<span class="sc">$</span>duration</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Se debuxamos un diagrama de barras ou un diagrama de sectores para os datos de duración de erupciones:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(duration)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ponse de manifesto que ningún deles resulta informativo cando se aplican sobre variables cuantitativas continuas (como xa sabiamos pola teoría estudada). Unha forma de poder aplicalos é categorizando, ou facendo un resumo dos valores da variable por intervalos, aínda que iso leva certa perdida de información.</p>
+<p>Un dos gráficos adecuados para este tipo de datos é o histograma, que podemos debuxar en frecuencias absolutas ou relativas empregando a función <code>hist()</code> co argumento <code>freq=FALSE</code> para a densidade de frecuencia.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>, <span class="at">xlab =</span> <span class="st">"tempo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>, <span class="at">xlab =</span> <span class="st">"tempo"</span>, <span class="at">freq =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O histograma é sensible ao número de intervalos que se consideran. A continuación mostramos histogramas para distintos números de intervalos. En R, isto contrólase mediante o argumento <code>breaks</code>, que define como se dividen os datos. Se se lle pasa un valor numérico, R tentará crear aproximadamente ese número de intervalos. Tamén se poden especificar os puntos de corte exactos dos intervalos, garantindo así o número e a posición exacta das barras do histograma.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">9</span>, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">24</span>, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration, <span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">49</span>, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Histograma do tempo de erupción"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="medidas-características" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="medidas-características"><span class="header-section-number">1.3</span> Medidas características</h2>
+<p>A función <code>summary()</code> proporciónanos información xeral sobre calquera variable. No caso de variables cuantitativas, o que devolve é o valor do mínimo, o máximo, a media e os cuartiles. Para variables cualitativas é máis simple e devolve unicamente un reconto por categorías, é dicir, as frecuencias absolutas (e por tanto o mesmo que a función <code>table</code> que vimos anteriomente).</p>
+<p>Para calcular a <strong>media muestral</strong> utilizamos a función <code>mean()</code> coa que tamén se poden obter medias truncadas mediante o argumento <code>trim</code>, que nos permite introducir unha fracción (de 0 a 0.5) que indica a porcentaxe de datos máis altos e máis baixos que se eliminan. Deste xeito, obtense unha media robustificada no sentido de que xa non é tan sensible á presenza de datos atípicos.</p>
+<p>Non existe unha función en R que calcule a <strong>varianza muestral</strong>. A función <code>var()</code> devolve a <strong>case-varianza</strong> muestral, polo que debemos transformar o resultado para obter a varianza: <span class="math display">\[s_c^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar x)^2 \Longrightarrow s^2=\frac{n-1}{n}s_c^2.\]</span></p>
+<p>Do mesmo xeito que ocorre coa función <code>var()</code>, a función <code>sd()</code> proporciona a <strong>case-desviación típica muestral</strong>, se queremos calcular a <strong>desviación típica muestral</strong> podemos obtela empregando a súa definición como raíz cadrada da varianza.</p>
+<p>Outras funcións para obter medidas características que se viron no Tema 1 son:</p>
+<ul>
+<li><p><code>median()</code> para calcular a <strong>mediana</strong> muestral.</p></li>
+<li><p><code>min()</code> para calcular o <strong>mínimo</strong> da mostra.</p></li>
+<li><p><code>max()</code> para calcular o <strong>máximo</strong> da mostra</p></li>
+<li><p><code>diff(range())</code> para calcular o <strong>rango muestral</strong>.</p></li>
+<li><p><code>quantile()</code> para calcular diferentes <strong>cuantiles muestrales</strong> adaptando o argumento <code>probs</code>.</p></li>
+<li><p><code>IQR()</code> para calcular o <strong>rango intercuartílico</strong> da mostra.</p></li>
+</ul>
+<p>Retomemos o exemplo dos datos de <code>geyser</code> da libraría <code>MASS</code> e a variable <code>duration</code> para a que calcularemos algunhas destas medidas:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(duration) <span class="co"># media</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(duration) <span class="co"># mediana</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(duration, <span class="at">probs =</span> <span class="fl">0.7</span>) <span class="co"># cuantil 0.7</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(duration, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="co"># cuartiles</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(duration) <span class="co"># case-varianza</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(duration)) <span class="co"># rango</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pódennos interesar tamén a simetría e a forma da variable. Para obter os coeficientes de asimetría e curtosis, debemos cargar a libraría <code>moments</code>. As funcións a utilizar son:</p>
+<ul>
+<li><p><code>skewness()</code> para calcular o <strong>coeficiente de asimetría</strong>.</p></li>
+<li><p><code>kurtosis()</code> para calcular o <strong>coeficiente de curtosis</strong>.</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(duration)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Como tamén vimos, unha forma de resumir a información das medidas características é representando un <strong>diagrama de caixa</strong> ou Box-Plot. Obteriamos esta representación en R da seguinte forma:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O diagrama de caixa ou Box-Plot resume nun único gráfico algunhas das medidas de centralización e dispersión máis usadas en estatística. A barra negra central mostra onde se sitúa a mediana, mentres que os extremos da caixa son o primeiro cuartil, <span class="math inline">\(Q_{1}\)</span> (inferior) e o terceiro cuartil, <span class="math inline">\(Q_{3}\)</span> (superior). Deste xeito, a altura da caixa é o rango intercuantílico <span class="math inline">\(Q_{3}-Q_{1}\)</span>. No caso de que a variable sexa simétrica, a mediana ha de situarse nun punto equidistante de ambos os cuartiles e coincidirá coa media. Os extremos das barras do Box-Plot (bigotes) representan os límites superior e inferior. As observacións que caian fose destes límites son datos atípicos.</p>
+<p>Vexamos agora un novo exemplo con datos de calidade de aire. O conxunto de datos <code>airquality</code> contén información sobre calidade do aire. Entre outras variables, recóllese a velocidade de vento rexistrada (<code>Wind</code>), en millas por hora, que se trata dunha variable cuantitativa continua. Para representar gráficamente esta variable necesitamos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(airquality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Wind, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"Histograma"</span>, <span class="at">xlab =</span> <span class="st">"Velocidade do vento"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(airquality<span class="sc">$</span>Wind, <span class="at">col =</span> <span class="st">"purple"</span>, <span class="at">main =</span> <span class="st">"Diagrama de caixa"</span>, <span class="at">xlab =</span> <span class="st">"Velocidade do vento"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tipificación-e-transformación-de-datos-en-r" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="tipificación-e-transformación-de-datos-en-r"><span class="header-section-number">1.4</span> Tipificación e transformación de datos en R</h2>
+<p>En moitas análises estatísticas é útil <strong>tipificar</strong> os datos (converter a escala para que teñan media 0 e desviación estándar 1) ou aplicar transformacións como o <strong>logaritmo</strong> para normalizar distribucións sesgadas.</p>
+<section id="tipificar-datos" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="tipificar-datos"><span class="header-section-number">1.4.1</span> Tipificar datos</h3>
+<p>Para tipificar un conxunto de observacións en R podemos usar a función <code>scale()</code>. Usaremos como exemplo os datos da columna <code>Ozone</code> en <code>airquality</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ozone <span class="ot">&lt;-</span> airquality<span class="sc">$</span>Ozone</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ozone_tipificado <span class="ot">&lt;-</span> <span class="fu">scale</span>(ozone)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ozone_tipificado, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ozone_tipificado, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Observa que <code>airquality$Ozone</code> contén algúns valores <code>NA</code>. Se se executa directamente <code>mean(airquality$Ozone)</code> o resultado tamén será <code>NA</code>. Por iso, para calcular a media ignorando os valores ausentes, usamos o argumento <code>na.rm = TRUE</code>.</p>
+<p>Representamos a continuación os histogramas dos datos orixinais e os datos estandarizados.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ozone, <span class="at">main =</span> <span class="st">"Ozone sen tipificar"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlab =</span> <span class="st">"Ozone"</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ozone_tipificado, <span class="at">main =</span> <span class="st">"Ozone tipificado"</span>, <span class="at">col =</span> <span class="st">"lightgreen"</span>, <span class="at">xlab =</span> <span class="st">"Ozone (tipificado)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="transformación-de-datos" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="transformación-de-datos"><span class="header-section-number">1.4.2</span> Transformación de datos</h3>
+<p>En moitos caso, como ocorre coa variable <code>Ozone</code>, os datos presentan unha distribución sesgada con algúns valores moi altos, o que pode dificultar a análise e a visualización. Aplicar neses casos unha <strong>transformación logarítmica</strong> axuda a reducir esta asimetría, aproximando a distribución a unha forma máis normal.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ozone, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlab =</span> <span class="st">"Ozone"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(ozone), <span class="at">col =</span> <span class="st">"lightgreen"</span>, <span class="at">xlab =</span> <span class="st">"log(Ozone)"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ozone, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlab =</span> <span class="st">"Ozone"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(ozone), <span class="at">col =</span> <span class="st">"lightgreen"</span>, <span class="at">xlab =</span> <span class="st">"log(Ozone)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="estatística-descritiva-bidimensional" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="estatística-descritiva-bidimensional"><span class="header-section-number">1.5</span> Estatística descritiva bidimensional</h2>
+<p>O obxectivo fundamental deste apartado é introducir os principais procedementos que R pon á nosa disposición para o estudo da estatística descritiva con dúas variables.</p>
+<section id="táboas-de-continxencia" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="táboas-de-continxencia"><span class="header-section-number">1.5.1</span> Táboas de continxencia</h3>
+<p>A función <code>table()</code> tamén permite construír <strong>táboas de continxencia</strong> nas cales se representan datos de dúas (ou máis) variables categorizadas. Para o exemplo dos datos de absentismo escolar cos que xa traballamos con anterioridade, podemos representar, de maneira conxunta, aos individuos segundo sexo e idade, así como obter as distribucións marxinais coa función <code>margin.table()</code> e completar a táboa coa función <code>addmargins()</code> da seguinte forma:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Taboa <span class="ot">&lt;-</span> <span class="fu">table</span>(quine<span class="sc">$</span>Age, quine<span class="sc">$</span>Sex)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Taboa</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">margin.table</span>(Taboa, <span class="dv">1</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">margin.table</span>(Taboa, <span class="dv">2</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(Taboa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Nota. </strong> O cálculo das distribucións marxinais tamén pode facerse usando as funcións <code>colSums()</code>, <code>cbind()</code>, <code>rowSums()</code> e <code>rbind()</code>.</p>
+</section>
+<section id="boxplot-para-unha-variable-continua-segundo-unha-categórica" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="boxplot-para-unha-variable-continua-segundo-unha-categórica"><span class="header-section-number">1.5.2</span> Boxplot para unha variable continua segundo unha categórica</h3>
+<p>Xa vimos que o diagrama de caixa (boxplot) é unha ferramenta gráfica moi útil para analizar a distribución dunha variable cuantitativa continua, xa que permite visualizar de maneira sintética medidas de posición (mediana e cuartís), dispersión e posibles valores atípicos.</p>
+<p>Cando se combina unha variable continua cunha categórica, o boxplot resulta especialmente informativo: constrúese un diagrama de caixa para cada categoría, o que facilita a comparación das distribucións da variable continua entre os distintos grupos. Deste xeito pódense detectar diferenzas na tendencia central, na variabilidade ou na presenza de valores extremos segundo a categoría considerada, sendo unha representación moi habitual na análise exploratoria de datos.</p>
+<p>Por exemplo, cos datos de <code>airquality</code> podemos representar mediante diagramas de caixa os valores da temperatura (<code>Temp</code>) en función do mes (<code>Month</code>). Cada caixa corresponde a un mes distinto, que no conxunto de datos <code>airquality</code> vai de maio (5) a setembro (9).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  airquality<span class="sc">$</span>Ozone <span class="sc">~</span> airquality<span class="sc">$</span>Month,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribución da concentración de ozono por mes"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Mes"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Concentración de ozono"</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="análise-de-dúas-variables-cuantitativas" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="análise-de-dúas-variables-cuantitativas"><span class="header-section-number">1.5.3</span> Análise de dúas variables cuantitativas</h3>
+<p>Agora imos analizar de forma conxunta dúas variables continuas do conxunto de datos <code>airquality</code>.</p>
+<p>En primeiro lugar consideramos a temperatura (<code>Temp</code>) e a velocidade do vento (<code>Wind</code>). Gardamos cada unha nunha variable e representamos o diagrama de dispersión correspondente coa función <code>plot()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> airquality<span class="sc">$</span>Temp</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> airquality<span class="sc">$</span>Wind</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Diagrama de dispersión de Temp e Ozone"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Temperatura (ºF)"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Vento (mph)"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"steelblue"</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Se queremos analizar varias variables á vez, podemos usar <code>pairs()</code> para facer un diagrama de dispersión matricial.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Temp"</span>, <span class="st">"Wind"</span>)]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(vars, <span class="at">main =</span> <span class="st">"Diagrama de dispersión múltiple"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_descritiva_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A <strong>covarianza</strong> mide a variabilidade conxunta de dúas variables. En R calcúlase a covarianza corrixida (con denomidar <span class="math inline">\(n-1\)</span>) coa función <code>cov()</code>. A <strong>correlación</strong> estandariza a covarianza para que teña valores entre -1 e 1, permitindo comparar a forza da relación entre variables con distintas unidades. En R calcúlase coa función <code>cor()</code>. Calculamos a continuación a covarianza corrixida e a correlación entre a temperatura e a valocidade do vento.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x, y)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Se agora queremos analizar <code>Temp</code> e <code>Ozone</code>, debemos ter en conta que <code>airquality$Ozone</code> contén algúns valores <code>NA</code>. Se tentamos calcular directamente covarianza ou correlación, R devolverá <code>NA</code>. Para solucionar isto, usamos o argumento <code>use = "complete.obs"</code>, que indica a R que só considere os pares de valores completos (sen <code>NA</code>):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> airquality<span class="sc">$</span>Ozone</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x, z, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, z, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="táboa-resumo-de-procedementos-e-funcións" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="táboa-resumo-de-procedementos-e-funcións"><span class="header-section-number">1.6</span> Táboa resumo de procedementos e funcións</h2>
+<p>A seguinte táboa resume os principais cálculos e visualizacións estatísticas comentados no tema, xunto coas funcións correspondentes en R.</p>
+<div style="width:70%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Procedementos</strong></th>
+<th><strong>Funcións</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tamaño muestral</td>
+<td><code>length()</code></td>
+</tr>
+<tr class="even">
+<td>Táboas</td>
+<td><code>table()</code></td>
+</tr>
+<tr class="odd">
+<td>Sumas acumuladas</td>
+<td><code>cumsum()</code></td>
+</tr>
+<tr class="even">
+<td>Diagrama de barras</td>
+<td><code>barplot()</code></td>
+</tr>
+<tr class="odd">
+<td>Diagrama de sectores</td>
+<td><code>pie()</code></td>
+</tr>
+<tr class="even">
+<td>Histograma</td>
+<td><code>hist()</code></td>
+</tr>
+<tr class="odd">
+<td>Diagrama de caixa</td>
+<td><code>boxplot()</code></td>
+</tr>
+<tr class="even">
+<td>Resumo de medidas</td>
+<td><code>summary()</code></td>
+</tr>
+<tr class="odd">
+<td>Media</td>
+<td><code>mean()</code></td>
+</tr>
+<tr class="even">
+<td>Cuasivarianza</td>
+<td><code>var()</code></td>
+</tr>
+<tr class="odd">
+<td>Mediana</td>
+<td><code>median()</code></td>
+</tr>
+<tr class="even">
+<td>Cuantil</td>
+<td><code>quantile()</code></td>
+</tr>
+<tr class="odd">
+<td>Rango intercuartílico</td>
+<td><code>IQR()</code></td>
+</tr>
+<tr class="even">
+<td>Rango</td>
+<td><code>diff()</code> e <code>range()</code></td>
+</tr>
+<tr class="odd">
+<td>Asimetría</td>
+<td><code>skewness()</code></td>
+</tr>
+<tr class="even">
+<td>Curtose</td>
+<td><code>kurtosis()</code></td>
+</tr>
+<tr class="odd">
+<td>Marxinais</td>
+<td><code>addmargins()</code></td>
+</tr>
+<tr class="even">
+<td>Diagrama de dispersión</td>
+<td><code>plot()</code></td>
+</tr>
+<tr class="odd">
+<td>Matriz de dispersión</td>
+<td><code>pairs()</code></td>
+</tr>
+<tr class="even">
+<td>Covarianza (corrixida)</td>
+<td><code>cov()</code></td>
+</tr>
+<tr class="odd">
+<td>Correlación</td>
+<td><code>cor()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A táboa seguinte recolle outras funcións básicas auxiliares.</p>
+<div style="width:70%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Outros procedementos</strong></th>
+<th><strong>Función</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Instalar paquete</td>
+<td><code>install.packages()</code></td>
+</tr>
+<tr class="even">
+<td>Cargar paquete</td>
+<td><code>library()</code></td>
+</tr>
+<tr class="odd">
+<td>Primeira parte dun obxecto</td>
+<td><code>head()</code></td>
+</tr>
+<tr class="even">
+<td>Nomes de obxecto</td>
+<td><code>names()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="exercicios" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="exercicios"><span class="header-section-number">1.7</span> EXERCICIOS</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Boletín de exercicios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/PDF.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="EXERCICIOS/1_boletin_Descritiva.pdf">Descargar (PDF)</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Arquivos de datos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/personal_computers_per_100_people.csv" download="">personal_computers_per_100_people.csv</a></p>
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/spotify.csv" download="">spotify.csv</a></p>
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/redes.csv" download="">redes.csv</a></p>
+<p><img src="images/CSV.png" alt="PDF" style="height:2em; vertical-align:middle;"> <a href="datos/vjuegos.csv" download="">vjuegos.csv</a></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./0_introducion.html" class="pagination-link" aria-label="Introdución a R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introdución a R</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./2_probabilidade.html" class="pagination-link" aria-label="Fundamentos de probabilidade">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

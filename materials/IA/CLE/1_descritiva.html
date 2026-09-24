@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Estatística descritiva – Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./2_probabilidade.html" rel="next">
+<link href="./0_introducion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db2c0c5076fa667ddcdfddb53354bdfb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_descritiva.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliografía</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#tipos-de-variables" id="toc-tipos-de-variables" class="nav-link active" data-scroll-target="#tipos-de-variables"><span class="header-section-number">1.1</span> Tipos de variables</a></li>
+  <li><a href="#distribución-de-frecuencias-dunha-variable" id="toc-distribución-de-frecuencias-dunha-variable" class="nav-link" data-scroll-target="#distribución-de-frecuencias-dunha-variable"><span class="header-section-number">1.2</span> Distribución de frecuencias dunha variable</a></li>
+  <li><a href="#representacións-gráficas-para-unha-variable" id="toc-representacións-gráficas-para-unha-variable" class="nav-link" data-scroll-target="#representacións-gráficas-para-unha-variable"><span class="header-section-number">1.3</span> Representacións gráficas para unha variable</a></li>
+  <li><a href="#medidas-características-dunha-variable-posición-de-dispersión-e-de-forma" id="toc-medidas-características-dunha-variable-posición-de-dispersión-e-de-forma" class="nav-link" data-scroll-target="#medidas-características-dunha-variable-posición-de-dispersión-e-de-forma"><span class="header-section-number">1.4</span> Medidas características dunha variable: posición, de dispersión e de forma</a>
+  <ul class="collapse">
+  <li><a href="#medidas-de-posición" id="toc-medidas-de-posición" class="nav-link" data-scroll-target="#medidas-de-posición"><span class="header-section-number">1.4.1</span> Medidas de posición</a></li>
+  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">1.4.2</span> Medidas de dispersión</a></li>
+  <li><a href="#medidas-de-forma" id="toc-medidas-de-forma" class="nav-link" data-scroll-target="#medidas-de-forma"><span class="header-section-number">1.4.3</span> Medidas de forma</a></li>
+  </ul></li>
+  <li><a href="#o-diagrama-de-caixas-boxplot" id="toc-o-diagrama-de-caixas-boxplot" class="nav-link" data-scroll-target="#o-diagrama-de-caixas-boxplot"><span class="header-section-number">1.5</span> O diagrama de caixas (boxplot)</a></li>
+  <li><a href="#transformacións-nos-datos" id="toc-transformacións-nos-datos" class="nav-link" data-scroll-target="#transformacións-nos-datos"><span class="header-section-number">1.6</span> Transformacións nos datos</a>
+  <ul class="collapse">
+  <li><a href="#tipificación" id="toc-tipificación" class="nav-link" data-scroll-target="#tipificación"><span class="header-section-number">1.6.1</span> Tipificación</a></li>
+  <li><a href="#transformación-de-box-cox" id="toc-transformación-de-box-cox" class="nav-link" data-scroll-target="#transformación-de-box-cox"><span class="header-section-number">1.6.2</span> Transformación de Box-Cox</a></li>
+  </ul></li>
+  <li><a href="#estatística-descritiva-bidimensional" id="toc-estatística-descritiva-bidimensional" class="nav-link" data-scroll-target="#estatística-descritiva-bidimensional"><span class="header-section-number">1.7</span> Estatística descritiva bidimensional</a>
+  <ul class="collapse">
+  <li><a href="#análise-de-dúas-variables-cualitativas" id="toc-análise-de-dúas-variables-cualitativas" class="nav-link" data-scroll-target="#análise-de-dúas-variables-cualitativas"><span class="header-section-number">1.7.1</span> Análise de dúas variables cualitativas</a></li>
+  <li><a href="#análise-de-dúas-variables-cuantitativas" id="toc-análise-de-dúas-variables-cuantitativas" class="nav-link" data-scroll-target="#análise-de-dúas-variables-cuantitativas"><span class="header-section-number">1.7.2</span> Análise de dúas variables cuantitativas</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLIL/"><i class="bi bi-link-45deg"></i>Material de laboratorio</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Como mencionamos anteriormente, unha análise estatística comeza xeralmente cun conxunto de datos cos que traballamos e que son só unha mostra representativa dunha poboación maior. O obxectivo da <strong>estatística descritiva</strong> é extraer e presentar a información que contén esa mostra, resumindo e describindo os datos dunha forma clara e útil mediante representacións gráficas e medidas numéricas fundamentalmente. A estatística descritiva non ten como propósito sacar conclusións sobre a poboación ou facer inferencias, senón describir os datos dispoñibles.</p>
+<p>A estatística descritiva está estreitamente relacionada co que se coñece como <strong>análise exploratoria de datos</strong> (EDA, polas súas siglas en inglés), que abrangue tamén o preprocesado dos datos como parte fundamental. Esta etapa inclúe tarefas como a eliminación ou imputación de valores ausentes, a corrección de formatos erróneos e a detección e tratamento de valores atípicos.</p>
+<style>
+.flushright {
+   text-align: right;
+}
+</style>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="flushright">
+<p>
+<em>“Algunhas persoas teñen suxerido que a análise exploratoria de datos non é máis ca estatística descritiva actualizada. Nos últimos anos dedicouse moito esforzo, intelixencia e comprensión a convencernos de que “o mapa non é o territorio”. Quizais sexa necesario un esforzo similar —polo menos entre as persoas dedicadas á estatística— para convencernos dunha verdade igual de certa: “o conxunto habitual de técnicas non é un campo de actividade intelectual”. Se precisamos unha definición breve do que é a análise exploratoria de datos, eu suxeriría que é unha actitude, e unha flexibilidade, e algo de papel milimetrado (ou transparencias, ou ambos). Ningún catálogo de técnicas pode transmitir a disposición a observar o que se pode ver, tanto se se esperaba como se non. E, con todo, iso está no corazón da análise exploratoria de datos.”</em> <span class="citation" data-cites="tuk1980">Tukey (<a href="references.html#ref-tuk1980" role="doc-biblioref">1980</a>)</span>
+</p>
+</div>
+<p>John Tukey (1915–2000) foi unha figura destacada no ámbito da estatística, que defendeu, antes incluso da chegada dos computadores potentes, a importancia de coñecer a estrutura e as características dos datos previo á aplicación de técnicas estatísticas formais.</p>
+</div>
+</div>
+</div>
+<!--::: {.column-margin}
+</br></br>
+John Tukey (1915–2000) foi unha figura destacada no ámbito da estatística, que defendeu, antes incluso da chegada dos computadores potentes, a importancia de coñecer a estrutura e as características dos datos previo á aplicación de  técnicas estatísticas formais.
+:::-->
+<p>Antes de nada, será interesante deternos a analizar a estrutura da mostra e o tipo de información que contén. Habitualmente, os datos organízanse nunha matriz de dimensións <span class="math inline">\(n \times p\)</span>, onde <span class="math inline">\(n\)</span> é o número de observacións ou individuos (o que se coñece como <strong>tamaño de mostra</strong>) e <span class="math inline">\(p\)</span> é o número de variables medidas para cada unha delas.</p>
+<!--
+::: {.column-margin}
+::: {.callout-note}
+## Tamaño de mostra
+O tamaño de mostra é o número total de observacións que  forman a mostra. Xeralmente, denótase por $n$.
+:::
+:::
+-->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Equidade en IA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A estatística descritiva é o primeiro paso fundamental para entender os datos e descubrir posibles nesgos ou desigualdades que poden afectar a equidade (<em>fairness</em>) dun modelo de IA. Ao realizar análises de estatística descritiva, é fundamental lembrar que os datos deben ser representativos da poboación ou do fenómeno que se quere estudar. Sen embargo, na práctica, a recollida de datos pode estar afectada por diversos nesgos que levan á sobre- ou sub-representación de certos grupos. Isto pode provocar que, se os grupos mal representados coinciden con grupos sociais afectados por prexuízos ou discriminación, os modelos resultantes perpetúen ou amplifiquen estas desigualdades, aínda que os algoritmos sexan neutrais. Por iso, antes de realizar calquera análise ou modelado, é clave explorar e entender a composición e posibles nesgos da mostra, para interpretar correctamente os resultados e tomar medidas que mitiguen estes problemas.</p>
+<p><span style="color: gray; font-style: italic;"> Para máis información sobre equidade en IA, podes consultar <span class="citation" data-cites="meh2021">Mehrabi et al. (<a href="references.html#ref-meh2021" role="doc-biblioref">2021</a>)</span>. </span></p>
+</div>
+</div>
+<p>É importante tamén identificar o tipo de variables que temos, xa que iso condicionará os métodos que empreguemos para resumir e analizar os datos. Podemos atopar variables cualitativas (que describen categorías ou atributos) e variables cuantitativas (que representan cantidades numéricas).</p>
+<section id="tipos-de-variables" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="tipos-de-variables"><span class="header-section-number">1.1</span> Tipos de variables</h2>
+<p><strong>Variables cualitativas:</strong> Non aparecen en forma numérica, senón como categorías ou atributos. Por exemplo, o grupo sanguíneo (A, B, AB, O), o navegador de Internet (Chrome, Firefox, Safari, Edge, …), ou o nivel educativo (sen estudos, primaria, secundaria, universitaria, …). As variables cualitativas clasifícanse a súa vez en:</p>
+<ul>
+<li><p><strong>Cualitativas nominais:</strong> Miden características que non toman valores numéricos e non presentan entre os seus posibles valores unha relación de orde. Por exemplo, a variable navegador de Internet (Chrome, Firefox, Safari, Edge, …).</p></li>
+<li><p><strong>Cualitativas ordinais:</strong> Miden características que non toman valores numéricos pero si presentan entre os seus posibles valores unha relación de orde. Por exemplo, o nivel de estudos pode tomar os valores: sen estudos, primaria, secundaria, etc.</p></li>
+</ul>
+<p><strong>Variables cuantitativas:</strong> Toman valores numéricos porque son frecuentemente o resultado dunha medición. Por exemplo, o peso (kg) dunha persoa, a estatura (m), o número de parámetros dun modelo, o tempo de adestramento dun algoritmo, etc. As variables cuantitativas clasifícanse a súa vez en:</p>
+<ul>
+<li><p><strong>Cuantitativas discretas:</strong> Toman un número discreto de valores (no conxunto dos números naturais). Por exemplo, o número de parámetros dun modelo, o número de usuarios dunha aplicación, etc.</p></li>
+<li><p><strong>Cuantitativas continuas:</strong> Toman valores numéricos dentro dun intervalo real. Por exemplo, a altura, o peso, o tempo de adestramento dun algoritmo, etc.</p></li>
+</ul>
+<p>É importante clasificar correctamente as variables de interese xa que os procedementos que veremos a continuación dependerán do tipo de variable co que traballemos. En primeiro lugar, centrarémonos na análise descritiva <strong>unidimensional</strong>, é dicir, no estudo dunha única variable estatística. Esta análise permítenos describir e resumir a información dunha variable dunha mostra sen ter en conta outras variables. Na última sección deste capítulo abordaremos tamén a análise descritiva <strong>bidimensional</strong>, onde se estuda conxuntamente o comportamento de dúas variables. Aínda que non o abordaremos neste curso, de forma xeral, o termo <strong>análise multivariante ou multidimensional</strong> refírese ao estudo conxunto de varias variables estatísticas, permitindo analizar patróns e relacións complexas que non se poden detectar ao considerar cada variable de forma illada.</p>
+</section>
+<section id="distribución-de-frecuencias-dunha-variable" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="distribución-de-frecuencias-dunha-variable"><span class="header-section-number">1.2</span> Distribución de frecuencias dunha variable</h2>
+<p>A primeira forma de recoller e resumir a información contida nunha mostra <span class="math inline">\(\{x_1, x_2,\ldots, x_n\}\)</span> de tamaño <span class="math inline">\(n\)</span> dunha variable é realizar un reconto do número de veces que se observou cada un dos distintos valores que pode tomar a variable. A isto chamámoslle frecuencia. Supoñamos entón que os valores diferentes que aparecen nos datos son <span class="math inline">\(c_1, c_2,\ldots, c_k\)</span>. Para cada <span class="math inline">\(i=1,\ldots,k\)</span>, podemos calcular:</p>
+<ul>
+<li><p><strong>Frecuencia absoluta:</strong> denótase por <span class="math inline">\(n_{i}\)</span> e representa o número de veces que ocorre o resultado <span class="math inline">\(c_i\)</span>.</p></li>
+<li><p><strong>Frecuencia relativa:</strong> denótase por <span class="math inline">\(f_{i}\)</span> e representa a proporción de datos en cada unha das clases <span class="math inline">\(c_i\)</span>: <span class="math display">\[f_{i}=\frac{n_{i}}{n}.\]</span> A frecuencia relativa é igual á frecuencia absoluta dividida polo tamaño de mostra.</p></li>
+<li><p><strong>Frecuencia absoluta acumulada:</strong> denótase por <span class="math inline">\(N_i\)</span> e representa o número total de observacións correspondentes a valores menores ou iguais que <span class="math inline">\(c_i\)</span>: <span class="math display">\[N_i=\sum_{c_j\leq c_i} n_j.\]</span></p></li>
+<li><p><strong>Frecuencia relativa acumulada:</strong> denótase por <span class="math inline">\(F_i\)</span> e representa a frecuencia absoluta acumulada <span class="math inline">\(N_i\)</span> dividida polo tamaño de mostra: <span class="math display">\[F_i=\frac{N_i}{n}=\sum_{c_j\leq c_i} f_j.\]</span></p></li>
+</ul>
+<p>Debemos observar que as frecuencias acumuladas só teñen sentido cando é posible establecer unha orde entre os valores da variable. Cando consultamos a frecuencia acumulada dun valor <span class="math inline">\(c_i\)</span>, o que estamos a obter é a proporción (ou número) de datos menores ou iguais que <span class="math inline">\(c_i\)</span>. É dicir, a frecuencia acumulada inclúe todas as observacións que toman valores inferiores ou iguais ao valor de referencia.</p>
+<p>As frecuencias pódense escribir ordenadamente mediante unha táboa de frecuencias, que adopta esta forma:</p>
+<div style="width:60%; margin:auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(c_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(N_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(F_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(c_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(c_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(c_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_k\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A continuación, recóllense as principais propiedades que cumpren as distintas formas de expresar a frecuencia: absoluta, relativa, acumulada e relativa acumulada.</p>
+<div style="width:70%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedade</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frecuencias absolutas</td>
+<td style="text-align: center;"><span class="math inline">\(0\leq n_i\leq n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^k n_i = n\)</span></td>
+</tr>
+<tr class="even">
+<td>Frecuencias relativas</td>
+<td style="text-align: center;"><span class="math inline">\(0\leq f_i\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^k f_i = 1\)</span></td>
+</tr>
+<tr class="odd">
+<td>Frecuencias absolutas acumuladas</td>
+<td style="text-align: center;"><span class="math inline">\(0\leq N_i\leq n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_k = n\)</span></td>
+</tr>
+<tr class="even">
+<td>Frecuencias relativas acumuladas</td>
+<td style="text-align: center;"><span class="math inline">\(0\leq F_i\leq 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_k = 1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En particular, observamos que a suma das frecuencias absolutas é o número total de datos <span class="math inline">\(n\)</span> e a suma das frecuencias relativas é igual a 1. O último valor da distribución de frecuencias absolutas acumuladas coincide co número total de observacións, e de forma análoga, o último valor da distribución de frecuencias relativas acumuladas é 1.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Descrición de variables cuantitativas continuas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para construír táboas de frecuencias de variables cuantitativas continuas é habitual agrupar os valores que pode tomar a variable en intervalos. Deste xeito contamos o número de veces que a variable cae en cada intervalo. A cada un destes intervalos chamámoslle <strong>intervalo de clase</strong> e ao seu punto medio <strong>marca de clase</strong>. Por tanto, para a definición das frecuencias e a construción da táboa de frecuencias substituiremos os valores <span class="math inline">\(c_i\)</span> polos intervalos de clase e as marcas de clase. Algunhas consideracións a ter en conta:</p>
+<ul>
+<li><p><strong>Número de intervalos a considerar:</strong> Para adoptar esta decisión teremos en conta:</p>
+<ol type="1">
+<li>Se usamos poucos intervalos, a información queda moi xeneralizada e perdemos detalles importantes sobre a distribución dos datos.</li>
+<li>Se usamos moitos intervalos, a táboa de frecuencias pode facerse moi complexa e difícil de interpretar, xa que haberá moitas categorías con poucas observacións cada unha.</li>
+</ol>
+<p>Aínda que non hai unanimidade ao respecto, un criterio bastante estendido consiste en tomar como número de intervalos o enteiro máis próximo a <span class="math inline">\(\sqrt{n}\)</span>.</p></li>
+<li><p><strong>Amplitude de cada intervalo:</strong> O máis común é que todos os intervalos teñan igual lonxitude, pois facilita a interpretación e comparación das frecuencias. Non obstante, en ocasións pode ser conveniente utilizar intervalos de lonxitudes diferentes para captar mellor a distribución dos datos, especialmente cando hai concentracións maiores ou menores de valores en determinadas zonas.</p></li>
+<li><p><strong>Posición dos intervalos:</strong> Os intervalos deben situarse alí onde se atopen as observacións e de forma contigua.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="representacións-gráficas-para-unha-variable" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="representacións-gráficas-para-unha-variable"><span class="header-section-number">1.3</span> Representacións gráficas para unha variable</h2>
+<p>As representacións gráficas son unha parte fundamental da estatística descritiva porque permiten resumir datos complexos dunha forma visual accesible e intuitiva. A través das representacións gráficas que comentaremos, podemos identificar patróns xerais, tendencias, distribucións e posibles valores atípicos. Isto resulta especialmente útil para explorar os datos e obter unha visión global antes de aplicar técnicas estatísticas máis avanzadas. Existen multitude de gráficos adecuados para cada situación. Algúns empréganse con variables cualitativas e outros con variables cuantitativas.</p>
+<section id="diagrama-de-barras" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="diagrama-de-barras">Diagrama de barras</h4>
+<p>Empréganse para representar as frecuencias absolutas ou relativas de variables cualitativas ou cuantitativas discretas. Para iso, situamos as modalidades da variable no eixe das abscisas, respectando a súa orde se a houbese, e debuxamos barras verticais sobre elas. As alturas das barras representan frecuencias absolutas, relativas ou porcentaxes.</p>
+</section>
+<section id="diagrama-de-sectores" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="diagrama-de-sectores">Diagrama de sectores</h4>
+<p>Obtense dividindo un círculo en tantos sectores como modalidades teña a variable. A amplitude (ou ángulo) de cada sector debe ser proporcional á frecuencia do valor correspondente, de maneira que a área de cada segmento represente visualmente o peso relativo de cada categoría sobre o total. Este tipo de gráfica resulta especialmente útil para representar variables cualitativas ou discretas con poucas categorías, xa que permite comparar proporcións de forma clara e intuitiva.</p>
+</section>
+<section id="histograma" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="histograma">Histograma</h4>
+<p>As frecuencias dunha variable cuantitativa continua tamén se poden representar graficamente. Porén, o diagrama de barras non resulta axeitado neste caso, xa que o que se debe representar son frecuencias asociadas a intervalos contiguos. O histograma é un gráfico utilizado para a distribución dunha variable cuantitativa continua, no que se representan as frecuencias mediante áreas. O histograma constrúese situando os intervalos de clase no eixo das abscisas, como segmentos contiguos da recta real, e erguendo sobre eles rectángulos cuxa <strong>área sexa proporcional á frecuencia</strong> correspondente.</p>
+<ul>
+<li>A diferenza do diagrama de barras, no histograma os rectángulos debúxanse contiguos.</li>
+<li>O aspecto do histograma cambia ao variar o número de intervalos e a amplitude dos mesmos.</li>
+<li>Nun histograma, a altura das barras representa o que se coñece como <strong>densidade de frecuencia</strong>, é dicir, a frecuencia relativa dividida polo tamaño do intervalo que representan (canto maior é a área dunha clase, maior é a súa frecuencia). Deste xeito, cando calculamos a área total que ocupan todas as barras xuntas, esta suma debería ser igual a 1, o que permite interpretar o histograma como unha aproximación da distribución dos datos en termos relativos.</li>
+<li>O histograma axuda a describir como é a distribución da variable: se é simétrica (cun eixe de simetría), se ten unha ou varias modas (máximos relativos), etc.</li>
+</ul>
+</section>
+</section>
+<section id="medidas-características-dunha-variable-posición-de-dispersión-e-de-forma" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="medidas-características-dunha-variable-posición-de-dispersión-e-de-forma"><span class="header-section-number">1.4</span> Medidas características dunha variable: posición, de dispersión e de forma</h2>
+<p>O obxectivo fundamental da estatística é extraer conclusións sobre unha poboación baseándonos na información obtida a partir dunha mostra. Ata o de agora vimos como resumir esa información mediante táboas de frecuencias e representacións gráficas que nos axudan a visualizar a distribución dos datos. A continuación estudaremos como calcular medidas que nos dean unha descrición moi resumida dalgunha propiedade concreta do conxunto de datos. Por <strong>medida</strong> entendemos, polo tanto, un número que se calcula a partir da mostra e que reflicte algunha característica desta.</p>
+<p>O cálculo destas medidas require realizar operacións cos valores que toma a variable. Por este motivo, a partir de agora traballaremos só con variables cuantitativas.</p>
+<section id="medidas-de-posición" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="medidas-de-posición"><span class="header-section-number">1.4.1</span> Medidas de posición</h3>
+<p>Nesta sección estudamos medidas que nos indican a posición que ocupa a mostra. A posición central é o obxectivo da media, da mediana e da moda. O estudo de posicións non centrais realizarase mediante os cuantís.</p>
+<section id="media-aritmética" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="media-aritmética">Media aritmética</h4>
+<p>Sexan <span class="math inline">\(x_1,x_2,\ldots, x_n\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións da variable que estamos a analizar. Definimos a media aritmética (ou simplemente media) destes valores como:</p>
+<p><span class="math display">\[
+\bar {x} = \frac{x_1+x_2+\ldots+x_n}{n} = \frac{1}{n}\sum_{i = 1}^n {x_i}.
+\]</span></p>
+<p><strong>Propiedades:</strong></p>
+<ul>
+<li>A media aritmética sempre se atopa entre o valor mínimo e o valor máximo dos datos, é dicir, <span class="math inline">\(\min(x_i ) \le \bar{x} \le \max(x_i ),\)</span> e exprésase na mesma unidade que os valores da variable.</li>
+<li>A media aritmética é o centro de gravidade dos datos, é dicir, <span class="math inline">\(\sum_{i=1}^n{(x_i - \bar{x})} = 0\)</span>.</li>
+<li>A media aritmética minimiza a suma das desviacións cadradas, é dicir, <span class="math inline">\(\sum_{i=1}^n (x_i - \bar{x})^2 = \mathop {\min}\limits_{a \in \mathbb{R}} \sum_{i=1}^n (x_i - a)^2\)</span>.</li>
+<li>Se transformamos todos os valores <span class="math inline">\(x_1,\ldots, x_n\)</span> aplicándolles unha función lineal da forma <span class="math inline">\(y_i = a + bx_i\)</span>, entón a media dos novos valores <span class="math inline">\(y_1,\ldots, y_n\)</span> obtense aplicando esa mesma transformación á media orixinal, é dicir, <span class="math inline">\(\bar{y} = a + b\bar{x}\)</span>.</li>
+</ul>
+<p>A media é unha das medidas de posición central máis empregadas e é especialmente útil cando a distribución dos datos é simétrica e non contén valores extremos. Porén, a media é moi sensible a valores atípicos ou extremos, que poden modificar notablemente o seu valor e dar unha imaxe distorsionada da posición central real dos datos.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Media ponderada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A media ponderada é unha extensión da media aritmética que se usa cando non todos os datos teñen a mesma importancia. En lugar de dar o mesmo “peso” a cada valor, asignámoslle a cada un un peso proporcional á súa relevancia. Así, dado un conxunto de valores <span class="math inline">\(x_1,x_2,\ldots, x_n\)</span> e os seus pesos correspondentes <span class="math inline">\(w_1,w_2,\ldots, w_n\)</span> (non negativos), a media ponderada calcúlase como <span class="math display">\[\bar {x} = \frac{w_1x_1+w_2x_2+\ldots+w_nx_n}{w_1+w_2+\ldots+w_n} = \frac{\sum_{i = 1}^n {w_ix_i}}{\sum_{i=1}^n{w_i}}.\]</span> Observa que a media artimética é un caso particular de media ponderada onde todos os pesos son <span class="math inline">\(w_i=1/n\)</span>, <span class="math inline">\(i=1,\ldots,n\)</span>.</p>
+<p>Nos modelos estatísticos e de IA, os pesos teñen un papel importante para controlar a influencia que cada observación ou variable exerce sobre a estimación ou predición final. Moitos modelos dispoñen de mecanismos para asignar pesos, o que permite axustar o impacto dos datos.</p>
+</div>
+</div>
+</section>
+<section id="media-truncada-e-media-recortada" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="media-truncada-e-media-recortada">Media truncada e media recortada</h4>
+<p>Un inconveniente da media aritmética é que un dato anómalo pode facer que varíe moito (pensa que a contribución de cada dato á media é <span class="math inline">\(x_i/n\)</span>).</p>
+<p>Para evitar este efecto, utilízase a <strong>media truncada</strong>, que consiste en calcular a media aritmética dunha porcentaxe central dos datos (é dicir, eliminando un porcentaxe dos valores máis baixos e outro dos máis altos). Así, por exemplo, unha media truncada ao 10% calcularía a media aritmética do 90% dos valores centrais, desprezando o 5% máis baixo e o 5% máis alto.</p>
+<p>A media recortada é un concepto semellante ao anterior, pero en lugar de eliminar eses valores extremos, o que se fai é modificalos: substitúense os valores máis baixos polo valor máis baixo do grupo central, e os máis altos polo valor máis alto dese grupo central.</p>
+</section>
+<section id="mediana" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mediana">Mediana</h4>
+<p>Unha vez ordenados os datos de menor a maior, defínese a mediana como o valor da variable que deixa á súa esquerda o mesmo número de valores que á dereita. Se hai un número impar de datos, a mediana é o valor central. Se hai un número par de datos, a mediana é a media dos dous valores centrais.</p>
+<p>A mediana é menos sensible a valores atípicos porque non se ve afectada polas magnitudes extremas, senón só pola posición relativa dos datos. Por iso, dicimos que a mediana é unha medida <strong>robusta</strong> de posición central. En situacións nas que os datos teñen unha distribución moi asimétrica ou conteñen valores atípicos, a mediana ofrece unha representación máis fiable e estable do valor central do conxunto de datos que a media.</p>
+</section>
+<section id="moda" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="moda">Moda</h4>
+<p>É o valor da mostra que aparece con maior frecuencia. Ao contrario das outras medidas, a moda tamén se pode calcular para variables cualitativas. Porén, ao estar estreitamente ligada á frecuencia, non se pode calcular para variables continuas sen agrupación por intervalos de clase. Ao intervalo con maior densidade de frecuencia chamámoslle <strong>clase modal</strong>. Pode suceder que exista unha única moda, neste caso falamos de distribución de frecuencias unimodal. Se hai máis dunha moda, dicimos que a distribución é multimodal.</p>
+</section>
+<section id="cuantís" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cuantís">Cuantís</h4>
+<p>Vimos que a mediana divide os datos en dúas partes iguais. Pero tamén é interesante estudar outras medidas de posición, chamadas cuantís, que dividen os datos da distribución en partes iguais, é dicir, en intervalos que comprenden o mesmo número de valores. En xeral, para un valor <span class="math inline">\(p\in (0,1)\)</span>, defínese o cuantil como o valor que deixa á súa esquerda unha frecuencia relativa <span class="math inline">\(p\)</span>. Observa que con esta definición, a mediana é o cuantil 0,5. Existen diferentes métodos para calcular os cuantís. Unha forma posible de calcular o cuantil <span class="math inline">\(p\)</span> consistiría en ordenar a mostra de menor a maior e tomar como cuantil o menor dato da mostra (o primeiro da mostra ordenada) cuxa frecuencia relativa acumulada sexa maior que <span class="math inline">\(p\)</span>.</p>
+<p>Algúns ordes dos cuantís teñen nomes específicos. Así:</p>
+<ul>
+<li>Os <strong>cuartís</strong> son os cuantís de orde 0.25, 0.5, 0.75 (dividen a distribución en catro partes) e denótanse <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_2\)</span> e <span class="math inline">\(Q_3\)</span>, respectivamente.</li>
+<li>Os <strong>decís</strong> son os cuantís de orde 0.1, 0.2, …, 0.9.</li>
+<li>Os <strong>percentís</strong> son os cuantís de orde <span class="math inline">\(j/100\)</span>, <span class="math inline">\(j=1,\ldots,99\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="medidas-de-dispersión" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">1.4.2</span> Medidas de dispersión</h3>
+<p>As medidas de dispersión empréganse para describir a variabilidade dos datos dunha mostra respecto á súa posición central. En primeiro lugar, presentaremos as principais <strong>medidas de dispersión absoluta</strong> —que dependen das unidades da variable orixinal— e finalizaremos cunha <strong>medida de dispersión relativa</strong>, o coeficiente de variación, que expresa a variabilidade de forma adimensional, é dicir, sen depender das unidades da variable.</p>
+<section id="recorrido-ou-rango" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="recorrido-ou-rango">Recorrido ou rango</h4>
+<p>O recorrido (ou rango) é unha medida moi sinxela de dispersión que indica a diferenza entre o valor máis grande e o máis pequeno dun conxunto de datos. É dicir, móstranos o intervalo total no que se espallan os valores da mostra. Formalmente, <span class="math display">\[R=\max(x_i)-\min(x_i).\]</span> ⁡</p>
+</section>
+<section id="recorrido-ou-rango-intercuartílico" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="recorrido-ou-rango-intercuartílico">Recorrido ou rango intercuartílico</h4>
+<p>Defínese como a diferenza entre o terceiro cuartil e o primeiro cuartil, é dicir, <span class="math display">\[RI=Q_3-Q_1.\]</span> Así, rango intercuartílico representa a amplitude do intervalo central onde se atopa o 50% dos datos. É unha medida máis robusta que o rango porque non se ve afectada polos valores extremos ou atípicos, xa que se basea en cuartís, que son posicións relativas dentro dos datos ordenados.</p>
+</section>
+<section id="varianza" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="varianza">Varianza</h4>
+<p>Se utilizamos a media como medida de posición, parece razoable tomar como medida de dispersión algún criterio que indique a discrepancia dos valores respecto á media. Como vimos, a diferenza simple entre os valores e a media, ao ponderala, dá cero. Por iso, elevamos esas diferenzas ao cadrado para que os sumandos positivos e negativos non se cancelen. O resultado é a varianza, cuxa definición se dá a continuación. Sean <span class="math inline">\(x_1,x_2,\ldots, x_n\)</span> un conxunto de <span class="math inline">\(n\)</span> observacións. Defínese a varianza da mostra como:</p>
+<p><span class="math display">\[s^2=\frac{(x_1-\bar{x})^2+(x_2-\bar{x})^2+\ldots+(x_n-\bar{x})^2}{n}=\frac{1}{n}\sum_{i = 1}^n {(x_i -
+\bar {x})^2}\]</span></p>
+<p><strong>Propiedades:</strong></p>
+<ul>
+<li>A varianza toma sempre valores non negativos.</li>
+<li>Se transformamos todos os valores <span class="math inline">\(x_1,\ldots, x_n\)</span> aplicándolles unha función lineal da forma <span class="math inline">\(y_i = a + bx_i\)</span>, entón a varianza dos novos valores <span class="math inline">\(y_1,\ldots, y_n\)</span> verifica <span class="math inline">\(s_{y}^2 = b^2 s_x^2\)</span>. É dicir, engadir unha constante <span class="math inline">\(a\)</span> a todos os datos (traslación) non afecta á varianza. Isto é porque a varianza mide a dispersión dos datos respecto á súa media, e ao sumar o mesmo número a todos os valores, a dispersión mantense igual. Multiplicar todos os datos por unha constante <span class="math inline">\(b\)</span> (escalado) modifica a varianza multiplicándoa polo cadrado de <span class="math inline">\(b\)</span>.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Cuasivarianza
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Na práctica, cando calculamos a varianza dunha mostra, é común usar unha fórmula lixeiramente diferente á presentada anteriormente. Defínese <strong>cuasivarianza</strong> da mostra como:</p>
+<p><span class="math display">\[s_c^2=\frac{(x_1-\bar{x})^2+(x_2-\bar{x})^2+\ldots+(x_n-\bar{x})^2}{n-1}=\frac{1}{n-1}\sum_{i = 1}^n {(x_i -
+\bar {x})^2}.\]</span></p>
+<p>Observa que a diferenza entre a fórmula da varianza e da cuasivarianza está no denominador. Na varianza <span class="math inline">\(s^2\)</span> faise un promedio e na cuasivarianza <span class="math inline">\(s_c^2\)</span>, divídese por <span class="math inline">\(n-1\)</span>. Neste caso non facemos unha media exacta, senón un axuste (cando coñecemos a media, con <span class="math inline">\(n-1\)</span> valores xa poderiamos calcular o dato que falta)</p>
+</div>
+</div>
+</section>
+<section id="desviación-típica" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="desviación-típica">Desviación típica</h4>
+<p>Calculase como a raíz cadrada positiva da varianza, polo que se expresa nas mesmas unidades que os datos orixinais, facilitando así a súa interpretación. Denótase por <span class="math inline">\(s\)</span>.</p>
+</section>
+<section id="outras-medidas-de-dispersión-absoluta" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="outras-medidas-de-dispersión-absoluta">Outras medidas de dispersión absoluta</h4>
+<p>Ademais das medidas máis habituais como a varianza ou a desviación típica, tamén existen outras medidas de dispersión que poden ser útiles nalgúns contextos.</p>
+<ul>
+<li><strong>Desviación absoluta con respecto á media:</strong> Consiste no promedio das distancias absolutas entre cada valor da mostra e a media aritmética, e defínese como:</li>
+</ul>
+<p><span class="math display">\[
+D_{\bar{x}} = \frac{1}{n} \sum_{i=1}^n |x_i - \bar{x}|.
+\]</span></p>
+<ul>
+<li><p><strong>Desviación absoluta con respecto á mediana:</strong> Consiste no promedio das distancias absolutas entre cada valor da mostra e a mediana, e defínese como: <span class="math display">\[
+D_{Q_2} = \frac{1}{n} \sum_{i=1}^n |x_i - Q_2|.
+\]</span></p></li>
+<li><p><strong>Mediana das desviacións absolutas (MEDA):</strong> Defínese como a mediana das desviacións absolutas dos datos respecto á mediana da mostra. É dicir: <span class="math display">\[ \text{MEDA} = \text{Mediana} \left( |x_1 - Q_2)|, |x_2 - Q_2|, \ldots, |x_n - Q_2| \right)
+\]</span></p></li>
+</ul>
+</section>
+<section id="coeficiente-de-variación" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="coeficiente-de-variación">Coeficiente de variación</h4>
+<p>Se queremos unha medida de dispersión que non dependa da escala das unidades, e que permita comparar a variabilidade relativa entre distintas mostras, podemos usar o coeficiente de variación, que se define como:</p>
+<p><span class="math display">\[CV=\frac{s}{\bar x}.\]</span></p>
+<p>Para que esta medida teña sentido, é necesario que a media non sexa cero. Ademais, o coeficiente de variación só é adecuado para variables que tomen valores positivos e que non estean afectadas por cambios de localización (é dicir, que non se desprazan simplemente por sumar ou restar unha constante).</p>
+</section>
+</section>
+<section id="medidas-de-forma" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="medidas-de-forma"><span class="header-section-number">1.4.3</span> Medidas de forma</h3>
+<p>As medidas de forma son ferramentas estatísticas que nos permiten describir características máis detalladas da distribución dos datos, máis alá da posición e a dispersión. En particular, estas medidas avalían dous aspectos fundamentais da forma da distribución: o grao de <strong>simetría</strong>, que indica se os datos están distribuídos de maneira equilibrada arredor dun punto central (normalmente a media) e o <strong>apuntamento</strong> (tamén chamado curtose), que mide o grao de concentración ou dispersión dos datos arredor da media.</p>
+<section id="coeficiente-de-asimetría-de-fisher" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="coeficiente-de-asimetría-de-fisher">Coeficiente de asimetría de Fisher</h4>
+<p>Defínese como <span class="math display">\[
+As_F = \frac{\sum_{i = 1}^n {(x_i- \bar {x})^3} }{ n s^3}.
+\]</span></p>
+<p>A interpretación deste coeficiente é a seguinte: se o seu valor é case cero, dise que os datos son simétricos. Se toma valores significativamente maiores que cero, diremos que os datos teñen asimetría cara á dereita, e se toma valores significativamente menores que cero, diremos que teñen asimetría cara á esquerda.</p>
+</section>
+<section id="coeficiente-de-apuntamento-de-fisher" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="coeficiente-de-apuntamento-de-fisher">Coeficiente de apuntamento de Fisher</h4>
+<p>Mide o grao de concentración dunha variable respecto da súa medida habitual de centralización (a media). Defínese como: <span class="math display">\[
+K_F = \frac{\sum_{i = 1}^n {(x_i - \bar{x})^4}}{n s^4}.
+\]</span> En Estatística, o modelo de distribución de referencia habitual é o gaussiano ou normal, que presenta teoricamente un coeficiente de apuntamento igual a 3, polo que este valor se toma como referencia. Así, se este coeficiente é menor que 3, diremos que os datos teñen forma platicúrtica; se é maior que 3, dirase que son leptocúrticos; e se é aproximadamente 3, que son mesocúrticos. Unha distribución con alto apuntamento ten unha maior concentración de datos próximos á media e colas máis pesadas.</p>
+</section>
+</section>
+</section>
+<section id="o-diagrama-de-caixas-boxplot" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="o-diagrama-de-caixas-boxplot"><span class="header-section-number">1.5</span> O diagrama de caixas (boxplot)</h2>
+<p>O boxplot é unha representación gráfica que resume visualmente as características principais dunha distribución de datos. Baseándose nalgunhas das medidas de posición e dispersión que vimos (mediana, cuartís, rango intercuartílico), este gráfico amosa:</p>
+<ul>
+<li><p>Unha caixa central, que vai do primeiro ao terceiro cuartil, representando o 50% dos datos centrais.</p></li>
+<li><p>Unha liña á altura da mediana (<span class="math inline">\(Q_2\)</span>), que mostra o valor central da mostra.</p></li>
+<li><p>Os bigotes, que se estenden ata os límites definidos para detectar valores normais, considerando unha marxe de 1.5 veces o rango intercuartílico (RI). Así, o bigote superior chega ata o maior dato observado no conxunto de datos que sexa menor ou igual a <span class="math inline">\(Q_3 + 1.5 RI\)</span> e o bigote inferior chega ata o menor dato observado que sexa maior ou igual a <span class="math inline">\(Q_1 - 1.5 RI\)</span>.</p></li>
+<li><p>Valores atípicos, que se representan como puntos ou símbolos fóra dos bigotes (se corresponden cos puntos observados que quedan fóra dos límites dos bigotes).</p></li>
+</ul>
+</section>
+<section id="transformacións-nos-datos" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="transformacións-nos-datos"><span class="header-section-number">1.6</span> Transformacións nos datos</h2>
+<p>Ás veces, antes de aplicar técnicas estatísticas ou modelos de aprendizaxe automática, convén transformar os datos para mellorar o seu comportamento, cumprir os supostos do modelo que se quere aplicar ou facilitar a interpretación. Dúas das transformacións máis habituais son a <strong>tipificación</strong> e a <strong>transformación de Box-Cox</strong>.</p>
+<section id="tipificación" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="tipificación"><span class="header-section-number">1.6.1</span> Tipificación</h3>
+<p>Cando se queren realizar comparacións entre valores particulares de variables medidas en distintas escalas, convén empregar unha referencia común que faga efectiva a comparación. Isto conséguese mediante a <strong>tipificación</strong>.</p>
+<p>A mostra tipificada obtense transformando cada observación <span class="math inline">\(x_i\)</span> da mostra orixinal restándolle a media muestral <span class="math inline">\(\bar{x}\)</span> e dividíndoa pola desviación típica muestral <span class="math inline">\(s\)</span>. É dicir, calculamos <span class="math display">\[z_i=\frac{x_i-\bar{x}}{s}\]</span> Esta transformación xera unha nova mostra <span class="math inline">\(\{z_1,z_2,\ldots,z_n\}\)</span>, que terá media <span class="math inline">\(\bar{z}\)</span> igual a 0 e desviación típica <span class="math inline">\(s_z\)</span> igual a 1, o que permite comparar directamente os valores desta mostra cos doutras mostras tamén tipificadas, sen que a diferenza de escalas afecte á análise.</p>
+<p>A tipificación non modifica as medidas adimensionais, como o coeficiente de asimetría ou a curtose, pero si altera as medidas con unidades, como a media ou a desviación típica. En xeral, as transformacións lineais, como a tipificación, preservan as propiedades de forma da distribución relativa aos datos da mostra.</p>
+</section>
+<section id="transformación-de-box-cox" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="transformación-de-box-cox"><span class="header-section-number">1.6.2</span> Transformación de Box-Cox</h3>
+<p>A transformación de <strong>Box-Cox</strong> emprégase para converter datos que non seguen unha distribución normal nunha forma máis próxima á normalidade, o que é útil en moitos modelos estatísticos e de aprendizaxe automática.</p>
+<p>Para datos positivos, a transformación defínese como:</p>
+<p><span class="math display">\[x^{(\lambda)} =
+\begin{cases}
+\displaystyle \frac{x^\lambda - 1}{\lambda}, &amp; \text{se } \lambda \neq 0 \\
+\log(x), &amp; \text{se } \lambda = 0
+\end{cases}
+\]</span></p>
+<p>A elección do parámetro <span class="math inline">\(\lambda\)</span> faise habitualmente por métodos automáticos (como <em>máxima verosimilitude</em>), escollendo o valor que mellor axuste os datos a unha distribución normal.</p>
+<p>Esta transformación axuda a <strong>reducir a asimetría</strong> ou a <strong>variabilidade desigual</strong> e é especialmente útil cando se traballa con <strong>datos de resposta positiva</strong>.</p>
+</section>
+</section>
+<section id="estatística-descritiva-bidimensional" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="estatística-descritiva-bidimensional"><span class="header-section-number">1.7</span> Estatística descritiva bidimensional</h2>
+<p>En moitas ocasións, mídense simultaneamente en cada individuo dunha poboación dúas ou máis variables co propósito de determinar se existen relacións entre elas ou non. As situacións que se poden presentar neste tipo de estudos son moi variadas, dependendo da natureza das variables analizadas. Consideraremos unicamente o caso de dúas variables (bidimensional).</p>
+<section id="análise-de-dúas-variables-cualitativas" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="análise-de-dúas-variables-cualitativas"><span class="header-section-number">1.7.1</span> Análise de dúas variables cualitativas</h3>
+<p>Considérense dúas variables cualitativas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> observadas nunha mostra de tamaño <span class="math inline">\(n\)</span>, representada polos pares ordenados <span class="math inline">\((x_1,y_1), (x_2,y_2), \ldots, (x_n,y_n)\)</span>. Supoñamos que a variable <span class="math inline">\(X\)</span> pode tomar valores nun conxunto finito de categorías <span class="math inline">\(c_1, c_2, \ldots, c_k\)</span>, e a variable <span class="math inline">\(Y\)</span> pode tomar valores <span class="math inline">\(d_1, d_2, \ldots, d_l\)</span>. Estas categorías representan distintas cualidades ou atributos dos individuos da mostra.</p>
+<section id="distribución-conxunta" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="distribución-conxunta">Distribución conxunta</h4>
+<p>O obxectivo é analizar a distribución conxunta das dúas variables cualitativas, estudando a frecuencia con que aparecen cada unha das combinacións posibles <span class="math inline">\((c_i, d_j)\)</span> para <span class="math inline">\(i=1,\ldots,k\)</span> e <span class="math inline">\(j=1,\ldots,l\)</span>. Esta análise permite investigar posibles relacións ou asociacións entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. As frecuencias poden recollerse ordenadamente mediante unha <strong>táboa de frecuencias absolutas</strong>, que adopta esta forma:</p>
+<div style="width:60%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X \backslash Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_j\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_l\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(c_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1j}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1l}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{i1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{ij}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{il}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{k1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{kj}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{kl}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Táboa de continxencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A táboa de frecuencias absolutas tamén se coñece como <strong>táboa de continxencia</strong> ou <strong>táboa de dobre entrada</strong>. Unha táboa de continxencia é un cadro que cruza as categorías dunha variable coas categorías da outra. Cada celda da táboa indica cantas veces se observa esa combinación específica de categorías. As táboas de continxencia permiten analizar a independencia entre dúas variables cualitativas. Se as variables son independentes, as frecuencias observadas nas celdas deberían achegarse ás frecuencias esperadas baixo independencia. A partir desta comparación, introdúcese o coñecido test de chi cadrado, que cuantifica se existe evidencia suficiente para concluír que as dúas variables non son independentes.</p>
+</div>
+</div>
+<p>As frecuencias tamén se poden escribir ordenadamente mediante unha <strong>táboa de frecuencias relativas</strong>, que adopta esta forma:</p>
+<div style="width:60%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X \backslash Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_j\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_l\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(c_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{1j}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{1l}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{i1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{ij}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{il}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{k1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{kj}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{kl}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A continuación, recóllense as principais propiedades que cumpren as frecuencias absolutas e relativas.</p>
+<div style="width:80%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 28%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Propiedades</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frecuencias absolutas</td>
+<td style="text-align: center;"><span class="math inline">\(0 \leq n_{ij} \leq n\ \ \ \ \ \)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^{k} \sum_{j=1}^{l} n_{ij} = n\)</span></td>
+</tr>
+<tr class="even">
+<td>Frecuencias relativas</td>
+<td style="text-align: center;"><span class="math inline">\(0 \leq f_{ij} \leq 1\ \ \ \ \ \)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^{k} \sum_{j=1}^{l} f_{ij} = 1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="distribución-marxinal" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="distribución-marxinal">Distribución marxinal</h4>
+<p>Nunha táboa de frecuencias bidimensional, as <strong>frecuencias marxinais</strong> son as sumas das frecuencias ao longo das filas ou das columnas. Estas distribucións marxinais permiten coñecer a distribución dunha variable por separado dentro da táboa conxunta.</p>
+<ul>
+<li>As frecuencias marxinais de <span class="math inline">\(X\)</span>, denotadas por <span class="math inline">\(n_{i   \bullet}\)</span> para <span class="math inline">\(i=1,\ldots,k\)</span>, son as sumas das frecuencias absolutas de cada fila. De xeito análogo, as frecuencias relativas marxinais de <span class="math inline">\(X\)</span>, denotadas por <span class="math inline">\(f_{i   \bullet},\)</span> son as sumas das frecuencias relativas de cada fila.</li>
+<li>As frecuencias marxinais de <span class="math inline">\(Y\)</span>, denotadas por <span class="math inline">\(n_{  \bullet j}\)</span> para <span class="math inline">\(j=1,\ldots,l\)</span>, son as sumas das frecuencias absolutas de cada columna. De igual forma, as frecuencias relativas marxinais de <span class="math inline">\(Y\)</span>, denotadas por <span class="math inline">\(f_{  \bullet j},\)</span> son as sumas das frecuencias relativas de cada columna.</li>
+</ul>
+<p>Podemos organizar as frecuencias conxuntas e as frecuencias marxinais nunha táboa, como se amosa a continuación (poderiamos facer igual coas frecuencias relativas):</p>
+<div style="width:80%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X \backslash Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_j\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_l\)</span></th>
+<th style="text-align: center;"><strong>Marxinal <span class="math inline">\(X\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(c_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1j}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1l}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1  \bullet}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{i1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{ij}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{il}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{i  \bullet}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{k1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{kj}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{kl}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{k  \bullet}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Marxinal <span class="math inline">\(Y\)</span></strong></td>
+<td style="text-align: center;"><span class="math inline">\(n_{  \bullet 1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{  \bullet j}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{  \bullet l}\)</span></td>
+<td style="text-align: center;"><strong><span class="math inline">\(n\)</span></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="distribución-condicionada" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="distribución-condicionada">Distribución condicionada</h4>
+<p>A <strong>distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(Y = d_j\)</span></strong> é a distribución unidimensional de <span class="math inline">\(X\)</span> sabendo que a variable <span class="math inline">\(Y\)</span> tomou a modalidade <span class="math inline">\(d_j.\)</span> É dicir, describe como se distribúen os valores da variable <span class="math inline">\(X\)</span> cando se sabe que a variable <span class="math inline">\(Y\)</span> tomou a modalidade <span class="math inline">\(d_j\)</span>. Esta distribución permítenos estudar o comportamento de <span class="math inline">\(X\)</span> dentro do subconxunto da poboación ou mostra no que <span class="math inline">\(Y\)</span> presenta un valor fixo. Trátase dunha ferramenta fundamental para analizar dependencias entre variables cualitativas ou para estudar asociacións entre categorías.</p>
+<p>A frecuencia absoluta de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(Y = d_j\)</span> é:</p>
+<p><span class="math display">\[
+n_{X = c_i \mid Y = d_j} = n_{ij}, \quad , i = 1, \ldots, k.
+\]</span></p>
+<p>A frecuencia relativa de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(Y = d_j\)</span> é: <span class="math display">\[
+f_{X = c_i \mid Y = d_j} = \frac{n_{ij}}{n_{\bullet j}} = \frac{f_{ij}}{f_{\bullet j}}, \quad , i = 1, \ldots, k.
+\]</span></p>
+<p>Do mesmo xeito, poderiamos definir a <strong>distribución de <span class="math inline">\(Y\)</span> condicionada a <span class="math inline">\(X = c_i\)</span></strong>, analizando a distribución das modalidades de <span class="math inline">\(Y\)</span> dentro do grupo con <span class="math inline">\(X = c_i\)</span>.</p>
+<p>Como consecuencia directa das definicións, obtemos a seguinte relación:</p>
+<p><span class="math display">\[
+f_{ij} = f_{\bullet j} \cdot f_{X = c_i \mid Y = d_j} = f_{Y = d_j} \cdot f_{X = c_i \mid Y = d_j}.
+\]</span></p>
+<p>Esta identidade amosa como a frecuencia conxunta pode obterse a partir das distribucións marxinais e condicionais.</p>
+</section>
+</section>
+<section id="análise-de-dúas-variables-cuantitativas" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="análise-de-dúas-variables-cuantitativas"><span class="header-section-number">1.7.2</span> Análise de dúas variables cuantitativas</h3>
+<p>Considérense agora dúas variables cuantitativas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> observadas nunha mostra de tamaño <span class="math inline">\(n\)</span>, representada polos pares ordenados <span class="math inline">\((x_1,y_1), (x_2,y_2), \ldots, (x_n,y_n)\)</span>.</p>
+<section id="o-diagrama-de-dispersión" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="o-diagrama-de-dispersión">O diagrama de dispersión</h4>
+<p>A representación gráfica máis útil de dúas variables continuas é o <strong>diagrama de dispersión</strong>. Este consiste en representar nunha cuadrícula os pares de observacións <span class="math inline">\((x_i, y_i)\)</span> de cada individuo da mostra. A nube de puntos que se forma, tamén chamada <strong>nube de puntos</strong> ou <em>scatter plot</em>, permite:</p>
+<ul>
+<li>Visualizar a posible relación entre as dúas variables e detectar patróns lineais ou non lineais.
+<ul>
+<li>Se non hai relación, a nube aparecerá dispersa sen patrón definido.</li>
+<li>Se hai relación lineal os puntos tenden a agruparse arredor dunha liña ascendente pou descendente.</li>
+<li>Se hai relación non lineal a tendencia dos puntos segue unha curva, por exemplo, unha parábola ou un patrón sen liña recta clara.<br>
+</li>
+</ul></li>
+<li>Identificar posibles valores atípicos.</li>
+</ul>
+</section>
+<section id="covarianza" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="covarianza">Covarianza</h4>
+<p>A maioría das medidas características estudadas no caso unidimensional (como, por exemplo, a media) pódense estender ao caso bidimensional. Ademais, no contexto de dúas variables surxen novas medidas que nos permiten <strong>cuantificar a dispersión conxunta de dúas variables</strong>. Consideremos unha mostra de <span class="math inline">\(n\)</span> observacións dunha variable bidimensional cuantitativa <span class="math inline">\((X, Y)\)</span></p>
+<p>A <strong>covarianza</strong> entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> (denotada por <span class="math inline">\(s_{xy}\)</span>) defínese como:</p>
+<p><span class="math display">\[
+\text{Cov}(X,Y) = s_{xy} = \frac{1}{n-1}\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+<p>A covarianza pódese interpretar como unha medida de relación lineal entre as variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>:</p>
+<ul>
+<li>Valores positivos indican que cando <span class="math inline">\(X\)</span> aumenta, <span class="math inline">\(Y\)</span> tende a aumentar.</li>
+<li>Valores negativos indican que cando <span class="math inline">\(X\)</span> aumenta, <span class="math inline">\(Y\)</span> tende a diminuír.</li>
+<li>Valores próximos a cero indican que non hai unha relación lineal clara.</li>
+</ul>
+<p><strong>Propiedades da covarianza</strong></p>
+<ul>
+<li>A covarianza de <span class="math inline">\((X, Y)\)</span> é igual á de <span class="math inline">\((Y, X)\)</span>, é dicir, <span class="math inline">\(s_{xy} = s_{yx}\)</span></li>
+<li>A covarianza de <span class="math inline">\((X, Y)\)</span> é igual á varianza de <span class="math inline">\(X\)</span>, é dicir, <span class="math inline">\(s_{xx} = s_x^2\)</span></li>
+</ul>
+</section>
+<section id="coeficiente-de-correlación-lineal" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="coeficiente-de-correlación-lineal">Coeficiente de correlación lineal</h4>
+<p>A covarianza varía se modificamos as unidades de medida das variables. Isto pode ser un inconveniente, porque non permite comparar a relación entre distintos pares de variables medidos en unidades diferentes.</p>
+<p>A solución consiste en utilizar o <strong>coeficiente de correlación lineal</strong>, que se obtén tipificando a covarianza, é dicir, dividíndoa polas desviacións típicas das dúas variables:</p>
+<p><span class="math display">\[
+r_{xy} = \frac{s_{xy}}{s_x s_y}.
+\]</span></p>
+<p>O coeficiente de correlación lineal toma valores entre <span class="math inline">\(-1\)</span> e <span class="math inline">\(1\)</span> e serve para investigar a relación lineal entre as variables.</p>
+<ul>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(-1\)</span>, temos unha relación inversa entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, é dicir, cando unha variable toma valores altos, a outra tende a ser baixa.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(+1\)</span>, temos unha relación directa, de modo que valores altos dunha variable están asociados con valores altos da outra.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a cero, non existe relación lineal significativa entre as variables.</li>
+</ul>
+<p>Cando <span class="math inline">\(r_{xy} = 1\)</span> ou <span class="math inline">\(r_{xy} = -1\)</span>, existe dependencia lineal exacta. Se <span class="math inline">\(r_{xy} = 0\)</span>, decimos que as variables son incorreladas.</p>
+<!--
+::: {.callout-tip icon=false collapse="true"}
+## Código R
+
+::: {.cell}
+
+```{.r .cell-code}
+# Cargar datos
+data(iris)
+
+# 1. Táboa de frecuencias para a variable cualitativa Species
+freq_abs <- table(iris$Species)               # Frecuencia absoluta
+freq_rel <- prop.table(freq_abs)              # Frecuencia relativa
+freq_abs_acum <- cumsum(freq_abs)             # Frecuencia absoluta acumulada
+freq_rel_acum <- cumsum(freq_rel)             # Frecuencia relativa acumulada
+
+# Crear data frame para mostrar
+tabla_species <- data.frame(
+  Species = names(freq_abs),
+  Frecuencia_Absoluta = as.vector(freq_abs),
+  Frecuencia_Relativa = round(as.vector(freq_rel), 4),
+  Frecuencia_Absoluta_Acumulada = as.vector(freq_abs_acum),
+  Frecuencia_Relativa_Acumulada = round(as.vector(freq_rel_acum), 4)
+)
+
+print(tabla_species)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+     Species Frecuencia_Absoluta Frecuencia_Relativa
+1     setosa                  50              0.3333
+2 versicolor                  50              0.3333
+3  virginica                  50              0.3333
+  Frecuencia_Absoluta_Acumulada Frecuencia_Relativa_Acumulada
+1                            50                        0.3333
+2                           100                        0.6667
+3                           150                        1.0000
+```
+
+
+:::
+:::
+
+:::
+
+::: {.callout-warning collapse="true" icon=false}
+## Código Python
+
+::: {.cell}
+
+```{.python .cell-code}
+datos = [10, 15, 20, 25, 30]
+import numpy as np
+resumo = {
+    "mínimo": np.min(datos),
+    "1º cuartil": np.percentile(datos, 25),
+    "mediana": np.median(datos),
+    "media": np.mean(datos),
+    "3º cuartil": np.percentile(datos, 75),
+    "máximo": np.max(datos),
+}
+resumo
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+{'mínimo': np.int64(10), '1º cuartil': np.float64(15.0), 'mediana': np.float64(20.0), 'media': np.float64(20.0), '3º cuartil': np.float64(25.0), 'máximo': np.int64(30)}
+```
+
+
+:::
+:::
+
+:::
+-->
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-meh2021" class="csl-entry" role="listitem">
+Mehrabi, Ninareh, Fred Morstatter, Nripsuta Saxena, Kristina Lerman, and Aram Galstyan. 2021. <span>“A Survey on Bias and Fairness in Machine Learning.”</span> <em>ACM Comput. Surv.</em> (New York, NY, USA) 54 (6). <a href="https://doi.org/10.1145/3457607">https://doi.org/10.1145/3457607</a>.
+</div>
+<div id="ref-tuk1980" class="csl-entry" role="listitem">
+Tukey, John W. 1980. <span>“We Need Both Exploratory and Confirmatory.”</span> <em>The American Statistician</em> 34 (1): 23–25. <a href="http://www.jstor.org/stable/2682991">http://www.jstor.org/stable/2682991</a>.
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./0_introducion.html" class="pagination-link" aria-label="Introdución">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introdución</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./2_probabilidade.html" class="pagination-link" aria-label="Fundamentos de probabilidade">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

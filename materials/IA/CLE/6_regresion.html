@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Introdución á regresión lineal – Estatística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./5_contrastes.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db2c0c5076fa667ddcdfddb53354bdfb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./6_regresion.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_introducion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdución</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_probabilidade.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de probabilidade</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables aleatorias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introdución á inferencia estatística e á estimación de parámetros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_contrastes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_regresion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliografía</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Táboa de contidos</h2>
+   
+  <ul>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link active" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">6.1</span> Regresión lineal simple</a></li>
+  <li><a href="#método-dos-mínimos-cadrados" id="toc-método-dos-mínimos-cadrados" class="nav-link" data-scroll-target="#método-dos-mínimos-cadrados"><span class="header-section-number">6.2</span> Método dos mínimos cadrados</a></li>
+  <li><a href="#descomposición-da-variabilidade" id="toc-descomposición-da-variabilidade" class="nav-link" data-scroll-target="#descomposición-da-variabilidade"><span class="header-section-number">6.3</span> Descomposición da variabilidade</a></li>
+  <li><a href="#coeficiente-de-determinación" id="toc-coeficiente-de-determinación" class="nav-link" data-scroll-target="#coeficiente-de-determinación"><span class="header-section-number">6.4</span> Coeficiente de determinación</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>OUTROS RECURSOS</h2><ul><li><a href="http://eamo.usc.es/pub/pateiro/files/EstatisticaIA/CLIL/"><i class="bi bi-link-45deg"></i>Material de laboratorio</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdución á regresión lineal</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A regresión é unha das ferramentas fundamentais da estatística para analizar a relación entre variables cuantitativas. En moitas situacións prácticas non só interesa describir unha variable, senón comprender como cambia en función doutras. Por exemplo, poderiamos analizar como inflúe o tamaño dun conxunto de datos de adestramento na precisión dun modelo de aprendizaxe automática, estudar como cambia o tempo de adestramento dun modelo en función do número de parámetros e o número de características empregadas, ou modelar a relación entre o número de interaccións dun usuario nunha plataforma e o tempo que permanece na aplicación.</p>
+<p>Os <strong>modelos de regresión</strong> teñen como obxectivo describir e predicir o valor dunha variable numérica (chamada <strong>variable resposta</strong> ou <strong>variable dependente</strong>) a partir dunha ou máis <strong>variables explicativas</strong> (ou <strong>variables independentes</strong>). Estes modelos permiten non só analizar a relación entre as variables, senón tamén realizar predicións para novos datos.</p>
+<section id="regresión-lineal-simple" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">6.1</span> Regresión lineal simple</h2>
+<p>Un dos modelos de regresión máis sinxelos e utilizados é a <strong>regresión lineal simple</strong>. Neste caso considérase que a variable resposta <span class="math inline">\(Y\)</span> depende dunha única variable explicativa <span class="math inline">\(X\)</span>, e supóñese que a relación entre ambas pode aproximarse mediante unha recta.</p>
+<p>O modelo escríbese como</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon,
+\]</span></p>
+<p>onde <span class="math inline">\(\beta_0\)</span> é o <strong>intercepto</strong> da recta, <span class="math inline">\(\beta_1\)</span> é a <strong>pendente</strong> que describe como cambia <span class="math inline">\(Y\)</span> cando cambia <span class="math inline">\(X\)</span>, e <span class="math inline">\(\varepsilon\)</span> representa o <strong>termo de erro</strong>, que recolle a variabilidade que o modelo non pode explicar.</p>
+<p>Na práctica, os parámetros <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> son descoñecidos e deben estimarse a partir dunha mostra, formada por pares de observacións da forma <span class="math inline">\((x_1,y_1),\ldots,(x_n,y_n).\)</span>. Para facer a estimación dos parámetros do modelo utilizaremos o método dos mínimos cadrados. As estimacións resultantes adoitan denotarse por <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>, e a recta estimada escríbese como</p>
+<p><span class="math display">\[
+\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X.
+\]</span></p>
+<p>Esta recta coñécese como <strong>recta de regresión</strong>, e permítenos estimar o valor medio da variable resposta para distintos valores da variable explicativa.</p>
+<p>Moitos dos conceptos que veremos neste tema xa foron introducidos no Tema 1 de Estatística Descritiva ao estudar variables bidimensionais. En particular, considerabamos unha poboación na que cada individuo está descrito por un par de características <span class="math inline">\((X,Y)\)</span>. Na práctica, non observamos toda a poboación, senón unha mostra de tamaño <span class="math inline">\(n\)</span>, formada por pares de observacións da forma</p>
+<p><span class="math display">\[(x_1,y_1),\ldots,(x_n,y_n).\]</span></p>
+<p>A partir destes datos podiamos analizar a posible relación entre ambas variables mediante ferramentas como o <strong>diagrama de dispersión</strong>, a <strong>covarianza</strong> ou o <strong>coeficiente de correlación lineal</strong>. O diagrama de dispersión permitíanos visualizar a relación entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, mentres que a covarianza e a correlación proporcionaban medidas numéricas da intensidade e do sentido da relación lineal entre as dúas variables. Recorda que a covarianza (denotada por <span class="math inline">\(s_{xy}\)</span>) calculábase como:</p>
+<p><span class="math display">\[
+s_{xy} = \frac{1}{n-1}\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+<p>O coeficiente de correlación lineal</p>
+<p><span class="math display">\[
+r_{xy} = \frac{s_{xy}}{s_x s_y}.
+\]</span></p>
+<p>toma valores entre <span class="math inline">\(-1\)</span> e <span class="math inline">\(1\)</span> e servía para investigar a relación lineal entre as variables.</p>
+<ul>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(-1\)</span>, temos unha relación inversa entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, é dicir, cando unha variable toma valores altos, a outra tende a ser baixa.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a <span class="math inline">\(+1\)</span>, temos unha relación directa, de modo que valores altos dunha variable están asociados con valores altos da outra.<br>
+</li>
+<li>Se <span class="math inline">\(r_{xy}\)</span> é próximo a cero, non existe relación lineal significativa entre as variables.</li>
+</ul>
+<p>Cando <span class="math inline">\(r_{xy} = 1\)</span> ou <span class="math inline">\(r_{xy} = -1\)</span>, existe dependencia lineal exacta. Se <span class="math inline">\(r_{xy} = 0\)</span>, decimos que as variables son incorreladas.</p>
+<p>Neste tema imos dar un paso máis: ademais de estudar se existe relación entre as variables, trataremos de <strong>modelar esa relación</strong> mediante modelos de regresión, que permiten describir como cambia unha variable en función doutra e realizar predicións.</p>
+</section>
+<section id="método-dos-mínimos-cadrados" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="método-dos-mínimos-cadrados"><span class="header-section-number">6.2</span> Método dos mínimos cadrados</h2>
+<p>Dada unha mostra <span class="math inline">\((x_{1},y_{1}),\ldots,(x_{n},y_{n})\)</span>, o obxectivo é determinar os valores dos parámetros descoñecidos <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> (mediante os estimadores <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>) de maneira que a recta axuste o mellor posible aos datos observados. Uns bos estimadores deben ser aqueles para os que os <strong>erros de predición</strong> sexan pequenos. Estes erros defínense como a diferenza entre o valor observado e o valor predito polo modelo:</p>
+<p><span class="math display">\[
+e_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i).
+\]</span></p>
+<p>O obxectivo da regresión é precisamente atopar os valores de <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> que fagan que estes erros sexan o máis pequenos posible, no sentido de minimizar a súa magnitude global. Aínda que existen moitos métodos de estimación, o máis clásico é o coñecido como <strong>método dos mínimos cadrados</strong>, que consiste en atopar os valores dos parámetros que minimizan a suma dos erros ao cadrado, dados os datos da mostra. É dicir, o criterio consiste en minimizar</p>
+<p><span class="math display">\[
+M(\beta_0,\beta_1)=\frac{1}{n}\sum_{i=1}^n e_i^2
+=\frac{1}{n}\sum_{i=1}^n \left(y_i-(\beta_0+\beta_1 x_i)\right)^2.
+\]</span></p>
+<p>Os valores dos parámetros obtéñense derivando a función obxectivo e igualando a cero. Desta forma, tense:</p>
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{s_{xy}}{s_x^2}
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
+\]</span></p>
+<p>Estes valores reciben o nome de <strong>coeficientes de regresión</strong> e presentan boas propiedades estatísticascomo estimadores de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> baixo as hipóteses habituais do modelo, o que xustifica o seu uso na práctica. Obtemos así a ecuación da recta de regresión:</p>
+<p><span class="math display">\[
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
+= \bar{y} - \hat{\beta}_1 \bar{x} + \hat{\beta}_1 x
+= \bar{y} + \hat{\beta}_1 (x-\bar{x})
+= \bar{y} + \frac{s_{xy}}{s_x^2}(x-\bar{x}).
+\]</span></p>
+<p>Esta expresión coñécese como <strong>recta de regresión de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(X\)</span></strong>, para salientar que se obtén supoñendo que <span class="math inline">\(Y\)</span> é a variable resposta e <span class="math inline">\(X\)</span> a variable explicativa.</p>
+<p>Se intercambiamos os papeis de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, obtemos a recta de regresión de <span class="math inline">\(X\)</span> sobre <span class="math inline">\(Y\)</span>, que representada no mesmo sistema de coordenadas será, en xeral, distinta da anterior.</p>
+<p>Unha vez estimado o modelo, podemos interpretar o valor da pendente <span class="math inline">\(\hat{\beta}_1\)</span>. Se <span class="math inline">\(\hat{\beta}_1&gt;0\)</span>, a relación entre as variables é positiva: ao aumentar <span class="math inline">\(X\)</span>, tamén tende a aumentar <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(\hat{\beta}_1&lt;0\)</span>, a relación é negativa: valores maiores de <span class="math inline">\(X\)</span> asócianse con valores menores de <span class="math inline">\(Y\)</span>. Ademais da interpretación, o modelo de regresión lineal utilízase con frecuencia para realizar predicións. Dado un valor concreto de <span class="math inline">\(X\)</span>, podemos substituílo na ecuación da recta estimada para obter unha estimación do valor esperado de <span class="math inline">\(Y\)</span>. Non obstante, estas predicións deben interpretarse con cautela, xa que dependen da validez do modelo e da variabilidade inherente aos datos.</p>
+<p>Ademais da estimación dos parámetros, a regresión lineal permite realizar contrastres de hipóteses para avaliar a importancia das variables no modelo. En particular, é habitual analizar se existe relación lineal significativa entre as variables ou se, pola contra, a variable explicativa non achega información relevante para explicar a variable resposta.</p>
+</section>
+<section id="descomposición-da-variabilidade" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="descomposición-da-variabilidade"><span class="header-section-number">6.3</span> Descomposición da variabilidade</h2>
+<p>Os modelos de regresión pretenden explicar como a variable resposta <span class="math inline">\(Y\)</span> varía en función da variable explicativa <span class="math inline">\(X\)</span>. Deste xeito, parte da variabilidade de <span class="math inline">\(Y\)</span> pode ser explicada pola relación coas variables do modelo, mentres que outra parte se debe a factores non observados ou ao erro aleatorio.</p>
+<p>A variabilidade total dos datos mídese mediante a <strong>suma total de cadrados</strong>, que se define como:</p>
+<p><span class="math display">\[
+VT = \sum_{i=1}^n (y_i - \bar{y})^2.
+\]</span></p>
+<p>Esta variabilidade total pode descompoñerse en dúas partes:</p>
+<ul>
+<li><strong>Variabilidade explicada (VE)</strong>: é a parte da variabilidade de <span class="math inline">\(Y\)</span> que o modelo de regresión é capaz de explicar. Mide canto se separan as predicións do modelo <span class="math inline">\(\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i\)</span> da media global <span class="math inline">\(\bar{y}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+VE = \sum_{i=1}^n (\hat{y}_i - \bar{y})^2.
+\]</span></p>
+<ul>
+<li><strong>Variabilidade non explicada (VNE)</strong>: representa a parte da variabilidade que o modelo non é capaz de explicar e que se atribúe aos erros de predición. Calcúlase a partir dos residuos:</li>
+</ul>
+<p><span class="math display">\[
+VNE = \sum_{i=1}^n (y_i - \hat{y}_i)^2.
+\]</span></p>
+<p>Deste xeito, a variabilidade total pode expresarse como a suma destas dúas compoñentes:</p>
+<p><span class="math display">\[
+VT = VE + VNE.
+\]</span></p>
+<p>Esta descomposición é fundamental na regresión, xa que permite avaliar ata que punto o modelo é capaz de explicar a variabilidade dos datos.</p>
+</section>
+<section id="coeficiente-de-determinación" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="coeficiente-de-determinación"><span class="header-section-number">6.4</span> Coeficiente de determinación</h2>
+<p>Unha vez estimados os parámetros do modelo de regresión, xorde a pregunta de se a recta obtida é ou non representativa dos datos. Para responder a isto utilízase o <strong>coeficiente de determinación</strong> (<span class="math inline">\(R^2\)</span>), que mide a proporción da variabilidade da variable resposta que é explicada polo modelo.</p>
+<p>Defínese como:</p>
+<p><span class="math display">\[
+R^2 = \frac{VE}{VT} = 1 - \frac{VNE}{VT},
+\]</span></p>
+<p>onde <span class="math inline">\(VT\)</span> é a variabilidade total, <span class="math inline">\(VE\)</span> a variabilidade explicada polo modelo e <span class="math inline">\(VNE\)</span> a variabilidade non explicada (residual).</p>
+<p>O coeficiente <span class="math inline">\(R^2\)</span> toma valores entre 0 e 1. Canto máis próximo a 1 sexa o seu valor, maior será a capacidade do modelo para explicar a variabilidade dos datos; pola contra, valores próximos a 0 indican que o modelo explica pouca variabilidade.</p>
+<p>No caso da regresión lineal simple, o coeficiente de determinación coincide co cadrado do coeficiente de correlación entre a variable explicativa e a variable resposta:</p>
+<p><span class="math display">\[
+R^2 = r_{xy}^2.
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./5_contrastes.html" class="pagination-link" aria-label="Contraste de hipóteses">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contraste de hipóteses</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía">
+        <span class="nav-page-text">Bibliografía</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

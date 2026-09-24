@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A.2 Distribución de Wishart | bookdown_AM.knit</title>
+  <meta name="description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A.2 Distribución de Wishart | bookdown_AM.knit" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/coverAM.jpg" />
+  <meta property="og:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A.2 Distribución de Wishart | bookdown_AM.knit" />
+  
+  <meta name="twitter:description" content="Material de Análisis Multivariante. Máster en Técnicas Estadísticas (USC, UDC, UVigo). Beatiz Pateiro López, César Sánchez Sellero" />
+  <meta name="twitter:image" content="/images/coverAM.jpg" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="distribución-normal-multivariante.html"/>
+<link rel="next" href="distribución-gamma2-de-hotelling.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis Multivariante</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="autores.html"><a href="autores.html"><i class="fa fa-check"></i>Autores</a></li>
+<li class="chapter" data-level="" data-path="prerrequisitos.html"><a href="prerrequisitos.html"><i class="fa fa-check"></i>Prerrequisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-al-análisis-multivariante.html"><a href="introducción-al-análisis-multivariante.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis multivariante</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="notación-de-vectores-y-matrices.html"><a href="notación-de-vectores-y-matrices.html"><i class="fa fa-check"></i><b>1.1</b> Notación de vectores y matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="vectores-aleatorios.html"><a href="vectores-aleatorios.html"><i class="fa fa-check"></i><b>1.2</b> Vectores aleatorios</a></li>
+<li class="chapter" data-level="1.3" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html"><i class="fa fa-check"></i><b>1.3</b> Representación de datos multivariantes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#visualización-de-datos-multivariantes"><i class="fa fa-check"></i><b>1.3.1</b> Visualización de datos multivariantes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="representación-de-datos-multivariantes.html"><a href="representación-de-datos-multivariantes.html#vector-de-medias-y-matriz-de-covarianzas-muestrales"><i class="fa fa-check"></i><b>1.3.2</b> Vector de medias y matriz de covarianzas muestrales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><i class="fa fa-check"></i><b>1.4</b> Vector de medias y matrices de covarianzas para subconjuntos de variables</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html"><a href="vector-de-medias-y-matrices-de-covarianzas-para-subconjuntos-de-variables.html#combinaciones-lineales-de-variables"><i class="fa fa-check"></i><b>1.4.1</b> Combinaciones lineales de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html"><i class="fa fa-check"></i><b>1.5</b> Distancias estadísticas</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea"><i class="fa fa-check"></i><b>1.5.1</b> Distancia euclídea</a></li>
+<li class="chapter" data-level="1.5.2" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-euclídea-estandarizada-por-columnas"><i class="fa fa-check"></i><b>1.5.2</b> Distancia euclídea estandarizada por columnas</a></li>
+<li class="chapter" data-level="1.5.3" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#distancia-de-mahalanobis"><i class="fa fa-check"></i><b>1.5.3</b> Distancia de Mahalanobis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="distancias-estadísticas.html"><a href="distancias-estadísticas.html#estandarización"><i class="fa fa-check"></i><b>1.5.4</b> Estandarización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inferencia-en-poblaciones-normales.html"><a href="inferencia-en-poblaciones-normales.html"><i class="fa fa-check"></i><b>2</b> Inferencia en poblaciones normales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>2.1</b> Estimación en la distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>2.1.1</b> La distribución normal multivariante</a></li>
+<li class="chapter" data-level="2.1.2" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#estimadores-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>2.1.2</b> Estimadores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="2.1.3" data-path="estimación-en-la-distribución-normal-multivariante.html"><a href="estimación-en-la-distribución-normal-multivariante.html#distribución-de-overlinebmx-y-bms"><i class="fa fa-check"></i><b>2.1.3</b> Distribución de <span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="contrastes-multivariantes-versus-contrastes-univariantes.html"><a href="contrastes-multivariantes-versus-contrastes-univariantes.html"><i class="fa fa-check"></i><b>2.2</b> Contrastes multivariantes versus contrastes univariantes</a></li>
+<li class="chapter" data-level="2.3" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.3</b> Contrastes sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-conocida"><i class="fa fa-check"></i><b>2.3.1</b> Contraste sobre el vector de medias con matriz de covarianzas conocida</a></li>
+<li class="chapter" data-level="2.3.2" data-path="contrastes-sobre-el-vector-de-medias.html"><a href="contrastes-sobre-el-vector-de-medias.html#contraste-sobre-el-vector-de-medias-con-matriz-de-covarianzas-desconocida"><i class="fa fa-check"></i><b>2.3.2</b> Contraste sobre el vector de medias con matriz de covarianzas desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html"><i class="fa fa-check"></i><b>2.4</b> Regiones de confianza y comparaciones simultáneas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#regiones-de-confianza"><i class="fa fa-check"></i><b>2.4.1</b> Regiones de confianza</a></li>
+<li class="chapter" data-level="2.4.2" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-individuales"><i class="fa fa-check"></i><b>2.4.2</b> Intervalos de confianza individuales</a></li>
+<li class="chapter" data-level="2.4.3" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-scheffé"><i class="fa fa-check"></i><b>2.4.3</b> Intervalos de confianza simultáneos por el método de Scheffé</a></li>
+<li class="chapter" data-level="2.4.4" data-path="regiones-de-confianza-y-comparaciones-simultáneas.html"><a href="regiones-de-confianza-y-comparaciones-simultáneas.html#intervalos-de-confianza-simultáneos-por-el-método-de-bonferroni"><i class="fa fa-check"></i><b>2.4.4</b> Intervalos de confianza simultáneos por el método de Bonferroni</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html"><i class="fa fa-check"></i><b>2.5</b> Generalización del contraste sobre el vector de medias</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#resultado-general"><i class="fa fa-check"></i><b>2.5.1</b> Resultado general</a></li>
+<li class="chapter" data-level="2.5.2" data-path="generalización-del-contraste-sobre-el-vector-de-medias.html"><a href="generalización-del-contraste-sobre-el-vector-de-medias.html#contraste-de-restricciones-lineales"><i class="fa fa-check"></i><b>2.5.2</b> Contraste de restricciones lineales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.6</b> Inferencia sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="inferencia-sobre-la-matriz-de-covarianzas.html"><a href="inferencia-sobre-la-matriz-de-covarianzas.html#contraste-h_0-bmsigmabmsigma_0"><i class="fa fa-check"></i><b>2.6.1</b> Contraste <span class="math inline">\(H_0: \bm\Sigma=\bm{\Sigma_0}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><i class="fa fa-check"></i><b>2.7</b> Generalización del contraste sobre la matriz de covarianzas</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-la-hipótesis-nula-h_0-bmsigmakbmsigma_0-kin-0infty"><i class="fa fa-check"></i><b>2.7.1</b> Contraste de la hipótesis nula <span class="math inline">\(H_0: \bm\Sigma=k\bm{\Sigma_0},\ \ k\in (0,+\infty)\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-dos-subvectores-h_0-bmsigma_12bm0"><i class="fa fa-check"></i><b>2.7.2</b> Contraste de independencia de dos subvectores <span class="math inline">\(H_0: \bm{\Sigma_{12}}=\bm{0}\)</span></a></li>
+<li class="chapter" data-level="2.7.3" data-path="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html"><a href="generalización-del-contraste-sobre-la-matriz-de-covarianzas.html#contraste-de-independencia-de-todas-las-variables-h_0bmsigma-es-diagonal"><i class="fa fa-check"></i><b>2.7.3</b> Contraste de independencia de todas las variables <span class="math inline">\(H_0:\bm\Sigma\)</span> es diagonal</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html"><i class="fa fa-check"></i><b>2.8</b> Comparación de poblaciones normales multivariantes</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-medias-de-dos-poblaciones-normales-multivariantes-con-matrices-de-covarianzas-iguales"><i class="fa fa-check"></i><b>2.8.1</b> Contraste de igualdad de medias de dos poblaciones normales multivariantes con matrices de covarianzas iguales</a></li>
+<li class="chapter" data-level="2.8.2" data-path="comparación-de-poblaciones-normales-multivariantes.html"><a href="comparación-de-poblaciones-normales-multivariantes.html#contraste-de-igualdad-de-matrices-de-covarianzas-de-normales-multivariantes"><i class="fa fa-check"></i><b>2.8.2</b> Contraste de igualdad de matrices de covarianzas de normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="secnorm.html"><a href="secnorm.html"><i class="fa fa-check"></i><b>2.9</b> Contrastes de normalidad</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="secnorm.html"><a href="secnorm.html#secuni"><i class="fa fa-check"></i><b>2.9.1</b> Revisión del caso univariante</a></li>
+<li class="chapter" data-level="2.9.2" data-path="secnorm.html"><a href="secnorm.html#secmul"><i class="fa fa-check"></i><b>2.9.2</b> Contraste de la normalidad multivariante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-multivariante-de-la-varianza.html"><a href="análisis-multivariante-de-la-varianza.html"><i class="fa fa-check"></i><b>3</b> Análisis Multivariante de la Varianza</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><a href="revisión-del-modelo-de-análisis-de-la-varianza-univariante-anova.html"><i class="fa fa-check"></i><b>3.1</b> Revisión del modelo de análisis de la varianza univariante ANOVA</a></li>
+<li class="chapter" data-level="3.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html"><i class="fa fa-check"></i><b>3.2</b> MANOVA con un factor de variación</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#descomposición-de-la-variabilidad.-contraste-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.2.1</b> Descomposición de la variabilidad. Contraste de igualdad de medias</a></li>
+<li class="chapter" data-level="3.2.2" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#el-estadístico-lambda-de-wilks"><i class="fa fa-check"></i><b>3.2.2</b> El estadístico <span class="math inline">\(\Lambda\)</span> de Wilks</a></li>
+<li class="chapter" data-level="3.2.3" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#test-de-roy"><i class="fa fa-check"></i><b>3.2.3</b> Test de Roy</a></li>
+<li class="chapter" data-level="3.2.4" data-path="manova-con-un-factor-de-variación.html"><a href="manova-con-un-factor-de-variación.html#tests-de-pillai-y-lawley-hotelling"><i class="fa fa-check"></i><b>3.2.4</b> Tests de Pillai y Lawley-Hotelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="manova-con-dos-factores-de-variación.html"><a href="manova-con-dos-factores-de-variación.html"><i class="fa fa-check"></i><b>3.3</b> MANOVA con dos factores de variación</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>4</b> Análisis de componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><a href="descomposición-de-un-vector-aleatorio-en-sus-componentes-principales.html"><i class="fa fa-check"></i><b>4.1</b> Descomposición de un vector aleatorio en sus componentes principales</a></li>
+<li class="chapter" data-level="4.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.2</b> Propiedades geométricas de las componentes principales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#las-componentes-principales-como-mejores-aproximaciones-mínimo-cuadráticas"><i class="fa fa-check"></i><b>4.2.1</b> Las componentes principales como mejores aproximaciones mínimo-cuadráticas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="propiedades-geométricas-de-las-componentes-principales.html"><a href="propiedades-geométricas-de-las-componentes-principales.html#posición-en-el-plano-de-la-1ª-componente-principal-respecto-a-las-rectas-de-regresión"><i class="fa fa-check"></i><b>4.2.2</b> Posición en el plano de la 1ª componente principal respecto a las rectas de regresión</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><a href="descomposición-de-la-variabilidad-proporción-de-varianza-explicada-y-criterios-para-la-reducción-de-dimensión.html"><i class="fa fa-check"></i><b>4.3</b> Descomposición de la variabilidad, proporción de varianza explicada y criterios para la reducción de dimensión</a></li>
+<li class="chapter" data-level="4.4" data-path="las-componentes-principales-y-los-cambios-de-escala.html"><a href="las-componentes-principales-y-los-cambios-de-escala.html"><i class="fa fa-check"></i><b>4.4</b> Las componentes principales y los cambios de escala</a></li>
+<li class="chapter" data-level="4.5" data-path="interpretación-de-las-componentes-principales.html"><a href="interpretación-de-las-componentes-principales.html"><i class="fa fa-check"></i><b>4.5</b> Interpretación de las componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-correspondencias.html"><a href="análisis-de-correspondencias.html"><i class="fa fa-check"></i><b>5</b> Análisis de correspondencias</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><a href="test-ji-cuadrado-de-independencia-y-distancia-ji-cuadrado-entre-perfiles.html"><i class="fa fa-check"></i><b>5.1</b> Test ji-cuadrado de independencia y distancia ji-cuadrado entre perfiles</a></li>
+<li class="chapter" data-level="5.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html"><i class="fa fa-check"></i><b>5.2</b> Representación de los perfiles de fila</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#perfiles-de-fila-estandarizados"><i class="fa fa-check"></i><b>5.2.1</b> Perfiles de fila estandarizados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados"><i class="fa fa-check"></i><b>5.2.2</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.2.3" data-path="representación-de-los-perfiles-de-fila.html"><a href="representación-de-los-perfiles-de-fila.html#contribuciones"><i class="fa fa-check"></i><b>5.2.3</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html"><i class="fa fa-check"></i><b>5.3</b> Representación de los perfiles de columna</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#análisis-de-componentes-principales-de-los-perfiles-estandarizados-1"><i class="fa fa-check"></i><b>5.3.1</b> Análisis de componentes principales de los perfiles estandarizados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="representación-de-los-perfiles-de-columna.html"><a href="representación-de-los-perfiles-de-columna.html#contribuciones-1"><i class="fa fa-check"></i><b>5.3.2</b> Contribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><a href="representación-simultánea-de-los-perfiles-de-fila-y-columna.html"><i class="fa fa-check"></i><b>5.4</b> Representación simultánea de los perfiles de fila y columna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-discriminante.html"><a href="análisis-discriminante.html"><i class="fa fa-check"></i><b>6</b> Análisis discriminante</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dos-grupos-con-distribuciones-conocidas.html"><a href="dos-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.1</b> Dos grupos con distribuciones conocidas</a></li>
+<li class="chapter" data-level="6.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html"><i class="fa fa-check"></i><b>6.2</b> Criterios para elegir una regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-la-probabilidad-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.1</b> Minimizar la probabilidad total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.2" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#razón-de-verosimilitudes"><i class="fa fa-check"></i><b>6.2.2</b> Razón de verosimilitudes</a></li>
+<li class="chapter" data-level="6.2.3" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#minimizar-el-coste-total-de-clasificación-incorrecta"><i class="fa fa-check"></i><b>6.2.3</b> Minimizar el coste total de clasificación incorrecta</a></li>
+<li class="chapter" data-level="6.2.4" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#maximizar-la-probabilidad-a-posteriori"><i class="fa fa-check"></i><b>6.2.4</b> Maximizar la probabilidad a posteriori</a></li>
+<li class="chapter" data-level="6.2.5" data-path="criterios-para-elegir-una-regla-discriminante.html"><a href="criterios-para-elegir-una-regla-discriminante.html#criterio-minimax"><i class="fa fa-check"></i><b>6.2.5</b> Criterio minimax</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html"><i class="fa fa-check"></i><b>6.3</b> Estimación de la regla discriminante</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#tasas-de-error-en-reglas-estimadas"><i class="fa fa-check"></i><b>6.3.1</b> Tasas de error en reglas estimadas</a></li>
+<li class="chapter" data-level="6.3.2" data-path="estimación-de-la-regla-discriminante.html"><a href="estimación-de-la-regla-discriminante.html#estimación-de-las-tasas-de-error-efectivas"><i class="fa fa-check"></i><b>6.3.2</b> Estimación de las tasas de error efectivas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html"><i class="fa fa-check"></i><b>6.4</b> Varios grupos con distribuciones conocidas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="varios-grupos-con-distribuciones-conocidas.html"><a href="varios-grupos-con-distribuciones-conocidas.html#clasificación-óptima-de-varias-poblaciones-normales"><i class="fa fa-check"></i><b>6.4.1</b> Clasificación óptima de varias poblaciones normales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="técnicas-de-formación-de-grupos.html"><a href="técnicas-de-formación-de-grupos.html"><i class="fa fa-check"></i><b>7</b> Técnicas de formación de grupos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-jerárquicos..html"><a href="métodos-jerárquicos..html"><i class="fa fa-check"></i><b>7.1</b> Métodos jerárquicos.</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-de-particionamiento..html"><a href="métodos-de-particionamiento..html"><i class="fa fa-check"></i><b>7.2</b> Métodos de particionamiento.</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apéndice</b></span></li>
+<li class="chapter" data-level="A" data-path="anexoDist.html"><a href="anexoDist.html"><i class="fa fa-check"></i><b>A</b> Distribuciones notables multidimensionales</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html"><i class="fa fa-check"></i><b>A.1</b> Distribución normal multivariante</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="distribución-normal-multivariante.html"><a href="distribución-normal-multivariante.html#propiedades-de-la-distribución-normal-multivariante"><i class="fa fa-check"></i><b>A.1.1</b> Propiedades de la distribución normal multivariante</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html"><i class="fa fa-check"></i><b>A.2</b> Distribución de Wishart</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#definición-y-propiedades"><i class="fa fa-check"></i><b>A.2.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.2.2" data-path="distribución-de-wishart.html"><a href="distribución-de-wishart.html#formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes"><i class="fa fa-check"></i><b>A.2.2</b> Formas cuadráticas en una muestra de observaciones normales multivariantes</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html"><i class="fa fa-check"></i><b>A.3</b> Distribución <span class="math inline">\(\Gamma^2\)</span> de Hotelling</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#definición-y-propiedades-1"><i class="fa fa-check"></i><b>A.3.1</b> Definición y propiedades</a></li>
+<li class="chapter" data-level="A.3.2" data-path="distribución-gamma2-de-hotelling.html"><a href="distribución-gamma2-de-hotelling.html#el-estadístico-gamma2-de-hotelling-para-inferencia-sobre-el-vector-de-medias"><i class="fa fa-check"></i><b>A.3.2</b> El estadístico <span class="math inline">\(\Gamma^2\)</span> de Hotelling para inferencia sobre el vector de medias</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html"><i class="fa fa-check"></i><b>A.4</b> Distribución <span class="math inline">\(\Lambda\)</span> de Wilks</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#introducción"><i class="fa fa-check"></i><b>A.4.1</b> Introducción</a></li>
+<li class="chapter" data-level="A.4.2" data-path="distribución-lambda-de-wilks.html"><a href="distribución-lambda-de-wilks.html#definición-y-propiedades-2"><i class="fa fa-check"></i><b>A.4.2</b> Definición y propiedades</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><i class="fa fa-check"></i>Propiedades de la distribución de Hotelling y de Wilks</a>
+<ul>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-hotelling"><i class="fa fa-check"></i>Distribución de Hotelling</a></li>
+<li class="chapter" data-level="" data-path="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html"><a href="apéndice-propiedades-de-la-distribución-de-hotelling-y-de-wilks.html#distribución-de-wilks.-casos-especiales"><i class="fa fa-check"></i>Distribución de Wilks. Casos especiales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="anexoAlg.html"><a href="anexoAlg.html"><i class="fa fa-check"></i><b>B</b> Conceptos básicos de álgebra matricial</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="autovalores.html"><a href="autovalores.html"><i class="fa fa-check"></i><b>B.1</b> Autovalores</a></li>
+<li class="chapter" data-level="B.2" data-path="matrices-semidefinidas-positivas.html"><a href="matrices-semidefinidas-positivas.html"><i class="fa fa-check"></i><b>B.2</b> Matrices semidefinidas positivas</a></li>
+<li class="chapter" data-level="B.3" data-path="matrices-definidas-positivas.html"><a href="matrices-definidas-positivas.html"><i class="fa fa-check"></i><b>B.3</b> Matrices definidas positivas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<!--<li><a href="https://github.com/rstudio/bookdown" target="blank">Editado con bookdown</a></li>-->
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\)
+
+\(
+\newcommand{\textnormal}[1]{\textrm{#1}}
+\)
+<div id="distribución-de-wishart" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">A.2</span> Distribución de Wishart<a href="distribución-de-wishart.html#distribución-de-wishart" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="definición-y-propiedades" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">A.2.1</span> Definición y propiedades<a href="distribución-de-wishart.html#definición-y-propiedades" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribución de Wishart surge como una extensión al caso
+multivariante de la distribución ji-cuadrado. Recuerda que si
+<span class="math inline">\(x_1,\ldots, x_m\)</span> son variables aleatorias independientes con
+distribución <span class="math inline">\(N(0,1)\)</span>, entonces la variable <span class="math inline">\(\sum_{i=1}^m{{x_i}^2}\)</span>
+tiene distribución ji-cuadrado con <span class="math inline">\(m\)</span> grados de libertad.</p>
+<p>Cuando <span class="math inline">\(\bm{x_1},\ldots, \bm{x_m}\)</span> son vectores aleatorios en lugar de
+variables aleatorias, por ejemplo <span class="math inline">\(\bm{x_i}\in\mathbb{R}^d\)</span> con
+<span class="math inline">\(\bm{x_i}\in N_d(\bm{0},\bm{I_d})\)</span>, una posible forma de generalizar la
+suma de cuadrados anterior sería construir la matriz <span class="math inline">\(d\times d\)</span>
+semidefinida positiva <span class="math inline">\(\bm{M}=\sum_{i=1}^m\bm{x_i}\bm{x_i}^{\prime}\)</span>.
+Mientras la distribución ji-cuadrado se atribuye a estimadores de la
+varianza, como la varianza muestral, la distribución de Wishart
+corresponde a matrices de covarianza muestrales.</p>
+<p>La representación de <span class="math inline">\(\bm{M}\)</span> da lugar, en esencia, a la definición de
+la distribución de Wishart. Como se trata de una matriz aleatoria, no
+nos vamos a preocupar por una supuesta función de densidad para la
+distribución de Wishart, ni vamos a considerar tablas de cuantiles.
+Simplemente vamos a estudiar las propiedades que presenta una matriz de
+covarianzas aleatoria, que serán de utilidad más adelante para las
+regiones de confianza multivariantes.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-97" class="definition"><strong>Definición A.1  </strong></span>Sean <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\in N_d(\bm{0},\bm\Sigma)\)</span> independientes.
+Diremos que la matriz aleatoria</p>
+<p><span class="math display">\[\bm{M}=\sum_{i=1}^m \bm{x_i} \bm{x_i}^{\prime}\]</span> tiene una
+distribución Wishart con matriz <span class="math inline">\(\bm\Sigma\)</span> y <span class="math inline">\(m\)</span> grados de libertad.
+Denotamos <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span>.</p>
+</div>
+<p><strong>Observaciones</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Si construimos la matriz de observaciones</p>
+<p><span class="math display">\[\bm{X}=\left(\begin{array}{c} \bm{x_1}^{\prime} \\ \vdots \\ \bm{x_m}^{\prime} \end{array}\right)
+=\left(\begin{array}{cccc} x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{m1} &amp; x_{m2} &amp; \cdots &amp; x_{md}\end{array}\right)\]</span> de orden
+<span class="math inline">\(m\times d\)</span>, entonces podemos escribir</p>
+<p><span class="math display">\[\bm{M}=\sum_{i=1}^m \bm{x_i} \bm{x_i}^{\prime}=\left(\bm{x_1},\ldots,\bm{x_m}\right)
+\left(\begin{array}{c} \bm{x_1}^{\prime} \\ \vdots \\ \bm{x_m}^{\prime} \end{array}\right)
+=\bm{X}^{\prime}\bm{X}=\left(\sum_{i=1}^m x_{ij} x_{ik}\right)_{j,k\in\{1,\ldots,d\}}.\]</span></p></li>
+<li><p>Si <span class="math inline">\(\bm\Sigma=\bm{I_d}\)</span> diremos que la distribución tiene forma
+estándar.</p></li>
+<li><p>Si <span class="math inline">\(d=1\)</span>, entonces <span class="math inline">\(\bm\Sigma=\sigma^2\)</span> y la distribución de Wishart
+es una ji-cuadrado con <span class="math inline">\(m\)</span> grados de libertad y parámetro de escala
+<span class="math inline">\(\sigma^2\)</span>. Es decir, <span class="math inline">\(x_1,\ldots,x_m\in N(0,\sigma^2)\)</span>
+independientes y</p>
+<p><span class="math display">\[\bm{M}=\sum_{i=1}^m x_i x_i^{\prime}=\sum_{i=1}^m x_i^2
+=\sigma^2 \sum_{i=1}^m \left(\frac{x_i}{\sigma}\right)^2 \in \sigma^2 \chi_m^2.\]</span></p></li>
+</ol>
+<div class="theorem">
+<p><span id="thm:transW" class="theorem"><strong>Teorema A.1  </strong></span>Si <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span> y
+<span class="math inline">\(\bm{A}\)</span> es una matriz <span class="math inline">\(q\times d\)</span> de rango <span class="math inline">\(q\)</span> (<span class="math inline">\(q\leq d\)</span>), entonces</p>
+<p><span class="math display">\[\bm{A}\bm{M}\bm{A}^{\prime}\in W_q\left(\bm{A}\bm\Sigma \bm{A}^{\prime},m\right).\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-7" class="proof"><em>Dem</em>. </span>Si <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span>, entonces lo podemos expresar así</p>
+<p><span class="math display">\[\bm{M}=\sum_{i=1}^m\bm{x_i}\bm{x_i}^{\prime}\]</span> siendo <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\in N_d(\bm{0},\bm\Sigma)\)</span> independientes. En tal caso, resulta que</p>
+<p><span class="math display">\[\bm{A}\bm{M}\bm{A}^{\prime}=\sum_{i=1}^m \bm{A}\bm{x_i} \bm{x_i}^{\prime}\bm{A}^{\prime}
+=\sum_{i=1}^m \left(\bm{A}\bm{x_i}\right) \left(\bm{A}\bm{x_i}\right)^{\prime}\]</span>
+y además <span class="math inline">\(\bm{A}\bm{x_1},\ldots,\bm{A}\bm{x_m}\in N_q(\bm{0},\bm{A}\bm\Sigma \bm{A}^{\prime})\)</span>
+independientes. Entonces, atendiendo a la definición de la distribución
+de Wishart, se tiene que
+<span class="math inline">\(\bm{A}\bm{M}\bm{A}^{\prime}\in W_q\left(\bm{A}\bm\Sigma \bm{A}^{\prime},m\right)\)</span>.</p>
+</div>
+<div class="corollary">
+<p><span id="cor:unnamed-chunk-99" class="corollary"><strong>Corolario A.1  </strong></span>Si <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span>, entonces las submatrices diagonales de
+<span class="math inline">\(\bm{M}\)</span> también tienen distribuciones de Wishart, con parámetros la
+submatriz correspondiente y <span class="math inline">\(m\)</span> grados de libertad.</p>
+</div>
+<div class="corollary">
+<p><span id="cor:colW" class="corollary"><strong>Corolario A.2  </strong></span>Si <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span> y
+<span class="math inline">\(\bm{a}\)</span> es un vector <span class="math inline">\(d\)</span>-dimensional tal que
+<span class="math inline">\(\bm{a}^\prime{}\bm\Sigma \bm{a}&gt;0\)</span>, entonces</p>
+<p><span class="math display">\[\bm{a}^\prime{}\bm{M}\bm{a}\in \left(\bm{a}^\prime{}\bm\Sigma \bm{a}\right)\chi_m^2.\]</span></p>
+</div>
+<p>En particular, por el Corolario <a href="distribución-de-wishart.html#cor:colW">A.2</a> se tiene que dado
+<span class="math inline">\(\bm{e_j}=(0,\ldots,0,1,0,\ldots,0)^\prime{}\)</span>,</p>
+<p><span class="math display">\[\bm{e_j}^\prime{}\bm{M}\bm{e_j}\equiv m_{jj}\in \sigma_{jj}^2\chi_m^2.\]</span>
+Es decir, la distribución marginal de <span class="math inline">\(m_{jj}\)</span> es ji-cuadrado para
+<span class="math inline">\(j=1,\ldots,d\)</span>. Sin embargo, la distribución marginal de <span class="math inline">\(m_{jk}\)</span>
+(<span class="math inline">\(j\neq k\)</span>) no es ji-cuadrado.</p>
+<p>Otra consecuencia del Teorema <a href="distribución-de-wishart.html#thm:transW">A.1</a> es que, fijado <span class="math inline">\(d\)</span> y <span class="math inline">\(m\)</span>, la familia de
+distribuciones <span class="math inline">\(W_d(\bm\Sigma,m)\)</span> con <span class="math inline">\(\bm\Sigma\)</span> semidefinida positiva
+puede ser generada a partir de la distribución <span class="math inline">\(W_d(\bm{I_d},m)\)</span> y de
+matrices <span class="math inline">\(d\times d\)</span>. Observa que si <span class="math inline">\(\bm{M}\in W_d(\bm{I_d},m)\)</span> y
+<span class="math inline">\(\bm\Sigma=\bm{A}\bm{A}^\prime{}\)</span>, entonces</p>
+<p><span class="math display">\[\bm{A}\bm{M}\bm{A}^{\prime}\in W_d\left(\bm{A}\bm{I_d}\bm{A}^{\prime},m\right)=W_d\left(\bm\Sigma,m\right).\]</span></p>
+<p>Veremos a continuación algunas propiedades de la distribución Wishart.</p>
+<p><strong>Propiedades</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Si <span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span>, entonces
+<span class="math inline">\(E(\bm{M})=m\cdot\bm\Sigma\)</span>.</p></li>
+<li><p><span class="math inline">\(\bm{M}=\bm{x_1}\bm{x_1}^\prime{}+\cdots+\bm{x_m}\bm{x_m}^\prime{}\)</span>
+es una matriz simétrica, semidefinida positiva y de rango la
+dimensión del espacio lineal generado por
+<span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\)</span>. Si <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\)</span> son
+vectores aleatorios independientes, con la misma distribución y su
+matriz de covarianzas tiene rango <span class="math inline">\(k\)</span>, entonces</p>
+<p><span class="math display">\[P(\mbox{rango}(\bm{M})=\min\{m,k\})=1.\]</span></p></li>
+<li><p>Como consecuencia de la propiedad anterior, si
+<span class="math inline">\(\bm{M}\in W_d(\bm\Sigma,m)\)</span>, <span class="math inline">\(\bm\Sigma\)</span> es definida positiva y
+<span class="math inline">\(m\geq d\)</span>, entonces <span class="math display">\[P(\bm{M}\ \mbox{sea definida positiva})=1.\]</span></p></li>
+<li><p>La familia de distribuciones <span class="math inline">\(W_d(\bm\Sigma,m)\)</span> es reproductiva
+respecto del parámetro <span class="math inline">\(m\)</span>, esto es, si
+<span class="math inline">\(\bm{M_1}\in W_d(\bm\Sigma,m_1)\)</span>, <span class="math inline">\(\bm{M_2}\in W_d(\bm\Sigma,m_2)\)</span> y
+además son independientes, entonces</p>
+<p><span class="math display">\[\bm{M_1}+\bm{M_2}\in W_d(\bm\Sigma,m_1+m_2).\]</span></p></li>
+</ol>
+</div>
+<div id="formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">A.2.2</span> Formas cuadráticas en una muestra de observaciones normales multivariantes<a href="distribución-de-wishart.html#formas-cuadráticas-en-una-muestra-de-observaciones-normales-multivariantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta sección veremos las extensiones al caso multivariante de los
+resultados sobre la distribución de formas cuadráticas de variables
+normales. Estos resultados, al igual que en el caso unidimensional,
+serán útiles para las tareas de inferencia en base a una muestra de una
+distribución normal o en problemas de regresión.</p>
+<div class="theorem">
+<p><span id="thm:tc" class="theorem"><strong>Teorema A.2  </strong></span>Sean <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\in N_d(\bm{0},\bm\Sigma)\)</span> independientes y la
+matriz de observaciones</p>
+<p><span class="math display">\[\bm{X}=\left(\begin{array}{c} \bm{x_1}^\prime{} \\ \vdots \\ \bm{x_m}^\prime{}\end{array}\right)
+=\left(\begin{array}{ccc} x_{11} &amp; \cdots &amp; x_{1d} \\
+\cdots &amp; \cdots &amp; \cdots \\
+x_{m1} &amp; \cdots &amp; x_{md} \end{array}\right).\]</span></p>
+<p>Entonces:</p>
+<ul>
+<li><p>Si <span class="math inline">\(\bm{a}\)</span> es un vector de dimensión <span class="math inline">\(m\)</span> no nulo, entonces
+<span class="math display">\[\bm{X}^\prime{}\bm{a}\in N_d\left(\bm{0},\|\bm{a}\|^2\bm\Sigma\right).\]</span></p></li>
+<li><p>Si <span class="math inline">\(\bm{a}\)</span> y <span class="math inline">\(\bm{b}\)</span> son dos vectores no nulos y ortogonales,
+<span class="math inline">\(\bm{a}^\prime{}\bm{b}=0\)</span>, entonces <span class="math inline">\(\bm{X}^\prime{}\bm{a}\)</span> y
+<span class="math inline">\(\bm{X}^\prime{}\bm{b}\)</span> son independientes.</p></li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-8" class="proof"><em>Dem</em>. </span>Probamos a continuación cada uno de los puntos del enunciado.</p>
+<p><span class="math inline">\(i.\)</span> Observamos que</p>
+<p><span class="math display">\[\bm{X}^\prime{}\bm{a}=\left(\bm{x_1},\ldots,\bm{x_m}\right)\bm{a}=\sum_{i=1}^m \bm{x_i} a_i.\]</span></p>
+<p>Entonces, como <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\in N_d(\bm{0},\bm\Sigma)\)</span>
+independientes y</p>
+<p><span class="math display">\[\mbox{Cov}\left(\bm{X}^\prime{}\bm{a},\bm{X}^\prime{}\bm{a}\right)=\mbox{Cov}\left(\sum_{i=1}^m \bm{x_i} a_i,\sum_{i=1}^m \bm{x_i} a_i\right)=\sum_{i=1}^m\sum_{j=1}^m
+a_i a_j \mbox{Cov}\left(\bm{x_i},\bm{x_j}\right)
+\stackrel{(a)}{=}\sum_{i=1}^m a_i^2 \bm\Sigma =\|\bm{a}\|^2\Sigma,\]</span> se
+concluye que <span class="math inline">\(\bm{X}^\prime{}\bm{a}\)</span> tiene distribución normal de media
+cero y con la matriz de covarianzas que se acaba de obtener. La igualdad
+(a) es consecuencia de que los vectores <span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\)</span> son
+independientes y la matriz de covarianzas de cada uno de ellos es
+<span class="math inline">\(\bm\Sigma\)</span>.</p>
+<p><span class="math inline">\(ii.\)</span> De manera muy similar al apartado anterior, se tiene que</p>
+<p><span class="math display">\[\begin{aligned}
+\mbox{Cov}\left(\bm{X}^\prime{}\bm{a},\bm{X}^\prime{}\bm{b}\right)&amp;=\mbox{Cov}\left(\sum_{i=1}^m \bm{x_i} a_i,\sum_{i=1}^m \bm{x_i} b_i\right)\\
+&amp;=\sum_{i=1}^m\sum_{j=1}^m a_i b_j \mbox{Cov}\left(\bm{x_i},\bm{x_j}\right)\\
+&amp;=\sum_{i=1}^m a_ib_i \bm\Sigma\\
+&amp;=\left(\bm{a}^\prime{}\bm{b}\right)\bm\Sigma\\
+&amp;=\bm{0}.
+\end{aligned}\]</span></p>
+<p>De modo que <span class="math inline">\(\bm{X}^\prime{}\bm{a}\)</span> y <span class="math inline">\(\bm{X}^\prime{}\bm{b}\)</span> están
+incorrelacionados. Como por el apartado anterior, tienen distribución
+normal, entonces son independientes.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:tc2" class="theorem"><strong>Teorema A.3  </strong></span>Sean
+<span class="math inline">\(\bm{x_1},\ldots,\bm{x_m}\in N_d(\bm{0},\bm\Sigma)\)</span> independientes y
+<span class="math inline">\(\bm{X}\)</span> la correspondiente matriz de observaciones.</p>
+<ul>
+<li><p>Si <span class="math inline">\(\bm{A}\)</span> es una matriz simétrica de orden <span class="math inline">\(m\times m\)</span>,
+idempotente (<span class="math inline">\(\bm{A}^2=\bm{A}\)</span>) y de rango <span class="math inline">\(r\leq m\)</span>, entonces</p>
+<p><span class="math display">\[\bm{X}^\prime{}\bm{A}\bm{X}\in W_d(\bm\Sigma,r).\]</span></p></li>
+<li><p>Si <span class="math inline">\(\bm{A}\)</span> es una matriz en las condiciones anteriores y <span class="math inline">\(\bm{b}\)</span>
+es un vector de dimensión <span class="math inline">\(m\)</span>, tal que <span class="math inline">\(\bm{A}\bm{b}=\bm{0}\)</span>,
+entonces</p>
+<p><span class="math display">\[\bm{X}^\prime{}\bm{A}\bm{X}\ \ \mbox{y}\ \  \bm{X}^\prime{}\bm{b}\ \ \mbox{son independientes}.\]</span></p></li>
+<li><p>Si <span class="math inline">\(\bm{A}\)</span> y <span class="math inline">\(\bm{B}\)</span> son dos matrices en las condiciones
+anteriores y <span class="math inline">\(\bm{A}\bm{B}=\bm{0}\)</span>, entonces</p>
+<p><span class="math display">\[\bm{X}^\prime{}\bm{A}\bm{X}\ \ \mbox{y}\ \  \bm{X}^\prime{}\bm{B}\bm{X}\ \  \mbox{son independientes}.\]</span></p></li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-9" class="proof"><em>Dem</em>. </span><span class="math inline">\(i.\)</span> Por ser <span class="math inline">\(\bm{A}\)</span> simétrica, idempotente y de rango
+<span class="math inline">\(r\leq m\)</span>, tendrá <span class="math inline">\(r\)</span> autovalores iguales a uno y <span class="math inline">\((m-r)\)</span> autovalores
+iguales a cero. En tal caso, se podrá expresar</p>
+<p><span class="math display">\[\bm{A}=\sum_{i=1}^r \bm{v_i}\bm{v_i}^\prime{},\]</span> siendo
+<span class="math inline">\(\bm{v_1},\ldots,\bm{v_r}\)</span> los autovectores asociados a los autovalores
+unitarios. Entonces</p>
+<p><span class="math display" id="eq:xpax">\[\begin{equation}
+\bm{X}^\prime{}\bm{A}\bm{X}=\sum_{i=1}^r \bm{X}^\prime{}\bm{v_i}\bm{v_i}^\prime{}\bm{X}=\sum_{i=1}^r \left(\bm{X}^\prime{}\bm{v_i}\right)\left(\bm{X}^\prime{}\bm{v_i}\right)^{\prime}.
+\tag{A.1}
+\end{equation}\]</span></p>
+<p>El apartado (i) del Teorema <a href="distribución-de-wishart.html#thm:tc">A.2</a> nos lleva a que
+<span class="math inline">\(\bm{X}^\prime{}\bm{v_1},\ldots,\bm{X}^\prime{}\bm{v_r}\in N_d(\bm{0},\bm\Sigma)\)</span>
+y el apartado (ii) del mismo teorema a que son independientes. En
+consecuencia, de la expresión<a href="distribución-de-wishart.html#eq:xpax">(A.1)</a> y la
+definición de la distribución de Wishart, se deduce que</p>
+<p><span class="math display">\[\bm{X}^\prime{}\bm{A}\bm{X}\in W_d(\bm\Sigma,r).\]</span></p>
+<p><span class="math inline">\(ii.\)</span> La hipótesis <span class="math inline">\(\bm{A}\bm{b}=\bm{0}\)</span> implica que
+<span class="math inline">\(\bm{v_j}^\prime{}\bm{b}=0\)</span> para todo <span class="math inline">\(j\in\{1,\ldots,r\}\)</span>. El apartado
+(ii) del Teorema <a href="distribución-de-wishart.html#thm:tc">A.2</a>
+conduce a que <span class="math inline">\(\bm{X}^\prime\bm{v_1},\ldots,\bm{X}^\prime\bm{v_r}\)</span> sean
+independientes de <span class="math inline">\(\bm{X}^\prime\bm{b}\)</span>. Recordando la expresión
+<a href="distribución-de-wishart.html#eq:xpax">(A.1)</a>, se
+llega a que <span class="math inline">\(\bm{X}^\prime{}\bm{A}\bm{X}\)</span> y <span class="math inline">\(\bm{X}^\prime{}\bm{b}\)</span> son
+independientes.</p>
+<p><span class="math inline">\(iii.\)</span> Siendo <span class="math inline">\(\bm{A}=\sum_{i=1}^r \bm{v_i}\bm{v_i}^\prime{}\)</span> y
+<span class="math inline">\(\bm{B}=\sum_{j=1}^s \bm{\omega_i}\bm{\omega_i}^\prime{},\)</span> con
+<span class="math inline">\(\bm{A}\bm{B}=\bm{0}\)</span>, se tiene que <span class="math inline">\(\bm{v_k}^\prime{}\bm{\omega_l}=0\)</span>
+para todo <span class="math inline">\(k\in\{1,\ldots,r\}\)</span> y todo <span class="math inline">\(l\in\{1,\ldots,s\}\)</span>.</p>
+<p>Ahora, como <span class="math inline">\(\bm{v_k}^\prime{}\bm{\omega_l}=0\)</span>, aplicando el apartado
+(ii) del Teorema <a href="distribución-de-wishart.html#thm:tc">A.2</a>,
+tenemos que <span class="math inline">\(\bm{X}^\prime{}\bm{v_1},\ldots,\bm{X}^\prime{}\bm{v_r}\)</span> son
+independientes de
+<span class="math inline">\(\bm{X}^\prime{}\bm{\omega_1},\ldots,\bm{X}^\prime{}\bm{\omega_s}\)</span>, y en
+base a la expresión <a href="distribución-de-wishart.html#eq:xpax">(A.1)</a> y su análogo para <span class="math inline">\(\bm{X}^\prime{}\bm{B}\bm{X}\)</span>,
+se concluye que <span class="math inline">\(\bm{X}^\prime{}\bm{A}\bm{X}\)</span> y
+<span class="math inline">\(\bm{X}^\prime{}\bm{B}\bm{X}\)</span> son independientes.</p>
+</div>
+<p>El teorema siguiente es la versión multivariante del Teorema de Fisher.</p>
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-102" class="theorem"><strong>Teorema A.4  </strong></span>Sean <span class="math inline">\(\bm{x_1},\ldots,\bm{x_n}\in N_d(\mu,\bm\Sigma)\)</span> independientes.
+Entonces el vector de medias y la matriz de covarianzas muestrales
+verifican</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\({\overline{\bm{x}}=\frac{1}{n}\sum_{i=1}^n \bm{x_i} \in N_d\left(\bm{\mu},\frac{1}{n}\bm\Sigma\right)}.\)</span></p></li>
+<li><p><span class="math inline">\({n\bm{S}=\sum_{i=1}^n \left(\bm{x_i}-\overline{\bm{x}}\right)\left(\bm{x_i}-\overline{\bm{x}}\right)^\prime{}
+\in W_d\left(\bm\Sigma,n-1\right)}.\)</span></p></li>
+<li><p><span class="math inline">\(\overline{\bm{x}}\)</span> y <span class="math inline">\(\bm{S}\)</span> son independientes.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-10" class="proof"><em>Dem</em>. </span>La demostración es idéntica a la correspondiente al Teorema de
+Fisher en el caso unidimensional. Así, se empieza observando que basta
+hacer la demostración suponiendo que <span class="math inline">\(\bm{\mu}=\bm{\bm{0}}\)</span>. En el caso
+general, bastaría considerar <span class="math inline">\(\bm{y}=\bm{x}-\bm{\mu}\)</span>, que serían
+observaciones con media cero, y tener en cuenta que
+<span class="math inline">\(\overline{\bm{y}}=\overline{\bm{x}}-\bm{\mu}\)</span> y que la matriz de
+covarianzas muestral no se ve afectada por la resta de <span class="math inline">\(\bm{\mu}\)</span>.</p>
+<p><span class="math inline">\(i.\)</span> Tomamos el vector <span class="math inline">\(\bm{b}=(1/n,\ldots,1/n)^\prime{}\)</span> y aplicamos
+el Teorema <a href="distribución-de-wishart.html#thm:tc">A.2</a>, apartado
+(i), teniendo en cuenta que en este caso <span class="math inline">\(\|\bm{b}\|^2=1/n\)</span>.</p>
+<p><span class="math inline">\(ii.\)</span> Consideramos la matriz</p>
+<p><span class="math display">\[\bm{A}=\bm{M}=\left(\begin{array}{cccc}
+1-1/n &amp; -1/n &amp; \cdots &amp; -1/n \\
+-1/n &amp; 1-1/n &amp; \ddots &amp; \vdots \\
+\vdots &amp; \ddots &amp; \ddots &amp; -1/n \\
+-1/n &amp; \cdots &amp; -1/n &amp; 1-1/n
+\end{array}\right)=\bm{I_n}-(1/n)\bm{1_n}\bm{1_n}^\prime{}\]</span> que tiene
+el valor <span class="math inline">\((1-1/n)\)</span> en la diagonal y el valor <span class="math inline">\((-1/n)\)</span> fuera de la
+diagonal. La notación <span class="math inline">\(\bm{1_n}\)</span> significa
+<span class="math inline">\(\bm{1_n}=(1,\ldots,1)^\prime{}\)</span>, esto es, un vector compuesto por unos
+en todas sus componentes.</p>
+<p>La matriz <span class="math inline">\(\bm{M}\)</span> es muy importante en la Estadística. Su efecto sobre
+el conjunto de observaciones es el siguiente:</p>
+<p><span class="math display">\[\bm{M}\bm{X}=\left(\begin{array}{c}
+\left(\bm{x_1}-\overline{\bm{x}}\right)^{\prime} \\
+\vdots \\
+\left(\bm{x_n}-\overline{\bm{x}}\right)^{\prime}
+\end{array}\right).\]</span> De modo que <span class="math inline">\(\bm{M}\)</span> es una matriz centralizadora,
+pues aplicada a un conjunto de datos, los centra, al restar a cada dato
+la media. Además, si se emplea como forma cuadrática, se tiene que</p>
+<p><span class="math display">\[\begin{aligned}
+\bm{X}^\prime{}\bm{M}\bm{X}&amp;\stackrel{(a)}{=}\bm{X}^\prime{}\bm{M}\bm{M}\bm{X}\\
+&amp;\stackrel{(b)}{=}\ (\bm{M}\bm{X})^\prime{}(\bm{M}\bm{X})\\
+&amp;=\ \left(\bm{x_1}-\overline{\bm{x}},\ldots, \bm{x_n}-\overline{\bm{x}}\right)\cdot \left(\begin{array}{c}
+\left(\bm{x_1}-\overline{\bm{x}}\right)^{\prime} \\
+\vdots \\
+\left(\bm{x_n}-\overline{\bm{x}}\right)^{\prime}
+\end{array}\right)\\
+&amp;=\sum_{i=1}^n \left(\bm{x_i}-\overline{\bm{x}}\right)\left(\bm{x_i}-\overline{\bm{x}}\right)^{\prime}.
+\end{aligned}\]</span></p>
+<p>En la igualdad (a) se ha empleado que <span class="math inline">\(\bm{M}\)</span> es una matriz idempotente
+y en la igualdad (b) que es simétrica. Es fácil comprobar que <span class="math inline">\(\bm{M}\)</span>
+es una matriz simétrica, idempotente y de rango <span class="math inline">\((n-1)\)</span>. Pero entonces
+el Teorema <a href="distribución-de-wishart.html#thm:tc2">A.3</a>,
+apartado (i), permite concluir la demostración de que la matriz de
+covarianzas muestral tiene distribución Wishart con matriz <span class="math inline">\(\bm\Sigma\)</span> y
+<span class="math inline">\((n-1)\)</span> grados de libertad.</p>
+<p><span class="math inline">\(iii.\)</span> La independencia se deduce del Teorema <a href="distribución-de-wishart.html#thm:tc2">A.3</a>, apartado (ii), al
+observar que <span class="math inline">\(\bm{M}\bm{b}=\bm{0}\)</span>.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="distribución-normal-multivariante.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="distribución-gamma2-de-hotelling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown_AM.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"url": "http\://eamo.usc.es/pub/pateiro/files/AM_book/index.html"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
