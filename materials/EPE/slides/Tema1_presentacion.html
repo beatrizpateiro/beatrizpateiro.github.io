@@ -6,8 +6,8 @@
 <script src="Tema1_presentacion_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Tema1_presentacion_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Tema1_presentacion_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Tema1_presentacion_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Tema1_presentacion_files/libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.19">
 
   <title>Tema 1. Estatística descritiva dunha variable</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="Tema1_presentacion_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="Tema1_presentacion_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -94,7 +97,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Tema1_presentacion_files/libs/revealjs/dist/theme/quarto-457983830c196e6a50200bfdea33e90b.css">
+  <link rel="stylesheet" href="Tema1_presentacion_files/libs/revealjs/dist/theme/quarto-de70a4a5c81100fb8ac4f8dec0a2f7f8.css">
   <link href="Tema1_presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Tema1_presentacion_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Tema1_presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -201,7 +204,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Tema 1. Estatística descritiva dunha variable</h1>
-  <p class="subtitle">Estatística. Grao en Matemáticas</p>
+  <p class="subtitle">Elementos de Probabilidade e Estatística. Grao en Matemáticas</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -487,7 +490,7 @@ Dado que a mostra se obtén mediante procedementos aleatorios, o Cálculo de Pro
 <p>Comezamos analizando a variable <span class="alert">Número de irmáns</span>.</p>
 <div class="cell quarto-layout-panel" data-layout-ncol="5" data-layout-align="center">
 <div class="quarto-layout-row">
-<table class="lightable-classic lightable-striped lightable-hover caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic lightable-striped lightable-hover caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Número de irmáns</caption>
 <thead>
 <tr class="header">
@@ -541,7 +544,7 @@ Dado que a mostra se obtén mediante procedementos aleatorios, o Cálculo de Pro
 </div>
 <div id="tabset-3-2">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
 <span id="cb1-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
 <span id="cb1-3"><a href=""></a>n</span>
 <span id="cb1-4"><a href=""></a><span class="do">## [1] 120</span></span>
@@ -562,7 +565,7 @@ Dado que a mostra se obtén mediante procedementos aleatorios, o Cálculo de Pro
 <span id="cb1-19"><a href=""></a>Fi <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(fi)</span>
 <span id="cb1-20"><a href=""></a>Fi</span>
 <span id="cb1-21"><a href=""></a><span class="do">##         1         2         3         4         5 </span></span>
-<span id="cb1-22"><a href=""></a><span class="do">## 0.2250000 0.8000000 0.9666667 0.9916667 1.0000000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href=""></a><span class="do">## 0.2250000 0.8000000 0.9666667 0.9916667 1.0000000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -679,12 +682,12 @@ Dado que a mostra se obtén mediante procedementos aleatorios, o Cálculo de Pro
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
 <span id="cb2-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
 <span id="cb2-3"><a href=""></a>ni <span class="ot">&lt;-</span> <span class="fu">table</span>(datos<span class="sc">$</span>Irmans)</span>
 <span id="cb2-4"><a href=""></a>fi <span class="ot">&lt;-</span> ni<span class="sc">/</span>n</span>
 <span id="cb2-5"><a href=""></a><span class="fu">barplot</span>(ni, <span class="at">main =</span> <span class="st">"Diagrama de barras"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia absoluta"</span>)</span>
-<span id="cb2-6"><a href=""></a><span class="fu">barplot</span>(fi, <span class="at">main =</span> <span class="st">"Diagrama de barras"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia relativa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href=""></a><span class="fu">barplot</span>(fi, <span class="at">main =</span> <span class="st">"Diagrama de barras"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia relativa"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!--
 ### R con dplyr + ggplot2
@@ -730,9 +733,9 @@ ggplot(freq, aes(x = Irmans, y = n)) + geom_col(fill = "steelblue") + labs(title
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
 <span id="cb3-2"><a href=""></a>ni <span class="ot">&lt;-</span> <span class="fu">table</span>(datos<span class="sc">$</span>Irmans)</span>
-<span id="cb3-3"><a href=""></a><span class="fu">pie</span>(ni)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href=""></a><span class="fu">pie</span>(ni)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -777,7 +780,7 @@ ggplot(freq, aes(x = Irmans, y = n)) + geom_col(fill = "steelblue") + labs(title
 <p>Analizamos agora a variable <span class="alert">Altura</span>.</p>
 <div class="cell quarto-layout-panel" data-layout-ncol="5" data-layout-align="center">
 <div class="quarto-layout-row">
-<table class="lightable-classic lightable-striped lightable-hover caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic lightable-striped lightable-hover caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Altura</caption>
 <thead>
 <tr class="header">
@@ -854,8 +857,8 @@ ggplot(freq, aes(x = Irmans, y = n)) + geom_col(fill = "steelblue") + labs(title
 </div>
 <div id="tabset-8-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
-<span id="cb4-2"><a href=""></a><span class="fu">hist</span>(datos<span class="sc">$</span>Altura, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">145</span>, <span class="dv">155</span>, <span class="dv">165</span>, <span class="dv">175</span>, <span class="dv">185</span>, <span class="dv">195</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"enquisa.csv"</span>)</span>
+<span id="cb4-2"><a href=""></a><span class="fu">hist</span>(datos<span class="sc">$</span>Altura, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">145</span>, <span class="dv">155</span>, <span class="dv">165</span>, <span class="dv">175</span>, <span class="dv">185</span>, <span class="dv">195</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -929,7 +932,7 @@ Parece claro que o cálculo destas medidas require a posibilidade de efectuar op
 <p>Calculamos a media artimética das variables cuantitativas do conxunto de datos de exemplo.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Medias das variables cuantitativas</caption>
 <thead>
 <tr class="header">
@@ -953,14 +956,14 @@ Parece claro que o cálculo destas medidas require a posibilidade de efectuar op
 </div>
 <div id="tabset-9-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">mean</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">mean</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-2"><a href=""></a><span class="do">## [1] 172.9583</span></span>
 <span id="cb5-3"><a href=""></a><span class="fu">mean</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-4"><a href=""></a><span class="do">## [1] 65.01667</span></span>
 <span id="cb5-5"><a href=""></a><span class="fu">mean</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-6"><a href=""></a><span class="do">## [1] 41.09167</span></span>
 <span id="cb5-7"><a href=""></a><span class="fu">mean</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-8"><a href=""></a><span class="do">## [1] 2.016667</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href=""></a><span class="do">## [1] 2.016667</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1020,7 +1023,7 @@ Parece claro que o cálculo destas medidas require a posibilidade de efectuar op
 <p>Calculamos a mediana das variables cuantitativas do conxunto de datos de exemplo.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Medianas das variables cuantitativas</caption>
 <thead>
 <tr class="header">
@@ -1044,14 +1047,14 @@ Parece claro que o cálculo destas medidas require a posibilidade de efectuar op
 </div>
 <div id="tabset-10-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">median</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">median</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb6-2"><a href=""></a><span class="do">## [1] 173</span></span>
 <span id="cb6-3"><a href=""></a><span class="fu">median</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb6-4"><a href=""></a><span class="do">## [1] 65</span></span>
 <span id="cb6-5"><a href=""></a><span class="fu">median</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb6-6"><a href=""></a><span class="do">## [1] 42</span></span>
 <span id="cb6-7"><a href=""></a><span class="fu">median</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-8"><a href=""></a><span class="do">## [1] 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href=""></a><span class="do">## [1] 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1119,7 +1122,7 @@ Se hai máis dunha moda, diremos que a distribución é <strong>multimodal</stro
 <p>Calculamos os cuartís da variable Altura.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Cuantís da variable Altura</caption>
 <thead>
 <tr class="header">
@@ -1147,9 +1150,9 @@ Se hai máis dunha moda, diremos que a distribución é <strong>multimodal</stro
 </div>
 <div id="tabset-11-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">quantile</span>(datos<span class="sc">$</span>Altura, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">quantile</span>(datos<span class="sc">$</span>Altura, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb7-2"><a href=""></a><span class="do">##    25%    50%    75% </span></span>
-<span id="cb7-3"><a href=""></a><span class="do">## 166.75 173.00 179.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href=""></a><span class="do">## 166.75 173.00 179.00</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1204,7 +1207,7 @@ Se hai máis dunha moda, diremos que a distribución é <strong>multimodal</stro
 <p>Calculamos o rango e o rango intercuartílico (RI) da variable <strong>Altura</strong>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Rango e Rango Intercuartílico (RI) de Altura</caption>
 <thead>
 <tr class="header">
@@ -1224,10 +1227,10 @@ Se hai máis dunha moda, diremos que a distribución é <strong>multimodal</stro
 </div>
 <div id="tabset-12-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">max</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">max</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-2"><a href=""></a><span class="do">## [1] 44</span></span>
 <span id="cb8-3"><a href=""></a><span class="fu">IQR</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-4"><a href=""></a><span class="do">## [1] 12.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href=""></a><span class="do">## [1] 12.25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1283,7 +1286,7 @@ s^2 =
 <p>Calculamos a varianza das variables cuantitativas do conxunto de datos de exemplo.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Varianzas das variables cuantitativas</caption>
 <thead>
 <tr class="header">
@@ -1308,7 +1311,7 @@ s^2 =
 <div id="tabset-13-2">
 <p>En R, a función <code>var()</code> calcula por defecto a <strong>cuasivarianza mostral</strong> (divide entre <span class="math inline">\(n-1\)</span>). Para obter a varianza definida teoricamente neste tema (dividindo entre <span class="math inline">\(n\)</span>), é preciso facer a corrección que se amosa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
 <span id="cb9-2"><a href=""></a><span class="fu">var</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
 <span id="cb9-3"><a href=""></a><span class="do">## [1] 82.73993</span></span>
 <span id="cb9-4"><a href=""></a><span class="fu">var</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
@@ -1316,7 +1319,7 @@ s^2 =
 <span id="cb9-6"><a href=""></a><span class="fu">var</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
 <span id="cb9-7"><a href=""></a><span class="do">## [1] 7.008264</span></span>
 <span id="cb9-8"><a href=""></a><span class="fu">var</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n</span>
-<span id="cb9-9"><a href=""></a><span class="do">## [1] 0.5663889</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href=""></a><span class="do">## [1] 0.5663889</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1371,7 +1374,7 @@ s=\sqrt{s^2} =
 <p>Calculamos a desviación típica das variables cuantitativas do conxunto de datos de exemplo.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Desviación típica das variables cuantitativas</caption>
 <thead>
 <tr class="header">
@@ -1396,7 +1399,7 @@ s=\sqrt{s^2} =
 <div id="tabset-14-2">
 <p>En R, a función <code>sd()</code> calcula por defecto a <strong>cuasidesviación típica mostral</strong> (divide entre <span class="math inline">\(n-1\)</span>). Para obter a desviación típica definida teoricamente neste tema (dividindo entre <span class="math inline">\(n\)</span>), é preciso facer como se amosa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
 <span id="cb10-2"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)</span>
 <span id="cb10-3"><a href=""></a><span class="do">## [1] 9.096149</span></span>
 <span id="cb10-4"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)</span>
@@ -1404,7 +1407,7 @@ s=\sqrt{s^2} =
 <span id="cb10-6"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)</span>
 <span id="cb10-7"><a href=""></a><span class="do">## [1] 2.647313</span></span>
 <span id="cb10-8"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)</span>
-<span id="cb10-9"><a href=""></a><span class="do">## [1] 0.7525881</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a href=""></a><span class="do">## [1] 0.7525881</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1483,7 +1486,7 @@ CV = \frac{s}{\bar{x}}
 <p>Calculamos o Coeficiente de Variación (CV) das variables cuantitativas do conxunto de datos de exemplo.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="lightable-classic caption-top" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic caption-top" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Coeficiente de Variación das variables cuantitativas</caption>
 <thead>
 <tr class="header">
@@ -1507,14 +1510,14 @@ CV = \frac{s}{\bar{x}}
 </div>
 <div id="tabset-15-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)<span class="sc">/</span><span class="fu">mean</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)<span class="sc">/</span><span class="fu">mean</span>(datos<span class="sc">$</span>Altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb11-2"><a href=""></a><span class="do">## [1] 0.05259156</span></span>
 <span id="cb11-3"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)<span class="sc">/</span><span class="fu">mean</span>(datos<span class="sc">$</span>Peso, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb11-4"><a href=""></a><span class="do">## [1] 0.1736834</span></span>
 <span id="cb11-5"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)<span class="sc">/</span><span class="fu">mean</span>(datos<span class="sc">$</span>Zapato, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb11-6"><a href=""></a><span class="do">## [1] 0.06442456</span></span>
 <span id="cb11-7"><a href=""></a><span class="fu">sqrt</span>(<span class="fu">var</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>n)<span class="sc">/</span><span class="fu">mean</span>(datos<span class="sc">$</span>Irmans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-8"><a href=""></a><span class="do">## [1] 0.3731842</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-8"><a href=""></a><span class="do">## [1] 0.3731842</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1548,8 +1551,8 @@ CV = \frac{s}{\bar{x}}
 </div>
 <div id="tabset-16-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>datos_filtrados <span class="ot">&lt;-</span> datos[datos<span class="sc">$</span>Sexo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"M"</span>), ]</span>
-<span id="cb12-2"><a href=""></a><span class="fu">boxplot</span>(datos_filtrados<span class="sc">$</span>Altura <span class="sc">~</span> datos_filtrados<span class="sc">$</span>Sexo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>datos_filtrados <span class="ot">&lt;-</span> datos[datos<span class="sc">$</span>Sexo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"M"</span>), ]</span>
+<span id="cb12-2"><a href=""></a><span class="fu">boxplot</span>(datos_filtrados<span class="sc">$</span>Altura <span class="sc">~</span> datos_filtrados<span class="sc">$</span>Sexo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2010,13 +2013,14 @@ z_i = \frac{x_i - \bar{x}}{s}
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
