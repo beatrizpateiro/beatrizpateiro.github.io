@@ -469,6 +469,7 @@ P\left(\bigcup_{i=1}^{\infty}A_i\right)
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Unha <span class="math inline">\(\sigma\)</span>-álxebra é unha colección de sucesos pechada para as operacións que necesitaremos considerar: contén o espazo mostral e, se contén determinados sucesos, tamén contén os seus complementarios e as súas unións numerables.</p></li></ol></aside></section>
 <section id="propiedades-da-probabilidade" class="slide level2">
 <h2>Propiedades da probabilidade</h2>
+<div class="mysmall">
 <p>A partir dos axiomas de Kolmogorov pódense deducir algunhas propiedades fundamentais:</p>
 <ul>
 <li><p><strong>Probabilidade do suceso imposible:</strong> <span class="math inline">\(P(\emptyset)=0.\)</span></p></li>
@@ -478,16 +479,20 @@ P\left(\bigcup_{i=1}^{\infty}A_i\right)
 <li><p><strong>Principio de inclusión-exclusión:</strong> para dous sucesos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, <span class="math display">\[
 P(A\cup B)=P(A)+P(B)-P(A\cap B).
 \]</span></p>
-<p>En xeral, para <span class="math inline">\(A_1,\ldots,A_n\)</span>, <span class="math display">\[
+<p>En xeral, para <span class="math inline">\(A_1,\ldots,A_n\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
 P\left(\bigcup_{i=1}^n A_i\right)
 =
-\sum_i P(A_i)
--\sum_{i&lt;j}P(A_i\cap A_j)
-+\sum_{i&lt;j&lt;k}P(A_i\cap A_j\cap A_k)
+\sum_{i=1}^n P(A_i)
+-\sum_{1\leq i&lt;j\leq n}P(A_i\cap A_j)
++\sum_{1\leq i&lt;j&lt;k\leq n}P(A_i\cap A_j\cap A_k)
 -\cdots
 +(-1)^{n+1}P(A_1\cap\cdots\cap A_n).
+\end{aligned}
 \]</span></p></li>
 </ul>
+</div>
 </section>
 <section id="probabilidade-condicionada" class="slide level2">
 <h2>Probabilidade condicionada</h2>
@@ -540,6 +545,9 @@ P(A \cap B)=P(A)\cdot P(B).
 </li>
 <li><strong>Regra de Bayes</strong></li>
 </ul>
+<div style="text-align: center;">
+<p><img src="images/urna.png" style="width: 500px; max-width: 100%; height: auto;"></p>
+</div>
 </section>
 <section id="resultados-fundamentais-1" class="slide level2">
 <h2>Resultados fundamentais</h2>
@@ -559,9 +567,13 @@ P(A_n \mid A_1 \cap A_2 \cap \ldots \cap A_{n-1}).
 </div>
 </div>
 </div>
+<div style="text-align: center;">
+<p><img src="images/reglaproducto.png" style="width: 500px; max-width: 100%; height: auto;"></p>
+</div>
 </section>
 <section id="resultados-fundamentais-2" class="slide level2">
 <h2>Resultados fundamentais</h2>
+<div class="mysmall">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -589,6 +601,10 @@ P(B) = P(A_1)\cdot P(B\mid A_1) + P(A_2)\cdot P(B\mid A_2) + \cdots + P(A_n)\cdo
 </div>
 </div>
 </div>
+<div style="text-align: center;">
+<p><img src="images/probtotal.png" style="width: 350px; max-width: 100%; height: auto;"></p>
+</div>
+</div>
 </section>
 <section id="resultados-fundamentais-3" class="slide level2">
 <h2>Resultados fundamentais</h2>
@@ -611,6 +627,27 @@ P(A_i\mid B) =
 </div>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Bayes.jpg" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<div style="text-align: center; font-size: 0.65em; margin-top: -32px;">
+<p>Thomas Bayes<br> (c.&nbsp;1701–1761)</p>
+</div>
+</div><div class="column" style="width:80%;">
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div style="text-align: right; font-size: 0.9em;">
+<p>O teorema de Bayes recibe o seu nome do matemático e reverendo inglés Thomas Bayes. O seu traballo, publicado postumamente en 1763, sentou as bases da inferencia bayesiana.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="combinatoria" class="slide level2">
 <h2>Combinatoria</h2>
@@ -693,6 +730,36 @@ P(\text{2 caras})
 <div class="callout-content">
 <p>Se un evento <span class="math inline">\(A\)</span> pode realizarse de <span class="math inline">\(m\)</span> maneiras diferentes e despois outro evento <span class="math inline">\(B\)</span> pode realizarse de <span class="math inline">\(k\)</span> maneiras diferentes, entón o número total de formas nas que poden ocorrer <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> é <span class="math inline">\(m\cdot k\)</span>.</p>
 </div>
+</div>
+</div>
+</section>
+<section id="combinatoria-principios-xerais-1" class="slide level2">
+<h2>Combinatoria: principios xerais</h2>
+<p>O <strong>principio de inclusión-exclusión</strong> permite contar os elementos da unión de varios conxuntos, evitando contar varias veces os elementos comúns.</p>
+<div class="columns">
+<div class="column" style="width:75%;">
+<p><strong>Para dous conxuntos <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>:</strong></p>
+<p><span class="math display">\[
+|A_1\cup A_2|=|A_1|+|A_2|-|A_1\cap A_2|.
+\]</span></p>
+<p><strong>Para tres conxuntos <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span> e <span class="math inline">\(A_3\)</span>:</strong></p>
+<div style="font-size: 0.85em;">
+<p><span class="math display">\[
+|A_1\cup A_2\cup A_3|=|A_1|+|A_2|+|A_3|-|A_1\cap A_2|-|A_1\cap A_3|-|A_2\cap A_3|+|A_1\cap A_2\cap A_3|.
+\]</span></p>
+</div>
+</div><div class="column" style="width:25%;">
+<div style="margin-top: -55px; text-align: center;">
+<p><img src="images/U2.png" style="width: 100%; display: block; margin: 0 auto 5px auto;"></p>
+<p><img src="images/U3.png" style="width: 100%; display: block; margin: -50px auto 0 auto;"></p>
+</div>
+</div></div>
+<div style="margin-top: -55px;">
+<p><strong>Para <span class="math inline">\(n\)</span> conxuntos <span class="math inline">\(A_1,\ldots,A_n\)</span>:</strong></p>
+<div style="font-size: 0.85em;">
+<p><span class="math display">\[
+\left|\bigcup_{i=1}^{n} A_i\right|=\sum_{i=1}^{n}|A_i|-\sum_{1\leq i&lt;j\leq n}|A_i\cap A_j|+\sum_{1\leq i&lt;j&lt;k\leq n}|A_i\cap A_j\cap A_k|-\cdots+(-1)^{n+1}|A_1\cap\cdots\cap A_n|.
+\]</span></p>
 </div>
 </div>
 </section>
@@ -801,18 +868,23 @@ CR(n,k)
 </section>
 <section id="propiedades-e-identidades-combinatorias" class="slide level2 scrollable">
 <h2>Propiedades e identidades combinatorias</h2>
-<p>Os números combinatorios verifican diversas propiedades que resultan útiles nos problemas de reconto:</p>
+<div class="mysmall">
 <ol type="1">
 <li><p><strong>Simetría:</strong> <span class="math display">\[
 {n\choose k}={n\choose n-k}.
 \]</span></p></li>
-<li><p><strong>Identidade de Pascal:</strong> <span class="math display">\[
+<li><p><strong>Fórmula de Pascal:</strong> <span class="math display">\[
 {n\choose k}={n-1\choose k-1}+{n-1\choose k}.
 \]</span></p></li>
 <li><p><strong>Suma dos números combinatorios:</strong> <span class="math display">\[
-\sum_{k=0}^{n}{n\choose k}=2^n.
+\sum_{k=0}^{n}{n\choose k}={n\choose 0}+{n\choose 1}+\ldots+{n\choose n}=2^n.
+\]</span> O conxunto das partes dun conxunto <span class="math inline">\(A\)</span>, denotado por <span class="math inline">\(\mathcal{P}(A)\)</span>, está formado por todos os subconxuntos de <span class="math inline">\(A\)</span>. Se <span class="math inline">\(A\)</span> ten <span class="math inline">\(n\)</span> elementos, entón <span class="math inline">\(|\mathcal{P}(A)|=2^n\)</span>.</p></li>
+<li><p><strong>Binomio de Newton:</strong> Ao desenvolver <span class="math inline">\((a+b)^n\)</span>, o coeficiente de <span class="math inline">\(a^{n-k}b^k\)</span> é <span class="math inline">\({n\choose k}\)</span>, xa que representa o número de formas de escoller os <span class="math inline">\(k\)</span> factores nos que se toma <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display">\[
+(a+b)^n=\sum_{k=0}^{n}{n\choose k}a^{n-k}b^k.
 \]</span></p></li>
 </ol>
+</div>
 </section>
 <section id="cuestións-de-combinatoria" class="slide level2 scrollable">
 <h2>Cuestións de combinatoria</h2>
